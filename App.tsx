@@ -1,12 +1,15 @@
 import React from 'react';
-import {SafeAreaView} from 'react-native';
-import Main from './src/screen/Main';
+import BottomTab from './src/components/BottomTebScreen/BottomTab';
+import {NavigationContainer} from '@react-navigation/native';
+import {GestureHandlerRootView} from 'react-native-gesture-handler';
 
 function App() {
   return (
-    <SafeAreaView>
-      <Main />
-    </SafeAreaView>
+    <GestureHandlerRootView style={{flex: 1}}>
+      <NavigationContainer>
+        <BottomTab />
+      </NavigationContainer>
+    </GestureHandlerRootView>
   );
 }
 
