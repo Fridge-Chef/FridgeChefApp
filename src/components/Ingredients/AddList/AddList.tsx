@@ -8,8 +8,10 @@ import {
   useBottomSheetTitle,
   useIngredientTitle,
 } from '../../../store/store';
-import DefaultComponent from './defaultComponent';
+
 import SubTitleComponent from '../SubTitleComponent';
+import DefaultMenu from './DefaultMenu';
+
 type ListData = {
   title: string;
   items: {
@@ -63,7 +65,7 @@ const AddList = () => {
           </View>
         )}
         ListFooterComponent={() => (
-          <DefaultComponent
+          <DefaultMenu
             handleAddExpiration={handleAddExpiration}
             buttonName={buttonName}
           />

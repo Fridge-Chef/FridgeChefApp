@@ -6,15 +6,12 @@ import {itemList} from '../../../utils/list';
 import Icon from 'react-native-vector-icons/Ionicons';
 import SubTitleComponent from '../SubTitleComponent';
 
-type DefaultComponentProps = {
+type DefaultMenuProps = {
   handleAddExpiration: (title: string) => void;
   buttonName: string;
 };
 
-const DefaultComponent = ({
-  handleAddExpiration,
-  buttonName,
-}: DefaultComponentProps) => {
+const DefaultMenu = ({handleAddExpiration, buttonName}: DefaultMenuProps) => {
   return (
     <View>
       <View style={{marginBottom: FHeight * 10}}>
@@ -44,7 +41,7 @@ const DefaultComponent = ({
   );
 };
 
-export default DefaultComponent;
+export default DefaultMenu;
 
 const styles = StyleSheet.create({
   itemContainer: {

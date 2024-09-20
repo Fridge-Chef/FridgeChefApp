@@ -4,6 +4,7 @@ import {GestureHandlerRootView} from 'react-native-gesture-handler';
 import SplashScreen from 'react-native-splash-screen';
 import MainStackScreen from './src/components/BottomTebScreen/MainStackScreen';
 import FBottomSheet from './src/components/BottomSheet/FBottomSheet';
+import Loading from './src/components/elements/Loading';
 
 function App() {
   useEffect(() => {
@@ -17,6 +18,7 @@ function App() {
       <NavigationContainer>
         <MainStackScreen />
         <FBottomSheet />
+        <Loading />
       </NavigationContainer>
     </GestureHandlerRootView>
   );
