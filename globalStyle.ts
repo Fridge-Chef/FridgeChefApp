@@ -14,6 +14,18 @@ export const colors = {
   info: '#0000FF',
 };
 
+export const fontFamilies = {
+  pretendardBlack: 'Pretendard-Black',
+  pretendardBold: 'Pretendard-Bold',
+  pretendardExtraBold: 'Pretendard-ExtraBold',
+  pretendardExtraLight: 'Pretendard-ExtraLight',
+  pretendardLight: 'Pretendard-Light',
+  pretendardMedium: 'Pretendard-Medium',
+  pretendardRegular: 'Pretendard-Regular',
+  pretendardSemiBold: 'Pretendard-SemiBold',
+  pretendardThin: 'Pretendard-Thin',
+} as const;
+
 export const basicDimensions = {
   height: 852,
   width: 393,
