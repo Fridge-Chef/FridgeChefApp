@@ -2,6 +2,7 @@ import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import Test02 from '../../screen/Test02';
+import RecRecipe from '../../screen/RecRecipe';
 
 const RecipeBookScreen = () => {
   const Stack = createNativeStackNavigator();
@@ -9,9 +10,17 @@ const RecipeBookScreen = () => {
     <Stack.Navigator
       screenOptions={{
         headerShown: false,
+        contentStyle: {backgroundColor: 'white'},
       }}
-      initialRouteName="test02">
-      <Stack.Screen name="test02" component={Test02} />
+      initialRouteName="recRecipe">
+      <Stack.Screen
+        name="recRecipe"
+        component={RecRecipe}
+        options={{
+          title: '',
+          headerShadowVisible: false,
+        }}
+      />
     </Stack.Navigator>
   );
 };

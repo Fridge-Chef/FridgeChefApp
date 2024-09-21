@@ -26,3 +26,19 @@ export const IngredientList = [
   {id: 10, name: '고구마다 진짜'},
   {id: 11, name: '되나요'},
 ];
+
+export const list = [
+  {id: 1, name: '라면'},
+  {id: 2, name: '밥'},
+  {id: 3, name: '김치류'},
+  {id: 4, name: '계란'},
+  {id: 5, name: '시금치'},
+  {id: 6, name: '닭가슴살'},
+  {id: 7, name: '낫토'},
+  {id: 8, name: '돼지고기'},
+  {id: 9, name: '소고기'},
+  {id: 10, name: '참치'},
+  {id: 11, name: '새우'},
+  {id: 12, name: '오징어'},
+  {id: 13, name: '조개류'},
+];

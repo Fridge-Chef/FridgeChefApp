@@ -1,12 +1,9 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import React from 'react';
-
 import {FHeight, FWidth} from '../../globalStyle';
-
 import TopComponent from '../components/Ingredients/TopComponent';
 import CondimentList from '../components/Ingredients/CondimentList';
 import AddList from '../components/Ingredients/AddList/AddList';
-import Loading from '../components/elements/Loading';
 
 const Ingredients = () => {
   return (

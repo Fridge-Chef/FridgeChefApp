@@ -33,10 +33,12 @@ export const basicDimensions = {
 
 export const FHeight = // 높이 변환 작업
   Number(
-    (Dimensions.get('screen').height * (1 / basicDimensions.height)).toFixed(2),
+    Dimensions.get('screen').height * (1 / basicDimensions.height),
+    // (Dimensions.get('screen').height * (1 / basicDimensions.height)).toFixed(1),
   );
 
 export const FWidth = // 가로 변환 작업
   Number(
-    (Dimensions.get('screen').width * (1 / basicDimensions.width)).toFixed(2),
+    Dimensions.get('screen').width * (1 / basicDimensions.width),
+    // (Dimensions.get('screen').width * (1 / basicDimensions.width)).toFixed(1),
   );

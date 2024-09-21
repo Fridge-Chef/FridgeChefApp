@@ -1,7 +1,7 @@
 import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import FButton from '../elements/FButton';
-import {FWidth} from '../../../globalStyle';
+import {fontFamilies, FWidth} from '../../../globalStyle';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 type SubTitleComponentProps = {
@@ -24,7 +24,7 @@ export default SubTitleComponent;
 
 const styles = StyleSheet.create({
   titleText: {
-    fontFamily: 'Pretendard-Bold',
+    fontFamily: fontFamilies.pretendardRegular,
     color: '#545559',
   },
   iconContainer: {
