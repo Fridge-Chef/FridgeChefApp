@@ -7,64 +7,61 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {FHeight, fontStyles, FWidth} from '../../../globalStyle';
 import FButton from '../elements/FButton';
-import Icon from 'react-native-vector-icons/Ionicons';
 import {ingredients} from '../../utils/list';
 import SubTitleComponent from './SubTitleComponent';
 import SvgImage from '../elements/SvgImage';
 
 const CondimentList = () => {
-  const [buttonHeight, setButtonHeight] = useState<number | null>(null);
   const [containerHeight, setContainerHeight] = useState(0);
   const [containerOpen, setContainerOpen] = useState(false);
   const onLayout = (e: LayoutChangeEvent) => {
     setContainerHeight(e.nativeEvent.layout.height);
-    console.log(e.nativeEvent.layout.height);
   };
 
-  const onLayout2 = (e: LayoutChangeEvent) => {
-    if (buttonHeight === null) {
-      setButtonHeight(e.nativeEvent.layout.height);
-      console.log('이건 버튼 크기', e.nativeEvent.layout.height);
+  useEffect(() => {
+    if (ingredients.length > 0) {
+      onLayout;
     }
-  };
-  console.log('버튼 높이', containerOpen);
+  }, [ingredients.length]);
+
+  console.log('높이', containerHeight > FHeight * 81.6);
   return (
     <View style={styles.container}>
       <SubTitleComponent title={'기본 조미료'} />
       <View
         style={[
           styles.listContainer,
-          {
-            overflow: 'hidden',
-            height: containerOpen ? buttonHeight! + 12 : buttonHeight! * 2 + 12,
-          },
+          {maxHeight: containerOpen ? null : FHeight * 84.6},
         ]}
         onLayout={onLayout}>
         <>
-          {ingredients.map(item => (
-            <FButton
-              onLayout={onLayout2}
-              key={item.id}
-              title={item.name}
-              style={fontStyles.B_14}
-              titleColor="black"
-              buttonStyle="iconButton"
-              borderWidth={0}
-              buttonColor="gray"
-              radius={50}
-            />
-          ))}
-          {buttonHeight! * 2 + 12 && (
+          {ingredients.map((item, index) => {
+            const lastItem = index >= ingredients.length - 3;
+            return (
+              <FButton
+                key={item.id}
+                title={item.name}
+                style={fontStyles.B_14}
+                titleColor="black"
+                buttonStyle="iconButton"
+                marginBottom={lastItem ? 0 : FHeight * 12}
+                borderWidth={0}
+                buttonColor="gray"
+                radius={50}
+              />
+            );
+          })}
+          {containerHeight > FHeight * 81.6 && (
             <TouchableOpacity
               style={{
                 position: 'absolute',
                 bottom: 0,
                 right: 0,
-                width: buttonHeight,
-                height: buttonHeight,
+                width: 50,
+                height: 50,
                 borderRadius: 50,
                 borderWidth: 1,
               }}
@@ -87,8 +84,8 @@ const CondimentList = () => {
           }}>
           <SvgImage
             type="plus"
-            width={16}
-            height={16}
+            width={15}
+            height={15}
             fill="#000000"
             stroke="#000000"
           />

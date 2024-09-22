@@ -4,7 +4,7 @@ import Wallet from '../../assets/images/svg/Wallet.svg';
 import Heart from '../../assets/images/svg/Heart.svg';
 import EditSquare from '../../assets/images/svg/EditSquare.svg';
 import MoreCircle from '../../assets/images/svg/MoreCircle.svg';
-import Plus from '../../assets/images/svg/plus.svg';
+import Plus from '../../assets/images/svg/Plus.svg';
 type SvgImageProps = {
   type: string;
   width?: number;
