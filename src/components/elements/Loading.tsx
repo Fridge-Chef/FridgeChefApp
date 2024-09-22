@@ -10,7 +10,7 @@ const Loading = () => {
   const {loading, loadingTitle} = useLoading();
   return (
     <>
-      {!loading && (
+      {loading && (
         <View style={styles.background}>
           <View style={styles.indicatorContainer}>
             {/* <ActivityIndicator

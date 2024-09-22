@@ -5,6 +5,9 @@ import MyFridgeScreen from './MyFridgeScreen';
 import RecipeBookScreen from './RecipeBookScreen';
 import CommunityScreen from './CommunityScreen';
 import MoreScreen from './MoreScreen';
+
+import NameComponent from './TebMenu/NameComponent';
+import IconComponent from './TebMenu/IconComponent';
 const BottomTab = () => {
   const Tab = createBottomTabNavigator();
   const [name, setName] = useState('');
@@ -20,33 +23,20 @@ const BottomTab = () => {
       }}
       screenOptions={({route}) => ({
         tabBarIconStyle: {
-          display: 'none',
+          // display: 'none',
         },
         tabBarStyle: {
-          height: 60,
+          height: 64,
           elevation: 0,
         },
-        tabBarItemStyle: {
-          borderTopWidth: name === route.name ? 1 : 1,
-          borderColor: name === route.name ? 'black' : '#AFB1B6',
-          elevation: 0,
-        },
-        tabBarLabelPosition: 'beside-icon',
         tabBarHideOnKeyboard: true,
         tabBarShowLabel: true,
         tabBarLabel({focused}) {
-          return (
-            <Text
-              style={{
-                color: focused ? 'black' : '#AFB1B6',
-                fontSize: 12,
-                fontWeight: 'bold',
-              }}>
-              {route.name}
-            </Text>
-          );
+          return <NameComponent focused={focused} name={route.name} />;
         },
-
+        tabBarIcon({focused}) {
+          return <IconComponent focused={focused} name={route.name} />;
+        },
         headerShown: false,
         headerShadowVisible: false,
         headerBackgroundContainerStyle: {

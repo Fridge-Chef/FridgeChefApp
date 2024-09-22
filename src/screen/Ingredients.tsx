@@ -4,7 +4,6 @@ import {FHeight, FWidth} from '../../globalStyle';
 import TopComponent from '../components/Ingredients/TopComponent';
 import CondimentList from '../components/Ingredients/CondimentList';
 import AddList from '../components/Ingredients/AddList/AddList';
-
 const Ingredients = () => {
   return (
     <View style={styles.container}>
@@ -22,8 +21,8 @@ export default Ingredients;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: FHeight * 16,
-    paddingHorizontal: FWidth * 27,
+    marginVertical: FHeight * 16,
+    marginHorizontal: FWidth * 20,
     backgroundColor: 'white',
   },
 });

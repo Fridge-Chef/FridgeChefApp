@@ -1,7 +1,7 @@
 import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import FButton from '../elements/FButton';
-import {fontFamilies, FWidth} from '../../../globalStyle';
+import {fontFamilies, fontStyles, FWidth} from '../../../globalStyle';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 type SubTitleComponentProps = {
@@ -12,10 +12,7 @@ type SubTitleComponentProps = {
 const SubTitleComponent = ({title, onPress}: SubTitleComponentProps) => {
   return (
     <FButton buttonStyle="iconText" onPress={onPress}>
-      <Text style={styles.titleText}>{title}</Text>
-      <View style={styles.iconContainer}>
-        <Icon name="chevron-down-outline" size={16} color="#545559" />
-      </View>
+      <Text style={[fontStyles.B_14, {color: '#999999'}]}>{title}</Text>
     </FButton>
   );
 };

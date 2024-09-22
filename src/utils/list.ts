@@ -4,6 +4,9 @@ export const ingredients = [
   {id: 3, name: '간장류'},
   {id: 4, name: '고추장'},
   {id: 5, name: '식용유 종류'},
+  {id: 6, name: '식용유 종류'},
+  {id: 8, name: '식용유 종류'},
+  {id: 7, name: '식용유 종류'},
 ];
 
 export const itemList = [

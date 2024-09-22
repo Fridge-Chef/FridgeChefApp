@@ -1,9 +1,16 @@
-import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {
+  LayoutChangeEvent,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import React from 'react';
 import {FHeight, FWidth} from '../../../globalStyle';
 
 type FButtonProps = {
   buttonStyle:
+    | 'svgButton'
     | 'iconButton'
     | 'iconButton2'
     | 'iconText'
@@ -11,6 +18,7 @@ type FButtonProps = {
     | 'noneStyle';
   buttonColor?: string;
   radius?: number;
+  style?: any;
   fontFamily?:
     | 'Pretendard-Black'
     | 'Pretendard-Bold'
@@ -41,6 +49,7 @@ type FButtonProps = {
     | '800'
     | '900';
   onPress?: () => void;
+  onLayout?: (event: LayoutChangeEvent) => void;
   children?: React.ReactNode;
 };
 
@@ -50,20 +59,18 @@ const FButton = ({
   radius = 12,
   borderWidth = 0,
   title,
-  titlePadding,
+  style,
   marginRight,
   marginBottom,
-  fontFamily,
-  fontSize,
   titleColor,
-  titleWeight,
   onPress,
+  onLayout,
   children,
 }: FButtonProps) => {
   const buttonColorList: Record<string, string> = {
     black: 'black',
     white: 'white',
-    gray: '#f7f7f7',
+    gray: '#F4F6FA',
     red: 'red',
     blue: 'blue',
     green: 'green',
@@ -71,6 +78,13 @@ const FButton = ({
 
   const styleList = {
     noneStyle: styles.noneStyle,
+    svgButton: [
+      styles.svgIconButton,
+      {
+        backgroundColor: buttonColorList[buttonColor] || buttonColor,
+        borderRadius: radius,
+      },
+    ],
     iconButton: [
       styles.iconButton,
       {
@@ -98,23 +112,24 @@ const FButton = ({
   };
 
   return (
-    <TouchableOpacity activeOpacity={1} onPress={onPress}>
-      <View style={styleList[buttonStyle]}>
-        {children ? (
-          children
-        ) : (
-          <Text
-            style={{
-              fontFamily: fontFamily,
-              fontSize: fontSize,
+    <TouchableOpacity
+      style={styleList[buttonStyle]}
+      activeOpacity={1}
+      onLayout={onLayout}
+      onPress={onPress}>
+      {children ? (
+        children
+      ) : (
+        <Text
+          style={[
+            style,
+            {
               color: titleColor,
-              fontWeight: titleWeight,
-              padding: titlePadding,
-            }}>
-            {title}
-          </Text>
-        )}
-      </View>
+            },
+          ]}>
+          {title}
+        </Text>
+      )}
     </TouchableOpacity>
   );
 };
@@ -122,17 +137,24 @@ const FButton = ({
 export default FButton;
 
 const styles = StyleSheet.create({
+  svgIconButton: {
+    padding: 12,
+    borderRadius: 999,
+  },
+
   iconButton: {
     flexDirection: 'row',
+    alignSelf: 'flex-start',
+    marginRight: FWidth * 6,
+    marginBottom: FHeight * 12,
     paddingHorizontal: FWidth * 12,
     paddingVertical: FHeight * 8,
     alignItems: 'center',
-    borderColor: '#545559',
   },
 
   iconButton2: {
     paddingVertical: FHeight * 8,
-    paddingHorizontal: FWidth * 16,
+    paddingHorizontal: FWidth * 14,
     borderRadius: 999,
     alignSelf: 'flex-start',
   },
