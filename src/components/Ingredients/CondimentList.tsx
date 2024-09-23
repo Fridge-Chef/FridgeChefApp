@@ -45,7 +45,7 @@ const CondimentList = () => {
 
   return (
     <View style={styles.container}>
-      <SubTitleComponent title={'기본 조미료'} />
+      <SubTitleComponent title={'기본 조미료'} color={colors.b400} />
       <View
         style={[
           styles.listContainer,

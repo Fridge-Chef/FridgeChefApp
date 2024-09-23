@@ -1,7 +1,13 @@
 import {Image, StyleSheet, Text, View} from 'react-native';
 import React, {useState} from 'react';
 import FButton from '../../elements/FButton';
-import {colors, FHeight, fontFamilies, FWidth} from '../../../../globalStyle';
+import {
+  colors,
+  FHeight,
+  fontFamilies,
+  fontStyles,
+  FWidth,
+} from '../../../../globalStyle';
 import ImageComponent from './ImageComponent';
 import ViewAndLike from './ViewAndLike';
 import LikeButton from './LikeButton';
@@ -23,12 +29,14 @@ const ListItem = ({item}: ListItemProps) => {
     <View style={styles.mainItemContainer}>
       <ImageComponent />
       <View style={styles.itemTextContainer}>
-        <View style={styles.mainTitleAndLikeIcon}>
-          <View>
-            <Text style={styles.itemTitleText}>{item.title}</Text>
-            <ViewAndLike like={item.likes} favorites={item.favorites} />
+        <View>
+          <View style={styles.itemTitleAndLikeContainer}>
+            <Text style={[fontStyles.B_16, {color: colors.text}]}>
+              {item.title}
+            </Text>
+            <LikeButton isLike={isLike} setIsLike={setIsLike} />
           </View>
-          <LikeButton isLike={isLike} setIsLike={setIsLike} />
+          <ViewAndLike like={item.likes} favorites={item.favorites} />
         </View>
         <BottomText ingredients={item.ingredients} />
       </View>
@@ -40,23 +48,24 @@ export default ListItem;
 
 const styles = StyleSheet.create({
   mainItemContainer: {
-    padding: FWidth * 16,
+    padding: FWidth * 14,
     flexDirection: 'row',
-    borderColor: '#AFB1B6',
+    borderColor: colors.border,
     borderWidth: 1,
-    borderRadius: 12,
-    marginBottom: FHeight * 8,
+    borderRadius: 14,
+    marginTop: FHeight * 12,
   },
 
   itemTextContainer: {
     flex: 1,
-    marginLeft: FWidth * 12,
-    justifyContent: 'space-between',
+    marginLeft: FWidth * 14,
   },
 
-  mainTitleAndLikeIcon: {
+  itemTitleAndLikeContainer: {
     flexDirection: 'row',
+    alignItems: 'center',
     justifyContent: 'space-between',
+    marginBottom: FHeight * 4,
   },
 
   itemTitleText: {

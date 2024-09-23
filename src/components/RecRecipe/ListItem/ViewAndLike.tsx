@@ -1,6 +1,13 @@
 import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
-import {FHeight, fontFamilies, FWidth} from '../../../../globalStyle';
+import {
+  colors,
+  FHeight,
+  fontFamilies,
+  fontStyles,
+  FWidth,
+} from '../../../../globalStyle';
+import SvgImage from '../../elements/SvgImage';
 
 type ViewAndLikeProps = {
   like: number;
@@ -11,12 +18,27 @@ const ViewAndLike = ({like, favorites}: ViewAndLikeProps) => {
   return (
     <View style={styles.iconsContainer}>
       <View style={styles.textAndIconContainer}>
-        <Text style={styles.iconText}>★</Text>
-        <Text style={styles.iconText}>{favorites}</Text>
+        <SvgImage type="star" width={16} height={16} fill={colors.white} />
+        <Text
+          style={[
+            fontStyles.B_12,
+            {
+              color: colors.b500,
+              marginLeft: FWidth * 4,
+            },
+          ]}>
+          {favorites}
+        </Text>
       </View>
       <View style={styles.textAndIconContainer}>
-        <Text style={styles.iconText}>♡</Text>
-        <Text style={styles.iconText}>{like}</Text>
+        <SvgImage type="heart2" width={16} height={16} fill={colors.white} />
+        <Text
+          style={[
+            fontStyles.B_12,
+            {color: colors.b500, marginLeft: FWidth * 2},
+          ]}>
+          {like}
+        </Text>
       </View>
     </View>
   );
@@ -33,7 +55,6 @@ const styles = StyleSheet.create({
   textAndIconContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginTop: FHeight * 4,
     marginRight: FWidth * 8,
   },
 

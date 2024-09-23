@@ -1,23 +1,24 @@
 import {Image, StyleSheet, Text, View} from 'react-native';
 import React from 'react';
-import {FWidth} from '../../../../globalStyle';
+import {FHeight, FWidth} from '../../../../globalStyle';
 
 const ImageComponent = () => {
   return (
-    <Image
-      source={require('../../../assets/images/Icon.png')}
-      style={styles.itemImage}
-      alt="이미지"
-    />
+    <View style={styles.container}>
+      <Image source={require('../../../assets/images/Icon.png')} alt="이미지" />
+    </View>
   );
 };
 
 export default ImageComponent;
 
 const styles = StyleSheet.create({
-  itemImage: {
-    width: FWidth * 100,
-    height: FWidth * 100,
-    borderRadius: 8,
+  container: {
+    width: FHeight * 100,
+    height: FHeight * 100,
+    backgroundColor: 'gray',
+    borderRadius: 12,
+    objectFit: 'cover',
+    overflow: 'hidden',
   },
 });

@@ -12,7 +12,7 @@ export const colors = {
     4: '#FFEBE6',
   },
   secondary: {
-    1: '#31B56F',
+    1: '#6572FF',
     2: '#DBFEEB',
   },
   black: '#000000',

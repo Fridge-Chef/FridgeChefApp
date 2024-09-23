@@ -5,13 +5,14 @@ import {colors, fontStyles} from '../../../globalStyle';
 
 type SubTitleComponentProps = {
   title: string;
+  color?: string;
   onPress?: () => void;
 };
 
-const SubTitleComponent = ({title, onPress}: SubTitleComponentProps) => {
+const SubTitleComponent = ({title, color, onPress}: SubTitleComponentProps) => {
   return (
-    <FButton buttonStyle="iconText" onPress={onPress}>
-      <Text style={[fontStyles.B_14, {color: colors.b400}]}>{title}</Text>
+    <FButton buttonStyle="noneStyle" onPress={onPress}>
+      <Text style={[fontStyles.B_14, {color: color}]}>{title}</Text>
     </FButton>
   );
 };

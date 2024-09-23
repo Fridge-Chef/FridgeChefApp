@@ -39,7 +39,7 @@ const AddList = () => {
     <View style={styles.container}>
       {data.map((item: ListData, index: number) => (
         <View key={index} style={{marginTop: index === 0 ? 0 : FHeight * 12}}>
-          <SubTitleComponent title={item.title} />
+          <SubTitleComponent title={item.title} color={colors.b400} />
           <View>
             {item.items.map((itemList, index) => (
               <View key={index} style={styles.itemContainer}>

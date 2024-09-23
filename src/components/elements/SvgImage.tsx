@@ -11,18 +11,27 @@ import Calendar from '../../assets/images/svg/Calendar.svg';
 import Close from '../../assets/images/svg/Close.svg';
 import Close2 from '../../assets/images/svg/Close2.svg';
 import Back from '../../assets/images/svg/Back.svg';
+import ArrowDown2 from '../../assets/images/svg/ArrowDown2.svg';
+import Star from '../../assets/images/svg/Star.svg';
+import Heart2 from '../../assets/images/svg/Heart2.svg';
+import Heart3 from '../../assets/images/svg/Heart3.svg';
+
 type SvgImageProps = {
   type:
     | 'wallet'
     | 'heart'
+    | 'heart2'
+    | 'heart3'
     | 'editSquare'
     | 'moreCircle'
     | 'plus'
     | 'arrowDown'
+    | 'arrowDown2'
     | 'smallPlus'
     | 'calendar'
     | 'close'
     | 'close2'
+    | 'star'
     | 'back';
   width?: number;
   height?: number;
@@ -143,6 +152,46 @@ const SvgImage = ({
     case 'back':
       return (
         <Back
+          width={width}
+          height={height}
+          fill={fill}
+          stroke={stroke}
+          rotation={rotation}
+        />
+      );
+    case 'arrowDown2':
+      return (
+        <ArrowDown2
+          width={width}
+          height={height}
+          fill={fill}
+          stroke={stroke}
+          rotation={rotation}
+        />
+      );
+    case 'star':
+      return (
+        <Star
+          width={width}
+          height={height}
+          fill={fill}
+          stroke={stroke}
+          rotation={rotation}
+        />
+      );
+    case 'heart2':
+      return (
+        <Heart2
+          width={width}
+          height={height}
+          fill={fill}
+          stroke={stroke}
+          rotation={rotation}
+        />
+      );
+    case 'heart3':
+      return (
+        <Heart3
           width={width}
           height={height}
           fill={fill}
