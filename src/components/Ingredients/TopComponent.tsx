@@ -8,7 +8,7 @@ const TopComponent = () => {
   const {bottomSheetRef} = useBottomSheetRef();
   const [buttonName] = useState('재료 추가');
   const {setTitle} = useBottomSheetTitle();
-  const [test, setTest] = useState(false);
+  const [test] = useState(false);
   const handleAddIngredient = () => {
     setTitle(buttonName);
     bottomSheetRef.current?.expand();

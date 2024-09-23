@@ -21,7 +21,8 @@ export default RecRecipe;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingVertical: FHeight * 24,
+    paddingTop: FHeight * 24,
+    paddingBottom: FHeight * 26,
     paddingHorizontal: FWidth * 22,
     backgroundColor: 'white',
   },

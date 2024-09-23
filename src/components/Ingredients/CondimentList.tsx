@@ -26,6 +26,8 @@ const CondimentList = () => {
   const onLayout = (e: LayoutChangeEvent) => {
     if (buttonHeight === 0) {
       setButtonHeight(e.nativeEvent.layout.height);
+
+      console.log(e.nativeEvent.layout.height);
     }
   };
 

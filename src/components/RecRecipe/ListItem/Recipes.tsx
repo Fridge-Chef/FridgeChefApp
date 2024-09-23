@@ -20,7 +20,9 @@ const Recipes = () => {
       <FlatList
         data={listData}
         showsVerticalScrollIndicator={false}
-        contentContainerStyle={{paddingBottom: FHeight * 40}}
+        contentContainerStyle={{
+          paddingBottom: FHeight * 146,
+        }}
         keyExtractor={(_, index) => index.toString()}
         renderItem={({item}: {item: RecipeListType}) => (
           <ListItem item={item} />

@@ -37,17 +37,120 @@ export const IngredientList = [
 ];
 
 export const list = [
-  {id: 1, name: '라면'},
-  {id: 2, name: '밥'},
-  {id: 3, name: '김치류'},
-  {id: 4, name: '계란'},
-  {id: 5, name: '시금치'},
-  {id: 6, name: '닭가슴살'},
-  {id: 7, name: '낫토'},
-  {id: 8, name: '돼지고기'},
-  {id: 9, name: '소고기'},
-  {id: 10, name: '참치'},
-  {id: 11, name: '새우'},
-  {id: 12, name: '오징어'},
-  {id: 13, name: '조개류'},
+  {
+    ingredients: [
+      {
+        ingredient: '라면',
+        category: '',
+        ingredient_id: 1,
+        expiry_date: '2024-09-09T15:45:00', // 유통기한
+        create_time: '2024-09-09T15:45:00', // 재료 추가 날짜
+      },
+      {
+        ingredient: '식초',
+        category: '',
+        ingredient_id: 2,
+        expiry_date: '2024-09-09T15:45:00', // 유통기한
+        create_time: '2024-09-09T15:45:00', // 재료 추가 날짜
+      },
+      {
+        ingredient: '고구마',
+        category: '',
+        ingredient_id: 3,
+        expiry_date: '2024-09-09T15:45:00', // 유통기한
+        create_time: '2024-09-09T15:45:00', // 재료 추가 날짜
+      },
+      {
+        ingredient: '강아지',
+        category: '',
+        ingredient_id: 4,
+        expiry_date: '2024-09-09T15:45:00', // 유통기한
+        create_time: '2024-09-09T15:45:00', // 재료 추가 날짜
+      },
+      {
+        ingredient: '도라에몽',
+        category: '',
+        ingredient_id: 5,
+        expiry_date: '2024-09-09T15:45:00', // 유통기한
+        create_time: '2024-09-09T15:45:00', // 재료 추가 날짜
+      },
+      {
+        ingredient: '감자',
+        category: '',
+        ingredient_id: 6,
+        expiry_date: '2024-09-09T15:45:00', // 유통기한
+        create_time: '2024-09-09T15:45:00', // 재료 추가 날짜
+      },
+      {
+        ingredient: '소세지',
+        category: '',
+        ingredient_id: 7,
+        expiry_date: '2024-09-09T15:45:00', // 유통기한
+        create_time: '2024-09-09T15:45:00', // 재료 추가 날짜
+      },
+      {
+        ingredient: '설탕',
+        category: '',
+        ingredient_id: 8,
+        expiry_date: '2024-09-09T15:45:00', // 유통기한
+        create_time: '2024-09-09T15:45:00', // 재료 추가 날짜
+      },
+      // {
+      //   ingredient: '아보카도',
+      //   category: '',
+      //   ingredient_id: 9,
+      //   expiry_date: '2024-09-09T15:45:00', // 유통기한
+      //   create_time: '2024-09-09T15:45:00', // 재료 추가 날짜
+      // },
+      // {
+      //   ingredient: '카레가루',
+      //   category: '',
+      //   ingredient_id: 10,
+      //   expiry_date: '2024-09-09T15:45:00', // 유통기한
+      //   create_time: '2024-09-09T15:45:00', // 재료 추가 날짜
+      // },
+      // {
+      //   ingredient: '자장면 가루',
+      //   category: '',
+      //   ingredient_id: 11,
+      //   expiry_date: '2024-09-09T15:45:00', // 유통기한
+      //   create_time: '2024-09-09T15:45:00', // 재료 추가 날짜
+      // },
+      // {
+      //   ingredient: '오징어 젓갈',
+      //   category: '',
+      //   ingredient_id: 12,
+      //   expiry_date: '2024-09-09T15:45:00', // 유통기한
+      //   create_time: '2024-09-09T15:45:00', // 재료 추가 날짜
+      // },
+      // {
+      //   ingredient: '김치',
+      //   category: '',
+      //   ingredient_id: 13,
+      //   expiry_date: '2024-09-09T15:45:00', // 유통기한
+      //   create_time: '2024-09-09T15:45:00', // 재료 추가 날짜
+      // },
+      // {
+      //   ingredient: '고추장',
+      //   category: '',
+      //   ingredient_id: 14,
+      //   expiry_date: '2024-09-09T15:45:00', // 유통기한
+      //   create_time: '2024-09-09T15:45:00', // 재료 추가 날짜
+      // },
+      // {
+      //   ingredient: '식용유',
+      //   category: '',
+      //   ingredient_id: 15,
+      //   expiry_date: '2024-09-09T15:45:00', // 유통기한
+      //   create_time: '2024-09-09T15:45:00', // 재료 추가 날짜
+      // },
+      // {
+      //   ingredient: '간장',
+      //   category: '',
+      //   ingredient_id: 16,
+      //   expiry_date: '2024-09-09T15:45:00', // 유통기한
+      //   create_time: '2024-09-09T15:45:00', // 재료 추가 날짜
+      // },
+    ],
+  },
 ];

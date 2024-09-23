@@ -17,7 +17,7 @@ const Ingredients = () => {
       setTimeout(() => {
         setLoading(false);
         navigation.navigate('recRecipe');
-      }, 3000);
+      }, 1000);
     } else {
     }
   };

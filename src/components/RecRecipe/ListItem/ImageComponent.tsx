@@ -5,7 +5,11 @@ import {FHeight, FWidth} from '../../../../globalStyle';
 const ImageComponent = () => {
   return (
     <View style={styles.container}>
-      <Image source={require('../../../assets/images/Icon.png')} alt="이미지" />
+      <Image
+        source={require('../../../assets/images/textImage.jpg')}
+        style={styles.imageStyle}
+        alt="이미지"
+      />
     </View>
   );
 };
@@ -18,7 +22,12 @@ const styles = StyleSheet.create({
     height: FHeight * 100,
     backgroundColor: 'gray',
     borderRadius: 12,
-    objectFit: 'cover',
     overflow: 'hidden',
+  },
+
+  imageStyle: {
+    width: FHeight * 100,
+    height: FHeight * 100,
+    objectFit: 'cover',
   },
 });
