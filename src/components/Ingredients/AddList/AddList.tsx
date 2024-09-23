@@ -1,7 +1,7 @@
 import {FlatList, StyleSheet, Text, View} from 'react-native';
 import React, {useState} from 'react';
 import Icon from 'react-native-vector-icons/Ionicons';
-import {FHeight, FWidth} from '../../../../globalStyle';
+import {colors, FHeight, fontStyles, FWidth} from '../../../../globalStyle';
 import FButton from '../../elements/FButton';
 import {
   useBottomSheetRef,
@@ -11,6 +11,7 @@ import {
 
 import SubTitleComponent from '../SubTitleComponent';
 import DefaultMenu from './DefaultMenu';
+import SvgImage from '../../elements/SvgImage';
 
 type ListData = {
   title: string;
@@ -26,6 +27,7 @@ const AddList = () => {
   const {setIngredientTitle} = useIngredientTitle();
   const {bottomSheetRef} = useBottomSheetRef();
   const data = require('../../../utils/listData.json');
+  const dDay = 'D -3';
 
   const handleAddExpiration = (title: string) => {
     bottomSheetRef.current?.expand();
@@ -35,42 +37,42 @@ const AddList = () => {
 
   return (
     <View style={styles.container}>
-      <FlatList
-        data={data}
-        showsVerticalScrollIndicator={false}
-        keyExtractor={(_, index) => index.toString()}
-        renderItem={({item}: {item: ListData}) => (
-          <View style={styles.listContainer}>
-            <SubTitleComponent title={item.title} />
-            <View style={{marginTop: FHeight * 10}}>
-              {item.items.map((itemList, index) => (
-                <View key={index} style={styles.itemContainer}>
-                  <View style={styles.iconAndTextContainer}>
-                    <Icon name="star" size={16} color="#FFC107" />
-                    <Text style={{marginLeft: 8}}>{itemList.name}</Text>
-                  </View>
-                  <View style={styles.iconAndTextContainer}>
+      {data.map((item: ListData, index: number) => (
+        <View key={index} style={{marginTop: index === 0 ? 0 : FHeight * 12}}>
+          <SubTitleComponent title={item.title} />
+          <View>
+            {item.items.map((itemList, index) => (
+              <View key={index} style={styles.itemContainer}>
+                <Text style={[fontStyles.B_16, {color: colors.text}]}>
+                  {itemList.name}
+                </Text>
+                <View style={styles.iconAndTextContainer}>
+                  {dDay && (
+                    <Text style={[fontStyles.B_16, {color: colors.success}]}>
+                      {dDay}
+                    </Text>
+                  )}
+                  <View style={{marginHorizontal: FWidth * 12}}>
                     <FButton
                       buttonStyle="noneStyle"
                       onPress={() => handleAddExpiration(itemList.name)}>
-                      <Text style={styles.textStyle}>{buttonName}</Text>
+                      <SvgImage
+                        type="calendar"
+                        width={23}
+                        height={23}
+                        fill={'transparent'}
+                      />
                     </FButton>
-                    <View style={styles.itemIconContainer}>
-                      <Icon name="close-outline" size={20} color="black" />
-                    </View>
                   </View>
+                  <FButton buttonStyle="noneStyle">
+                    <SvgImage type="close" width={24} height={24} />
+                  </FButton>
                 </View>
-              ))}
-            </View>
+              </View>
+            ))}
           </View>
-        )}
-        ListFooterComponent={() => (
-          <DefaultMenu
-            handleAddExpiration={handleAddExpiration}
-            buttonName={buttonName}
-          />
-        )}
-      />
+        </View>
+      ))}
     </View>
   );
 };
@@ -79,23 +81,23 @@ export default AddList;
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: FHeight * 30,
+    marginTop: FHeight * 40,
+    marginBottom: FHeight * 132,
   },
 
   listContainer: {
-    marginBottom: FHeight * 24,
+    // marginBottom: FHeight * 12,
   },
 
   itemContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    paddingLeft: 16,
-    paddingVertical: 12,
-    paddingRight: 12,
-    borderWidth: 1,
-    borderColor: '#545559',
-    borderRadius: 50,
-    marginBottom: 10,
+    marginTop: FHeight * 12,
+    paddingLeft: 18,
+    paddingVertical: 16,
+    paddingRight: 16,
+    borderRadius: 14,
+    backgroundColor: colors.background,
   },
 
   iconAndTextContainer: {

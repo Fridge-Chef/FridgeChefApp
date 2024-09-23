@@ -1,7 +1,7 @@
 import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import FButton from '../elements/FButton';
-import {fontFamilies} from '../../../globalStyle';
+import {colors, fontStyles} from '../../../globalStyle';
 
 type BottomButtonProps = {
   title: string;
@@ -14,10 +14,9 @@ const BottomButton = ({title, buttonColor, onPress}: BottomButtonProps) => {
     <FButton
       buttonStyle="submit"
       title={title}
-      fontFamily={fontFamilies.pretendardBold}
-      fontSize={20}
+      style={fontStyles.B_20}
       buttonColor={buttonColor}
-      titleColor="white"
+      titleColor={colors.white}
       onPress={onPress}
     />
   );

@@ -1,24 +1,16 @@
-import {
-  Dimensions,
-  Keyboard,
-  Pressable,
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
+import {StyleSheet, Text, View} from 'react-native';
 import React, {useState} from 'react';
-import FButton from '../../elements/FButton';
-import {colors, fontFamilies, FWidth} from '../../../../globalStyle';
 import TopTitle from '../TopTitle';
-import InputAndSearch from './InputAndSearch';
-import {useAddModalInputText, useBottomSheetRef} from '../../../store/store';
-import ItemList from './ItemList';
+import {colors, FWidth} from '../../../../globalStyle';
+import InputAndSearch from '../AddIngredient/InputAndSearch';
+import ItemList from '../AddIngredient/ItemList';
+import {useBottomSheetRef} from '../../../store/store';
 import BottomButton from '../BottomButton';
+import {Colors} from 'react-native/Libraries/NewAppScreen';
 import {IngredientList} from '../../../utils/list';
 
-const AddIngredient = () => {
+const AddCondiment = () => {
   const {bottomSheetRef} = useBottomSheetRef();
-  const {setAddTitle} = useAddModalInputText();
   const [itemList, setItemList] = useState<string[]>([]);
   const handleSubmit = () => {
     if (itemList.length === 0) return;
@@ -26,34 +18,28 @@ const AddIngredient = () => {
     bottomSheetRef.current?.close();
   };
   return (
-    <Pressable
-      style={styles.container}
-      onPress={() => {
-        setAddTitle('');
-        Keyboard.dismiss();
-      }}>
+    <View style={styles.container}>
       <View style={styles.contentContainer}>
-        <TopTitle title="재료 등록하기" />
+        <TopTitle title="조미료 등록하기" />
         <InputAndSearch itemList={IngredientList} setItemList={setItemList} />
         <ItemList itemList={itemList} setItemList={setItemList} />
       </View>
       <BottomButton
-        title="재료 등록하기"
+        title="조미료 등록하기"
         buttonColor={itemList.length > 0 ? colors.text : '#E6E6E6'}
         onPress={handleSubmit}
       />
-    </Pressable>
+    </View>
   );
 };
 
-export default AddIngredient;
+export default AddCondiment;
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'space-between',
   },
-
   contentContainer: {
     flexGrow: 1,
     paddingHorizontal: FWidth * 28,

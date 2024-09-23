@@ -2,19 +2,26 @@ import {Alert, Keyboard, StyleSheet, Text, View} from 'react-native';
 import React, {Dispatch, useState} from 'react';
 import {TextInput} from 'react-native-gesture-handler';
 import FButton from '../../elements/FButton';
-import {FHeight, fontFamilies, FWidth} from '../../../../globalStyle';
+import {
+  colors,
+  FHeight,
+  fontFamilies,
+  fontStyles,
+  FWidth,
+} from '../../../../globalStyle';
 import {IngredientList} from '../../../utils/list';
 import FInput from '../../elements/FInput';
+import {useAddModalInputText} from '../../../store/store';
 
 type InputAndSearchProps = {
+  itemList: any;
   setItemList: Dispatch<React.SetStateAction<string[]>>;
 };
 
-const InputAndSearch = ({setItemList}: InputAndSearchProps) => {
-  const [inputText, setInputText] = useState('');
-
-  const filteredIngredients = inputText
-    ? IngredientList.filter(ingredient => ingredient.name.includes(inputText))
+const InputAndSearch = ({itemList, setItemList}: InputAndSearchProps) => {
+  const {addTitle, setAddTitle} = useAddModalInputText();
+  const filteredIngredients = addTitle
+    ? itemList.filter((itemList: any) => itemList.name.includes(addTitle))
     : [];
 
   const addItemToList = (item: string) => {
@@ -33,35 +40,27 @@ const InputAndSearch = ({setItemList}: InputAndSearchProps) => {
       <View style={styles.inputContainer}>
         <FInput
           inputStyle="default"
-          value={inputText}
-          fontSize={18}
+          value={addTitle}
           placeholder="재료를 입력해주세요"
           onChangeText={text => {
-            setInputText(text);
-          }}
-          onSubmitEditing={() => {
-            console.log(inputText);
-            Keyboard.dismiss();
-            addItemToList(inputText);
-            setItemList(prev => [...prev, inputText]);
+            setAddTitle(text);
           }}
         />
       </View>
       {filteredIngredients.length > 0 && (
         <View style={styles.listContainer}>
-          {filteredIngredients.map(item => (
+          {filteredIngredients.map((item: any) => (
             <FButton
               key={item.id}
               buttonStyle="noneStyle"
               title={item.name}
-              titleColor="black"
-              titlePadding={FWidth * 12}
-              fontSize={16}
-              fontFamily={fontFamilies.pretendardMedium}
+              titleColor={colors.text}
+              style={fontStyles.M_16}
+              fStyle={{paddingVertical: FHeight * 12}}
               onPress={() => {
                 console.log(item.name);
                 Keyboard.dismiss();
-                setInputText('');
+                setAddTitle('');
                 addItemToList(item.name);
               }}
             />
@@ -81,8 +80,11 @@ const styles = StyleSheet.create({
 
   listContainer: {
     marginTop: FHeight * 10,
-    borderWidth: 0.5,
+    paddingHorizontal: FWidth * 12,
+    backgroundColor: colors.white,
+    borderWidth: 1,
     borderRadius: 10,
-    borderColor: '#D8DAE0',
+    borderColor: colors.border,
+    zIndex: 999,
   },
 });

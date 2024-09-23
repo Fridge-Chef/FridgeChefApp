@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
   },
   contentContainer: {
     flexGrow: 1,
-    paddingHorizontal: FWidth * 33,
+    paddingHorizontal: FWidth * 28,
   },
 
   inputContainer: {

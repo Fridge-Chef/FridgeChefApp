@@ -1,9 +1,10 @@
 import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import FButton from '../elements/FButton';
-import {useBottomSheetRef} from '../../store/store';
+import {useAddModalInputText, useBottomSheetRef} from '../../store/store';
 import Icon from 'react-native-vector-icons/Ionicons';
-import {fontFamilies, FWidth} from '../../../globalStyle';
+import {colors, fontFamilies, fontStyles, FWidth} from '../../../globalStyle';
+import SvgImage from '../elements/SvgImage';
 
 type TopTitleProps = {
   title: string;
@@ -11,15 +12,17 @@ type TopTitleProps = {
 
 const TopTitle = ({title}: TopTitleProps) => {
   const {bottomSheetRef} = useBottomSheetRef();
+  const {setAddTitle} = useAddModalInputText();
+  const handleClose = () => {
+    setAddTitle('');
+    bottomSheetRef.current?.close();
+  };
+
   return (
     <View style={styles.titleContainer}>
-      <Text style={styles.titleText}>{title}</Text>
-      <FButton
-        buttonStyle="noneStyle"
-        onPress={() => bottomSheetRef.current?.close()}>
-        <View style={styles.iconContainer}>
-          <Icon name="close-outline" size={24} color="black" />
-        </View>
+      <Text style={[fontStyles.B_18, {color: colors.text}]}>{title}</Text>
+      <FButton buttonStyle="noneStyle" onPress={handleClose}>
+        <SvgImage type="close2" width={24} height={24} />
       </FButton>
     </View>
   );
@@ -38,12 +41,5 @@ const styles = StyleSheet.create({
     color: 'black',
     fontFamily: fontFamilies.pretendardBold,
     fontSize: 18,
-  },
-
-  iconContainer: {
-    width: FWidth * 22,
-    height: FWidth * 22,
-    justifyContent: 'center',
-    alignItems: 'center',
   },
 });

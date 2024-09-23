@@ -10,6 +10,7 @@ import {useBottomSheetRef, useBottomSheetTitle} from '../../store/store';
 import {FHeight} from '../../../globalStyle';
 import AddIngredient from './AddIngredient/AddIngredient';
 import ExpiryDate from './ExpiryDate/ExpiryDate';
+import AddCondiment from './AddCondiment/AddCondiment';
 
 const FBottomSheet = () => {
   const {title} = useBottomSheetTitle();
@@ -33,6 +34,8 @@ const FBottomSheet = () => {
     switch (title) {
       case '재료 추가':
         return <AddIngredient />;
+      case '조미료 추가':
+        return <AddCondiment />;
       case '유통기한 등록':
         return <ExpiryDate />;
       default:

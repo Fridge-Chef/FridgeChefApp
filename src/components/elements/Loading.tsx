@@ -2,7 +2,13 @@ import {StyleSheet, Text, View} from 'react-native';
 import React, {useState} from 'react';
 import {ActivityIndicator} from 'react-native';
 import {Dimensions} from 'react-native';
-import {FHeight, fontFamilies, FWidth} from '../../../globalStyle';
+import {
+  colors,
+  FHeight,
+  fontFamilies,
+  fontStyles,
+  FWidth,
+} from '../../../globalStyle';
 import {useLoading} from '../../store/store';
 import LottieView from 'lottie-react-native';
 
@@ -13,17 +19,19 @@ const Loading = () => {
       {loading && (
         <View style={styles.background}>
           <View style={styles.indicatorContainer}>
-            {/* <ActivityIndicator
+            <ActivityIndicator
               size="large"
-              color="#000000"
+              color={colors.primary[1]}
               style={styles.indicatorStyle}
-            /> */}
-            <LottieView
+            />
+            {/* <LottieView
               source={require('../../assets/lottie/loading.json')}
               style={{width: FWidth * 120, height: FHeight * 120}}
               autoPlay
-            />
-            <Text style={styles.textStyle}>{loadingTitle}</Text>
+            /> */}
+            <Text style={[fontStyles.R_16, styles.textStyle]}>
+              {loadingTitle}
+            </Text>
           </View>
         </View>
       )}
@@ -44,7 +52,7 @@ const styles = StyleSheet.create({
   },
   indicatorContainer: {
     // flexDirection: 'row',
-    height: '80%',
+    height: '100%',
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -52,8 +60,7 @@ const styles = StyleSheet.create({
   indicatorStyle: {},
 
   textStyle: {
-    color: 'black',
-    marginLeft: FWidth * 8,
-    fontFamily: fontFamilies.pretendardRegular,
+    color: colors.text,
+    marginTop: FHeight * 20,
   },
 });

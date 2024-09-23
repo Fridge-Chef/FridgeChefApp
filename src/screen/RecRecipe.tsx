@@ -10,9 +10,9 @@ const RecRecipe = () => {
 
   return (
     <View style={styles.container}>
-      <View style={styles.titleContainer}>
+      {/* <View style={styles.titleContainer}>
         <Text style={styles.titleText}>추천 레시피</Text>
-      </View>
+      </View> */}
       <View style={styles.subTitleTextContainer}>
         <Text style={styles.subTitleText}>보유 재료들</Text>
         <Text style={styles.subTitleButton}>주재료 선택</Text>

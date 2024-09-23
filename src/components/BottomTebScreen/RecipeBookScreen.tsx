@@ -14,8 +14,8 @@ const RecipeBookScreen = () => {
       }}
       initialRouteName="recRecipe">
       <Stack.Screen
-        name="recRecipe"
-        component={RecRecipe}
+        name="test02"
+        component={Test02}
         options={{
           title: '',
           headerShadowVisible: false,

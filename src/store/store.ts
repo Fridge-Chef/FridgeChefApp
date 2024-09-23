@@ -17,6 +17,11 @@ type IngredientTitleTitleType = {
   setIngredientTitle: (title: string) => void;
 };
 
+type AddTitleType = {
+  addTitle: string;
+  setAddTitle: (addTitle: string) => void;
+};
+
 type LoadingType = {
   loadingTitle: string;
   setLoadingTitle: (loadingTitle: string) => void;
@@ -34,15 +39,18 @@ export const useBottomSheetTitle = create<BottomSheetTitleType>(set => ({
   setTitle: (title: string) => set({title}),
 }));
 
-export const useIngredientTitle = create<IngredientTitleTitleType>(
-  (set, get) => ({
-    ingredientTitle: '',
-    setIngredientTitle: (ingredientTitle: string) => set({ingredientTitle}),
-  }),
-);
+export const useIngredientTitle = create<IngredientTitleTitleType>(set => ({
+  ingredientTitle: '',
+  setIngredientTitle: (ingredientTitle: string) => set({ingredientTitle}),
+}));
+
+export const useAddModalInputText = create<AddTitleType>(set => ({
+  addTitle: '',
+  setAddTitle: (addTitle: string) => set({addTitle}),
+}));
 
 export const useLoading = create<LoadingType>(set => ({
-  loadingTitle: '',
+  loadingTitle: '재료 등록중',
   setLoadingTitle: (loadingTitle: string) => set({loadingTitle}),
   loading: false,
   setLoading: (loading: boolean) => set({loading}),

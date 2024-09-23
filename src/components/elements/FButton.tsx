@@ -1,24 +1,30 @@
 import {
   LayoutChangeEvent,
+  StyleProp,
   StyleSheet,
   Text,
+  TextStyle,
   TouchableOpacity,
   View,
+  ViewStyle,
 } from 'react-native';
 import React from 'react';
-import {FHeight, FWidth} from '../../../globalStyle';
+import {colors, FHeight, FWidth} from '../../../globalStyle';
 
 type FButtonProps = {
   buttonStyle:
     | 'svgButton'
     | 'iconButton'
     | 'iconButton2'
+    | 'smallIcon'
     | 'iconText'
     | 'submit'
+    | 'bigButton'
     | 'noneStyle';
   buttonColor?: string;
   radius?: number;
-  style?: any;
+  fStyle?: StyleProp<ViewStyle>;
+  style?: StyleProp<TextStyle>;
   fontFamily?:
     | 'Pretendard-Black'
     | 'Pretendard-Bold'
@@ -32,10 +38,11 @@ type FButtonProps = {
   borderWidth?: number;
   title?: string;
   titlePadding?: number;
+  marginTop?: number;
   marginRight?: number;
   marginBottom?: number;
   fontSize?: number;
-  titleColor?: 'black' | 'white' | 'gray' | 'red' | 'blue' | 'green';
+  titleColor?: string;
   titleWeight?:
     | 'bold'
     | 'normal'
@@ -59,7 +66,9 @@ const FButton = ({
   radius = 12,
   borderWidth = 0,
   title,
+  fStyle,
   style,
+  marginTop,
   marginRight,
   marginBottom,
   titleColor,
@@ -91,16 +100,26 @@ const FButton = ({
         backgroundColor: buttonColorList[buttonColor] || buttonColor,
         borderRadius: radius,
         borderWidth: borderWidth,
+        marginTop: marginTop,
         marginBottom: marginBottom,
       },
     ],
+    smallIcon: styles.smallIcon,
     iconText: styles.iconTextButton,
     iconButton2: [
       styles.iconButton2,
       {
         backgroundColor: buttonColorList[buttonColor] || buttonColor,
         borderWidth: borderWidth,
+        marginTop: marginTop,
         marginRight: marginRight,
+        marginBottom: marginBottom,
+      },
+    ],
+    bigButton: [
+      styles.bigButton,
+      {
+        backgroundColor: buttonColorList[buttonColor] || buttonColor,
         marginBottom: marginBottom,
       },
     ],
@@ -114,7 +133,7 @@ const FButton = ({
 
   return (
     <TouchableOpacity
-      style={styleList[buttonStyle]}
+      style={[styleList[buttonStyle], fStyle]}
       activeOpacity={1}
       onLayout={onLayout}
       onPress={onPress}>
@@ -145,9 +164,8 @@ const styles = StyleSheet.create({
 
   iconButton: {
     flexDirection: 'row',
-    alignSelf: 'flex-start',
     marginRight: FWidth * 6,
-    paddingHorizontal: FWidth * 12,
+    paddingHorizontal: FWidth * 14,
     paddingVertical: FHeight * 8,
     alignItems: 'center',
   },
@@ -156,7 +174,14 @@ const styles = StyleSheet.create({
     paddingVertical: FHeight * 8,
     paddingHorizontal: FWidth * 14,
     borderRadius: 999,
+    borderColor: colors.border,
     alignSelf: 'flex-start',
+  },
+
+  smallIcon: {
+    borderRadius: 50,
+    padding: FWidth * 5,
+    overflow: 'hidden',
   },
 
   iconTextButton: {
@@ -165,8 +190,13 @@ const styles = StyleSheet.create({
   },
 
   submitButton: {
-    height: FHeight * 65,
+    height: FHeight * 64,
     justifyContent: 'center',
+    alignItems: 'center',
+  },
+  bigButton: {
+    paddingVertical: FHeight * 14,
+    borderRadius: 14,
     alignItems: 'center',
   },
 

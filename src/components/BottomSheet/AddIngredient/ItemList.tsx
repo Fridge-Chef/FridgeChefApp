@@ -1,8 +1,15 @@
 import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
-import {FHeight, fontFamilies, FWidth} from '../../../../globalStyle';
+import {
+  colors,
+  FHeight,
+  fontFamilies,
+  fontStyles,
+  FWidth,
+} from '../../../../globalStyle';
 import FButton from '../../elements/FButton';
 import Icon from 'react-native-vector-icons/Ionicons';
+import SvgImage from '../../elements/SvgImage';
 
 type ItemListProps = {
   itemList: string[];
@@ -18,24 +25,28 @@ const ItemList = ({itemList, setItemList}: ItemListProps) => {
     <View>
       {itemList.length > 0 && (
         <View style={styles.itemContainer}>
-          <Text style={styles.itemTitleText}>등록된 재료들</Text>
+          <Text style={[fontStyles.B_14, {color: colors.subText}]}>
+            등록된 재료들
+          </Text>
           <View style={styles.itemListContainer}>
             {itemList.map((item, index) => (
               <FButton
                 key={index}
                 buttonStyle="iconButton2"
-                buttonColor="#F9F9F9"
+                buttonColor={colors.background}
                 marginRight={8}
                 marginBottom={8}>
                 <View style={styles.listItem}>
-                  <Text style={styles.listItemText}>{item}</Text>
-                  <FButton
-                    buttonStyle="noneStyle"
-                    onPress={() => handleRemoveItem(item)}>
-                    <View style={styles.listItemIconContainer}>
-                      <Icon name="close-outline" size={20} color="black" />
-                    </View>
-                  </FButton>
+                  <Text style={[fontStyles.M_16, {color: colors.black}]}>
+                    {item}
+                  </Text>
+                  <View style={{marginLeft: FWidth * 4}}>
+                    <FButton
+                      buttonStyle="noneStyle"
+                      onPress={() => handleRemoveItem(item)}>
+                      <SvgImage type="close2" width={18} height={18} />
+                    </FButton>
+                  </View>
                 </View>
               </FButton>
             ))}
@@ -50,7 +61,7 @@ export default ItemList;
 
 const styles = StyleSheet.create({
   itemContainer: {
-    marginTop: FHeight * 44,
+    marginTop: FHeight * 32,
   },
 
   itemTitleText: {
@@ -61,7 +72,7 @@ const styles = StyleSheet.create({
   itemListContainer: {
     flexDirection: 'row',
     flexWrap: 'wrap',
-    marginTop: FHeight * 12,
+    marginTop: FHeight * 16,
   },
 
   listItem: {

@@ -7,7 +7,7 @@ export const ingredients = [
   {id: 6, name: '식용유 종류'},
   {id: 8, name: '식용유 종류'},
   {id: 9, name: '식용유 종류'},
-  {id: 7, name: '식용유 종류'},
+  // {id: 7, name: '식용유 종류'},
   // {id: 10, name: '식용유 종류'},
   // {id: 11, name: '식용유 종류'},
   // {id: 12, name: '식용유 종류'},

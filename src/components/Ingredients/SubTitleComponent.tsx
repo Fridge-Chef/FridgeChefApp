@@ -1,8 +1,7 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text} from 'react-native';
 import React from 'react';
 import FButton from '../elements/FButton';
-import {fontFamilies, fontStyles, FWidth} from '../../../globalStyle';
-import Icon from 'react-native-vector-icons/Ionicons';
+import {colors, fontStyles} from '../../../globalStyle';
 
 type SubTitleComponentProps = {
   title: string;
@@ -12,23 +11,11 @@ type SubTitleComponentProps = {
 const SubTitleComponent = ({title, onPress}: SubTitleComponentProps) => {
   return (
     <FButton buttonStyle="iconText" onPress={onPress}>
-      <Text style={[fontStyles.B_14, {color: '#999999'}]}>{title}</Text>
+      <Text style={[fontStyles.B_14, {color: colors.b400}]}>{title}</Text>
     </FButton>
   );
 };
 
 export default SubTitleComponent;
 
-const styles = StyleSheet.create({
-  titleText: {
-    fontFamily: fontFamilies.pretendardRegular,
-    color: '#545559',
-  },
-  iconContainer: {
-    width: FWidth * 18,
-    height: FWidth * 20,
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginLeft: 2,
-  },
-});
+const styles = StyleSheet.create({});
