@@ -1,8 +1,8 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import React from 'react';
-import SvgImage from '../../elements/SvgImage';
+
 import {FWidth} from '../../../../globalStyle';
-import Star from '../../Test/Star';
+import Star from '../../Svg/Star';
 
 const ReviewPointContainer = () => {
   return (

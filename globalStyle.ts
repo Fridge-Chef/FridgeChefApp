@@ -58,137 +58,137 @@ export const basicDimensions = {
 
 export const FHeight = // 높이 변환 작업
   Number(
-    Dimensions.get('screen').height * (1 / basicDimensions.height),
-    // (Dimensions.get('screen').height * (1 / basicDimensions.height)).toFixed(1),
+    // Dimensions.get('screen').height * (1 / basicDimensions.height),
+    (Dimensions.get('screen').height * (1 / basicDimensions.height)).toFixed(2),
   );
 
 export const FWidth = // 가로 변환 작업
   Number(
-    Dimensions.get('screen').width * (1 / basicDimensions.width),
-    // (Dimensions.get('screen').width * (1 / basicDimensions.width)).toFixed(1),
+    // Dimensions.get('screen').width * (1 / basicDimensions.width),
+    (Dimensions.get('screen').width * (1 / basicDimensions.width)).toFixed(2),
   );
 
 export const fontStyles = {
   B_26: {
     fontFamily: fontFamilies.pretendardBold,
-    fontSize: 26,
+    fontSize: FWidth * 26,
     lineHeight: FHeight * 36,
-    letterSpacing: -0.2,
+    letterSpacing: FWidth * -0.2,
   },
 
   B_24: {
     fontFamily: fontFamilies.pretendardBold,
-    fontSize: 24,
+    fontSize: FWidth * 24,
     lineHeight: FHeight * 34,
-    letterSpacing: -0.2,
+    letterSpacing: FWidth * -0.2,
   },
 
   B_22: {
     fontFamily: fontFamilies.pretendardBold,
-    fontSize: 22,
+    fontSize: FWidth * 22,
     lineHeight: FHeight * 32,
-    letterSpacing: -0.2,
+    letterSpacing: FWidth * -0.2,
   },
 
   B_20: {
     fontFamily: fontFamilies.pretendardBold,
-    fontSize: 20,
+    fontSize: FWidth * 20,
     lineHeight: FHeight * 28,
-    letterSpacing: -0.2,
+    letterSpacing: FWidth * -0.2,
   },
 
   M_20: {
     fontFamily: fontFamilies.pretendardMedium,
-    fontSize: 20,
+    fontSize: FWidth * 20,
     lineHeight: FHeight * 28,
-    letterSpacing: -0.2,
+    letterSpacing: FWidth * -0.2,
   },
 
   B_18: {
     fontFamily: fontFamilies.pretendardBold,
-    fontSize: 18,
+    fontSize: FWidth * 18,
     lineHeight: FHeight * 28,
-    letterSpacing: -0.2,
+    letterSpacing: FWidth * -0.2,
   },
 
   M_18: {
     fontFamily: fontFamilies.pretendardMedium,
-    fontSize: 18,
+    fontSize: FWidth * 18,
     lineHeight: FHeight * 28,
-    letterSpacing: -0.2,
+    letterSpacing: FWidth * -0.2,
   },
 
   B_16: {
     fontFamily: fontFamilies.pretendardBold,
-    fontSize: 16,
+    fontSize: FWidth * 16,
     lineHeight: FHeight * 22,
-    letterSpacing: -0.1,
+    letterSpacing: FWidth * -0.1,
   },
   M_16: {
     fontFamily: fontFamilies.pretendardMedium,
-    fontSize: 16,
+    fontSize: FWidth * 16,
     lineHeight: FHeight * 22,
-    letterSpacing: -0.1,
+    letterSpacing: FWidth * -0.1,
   },
   R_16: {
     fontFamily: fontFamilies.pretendardRegular,
-    fontSize: 16,
+    fontSize: FWidth * 16,
     lineHeight: FHeight * 22,
-    letterSpacing: -0.1,
+    letterSpacing: FWidth * -0.1,
   },
   B_14: {
     fontFamily: fontFamilies.pretendardBold,
-    fontSize: 14,
+    fontSize: FWidth * 14,
     lineHeight: FHeight * 20,
-    letterSpacing: -0.1,
+    letterSpacing: FWidth * -0.1,
   },
   M_14: {
     fontFamily: fontFamilies.pretendardMedium,
-    fontSize: 14,
+    fontSize: FWidth * 14,
     lineHeight: FHeight * 20,
-    letterSpacing: -0.1,
+    letterSpacing: FWidth * -0.1,
   },
   R_14: {
     fontFamily: fontFamilies.pretendardRegular,
-    fontSize: 14,
+    fontSize: FWidth * 14,
     lineHeight: FHeight * 20,
-    letterSpacing: -0.1,
+    letterSpacing: FWidth * -0.1,
   },
   B_12: {
     fontFamily: fontFamilies.pretendardBold,
-    fontSize: 12,
+    fontSize: FWidth * 12,
     lineHeight: FHeight * 18,
     letterSpacing: 0,
   },
 
   M_12: {
     fontFamily: fontFamilies.pretendardMedium,
-    fontSize: 12,
+    fontSize: FWidth * 12,
     lineHeight: FHeight * 18,
     letterSpacing: 0,
   },
   R_12: {
     fontFamily: fontFamilies.pretendardRegular,
-    fontSize: 12,
+    fontSize: FWidth * 12,
     lineHeight: FHeight * 18,
     letterSpacing: 0,
   },
 
   B_10: {
     fontFamily: fontFamilies.pretendardBold,
-    fontSize: 10,
+    fontSize: FWidth * 10,
     lineHeight: FHeight * 18,
     letterSpacing: 0,
   },
   M_10: {
     fontFamily: fontFamilies.pretendardMedium,
-    fontSize: 10,
+    fontSize: FWidth * 10,
     lineHeight: FHeight * 18,
     letterSpacing: 0,
   },
   R_10: {
     fontFamily: fontFamilies.pretendardRegular,
-    fontSize: 10,
+    fontSize: FWidth * 10,
     lineHeight: FHeight * 18,
     letterSpacing: 0,
   },
