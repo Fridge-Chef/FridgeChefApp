@@ -7,7 +7,6 @@ type LoginIconProps = {
 };
 
 const LoginIcon = ({test}: LoginIconProps) => {
-  console.log(test);
   return (
     <Svg width="22" height="22" viewBox="0 0 22 22" fill="none">
       <G clip-path="url(#clip0_2121_5315)">

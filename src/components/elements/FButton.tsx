@@ -13,6 +13,7 @@ import {colors, FHeight, FWidth} from '../../../globalStyle';
 type FButtonProps = {
   buttonStyle:
     | 'svgButton'
+    | 'loginButton'
     | 'iconButton'
     | 'iconButton2'
     | 'smallIcon'
@@ -24,7 +25,7 @@ type FButtonProps = {
   buttonColor?: string;
   radius?: number;
   fStyle?: StyleProp<ViewStyle>;
-  style?: StyleProp<TextStyle>;
+  tStyle?: StyleProp<TextStyle>;
   fontFamily?:
     | 'Pretendard-Black'
     | 'Pretendard-Bold'
@@ -36,12 +37,15 @@ type FButtonProps = {
     | 'Pretendard-SemiBold'
     | 'Pretendard-Thin';
   borderWidth?: number;
+  paddingVertical?: number;
   title?: string;
   titlePadding?: number;
   marginTop?: number;
   marginRight?: number;
   marginBottom?: number;
   fontSize?: number;
+  lineHeight?: number;
+  letterSpacing?: number;
   titleColor?: string;
   titleWeight?:
     | 'bold'
@@ -65,9 +69,14 @@ const FButton = ({
   buttonColor = 'white',
   radius = 12,
   borderWidth = 0,
+  paddingVertical,
   title,
+  fontSize,
+  fontFamily,
+  lineHeight,
+  letterSpacing,
   fStyle,
-  style,
+  tStyle,
   marginTop,
   marginRight,
   marginBottom,
@@ -87,6 +96,15 @@ const FButton = ({
 
   const styleList = {
     noneStyle: styles.noneStyle,
+    loginButton: [
+      styles.login,
+      {
+        backgroundColor: buttonColorList[buttonColor] || buttonColor,
+        paddingVertical: paddingVertical,
+        borderWidth: borderWidth,
+        marginBottom: marginBottom,
+      },
+    ],
     svgButton: [
       styles.svgIconButton,
       {
@@ -142,12 +160,13 @@ const FButton = ({
         children
       ) : (
         <Text
-          style={[
-            style,
-            {
-              color: titleColor,
-            },
-          ]}>
+          style={{
+            color: titleColor,
+            fontSize: fontSize,
+            fontFamily: fontFamily,
+            lineHeight: lineHeight,
+            letterSpacing: letterSpacing,
+          }}>
           {title}
         </Text>
       )}
@@ -158,6 +177,14 @@ const FButton = ({
 export default FButton;
 
 const styles = StyleSheet.create({
+  login: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    borderColor: colors.border,
+    borderRadius: 14,
+    justifyContent: 'center',
+  },
+
   svgIconButton: {
     padding: 12,
     borderRadius: 999,
@@ -180,9 +207,9 @@ const styles = StyleSheet.create({
   },
 
   smallIcon: {
-    borderRadius: 50,
-    padding: FWidth * 5,
-    overflow: 'hidden',
+    position: 'absolute',
+    bottom: 0,
+    right: 0,
   },
 
   iconTextButton: {

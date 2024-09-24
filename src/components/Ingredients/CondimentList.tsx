@@ -6,6 +6,7 @@ import {ingredients} from '../../utils/list';
 import SubTitleComponent from './SubTitleComponent';
 import SvgImage from '../elements/SvgImage';
 import {useBottomSheetRef, useBottomSheetTitle} from '../../store/store';
+import MoreList from '../Svg/MoreList';
 
 const CondimentList = () => {
   const [buttonHeight, setButtonHeight] = useState(0);
@@ -18,8 +19,6 @@ const CondimentList = () => {
   const onLayout = (e: LayoutChangeEvent) => {
     if (buttonHeight === 0) {
       setButtonHeight(e.nativeEvent.layout.height);
-
-      console.log(e.nativeEvent.layout.height);
     }
   };
 
@@ -50,28 +49,27 @@ const CondimentList = () => {
             <FButton
               onLayout={onLayout}
               key={item.id}
-              title={item.name}
-              style={fontStyles.B_14}
-              titleColor={colors.text}
               buttonStyle="iconButton"
               marginTop={FHeight * 12}
               borderWidth={0}
               buttonColor={colors.background}
-              radius={50}
-            />
+              radius={50}>
+              <Text style={[fontStyles.B_14, styles.textColor]}>
+                {item.name}
+              </Text>
+            </FButton>
           ))}
         </View>
         {contentHeight > buttonHeight * 3 + FHeight * 12 && (
           <FButton
             buttonStyle="smallIcon"
-            fStyle={styles.downButton}
             onPress={() => setContainerOpen(!containerOpen)}>
-            <SvgImage
-              type="arrowDown"
-              width={FWidth * 28}
-              height={FWidth * 28}
-              rotation={containerOpen ? 180 : 0}
-            />
+            <View
+              style={{
+                transform: [{rotate: containerOpen ? '180deg' : '0deg'}],
+              }}>
+              <MoreList buttonHeight={buttonHeight} />
+            </View>
           </FButton>
         )}
       </View>
@@ -120,6 +118,10 @@ const styles = StyleSheet.create({
     bottom: 0,
     right: 0,
     backgroundColor: colors.background,
+  },
+
+  textColor: {
+    color: colors.text,
   },
 
   textStyle: {
