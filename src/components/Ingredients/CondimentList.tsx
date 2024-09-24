@@ -100,6 +100,7 @@ export default CondimentList;
 const styles = StyleSheet.create({
   container: {
     marginTop: FHeight * 40,
+    paddingHorizontal: FWidth * 22,
   },
 
   listContainer: {

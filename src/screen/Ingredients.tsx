@@ -8,6 +8,7 @@ import FButton from '../components/elements/FButton';
 import {useLoading} from '../store/store';
 import {ParamListBase, useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import LoginAndUser from '../components/Ingredients/LoginAndUser';
 const Ingredients = () => {
   const {setLoading} = useLoading();
   const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
@@ -25,6 +26,7 @@ const Ingredients = () => {
   return (
     <View style={styles.container}>
       <ScrollView showsVerticalScrollIndicator={false} overScrollMode="never">
+        <LoginAndUser />
         <TopComponent />
         <CondimentList />
         <View
@@ -53,14 +55,13 @@ export default Ingredients;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginVertical: FHeight * 16,
-    marginHorizontal: FWidth * 20,
     backgroundColor: 'white',
   },
   buttonContainer: {
+    paddingHorizontal: FWidth * 22,
     position: 'absolute',
     width: '100%',
     bottom: 0,
-    marginBottom: FHeight * 21,
+    marginBottom: FHeight * 38,
   },
 });

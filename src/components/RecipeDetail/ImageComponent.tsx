@@ -14,6 +14,7 @@ const ImageComponent = ({imgUrl}: ImageComponentProps) => {
         source={
           imgUrl ? {uri: imgUrl} : require('../../assets/images/textImage.jpg')
         }
+        resizeMode="stretch"
         alt="디테일 이미지"
       />
     </View>
@@ -26,7 +27,7 @@ const styles = StyleSheet.create({
   imgStyle: {
     width: '100%',
     height: FHeight * 277,
-    objectFit: 'cover',
+    // objectFit: 'contain',
     backgroundColor: colors.white,
   },
 });

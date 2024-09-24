@@ -79,8 +79,9 @@ export default AddList;
 
 const styles = StyleSheet.create({
   container: {
+    paddingHorizontal: FWidth * 22,
     marginTop: FHeight * 40,
-    marginBottom: FHeight * 132,
+    marginBottom: FHeight * 132, // 기본 100에서 32 추가
   },
 
   itemContainer: {
