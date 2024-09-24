@@ -13,10 +13,14 @@ import Close2 from '../../assets/images/svg/Close2.svg';
 import Back from '../../assets/images/svg/Back.svg';
 import ArrowDown2 from '../../assets/images/svg/ArrowDown2.svg';
 import Star from '../../assets/images/svg/Star.svg';
+import Star2 from '../../assets/images/svg/Star2.svg';
 import Heart2 from '../../assets/images/svg/Heart2.svg';
 import Heart3 from '../../assets/images/svg/Heart3.svg';
 import Heart4 from '../../assets/images/svg/Heart4.svg';
 import ArrowLeft3 from '../../assets/images/svg/ArrowLeft3.svg';
+import Edit from '../../assets/images/svg/Edit.svg';
+import TestIcon from '../../assets/images/svg/TestIcon.svg';
+
 type SvgImageProps = {
   type:
     | 'wallet'
@@ -24,6 +28,7 @@ type SvgImageProps = {
     | 'heart2'
     | 'heart3'
     | 'heart4'
+    | 'edit'
     | 'editSquare'
     | 'moreCircle'
     | 'plus'
@@ -35,6 +40,8 @@ type SvgImageProps = {
     | 'close'
     | 'close2'
     | 'star'
+    | 'star2'
+    | 'testIcon'
     | 'back';
   width?: number;
   height?: number;
@@ -182,6 +189,16 @@ const SvgImage = ({
           rotation={rotation}
         />
       );
+    case 'star2':
+      return (
+        <Star
+          width={width}
+          height={height}
+          fill={fill}
+          stroke={stroke}
+          rotation={rotation}
+        />
+      );
     case 'heart2':
       return (
         <Heart2
@@ -215,6 +232,26 @@ const SvgImage = ({
     case 'arrowLeft3':
       return (
         <ArrowLeft3
+          width={width}
+          height={height}
+          fill={fill}
+          stroke={stroke}
+          rotation={rotation}
+        />
+      );
+    case 'edit':
+      return (
+        <Edit
+          width={width}
+          height={height}
+          fill={fill}
+          stroke={stroke}
+          rotation={rotation}
+        />
+      );
+    case 'testIcon':
+      return (
+        <TestIcon
           width={width}
           height={height}
           fill={fill}

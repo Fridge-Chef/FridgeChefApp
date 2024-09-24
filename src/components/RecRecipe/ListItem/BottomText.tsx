@@ -7,7 +7,6 @@ type BottomTextProps = {
 };
 
 const BottomText = ({ingredients}: BottomTextProps) => {
-  console.log(ingredients);
   return (
     <View style={styles.container}>
       <View style={styles.textContainer}>

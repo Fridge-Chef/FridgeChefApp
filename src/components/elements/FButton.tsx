@@ -19,6 +19,7 @@ type FButtonProps = {
     | 'iconText'
     | 'submit'
     | 'bigButton'
+    | 'buyButton'
     | 'noneStyle';
   buttonColor?: string;
   radius?: number;
@@ -128,6 +129,7 @@ const FButton = ({
         backgroundColor: buttonColorList[buttonColor] || buttonColor,
       },
     ],
+    buyButton: [styles.buyButton],
   };
 
   return (
@@ -193,10 +195,19 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+
   bigButton: {
     paddingVertical: FHeight * 14,
     borderRadius: 14,
     alignItems: 'center',
+  },
+
+  buyButton: {
+    paddingHorizontal: FWidth * 19.5,
+    paddingVertical: FWidth * 8,
+    borderColor: colors.border,
+    borderRadius: 40,
+    borderWidth: 1,
   },
 
   noneStyle: {},
