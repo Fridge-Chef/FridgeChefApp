@@ -1,15 +1,7 @@
-import {Alert, Keyboard, StyleSheet, Text, View} from 'react-native';
-import React, {Dispatch, useState} from 'react';
-import {TextInput} from 'react-native-gesture-handler';
+import {Alert, Keyboard, StyleSheet, View} from 'react-native';
+import React, {Dispatch} from 'react';
 import FButton from '../../elements/FButton';
-import {
-  colors,
-  FHeight,
-  fontFamilies,
-  fontStyles,
-  FWidth,
-} from '../../../../globalStyle';
-import {IngredientList} from '../../../utils/list';
+import {colors, FHeight, fontStyles, FWidth} from '../../../../globalStyle';
 import FInput from '../../elements/FInput';
 import {useAddModalInputText} from '../../../store/store';
 

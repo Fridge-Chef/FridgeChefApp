@@ -1,14 +1,8 @@
 import {StyleSheet, Text, View} from 'react-native';
-import React, {useState} from 'react';
+import React from 'react';
 import {ActivityIndicator} from 'react-native';
 import {Dimensions} from 'react-native';
-import {
-  colors,
-  FHeight,
-  fontFamilies,
-  fontStyles,
-  FWidth,
-} from '../../../globalStyle';
+import {colors, FHeight, fontStyles} from '../../../globalStyle';
 import {useLoading} from '../../store/store';
 import LottieView from 'lottie-react-native';
 

@@ -1,6 +1,5 @@
-import {FlatList, StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, View} from 'react-native';
 import React, {useState} from 'react';
-import Icon from 'react-native-vector-icons/Ionicons';
 import {colors, FHeight, fontStyles, FWidth} from '../../../../globalStyle';
 import FButton from '../../elements/FButton';
 import {
@@ -10,7 +9,6 @@ import {
 } from '../../../store/store';
 
 import SubTitleComponent from '../SubTitleComponent';
-import DefaultMenu from './DefaultMenu';
 import SvgImage from '../../elements/SvgImage';
 
 type ListData = {
@@ -85,10 +83,6 @@ const styles = StyleSheet.create({
     marginBottom: FHeight * 132,
   },
 
-  listContainer: {
-    // marginBottom: FHeight * 12,
-  },
-
   itemContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -102,19 +96,6 @@ const styles = StyleSheet.create({
 
   iconAndTextContainer: {
     flexDirection: 'row',
-    alignItems: 'center',
-  },
-
-  textStyle: {
-    marginRight: 8,
-    textDecorationLine: 'underline',
-    color: '#545559',
-  },
-
-  itemIconContainer: {
-    width: FWidth * 20,
-    height: FWidth * 20,
-    justifyContent: 'center',
     alignItems: 'center',
   },
 });

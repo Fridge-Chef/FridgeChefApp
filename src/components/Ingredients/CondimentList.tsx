@@ -1,12 +1,4 @@
-import {
-  FlatList,
-  LayoutChangeEvent,
-  StyleSheet,
-  Text,
-  Touchable,
-  TouchableOpacity,
-  View,
-} from 'react-native';
+import {LayoutChangeEvent, StyleSheet, Text, View} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import {colors, FHeight, fontStyles, FWidth} from '../../../globalStyle';
 import FButton from '../elements/FButton';
@@ -132,18 +124,5 @@ const styles = StyleSheet.create({
   textStyle: {
     color: colors.text,
     marginLeft: FWidth * 4,
-  },
-
-  itemNameText: {
-    fontFamily: 'Pretendard-Medium',
-    color: 'black',
-  },
-
-  closeIconContainer: {
-    width: FWidth * 15,
-    height: FWidth * 15,
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginRight: FWidth * 2,
   },
 });

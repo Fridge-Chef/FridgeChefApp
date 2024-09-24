@@ -2,8 +2,7 @@ import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import FButton from '../elements/FButton';
 import {useAddModalInputText, useBottomSheetRef} from '../../store/store';
-import Icon from 'react-native-vector-icons/Ionicons';
-import {colors, fontFamilies, fontStyles, FWidth} from '../../../globalStyle';
+import {colors, fontStyles} from '../../../globalStyle';
 import SvgImage from '../elements/SvgImage';
 
 type TopTitleProps = {
@@ -35,11 +34,5 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-  },
-
-  titleText: {
-    color: 'black',
-    fontFamily: fontFamilies.pretendardBold,
-    fontSize: 18,
   },
 });

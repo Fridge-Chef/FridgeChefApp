@@ -1,12 +1,6 @@
-import {StyleSheet, Text, TextInput, View} from 'react-native';
+import {StyleSheet, TextInput, View} from 'react-native';
 import React from 'react';
-import {
-  colors,
-  FHeight,
-  fontFamilies,
-  fontStyles,
-  FWidth,
-} from '../../../globalStyle';
+import {colors, FHeight, fontFamilies, FWidth} from '../../../globalStyle';
 import Icon from 'react-native-vector-icons/Ionicons';
 import FButton from './FButton';
 
@@ -33,7 +27,6 @@ const FInput = ({
   deleteValue,
   placeholder,
   inputStyle,
-  fontSize = 14,
   editable = true,
   secureTextEntry = false,
   onChangeText,

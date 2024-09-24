@@ -1,4 +1,4 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet} from 'react-native';
 import React from 'react';
 import Wallet from '../../assets/images/svg/Wallet.svg';
 import Heart from '../../assets/images/svg/Heart.svg';
@@ -15,18 +15,21 @@ import ArrowDown2 from '../../assets/images/svg/ArrowDown2.svg';
 import Star from '../../assets/images/svg/Star.svg';
 import Heart2 from '../../assets/images/svg/Heart2.svg';
 import Heart3 from '../../assets/images/svg/Heart3.svg';
-
+import Heart4 from '../../assets/images/svg/Heart4.svg';
+import ArrowLeft3 from '../../assets/images/svg/ArrowLeft3.svg';
 type SvgImageProps = {
   type:
     | 'wallet'
     | 'heart'
     | 'heart2'
     | 'heart3'
+    | 'heart4'
     | 'editSquare'
     | 'moreCircle'
     | 'plus'
     | 'arrowDown'
     | 'arrowDown2'
+    | 'arrowLeft3'
     | 'smallPlus'
     | 'calendar'
     | 'close'
@@ -192,6 +195,26 @@ const SvgImage = ({
     case 'heart3':
       return (
         <Heart3
+          width={width}
+          height={height}
+          fill={fill}
+          stroke={stroke}
+          rotation={rotation}
+        />
+      );
+    case 'heart4':
+      return (
+        <Heart4
+          width={width}
+          height={height}
+          fill={fill}
+          stroke={stroke}
+          rotation={rotation}
+        />
+      );
+    case 'arrowLeft3':
+      return (
+        <ArrowLeft3
           width={width}
           height={height}
           fill={fill}

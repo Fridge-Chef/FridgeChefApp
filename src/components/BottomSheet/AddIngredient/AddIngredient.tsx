@@ -1,14 +1,6 @@
-import {
-  Dimensions,
-  Keyboard,
-  Pressable,
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
+import {Keyboard, Pressable, StyleSheet, View} from 'react-native';
 import React, {useState} from 'react';
-import FButton from '../../elements/FButton';
-import {colors, fontFamilies, FWidth} from '../../../../globalStyle';
+import {colors, FWidth} from '../../../../globalStyle';
 import TopTitle from '../TopTitle';
 import InputAndSearch from './InputAndSearch';
 import {useAddModalInputText, useBottomSheetRef} from '../../../store/store';

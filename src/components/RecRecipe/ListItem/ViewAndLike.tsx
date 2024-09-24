@@ -1,12 +1,6 @@
 import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
-import {
-  colors,
-  FHeight,
-  fontFamilies,
-  fontStyles,
-  FWidth,
-} from '../../../../globalStyle';
+import {colors, fontStyles, FWidth} from '../../../../globalStyle';
 import SvgImage from '../../elements/SvgImage';
 
 type ViewAndLikeProps = {
@@ -56,13 +50,5 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     marginRight: FWidth * 8,
-  },
-
-  iconText: {
-    fontSize: 12,
-    color: '#545559',
-    fontFamily: fontFamilies.pretendardMedium,
-    lineHeight: FHeight * 14,
-    marginLeft: FWidth * 2,
   },
 });

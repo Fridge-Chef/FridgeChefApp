@@ -1,5 +1,5 @@
-import {StyleSheet, Text, View} from 'react-native';
-import React, {useState} from 'react';
+import {StyleSheet} from 'react-native';
+import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import MyFridgeScreen from './MyFridgeScreen';
 import RecipeBookScreen from './RecipeBookScreen';
@@ -10,21 +10,10 @@ import NameComponent from './TebMenu/NameComponent';
 import IconComponent from './TebMenu/IconComponent';
 const BottomTab = () => {
   const Tab = createBottomTabNavigator();
-  const [name, setName] = useState('');
-
   return (
     <Tab.Navigator
       sceneContainerStyle={{backgroundColor: 'White'}}
-      screenListeners={{
-        state: e => {
-          const currentRouteName = e.data.state.routeNames[e.data.state.index];
-          setName(currentRouteName);
-        },
-      }}
       screenOptions={({route}) => ({
-        tabBarIconStyle: {
-          // display: 'none',
-        },
         tabBarStyle: {
           height: 64,
           elevation: 0,

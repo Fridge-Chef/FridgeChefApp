@@ -1,14 +1,7 @@
 import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
-import {
-  colors,
-  FHeight,
-  fontFamilies,
-  fontStyles,
-  FWidth,
-} from '../../../../globalStyle';
+import {colors, FHeight, fontStyles, FWidth} from '../../../../globalStyle';
 import FButton from '../../elements/FButton';
-import Icon from 'react-native-vector-icons/Ionicons';
 import SvgImage from '../../elements/SvgImage';
 
 type ItemListProps = {
@@ -64,11 +57,6 @@ const styles = StyleSheet.create({
     marginTop: FHeight * 32,
   },
 
-  itemTitleText: {
-    fontFamily: fontFamilies.pretendardBold,
-    color: '#545559',
-  },
-
   itemListContainer: {
     flexDirection: 'row',
     flexWrap: 'wrap',
@@ -87,11 +75,5 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginLeft: FWidth * 4,
-  },
-
-  listItemText: {
-    color: 'black',
-    fontFamily: fontFamilies.pretendardSemiBold,
-    fontSize: 16,
   },
 });

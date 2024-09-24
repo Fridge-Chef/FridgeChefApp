@@ -1,7 +1,7 @@
 import {StyleSheet, Text} from 'react-native';
 import React from 'react';
 import FButton from '../elements/FButton';
-import {colors, fontStyles} from '../../../globalStyle';
+import {fontStyles} from '../../../globalStyle';
 
 type SubTitleComponentProps = {
   title: string;

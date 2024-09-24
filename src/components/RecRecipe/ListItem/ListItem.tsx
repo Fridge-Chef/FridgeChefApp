@@ -1,6 +1,5 @@
-import {Image, StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, View} from 'react-native';
 import React, {useState} from 'react';
-import FButton from '../../elements/FButton';
 import {
   colors,
   FHeight,
@@ -66,12 +65,5 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     marginBottom: FHeight * 4,
-  },
-
-  itemTitleText: {
-    color: colors.black,
-    fontFamily: fontFamilies.pretendardMedium,
-    fontSize: 16,
-    lineHeight: FHeight * 22,
   },
 });

@@ -16,8 +16,10 @@ class MainActivity : ReactActivity() {
   override fun getMainComponentName(): String = "FridgeChefApp"
   
   override fun onCreate(savedInstanceState: Bundle?) {
-        SplashScreen.show(this)
+        SplashScreen.show(this, R.style.SplashTheme, true)
         super.onCreate(savedInstanceState)
+        
+     
     }
 
   /**

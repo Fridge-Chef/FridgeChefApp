@@ -95,27 +95,27 @@ export const list = [
         expiry_date: '2024-09-09T15:45:00', // 유통기한
         create_time: '2024-09-09T15:45:00', // 재료 추가 날짜
       },
-      // {
-      //   ingredient: '아보카도',
-      //   category: '',
-      //   ingredient_id: 9,
-      //   expiry_date: '2024-09-09T15:45:00', // 유통기한
-      //   create_time: '2024-09-09T15:45:00', // 재료 추가 날짜
-      // },
-      // {
-      //   ingredient: '카레가루',
-      //   category: '',
-      //   ingredient_id: 10,
-      //   expiry_date: '2024-09-09T15:45:00', // 유통기한
-      //   create_time: '2024-09-09T15:45:00', // 재료 추가 날짜
-      // },
-      // {
-      //   ingredient: '자장면 가루',
-      //   category: '',
-      //   ingredient_id: 11,
-      //   expiry_date: '2024-09-09T15:45:00', // 유통기한
-      //   create_time: '2024-09-09T15:45:00', // 재료 추가 날짜
-      // },
+      {
+        ingredient: '아보카도',
+        category: '',
+        ingredient_id: 9,
+        expiry_date: '2024-09-09T15:45:00', // 유통기한
+        create_time: '2024-09-09T15:45:00', // 재료 추가 날짜
+      },
+      {
+        ingredient: '카레가루',
+        category: '',
+        ingredient_id: 10,
+        expiry_date: '2024-09-09T15:45:00', // 유통기한
+        create_time: '2024-09-09T15:45:00', // 재료 추가 날짜
+      },
+      {
+        ingredient: '자장면 가루',
+        category: '',
+        ingredient_id: 11,
+        expiry_date: '2024-09-09T15:45:00', // 유통기한
+        create_time: '2024-09-09T15:45:00', // 재료 추가 날짜
+      },
       // {
       //   ingredient: '오징어 젓갈',
       //   category: '',

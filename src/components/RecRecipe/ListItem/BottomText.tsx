@@ -1,11 +1,6 @@
 import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
-import {
-  colors,
-  FHeight,
-  fontFamilies,
-  fontStyles,
-} from '../../../../globalStyle';
+import {colors, FHeight, fontStyles} from '../../../../globalStyle';
 
 type BottomTextProps = {
   ingredients: string[];
@@ -40,12 +35,5 @@ const styles = StyleSheet.create({
   textContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-  },
-
-  itemBottomText: {
-    color: '#545559',
-    fontFamily: fontFamilies.pretendardMedium,
-    fontSize: 14,
-    lineHeight: FHeight * 16,
   },
 });

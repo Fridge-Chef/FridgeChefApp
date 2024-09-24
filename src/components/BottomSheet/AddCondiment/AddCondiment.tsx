@@ -6,7 +6,6 @@ import InputAndSearch from '../AddIngredient/InputAndSearch';
 import ItemList from '../AddIngredient/ItemList';
 import {useBottomSheetRef} from '../../../store/store';
 import BottomButton from '../BottomButton';
-import {Colors} from 'react-native/Libraries/NewAppScreen';
 import {IngredientList} from '../../../utils/list';
 
 const AddCondiment = () => {

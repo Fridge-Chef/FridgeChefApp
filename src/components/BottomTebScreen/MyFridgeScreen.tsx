@@ -1,18 +1,11 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet} from 'react-native';
 import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import Ingredients from '../../screen/Ingredients';
-import {
-  colors,
-  FHeight,
-  fontFamilies,
-  fontStyles,
-  FWidth,
-} from '../../../globalStyle';
+import {colors} from '../../../globalStyle';
 import RecRecipe from '../../screen/RecRecipe';
-import SvgImage from '../elements/SvgImage';
-import FButton from '../elements/FButton';
-import {useNavigation} from '@react-navigation/native';
+import RecipeDetail from '../../screen/RecipeDetail';
+import AppBarComponent from '../elements/AppBarComponent';
 
 const MyFridgeScreen = () => {
   const Stack = createNativeStackNavigator();
@@ -39,41 +32,45 @@ const MyFridgeScreen = () => {
         options={{
           title: '',
           header() {
-            const navigation = useNavigation();
             return (
-              <View
-                style={{
-                  height: FHeight * 48,
-                  flexDirection: 'row',
-                  paddingHorizontal: FWidth * 21,
-                  justifyContent: 'space-between',
-                  alignItems: 'center',
-                  backgroundColor: colors.white,
-                  borderBottomWidth: 1,
-                  borderColor: colors.b200,
-                }}>
-                <FButton
-                  buttonStyle="noneStyle"
-                  onPress={() => navigation.goBack()}>
-                  <SvgImage
-                    type="back"
-                    width={24}
-                    height={24}
-                    fill={colors.white}
-                  />
-                </FButton>
-                <Text style={[fontStyles.B_18, {color: colors.b900}]}>
-                  추천 레시피
-                </Text>
-                <View style={{opacity: 0}}>
-                  <SvgImage
-                    type="back"
-                    width={24}
-                    height={24}
-                    fill={colors.white}
-                  />
-                </View>
-              </View>
+              <AppBarComponent
+                borderBottomWidth={1}
+                leftIcon={{icon: 'back'}}
+                leftIconWidth={24}
+                leftIconHeight={24}
+                titleOn={true}
+                title="추천 레시피"
+                onlyBackIcon={true}
+                rightOn={true}
+                rightIcon1={{icon: 'back'}}
+                rightIconWidth1={24}
+                rightIconHeight1={24}
+              />
+            );
+          },
+          headerShown: true,
+          headerShadowVisible: false,
+        }}
+      />
+      <Stack.Screen
+        name="recipeDetail"
+        component={RecipeDetail}
+        options={{
+          title: '',
+          header() {
+            return (
+              <AppBarComponent
+                leftIcon={{icon: 'back'}}
+                leftIconWidth={24}
+                leftIconHeight={24}
+                rightOn={true}
+                rightIcon1={{icon: 'heart4'}}
+                rightIconWidth1={24}
+                rightIconHeight1={24}
+                rightIcon2={{icon: 'arrowLeft3'}}
+                rightIconWidth2={24}
+                rightIconHeight2={24}
+              />
             );
           },
           headerShown: true,

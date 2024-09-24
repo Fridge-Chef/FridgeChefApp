@@ -1,12 +1,10 @@
-import {View, StyleSheet, Text} from 'react-native';
+import {StyleSheet} from 'react-native';
 import React, {useCallback, useEffect, useMemo, useRef} from 'react';
 import BottomSheet, {
   BottomSheetBackdrop,
   BottomSheetScrollView,
-  BottomSheetView,
 } from '@gorhom/bottom-sheet';
 import {useBottomSheetRef, useBottomSheetTitle} from '../../store/store';
-
 import {FHeight} from '../../../globalStyle';
 import AddIngredient from './AddIngredient/AddIngredient';
 import ExpiryDate from './ExpiryDate/ExpiryDate';
