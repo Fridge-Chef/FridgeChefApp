@@ -9,8 +9,6 @@ type CalendarProps = {
 };
 
 const Calendar = ({day, expiryDate}: CalendarProps) => {
-  console.log('여긴 캘린더', day);
-
   return (
     <Svg width="23" height="24" viewBox="0 0 23 24" fill="none">
       <Path

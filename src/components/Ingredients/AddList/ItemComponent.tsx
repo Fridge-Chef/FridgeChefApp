@@ -53,9 +53,7 @@ const ItemComponent = ({itemList}: ItemComponentProps) => {
     }
   };
 
-  useEffect(() => {
-    console.log('되나', date());
-  }, [date]);
+  useEffect(() => {}, [date]);
 
   return (
     <>
