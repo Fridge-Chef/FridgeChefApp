@@ -12,8 +12,6 @@ const MyFridgeScreen = () => {
   return (
     <Stack.Navigator
       screenOptions={{
-        statusBarColor: colors.white,
-        statusBarStyle: 'dark',
         headerShown: false,
         contentStyle: {backgroundColor: 'white'},
       }}
