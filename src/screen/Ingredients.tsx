@@ -10,9 +10,10 @@ import {ParamListBase, useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import LoginAndUser from '../components/Ingredients/LoginAndUser';
 const Ingredients = () => {
-  const {setLoading} = useLoading();
+  const {setLoading, setLoadingTitle} = useLoading();
   const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
   const handleSearch = () => {
+    setLoadingTitle('레시피 검색중');
     setLoading(true);
     if (setLoading) {
       setTimeout(() => {

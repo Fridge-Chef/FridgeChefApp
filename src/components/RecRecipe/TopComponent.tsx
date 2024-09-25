@@ -1,4 +1,5 @@
 import {
+  Dimensions,
   FlatList,
   LayoutChangeEvent,
   StyleSheet,
@@ -7,22 +8,34 @@ import {
 } from 'react-native';
 import React, {useEffect, useState} from 'react';
 import SubTitleComponent from '../Ingredients/SubTitleComponent';
-import {colors, FHeight, fontStyles, FWidth} from '../../../globalStyle';
+import {colors, fontStyles, FWidth} from '../../../globalStyle';
 import {list} from '../../utils/list';
+import MoreList from '../../utils/Svg/MoreList';
+import FButton from '../elements/FButton';
+import BottomButton from '../../utils/Svg/BottomButton';
+import {RecipeList} from '../../type/types';
+import {useBottomSheetRef, useBottomSheetTitle} from '../../store/store';
+import MoreButtonComponent from '../Ingredients/MoreButtonComponent';
 
 const TopComponent = () => {
   const [itemHeight, setItemHeight] = useState(0);
+  const [containerOpen, setContainerOpen] = useState(false);
   const [containerHeight, setContainerHeight] = useState(0);
+  const {bottomSheetRef} = useBottomSheetRef();
+  const {setTitle} = useBottomSheetTitle();
   const onLayout = (e: LayoutChangeEvent) => {
     if (itemHeight === 0) {
-      console.log('아이템 ', e.nativeEvent.layout.height);
       setItemHeight(e.nativeEvent.layout.height);
     }
   };
 
   const onLayout2 = (e: LayoutChangeEvent) => {
-    console.log('컨테이너', e.nativeEvent.layout.height);
     setContainerHeight(e.nativeEvent.layout.height);
+  };
+
+  const handleBottomSheetOpen = () => {
+    setTitle('재료보기');
+    bottomSheetRef.current?.expand();
   };
 
   useEffect(() => {
@@ -33,16 +46,21 @@ const TopComponent = () => {
   return (
     <View>
       <SubTitleComponent title="보유 재료들" color={colors.subText} />
-      <View style={styles.itemListContainer}>
-        <View style={styles.itemSubContainer}>
-          <FlatList
-            data={list}
-            horizontal
-            showsHorizontalScrollIndicator={false}
-            keyExtractor={(_, index) => index.toString()}
-            renderItem={({item}) => (
-              <View style={[styles.listItemContainer]} onLayout={onLayout2}>
-                {item.ingredients.map(ingredient => (
+      <FlatList
+        data={list}
+        showsHorizontalScrollIndicator={false}
+        keyExtractor={(_, index) => index.toString()}
+        renderItem={({item}) => (
+          <View
+            style={[
+              styles.itemListContainer,
+              {
+                maxHeight: containerOpen ? null : itemHeight * 2 + FWidth * 10,
+              },
+            ]}>
+            <View style={[styles.listItemContainer]} onLayout={onLayout2}>
+              {list &&
+                item.ingredients?.map((ingredient: RecipeList) => (
                   <View
                     key={ingredient.ingredient_id}
                     style={[styles.listItem]}
@@ -52,11 +70,26 @@ const TopComponent = () => {
                     </Text>
                   </View>
                 ))}
-              </View>
+              {item.ingredients.length > 0 && (
+                <FButton
+                  buttonStyle="noneStyle"
+                  onPress={handleBottomSheetOpen}>
+                  <View style={{marginTop: FWidth * 10}}>
+                    <BottomButton buttonHeight={itemHeight} />
+                  </View>
+                </FButton>
+              )}
+            </View>
+            {containerHeight > itemHeight * 3 + FWidth * 12 && (
+              <MoreButtonComponent
+                buttonHeight={itemHeight}
+                containerOpen={containerOpen}
+                onPress={() => setContainerOpen(!containerOpen)}
+              />
             )}
-          />
-        </View>
-      </View>
+          </View>
+        )}
+      />
     </View>
   );
 };
@@ -68,22 +101,18 @@ const styles = StyleSheet.create({
     marginTop: FWidth * 16,
   },
 
-  itemSubContainer: {
-    backgroundColor: 'red',
-  },
-
   listItemContainer: {
+    position: 'relative',
     flexDirection: 'row',
     flexWrap: 'wrap',
-    width: FWidth * 500,
     marginTop: FWidth * -10,
   },
 
   listItem: {
     paddingHorizontal: FWidth * 12,
-    paddingVertical: FWidth * 8,
-    borderRadius: 100,
-    backgroundColor: '#F2F2F2',
+    paddingVertical: FWidth * 6,
+    borderRadius: 50,
+    backgroundColor: colors.background,
     marginTop: FWidth * 10,
     marginRight: FWidth * 8,
   },

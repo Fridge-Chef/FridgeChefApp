@@ -1,9 +1,9 @@
 import {Alert, Keyboard, StyleSheet, Text, View} from 'react-native';
 import React, {Dispatch} from 'react';
-import FButton from '../../elements/FButton';
-import {colors, FHeight, fontStyles, FWidth} from '../../../../globalStyle';
-import FInput from '../../elements/FInput';
-import {useAddModalInputText} from '../../../store/store';
+import FButton from '../elements/FButton';
+import {colors, FHeight, fontStyles, FWidth} from '../../../globalStyle';
+import FInput from '../elements/FInput';
+import {useAddModalInputText} from '../../store/store';
 
 type InputAndSearchProps = {
   itemList: any;

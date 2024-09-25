@@ -7,6 +7,7 @@ import SubTitleComponent from './SubTitleComponent';
 import SvgImage from '../elements/SvgImage';
 import {useBottomSheetRef, useBottomSheetTitle} from '../../store/store';
 import MoreList from '../../utils/Svg/MoreList';
+import MoreButtonComponent from './MoreButtonComponent';
 
 const CondimentList = () => {
   const [buttonHeight, setButtonHeight] = useState(0);
@@ -61,16 +62,11 @@ const CondimentList = () => {
           ))}
         </View>
         {contentHeight > buttonHeight * 3 + FHeight * 12 && (
-          <FButton
-            buttonStyle="smallIcon"
-            onPress={() => setContainerOpen(!containerOpen)}>
-            <View
-              style={{
-                transform: [{rotate: containerOpen ? '180deg' : '0deg'}],
-              }}>
-              <MoreList buttonHeight={buttonHeight} />
-            </View>
-          </FButton>
+          <MoreButtonComponent
+            buttonHeight={buttonHeight}
+            containerOpen={containerOpen}
+            onPress={() => setContainerOpen(!containerOpen)}
+          />
         )}
       </View>
       <FButton

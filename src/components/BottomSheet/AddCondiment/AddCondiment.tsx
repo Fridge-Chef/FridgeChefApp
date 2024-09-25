@@ -2,8 +2,8 @@ import {StyleSheet, Text, View} from 'react-native';
 import React, {useState} from 'react';
 import TopTitle from '../TopTitle';
 import {colors, FWidth} from '../../../../globalStyle';
-import InputAndSearch from '../AddIngredient/InputAndSearch';
-import ItemList from '../AddIngredient/ItemList';
+import InputAndSearch from '../InputAndSearch';
+import ItemList from '../ItemList';
 import {useBottomSheetRef} from '../../../store/store';
 import BottomButton from '../BottomButton';
 import {IngredientList} from '../../../utils/list';
@@ -21,7 +21,7 @@ const AddCondiment = () => {
       <View style={styles.contentContainer}>
         <TopTitle title="조미료 등록하기" />
         <InputAndSearch itemList={IngredientList} setItemList={setItemList} />
-        <ItemList itemList={itemList} setItemList={setItemList} />
+        <ItemList itemList={itemList} setItemList={setItemList} title="재료" />
       </View>
       <BottomButton
         title="조미료 등록하기"
@@ -37,7 +37,6 @@ export default AddCondiment;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'space-between',
   },
   contentContainer: {
     flexGrow: 1,

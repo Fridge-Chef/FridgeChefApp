@@ -5,10 +5,11 @@ import BottomSheet, {
   BottomSheetScrollView,
 } from '@gorhom/bottom-sheet';
 import {useBottomSheetRef, useBottomSheetTitle} from '../../store/store';
-import {FHeight, FWidth} from '../../../globalStyle';
+import {FWidth} from '../../../globalStyle';
 import AddIngredient from './AddIngredient/AddIngredient';
 import ExpiryDate from './ExpiryDate/ExpiryDate';
 import AddCondiment from './AddCondiment/AddCondiment';
+import IngredientList from './IngredientList/IngredientList';
 
 const FBottomSheet = () => {
   const {title} = useBottomSheetTitle();
@@ -36,6 +37,8 @@ const FBottomSheet = () => {
         return <AddCondiment />;
       case '유통기한 등록':
         return <ExpiryDate />;
+      case '재료보기':
+        return <IngredientList />;
       default:
         break;
     }

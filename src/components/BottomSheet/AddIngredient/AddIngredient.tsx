@@ -2,9 +2,9 @@ import {Keyboard, Pressable, StyleSheet, View} from 'react-native';
 import React, {useState} from 'react';
 import {colors, FWidth} from '../../../../globalStyle';
 import TopTitle from '../TopTitle';
-import InputAndSearch from './InputAndSearch';
+import InputAndSearch from '../InputAndSearch';
 import {useAddModalInputText, useBottomSheetRef} from '../../../store/store';
-import ItemList from './ItemList';
+import ItemList from '../ItemList';
 import BottomButton from '../BottomButton';
 import {IngredientList} from '../../../utils/list';
 
@@ -27,7 +27,7 @@ const AddIngredient = () => {
       <View style={styles.contentContainer}>
         <TopTitle title="재료 등록하기" />
         <InputAndSearch itemList={IngredientList} setItemList={setItemList} />
-        <ItemList itemList={itemList} setItemList={setItemList} />
+        <ItemList itemList={itemList} setItemList={setItemList} title="재료" />
       </View>
       <BottomButton
         title="재료 등록하기"

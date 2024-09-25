@@ -33,15 +33,7 @@ const Heart = () => {
           width="24"
           height="24"
           filterUnits="userSpaceOnUse">
-          <FeFlood floodOpacity="0" result="BackgroundImageFix" />
-          <FeColorMatrix
-            in="SourceAlpha"
-            type="matrix"
-            values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-            result="hardAlpha"
-          />
           <FeOffset dy="4" />
-          <FeComposite in2="hardAlpha" operator="out" />
           <FeColorMatrix
             type="matrix"
             values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.5 0"

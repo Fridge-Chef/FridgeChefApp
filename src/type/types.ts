@@ -46,3 +46,11 @@ export type AppBarProps = {
   onPress1?: () => void;
   onPress2?: () => void;
 };
+
+export type RecipeList = {
+  ingredient: string;
+  category: string;
+  ingredient_id: number;
+  expiry_date: string;
+  create_time: string;
+};
