@@ -4,6 +4,7 @@ import FButton from '../elements/FButton';
 import {useAddModalInputText, useBottomSheetRef} from '../../store/store';
 import {colors, fontStyles} from '../../../globalStyle';
 import SvgImage from '../elements/SvgImage';
+import Close from '../../utils/Svg/Close';
 
 type TopTitleProps = {
   title: string;
@@ -21,7 +22,7 @@ const TopTitle = ({title}: TopTitleProps) => {
     <View style={styles.titleContainer}>
       <Text style={[fontStyles.B_18, {color: colors.text}]}>{title}</Text>
       <FButton buttonStyle="noneStyle" onPress={handleClose}>
-        <SvgImage type="close2" width={24} height={24} />
+        <Close />
       </FButton>
     </View>
   );

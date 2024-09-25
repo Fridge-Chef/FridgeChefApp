@@ -22,6 +22,7 @@ const TopComponent = () => {
   const [containerOpen, setContainerOpen] = useState(false);
   const [containerHeight, setContainerHeight] = useState(0);
   const {bottomSheetRef} = useBottomSheetRef();
+  const [onClicked, setOnClicked] = useState<false | number>(false);
   const {setTitle} = useBottomSheetTitle();
   const onLayout = (e: LayoutChangeEvent) => {
     if (itemHeight === 0) {
@@ -61,14 +62,35 @@ const TopComponent = () => {
             <View style={[styles.listItemContainer]} onLayout={onLayout2}>
               {list &&
                 item.ingredients?.map((ingredient: RecipeList) => (
-                  <View
+                  <FButton
+                    buttonStyle="noneStyle"
                     key={ingredient.ingredient_id}
-                    style={[styles.listItem]}
-                    onLayout={onLayout}>
-                    <Text style={[fontStyles.M_14, {color: colors.black}]}>
-                      {ingredient.ingredient}
-                    </Text>
-                  </View>
+                    onPress={() => setOnClicked(ingredient.ingredient_id)}>
+                    <View
+                      style={[
+                        styles.listItem,
+                        {
+                          backgroundColor:
+                            onClicked === ingredient.ingredient_id
+                              ? colors.primary[1]
+                              : colors.background,
+                        },
+                      ]}
+                      onLayout={onLayout}>
+                      <Text
+                        style={[
+                          fontStyles.M_14,
+                          {
+                            color:
+                              onClicked === ingredient.ingredient_id
+                                ? colors.white
+                                : colors.black,
+                          },
+                        ]}>
+                        {ingredient.ingredient}
+                      </Text>
+                    </View>
+                  </FButton>
                 ))}
               {item.ingredients.length > 0 && (
                 <FButton
@@ -112,7 +134,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: FWidth * 12,
     paddingVertical: FWidth * 6,
     borderRadius: 50,
-    backgroundColor: colors.background,
     marginTop: FWidth * 10,
     marginRight: FWidth * 8,
   },

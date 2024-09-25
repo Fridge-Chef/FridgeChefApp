@@ -1,10 +1,10 @@
 import {StyleSheet} from 'react-native';
 import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import Ingredients from '../../screen/Ingredients';
+import Ingredients from '../../screen/MyFridge/Ingredients';
 import {colors} from '../../../globalStyle';
-import RecRecipe from '../../screen/RecRecipe';
-import RecipeDetail from '../../screen/RecipeDetail';
+import RecRecipe from '../../screen/MyFridge/RecRecipe';
+import RecipeDetail from '../../screen/MyFridge/RecipeDetail';
 import AppBarComponent from '../elements/AppBarComponent';
 
 const MyFridgeScreen = () => {

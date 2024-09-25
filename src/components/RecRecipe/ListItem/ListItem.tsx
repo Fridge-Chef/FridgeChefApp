@@ -7,7 +7,7 @@ import {
   fontStyles,
   FWidth,
 } from '../../../../globalStyle';
-import ImageComponent from './ImageComponent';
+import ImageComponent from '../../elements/ImageComponent';
 import ViewAndLike from './ViewAndLike';
 import LikeButton from './LikeButton';
 import BottomText from './BottomText';
@@ -26,10 +26,12 @@ const ListItem = ({item}: ListItemProps) => {
 
   return (
     <View style={styles.mainItemContainer}>
-      <ImageComponent />
+      <ImageComponent imgStyle="main" url="" alt="메인 리스트" />
       <View style={styles.itemTextContainer}>
         <View style={styles.itemTitleAndLikeContainer}>
-          <Text style={[fontStyles.B_16, styles.textColor]}>{item.title}</Text>
+          <Text style={[fontStyles.B_16, styles.textColor]} numberOfLines={2}>
+            {item.title}
+          </Text>
           <LikeButton isLike={isLike} setIsLike={setIsLike} />
         </View>
         <ViewAndLike like={item.likes} favorites={item.favorites} />
@@ -58,12 +60,13 @@ const styles = StyleSheet.create({
 
   itemTitleAndLikeContainer: {
     flexDirection: 'row',
-    alignItems: 'center',
+    alignItems: 'flex-start',
     justifyContent: 'space-between',
-    marginBottom: FWidth * 2,
+    // marginBottom: FWidth * 2,
   },
 
   textColor: {
     color: colors.text,
+    flexShrink: 1,
   },
 });

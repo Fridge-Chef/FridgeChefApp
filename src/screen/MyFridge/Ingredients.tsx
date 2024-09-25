@@ -1,14 +1,14 @@
 import {ScrollView, StyleSheet, Text, View} from 'react-native';
 import React from 'react';
-import {colors, FHeight, fontStyles, FWidth} from '../../globalStyle';
-import TopComponent from '../components/Ingredients/TopComponent';
-import CondimentList from '../components/Ingredients/CondimentList';
-import AddList from '../components/Ingredients/AddList/AddList';
-import FButton from '../components/elements/FButton';
-import {useLoading} from '../store/store';
+import {colors, FHeight, fontStyles, FWidth} from '../../../globalStyle';
+import TopComponent from '../../components/Ingredients/TopComponent';
+import CondimentList from '../../components/Ingredients/CondimentList';
+import AddList from '../../components/Ingredients/AddList/AddList';
+import FButton from '../../components/elements/FButton';
+import {useLoading} from '../../store/store';
 import {ParamListBase, useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import LoginAndUser from '../components/Ingredients/LoginAndUser';
+import LoginAndUser from '../../components/Ingredients/LoginAndUser';
 const Ingredients = () => {
   const {setLoading, setLoadingTitle} = useLoading();
   const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();

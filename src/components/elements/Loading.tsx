@@ -1,4 +1,4 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {StatusBar, StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import {ActivityIndicator} from 'react-native';
 import {Dimensions} from 'react-native';
@@ -6,8 +6,10 @@ import {colors, FHeight, fontStyles, FWidth} from '../../../globalStyle';
 import {useLoading} from '../../store/store';
 import LottieView from 'lottie-react-native';
 
+const statusBarHeight = StatusBar.currentHeight;
 const Loading = () => {
   const {loading, loadingTitle} = useLoading();
+
   return (
     <>
       {loading && (
@@ -38,7 +40,7 @@ export default Loading;
 const styles = StyleSheet.create({
   background: {
     width: '100%',
-    height: Dimensions.get('screen').height,
+    height: Dimensions.get('screen').height - statusBarHeight!,
     backgroundColor: 'white',
     // opacity: 0.6,
     position: 'absolute',

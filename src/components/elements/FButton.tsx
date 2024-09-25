@@ -21,6 +21,7 @@ type FButtonProps = {
     | 'submit'
     | 'bigButton'
     | 'buyButton'
+    | 'addButton'
     | 'noneStyle';
   buttonColor?: string;
   radius?: number;
@@ -141,6 +142,7 @@ const FButton = ({
         marginBottom: marginBottom,
       },
     ],
+    addButton: styles.addButton,
     submit: [
       styles.submitButton,
       {
@@ -235,6 +237,15 @@ const styles = StyleSheet.create({
     borderColor: colors.border,
     borderRadius: 40,
     borderWidth: 1,
+  },
+
+  addButton: {
+    marginTop: FWidth * 24,
+    paddingVertical: FWidth * 12,
+    paddingHorizontal: FWidth * 20,
+    borderRadius: 40,
+    borderWidth: 1,
+    borderColor: colors.border,
   },
 
   noneStyle: {},

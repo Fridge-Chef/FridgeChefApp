@@ -1,27 +1,18 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet} from 'react-native';
 import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import Test02 from '../../screen/Test02';
-import RecRecipe from '../../screen/RecRecipe';
+import RecipeBook from '../../screen/RecipeBook/RecipeBook';
 
 const RecipeBookScreen = () => {
-  const Stack = createNativeStackNavigator();
+  const Tab = createNativeStackNavigator();
   return (
-    <Stack.Navigator
+    <Tab.Navigator
+      initialRouteName="recipeBookTab"
       screenOptions={{
         headerShown: false,
-        contentStyle: {backgroundColor: 'white'},
-      }}
-      initialRouteName="recRecipe">
-      <Stack.Screen
-        name="test02"
-        component={Test02}
-        options={{
-          title: '',
-          headerShadowVisible: false,
-        }}
-      />
-    </Stack.Navigator>
+      }}>
+      <Tab.Screen name="recipeBookTab" component={RecipeBook} />
+    </Tab.Navigator>
   );
 };
 

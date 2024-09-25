@@ -1,8 +1,8 @@
 import {StyleSheet, View} from 'react-native';
 import React from 'react';
-import {FHeight, FWidth} from '../../globalStyle';
-import TopComponent from '../components/RecRecipe/TopComponent';
-import Recipes from '../components/RecRecipe/ListItem/Recipes';
+import {FHeight, FWidth} from '../../../globalStyle';
+import TopComponent from '../../components/RecRecipe/TopComponent';
+import Recipes from '../../components/RecRecipe/ListItem/Recipes';
 const RecRecipe = () => {
   return (
     <View style={styles.container}>
