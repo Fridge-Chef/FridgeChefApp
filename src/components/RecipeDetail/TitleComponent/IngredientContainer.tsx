@@ -1,6 +1,6 @@
 import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
-import {colors, FHeight, fontStyles} from '../../../../globalStyle';
+import {colors, FHeight, fontStyles, FWidth} from '../../../../globalStyle';
 import ItemsComponent from './ItemsComponent';
 
 type IngredientContainerProps = {
@@ -27,16 +27,16 @@ export default IngredientContainer;
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: FHeight * 16,
+    marginTop: FWidth * 16,
   },
 
   itemContainer: {
-    marginTop: FHeight * 8,
+    marginTop: FWidth * 8,
   },
 
   itemSubContainer: {
     flexDirection: 'row',
     flexWrap: 'wrap',
-    marginTop: FHeight * -8,
+    marginTop: FWidth * -8,
   },
 });

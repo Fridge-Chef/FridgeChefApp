@@ -1,10 +1,8 @@
 import {StyleSheet, View} from 'react-native';
 import React from 'react';
-import {colors, FHeight, fontFamilies, FWidth} from '../../globalStyle';
-import SubTitleComponent from '../components/Ingredients/SubTitleComponent';
+import {FHeight, FWidth} from '../../globalStyle';
 import TopComponent from '../components/RecRecipe/TopComponent';
 import Recipes from '../components/RecRecipe/ListItem/Recipes';
-import SvgImage from '../components/elements/SvgImage';
 const RecRecipe = () => {
   return (
     <View style={styles.container}>

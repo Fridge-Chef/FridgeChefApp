@@ -97,7 +97,7 @@ export default AppBarComponent;
 
 const styles = StyleSheet.create({
   appBar: {
-    height: FHeight * 48,
+    height: FWidth * 48,
     flexDirection: 'row',
     paddingHorizontal: FWidth * 21,
     justifyContent: 'space-between',

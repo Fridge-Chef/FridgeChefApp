@@ -5,7 +5,7 @@ import BottomSheet, {
   BottomSheetScrollView,
 } from '@gorhom/bottom-sheet';
 import {useBottomSheetRef, useBottomSheetTitle} from '../../store/store';
-import {FHeight} from '../../../globalStyle';
+import {FHeight, FWidth} from '../../../globalStyle';
 import AddIngredient from './AddIngredient/AddIngredient';
 import ExpiryDate from './ExpiryDate/ExpiryDate';
 import AddCondiment from './AddCondiment/AddCondiment';
@@ -52,7 +52,7 @@ const FBottomSheet = () => {
       handleStyle={{
         borderTopLeftRadius: 20,
         borderTopRightRadius: 20,
-        height: FHeight * 36,
+        height: FWidth * 36,
         elevation: 0,
       }}
       enablePanDownToClose={true}

@@ -1,4 +1,4 @@
-import {Alert, Keyboard, StyleSheet, View} from 'react-native';
+import {Alert, Keyboard, StyleSheet, Text, View} from 'react-native';
 import React, {Dispatch} from 'react';
 import FButton from '../../elements/FButton';
 import {colors, FHeight, fontStyles, FWidth} from '../../../../globalStyle';
@@ -45,17 +45,17 @@ const InputAndSearch = ({itemList, setItemList}: InputAndSearchProps) => {
             <FButton
               key={item.id}
               buttonStyle="noneStyle"
-              title={item.name}
-              titleColor={colors.text}
-              style={fontStyles.M_16}
-              fStyle={{paddingVertical: FHeight * 12}}
+              fStyle={{paddingVertical: FWidth * 12}}
               onPress={() => {
                 console.log(item.name);
                 Keyboard.dismiss();
                 setAddTitle('');
                 addItemToList(item.name);
-              }}
-            />
+              }}>
+              <Text style={[fontStyles.M_16, styles.textColor]}>
+                {item.name}
+              </Text>
+            </FButton>
           ))}
         </View>
       )}
@@ -67,16 +67,20 @@ export default InputAndSearch;
 
 const styles = StyleSheet.create({
   inputContainer: {
-    marginTop: FHeight * 24,
+    marginTop: FWidth * 24,
   },
 
   listContainer: {
-    marginTop: FHeight * 10,
+    marginTop: FWidth * 10,
     paddingHorizontal: FWidth * 12,
     backgroundColor: colors.white,
     borderWidth: 1,
     borderRadius: 10,
     borderColor: colors.border,
     zIndex: 999,
+  },
+
+  textColor: {
+    color: colors.text,
   },
 });

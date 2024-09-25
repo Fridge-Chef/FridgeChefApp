@@ -4,6 +4,7 @@ import Wallet from '../../Svg/Wallet';
 import TabHeart from '../../Svg/TabHeart';
 import More from '../../Svg/More';
 import EditSquare from '../../Svg/EditSquare';
+import {FWidth} from '../../../../globalStyle';
 type IconComponentProps = {
   focused: boolean;
   name: string;
@@ -44,6 +45,6 @@ export default IconComponent;
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 14,
+    marginTop: FWidth * 14,
   },
 });

@@ -18,9 +18,9 @@ export default RecipeComponent;
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: FHeight * 12,
-    paddingTop: FHeight * 24,
-    paddingBottom: FHeight * 40,
+    marginTop: FWidth * 12,
+    paddingTop: FWidth * 24,
+    paddingBottom: FWidth * 40,
     paddingHorizontal: FWidth * 22,
     backgroundColor: colors.white,
   },

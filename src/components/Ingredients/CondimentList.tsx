@@ -76,7 +76,7 @@ const CondimentList = () => {
       <FButton
         buttonStyle="iconButton2"
         buttonColor={colors.white}
-        marginTop={FHeight * 16}
+        marginTop={FWidth * 16}
         borderWidth={1}
         radius={50}
         onPress={handleAddCondiment}>
@@ -97,19 +97,19 @@ export default CondimentList;
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: FHeight * 40,
+    marginTop: FWidth * 40,
     paddingHorizontal: FWidth * 22,
   },
 
   listContainer: {
     position: 'relative',
-    marginTop: FHeight * 12,
+    marginTop: FWidth * 12,
     overflow: 'hidden',
   },
 
   listContainerMargin: {
     flexDirection: 'row',
-    marginTop: FHeight * -12,
+    marginTop: FWidth * -12,
     flexWrap: 'wrap',
   },
 

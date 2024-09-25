@@ -1,7 +1,7 @@
 import {StyleSheet, View} from 'react-native';
 import React from 'react';
 import {reviewContent} from '../../../utils/list';
-import {FHeight} from '../../../../globalStyle';
+import {FHeight, FWidth} from '../../../../globalStyle';
 import Review from './Review';
 
 const ReviewsComponent = () => {
@@ -27,10 +27,10 @@ export default ReviewsComponent;
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: FHeight * 16,
+    marginTop: FWidth * 16,
   },
 
   subContainer: {
-    marginTop: FHeight * -16,
+    marginTop: FWidth * -16,
   },
 });

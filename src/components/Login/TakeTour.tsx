@@ -35,7 +35,7 @@ export default TakeTour;
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: FHeight * 32,
+    marginTop: FWidth * 32,
   },
 
   textColor: {

@@ -1,6 +1,6 @@
 import {Image, StyleSheet, Text, View} from 'react-native';
 import React from 'react';
-import {colors, FHeight} from '../../../globalStyle';
+import {colors, FHeight, FWidth} from '../../../globalStyle';
 
 type ImageComponentProps = {
   imgUrl: string;
@@ -26,7 +26,7 @@ export default ImageComponent;
 const styles = StyleSheet.create({
   imgStyle: {
     width: '100%',
-    height: FHeight * 277,
+    height: FWidth * 277,
     // objectFit: 'contain',
     backgroundColor: colors.white,
   },

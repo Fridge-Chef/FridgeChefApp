@@ -1,6 +1,6 @@
 import {Image, StyleSheet, View} from 'react-native';
 import React from 'react';
-import {FHeight} from '../../../../globalStyle';
+import {FHeight, FWidth} from '../../../../globalStyle';
 
 const ImageComponent = () => {
   return (
@@ -18,16 +18,16 @@ export default ImageComponent;
 
 const styles = StyleSheet.create({
   container: {
-    width: FHeight * 100,
-    height: FHeight * 100,
+    width: FWidth * 100,
+    height: FWidth * 100,
     backgroundColor: 'gray',
     borderRadius: 12,
     overflow: 'hidden',
   },
 
   imageStyle: {
-    width: FHeight * 100,
-    height: FHeight * 100,
+    width: FWidth * 100,
+    height: FWidth * 100,
     objectFit: 'cover',
   },
 });

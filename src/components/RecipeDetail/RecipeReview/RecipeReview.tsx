@@ -17,9 +17,9 @@ export default RecipeReview;
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: FHeight * 12,
+    marginTop: FWidth * 12,
     paddingHorizontal: FWidth * 22,
-    paddingVertical: FHeight * 24,
+    paddingVertical: FWidth * 24,
     backgroundColor: colors.white,
   },
 });

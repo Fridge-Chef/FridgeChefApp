@@ -26,7 +26,7 @@ export default TitleComponent;
 
 const styles = StyleSheet.create({
   container: {
-    paddingVertical: FHeight * 32,
+    paddingVertical: FWidth * 32,
     paddingHorizontal: FWidth * 22,
     backgroundColor: colors.white,
   },

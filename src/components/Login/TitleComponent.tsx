@@ -1,6 +1,6 @@
 import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
-import {colors, FHeight, fontStyles} from '../../../globalStyle';
+import {colors, FHeight, fontStyles, FWidth} from '../../../globalStyle';
 
 const TitleComponent = () => {
   return (
@@ -18,7 +18,7 @@ export default TitleComponent;
 
 const styles = StyleSheet.create({
   container: {
-    marginBottom: FHeight * 160,
+    marginBottom: FWidth * 160,
   },
 
   titleAlign: {

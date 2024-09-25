@@ -1,6 +1,6 @@
 import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
-import {colors, FHeight, fontStyles} from '../../../../globalStyle';
+import {colors, FHeight, fontStyles, FWidth} from '../../../../globalStyle';
 
 type ContentComponentProps = {
   content: string;
@@ -18,7 +18,7 @@ export default ContentComponent;
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: FHeight * 16,
+    marginTop: FWidth * 16,
   },
 
   textColor: {

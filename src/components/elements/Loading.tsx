@@ -2,7 +2,7 @@ import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import {ActivityIndicator} from 'react-native';
 import {Dimensions} from 'react-native';
-import {colors, FHeight, fontStyles} from '../../../globalStyle';
+import {colors, FHeight, fontStyles, FWidth} from '../../../globalStyle';
 import {useLoading} from '../../store/store';
 import LottieView from 'lottie-react-native';
 
@@ -55,6 +55,6 @@ const styles = StyleSheet.create({
 
   textStyle: {
     color: colors.text,
-    marginTop: FHeight * 20,
+    marginTop: FWidth * 20,
   },
 });

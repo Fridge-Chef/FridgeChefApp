@@ -22,10 +22,10 @@ const styles = StyleSheet.create({
   },
 
   itemBox: {
-    marginTop: FHeight * 8,
+    marginTop: FWidth * 8,
     marginRight: FWidth * 8,
     paddingHorizontal: FWidth * 12,
-    paddingVertical: FHeight * 6,
+    paddingVertical: FWidth * 6,
     borderRadius: 50,
     backgroundColor: colors.background,
   },

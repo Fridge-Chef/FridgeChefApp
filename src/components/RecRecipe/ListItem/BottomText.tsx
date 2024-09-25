@@ -1,6 +1,6 @@
 import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
-import {colors, FHeight, fontStyles} from '../../../../globalStyle';
+import {colors, fontStyles, FWidth} from '../../../../globalStyle';
 
 type BottomTextProps = {
   ingredients: string[];
@@ -28,7 +28,7 @@ export default BottomText;
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: FHeight * 16,
+    marginTop: FWidth * 16,
   },
 
   textContainer: {

@@ -1,6 +1,6 @@
 import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
-import {colors, FHeight, fontStyles} from '../../../../globalStyle';
+import {colors, FHeight, fontStyles, FWidth} from '../../../../globalStyle';
 
 type ReviewContentProps = {
   content: string;
@@ -18,7 +18,7 @@ export default ReviewContent;
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: FHeight * 12,
+    marginTop: FWidth * 12,
   },
 
   textColor: {

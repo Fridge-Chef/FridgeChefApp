@@ -1,7 +1,7 @@
 import {StyleSheet, View} from 'react-native';
 import React, {useState} from 'react';
 import TopTitle from '../TopTitle';
-import {FHeight, FWidth} from '../../../../globalStyle';
+import {colors, FHeight, FWidth} from '../../../../globalStyle';
 import {useBottomSheetRef, useIngredientTitle} from '../../../store/store';
 import FInput from '../../elements/FInput';
 import BottomButton from '../BottomButton';
@@ -38,7 +38,7 @@ const ExpiryDate = () => {
       </View>
       <BottomButton
         title="확인"
-        buttonColor={inputTitle ? 'black' : '#E6E6E6'}
+        buttonColor={inputTitle ? colors.text : colors.disabled2}
         onPress={handleSubmit}
       />
     </View>

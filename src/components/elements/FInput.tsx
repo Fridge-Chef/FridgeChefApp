@@ -94,7 +94,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     fontSize: 16,
     color: colors.text,
-    lineHeight: FHeight * 22,
+    lineHeight: FWidth * 22,
     letterSpacing: -0.1,
     paddingLeft: FWidth * 12,
     paddingRight: FWidth * 30,

@@ -25,7 +25,7 @@ const AddCondiment = () => {
       </View>
       <BottomButton
         title="조미료 등록하기"
-        buttonColor={itemList.length > 0 ? colors.text : '#E6E6E6'}
+        buttonColor={itemList.length > 0 ? colors.text : colors.disabled2}
         onPress={handleSubmit}
       />
     </View>

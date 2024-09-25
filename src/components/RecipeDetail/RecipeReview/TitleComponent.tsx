@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
   buttonContainer: {
     flexDirection: 'row',
     paddingHorizontal: FWidth * 16,
-    paddingVertical: FHeight * 11,
+    paddingVertical: FWidth * 11,
     alignItems: 'center',
     borderWidth: 1,
     borderColor: colors.border,

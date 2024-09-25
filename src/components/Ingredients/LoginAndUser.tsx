@@ -39,8 +39,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     paddingLeft: FWidth * 20,
     paddingRight: FWidth * 14,
-    paddingVertical: FHeight * 14,
-    height: FHeight * 52,
+    paddingVertical: FWidth * 14,
+    height: FWidth * 52,
     backgroundColor: colors.background3,
   },
 

@@ -54,13 +54,13 @@ export default ItemList;
 
 const styles = StyleSheet.create({
   itemContainer: {
-    marginTop: FHeight * 32,
+    marginTop: FWidth * 32,
   },
 
   itemListContainer: {
     flexDirection: 'row',
     flexWrap: 'wrap',
-    marginTop: FHeight * 16,
+    marginTop: FWidth * 16,
   },
 
   listItem: {

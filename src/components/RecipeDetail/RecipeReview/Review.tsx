@@ -1,6 +1,6 @@
 import {StyleSheet, View} from 'react-native';
 import React from 'react';
-import {colors, FHeight} from '../../../../globalStyle';
+import {colors, FHeight, FWidth} from '../../../../globalStyle';
 import ReviewContent from './ReviewContent';
 import UserInfo from './UserInfo';
 
@@ -27,7 +27,7 @@ export default Review;
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: FHeight * 16,
+    marginTop: FWidth * 16,
     borderRadius: 8,
     borderWidth: 1,
     borderColor: colors.border,

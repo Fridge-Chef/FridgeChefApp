@@ -24,7 +24,7 @@ const Recipes = () => {
         data={listData}
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{
-          paddingBottom: FHeight * 146,
+          paddingBottom: FWidth * 146,
         }}
         keyExtractor={(_, index) => index.toString()}
         renderItem={({item}: {item: RecipeListType}) => (
@@ -47,7 +47,7 @@ export default Recipes;
 
 const styles = StyleSheet.create({
   mainListContainer: {
-    marginTop: FHeight * 24,
+    marginTop: FWidth * 24,
     height: '100%',
   },
 

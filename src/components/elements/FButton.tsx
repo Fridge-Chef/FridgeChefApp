@@ -194,12 +194,12 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     marginRight: FWidth * 6,
     paddingHorizontal: FWidth * 14,
-    paddingVertical: FHeight * 8,
+    paddingVertical: FWidth * 8,
     alignItems: 'center',
   },
 
   iconButton2: {
-    paddingVertical: FHeight * 8,
+    paddingVertical: FWidth * 8,
     paddingHorizontal: FWidth * 14,
     borderRadius: 999,
     borderColor: colors.border,
@@ -218,13 +218,13 @@ const styles = StyleSheet.create({
   },
 
   submitButton: {
-    height: FHeight * 64,
+    height: FWidth * 64,
     justifyContent: 'center',
     alignItems: 'center',
   },
 
   bigButton: {
-    paddingVertical: FHeight * 14,
+    paddingVertical: FWidth * 14,
     borderRadius: 14,
     alignItems: 'center',
   },

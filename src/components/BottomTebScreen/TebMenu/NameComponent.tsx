@@ -24,8 +24,8 @@ export default NameComponent;
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: FHeight * 4,
-    paddingVertical: FHeight * 2,
+    marginTop: FWidth * 4,
+    paddingVertical: FWidth * 2,
     paddingHorizontal: FWidth * 8,
   },
 });

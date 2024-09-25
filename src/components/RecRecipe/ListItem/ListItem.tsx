@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
     borderColor: colors.border,
     borderWidth: 1,
     borderRadius: 14,
-    marginTop: FHeight * 12,
+    marginTop: FWidth * 12,
   },
 
   itemTextContainer: {
@@ -64,6 +64,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    marginBottom: FHeight * 4,
+    marginBottom: FWidth * 4,
   },
 });

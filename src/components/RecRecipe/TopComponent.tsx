@@ -65,7 +65,7 @@ export default TopComponent;
 
 const styles = StyleSheet.create({
   itemListContainer: {
-    marginTop: FHeight * 16,
+    marginTop: FWidth * 16,
   },
 
   itemSubContainer: {
@@ -76,15 +76,15 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     flexWrap: 'wrap',
     width: FWidth * 500,
-    marginTop: FHeight * -10,
+    marginTop: FWidth * -10,
   },
 
   listItem: {
     paddingHorizontal: FWidth * 12,
-    paddingVertical: FHeight * 8,
+    paddingVertical: FWidth * 8,
     borderRadius: 100,
     backgroundColor: '#F2F2F2',
-    marginTop: FHeight * 10,
+    marginTop: FWidth * 10,
     marginRight: FWidth * 8,
   },
 });
