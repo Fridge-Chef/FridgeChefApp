@@ -1,7 +1,7 @@
 import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import {colors, FHeight, fontStyles, FWidth} from '../../../globalStyle';
-import KakaoLogo from '../Svg/KakaoLogo';
+import KakaoLogo from '../../utils/Svg/KakaoLogo';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {ParamListBase} from '@react-navigation/native';
 import FButton from '../elements/FButton';

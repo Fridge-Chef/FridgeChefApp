@@ -6,7 +6,7 @@ import {ingredients} from '../../utils/list';
 import SubTitleComponent from './SubTitleComponent';
 import SvgImage from '../elements/SvgImage';
 import {useBottomSheetRef, useBottomSheetTitle} from '../../store/store';
-import MoreList from '../Svg/MoreList';
+import MoreList from '../../utils/Svg/MoreList';
 
 const CondimentList = () => {
   const [buttonHeight, setButtonHeight] = useState(0);

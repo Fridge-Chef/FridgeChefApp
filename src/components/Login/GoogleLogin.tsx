@@ -1,7 +1,7 @@
 import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import {colors, FHeight, fontStyles, FWidth} from '../../../globalStyle';
-import GoogleLogo from '../Svg/GoogleLogo';
+import GoogleLogo from '../../utils/Svg/GoogleLogo';
 import {ParamListBase, useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import FButton from '../elements/FButton';

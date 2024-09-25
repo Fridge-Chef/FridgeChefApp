@@ -1,8 +1,8 @@
 import {StyleSheet, Text, View} from 'react-native';
 import React, {useState} from 'react';
 import {colors, FHeight, fontStyles, FWidth} from '../../../globalStyle';
-import LoginIcon from '../Svg/LoginIcon';
-import Notification from '../Svg/Notification';
+import LoginIcon from '../../utils/Svg/LoginIcon';
+import Notification from '../../utils/Svg/Notification';
 
 const LoginAndUser = () => {
   const [test] = useState(true);

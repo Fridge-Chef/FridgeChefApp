@@ -2,6 +2,8 @@ import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import {colors, fontStyles, FWidth} from '../../../../globalStyle';
 import SvgImage from '../../elements/SvgImage';
+import Heart from '../../../utils/Svg/Heart';
+import Star2 from '../../../utils/Svg/Star2';
 
 type ViewAndLikeProps = {
   like: number;
@@ -12,7 +14,7 @@ const ViewAndLike = ({like, favorites}: ViewAndLikeProps) => {
   return (
     <View style={styles.iconsContainer}>
       <View style={styles.textAndIconContainer}>
-        <SvgImage type="star" width={16} height={16} fill={colors.white} />
+        <Star2 />
         <Text
           style={[
             fontStyles.B_12,
@@ -25,7 +27,7 @@ const ViewAndLike = ({like, favorites}: ViewAndLikeProps) => {
         </Text>
       </View>
       <View style={styles.textAndIconContainer}>
-        <SvgImage type="heart2" width={16} height={16} fill={colors.white} />
+        <Heart />
         <Text
           style={[
             fontStyles.B_12,

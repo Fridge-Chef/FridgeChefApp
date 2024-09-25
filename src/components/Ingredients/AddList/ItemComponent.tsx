@@ -3,7 +3,7 @@ import React, {useEffect, useState} from 'react';
 import {colors, FHeight, fontStyles, FWidth} from '../../../../globalStyle';
 import FButton from '../../elements/FButton';
 import SvgImage from '../../elements/SvgImage';
-import Calendar from '../../Svg/Calendar';
+import Calendar from '../../../utils/Svg/Calendar';
 import {
   useBottomSheetRef,
   useBottomSheetTitle,

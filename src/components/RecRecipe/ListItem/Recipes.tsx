@@ -8,6 +8,7 @@ import SubTitleComponent from '../../Ingredients/SubTitleComponent';
 import FButton from '../../elements/FButton';
 import {ParamListBase, useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import ArrowDown2 from '../../../utils/Svg/ArrowDown2';
 
 const Recipes = () => {
   const listData = require('../../../utils/recipeListData.json');
@@ -17,7 +18,7 @@ const Recipes = () => {
       <View style={styles.titleContainer}>
         <SubTitleComponent title="최근순" color={colors.subText} />
         <View style={{marginLeft: FWidth * 4}}>
-          <SvgImage type="arrowDown2" width={18} height={18} />
+          <ArrowDown2 />
         </View>
       </View>
       <FlatList

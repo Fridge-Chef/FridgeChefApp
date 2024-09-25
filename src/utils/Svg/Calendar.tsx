@@ -20,9 +20,9 @@ const Calendar = ({day, expiryDate}: CalendarProps) => {
             ? colors.secondary[1]
             : colors.subText
         }
-        stroke-width="1.8"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
       <Path
         d="M15.3334 2V6"
@@ -33,9 +33,9 @@ const Calendar = ({day, expiryDate}: CalendarProps) => {
             ? colors.secondary[1]
             : colors.subText
         }
-        stroke-width="1.8"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
       <Path
         d="M7.66663 2V6"
@@ -46,9 +46,9 @@ const Calendar = ({day, expiryDate}: CalendarProps) => {
             ? colors.secondary[1]
             : colors.subText
         }
-        stroke-width="1.8"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
       <Path
         d="M2.875 10H20.125"
@@ -59,9 +59,9 @@ const Calendar = ({day, expiryDate}: CalendarProps) => {
             ? colors.secondary[1]
             : colors.subText
         }
-        stroke-width="1.8"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </Svg>
   );

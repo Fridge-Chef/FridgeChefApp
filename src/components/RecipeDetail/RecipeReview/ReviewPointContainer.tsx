@@ -2,7 +2,7 @@ import {StyleSheet, View} from 'react-native';
 import React from 'react';
 
 import {FWidth} from '../../../../globalStyle';
-import Star from '../../Svg/Star';
+import Star from '../../../utils/Svg/Star';
 
 const ReviewPointContainer = () => {
   return (
