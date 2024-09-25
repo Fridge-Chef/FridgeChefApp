@@ -12,7 +12,7 @@ type ViewAndLikeProps = {
 
 const ViewAndLike = ({like, favorites}: ViewAndLikeProps) => {
   return (
-    <View style={styles.iconsContainer}>
+    <View style={styles.container}>
       <View style={styles.textAndIconContainer}>
         <Star2 />
         <Text
@@ -43,7 +43,7 @@ const ViewAndLike = ({like, favorites}: ViewAndLikeProps) => {
 export default ViewAndLike;
 
 const styles = StyleSheet.create({
-  iconsContainer: {
+  container: {
     flexDirection: 'row',
     alignItems: 'center',
   },

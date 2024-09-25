@@ -2,6 +2,7 @@ import {StyleSheet} from 'react-native';
 import React from 'react';
 import FButton from '../../elements/FButton';
 import SvgImage from '../../elements/SvgImage';
+import Heart2 from '../../../utils/Svg/Heart2';
 
 type LikeButtonProps = {
   isLike: boolean;
@@ -11,7 +12,7 @@ type LikeButtonProps = {
 const LikeButton = ({isLike, setIsLike}: LikeButtonProps) => {
   return (
     <FButton buttonStyle="noneStyle" onPress={() => setIsLike(!isLike)}>
-      <SvgImage type="heart3" width={20} height={20} fill="" />
+      <Heart2 isLike={isLike} />
     </FButton>
   );
 };

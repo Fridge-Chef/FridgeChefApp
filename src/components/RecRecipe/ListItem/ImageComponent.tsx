@@ -18,16 +18,16 @@ export default ImageComponent;
 
 const styles = StyleSheet.create({
   container: {
-    width: FWidth * 100,
-    height: FWidth * 100,
-    backgroundColor: 'gray',
+    width: FHeight * 100,
+    height: FHeight * 100,
+    backgroundColor: 'red',
     borderRadius: 12,
     overflow: 'hidden',
   },
 
   imageStyle: {
-    width: FWidth * 100,
-    height: FWidth * 100,
+    width: FHeight * 100,
+    height: FHeight * 100,
     objectFit: 'cover',
   },
 });

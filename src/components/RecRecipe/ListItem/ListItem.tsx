@@ -28,15 +28,11 @@ const ListItem = ({item}: ListItemProps) => {
     <View style={styles.mainItemContainer}>
       <ImageComponent />
       <View style={styles.itemTextContainer}>
-        <View>
-          <View style={styles.itemTitleAndLikeContainer}>
-            <Text style={[fontStyles.B_16, {color: colors.text}]}>
-              {item.title}
-            </Text>
-            <LikeButton isLike={isLike} setIsLike={setIsLike} />
-          </View>
-          <ViewAndLike like={item.likes} favorites={item.favorites} />
+        <View style={styles.itemTitleAndLikeContainer}>
+          <Text style={[fontStyles.B_16, styles.textColor]}>{item.title}</Text>
+          <LikeButton isLike={isLike} setIsLike={setIsLike} />
         </View>
+        <ViewAndLike like={item.likes} favorites={item.favorites} />
         <BottomText ingredients={item.ingredients} />
       </View>
     </View>
@@ -64,6 +60,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    marginBottom: FWidth * 4,
+    marginBottom: FWidth * 2,
+  },
+
+  textColor: {
+    color: colors.text,
   },
 });
