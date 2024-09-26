@@ -72,99 +72,99 @@ export const fontStyles = {
   B_26: {
     fontFamily: fontFamilies.pretendardBold,
     fontSize: FWidth * 26,
-    lineHeight: FHeight * 36,
+    lineHeight: FWidth * 36,
     letterSpacing: FWidth * -0.2,
   },
 
   B_24: {
     fontFamily: fontFamilies.pretendardBold,
     fontSize: FWidth * 24,
-    lineHeight: FHeight * 34,
+    lineHeight: FWidth * 34,
     letterSpacing: FWidth * -0.2,
   },
 
   B_22: {
     fontFamily: fontFamilies.pretendardBold,
     fontSize: FWidth * 22,
-    lineHeight: FHeight * 32,
+    lineHeight: FWidth * 32,
     letterSpacing: FWidth * -0.2,
   },
 
   B_20: {
     fontFamily: fontFamilies.pretendardBold,
     fontSize: FWidth * 20,
-    lineHeight: FHeight * 28,
+    // lineHeight: FWidth * 28,
     letterSpacing: FWidth * -0.2,
   },
 
   M_20: {
     fontFamily: fontFamilies.pretendardMedium,
     fontSize: FWidth * 20,
-    lineHeight: FHeight * 28,
+    lineHeight: FWidth * 28,
     letterSpacing: FWidth * -0.2,
   },
 
   B_18: {
     fontFamily: fontFamilies.pretendardBold,
     fontSize: FWidth * 18,
-    lineHeight: FHeight * 28,
+    // lineHeight: FWidth * 28,
     letterSpacing: FWidth * -0.2,
   },
 
   M_18: {
     fontFamily: fontFamilies.pretendardMedium,
     fontSize: FWidth * 18,
-    lineHeight: FHeight * 28,
+    // lineHeight: FWidth * 28,
     letterSpacing: FWidth * -0.2,
   },
 
   B_16: {
     fontFamily: fontFamilies.pretendardBold,
     fontSize: FWidth * 16,
-    lineHeight: FHeight * 22,
+    // lineHeight: FWidth * 24,
     letterSpacing: FWidth * -0.1,
   },
   M_16: {
     fontFamily: fontFamilies.pretendardMedium,
     fontSize: FWidth * 16,
-    lineHeight: FHeight * 22,
+    // lineHeight: FWidth * 24,
     letterSpacing: FWidth * -0.1,
   },
   R_16: {
     fontFamily: fontFamilies.pretendardRegular,
     fontSize: FWidth * 16,
-    lineHeight: FHeight * 22,
+    lineHeight: FWidth * 24,
     letterSpacing: FWidth * -0.1,
   },
   B_14: {
     fontFamily: fontFamilies.pretendardBold,
     fontSize: FWidth * 14,
-    lineHeight: FHeight * 20,
+    // lineHeight: FWidth * 20,
     letterSpacing: FWidth * -0.1,
   },
   M_14: {
     fontFamily: fontFamilies.pretendardMedium,
     fontSize: FWidth * 14,
-    lineHeight: FHeight * 20,
+    // lineHeight: FWidth * 20,
     letterSpacing: FWidth * -0.1,
   },
   R_14: {
     fontFamily: fontFamilies.pretendardRegular,
     fontSize: FWidth * 14,
-    lineHeight: FHeight * 20,
+    lineHeight: FWidth * 20,
     letterSpacing: FWidth * -0.1,
   },
   B_12: {
     fontFamily: fontFamilies.pretendardBold,
     fontSize: FWidth * 12,
-    lineHeight: FHeight * 18,
+    // lineHeight: FWidth * 18,
     letterSpacing: 0,
   },
 
   M_12: {
     fontFamily: fontFamilies.pretendardMedium,
     fontSize: FWidth * 12,
-    lineHeight: FHeight * 18,
+    // lineHeight: FHeight * 18,
     letterSpacing: 0,
   },
   R_12: {
@@ -177,7 +177,7 @@ export const fontStyles = {
   B_10: {
     fontFamily: fontFamilies.pretendardBold,
     fontSize: FWidth * 10,
-    lineHeight: FHeight * 18,
+    // lineHeight: FHeight * 18,
     letterSpacing: 0,
   },
   M_10: {

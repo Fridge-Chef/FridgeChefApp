@@ -26,7 +26,7 @@ const ListItem = ({item}: ListItemProps) => {
 
   return (
     <View style={styles.mainItemContainer}>
-      <ImageComponent imgStyle="main" url="" alt="메인 리스트" />
+      <ImageComponent imgStyle="main" uri="" alt="메인 리스트" />
       <View style={styles.itemTextContainer}>
         <View style={styles.itemTitleAndLikeContainer}>
           <Text style={[fontStyles.B_16, styles.textColor]} numberOfLines={2}>
@@ -47,6 +47,7 @@ const styles = StyleSheet.create({
   mainItemContainer: {
     padding: FWidth * 14,
     flexDirection: 'row',
+    alignItems: 'flex-start',
     borderColor: colors.border,
     borderWidth: 1,
     borderRadius: 14,
@@ -62,7 +63,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'flex-start',
     justifyContent: 'space-between',
-    // marginBottom: FWidth * 2,
+    marginBottom: FWidth * 2,
   },
 
   textColor: {

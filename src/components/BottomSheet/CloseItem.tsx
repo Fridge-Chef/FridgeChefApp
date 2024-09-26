@@ -12,7 +12,9 @@ type CloseItemProps = {
 const CloseItem = ({name, onPress}: CloseItemProps) => {
   return (
     <View style={styles.container}>
-      <Text style={[fontStyles.M_16, styles.textColor]}>{name}</Text>
+      <View style={styles.textLine}>
+        <Text style={[fontStyles.M_16, styles.textColor]}>{name}</Text>
+      </View>
       <FButton buttonStyle="noneStyle" onPress={onPress}>
         <Close2 />
       </FButton>
@@ -34,8 +36,15 @@ const styles = StyleSheet.create({
     marginTop: FWidth * 10,
   },
 
+  textLine: {
+    height: FWidth * 24,
+    justifyContent: 'center',
+  },
+
   textColor: {
     color: colors.black,
     marginRight: FWidth * 4,
+    includeFontPadding: false,
+    alignItems: 'center',
   },
 });

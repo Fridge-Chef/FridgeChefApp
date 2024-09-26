@@ -43,7 +43,7 @@ const CondimentList = () => {
       <View
         style={[
           styles.listContainer,
-          {maxHeight: containerOpen ? null : buttonHeight * 2 + FHeight * 12},
+          {maxHeight: containerOpen ? null : buttonHeight},
         ]}>
         <View style={[styles.listContainerMargin]} onLayout={onLayoutContent}>
           {ingredients.map(item => (
@@ -55,13 +55,15 @@ const CondimentList = () => {
               borderWidth={0}
               buttonColor={colors.background}
               radius={50}>
-              <Text style={[fontStyles.B_14, styles.textColor]}>
-                {item.name}
-              </Text>
+              <View style={styles.textLine}>
+                <Text style={[fontStyles.B_14, styles.textColor]}>
+                  {item.name}
+                </Text>
+              </View>
             </FButton>
           ))}
         </View>
-        {contentHeight > buttonHeight * 3 + FHeight * 12 && (
+        {contentHeight > buttonHeight * 2 + FHeight * 12 && (
           <MoreButtonComponent
             buttonHeight={buttonHeight}
             containerOpen={containerOpen}
@@ -82,7 +84,11 @@ const CondimentList = () => {
             alignItems: 'center',
           }}>
           <SvgImage type="smallPlus" width={15} height={15} />
-          <Text style={[fontStyles.M_14, styles.textStyle]}>{buttonName}</Text>
+          <View style={styles.textLine}>
+            <Text style={[fontStyles.M_14, styles.textStyle]}>
+              {buttonName}
+            </Text>
+          </View>
         </View>
       </FButton>
     </View>
@@ -118,10 +124,17 @@ const styles = StyleSheet.create({
 
   textColor: {
     color: colors.text,
+    includeFontPadding: false,
+  },
+
+  textLine: {
+    height: FWidth * 20,
+    justifyContent: 'center',
   },
 
   textStyle: {
     color: colors.text,
     marginLeft: FWidth * 4,
+    includeFontPadding: false,
   },
 });

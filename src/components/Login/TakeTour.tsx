@@ -23,9 +23,11 @@ const TakeTour = ({navigation}: TakeTourProps) => {
         buttonColor={colors.text}
         paddingVertical={FHeight * 14}
         onPress={() => navigation.navigate('bottomTab')}>
-        <Text style={[fontStyles.M_18, styles.textColor]}>
-          오늘은 그냥 둘러볼게요
-        </Text>
+        <View style={styles.textLine}>
+          <Text style={[fontStyles.M_18, styles.textColor]}>
+            오늘은 그냥 둘러볼게요
+          </Text>
+        </View>
       </FButton>
     </View>
   );
@@ -38,7 +40,14 @@ const styles = StyleSheet.create({
     marginTop: FWidth * 32,
   },
 
+  textLine: {
+    height: FWidth * 28,
+    justifyContent: 'center',
+  },
+
   textColor: {
     color: colors.white,
+    includeFontPadding: false,
+    alignItems: 'center',
   },
 });

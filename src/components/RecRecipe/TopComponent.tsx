@@ -77,18 +77,22 @@ const TopComponent = () => {
                         },
                       ]}
                       onLayout={onLayout}>
-                      <Text
-                        style={[
-                          fontStyles.M_14,
-                          {
-                            color:
-                              onClicked === ingredient.ingredient_id
-                                ? colors.white
-                                : colors.black,
-                          },
-                        ]}>
-                        {ingredient.ingredient}
-                      </Text>
+                      <View style={styles.textLine}>
+                        <Text
+                          style={[
+                            fontStyles.M_14,
+                            {
+                              color:
+                                onClicked === ingredient.ingredient_id
+                                  ? colors.white
+                                  : colors.black,
+                              includeFontPadding: false,
+                              alignItems: 'center',
+                            },
+                          ]}>
+                          {ingredient.ingredient}
+                        </Text>
+                      </View>
                     </View>
                   </FButton>
                 ))}
@@ -136,5 +140,10 @@ const styles = StyleSheet.create({
     borderRadius: 50,
     marginTop: FWidth * 10,
     marginRight: FWidth * 8,
+  },
+
+  textLine: {
+    height: FWidth * 20,
+    justifyContent: 'center',
   },
 });

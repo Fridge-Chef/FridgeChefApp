@@ -12,12 +12,16 @@ type NoContentProps = {
 const NoContent = ({title, buttonTitle, onPress}: NoContentProps) => {
   return (
     <View style={styles.container}>
-      <Text style={[fontStyles.M_18, styles.textColor]}>{title}</Text>
+      <View style={styles.textLine}>
+        <Text style={[fontStyles.M_18, styles.textColor]}>{title}</Text>
+      </View>
       {buttonTitle && (
         <FButton buttonStyle="addButton" onPress={onPress}>
-          <Text style={[fontStyles.B_16, styles.textColor2]}>
-            {buttonTitle}
-          </Text>
+          <View style={styles.textLine2}>
+            <Text style={[fontStyles.B_16, styles.textColor2]}>
+              {buttonTitle}
+            </Text>
+          </View>
         </FButton>
       )}
     </View>
@@ -32,11 +36,25 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
 
+  textLine: {
+    height: FWidth * 28,
+    justifyContent: 'center',
+  },
+
+  textLine2: {
+    height: FWidth * 24,
+    justifyContent: 'center',
+  },
+
   textColor: {
     color: colors.b400,
+    includeFontPadding: false,
+    alignItems: 'center',
   },
 
   textColor2: {
     color: colors.text,
+    includeFontPadding: false,
+    alignItems: 'center',
   },
 });

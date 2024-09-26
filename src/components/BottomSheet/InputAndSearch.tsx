@@ -52,9 +52,11 @@ const InputAndSearch = ({itemList, setItemList}: InputAndSearchProps) => {
                 setAddTitle('');
                 addItemToList(item.name);
               }}>
-              <Text style={[fontStyles.M_16, styles.textColor]}>
-                {item.name}
-              </Text>
+              <View style={styles.textLine}>
+                <Text style={[fontStyles.M_16, styles.textColor]}>
+                  {item.name}
+                </Text>
+              </View>
             </FButton>
           ))}
         </View>
@@ -80,7 +82,14 @@ const styles = StyleSheet.create({
     zIndex: 999,
   },
 
+  textLine: {
+    height: FWidth * 24,
+    justifyContent: 'center',
+  },
+
   textColor: {
     color: colors.text,
+    includeFontPadding: false,
+    alignItems: 'center',
   },
 });

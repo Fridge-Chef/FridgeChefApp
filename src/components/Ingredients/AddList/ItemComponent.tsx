@@ -10,6 +10,9 @@ import {
   useIngredientTitle,
 } from '../../../store/store';
 import DDayText from './DDayText';
+import Close from '../../../utils/Svg/Close';
+import Close2 from '../../../utils/Svg/Close2';
+import Close3 from '../../../utils/Svg/Close3';
 
 type ItemComponentProps = {
   itemList: {
@@ -58,9 +61,11 @@ const ItemComponent = ({itemList}: ItemComponentProps) => {
   return (
     <>
       <View style={styles.itemContainer}>
-        <Text style={[fontStyles.B_16, {color: colors.text}]}>
-          {itemList.name}
-        </Text>
+        <View style={styles.textLine}>
+          <Text style={[fontStyles.B_16, styles.textColor]}>
+            {itemList.name}
+          </Text>
+        </View>
         <View style={styles.iconAndTextContainer}>
           {itemList.expiry_date && <DDayText day={date()} />}
           <View style={{marginHorizontal: FWidth * 12}}>
@@ -74,7 +79,7 @@ const ItemComponent = ({itemList}: ItemComponentProps) => {
             </FButton>
           </View>
           <FButton buttonStyle="noneStyle">
-            <SvgImage type="close" width={24} height={24} />
+            <Close3 />
           </FButton>
         </View>
       </View>
@@ -99,5 +104,16 @@ const styles = StyleSheet.create({
     paddingRight: 16,
     borderRadius: 14,
     backgroundColor: colors.background,
+  },
+
+  textLine: {
+    height: FWidth * 24,
+    justifyContent: 'center',
+  },
+
+  textColor: {
+    color: colors.text,
+    includeFontPadding: false,
+    alignItems: 'center',
   },
 });

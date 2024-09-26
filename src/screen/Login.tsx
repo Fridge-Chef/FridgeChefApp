@@ -28,16 +28,20 @@ export default Login;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: FHeight * 56,
+    paddingTop: FWidth * 56,
     paddingHorizontal: FWidth * 34,
     backgroundColor: colors.white,
   },
   textContainer: {
-    marginTop: FHeight * 72,
+    height: FWidth * 24,
+    marginTop: FWidth * 72,
     alignItems: 'center',
+    justifyContent: 'center',
   },
 
   textColor: {
     color: colors.b400,
+    alignItems: 'center',
+    includeFontPadding: false,
   },
 });

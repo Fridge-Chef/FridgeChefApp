@@ -9,13 +9,19 @@ type NameComponentProps = {
 const NameComponent = ({focused, name}: NameComponentProps) => {
   return (
     <View style={styles.container}>
-      <Text
-        style={[
-          fontStyles.B_12,
-          {color: focused ? colors.text : colors.disabled},
-        ]}>
-        {name}
-      </Text>
+      <View style={styles.textLine}>
+        <Text
+          style={[
+            fontStyles.B_12,
+            {
+              color: focused ? colors.text : colors.disabled,
+              includeFontPadding: false,
+              alignItems: 'center',
+            },
+          ]}>
+          {name}
+        </Text>
+      </View>
     </View>
   );
 };
@@ -27,5 +33,10 @@ const styles = StyleSheet.create({
     marginTop: FWidth * 4,
     paddingVertical: FWidth * 2,
     paddingHorizontal: FWidth * 8,
+  },
+
+  textLine: {
+    height: FWidth * 18,
+    justifyContent: 'center',
   },
 });

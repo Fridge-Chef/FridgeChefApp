@@ -3,15 +3,15 @@ import React from 'react';
 import {colors, FHeight, FWidth} from '../../../globalStyle';
 
 type ImageComponentProps = {
-  imgStyle: 'main' | 'detail' | 'sub';
-  url: string;
+  imgStyle: 'main' | 'detail' | 'sub' | 'myPage';
+  uri: string;
   resizeMode?: 'center' | 'contain' | 'cover' | 'repeat' | 'stretch';
   alt?: string;
 };
 
 const ImageComponent = ({
   imgStyle,
-  url,
+  uri,
   resizeMode,
   alt,
 }: ImageComponentProps) => {
@@ -19,11 +19,12 @@ const ImageComponent = ({
     main: styles.mainImage,
     detail: styles.detailImage,
     sub: styles.subImage,
+    myPage: styles.myPageUser,
   };
 
   return (
     <Image
-      source={url ? {url} : require('../../assets/images/textImage.jpg')}
+      source={uri ? {uri} : require('../../assets/images/textImage.jpg')}
       style={imgStyleList[imgStyle]}
       resizeMode={resizeMode}
       alt={alt}
@@ -51,5 +52,11 @@ const styles = StyleSheet.create({
     width: FHeight * 60,
     height: FHeight * 60,
     borderRadius: 8,
+  },
+
+  myPageUser: {
+    width: 48,
+    height: 48,
+    borderRadius: 50,
   },
 });

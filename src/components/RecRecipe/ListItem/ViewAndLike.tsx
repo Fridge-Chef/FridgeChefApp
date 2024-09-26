@@ -3,7 +3,7 @@ import React from 'react';
 import {colors, fontStyles, FWidth} from '../../../../globalStyle';
 import Heart from '../../../utils/Svg/Heart';
 import Star2 from '../../../utils/Svg/Star2';
-import {useTopTabBarName} from '../../../store/store';
+import {useTopTabBar} from '../../../store/store';
 import LikeIcon from '../../../utils/Svg/LikeIcon';
 
 type ViewAndLikeProps = {
@@ -13,45 +13,30 @@ type ViewAndLikeProps = {
 };
 
 const ViewAndLike = ({like, favorites, myLike}: ViewAndLikeProps) => {
-  const {tabBarName} = useTopTabBarName();
+  const {tabBarName} = useTopTabBar();
 
   return (
     <View style={styles.container}>
       {tabBarName === '레시피 후기' ? (
         <View style={styles.textAndIconContainer}>
           <LikeIcon />
-          <Text
-            style={[
-              fontStyles.B_12,
-              {
-                color: colors.b500,
-                marginLeft: FWidth * 4,
-              },
-            ]}>
-            {myLike}
-          </Text>
+          <View style={styles.textLine}>
+            <Text style={[fontStyles.B_12, styles.textColor]}>{myLike}</Text>
+          </View>
         </View>
       ) : (
         <>
           <View style={styles.textAndIconContainer}>
             <Star2 />
-            <Text
-              style={[
-                fontStyles.B_12,
-                {
-                  color: colors.b500,
-                  marginLeft: FWidth * 4,
-                },
-              ]}>
-              {favorites}
-            </Text>
+            <Text style={[fontStyles.B_12, styles.textColor]}>{favorites}</Text>
           </View>
           <View style={styles.textAndIconContainer}>
             <Heart />
             <Text
               style={[
                 fontStyles.B_12,
-                {color: colors.b500, marginLeft: FWidth * 2},
+                styles.textColor2,
+                {marginLeft: FWidth * 2},
               ]}>
               {like}
             </Text>
@@ -74,5 +59,21 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     marginRight: FWidth * 8,
+  },
+
+  textLine: {
+    height: FWidth * 18,
+    justifyContent: 'center',
+  },
+
+  textColor: {
+    color: colors.b500,
+    marginLeft: FWidth * 4,
+  },
+
+  textColor2: {
+    color: colors.b500,
+    includeFontPadding: false,
+    alignItems: 'center',
   },
 });

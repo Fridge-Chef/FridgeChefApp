@@ -22,7 +22,7 @@ const RecipeDetail = () => {
     <ScrollView style={styles.container} overScrollMode="never">
       <ImageComponent
         imgStyle="detail"
-        url=""
+        uri=""
         resizeMode="stretch"
         alt="디테일"
       />

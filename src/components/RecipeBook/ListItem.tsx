@@ -18,7 +18,7 @@ type ListItemProps = {
 const ListItem = ({item}: ListItemProps) => {
   return (
     <View style={styles.listContainer}>
-      <ImageComponent imgStyle="sub" url="" alt="레시피북" />
+      <ImageComponent imgStyle="sub" uri="" alt="레시피북" />
       <View style={[styles.textContainerAlign]}>
         <View style={[styles.titleContainer]}>
           <Text style={[fontStyles.B_16, styles.textColor]} numberOfLines={2}>
@@ -67,6 +67,7 @@ const styles = StyleSheet.create({
 
   textColor: {
     color: colors.text,
+    lineHeight: FWidth * 24,
     flexShrink: 1,
   },
 });

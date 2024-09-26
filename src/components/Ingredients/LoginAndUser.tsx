@@ -1,6 +1,6 @@
 import {StyleSheet, Text, View} from 'react-native';
 import React, {useState} from 'react';
-import {colors, FHeight, fontStyles, FWidth} from '../../../globalStyle';
+import {colors, fontStyles, FWidth} from '../../../globalStyle';
 import LoginIcon from '../../utils/Svg/LoginIcon';
 import Notification from '../../utils/Svg/Notification';
 
@@ -45,6 +45,7 @@ const styles = StyleSheet.create({
   },
 
   alignCenter: {
+    height: FWidth * 24,
     flexDirection: 'row',
     alignItems: 'center',
   },
@@ -59,5 +60,7 @@ const styles = StyleSheet.create({
   textColor: {
     color: colors.text,
     marginLeft: FWidth * 8,
+    alignItems: 'center',
+    includeFontPadding: false,
   },
 });

@@ -4,9 +4,9 @@ export const ingredients = [
   {id: 3, name: '간장류'},
   {id: 4, name: '고추장'},
   {id: 5, name: '식용유 종류'},
-  {id: 6, name: '식용유 종류'},
-  {id: 8, name: '식용유 종류'},
-  {id: 9, name: '식용유 종류'},
+  // {id: 6, name: '식용유 종류'},
+  // {id: 8, name: '식용유 종류'},
+  // {id: 9, name: '식용유 종류'},
   // {id: 7, name: '식용유 종류'},
   // {id: 10, name: '식용유 종류'},
   // {id: 11, name: '식용유 종류'},
@@ -213,4 +213,13 @@ export const detailContent = {
 export const reviewContent = {
   content: `냉장고에 닭가슴살이 남아서 유통기한 지나기 전에 빨리 해먹고 싶었는데 김치죽으로 요리할 수 있다
 냉장고에 닭가슴살이 남아서 유통기한 지나기 전에 빨리 해먹고 싶었는데 김치죽으로 요리할 수 있다..`,
+};
+
+export const userInfo = {
+  user: {
+    userName: '김민영',
+    email: 'asdasd@naver.com',
+    userImg: require('../assets/images/userImg.png'),
+    userRank: '마스터 셰프',
+  },
 };

@@ -32,12 +32,15 @@ const styles = StyleSheet.create({
   },
 
   textContainer: {
+    height: FWidth * 18,
     flexDirection: 'row',
     alignItems: 'center',
   },
 
   textColor: {
     color: colors.b500,
+    includeFontPadding: false,
+    alignItems: 'center',
   },
 
   textColor2: {

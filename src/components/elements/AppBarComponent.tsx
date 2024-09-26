@@ -38,7 +38,9 @@ const AppBarComponent = ({
         />
       </FButton>
       {titleOn && (
-        <Text style={[fontStyles.B_18, {color: colors.b900}]}>{title}</Text>
+        <View style={styles.textLine}>
+          <Text style={[fontStyles.B_18, styles.textColor]}>{title}</Text>
+        </View>
       )}
       {rightOn && rightTitleOn ? (
         <View style={{display: rightOn ? 'flex' : 'none'}}>
@@ -104,6 +106,17 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: colors.white,
     borderColor: colors.b200,
+  },
+
+  textLine: {
+    height: FWidth * 28,
+    justifyContent: 'center',
+  },
+
+  textColor: {
+    color: colors.b900,
+    includeFontPadding: false,
+    alignItems: 'center',
   },
 
   rightIconContainer: {

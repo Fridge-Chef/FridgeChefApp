@@ -5,6 +5,7 @@ import GoogleLogo from '../../utils/Svg/GoogleLogo';
 import {ParamListBase, useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import FButton from '../elements/FButton';
+import LoginButtonTitle from './LoginButtonTitle';
 
 type GoogleLoginProps = {
   navigation: NativeStackNavigationProp<ParamListBase>;
@@ -19,7 +20,7 @@ const GoogleLogin = ({navigation}: GoogleLoginProps) => {
       buttonColor={colors.white}
       onPress={() => navigation.replace('bottomTab')}>
       <GoogleLogo />
-      <Text style={[fontStyles.B_18, styles.textColor]}>구글 로그인</Text>
+      <LoginButtonTitle title="구글 로그인" />
       <View style={styles.hideIcon}>
         <GoogleLogo />
       </View>
@@ -30,11 +31,6 @@ const GoogleLogin = ({navigation}: GoogleLoginProps) => {
 export default GoogleLogin;
 
 const styles = StyleSheet.create({
-  textColor: {
-    color: colors.text,
-    marginLeft: FWidth * 6,
-  },
-
   hideIcon: {
     opacity: 0,
   },

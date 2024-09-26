@@ -5,6 +5,7 @@ import KakaoLogo from '../../utils/Svg/KakaoLogo';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {ParamListBase} from '@react-navigation/native';
 import FButton from '../elements/FButton';
+import LoginButtonTitle from './LoginButtonTitle';
 
 type KakaoLoginProps = {
   navigation: NativeStackNavigationProp<ParamListBase>;
@@ -19,9 +20,7 @@ const KakaoLogin = ({navigation}: KakaoLoginProps) => {
       marginBottom={16}
       onPress={() => navigation.replace('bottomTab')}>
       <KakaoLogo />
-      <Text style={[fontStyles.B_18, styles.textColor]}>
-        카카오톡 간편 로그인
-      </Text>
+      <LoginButtonTitle title="카카오톡 간편 로그인" />
       <View style={styles.hideIcon}>
         <KakaoLogo />
       </View>
@@ -32,11 +31,6 @@ const KakaoLogin = ({navigation}: KakaoLoginProps) => {
 export default KakaoLogin;
 
 const styles = StyleSheet.create({
-  textColor: {
-    color: colors.text,
-    marginLeft: FWidth * 6,
-  },
-
   hideIcon: {
     opacity: 0,
   },

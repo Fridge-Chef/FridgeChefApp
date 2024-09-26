@@ -1,10 +1,10 @@
 import {StyleSheet, Text, View} from 'react-native';
 import React, {useState} from 'react';
-import {colors, FHeight, fontStyles, FWidth} from '../../../globalStyle';
+import {colors, fontStyles, FWidth} from '../../../globalStyle';
 import FButton from '../elements/FButton';
 import {useBottomSheetRef, useBottomSheetTitle} from '../../store/store';
 import SvgImage from '../elements/SvgImage';
-import LoginAndUser from './LoginAndUser';
+
 const TopComponent = () => {
   const {bottomSheetRef} = useBottomSheetRef();
   const [buttonName] = useState('재료 추가');

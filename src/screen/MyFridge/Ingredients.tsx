@@ -42,9 +42,11 @@ const Ingredients = () => {
           buttonStyle="bigButton"
           buttonColor={colors.primary[1]}
           onPress={handleSearch}>
-          <Text style={[fontStyles.B_18, styles.textColor]}>
-            이 재료로 레시피 검색
-          </Text>
+          <View style={styles.textLine}>
+            <Text style={[fontStyles.B_18, styles.textColor]}>
+              이 재료로 레시피 검색
+            </Text>
+          </View>
         </FButton>
       </View>
     </View>
@@ -66,7 +68,14 @@ const styles = StyleSheet.create({
     marginBottom: FHeight * 38,
   },
 
+  textLine: {
+    height: FWidth * 28,
+    justifyContent: 'center',
+  },
+
   textColor: {
     color: colors.white,
+    includeFontPadding: false,
+    alignItems: 'center',
   },
 });
