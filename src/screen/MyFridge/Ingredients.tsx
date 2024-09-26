@@ -56,7 +56,7 @@ export default Ingredients;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'white',
+    backgroundColor: colors.white,
   },
   buttonContainer: {
     paddingHorizontal: FWidth * 22,

@@ -29,6 +29,11 @@ type LoadingType = {
   setLoading: (loading: boolean) => void;
 };
 
+type TopTabBarNameType = {
+  tabBarName: string;
+  setTabBarName: (tabBarName: string) => void;
+};
+
 export const useBottomSheetRef = create<BottomSheetRefType>(set => ({
   bottomSheetRef: {current: null},
   setBottomSheetRef: ref => set({bottomSheetRef: ref}),
@@ -54,4 +59,9 @@ export const useLoading = create<LoadingType>(set => ({
   setLoadingTitle: (loadingTitle: string) => set({loadingTitle}),
   loading: false,
   setLoading: (loading: boolean) => set({loading}),
+}));
+
+export const useTopTabBarName = create<TopTabBarNameType>(set => ({
+  tabBarName: '',
+  setTabBarName: (tabBarName: string) => set({tabBarName}),
 }));

@@ -14,7 +14,7 @@ const MainStackScreen = () => {
         navigationBarColor: colors.white,
         statusBarColor: colors.white,
         statusBarStyle: 'dark',
-        contentStyle: {backgroundColor: 'white'},
+        contentStyle: {backgroundColor: colors.white},
       }}>
       <Stack.Screen
         name="bottomTab"

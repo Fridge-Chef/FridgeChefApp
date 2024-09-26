@@ -7,7 +7,7 @@ type SubTitleBSProps = {
 };
 
 const SubTitleBS = ({title}: SubTitleBSProps) => {
-  return <Text style={[fontStyles.M_14, styles.textColor]}>{title}</Text>;
+  return <Text style={[fontStyles.B_14, styles.textColor]}>{title}</Text>;
 };
 
 export default SubTitleBS;

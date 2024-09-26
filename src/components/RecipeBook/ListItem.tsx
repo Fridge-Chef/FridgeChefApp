@@ -6,7 +6,13 @@ import ViewAndLike from '../RecRecipe/ListItem/ViewAndLike';
 import {colors, fontStyles, FWidth} from '../../../globalStyle';
 
 type ListItemProps = {
-  item: string;
+  item: {
+    title: string;
+    likes: number;
+    favorites: number;
+    myLike: number;
+    ingredients: string[];
+  };
 };
 
 const ListItem = ({item}: ListItemProps) => {
@@ -16,12 +22,16 @@ const ListItem = ({item}: ListItemProps) => {
       <View style={[styles.textContainerAlign]}>
         <View style={[styles.titleContainer]}>
           <Text style={[fontStyles.B_16, styles.textColor]} numberOfLines={2}>
-            {item}
+            {item.title}
           </Text>
           <Close />
         </View>
         <View style={styles.bottomTextContainer}>
-          <ViewAndLike favorites={30} like={10} />
+          <ViewAndLike
+            favorites={item.favorites}
+            like={item.likes}
+            myLike={item.myLike}
+          />
         </View>
       </View>
     </View>

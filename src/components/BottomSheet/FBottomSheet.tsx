@@ -5,7 +5,7 @@ import BottomSheet, {
   BottomSheetScrollView,
 } from '@gorhom/bottom-sheet';
 import {useBottomSheetRef, useBottomSheetTitle} from '../../store/store';
-import {FWidth} from '../../../globalStyle';
+import {colors, FWidth} from '../../../globalStyle';
 import AddIngredient from './AddIngredient/AddIngredient';
 import ExpiryDate from './ExpiryDate/ExpiryDate';
 import AddCondiment from './AddCondiment/AddCondiment';
@@ -14,7 +14,7 @@ import IngredientList from './IngredientList/IngredientList';
 const FBottomSheet = () => {
   const {title} = useBottomSheetTitle();
   const snapPoints = useMemo(() => {
-    return ['100%'];
+    return ['99.5%'];
   }, []);
   const {setBottomSheetRef} = useBottomSheetRef();
   const bottomRef = useRef<BottomSheet>(null);
@@ -62,7 +62,7 @@ const FBottomSheet = () => {
       enableContentPanningGesture={true}
       backdropComponent={renderBackdrop}
       backgroundStyle={{
-        backgroundColor: 'white',
+        backgroundColor: colors.white,
       }}
       index={-1}
       style={[styles.contentContainer]}>

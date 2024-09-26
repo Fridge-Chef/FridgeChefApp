@@ -27,7 +27,11 @@ const AddIngredient = () => {
       <View style={styles.contentContainer}>
         <TopTitle title="재료 등록하기" />
         <InputAndSearch itemList={IngredientList} setItemList={setItemList} />
-        <ItemList itemList={itemList} setItemList={setItemList} title="재료" />
+        <ItemList
+          itemList={itemList}
+          setItemList={setItemList}
+          title="등록된 재료들"
+        />
       </View>
       <BottomButton
         title="재료 등록하기"

@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
   background: {
     width: '100%',
     height: Dimensions.get('screen').height - statusBarHeight!,
-    backgroundColor: 'white',
+    backgroundColor: colors.white,
     // opacity: 0.6,
     position: 'absolute',
     zIndex: 10,

@@ -1,9 +1,8 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import React from 'react';
-import {colors, FHeight, fontStyles, FWidth} from '../../../globalStyle';
-import FButton from '../elements/FButton';
-import SvgImage from '../elements/SvgImage';
+import {FWidth} from '../../../globalStyle';
 import CloseItem from './CloseItem';
+import SubTitleBS from './SubTitleBS';
 
 type ItemListProps = {
   itemList: string[];
@@ -20,9 +19,7 @@ const ItemList = ({itemList, setItemList, title}: ItemListProps) => {
     <View>
       {itemList.length > 0 && (
         <View style={styles.itemContainer}>
-          <Text style={[fontStyles.B_14, {color: colors.subText}]}>
-            {`등록된 ${title}들`}
-          </Text>
+          <SubTitleBS title={title} />
           <View style={styles.itemListContainer}>
             <View style={styles.itemSubContainer}>
               {itemList.map((item, index) => (

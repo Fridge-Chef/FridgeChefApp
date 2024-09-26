@@ -8,11 +8,12 @@ import MoreScreen from './MoreScreen';
 
 import NameComponent from './TebMenu/NameComponent';
 import IconComponent from './TebMenu/IconComponent';
+import {colors} from '../../../globalStyle';
 const BottomTab = () => {
   const Tab = createBottomTabNavigator();
   return (
     <Tab.Navigator
-      sceneContainerStyle={{backgroundColor: 'White'}}
+      sceneContainerStyle={{backgroundColor: colors.white}}
       screenOptions={({route}) => ({
         tabBarStyle: {
           height: 64,
@@ -29,7 +30,7 @@ const BottomTab = () => {
         headerShown: false,
         headerShadowVisible: false,
         headerBackgroundContainerStyle: {
-          backgroundColor: 'white',
+          backgroundColor: colors.white,
         },
       })}>
       <Tab.Screen name="나의 냉장고" component={MyFridgeScreen} />

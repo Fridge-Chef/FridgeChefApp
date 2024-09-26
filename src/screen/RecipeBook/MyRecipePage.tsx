@@ -1,7 +1,7 @@
 import {StyleSheet, Text, View} from 'react-native';
 import React, {useState} from 'react';
 import NoContent from '../../components/RecipeBook/NoContent';
-import {FWidth} from '../../../globalStyle';
+import {colors, FWidth} from '../../../globalStyle';
 import ListComponent from '../../components/RecipeBook/ListComponent';
 
 const MyRecipePage = () => {
@@ -20,12 +20,12 @@ const MyRecipePage = () => {
   );
 };
 
-export default MyRecipePage;
+export default React.memo(MyRecipePage);
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'white',
+    backgroundColor: colors.white,
     paddingTop: FWidth * 24,
     paddingHorizontal: FWidth * 22,
   },

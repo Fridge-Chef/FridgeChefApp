@@ -23,7 +23,7 @@ const ListComponent = () => {
           <FlatList
             data={list}
             keyExtractor={(_, index) => index.toString()}
-            renderItem={({item}) => <ListItem item={item.title} />}
+            renderItem={({item}) => <ListItem item={item} />}
           />
         </View>
       </View>

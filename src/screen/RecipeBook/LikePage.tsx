@@ -1,7 +1,7 @@
 import {StyleSheet, View} from 'react-native';
 import React, {useState} from 'react';
 import NoContent from '../../components/RecipeBook/NoContent';
-import {FWidth} from '../../../globalStyle';
+import {colors, FWidth} from '../../../globalStyle';
 import ListComponent from '../../components/RecipeBook/ListComponent';
 
 const LikePage = () => {
@@ -17,12 +17,12 @@ const LikePage = () => {
   );
 };
 
-export default LikePage;
+export default React.memo(LikePage);
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'white',
+    backgroundColor: colors.white,
     paddingTop: FWidth * 24,
     paddingHorizontal: FWidth * 22,
   },

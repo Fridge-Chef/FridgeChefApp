@@ -3,24 +3,28 @@
     "title": "닭가슴살 김치죽 죽죽죽 구ㅈ궂궂궂궂구죽ㅈ궂궂궂구",
     "likes": 4.5,
     "favorites": 20,
+    "myLike": 4,
     "ingredients": ["양파", "계란", "김치", "닭가슴살"]
   },
   {
     "title": "닭가슴살 샐러드",
     "likes": 3,
     "favorites": 12,
+    "myLike": 12,
     "ingredients": ["감자", "양파", "계란", "김치", "닭가슴살"]
   },
   {
     "title": "닭가슴살 볶음 라면",
     "likes": 5,
     "favorites": 6,
+    "myLike": 5,
     "ingredients": ["감자", "양파", "계란", "김치", "닭가슴살", "라면"]
   },
   {
     "title": "닭가슴살 볶음 라면",
     "likes": 5,
     "favorites": 6,
+    "myLike": 20,
     "ingredients": ["감자", "양파", "계란", "김치", "닭가슴살", "라면"]
   }
 ]

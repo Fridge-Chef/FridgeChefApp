@@ -67,7 +67,7 @@ type FButtonProps = {
 
 const FButton = ({
   buttonStyle,
-  buttonColor = 'white',
+  buttonColor = colors.white,
   radius = 12,
   borderWidth = 0,
   paddingVertical,
@@ -86,21 +86,12 @@ const FButton = ({
   onLayout,
   children,
 }: FButtonProps) => {
-  const buttonColorList: Record<string, string> = {
-    black: 'black',
-    white: 'white',
-    gray: '#F4F6FA',
-    red: 'red',
-    blue: 'blue',
-    green: 'green',
-  };
-
   const styleList = {
     noneStyle: styles.noneStyle,
     loginButton: [
       styles.login,
       {
-        backgroundColor: buttonColorList[buttonColor] || buttonColor,
+        backgroundColor: buttonColor,
         paddingVertical: paddingVertical,
         borderWidth: borderWidth,
         marginBottom: marginBottom,
@@ -109,14 +100,14 @@ const FButton = ({
     svgButton: [
       styles.svgIconButton,
       {
-        backgroundColor: buttonColorList[buttonColor] || buttonColor,
+        backgroundColor: buttonColor,
         borderRadius: radius,
       },
     ],
     iconButton: [
       styles.iconButton,
       {
-        backgroundColor: buttonColorList[buttonColor] || buttonColor,
+        backgroundColor: buttonColor,
         borderRadius: radius,
         borderWidth: borderWidth,
         marginTop: marginTop,
@@ -128,7 +119,7 @@ const FButton = ({
     iconButton2: [
       styles.iconButton2,
       {
-        backgroundColor: buttonColorList[buttonColor] || buttonColor,
+        backgroundColor: buttonColor,
         borderWidth: borderWidth,
         marginTop: marginTop,
         marginRight: marginRight,
@@ -138,7 +129,7 @@ const FButton = ({
     bigButton: [
       styles.bigButton,
       {
-        backgroundColor: buttonColorList[buttonColor] || buttonColor,
+        backgroundColor: buttonColor,
         marginBottom: marginBottom,
       },
     ],
@@ -146,7 +137,7 @@ const FButton = ({
     submit: [
       styles.submitButton,
       {
-        backgroundColor: buttonColorList[buttonColor] || buttonColor,
+        backgroundColor: buttonColor,
       },
     ],
     buyButton: [styles.buyButton],
