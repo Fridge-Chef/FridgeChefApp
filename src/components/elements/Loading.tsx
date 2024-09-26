@@ -25,9 +25,11 @@ const Loading = () => {
               style={{width: FWidth * 120, height: FHeight * 120}}
               autoPlay
             /> */}
-            <Text style={[fontStyles.R_16, styles.textStyle]}>
-              {loadingTitle}
-            </Text>
+            <View style={styles.textLine}>
+              <Text style={[fontStyles.R_16, styles.textStyle]}>
+                {loadingTitle}
+              </Text>
+            </View>
           </View>
         </View>
       )}
@@ -53,10 +55,17 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
 
+  textLine: {
+    marginTop: FWidth * 20,
+    height: FWidth * 24,
+    justifyContent: 'center',
+  },
+
   indicatorStyle: {},
 
   textStyle: {
     color: colors.text,
-    marginTop: FWidth * 20,
+    includeFontPadding: false,
+    alignItems: 'center',
   },
 });

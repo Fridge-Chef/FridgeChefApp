@@ -22,8 +22,10 @@ const TopComponent = () => {
   const [containerOpen, setContainerOpen] = useState(false);
   const [containerHeight, setContainerHeight] = useState(0);
   const {bottomSheetRef} = useBottomSheetRef();
-  const [onClicked, setOnClicked] = useState<false | number>(false);
   const {setTitle} = useBottomSheetTitle();
+
+  const [selectItems, setSelectItems] = useState<string[]>([]);
+  console.log(selectItems);
   const onLayout = (e: LayoutChangeEvent) => {
     if (itemHeight === 0) {
       setItemHeight(e.nativeEvent.layout.height);
@@ -37,6 +39,16 @@ const TopComponent = () => {
   const handleBottomSheetOpen = () => {
     setTitle('재료보기');
     bottomSheetRef.current?.expand();
+  };
+
+  const handleIngredientClick = (ingredient: RecipeList) => {
+    if (selectItems.includes(ingredient.ingredient)) {
+      setSelectItems(
+        selectItems.filter(item => item !== ingredient.ingredient),
+      );
+    } else {
+      setSelectItems([...selectItems, ingredient.ingredient]);
+    }
   };
 
   useEffect(() => {
@@ -65,15 +77,16 @@ const TopComponent = () => {
                   <FButton
                     buttonStyle="noneStyle"
                     key={ingredient.ingredient_id}
-                    onPress={() => setOnClicked(ingredient.ingredient_id)}>
+                    onPress={() => handleIngredientClick(ingredient)}>
                     <View
                       style={[
                         styles.listItem,
                         {
-                          backgroundColor:
-                            onClicked === ingredient.ingredient_id
-                              ? colors.primary[1]
-                              : colors.background,
+                          backgroundColor: selectItems.includes(
+                            ingredient.ingredient,
+                          )
+                            ? colors.primary[1]
+                            : colors.background,
                         },
                       ]}
                       onLayout={onLayout}>
@@ -82,10 +95,9 @@ const TopComponent = () => {
                           style={[
                             fontStyles.M_14,
                             {
-                              color:
-                                onClicked === ingredient.ingredient_id
-                                  ? colors.white
-                                  : colors.black,
+                              color: selectItems.includes(ingredient.ingredient)
+                                ? colors.white
+                                : colors.black,
                               includeFontPadding: false,
                               alignItems: 'center',
                             },
