@@ -4,12 +4,14 @@ import {colors, FHeight, FWidth} from '../../../../globalStyle';
 import SubTitleComponent from '../SubTitleComponent';
 import ContentComponent from './ContentComponent';
 import {detailContent} from '../../../utils/list';
+import UserRecipeMore from '../MoreUserRecipe/UserRecipeMore';
 
 const RecipeComponent = () => {
   return (
     <View style={styles.container}>
       <SubTitleComponent title="레시피" />
       <ContentComponent content={detailContent.content} />
+      <UserRecipeMore />
     </View>
   );
 };

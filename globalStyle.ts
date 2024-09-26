@@ -86,7 +86,7 @@ export const fontStyles = {
   B_22: {
     fontFamily: fontFamilies.pretendardBold,
     fontSize: FWidth * 22,
-    lineHeight: FWidth * 32,
+    // lineHeight: FWidth * 32,
     letterSpacing: FWidth * -0.2,
   },
 
@@ -151,7 +151,7 @@ export const fontStyles = {
   R_14: {
     fontFamily: fontFamilies.pretendardRegular,
     fontSize: FWidth * 14,
-    lineHeight: FWidth * 20,
+    // lineHeight: FWidth * 20,
     letterSpacing: FWidth * -0.1,
   },
   B_12: {
@@ -170,7 +170,7 @@ export const fontStyles = {
   R_12: {
     fontFamily: fontFamilies.pretendardRegular,
     fontSize: FWidth * 12,
-    lineHeight: FHeight * 18,
+    // lineHeight: FHeight * 18,
     letterSpacing: 0,
   },
 

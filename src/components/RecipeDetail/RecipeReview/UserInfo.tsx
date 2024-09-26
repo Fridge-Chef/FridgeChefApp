@@ -4,6 +4,7 @@ import {colors, fontStyles, FWidth} from '../../../../globalStyle';
 import SvgImage from '../../elements/SvgImage';
 import ReviewsComponent from './ReviewsComponent';
 import TotalPoint from './TotalPoint';
+import UserIcon2 from '../../../utils/Svg/UserIcon2';
 
 type UserInfoProps = {
   name: string;
@@ -13,8 +14,10 @@ type UserInfoProps = {
 const UserInfo = ({name, point}: UserInfoProps) => {
   return (
     <View style={styles.container}>
-      <SvgImage type="testIcon" width={16} height={16} />
-      <Text style={[fontStyles.M_14, styles.textColor]}>{name}님</Text>
+      <UserIcon2 />
+      <View style={styles.textLine}>
+        <Text style={[fontStyles.M_14, styles.textColor]}>{name}님</Text>
+      </View>
       <View style={styles.reviewPointContainer}>
         <TotalPoint point={point} />
       </View>
@@ -30,6 +33,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
 
+  textLine: {
+    marginLeft: FWidth * 4,
+    height: FWidth * 20,
+    justifyContent: 'center',
+  },
+
   reviewPointContainer: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -38,6 +47,7 @@ const styles = StyleSheet.create({
 
   textColor: {
     color: colors.text,
-    marginLeft: FWidth * 4,
+    includeFontPadding: false,
+    alignItems: 'center',
   },
 });

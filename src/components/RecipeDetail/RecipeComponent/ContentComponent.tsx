@@ -23,5 +23,6 @@ const styles = StyleSheet.create({
 
   textColor: {
     color: colors.black,
+    lineHeight: FWidth * 24,
   },
 });

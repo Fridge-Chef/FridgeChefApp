@@ -1,7 +1,6 @@
 import {ScrollView, StyleSheet} from 'react-native';
 import React from 'react';
 import {colors} from '../../../globalStyle';
-
 import {RouteProp, useRoute} from '@react-navigation/native';
 import TitleComponent from '../../components/RecipeDetail/TitleComponent/TitleComponent';
 import IngredientComponent from '../../components/RecipeDetail/IngredientComponent/IngredientComponent';
@@ -29,6 +28,7 @@ const RecipeDetail = () => {
       <TitleComponent title={route.params.title} />
       <IngredientComponent />
       <RecipeComponent />
+
       <RecipeReview />
     </ScrollView>
   );

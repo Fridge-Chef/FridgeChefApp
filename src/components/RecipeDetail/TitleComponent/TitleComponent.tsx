@@ -12,8 +12,10 @@ type TitleComponentProps = {
 const TitleComponent = ({title}: TitleComponentProps) => {
   return (
     <View style={styles.container}>
-      <Text style={[fontStyles.B_22, styles.textColor]}>{title}</Text>
-      <View style={{marginTop: FHeight * 8}}>
+      <View style={styles.textLine}>
+        <Text style={[fontStyles.B_22, styles.textColor]}>{title}</Text>
+      </View>
+      <View style={styles.textLine2}>
         <Text style={[fontStyles.B_14, styles.textColor]}>★ 4.5</Text>
       </View>
       <IngredientContainer title="보유재료" detailList={detailList} />
@@ -31,7 +33,20 @@ const styles = StyleSheet.create({
     backgroundColor: colors.white,
   },
 
+  textLine: {
+    height: FWidth * 32,
+    justifyContent: 'center',
+  },
+
+  textLine2: {
+    marginTop: FHeight * 8,
+    height: FWidth * 20,
+    justifyContent: 'center',
+  },
+
   textColor: {
     color: colors.text,
+    includeFontPadding: false,
+    alignItems: 'center',
   },
 });
