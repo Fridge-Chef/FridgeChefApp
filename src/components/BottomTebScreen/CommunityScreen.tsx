@@ -1,7 +1,7 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet} from 'react-native';
 import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import Test01 from '../../screen/Test01';
+import Community from '../../screen/Community/Community';
 
 const CommunityScreen = () => {
   const Stack = createNativeStackNavigator();
@@ -10,8 +10,8 @@ const CommunityScreen = () => {
       screenOptions={{
         headerShown: false,
       }}
-      initialRouteName="test01">
-      <Stack.Screen name="test01" component={Test01} />
+      initialRouteName="community">
+      <Stack.Screen name="community" component={Community} />
     </Stack.Navigator>
   );
 };
