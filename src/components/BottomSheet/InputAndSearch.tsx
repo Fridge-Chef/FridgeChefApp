@@ -4,6 +4,7 @@ import FButton from '../elements/FButton';
 import {colors, FHeight, fontStyles, FWidth} from '../../../globalStyle';
 import FInput from '../elements/FInput';
 import {useAddModalInputText} from '../../store/store';
+import FText from '../elements/FText';
 
 type InputAndSearchProps = {
   itemList: any;
@@ -52,11 +53,7 @@ const InputAndSearch = ({itemList, setItemList}: InputAndSearchProps) => {
                 setAddTitle('');
                 addItemToList(item.name);
               }}>
-              <View style={styles.textLine}>
-                <Text style={[fontStyles.M_16, styles.textColor]}>
-                  {item.name}
-                </Text>
-              </View>
+              <FText fStyle="M_16" color={colors.text} text={item.name} />
             </FButton>
           ))}
         </View>
@@ -80,16 +77,5 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     borderColor: colors.border,
     zIndex: 999,
-  },
-
-  textLine: {
-    height: FWidth * 24,
-    justifyContent: 'center',
-  },
-
-  textColor: {
-    color: colors.text,
-    includeFontPadding: false,
-    alignItems: 'center',
   },
 });

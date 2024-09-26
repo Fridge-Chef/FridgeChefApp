@@ -2,6 +2,7 @@ import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import {colors, FHeight, fontStyles, FWidth} from '../../../../globalStyle';
 import ItemsComponent from './ItemsComponent';
+import FText from '../../elements/FText';
 
 type IngredientContainerProps = {
   title: string;
@@ -13,9 +14,7 @@ type IngredientContainerProps = {
 const IngredientContainer = ({title, detailList}: IngredientContainerProps) => {
   return (
     <View style={styles.container}>
-      <View style={styles.textLine}>
-        <Text style={[fontStyles.R_14, styles.textColor]}>{title}</Text>
-      </View>
+      <FText fStyle="R_14" color={colors.subText} text={title} />
       <View style={styles.itemContainer}>
         <View style={styles.itemSubContainer}>
           <ItemsComponent list={detailList} />
@@ -30,17 +29,6 @@ export default IngredientContainer;
 const styles = StyleSheet.create({
   container: {
     marginTop: FWidth * 16,
-  },
-
-  textLine: {
-    height: FWidth * 20,
-    justifyContent: 'center',
-  },
-
-  textColor: {
-    color: colors.subText,
-    includeFontPadding: false,
-    alignItems: 'center',
   },
 
   itemContainer: {

@@ -11,6 +11,8 @@ import ImageComponent from '../../elements/ImageComponent';
 import ViewAndLike from './ViewAndLike';
 import LikeButton from './LikeButton';
 import BottomText from './BottomText';
+import FImage from '../../elements/FImage';
+import FText from '../../elements/FText';
 
 type ListItemProps = {
   item: {
@@ -26,12 +28,16 @@ const ListItem = ({item}: ListItemProps) => {
 
   return (
     <View style={styles.mainItemContainer}>
-      <ImageComponent imgStyle="main" uri="" alt="메인 리스트" />
+      <FImage imgStyle="main" uri="" alt="메인 리스트" />
       <View style={styles.itemTextContainer}>
         <View style={styles.itemTitleAndLikeContainer}>
-          <Text style={[fontStyles.B_16, styles.textColor]} numberOfLines={2}>
-            {item.title}
-          </Text>
+          <FText
+            nLine={2}
+            fStyle="B_16"
+            lineH={FWidth * 22.5}
+            color={colors.text}
+            text={item.title}
+          />
           <LikeButton isLike={isLike} setIsLike={setIsLike} />
         </View>
         <ViewAndLike like={item.likes} favorites={item.favorites} />
@@ -64,10 +70,5 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start',
     justifyContent: 'space-between',
     marginBottom: FWidth * 2,
-  },
-
-  textColor: {
-    color: colors.text,
-    flexShrink: 1,
   },
 });

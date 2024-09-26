@@ -5,6 +5,7 @@ import SvgImage from './SvgImage';
 import {colors, FHeight, fontStyles, FWidth} from '../../../globalStyle';
 import {useNavigation} from '@react-navigation/native';
 import {AppBarProps} from '../../type/types';
+import FText from './FText';
 
 const AppBarComponent = ({
   borderBottomWidth,
@@ -37,11 +38,7 @@ const AppBarComponent = ({
           fill={colors.white}
         />
       </FButton>
-      {titleOn && (
-        <View style={styles.textLine}>
-          <Text style={[fontStyles.B_18, styles.textColor]}>{title}</Text>
-        </View>
-      )}
+      {titleOn && <FText fStyle="B_18" color={colors.b900} text={title} />}
       {rightOn && rightTitleOn ? (
         <View style={{display: rightOn ? 'flex' : 'none'}}>
           <Text>{rightTitle}</Text>

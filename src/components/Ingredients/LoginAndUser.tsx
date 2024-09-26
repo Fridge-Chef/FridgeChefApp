@@ -3,6 +3,7 @@ import React, {useState} from 'react';
 import {colors, fontStyles, FWidth} from '../../../globalStyle';
 import LoginIcon from '../../utils/Svg/LoginIcon';
 import Notification from '../../utils/Svg/Notification';
+import FText from '../elements/FText';
 
 const LoginAndUser = () => {
   const [test] = useState(true);
@@ -11,18 +12,25 @@ const LoginAndUser = () => {
       {!test ? (
         <View style={styles.alignCenter}>
           <LoginIcon test={test} />
-          <Text style={[fontStyles.M_16, styles.textColor]}>로그인 하기</Text>
+          <FText
+            mLeft={FWidth * 8}
+            fStyle="M_16"
+            text="로그인 하기"
+            color={colors.text}
+          />
         </View>
       ) : (
         <View style={styles.userContainer}>
           <View style={styles.alignCenter}>
             <LoginIcon test={test} />
             <View style={styles.alignCenter}>
-              <Text style={[fontStyles.B_16, styles.textColor]}>김민영</Text>
-              <Text
-                style={[fontStyles.M_16, styles.textColor, {marginLeft: 0}]}>
-                님의 냉장고
-              </Text>
+              <FText
+                mLeft={FWidth * 8}
+                fStyle="B_16"
+                text="김민영"
+                color={colors.text}
+              />
+              <FText fStyle="M_16" color={colors.text} text="님의 냉장고" />
             </View>
           </View>
           <Notification />
@@ -45,7 +53,6 @@ const styles = StyleSheet.create({
   },
 
   alignCenter: {
-    height: FWidth * 24,
     flexDirection: 'row',
     alignItems: 'center',
   },
@@ -55,12 +62,5 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-  },
-
-  textColor: {
-    color: colors.text,
-    marginLeft: FWidth * 8,
-    alignItems: 'center',
-    includeFontPadding: false,
   },
 });

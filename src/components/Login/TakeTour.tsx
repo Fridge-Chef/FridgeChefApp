@@ -10,6 +10,7 @@ import {
 import FButton from '../elements/FButton';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {ParamListBase} from '@react-navigation/native';
+import FText from '../elements/FText';
 
 type TakeTourProps = {
   navigation: NativeStackNavigationProp<ParamListBase>;
@@ -23,11 +24,11 @@ const TakeTour = ({navigation}: TakeTourProps) => {
         buttonColor={colors.text}
         paddingVertical={FHeight * 14}
         onPress={() => navigation.navigate('bottomTab')}>
-        <View style={styles.textLine}>
-          <Text style={[fontStyles.M_18, styles.textColor]}>
-            오늘은 그냥 둘러볼게요
-          </Text>
-        </View>
+        <FText
+          fStyle="M_18"
+          color={colors.white}
+          text="오늘은 그냥 둘러볼게요"
+        />
       </FButton>
     </View>
   );
@@ -38,16 +39,5 @@ export default TakeTour;
 const styles = StyleSheet.create({
   container: {
     marginTop: FWidth * 32,
-  },
-
-  textLine: {
-    height: FWidth * 28,
-    justifyContent: 'center',
-  },
-
-  textColor: {
-    color: colors.white,
-    includeFontPadding: false,
-    alignItems: 'center',
   },
 });

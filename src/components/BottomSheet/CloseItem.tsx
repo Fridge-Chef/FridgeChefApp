@@ -3,6 +3,7 @@ import React from 'react';
 import Close2 from '../../utils/Svg/Close2';
 import {colors, fontStyles, FWidth} from '../../../globalStyle';
 import FButton from '../elements/FButton';
+import FText from '../elements/FText';
 
 type CloseItemProps = {
   name: string;
@@ -12,9 +13,12 @@ type CloseItemProps = {
 const CloseItem = ({name, onPress}: CloseItemProps) => {
   return (
     <View style={styles.container}>
-      <View style={styles.textLine}>
-        <Text style={[fontStyles.M_16, styles.textColor]}>{name}</Text>
-      </View>
+      <FText
+        mRight={FWidth * 4}
+        fStyle="M_16"
+        color={colors.black}
+        text={name}
+      />
       <FButton buttonStyle="noneStyle" onPress={onPress}>
         <Close2 />
       </FButton>
@@ -34,17 +38,5 @@ const styles = StyleSheet.create({
     backgroundColor: colors.background,
     marginRight: FWidth * 8,
     marginTop: FWidth * 10,
-  },
-
-  textLine: {
-    height: FWidth * 24,
-    justifyContent: 'center',
-  },
-
-  textColor: {
-    color: colors.black,
-    marginRight: FWidth * 4,
-    includeFontPadding: false,
-    alignItems: 'center',
   },
 });

@@ -1,30 +1,16 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet} from 'react-native';
 import React from 'react';
-import {colors, fontStyles, FWidth} from '../../../globalStyle';
+import {colors} from '../../../globalStyle';
+import FText from '../elements/FText';
 
 type SubTitleComponentProps = {
   title: string;
 };
 
 const SubTitleComponent = ({title}: SubTitleComponentProps) => {
-  return (
-    <View style={styles.textLine}>
-      <Text style={[fontStyles.B_18, styles.textColor]}>{title}</Text>
-    </View>
-  );
+  return <FText fStyle="B_18" color={colors.text} text={title} />;
 };
 
 export default SubTitleComponent;
 
-const styles = StyleSheet.create({
-  textLine: {
-    height: FWidth * 28,
-    justifyContent: 'center',
-  },
-
-  textColor: {
-    color: colors.text,
-    includeFontPadding: false,
-    alignItems: 'center',
-  },
-});
+const styles = StyleSheet.create({});

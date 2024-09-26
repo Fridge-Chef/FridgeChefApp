@@ -3,6 +3,7 @@ import React from 'react';
 import {colors, fontStyles, FWidth} from '../../../../globalStyle';
 import ImageComponent from '../../elements/ImageComponent';
 import ArrowRight from '../../../utils/Svg/ArrowRight';
+import FText from '../../elements/FText';
 
 const UserRecipeMore = () => {
   const {uri} = Image.resolveAssetSource(
@@ -14,17 +15,19 @@ const UserRecipeMore = () => {
       <ImageComponent uri={uri} imgStyle="myPage" alt="유저 이미지" />
       <View style={styles.textContainer}>
         <View style={styles.userContainer}>
-          <Text style={[fontStyles.B_16, styles.textColor]}>김민영님</Text>
-          <Text style={[fontStyles.M_16, styles.textColor]}>
-            이 작성한 레시피입니다
-          </Text>
+          <FText fStyle="B_16" color={colors.text} text="김민영님" />
+          <FText
+            fStyle="M_16"
+            color={colors.text}
+            text="이 작성한 레시피입니다"
+          />
         </View>
         <View style={styles.buttonContainer}>
-          <View style={styles.textLine}>
-            <Text style={[fontStyles.R_14, styles.textColor2]}>
-              다른 레시피 더보기
-            </Text>
-          </View>
+          <FText
+            fStyle="R_14"
+            color={colors.subText}
+            text="다른 레시피 더보기"
+          />
           <ArrowRight />
         </View>
       </View>
@@ -51,20 +54,7 @@ const styles = StyleSheet.create({
   },
 
   userContainer: {
-    height: FWidth * 24,
     flexDirection: 'row',
-    alignItems: 'center',
-  },
-
-  textColor: {
-    color: colors.text,
-    includeFontPadding: false,
-    alignItems: 'center',
-  },
-
-  textColor2: {
-    color: colors.subText,
-    includeFontPadding: false,
     alignItems: 'center',
   },
 
@@ -72,10 +62,5 @@ const styles = StyleSheet.create({
     marginTop: FWidth * 4,
     flexDirection: 'row',
     alignItems: 'center',
-  },
-
-  textLine: {
-    height: FWidth * 20,
-    justifyContent: 'center',
   },
 });

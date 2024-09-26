@@ -11,6 +11,7 @@ import {colors, fontStyles, FWidth} from '../../../globalStyle';
 import ImageComponent from '../elements/ImageComponent';
 import RankComponent from './RankComponent';
 import {userInfo} from '../../utils/list';
+import FText from '../elements/FText';
 
 type UserStatus = {
   user: {
@@ -24,29 +25,26 @@ type UserStatus = {
 const UserStatus = () => {
   const user: UserStatus = userInfo;
   const {uri} = Image.resolveAssetSource(user.user.userImg);
-  console.log(Dimensions.get('window').width);
-  const onLayout = (e: LayoutChangeEvent) => {
-    console.log('이건 유저', e.nativeEvent.layout.height);
-  };
 
   return (
-    <View style={styles.container} onLayout={onLayout}>
+    <View style={styles.container}>
       <View style={styles.userStatusContainer}>
         <ImageComponent uri={uri} imgStyle="myPage" alt="유저 이미지" />
         <View style={styles.userTextContainer}>
           <View style={styles.userNicknameContainer}>
-            <View style={styles.textLine}>
-              <Text style={[fontStyles.B_16, styles.textColor]}>
-                {user.user.userName}님
-              </Text>
-            </View>
+            <FText
+              fStyle="B_16"
+              color={colors.text}
+              text={`${user.user.userName}님`}
+            />
             <RankComponent rank={user.user.userRank} />
           </View>
-          <View style={styles.textLine2}>
-            <Text style={[fontStyles.R_14, styles.emailText]}>
-              {user.user.email}
-            </Text>
-          </View>
+          <FText
+            mTop={FWidth * 4}
+            fStyle="R_14"
+            color={colors.btnBG}
+            text={`${user.user.email}`}
+          />
         </View>
       </View>
     </View>
@@ -56,12 +54,6 @@ const UserStatus = () => {
 export default UserStatus;
 
 const styles = StyleSheet.create({
-  textColor: {
-    color: colors.text,
-    includeFontPadding: false,
-    alignItems: 'center',
-  },
-
   container: {
     marginTop: FWidth * 32,
   },
@@ -76,29 +68,12 @@ const styles = StyleSheet.create({
     borderColor: colors.disabled2,
   },
 
-  textLine: {
-    height: FWidth * 24,
-    justifyContent: 'center',
-  },
-
-  textLine2: {
-    marginTop: FWidth * 4,
-    height: FWidth * 20,
-    justifyContent: 'center',
-  },
-
   userTextContainer: {
     marginLeft: FWidth * 16,
   },
 
   userNicknameContainer: {
     flexDirection: 'row',
-    alignItems: 'center',
-  },
-
-  emailText: {
-    color: colors.btnBG,
-    includeFontPadding: false,
     alignItems: 'center',
   },
 });

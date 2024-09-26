@@ -1,13 +1,13 @@
-import {LayoutChangeEvent, StyleSheet, Text, View} from 'react-native';
+import {LayoutChangeEvent, StyleSheet, View} from 'react-native';
 import React, {useEffect, useState} from 'react';
-import {colors, FHeight, fontStyles, FWidth} from '../../../globalStyle';
+import {colors, FHeight, FWidth} from '../../../globalStyle';
 import FButton from '../elements/FButton';
 import {ingredients} from '../../utils/list';
 import SubTitleComponent from './SubTitleComponent';
-import SvgImage from '../elements/SvgImage';
 import {useBottomSheetRef, useBottomSheetTitle} from '../../store/store';
-import MoreList from '../../utils/Svg/MoreList';
 import MoreButtonComponent from './MoreButtonComponent';
+import FText from '../elements/FText';
+import Plus2 from '../../utils/Svg/Plus2';
 
 const CondimentList = () => {
   const [buttonHeight, setButtonHeight] = useState(0);
@@ -55,11 +55,7 @@ const CondimentList = () => {
               borderWidth={0}
               buttonColor={colors.background}
               radius={50}>
-              <View style={styles.textLine}>
-                <Text style={[fontStyles.B_14, styles.textColor]}>
-                  {item.name}
-                </Text>
-              </View>
+              <FText fStyle="B_14" color={colors.text} text={item.name} />
             </FButton>
           ))}
         </View>
@@ -83,12 +79,13 @@ const CondimentList = () => {
             flexDirection: 'row',
             alignItems: 'center',
           }}>
-          <SvgImage type="smallPlus" width={15} height={15} />
-          <View style={styles.textLine}>
-            <Text style={[fontStyles.M_14, styles.textStyle]}>
-              {buttonName}
-            </Text>
-          </View>
+          <Plus2 />
+          <FText
+            mLeft={FWidth * 4}
+            fStyle="M_14"
+            color={colors.text}
+            text={buttonName}
+          />
         </View>
       </FButton>
     </View>
@@ -120,21 +117,5 @@ const styles = StyleSheet.create({
     bottom: 0,
     right: 0,
     backgroundColor: colors.background,
-  },
-
-  textColor: {
-    color: colors.text,
-    includeFontPadding: false,
-  },
-
-  textLine: {
-    height: FWidth * 20,
-    justifyContent: 'center',
-  },
-
-  textStyle: {
-    color: colors.text,
-    marginLeft: FWidth * 4,
-    includeFontPadding: false,
   },
 });

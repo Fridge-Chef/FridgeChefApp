@@ -16,6 +16,7 @@ import BottomButton from '../../utils/Svg/BottomButton';
 import {RecipeList} from '../../type/types';
 import {useBottomSheetRef, useBottomSheetTitle} from '../../store/store';
 import MoreButtonComponent from '../Ingredients/MoreButtonComponent';
+import FText from '../elements/FText';
 
 const TopComponent = () => {
   const [itemHeight, setItemHeight] = useState(0);
@@ -90,21 +91,15 @@ const TopComponent = () => {
                         },
                       ]}
                       onLayout={onLayout}>
-                      <View style={styles.textLine}>
-                        <Text
-                          style={[
-                            fontStyles.M_14,
-                            {
-                              color: selectItems.includes(ingredient.ingredient)
-                                ? colors.white
-                                : colors.black,
-                              includeFontPadding: false,
-                              alignItems: 'center',
-                            },
-                          ]}>
-                          {ingredient.ingredient}
-                        </Text>
-                      </View>
+                      <FText
+                        fStyle="M_14"
+                        color={
+                          selectItems.includes(ingredient.ingredient)
+                            ? colors.white
+                            : colors.black
+                        }
+                        text={ingredient.ingredient}
+                      />
                     </View>
                   </FButton>
                 ))}
@@ -152,10 +147,5 @@ const styles = StyleSheet.create({
     borderRadius: 50,
     marginTop: FWidth * 10,
     marginRight: FWidth * 8,
-  },
-
-  textLine: {
-    height: FWidth * 20,
-    justifyContent: 'center',
   },
 });

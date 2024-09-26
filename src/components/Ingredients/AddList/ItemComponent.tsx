@@ -13,6 +13,7 @@ import DDayText from './DDayText';
 import Close from '../../../utils/Svg/Close';
 import Close2 from '../../../utils/Svg/Close2';
 import Close3 from '../../../utils/Svg/Close3';
+import FText from '../../elements/FText';
 
 type ItemComponentProps = {
   itemList: {
@@ -61,11 +62,7 @@ const ItemComponent = ({itemList}: ItemComponentProps) => {
   return (
     <>
       <View style={styles.itemContainer}>
-        <View style={styles.textLine}>
-          <Text style={[fontStyles.B_16, styles.textColor]}>
-            {itemList.name}
-          </Text>
-        </View>
+        <FText fStyle="B_16" color={colors.text} text={itemList.name} />
         <View style={styles.iconAndTextContainer}>
           {itemList.expiry_date && <DDayText day={date()} />}
           <View style={{marginHorizontal: FWidth * 12}}>
@@ -104,16 +101,5 @@ const styles = StyleSheet.create({
     paddingRight: 16,
     borderRadius: 14,
     backgroundColor: colors.background,
-  },
-
-  textLine: {
-    height: FWidth * 24,
-    justifyContent: 'center',
-  },
-
-  textColor: {
-    color: colors.text,
-    includeFontPadding: false,
-    alignItems: 'center',
   },
 });

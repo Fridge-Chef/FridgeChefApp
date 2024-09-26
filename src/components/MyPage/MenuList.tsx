@@ -1,19 +1,16 @@
 import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import {colors, fontStyles, FWidth} from '../../../globalStyle';
+import FText from '../elements/FText';
 
 const MenuList = () => {
   return (
     <View style={styles.container}>
       <View style={styles.menuContainer}>
-        <View style={styles.textLine}>
-          <Text style={[fontStyles.M_16, styles.textColor]}>로그아웃</Text>
-        </View>
+        <FText fStyle="M_16" color={colors.text} text="로그아웃" />
       </View>
       <View style={[styles.menuContainer, {borderTopWidth: 0}]}>
-        <View style={styles.textLine}>
-          <Text style={[fontStyles.M_16, styles.textColor]}>회원탈퇴</Text>
-        </View>
+        <FText fStyle="M_16" color={colors.text} text="회원탈퇴" />
       </View>
     </View>
   );
@@ -31,16 +28,5 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderColor: colors.b100,
     paddingVertical: FWidth * 24,
-  },
-
-  textLine: {
-    height: FWidth * 24,
-    justifyContent: 'center',
-  },
-
-  textColor: {
-    color: colors.text,
-    includeFontPadding: false,
-    alignItems: 'center',
   },
 });

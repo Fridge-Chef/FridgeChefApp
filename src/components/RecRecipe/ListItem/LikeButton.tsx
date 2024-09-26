@@ -25,6 +25,6 @@ export default LikeButton;
 
 const styles = StyleSheet.create({
   container: {
-    // marginLeft: FWidth * 6,
+    marginLeft: FWidth * 6,
   },
 });

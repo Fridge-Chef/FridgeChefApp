@@ -1,17 +1,16 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import React from 'react';
-import {colors, fontStyles, FWidth} from '../../../globalStyle';
+import {colors, FWidth} from '../../../globalStyle';
 import UserStatus from '../../components/MyPage/UserStatus';
 import RecipeActions from '../../components/MyPage/RecipeActions';
 import MenuList from '../../components/MyPage/MenuList';
+import FText from '../../components/elements/FText';
 
 const MyPage = () => {
   return (
     <View style={styles.container}>
       <View style={styles.mainTitleContainer}>
-        <View style={styles.textLine}>
-          <Text style={[fontStyles.B_18, styles.textColor]}>설정</Text>
-        </View>
+        <FText fStyle="B_18" color={colors.text} text="설정" />
       </View>
       <UserStatus />
       <RecipeActions />
@@ -31,16 +30,5 @@ const styles = StyleSheet.create({
 
   mainTitleContainer: {
     paddingVertical: FWidth * 10,
-  },
-
-  textLine: {
-    height: FWidth * 28,
-    justifyContent: 'center',
-  },
-
-  textColor: {
-    color: colors.text,
-    includeFontPadding: false,
-    alignItems: 'center',
   },
 });

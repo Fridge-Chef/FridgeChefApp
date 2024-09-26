@@ -2,6 +2,7 @@ import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import FButton from '../elements/FButton';
 import {fontStyles, FWidth} from '../../../globalStyle';
+import FText from '../elements/FText';
 
 type SubTitleComponentProps = {
   title: string;
@@ -12,24 +13,11 @@ type SubTitleComponentProps = {
 const SubTitleComponent = ({title, color, onPress}: SubTitleComponentProps) => {
   return (
     <FButton buttonStyle="noneStyle" onPress={onPress}>
-      <View style={styles.textContainer}>
-        <Text style={[fontStyles.B_14, styles.textLine, {color: color}]}>
-          {title}
-        </Text>
-      </View>
+      <FText fStyle="B_14" color={color} text={title} />
     </FButton>
   );
 };
 
 export default SubTitleComponent;
 
-const styles = StyleSheet.create({
-  textContainer: {
-    height: FWidth * 20,
-  },
-
-  textLine: {
-    includeFontPadding: false,
-    alignItems: 'center',
-  },
-});
+const styles = StyleSheet.create({});

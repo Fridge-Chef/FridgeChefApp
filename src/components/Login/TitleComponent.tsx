@@ -1,15 +1,16 @@
 import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import {colors, FHeight, fontStyles, FWidth} from '../../../globalStyle';
+import FText from '../elements/FText';
 
 const TitleComponent = () => {
   return (
     <View style={styles.container}>
       <View style={styles.titleAlign}>
-        <Text style={[fontStyles.B_26, styles.textColor2]}>프리지셰프</Text>
-        <Text style={[fontStyles.B_26, styles.textColor]}>에 오신걸</Text>
+        <FText fStyle="B_26" color={colors.primary[2]} text="프리지셰프" />
+        <FText fStyle="B_26" color={colors.text} text="에 오신걸" />
       </View>
-      <Text style={[fontStyles.B_26, styles.textColor]}>환영합니다!</Text>
+      <FText fStyle="B_26" color={colors.text} text="환영합니다!" />
     </View>
   );
 };
@@ -24,13 +25,5 @@ const styles = StyleSheet.create({
   titleAlign: {
     flexDirection: 'row',
     alignItems: 'center',
-  },
-
-  textColor: {
-    color: colors.text,
-  },
-
-  textColor2: {
-    color: colors.primary[2],
   },
 });

@@ -1,6 +1,7 @@
 import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import {colors, fontStyles, FWidth} from '../../../globalStyle';
+import FText from '../elements/FText';
 
 type RankComponentProps = {
   rank: string;
@@ -9,9 +10,7 @@ type RankComponentProps = {
 const RankComponent = ({rank}: RankComponentProps) => {
   return (
     <View style={styles.rankContainer}>
-      <View style={styles.textLine}>
-        <Text style={[fontStyles.B_10, styles.textColor]}>{rank}</Text>
-      </View>
+      <FText fontStyle="B_10" color={colors.secondary[1]} text={rank} />
     </View>
   );
 };
@@ -25,16 +24,5 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 10,
     borderColor: colors.secondary[1],
-  },
-
-  textLine: {
-    height: FWidth * 18,
-    justifyContent: 'center',
-  },
-
-  textColor: {
-    color: colors.secondary[1],
-    includeFontPadding: false,
-    alignItems: 'center',
   },
 });

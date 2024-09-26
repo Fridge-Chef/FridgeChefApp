@@ -5,6 +5,7 @@ import SvgImage from '../../elements/SvgImage';
 import ReviewsComponent from './ReviewsComponent';
 import TotalPoint from './TotalPoint';
 import UserIcon2 from '../../../utils/Svg/UserIcon2';
+import FText from '../../elements/FText';
 
 type UserInfoProps = {
   name: string;
@@ -15,9 +16,12 @@ const UserInfo = ({name, point}: UserInfoProps) => {
   return (
     <View style={styles.container}>
       <UserIcon2 />
-      <View style={styles.textLine}>
-        <Text style={[fontStyles.M_14, styles.textColor]}>{name}님</Text>
-      </View>
+      <FText
+        mLeft={FWidth * 4}
+        fStyle="M_14"
+        color={colors.text}
+        text={`${name}님`}
+      />
       <View style={styles.reviewPointContainer}>
         <TotalPoint point={point} />
       </View>
@@ -33,21 +37,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
 
-  textLine: {
-    marginLeft: FWidth * 4,
-    height: FWidth * 20,
-    justifyContent: 'center',
-  },
-
   reviewPointContainer: {
     flexDirection: 'row',
     alignItems: 'center',
     marginLeft: FWidth * 6,
-  },
-
-  textColor: {
-    color: colors.text,
-    includeFontPadding: false,
-    alignItems: 'center',
   },
 });

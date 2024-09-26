@@ -1,6 +1,7 @@
 import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import {colors, FHeight, fontStyles, FWidth} from '../../../../globalStyle';
+import FText from '../../elements/FText';
 
 type ItemBoxProps = {
   title: string;
@@ -9,9 +10,7 @@ type ItemBoxProps = {
 const ItemBox = ({title}: ItemBoxProps) => {
   return (
     <View style={styles.itemBox}>
-      <View style={styles.textLine}>
-        <Text style={[fontStyles.R_12, styles.textColor]}>{title}</Text>
-      </View>
+      <FText fStyle="R_12" color={colors.text} text={title} />
     </View>
   );
 };
@@ -19,12 +18,6 @@ const ItemBox = ({title}: ItemBoxProps) => {
 export default ItemBox;
 
 const styles = StyleSheet.create({
-  textColor: {
-    color: colors.text,
-    includeFontPadding: false,
-    alignItems: 'center',
-  },
-
   itemBox: {
     marginTop: FWidth * 8,
     marginRight: FWidth * 8,
@@ -32,10 +25,5 @@ const styles = StyleSheet.create({
     paddingVertical: FWidth * 6,
     borderRadius: 50,
     backgroundColor: colors.background,
-  },
-
-  textLine: {
-    height: FWidth * 18,
-    justifyContent: 'center',
   },
 });

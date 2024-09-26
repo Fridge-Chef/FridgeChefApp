@@ -4,6 +4,8 @@ import {colors, fontStyles, FWidth} from '../../../globalStyle';
 import FButton from '../elements/FButton';
 import {useBottomSheetRef, useBottomSheetTitle} from '../../store/store';
 import SvgImage from '../elements/SvgImage';
+import FText from '../elements/FText';
+import Plus from '../../utils/Svg/Plus';
 
 const TopComponent = () => {
   const {bottomSheetRef} = useBottomSheetRef();
@@ -17,17 +19,16 @@ const TopComponent = () => {
 
   return (
     <View style={styles.container}>
-      <Text
-        style={[
-          fontStyles.B_22,
-          {color: colors.text},
-        ]}>{`냉장고 재료들을\n등록해주세요`}</Text>
+      <View>
+        <FText fStyle="B_22" color={colors.text} text="냉정고 재료들을" />
+        <FText fStyle="B_22" color={colors.text} text="등록해주세요" />
+      </View>
       <FButton
         buttonStyle="svgButton"
         radius={50}
         buttonColor={colors.text}
         onPress={handleAddIngredient}>
-        <SvgImage type="plus" width={24} height={24} />
+        <Plus />
       </FButton>
     </View>
   );

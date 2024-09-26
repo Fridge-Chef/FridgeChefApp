@@ -4,6 +4,7 @@ import SubTitleComponent from '../SubTitleComponent';
 import {colors, fontStyles, FWidth} from '../../../../globalStyle';
 import FButton from '../../elements/FButton';
 import Edit from '../../../utils/Svg/Edit';
+import FText from '../../elements/FText';
 
 const TitleComponent = () => {
   return (
@@ -12,9 +13,12 @@ const TitleComponent = () => {
       <FButton buttonStyle="noneStyle" onPress={() => console.log('후기작성')}>
         <View style={styles.buttonContainer}>
           <Edit />
-          <View style={styles.textLine}>
-            <Text style={[fontStyles.B_14, styles.textColor]}>후기 작성</Text>
-          </View>
+          <FText
+            mLeft={FWidth * 6}
+            fStyle="B_14"
+            color={colors.text}
+            text="후기 작성"
+          />
         </View>
       </FButton>
     </View>
@@ -38,17 +42,5 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: colors.border,
     borderRadius: 40,
-  },
-
-  textLine: {
-    marginLeft: FWidth * 6,
-    height: FWidth * 20,
-    justifyContent: 'center',
-  },
-
-  textColor: {
-    color: colors.text,
-    includeFontPadding: false,
-    alignItems: 'center',
   },
 });

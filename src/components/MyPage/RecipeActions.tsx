@@ -4,6 +4,7 @@ import {colors, fontStyles, FWidth} from '../../../globalStyle';
 import FButton from '../elements/FButton';
 import {ParamListBase, useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import FText from '../elements/FText';
 
 const RecipeActions = () => {
   const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
@@ -31,19 +32,16 @@ const RecipeActions = () => {
     <View style={styles.container}>
       {recipeActionInfo.map((item, index) => (
         <View key={index} style={styles.textContainer}>
-          <View style={styles.textLine}>
-            <Text style={[fontStyles.M_14, styles.textColor]}>
-              {item.recipeAction}
-            </Text>
-          </View>
+          <FText fStyle="M_14" color={colors.text} text={item.recipeAction} />
           <FButton
             buttonStyle="noneStyle"
             onPress={() => handleList(item.recipeAction)}>
-            <View style={styles.textLine2}>
-              <Text style={(fontStyles.M_16, styles.textColor2)}>
-                {item.recipeActionCount}
-              </Text>
-            </View>
+            <FText
+              fStyle="M_16"
+              mTop={FWidth * 6}
+              color={colors.primary[1]}
+              text={item.recipeActionCount}
+            />
           </FButton>
         </View>
       ))}
@@ -66,29 +64,6 @@ const styles = StyleSheet.create({
 
   textContainer: {
     paddingHorizontal: FWidth * 16.83,
-    alignItems: 'center',
-  },
-
-  textLine: {
-    height: FWidth * 20,
-    justifyContent: 'center',
-  },
-
-  textLine2: {
-    height: FWidth * 24,
-    justifyContent: 'center',
-  },
-
-  textColor: {
-    color: colors.text,
-    includeFontPadding: false,
-    alignItems: 'center',
-  },
-
-  textColor2: {
-    color: colors.primary[1],
-    marginTop: FWidth * 6,
-    includeFontPadding: false,
     alignItems: 'center',
   },
 });

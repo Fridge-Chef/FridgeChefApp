@@ -4,6 +4,7 @@ import ImageComponent from '../elements/ImageComponent';
 import Close from '../../utils/Svg/Close';
 import ViewAndLike from '../RecRecipe/ListItem/ViewAndLike';
 import {colors, fontStyles, FWidth} from '../../../globalStyle';
+import FText from '../elements/FText';
 
 type ListItemProps = {
   item: {
@@ -21,9 +22,13 @@ const ListItem = ({item}: ListItemProps) => {
       <ImageComponent imgStyle="sub" uri="" alt="레시피북" />
       <View style={[styles.textContainerAlign]}>
         <View style={[styles.titleContainer]}>
-          <Text style={[fontStyles.B_16, styles.textColor]} numberOfLines={2}>
-            {item.title}
-          </Text>
+          <FText
+            nLine={2}
+            fStyle="B_16"
+            lineH={FWidth * 22.5}
+            color={colors.text}
+            text={item.title}
+          />
           <Close />
         </View>
         <View style={styles.bottomTextContainer}>
@@ -63,11 +68,5 @@ const styles = StyleSheet.create({
   bottomTextContainer: {
     flexDirection: 'row',
     marginTop: FWidth * 16,
-  },
-
-  textColor: {
-    color: colors.text,
-    lineHeight: FWidth * 24,
-    flexShrink: 1,
   },
 });

@@ -6,7 +6,7 @@ import TitleComponent from '../../components/RecipeDetail/TitleComponent/TitleCo
 import IngredientComponent from '../../components/RecipeDetail/IngredientComponent/IngredientComponent';
 import RecipeComponent from '../../components/RecipeDetail/RecipeComponent/RecipeComponent';
 import RecipeReview from '../../components/RecipeDetail/RecipeReview/RecipeReview';
-import ImageComponent from '../../components/elements/ImageComponent';
+import FImage from '../../components/elements/FImage';
 
 type DetailItem = {
   params: {
@@ -19,16 +19,10 @@ const RecipeDetail = () => {
 
   return (
     <ScrollView style={styles.container} overScrollMode="never">
-      <ImageComponent
-        imgStyle="detail"
-        uri=""
-        resizeMode="stretch"
-        alt="디테일"
-      />
+      <FImage imgStyle="detail" uri="" resizeMode="stretch" alt="디테일" />
       <TitleComponent title={route.params.title} />
       <IngredientComponent />
       <RecipeComponent />
-
       <RecipeReview />
     </ScrollView>
   );

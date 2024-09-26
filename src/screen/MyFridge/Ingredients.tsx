@@ -9,6 +9,7 @@ import {useLoading} from '../../store/store';
 import {ParamListBase, useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import LoginAndUser from '../../components/Ingredients/LoginAndUser';
+import FText from '../../components/elements/FText';
 const Ingredients = () => {
   const {setLoading, setLoadingTitle} = useLoading();
   const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
@@ -42,11 +43,11 @@ const Ingredients = () => {
           buttonStyle="bigButton"
           buttonColor={colors.primary[1]}
           onPress={handleSearch}>
-          <View style={styles.textLine}>
-            <Text style={[fontStyles.B_18, styles.textColor]}>
-              이 재료로 레시피 검색
-            </Text>
-          </View>
+          <FText
+            fStyle="B_18"
+            color={colors.white}
+            text="이 재료로 레시피 검색"
+          />
         </FButton>
       </View>
     </View>
@@ -66,16 +67,5 @@ const styles = StyleSheet.create({
     width: '100%',
     bottom: 0,
     marginBottom: FHeight * 38,
-  },
-
-  textLine: {
-    height: FWidth * 28,
-    justifyContent: 'center',
-  },
-
-  textColor: {
-    color: colors.white,
-    includeFontPadding: false,
-    alignItems: 'center',
   },
 });

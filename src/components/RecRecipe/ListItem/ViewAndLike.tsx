@@ -5,6 +5,7 @@ import Heart from '../../../utils/Svg/Heart';
 import Star2 from '../../../utils/Svg/Star2';
 import {useTopTabBar} from '../../../store/store';
 import LikeIcon from '../../../utils/Svg/LikeIcon';
+import FText from '../../elements/FText';
 
 type ViewAndLikeProps = {
   like: number;
@@ -20,26 +21,32 @@ const ViewAndLike = ({like, favorites, myLike}: ViewAndLikeProps) => {
       {tabBarName === '레시피 후기' ? (
         <View style={styles.textAndIconContainer}>
           <LikeIcon />
-          <View style={styles.textLine}>
-            <Text style={[fontStyles.B_12, styles.textColor]}>{myLike}</Text>
-          </View>
+          <FText
+            mLeft={FWidth * 4}
+            fStyle="B_12"
+            color={colors.b500}
+            text={myLike}
+          />
         </View>
       ) : (
         <>
           <View style={styles.textAndIconContainer}>
             <Star2 />
-            <Text style={[fontStyles.B_12, styles.textColor]}>{favorites}</Text>
+            <FText
+              mLeft={FWidth * 4}
+              fStyle="B_12"
+              color={colors.b500}
+              text={favorites}
+            />
           </View>
           <View style={styles.textAndIconContainer}>
             <Heart />
-            <Text
-              style={[
-                fontStyles.B_12,
-                styles.textColor2,
-                {marginLeft: FWidth * 2},
-              ]}>
-              {like}
-            </Text>
+            <FText
+              mLeft={FWidth * 2}
+              fStyle="B_12"
+              color={colors.b500}
+              text={like}
+            />
           </View>
         </>
       )}
@@ -59,21 +66,5 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     marginRight: FWidth * 8,
-  },
-
-  textLine: {
-    height: FWidth * 18,
-    justifyContent: 'center',
-  },
-
-  textColor: {
-    color: colors.b500,
-    marginLeft: FWidth * 4,
-  },
-
-  textColor2: {
-    color: colors.b500,
-    includeFontPadding: false,
-    alignItems: 'center',
   },
 });

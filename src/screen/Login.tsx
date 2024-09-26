@@ -7,6 +7,7 @@ import TitleComponent from '../components/Login/TitleComponent';
 import KakaoLogin from '../components/Login/KakaoLogin';
 import GoogleLogin from '../components/Login/GoogleLogin';
 import TakeTour from '../components/Login/TakeTour';
+import FText from '../components/elements/FText';
 
 const Login = () => {
   const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
@@ -16,7 +17,7 @@ const Login = () => {
       <KakaoLogin navigation={navigation} />
       <GoogleLogin navigation={navigation} />
       <View style={styles.textContainer}>
-        <Text style={[fontStyles.M_16, styles.textColor]}>또는</Text>
+        <FText fStyle="M_16" color={colors.b400} text="또는" />
       </View>
       <TakeTour navigation={navigation} />
     </View>
@@ -33,15 +34,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.white,
   },
   textContainer: {
-    height: FWidth * 24,
     marginTop: FWidth * 72,
     alignItems: 'center',
-    justifyContent: 'center',
-  },
-
-  textColor: {
-    color: colors.b400,
-    alignItems: 'center',
-    includeFontPadding: false,
   },
 });
