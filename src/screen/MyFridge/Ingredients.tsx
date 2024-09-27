@@ -1,5 +1,5 @@
 import {ScrollView, StyleSheet, TouchableOpacity, View} from 'react-native';
-import React from 'react';
+import React, {useEffect} from 'react';
 import {colors, FHeight, FWidth} from '../../../globalStyle';
 import TopComponent from '../../components/Ingredients/TopComponent';
 import CondimentList from '../../components/Ingredients/CondimentList';
@@ -30,9 +30,13 @@ const Ingredients = () => {
   const handleTest = () => {
     showToast({
       text: '기본 재료를 등록했어요. 언제든 삭제할 수 있어요!',
-      time: 10000,
+      time: 5000,
     });
   };
+
+  // useEffect(() => {
+  //   handleTest()
+  // }, [])
 
   return (
     <View style={styles.container}>

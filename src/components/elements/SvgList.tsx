@@ -32,6 +32,9 @@ import EditSquare from '../../utils/Svg/EditSquare';
 import Calendar from '../../utils/Svg/Calendar';
 import Send from '../../utils/Svg/Send';
 import Heart4 from '../../utils/Svg/Heart4';
+import StarReview1 from '../../utils/Svg/StarReview1';
+import StarReview2 from '../../utils/Svg/StarReview2';
+import ImageIcon from '../../utils/Svg/ImageIcon';
 
 type SvgListProps = {
   type:
@@ -51,6 +54,7 @@ type SvgListProps = {
     | 'heart2'
     | 'heart3'
     | 'heart4'
+    | 'imageIcon'
     | 'kakaoLogo'
     | 'likeIcon'
     | 'loginIcon'
@@ -62,6 +66,8 @@ type SvgListProps = {
     | 'send'
     | 'star'
     | 'star2'
+    | 'starReview1'
+    | 'starReview2'
     | 'tabHeart'
     | 'userIcon2'
     | 'wallet';
@@ -101,6 +107,8 @@ const SvgList = ({type}: SvgListProps) => {
       return <Heart3 />;
     case 'heart4':
       return <Heart4 />;
+    case 'imageIcon':
+      return <ImageIcon />;
     case 'kakaoLogo':
       return <KakaoLogo />;
     case 'likeIcon':
@@ -123,6 +131,10 @@ const SvgList = ({type}: SvgListProps) => {
       return <Star />;
     case 'star2':
       return <Star2 />;
+    case 'starReview1':
+      return <StarReview1 />;
+    case 'starReview2':
+      return <StarReview2 />;
     case 'tabHeart':
       return <TabHeart />;
     case 'userIcon2':

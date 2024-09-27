@@ -7,7 +7,14 @@ import Edit2 from '../../utils/Svg/Edit2';
 import {ParamListBase, useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 
-const CAddReviewButton = () => {
+type CAddReviewButtonProps = {
+  list: {
+    id: number;
+    text: string;
+  }[];
+};
+
+const CAddReviewButton = ({list}: CAddReviewButtonProps) => {
   const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
   return (
     <FButton

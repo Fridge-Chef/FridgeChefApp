@@ -1,6 +1,6 @@
 import {StyleSheet, TextInput, View} from 'react-native';
 import React from 'react';
-import {colors, FHeight, fontFamilies, FWidth} from '../../../globalStyle';
+import {colors, fontFamilies, FWidth} from '../../../globalStyle';
 import Icon from 'react-native-vector-icons/Ionicons';
 import FButton from './FButton';
 import FText from './FText';
@@ -10,7 +10,7 @@ type FInputProps = {
   deleteButton?: boolean;
   deleteValue?: () => void;
   placeholder?: string;
-  inputStyle: 'default';
+  inputStyle: 'default' | 'noBorder';
   fontSize?: number;
   editable?: boolean;
   secureTextEntry?: boolean;
@@ -35,7 +35,7 @@ const FInput = ({
   onChangeText,
   onSubmitEditing,
   keyboardType = 'default',
-  maxLength = 20,
+  maxLength,
   numberOfLines = 1,
   multiline = false,
   errorMsg = false,
@@ -43,6 +43,7 @@ const FInput = ({
 }: FInputProps) => {
   const inputStyleList = {
     default: [styles.defaultStyle],
+    noBorder: styles.noBorderStyle,
   };
 
   return (
@@ -110,6 +111,13 @@ const styles = StyleSheet.create({
     paddingRight: FWidth * 30,
     height: FWidth * 52,
     fontFamily: fontFamilies.pretendardMedium,
+  },
+
+  noBorderStyle: {
+    fontSize: FWidth * 16,
+    fontFamily: fontFamilies.pretendardRegular,
+    color: colors.text,
+    lineHeight: FWidth * 24,
   },
 
   errorContainer: {

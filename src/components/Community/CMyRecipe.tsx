@@ -11,7 +11,7 @@ const CMyRecipe = () => {
     <View style={styles.container}>
       <CListMenu list={menuList} />
       <CListItems />
-      <CAddReviewButton />
+      <CAddReviewButton list={menuList} />
     </View>
   );
 };
