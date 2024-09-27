@@ -1,8 +1,8 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import React from 'react';
-import {colors, FHeight, fontStyles, FWidth} from '../../../globalStyle';
+import {colors} from '../../../globalStyle';
 import GoogleLogo from '../../utils/Svg/GoogleLogo';
-import {ParamListBase, useNavigation} from '@react-navigation/native';
+import {ParamListBase} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import FButton from '../elements/FButton';
 import LoginButtonTitle from './LoginButtonTitle';
@@ -18,6 +18,7 @@ const GoogleLogin = ({navigation}: GoogleLoginProps) => {
       borderWidth={1}
       paddingVertical={12}
       buttonColor={colors.white}
+      marginBottom={16}
       onPress={() => navigation.replace('bottomTab')}>
       <GoogleLogo />
       <LoginButtonTitle title="구글 로그인" />

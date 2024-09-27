@@ -12,7 +12,6 @@ const ExpiryDate = () => {
   const {bottomSheetRef} = useBottomSheetRef();
 
   const handleSubmit = () => {
-    console.log(inputTitle);
     setInputTitle('');
     bottomSheetRef.current?.close();
   };

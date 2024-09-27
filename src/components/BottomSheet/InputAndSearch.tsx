@@ -1,7 +1,7 @@
-import {Alert, Keyboard, StyleSheet, Text, View} from 'react-native';
+import {Alert, Keyboard, StyleSheet, View} from 'react-native';
 import React, {Dispatch} from 'react';
 import FButton from '../elements/FButton';
-import {colors, FHeight, fontStyles, FWidth} from '../../../globalStyle';
+import {colors, FWidth} from '../../../globalStyle';
 import FInput from '../elements/FInput';
 import {useAddModalInputText} from '../../store/store';
 import FText from '../elements/FText';
@@ -48,7 +48,6 @@ const InputAndSearch = ({itemList, setItemList}: InputAndSearchProps) => {
               buttonStyle="noneStyle"
               fStyle={{paddingVertical: FWidth * 12}}
               onPress={() => {
-                console.log(item.name);
                 Keyboard.dismiss();
                 setAddTitle('');
                 addItemToList(item.name);

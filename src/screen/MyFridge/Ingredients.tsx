@@ -1,6 +1,6 @@
-import {ScrollView, StyleSheet, Text, View} from 'react-native';
+import {ScrollView, StyleSheet, TouchableOpacity, View} from 'react-native';
 import React from 'react';
-import {colors, FHeight, fontStyles, FWidth} from '../../../globalStyle';
+import {colors, FHeight, FWidth} from '../../../globalStyle';
 import TopComponent from '../../components/Ingredients/TopComponent';
 import CondimentList from '../../components/Ingredients/CondimentList';
 import AddList from '../../components/Ingredients/AddList/AddList';
@@ -10,9 +10,11 @@ import {ParamListBase, useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import LoginAndUser from '../../components/Ingredients/LoginAndUser';
 import FText from '../../components/elements/FText';
+import {showToast} from '../../helpers/ShowToast';
 const Ingredients = () => {
   const {setLoading, setLoadingTitle} = useLoading();
   const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
+
   const handleSearch = () => {
     setLoadingTitle('레시피 검색중');
     setLoading(true);
@@ -25,11 +27,20 @@ const Ingredients = () => {
     }
   };
 
+  const handleTest = () => {
+    showToast({
+      text: '기본 재료를 등록했어요. 언제든 삭제할 수 있어요!',
+      time: 10000,
+    });
+  };
+
   return (
     <View style={styles.container}>
       <ScrollView showsVerticalScrollIndicator={false} overScrollMode="never">
         <LoginAndUser />
-        <TopComponent />
+        <TouchableOpacity onPress={handleTest}>
+          <TopComponent />
+        </TouchableOpacity>
         <CondimentList />
         <View
           style={{

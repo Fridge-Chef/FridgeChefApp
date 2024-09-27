@@ -1,16 +1,8 @@
-import {
-  Dimensions,
-  FlatList,
-  LayoutChangeEvent,
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
+import {FlatList, LayoutChangeEvent, StyleSheet, View} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import SubTitleComponent from '../Ingredients/SubTitleComponent';
-import {colors, fontStyles, FWidth} from '../../../globalStyle';
+import {colors, FWidth} from '../../../globalStyle';
 import {list} from '../../utils/list';
-import MoreList from '../../utils/Svg/MoreList';
 import FButton from '../elements/FButton';
 import BottomButton from '../../utils/Svg/BottomButton';
 import {RecipeList} from '../../type/types';
@@ -24,9 +16,7 @@ const TopComponent = () => {
   const [containerHeight, setContainerHeight] = useState(0);
   const {bottomSheetRef} = useBottomSheetRef();
   const {setTitle} = useBottomSheetTitle();
-
   const [selectItems, setSelectItems] = useState<string[]>([]);
-  console.log(selectItems);
   const onLayout = (e: LayoutChangeEvent) => {
     if (itemHeight === 0) {
       setItemHeight(e.nativeEvent.layout.height);

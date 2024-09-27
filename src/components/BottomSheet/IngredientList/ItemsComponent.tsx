@@ -1,7 +1,6 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import React from 'react';
-import {colors, fontStyles, FWidth} from '../../../../globalStyle';
-import Close2 from '../../../utils/Svg/Close2';
+import {FWidth} from '../../../../globalStyle';
 import SubTitleBS from '../SubTitleBS';
 import CloseItem from '../CloseItem';
 

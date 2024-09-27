@@ -36,7 +36,7 @@ const RecipeBook = () => {
       pressColor="transparent"
       indicatorStyle={styles.indicator}
       style={styles.tabBar}
-      labelStyle={fontStyles.B_16}
+      labelStyle={[fontStyles.B_16, styles.labelStyle]}
     />
   );
 
@@ -55,7 +55,9 @@ export default RecipeBook;
 
 const styles = StyleSheet.create({
   tabBar: {
+    height: FWidth * 54,
     backgroundColor: colors.white,
+    justifyContent: 'center',
     borderBottomWidth: 1,
     borderColor: colors.b200,
     elevation: 0,
@@ -63,5 +65,9 @@ const styles = StyleSheet.create({
   indicator: {
     backgroundColor: colors.text,
     marginBottom: FWidth * -1,
+  },
+
+  labelStyle: {
+    includeFontPadding: false,
   },
 });

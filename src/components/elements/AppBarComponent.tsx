@@ -2,7 +2,7 @@ import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import FButton from './FButton';
 import SvgImage from './SvgImage';
-import {colors, FHeight, fontStyles, FWidth} from '../../../globalStyle';
+import {colors, FWidth} from '../../../globalStyle';
 import {useNavigation} from '@react-navigation/native';
 import {AppBarProps} from '../../type/types';
 import FText from './FText';

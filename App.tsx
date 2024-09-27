@@ -5,6 +5,7 @@ import SplashScreen from 'react-native-splash-screen';
 import MainStackScreen from './src/components/BottomTebScreen/MainStackScreen';
 import FBottomSheet from './src/components/BottomSheet/FBottomSheet';
 import Loading from './src/components/elements/Loading';
+import FToast from './src/utils/FToast';
 
 function App() {
   useEffect(() => {
@@ -14,13 +15,16 @@ function App() {
   });
 
   return (
-    <GestureHandlerRootView style={{flex: 1}}>
-      <NavigationContainer>
-        <MainStackScreen />
-        <FBottomSheet />
-        <Loading />
-      </NavigationContainer>
-    </GestureHandlerRootView>
+    <>
+      <GestureHandlerRootView style={{flex: 1}}>
+        <NavigationContainer>
+          <MainStackScreen />
+          <FBottomSheet />
+          <Loading />
+        </NavigationContainer>
+      </GestureHandlerRootView>
+      <FToast />
+    </>
   );
 }
 

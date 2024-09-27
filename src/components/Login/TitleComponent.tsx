@@ -1,6 +1,6 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import React from 'react';
-import {colors, FHeight, fontStyles, FWidth} from '../../../globalStyle';
+import {colors, FWidth} from '../../../globalStyle';
 import FText from '../elements/FText';
 
 const TitleComponent = () => {
@@ -10,7 +10,7 @@ const TitleComponent = () => {
         <FText fStyle="B_26" color={colors.primary[2]} text="프리지셰프" />
         <FText fStyle="B_26" color={colors.text} text="에 오신걸" />
       </View>
-      <FText fStyle="B_26" color={colors.text} text="환영합니다!" />
+      <FText fStyle="B_26" color={colors.text} text="환영해요 :)" />
     </View>
   );
 };
@@ -19,6 +19,7 @@ export default TitleComponent;
 
 const styles = StyleSheet.create({
   container: {
+    alignItems: 'center',
     marginBottom: FWidth * 160,
   },
 

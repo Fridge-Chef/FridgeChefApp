@@ -1,6 +1,6 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import React, {useState} from 'react';
-import {colors, fontStyles, FWidth} from '../../../globalStyle';
+import {colors, FWidth} from '../../../globalStyle';
 import LoginIcon from '../../utils/Svg/LoginIcon';
 import Notification from '../../utils/Svg/Notification';
 import FText from '../elements/FText';

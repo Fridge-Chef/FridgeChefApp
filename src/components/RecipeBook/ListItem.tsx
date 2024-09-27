@@ -1,9 +1,9 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import React from 'react';
 import ImageComponent from '../elements/ImageComponent';
 import Close from '../../utils/Svg/Close';
 import ViewAndLike from '../RecRecipe/ListItem/ViewAndLike';
-import {colors, fontStyles, FWidth} from '../../../globalStyle';
+import {colors, FWidth} from '../../../globalStyle';
 import FText from '../elements/FText';
 
 type ListItemProps = {

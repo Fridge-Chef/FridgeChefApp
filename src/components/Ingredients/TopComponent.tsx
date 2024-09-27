@@ -1,9 +1,8 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import React, {useState} from 'react';
-import {colors, fontStyles, FWidth} from '../../../globalStyle';
+import {colors, FWidth} from '../../../globalStyle';
 import FButton from '../elements/FButton';
 import {useBottomSheetRef, useBottomSheetTitle} from '../../store/store';
-import SvgImage from '../elements/SvgImage';
 import FText from '../elements/FText';
 import Plus from '../../utils/Svg/Plus';
 
@@ -20,7 +19,7 @@ const TopComponent = () => {
   return (
     <View style={styles.container}>
       <View>
-        <FText fStyle="B_22" color={colors.text} text="냉정고 재료들을" />
+        <FText fStyle="B_22" color={colors.text} text="냉정고 속 재료를" />
         <FText fStyle="B_22" color={colors.text} text="등록해주세요" />
       </View>
       <FButton

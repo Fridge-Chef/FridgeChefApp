@@ -1,8 +1,7 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import React, {useEffect, useState} from 'react';
-import {colors, FHeight, fontStyles, FWidth} from '../../../../globalStyle';
+import {colors, FHeight, FWidth} from '../../../../globalStyle';
 import FButton from '../../elements/FButton';
-import SvgImage from '../../elements/SvgImage';
 import Calendar from '../../../utils/Svg/Calendar';
 import {
   useBottomSheetRef,
@@ -10,8 +9,6 @@ import {
   useIngredientTitle,
 } from '../../../store/store';
 import DDayText from './DDayText';
-import Close from '../../../utils/Svg/Close';
-import Close2 from '../../../utils/Svg/Close2';
 import Close3 from '../../../utils/Svg/Close3';
 import FText from '../../elements/FText';
 

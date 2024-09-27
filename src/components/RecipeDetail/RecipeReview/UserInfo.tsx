@@ -1,8 +1,6 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import React from 'react';
-import {colors, fontStyles, FWidth} from '../../../../globalStyle';
-import SvgImage from '../../elements/SvgImage';
-import ReviewsComponent from './ReviewsComponent';
+import {colors, FWidth} from '../../../../globalStyle';
 import TotalPoint from './TotalPoint';
 import UserIcon2 from '../../../utils/Svg/UserIcon2';
 import FText from '../../elements/FText';

@@ -1,6 +1,6 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import React from 'react';
-import {colors, fontStyles, FWidth} from '../../../globalStyle';
+import {colors, FWidth} from '../../../globalStyle';
 import FText from '../elements/FText';
 
 type RankComponentProps = {
@@ -10,7 +10,7 @@ type RankComponentProps = {
 const RankComponent = ({rank}: RankComponentProps) => {
   return (
     <View style={styles.rankContainer}>
-      <FText fontStyle="B_10" color={colors.secondary[1]} text={rank} />
+      <FText fStyle="B_10" color={colors.secondary[1]} text={rank} />
     </View>
   );
 };

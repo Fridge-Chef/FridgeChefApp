@@ -1,6 +1,6 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import React from 'react';
-import {colors, fontStyles, FWidth} from '../../../../globalStyle';
+import {colors, FWidth} from '../../../../globalStyle';
 import Heart from '../../../utils/Svg/Heart';
 import Star2 from '../../../utils/Svg/Star2';
 import {useTopTabBar} from '../../../store/store';

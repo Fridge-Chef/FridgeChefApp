@@ -1,6 +1,6 @@
-import {Image, StyleSheet, Text, View} from 'react-native';
+import {Image, StyleSheet, View} from 'react-native';
 import React from 'react';
-import {colors, fontStyles, FWidth} from '../../../../globalStyle';
+import {colors, FWidth} from '../../../../globalStyle';
 import ImageComponent from '../../elements/ImageComponent';
 import ArrowRight from '../../../utils/Svg/ArrowRight';
 import FText from '../../elements/FText';

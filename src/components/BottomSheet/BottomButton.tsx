@@ -1,7 +1,7 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet} from 'react-native';
 import React from 'react';
 import FButton from '../elements/FButton';
-import {colors, fontStyles, FWidth} from '../../../globalStyle';
+import {colors} from '../../../globalStyle';
 import FText from '../elements/FText';
 
 type BottomButtonProps = {

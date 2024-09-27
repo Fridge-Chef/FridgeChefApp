@@ -1,10 +1,10 @@
-import {StatusBar, StyleSheet, Text, View} from 'react-native';
+import {StatusBar, StyleSheet, View} from 'react-native';
 import React from 'react';
 import {ActivityIndicator} from 'react-native';
 import {Dimensions} from 'react-native';
-import {colors, FHeight, fontStyles, FWidth} from '../../../globalStyle';
+import {colors} from '../../../globalStyle';
 import {useLoading} from '../../store/store';
-import LottieView from 'lottie-react-native';
+import FText from './FText';
 
 const statusBarHeight = StatusBar.currentHeight;
 const Loading = () => {
@@ -25,11 +25,7 @@ const Loading = () => {
               style={{width: FWidth * 120, height: FHeight * 120}}
               autoPlay
             /> */}
-            <View style={styles.textLine}>
-              <Text style={[fontStyles.R_16, styles.textStyle]}>
-                {loadingTitle}
-              </Text>
-            </View>
+            <FText fStyle="R_16" color={colors.text} text={loadingTitle} />
           </View>
         </View>
       )}
@@ -55,17 +51,5 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
 
-  textLine: {
-    marginTop: FWidth * 20,
-    height: FWidth * 24,
-    justifyContent: 'center',
-  },
-
   indicatorStyle: {},
-
-  textStyle: {
-    color: colors.text,
-    includeFontPadding: false,
-    alignItems: 'center',
-  },
 });

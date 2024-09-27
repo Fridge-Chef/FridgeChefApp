@@ -1,9 +1,8 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import React from 'react';
 import FButton from '../elements/FButton';
 import {useAddModalInputText, useBottomSheetRef} from '../../store/store';
-import {colors, fontStyles, FWidth} from '../../../globalStyle';
-import SvgImage from '../elements/SvgImage';
+import {colors} from '../../../globalStyle';
 import Close from '../../utils/Svg/Close';
 import FText from '../elements/FText';
 

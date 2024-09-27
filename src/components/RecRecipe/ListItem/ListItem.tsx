@@ -1,13 +1,6 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import React, {useState} from 'react';
-import {
-  colors,
-  FHeight,
-  fontFamilies,
-  fontStyles,
-  FWidth,
-} from '../../../../globalStyle';
-import ImageComponent from '../../elements/ImageComponent';
+import {colors, FWidth} from '../../../../globalStyle';
 import ViewAndLike from './ViewAndLike';
 import LikeButton from './LikeButton';
 import BottomText from './BottomText';
