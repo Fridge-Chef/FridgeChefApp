@@ -4,7 +4,7 @@ import {Path, Svg} from 'react-native-svg';
 import {colors} from '../../../globalStyle';
 
 type EditSquareProps = {
-  focused: boolean;
+  focused?: boolean;
 };
 
 const EditSquare = ({focused}: EditSquareProps) => {

@@ -5,7 +5,7 @@ import {ClipPath, Defs, G, Path, Rect, Svg} from 'react-native-svg';
 const GoogleLogo = () => {
   return (
     <Svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-      <G clip-path="url(#clip0_2112_7807)">
+      <G clipPath="url(#clip0_2112_7807)">
         <Path d="M0 0H24V24H0" fill="white" />
         <Path
           d="M7.17188 13.6875C8.57812 17.5313 12.7031 18.1406 15.1875 16.5H18.0938V18.75C17.0585 19.6355 15.8357 20.2743 14.5177 20.6185C13.1996 20.9627 11.8206 21.0031 10.4846 20.7368C9.14861 20.4705 7.89051 19.9044 6.80512 19.0812C5.71974 18.258 4.83539 17.1991 4.21875 15.9844"

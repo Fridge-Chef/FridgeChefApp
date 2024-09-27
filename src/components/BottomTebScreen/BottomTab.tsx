@@ -8,18 +8,10 @@ import MoreScreen from './MoreScreen';
 import NameComponent from './TebMenu/NameComponent';
 import IconComponent from './TebMenu/IconComponent';
 import {colors} from '../../../globalStyle';
-import {useTopTabBar} from '../../store/store';
 const BottomTab = () => {
   const Tab = createBottomTabNavigator();
-  const {setTabBarName, setIndex} = useTopTabBar();
   return (
     <Tab.Navigator
-      screenListeners={({navigation, route}) => ({
-        focus: () => {
-          setTabBarName('');
-          setIndex(0);
-        },
-      })}
       sceneContainerStyle={{backgroundColor: colors.white}}
       screenOptions={({route}) => ({
         tabBarStyle: {

@@ -4,7 +4,7 @@ import {G, Mask, Path, Svg} from 'react-native-svg';
 import {colors} from '../../../globalStyle';
 
 type TabHeartProps = {
-  focused: boolean;
+  focused?: boolean;
 };
 
 const TabHeart = ({focused}: TabHeartProps) => {

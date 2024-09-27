@@ -1,9 +1,9 @@
 import {Image, StyleSheet, View} from 'react-native';
 import React from 'react';
 import {colors, FWidth} from '../../../../globalStyle';
-import ImageComponent from '../../elements/ImageComponent';
 import ArrowRight from '../../../utils/Svg/ArrowRight';
 import FText from '../../elements/FText';
+import FImage from '../../elements/FImage';
 
 const UserRecipeMore = () => {
   const {uri} = Image.resolveAssetSource(
@@ -12,7 +12,7 @@ const UserRecipeMore = () => {
 
   return (
     <View style={styles.container}>
-      <ImageComponent uri={uri} imgStyle="myPage" alt="유저 이미지" />
+      <FImage uri={uri} imgStyle="myPage" alt="유저 이미지" />
       <View style={styles.textContainer}>
         <View style={styles.userContainer}>
           <FText fStyle="B_16" color={colors.text} text="김민영님" />

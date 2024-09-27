@@ -5,7 +5,7 @@ import Ingredients from '../../screen/MyFridge/Ingredients';
 import {colors} from '../../../globalStyle';
 import RecRecipe from '../../screen/MyFridge/RecRecipe';
 import RecipeDetail from '../../screen/MyFridge/RecipeDetail';
-import AppBarComponent from '../elements/AppBarComponent';
+import FAppBar from '../elements/FAppBar';
 
 const MyFridgeScreen = () => {
   const Stack = createNativeStackNavigator();
@@ -31,18 +31,14 @@ const MyFridgeScreen = () => {
           title: '',
           header() {
             return (
-              <AppBarComponent
+              <FAppBar
                 borderBottomWidth={1}
-                leftIcon={{icon: 'back'}}
-                leftIconWidth={24}
-                leftIconHeight={24}
+                type="back"
                 titleOn={true}
                 title="추천 레시피"
                 onlyBackIcon={true}
                 rightOn={true}
-                rightIcon1={{icon: 'back'}}
-                rightIconWidth1={24}
-                rightIconHeight1={24}
+                rType1="back"
               />
             );
           },
@@ -57,17 +53,11 @@ const MyFridgeScreen = () => {
           title: '',
           header() {
             return (
-              <AppBarComponent
-                leftIcon={{icon: 'back'}}
-                leftIconWidth={24}
-                leftIconHeight={24}
+              <FAppBar
+                type="back"
                 rightOn={true}
-                rightIcon1={{icon: 'heart4'}}
-                rightIconWidth1={24}
-                rightIconHeight1={24}
-                rightIcon2={{icon: 'arrowLeft3'}}
-                rightIconWidth2={24}
-                rightIconHeight2={24}
+                rType1="heart4"
+                rType2="send"
               />
             );
           },

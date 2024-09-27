@@ -1,88 +1,74 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import React from 'react';
 import FButton from './FButton';
-import SvgImage from './SvgImage';
 import {colors, FWidth} from '../../../globalStyle';
 import {useNavigation} from '@react-navigation/native';
 import {AppBarProps} from '../../type/types';
 import FText from './FText';
+import SvgList from './SvgList';
 
-const AppBarComponent = ({
+const FAppBar = ({
+  type,
   borderBottomWidth,
-  leftIcon,
-  leftIconWidth,
-  leftIconHeight,
   titleOn = false,
   title,
   rightOn = false,
   onlyBackIcon = false,
-  rightIcon1,
-  rightIconWidth1,
-  rightIconHeight1,
-  rightIcon2,
-  rightIconWidth2,
-  rightIconHeight2,
+  rType1,
+  rType2,
   rightTitleOn = false,
   rightTitle,
   onPress1,
   onPress2,
+  textOnPress,
 }: AppBarProps) => {
   const navigation = useNavigation();
   return (
     <View style={[styles.appBar, {borderBottomWidth: borderBottomWidth}]}>
-      <FButton buttonStyle={'noneStyle'} onPress={() => navigation.goBack()}>
-        <SvgImage
-          type={leftIcon.icon}
-          width={leftIconWidth}
-          height={leftIconHeight}
-          fill={colors.white}
-        />
+      <FButton
+        buttonStyle={'noneStyle'}
+        fBStyle={{width: 50, alignItems: 'flex-start'}}
+        onPress={() => navigation.goBack()}>
+        <SvgList type={type} />
       </FButton>
       {titleOn && <FText fStyle="B_18" color={colors.b900} text={title} />}
       {rightOn && rightTitleOn ? (
-        <View style={{display: rightOn ? 'flex' : 'none'}}>
-          <Text>{rightTitle}</Text>
-        </View>
+        <FButton
+          buttonStyle="noneStyle"
+          fBStyle={{width: 50, alignItems: 'flex-end'}}
+          onPress={textOnPress}>
+          <FText fStyle="B_16" color={colors.disabled} text={rightTitle} />
+        </FButton>
       ) : (
         <View
           style={[
             styles.rightIconContainer,
             {display: rightOn ? 'flex' : 'none'},
           ]}>
-          {rightIcon1 && (
+          {rType1 && (
             <View
               style={{
-                display: rightIcon1 ? 'flex' : 'none',
+                display: rType1 ? 'flex' : 'none',
                 opacity: onlyBackIcon ? 0 : 1,
               }}>
               <FButton
                 buttonStyle="noneStyle"
                 onPress={onlyBackIcon ? undefined : onPress1}>
-                <SvgImage
-                  type={rightIcon1.icon}
-                  width={rightIconWidth1}
-                  height={rightIconHeight1}
-                  fill={colors.white}
-                />
+                <SvgList type={rType1} />
               </FButton>
             </View>
           )}
-          {rightIcon2 && (
+          {rType2 && (
             <View
               style={{
-                display: rightIcon2 ? 'flex' : 'none',
+                display: rType2 ? 'flex' : 'none',
                 opacity: onlyBackIcon ? 0 : 1,
                 marginLeft: FWidth * 16,
               }}>
               <FButton
                 buttonStyle="noneStyle"
                 onPress={onlyBackIcon ? undefined : onPress2}>
-                <SvgImage
-                  type={rightIcon2!.icon}
-                  width={rightIconWidth2}
-                  height={rightIconHeight2}
-                  fill={colors.white}
-                />
+                <SvgList type={rType2} />
               </FButton>
             </View>
           )}
@@ -92,28 +78,17 @@ const AppBarComponent = ({
   );
 };
 
-export default AppBarComponent;
+export default FAppBar;
 
 const styles = StyleSheet.create({
   appBar: {
     height: FWidth * 48,
     flexDirection: 'row',
-    paddingHorizontal: FWidth * 21,
+    paddingHorizontal: FWidth * 22,
     justifyContent: 'space-between',
     alignItems: 'center',
     backgroundColor: colors.white,
     borderColor: colors.b200,
-  },
-
-  textLine: {
-    height: FWidth * 28,
-    justifyContent: 'center',
-  },
-
-  textColor: {
-    color: colors.b900,
-    includeFontPadding: false,
-    alignItems: 'center',
   },
 
   rightIconContainer: {

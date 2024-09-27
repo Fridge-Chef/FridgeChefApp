@@ -3,6 +3,8 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import BottomTab from './BottomTab';
 import {colors} from '../../../globalStyle';
 import Login from '../../screen/Login';
+import AddRecipe from '../../screen/Community/AddRecipe';
+import FAppBar from '../elements/FAppBar';
 
 const MainStackScreen = () => {
   const Stack = createNativeStackNavigator();
@@ -30,6 +32,27 @@ const MainStackScreen = () => {
         options={{
           title: '',
           headerShadowVisible: false,
+        }}
+      />
+      <Stack.Screen
+        name="addRecipe"
+        component={AddRecipe}
+        options={{
+          title: '',
+          headerShown: true,
+          header() {
+            return (
+              <FAppBar
+                type="close3"
+                titleOn={true}
+                title="후기 작성"
+                rightOn={true}
+                rightTitleOn={true}
+                rightTitle="완료"
+                textOnPress={() => console.log('완료')}
+              />
+            );
+          },
         }}
       />
     </Stack.Navigator>

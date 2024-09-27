@@ -3,7 +3,7 @@ import React from 'react';
 import {colors, FHeight, FWidth} from '../../../globalStyle';
 
 type FImageProps = {
-  imgStyle: 'main' | 'detail' | 'sub' | 'myPage';
+  imgStyle: 'main' | 'detail' | 'sub' | 'sub2' | 'myPage';
   uri: string;
   resizeMode?: 'center' | 'contain' | 'cover' | 'repeat' | 'stretch';
   alt?: string;
@@ -14,6 +14,7 @@ const FImage = ({imgStyle, uri, resizeMode, alt}: FImageProps) => {
     main: styles.mainImage,
     detail: styles.detailImage,
     sub: styles.subImage,
+    sub2: styles.sub2Image,
     myPage: styles.myPageUser,
   };
 
@@ -44,8 +45,13 @@ const styles = StyleSheet.create({
   },
 
   subImage: {
-    width: FHeight * 60,
-    height: FHeight * 60,
+    width: FWidth * 60,
+    height: FWidth * 60,
+    borderRadius: 8,
+  },
+  sub2Image: {
+    width: FWidth * 80,
+    height: FWidth * 80,
     borderRadius: 8,
   },
 

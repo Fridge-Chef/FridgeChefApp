@@ -5,7 +5,7 @@ import {colors} from '../../../globalStyle';
 
 type CalendarProps = {
   day?: string;
-  expiryDate: string;
+  expiryDate?: string;
 };
 
 const Calendar = ({day, expiryDate}: CalendarProps) => {

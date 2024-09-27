@@ -1,10 +1,10 @@
 import {Image, StyleSheet, View} from 'react-native';
 import React from 'react';
 import {colors, FWidth} from '../../../globalStyle';
-import ImageComponent from '../elements/ImageComponent';
 import RankComponent from './RankComponent';
 import {userInfo} from '../../utils/list';
 import FText from '../elements/FText';
+import FImage from '../elements/FImage';
 
 type UserStatus = {
   user: {
@@ -22,7 +22,7 @@ const UserStatus = () => {
   return (
     <View style={styles.container}>
       <View style={styles.userStatusContainer}>
-        <ImageComponent uri={uri} imgStyle="myPage" alt="유저 이미지" />
+        <FImage uri={uri} imgStyle="myPage" alt="유저 이미지" />
         <View style={styles.userTextContainer}>
           <View style={styles.userNicknameContainer}>
             <FText

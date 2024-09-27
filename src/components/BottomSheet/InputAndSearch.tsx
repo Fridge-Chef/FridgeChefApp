@@ -57,7 +57,7 @@ const InputAndSearch = ({itemList, setItemList}: InputAndSearchProps) => {
             <FButton
               key={item.id}
               buttonStyle="noneStyle"
-              fStyle={{paddingVertical: FWidth * 12}}
+              fBStyle={{paddingVertical: FWidth * 12}}
               onPress={() => {
                 Keyboard.dismiss();
                 setAddTitle('');

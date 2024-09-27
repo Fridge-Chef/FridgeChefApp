@@ -66,31 +66,28 @@ const TopComponent = () => {
               {list &&
                 item.ingredients?.map((ingredient: RecipeList) => (
                   <FButton
-                    buttonStyle="noneStyle"
+                    buttonStyle="menuButton"
+                    fBStyle={{
+                      backgroundColor: selectItems.includes(
+                        ingredient.ingredient,
+                      )
+                        ? colors.primary[1]
+                        : colors.background,
+                      marginTop: FWidth * 10,
+                      marginRight: FWidth * 8,
+                    }}
                     key={ingredient.ingredient_id}
+                    onLayout={onLayout}
                     onPress={() => handleIngredientClick(ingredient)}>
-                    <View
-                      style={[
-                        styles.listItem,
-                        {
-                          backgroundColor: selectItems.includes(
-                            ingredient.ingredient,
-                          )
-                            ? colors.primary[1]
-                            : colors.background,
-                        },
-                      ]}
-                      onLayout={onLayout}>
-                      <FText
-                        fStyle="M_14"
-                        color={
-                          selectItems.includes(ingredient.ingredient)
-                            ? colors.white
-                            : colors.black
-                        }
-                        text={ingredient.ingredient}
-                      />
-                    </View>
+                    <FText
+                      fStyle="M_14"
+                      color={
+                        selectItems.includes(ingredient.ingredient)
+                          ? colors.white
+                          : colors.black
+                      }
+                      text={ingredient.ingredient}
+                    />
                   </FButton>
                 ))}
               {item.ingredients.length > 0 && (
@@ -129,13 +126,5 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     flexWrap: 'wrap',
     marginTop: FWidth * -10,
-  },
-
-  listItem: {
-    paddingHorizontal: FWidth * 12,
-    paddingVertical: FWidth * 6,
-    borderRadius: 50,
-    marginTop: FWidth * 10,
-    marginRight: FWidth * 8,
   },
 });

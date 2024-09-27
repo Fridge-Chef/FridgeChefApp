@@ -3,10 +3,10 @@ import React from 'react';
 import {Path, Rect, Svg} from 'react-native-svg';
 
 type BottomButtonProps = {
-  buttonHeight: number;
+  buttonHeight?: number;
 };
 
-const BottomButton = ({buttonHeight}: BottomButtonProps) => {
+const BottomButton = ({buttonHeight = 32}: BottomButtonProps) => {
   return (
     <Svg
       width={buttonHeight}
@@ -18,8 +18,8 @@ const BottomButton = ({buttonHeight}: BottomButtonProps) => {
       <Path
         d="M12.6666 22.667L19.3333 16.0003L12.6666 9.33366"
         stroke="#111111"
-        stroke-width="1.5"
-        stroke-linecap="round"
+        strokeWidth="1.5"
+        strokeLinecap="round"
       />
     </Svg>
   );

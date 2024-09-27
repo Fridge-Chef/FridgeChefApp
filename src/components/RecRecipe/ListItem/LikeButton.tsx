@@ -1,7 +1,6 @@
 import {StyleSheet, View} from 'react-native';
 import React from 'react';
 import FButton from '../../elements/FButton';
-import SvgImage from '../../elements/SvgImage';
 import Heart2 from '../../../utils/Svg/Heart2';
 import Heart3 from '../../../utils/Svg/Heart3';
 import {FWidth} from '../../../../globalStyle';

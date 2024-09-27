@@ -8,8 +8,8 @@ import ListItem from './ListItem';
 const ListComponent = () => {
   const list = require('../../utils/recipeListData.json');
   return (
-    <View>
-      <View style={styles.container}>
+    <View style={styles.container}>
+      <View style={styles.titleContainer}>
         <SubTitleComponent title="최근순" color={colors.subText} />
         <View style={{marginLeft: FWidth * 4}}>
           <ArrowDown2 />
@@ -19,6 +19,8 @@ const ListComponent = () => {
         <View style={styles.subContainer}>
           <FlatList
             data={list}
+            showsVerticalScrollIndicator={false}
+            overScrollMode="never"
             keyExtractor={(_, index) => index.toString()}
             renderItem={({item}) => <ListItem item={item} />}
           />
@@ -32,6 +34,10 @@ export default ListComponent;
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
+  },
+
+  titleContainer: {
     flexDirection: 'row',
     alignItems: 'center',
   },

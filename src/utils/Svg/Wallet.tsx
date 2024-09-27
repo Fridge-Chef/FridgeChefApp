@@ -4,7 +4,7 @@ import {G, Mask, Path, Rect, Svg} from 'react-native-svg';
 import {colors} from '../../../globalStyle';
 
 type WalletProps = {
-  focused: boolean;
+  focused?: boolean;
 };
 
 const Wallet = ({focused}: WalletProps) => {

@@ -3,17 +3,17 @@ import {
   StyleProp,
   StyleSheet,
   Text,
-  TextStyle,
   TouchableOpacity,
   ViewStyle,
 } from 'react-native';
 import React from 'react';
-import {colors, FHeight, FWidth} from '../../../globalStyle';
+import {colors, FWidth} from '../../../globalStyle';
 
 type FButtonProps = {
   buttonStyle:
     | 'svgButton'
     | 'loginButton'
+    | 'menuButton'
     | 'iconButton'
     | 'iconButton2'
     | 'smallIcon'
@@ -25,8 +25,7 @@ type FButtonProps = {
     | 'noneStyle';
   buttonColor?: string;
   radius?: number;
-  fStyle?: StyleProp<ViewStyle>;
-  tStyle?: StyleProp<TextStyle>;
+  fBStyle?: StyleProp<ViewStyle>;
   fontFamily?:
     | 'Pretendard-Black'
     | 'Pretendard-Bold'
@@ -76,8 +75,7 @@ const FButton = ({
   fontFamily,
   lineHeight,
   letterSpacing,
-  fStyle,
-  tStyle,
+  fBStyle,
   marginTop,
   marginRight,
   marginBottom,
@@ -97,6 +95,8 @@ const FButton = ({
         marginBottom: marginBottom,
       },
     ],
+
+    menuButton: styles.menu,
     svgButton: [
       styles.svgIconButton,
       {
@@ -145,7 +145,7 @@ const FButton = ({
 
   return (
     <TouchableOpacity
-      style={[styleList[buttonStyle], fStyle]}
+      style={[styleList[buttonStyle], fBStyle]}
       activeOpacity={1}
       onLayout={onLayout}
       onPress={onPress}>
@@ -176,6 +176,12 @@ const styles = StyleSheet.create({
     borderColor: colors.border,
     borderRadius: 14,
     justifyContent: 'center',
+  },
+
+  menu: {
+    paddingHorizontal: FWidth * 12,
+    paddingVertical: FWidth * 6,
+    borderRadius: 50,
   },
 
   svgIconButton: {
@@ -231,12 +237,9 @@ const styles = StyleSheet.create({
   },
 
   addButton: {
-    marginTop: FWidth * 24,
     paddingVertical: FWidth * 12,
     paddingHorizontal: FWidth * 20,
     borderRadius: 40,
-    borderWidth: 1,
-    borderColor: colors.border,
   },
 
   noneStyle: {},

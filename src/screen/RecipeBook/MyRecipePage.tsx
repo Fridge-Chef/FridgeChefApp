@@ -8,7 +8,7 @@ const MyRecipePage = () => {
   const [data] = useState(true);
   return (
     <View style={styles.container}>
-      {!data ? (
+      {data ? (
         <NoContent
           title="아직 작성된 나의 레시피가 없습니다"
           buttonTitle="나만의 레시피 작성하기"

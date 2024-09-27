@@ -3,10 +3,10 @@ import React from 'react';
 import {Path, Rect, Svg} from 'react-native-svg';
 
 type MoreListProps = {
-  buttonHeight: number;
+  buttonHeight?: number;
 };
 
-const MoreList = ({buttonHeight}: MoreListProps) => {
+const MoreList = ({buttonHeight = 36}: MoreListProps) => {
   return (
     <Svg
       width={buttonHeight}

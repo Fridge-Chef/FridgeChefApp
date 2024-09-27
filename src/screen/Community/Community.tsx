@@ -1,21 +1,69 @@
-import {StyleSheet, Text, View} from 'react-native';
-import React from 'react';
-import {colors} from '../../../globalStyle';
-import FText from '../../components/elements/FText';
+import {Dimensions, StyleSheet} from 'react-native';
+import {colors, fontStyles, FWidth} from '../../../globalStyle';
+import {useCommunityTopTabBar, useTopTabBar} from '../../store/store';
+import {useState} from 'react';
+import {SceneMap, TabBar, TabView} from 'react-native-tab-view';
+import CMyRecipe from '../../components/Community/CMyRecipe';
+import CRecipeReview from '../../components/Community/CRecipeReview';
+
+const initialLayout = {width: Dimensions.get('window').width};
 
 const Community = () => {
+  const {index, setIndex} = useCommunityTopTabBar();
+  const [routes] = useState([
+    {key: 'myRecipe', title: '나만의 레시피'},
+    {key: 'recipeReview', title: '레시피 후기'},
+  ]);
+
+  const renderScene = SceneMap({
+    myRecipe: CMyRecipe,
+    recipeReview: CRecipeReview,
+  });
+
+  const handleIndexChange = (newIndex: number) => {
+    setIndex(newIndex);
+  };
+
+  const renderTabBar = (props: any) => (
+    <TabBar
+      {...props}
+      activeColor={colors.text}
+      inactiveColor={colors.disabled}
+      pressColor="transparent"
+      indicatorStyle={styles.indicator}
+      style={styles.tabBar}
+      labelStyle={[fontStyles.B_16, styles.labelStyle]}
+    />
+  );
+
   return (
-    <View style={styles.container}>
-      <FText fontStyle="B_20" text="김민영" color={colors.warning} mTop={32} />
-    </View>
+    <TabView
+      navigationState={{index, routes}}
+      renderScene={renderScene}
+      onIndexChange={handleIndexChange}
+      initialLayout={initialLayout}
+      renderTabBar={renderTabBar}
+    />
   );
 };
 
 export default Community;
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
+  tabBar: {
+    height: FWidth * 54,
     backgroundColor: colors.white,
+    justifyContent: 'center',
+    borderBottomWidth: 1,
+    borderColor: colors.b200,
+    elevation: 0,
+  },
+  indicator: {
+    backgroundColor: colors.text,
+    marginBottom: FWidth * -1,
+  },
+
+  labelStyle: {
+    includeFontPadding: false,
   },
 });

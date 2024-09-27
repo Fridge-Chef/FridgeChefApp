@@ -30,9 +30,7 @@ type LoadingType = {
 };
 
 type TopTabBarType = {
-  tabBarName: string;
   index: number;
-  setTabBarName: (tabBarName: string) => void;
   setIndex: (index: number) => void;
 };
 
@@ -64,8 +62,11 @@ export const useLoading = create<LoadingType>(set => ({
 }));
 
 export const useTopTabBar = create<TopTabBarType>(set => ({
-  tabBarName: '',
   index: 0,
-  setTabBarName: (tabBarName: string) => set({tabBarName}),
+  setIndex: (index: number) => set({index}),
+}));
+
+export const useCommunityTopTabBar = create<TopTabBarType>(set => ({
+  index: 0,
   setIndex: (index: number) => set({index}),
 }));
