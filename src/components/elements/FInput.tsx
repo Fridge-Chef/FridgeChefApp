@@ -3,6 +3,7 @@ import React from 'react';
 import {colors, FHeight, fontFamilies, FWidth} from '../../../globalStyle';
 import Icon from 'react-native-vector-icons/Ionicons';
 import FButton from './FButton';
+import FText from './FText';
 
 type FInputProps = {
   value?: string;
@@ -19,6 +20,8 @@ type FInputProps = {
   maxLength?: number;
   numberOfLines?: number;
   multiline?: boolean;
+  errorMsg?: boolean;
+  errorText?: string | number;
 };
 
 const FInput = ({
@@ -35,6 +38,8 @@ const FInput = ({
   maxLength = 20,
   numberOfLines = 1,
   multiline = false,
+  errorMsg = false,
+  errorText,
 }: FInputProps) => {
   const inputStyleList = {
     default: [styles.defaultStyle],
@@ -66,6 +71,11 @@ const FInput = ({
           </View>
         )}
       </View>
+      {errorMsg && errorText && (
+        <View style={styles.errorContainer}>
+          <FText fStyle="M_14" color={colors.error} text={errorText} />
+        </View>
+      )}
     </View>
   );
 };
@@ -100,5 +110,9 @@ const styles = StyleSheet.create({
     paddingRight: FWidth * 30,
     height: FWidth * 52,
     fontFamily: fontFamilies.pretendardMedium,
+  },
+
+  errorContainer: {
+    marginTop: FWidth * 10,
   },
 });

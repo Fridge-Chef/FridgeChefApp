@@ -1,5 +1,5 @@
 import {Alert, Keyboard, StyleSheet, View} from 'react-native';
-import React, {Dispatch} from 'react';
+import React, {Dispatch, useEffect, useState} from 'react';
 import FButton from '../elements/FButton';
 import {colors, FWidth} from '../../../globalStyle';
 import FInput from '../elements/FInput';
@@ -13,6 +13,7 @@ type InputAndSearchProps = {
 
 const InputAndSearch = ({itemList, setItemList}: InputAndSearchProps) => {
   const {addTitle, setAddTitle} = useAddModalInputText();
+  const [errorMsg, setErrorMsg] = useState('');
   const filteredIngredients = addTitle
     ? itemList.filter((itemList: any) => itemList.name.includes(addTitle))
     : [];
@@ -28,6 +29,14 @@ const InputAndSearch = ({itemList, setItemList}: InputAndSearchProps) => {
     });
   };
 
+  useEffect(() => {
+    if (addTitle && filteredIngredients.length === 0) {
+      setErrorMsg('해당 재료명을 찾을 수 없습니다');
+    } else {
+      setErrorMsg('');
+    }
+  }, [addTitle, filteredIngredients]);
+
   return (
     <View>
       <View style={styles.inputContainer}>
@@ -35,6 +44,8 @@ const InputAndSearch = ({itemList, setItemList}: InputAndSearchProps) => {
           inputStyle="default"
           value={addTitle}
           placeholder="재료를 입력해주세요"
+          errorMsg={true}
+          errorText={errorMsg}
           onChangeText={text => {
             setAddTitle(text);
           }}
