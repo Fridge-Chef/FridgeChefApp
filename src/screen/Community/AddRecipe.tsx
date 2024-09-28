@@ -36,7 +36,9 @@ const AddRecipe = ({title}: AddRecipeProps) => {
           </View>
         </Pressable>
       </ScrollView>
-      <AddImage reviewData={reviewData} setReviewData={setReviewData} />
+      <Pressable onPress={() => Keyboard.dismiss()}>
+        <AddImage reviewData={reviewData} setReviewData={setReviewData} />
+      </Pressable>
     </>
   );
 };
