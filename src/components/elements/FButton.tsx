@@ -188,6 +188,9 @@ const styles = StyleSheet.create({
 
   svgIconButton: {
     padding: 12,
+    elevation: 5,
+    shadowColor: colors.black,
+    shadowOffset: {width: 0, height: 4},
     borderRadius: 999,
   },
 
