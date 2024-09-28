@@ -5,6 +5,7 @@ import {colors} from '../../../globalStyle';
 import Login from '../../screen/Login';
 import AddRecipe from '../../screen/Community/AddRecipe';
 import FAppBar from '../elements/FAppBar';
+import StorageGuide from '../../screen/MyFridge/StorageGuide';
 
 const MainStackScreen = () => {
   const Stack = createNativeStackNavigator();
@@ -53,6 +54,15 @@ const MainStackScreen = () => {
               />
             );
           },
+        }}
+      />
+      <Stack.Screen
+        name="storageGuide"
+        component={StorageGuide}
+        options={{
+          title: '',
+          headerShown: false,
+          headerShadowVisible: false,
         }}
       />
     </Stack.Navigator>

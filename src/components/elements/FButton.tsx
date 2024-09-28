@@ -14,6 +14,7 @@ type FButtonProps = {
     | 'svgButton'
     | 'loginButton'
     | 'menuButton'
+    | 'menuButton2'
     | 'iconButton'
     | 'iconButton2'
     | 'smallIcon'
@@ -98,6 +99,7 @@ const FButton = ({
     ],
 
     menuButton: styles.menu,
+    menuButton2: styles.menuButton2,
     svgButton: [
       styles.svgIconButton,
       {
@@ -185,6 +187,12 @@ const styles = StyleSheet.create({
     paddingHorizontal: FWidth * 12,
     paddingVertical: FWidth * 6,
     borderRadius: 50,
+  },
+
+  menuButton2: {
+    paddingHorizontal: FWidth * 16,
+    paddingVertical: FWidth * 9,
+    borderRadius: 100,
   },
 
   svgIconButton: {

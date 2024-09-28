@@ -13,11 +13,7 @@ import AddScore from '../../components/Community/AddRecipe/AddScore';
 import AddContent from '../../components/Community/AddRecipe/AddContent';
 import ImageView from '../../components/Community/AddRecipe/ImageView';
 
-type AddRecipeProps = {
-  title: string;
-};
-
-const AddRecipe = ({title}: AddRecipeProps) => {
+const AddRecipe = () => {
   const [reviewData, setReviewData] = useState({
     id: 1,
     reviewPoint: 0,

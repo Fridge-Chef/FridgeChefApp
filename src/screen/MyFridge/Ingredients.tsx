@@ -12,6 +12,7 @@ import LoginAndUser from '../../components/Ingredients/LoginAndUser';
 import FText from '../../components/elements/FText';
 import {showToast} from '../../helpers/ShowToast';
 import CondimentButton from '../../components/Ingredients/CondimentButton';
+import InfoComponent from '../../components/Ingredients/InfoComponent';
 const Ingredients = () => {
   const {setLoading, setLoadingTitle} = useLoading();
   const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
@@ -54,6 +55,7 @@ const Ingredients = () => {
               <TopComponent />
             </TouchableOpacity>
             <CondimentList />
+            <InfoComponent />
             {/* <CondimentButton
               onClicked={onClicked}
               setonClicked={setonClicked}

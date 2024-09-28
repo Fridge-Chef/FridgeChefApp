@@ -51,6 +51,7 @@ const styles = StyleSheet.create({
 
   buttonContainer: {
     marginTop: FWidth * 32,
+    // marginTop: FWidth * 16,
     flexDirection: 'row',
     alignItems: 'center',
     borderRadius: 14,

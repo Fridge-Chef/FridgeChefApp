@@ -6,7 +6,6 @@ import {colors} from '../../../globalStyle';
 import RecRecipe from '../../screen/MyFridge/RecRecipe';
 import RecipeDetail from '../../screen/MyFridge/RecipeDetail';
 import FAppBar from '../elements/FAppBar';
-
 const MyFridgeScreen = () => {
   const Stack = createNativeStackNavigator();
   return (
