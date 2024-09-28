@@ -240,7 +240,8 @@ export const myRecipes = [
     id: 1,
     title: '피자가 너무 맛있어요',
     writer: '김민영',
-    content: '피자가 너무 맛있어요',
+    content:
+      '피자가 너무 맛있어요 피자 토핑이 많고 치즈가 엄청 맛있어요! 특히 쭉쭉 늘어나는게 좋아요',
     point: 3,
     likes: 12,
     views: 12,

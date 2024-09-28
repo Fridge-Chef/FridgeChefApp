@@ -68,5 +68,7 @@ const styles = StyleSheet.create({
 
   labelStyle: {
     includeFontPadding: false,
+    lineHeight: FWidth * 24,
+    backgroundColor: 'red',
   },
 });

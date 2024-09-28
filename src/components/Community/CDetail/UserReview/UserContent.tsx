@@ -1,7 +1,8 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import React from 'react';
 import FImage from '../../../elements/FImage';
-import {colors, fontStyles, FWidth} from '../../../../../globalStyle';
+import {colors, FWidth} from '../../../../../globalStyle';
+import FText from '../../../elements/FText';
 
 type UserContentProps = {
   uri: string;
@@ -12,7 +13,13 @@ const UserContent = ({uri, content}: UserContentProps) => {
   return (
     <>
       <View style={styles.container}>
-        <Text style={[fontStyles.R_16, {color: colors.text}]}>{content}</Text>
+        <FText
+          nLine={1000}
+          fStyle="R_16"
+          lineH={FWidth * 24}
+          color={colors.text}
+          text={content}
+        />
       </View>
       <View style={{marginTop: FWidth * 24}}>
         <FImage uri={uri} imgStyle="rDetail" alt="리뷰 이미지" />

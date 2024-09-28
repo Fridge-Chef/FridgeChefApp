@@ -1,6 +1,7 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import React from 'react';
-import {colors, fontStyles, FWidth} from '../../../../globalStyle';
+import {colors, FWidth} from '../../../../globalStyle';
+import FText from '../../elements/FText';
 
 type ContentComponentProps = {
   content: string;
@@ -9,7 +10,13 @@ type ContentComponentProps = {
 const ContentComponent = ({content}: ContentComponentProps) => {
   return (
     <View style={styles.container}>
-      <Text style={[fontStyles.R_16, styles.textColor]}>{content}</Text>
+      <FText
+        nLine={2000}
+        fStyle="R_16"
+        lineH={FWidth * 24}
+        color={colors.black}
+        text={content}
+      />
     </View>
   );
 };
@@ -19,10 +26,5 @@ export default ContentComponent;
 const styles = StyleSheet.create({
   container: {
     marginTop: FWidth * 16,
-  },
-
-  textColor: {
-    color: colors.black,
-    lineHeight: FWidth * 24,
   },
 });

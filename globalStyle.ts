@@ -73,11 +73,4 @@ export const fontStyles = {
     // lineHeight: FWidth * 24,
     letterSpacing: FWidth * -0.1,
   },
-
-  R_16: {
-    fontFamily: fontFamilies.pretendardRegular,
-    fontSize: FWidth * 16,
-    // lineHeight: FWidth * 24,
-    letterSpacing: FWidth * -0.1,
-  },
 };
