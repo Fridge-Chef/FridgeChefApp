@@ -230,6 +230,11 @@ export const menuList = [
   {id: 3, text: '이 달의 레시피'},
 ];
 
+export const menuList2 = [
+  {id: 1, text: '전체'},
+  {id: 2, text: '베스트 후기'},
+];
+
 export const myRecipes = [
   {
     id: 1,
@@ -269,6 +274,51 @@ export const myRecipes = [
   },
   {
     id: 5,
+    title: '뜨끈한 김치찌개 드셔보세요!',
+    writer: '윤성희',
+    point: 4,
+    likes: 14,
+    views: 22,
+    img: require('../assets/images/testImage03.jpg'),
+  },
+  {
+    id: 6,
+    title: '피자가 너무 맛있어요',
+    writer: '김민영',
+    point: 3,
+    likes: 12,
+    views: 12,
+    img: require('../assets/images/textImage.jpg'),
+  },
+  {
+    id: 7,
+    title: '고기가 진정한 승자다',
+    writer: '강선영',
+    point: 5,
+    likes: 40,
+    views: 22,
+    img: require('../assets/images/testImage05.jpg'),
+  },
+  {
+    id: 8,
+    title: '비빔밥 맛있게 드세요!',
+    writer: '고은이',
+    point: 2,
+    likes: 20,
+    views: 50,
+    img: require('../assets/images/testImage02.jpeg'),
+  },
+  {
+    id: 9,
+    title: '음식은 역시 비빔밥입니다',
+    writer: '김희선',
+    point: 4,
+    likes: 33,
+    views: 34,
+    img: require('../assets/images/testImage04.jpg'),
+  },
+  {
+    id: 10,
     title: '뜨끈한 김치찌개 드셔보세요!',
     writer: '윤성희',
     point: 4,

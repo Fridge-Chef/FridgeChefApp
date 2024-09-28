@@ -6,14 +6,15 @@ import FText from '../elements/FText';
 import {colors, FWidth} from '../../../globalStyle';
 
 type CListMenuProps = {
+  onClick: number;
+  setonClick: (id: number) => void;
   list: {
     id: number;
     text: string;
   }[];
 };
 
-const CListMenu = ({list}: CListMenuProps) => {
-  const [onClick, setonClick] = useState(1);
+const CListMenu = ({onClick, setonClick, list}: CListMenuProps) => {
   return (
     <View style={styles.container}>
       {list.map(item => (

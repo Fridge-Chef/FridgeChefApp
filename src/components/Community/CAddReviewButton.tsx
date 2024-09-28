@@ -1,4 +1,4 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import React from 'react';
 import FText from '../elements/FText';
 import FButton from '../elements/FButton';
@@ -12,23 +12,46 @@ type CAddReviewButtonProps = {
     id: number;
     text: string;
   }[];
+  scrollOffset: number;
+  prevScrollOffset: number;
 };
 
-const CAddReviewButton = ({list}: CAddReviewButtonProps) => {
+const CAddReviewButton = ({
+  list,
+  scrollOffset,
+  prevScrollOffset,
+}: CAddReviewButtonProps) => {
   const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
+
   return (
     <FButton
       buttonStyle="addButton"
-      fBStyle={styles.buttonStyle}
+      fBStyle={[
+        styles.buttonStyle,
+        {
+          paddingHorizontal:
+            prevScrollOffset > scrollOffset ? FWidth * 20 : FWidth * 12,
+        },
+      ]}
       onPress={() => navigation.navigate('addRecipe')}>
       <View style={styles.iconAlign}>
-        <Edit2 />
-        <FText
-          mLeft={FWidth * 6}
-          fStyle="B_16"
-          text="레시피 작성"
-          color={colors.white}
-        />
+        <View
+          style={[
+            styles.iconContainer,
+            {
+              width: prevScrollOffset > scrollOffset ? null : FWidth * 24,
+            },
+          ]}>
+          <Edit2 />
+        </View>
+        {prevScrollOffset > scrollOffset && (
+          <FText
+            mLeft={FWidth * 6}
+            fStyle="B_16"
+            text="레시피 작성"
+            color={colors.white}
+          />
+        )}
       </View>
     </FButton>
   );
@@ -47,5 +70,11 @@ const styles = StyleSheet.create({
   iconAlign: {
     flexDirection: 'row',
     alignItems: 'center',
+  },
+
+  iconContainer: {
+    height: FWidth * 24,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });
