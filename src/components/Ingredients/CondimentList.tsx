@@ -39,7 +39,7 @@ const CondimentList = () => {
 
   return (
     <View style={styles.container}>
-      <SubTitleComponent title={'기본 조미료'} color={colors.b400} />
+      <SubTitleComponent title={'보유 조미료'} color={colors.b400} />
       <View
         style={[
           styles.listContainer,
@@ -96,7 +96,7 @@ export default CondimentList;
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: FWidth * 40,
+    marginTop: FWidth * 32,
     paddingHorizontal: FWidth * 22,
   },
 

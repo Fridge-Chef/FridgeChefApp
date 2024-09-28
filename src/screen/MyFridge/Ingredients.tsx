@@ -1,5 +1,5 @@
 import {ScrollView, StyleSheet, TouchableOpacity, View} from 'react-native';
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {colors, FHeight, FWidth} from '../../../globalStyle';
 import TopComponent from '../../components/Ingredients/TopComponent';
 import CondimentList from '../../components/Ingredients/CondimentList';
@@ -11,9 +11,13 @@ import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import LoginAndUser from '../../components/Ingredients/LoginAndUser';
 import FText from '../../components/elements/FText';
 import {showToast} from '../../helpers/ShowToast';
+import CondimentButton from '../../components/Ingredients/CondimentButton';
 const Ingredients = () => {
   const {setLoading, setLoadingTitle} = useLoading();
   const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
+  const [onClicked, setonClicked] = useState(1);
+  // const [test] = useState(false);
+  const [test] = useState(true);
 
   const handleSearch = () => {
     setLoadingTitle('레시피 검색중');
@@ -27,6 +31,7 @@ const Ingredients = () => {
     }
   };
 
+  // 테스트용 함수
   const handleTest = () => {
     showToast({
       text: '기본 재료를 등록했어요. 언제든 삭제할 수 있어요!',
@@ -41,16 +46,25 @@ const Ingredients = () => {
   return (
     <View style={styles.container}>
       <ScrollView showsVerticalScrollIndicator={false} overScrollMode="never">
-        <LoginAndUser />
-        <TouchableOpacity onPress={handleTest}>
-          <TopComponent />
-        </TouchableOpacity>
-        <CondimentList />
+        <LoginAndUser test={test} />
+        {/* 테스트 터쳐블 삭제바람 */}
+        {test && (
+          <>
+            <TouchableOpacity onPress={handleTest}>
+              <TopComponent />
+            </TouchableOpacity>
+            <CondimentList />
+            {/* <CondimentButton
+              onClicked={onClicked}
+              setonClicked={setonClicked}
+            /> */}
+          </>
+        )}
         <View
           style={{
             flex: 1,
           }}>
-          <AddList />
+          <AddList onClicked={onClicked} />
         </View>
       </ScrollView>
       <View style={styles.buttonContainer}>
@@ -76,11 +90,12 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: colors.white,
   },
+
   buttonContainer: {
     paddingHorizontal: FWidth * 22,
+    marginBottom: FHeight * 38,
     position: 'absolute',
     width: '100%',
     bottom: 0,
-    marginBottom: FHeight * 38,
   },
 });

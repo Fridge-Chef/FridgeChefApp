@@ -9,7 +9,7 @@ type LoginIconProps = {
 
 const LoginIcon = ({test}: LoginIconProps) => {
   return (
-    <Svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+    <Svg width="24" height="24" viewBox="0 0 22 22" fill="none">
       <G clip-path="url(#clip0_2121_5315)">
         <Mask
           id="mask0_2121_5315"

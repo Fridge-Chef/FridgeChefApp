@@ -3,40 +3,20 @@
     "title": "기본 재료",
     "items": [
       {
-        "name": "당근",
+        "name": "우유",
         "expiry_date": "2024-09-25T15:45:00"
       },
       {
-        "name": "양파",
+        "name": "바나나",
         "expiry_date": "2024-09-30T15:45:00"
       },
       {
-        "name": "감자",
+        "name": "식빵",
         "expiry_date": ""
       },
       {
-        "name": "소고기",
+        "name": "양파",
         "expiry_date": ""
-      },
-      {
-        "name": "닭고기",
-        "expiry_date": ""
-      },
-      {
-        "name": "돼지고기",
-        "expiry_date": "2024-09-27T15:45:00"
-      },
-      {
-        "name": "우유",
-        "expiry_date": "2024-11-11T15:45:00"
-      },
-      {
-        "name": "계란",
-        "expiry_date": "2024-10-21T15:45:00"
-      },
-      {
-        "name": "빵",
-        "expiry_date": "2024-9-29T15:45:00"
       }
     ]
   }

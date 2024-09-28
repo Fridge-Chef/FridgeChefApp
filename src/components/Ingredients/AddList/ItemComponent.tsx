@@ -57,27 +57,35 @@ const ItemComponent = ({itemList}: ItemComponentProps) => {
   useEffect(() => {}, [date]);
 
   return (
-    <>
-      <View style={styles.itemContainer}>
+    <View style={styles.itemContainer}>
+      <View style={{flexDirection: 'row', alignItems: 'center'}}>
+        <View
+          style={{
+            height: 20,
+            width: 16,
+            backgroundColor: colors.black,
+            marginRight: FWidth * 6,
+          }}
+        />
         <FText fStyle="B_16" color={colors.text} text={itemList.name} />
-        <View style={styles.iconAndTextContainer}>
-          {itemList.expiry_date && <DDayText day={date()} />}
-          <View style={{marginHorizontal: FWidth * 12}}>
-            <FButton
-              buttonStyle="noneStyle"
-              onPress={() => handleAddExpiration(itemList.name)}>
-              <Calendar
-                day={date()?.replace('D-', '')}
-                expiryDate={itemList.expiry_date}
-              />
-            </FButton>
-          </View>
-          <FButton buttonStyle="noneStyle">
-            <Close3 />
+      </View>
+      <View style={styles.iconAndTextContainer}>
+        {itemList.expiry_date && <DDayText day={date()} />}
+        <View style={{marginHorizontal: FWidth * 12}}>
+          <FButton
+            buttonStyle="noneStyle"
+            onPress={() => handleAddExpiration(itemList.name)}>
+            <Calendar
+              day={date()?.replace('D-', '')}
+              expiryDate={itemList.expiry_date}
+            />
           </FButton>
         </View>
+        <FButton buttonStyle="noneStyle">
+          <Close3 />
+        </FButton>
       </View>
-    </>
+    </View>
   );
 };
 
