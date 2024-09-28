@@ -8,7 +8,7 @@ type DDayTextProps = {
 };
 
 const DDayText = ({day}: DDayTextProps) => {
-  return <FText fStyle="B_14" color={colors.warning} text={day} />;
+  return <FText fStyle="B_14" color={colors.error} text={day} />;
 };
 
 export default DDayText;

@@ -57,17 +57,19 @@ const ItemComponent = ({itemList}: ItemComponentProps) => {
   useEffect(() => {}, [date]);
 
   return (
-    <View style={styles.itemContainer}>
-      <View style={{flexDirection: 'row', alignItems: 'center'}}>
+    <View style={styles.container}>
+      <View style={styles.textContainer}>
         <View
           style={{
             height: 20,
             width: 16,
             backgroundColor: colors.black,
-            marginRight: FWidth * 6,
           }}
         />
-        <FText fStyle="B_16" color={colors.text} text={itemList.name} />
+        <View style={styles.titleContainer}>
+          <FText fStyle="B_16" color={colors.text} text={itemList.name} />
+        </View>
+        {/* {itemList.expiry_date && <DDayText day={date()} />} */}
       </View>
       <View style={styles.iconAndTextContainer}>
         {itemList.expiry_date && <DDayText day={date()} />}
@@ -92,12 +94,7 @@ const ItemComponent = ({itemList}: ItemComponentProps) => {
 export default ItemComponent;
 
 const styles = StyleSheet.create({
-  iconAndTextContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-
-  itemContainer: {
+  container: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     marginTop: FHeight * 12,
@@ -106,5 +103,20 @@ const styles = StyleSheet.create({
     paddingRight: 16,
     borderRadius: 14,
     backgroundColor: colors.background,
+  },
+
+  textContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+
+  titleContainer: {
+    marginLeft: FWidth * 6,
+    marginRight: FWidth * 12,
+  },
+
+  iconAndTextContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
   },
 });
