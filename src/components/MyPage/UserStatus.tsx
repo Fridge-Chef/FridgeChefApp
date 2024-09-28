@@ -5,6 +5,7 @@ import RankComponent from './RankComponent';
 import {userInfo} from '../../utils/list';
 import FText from '../elements/FText';
 import FImage from '../elements/FImage';
+import RecipeActions from './RecipeActions';
 
 type UserStatus = {
   user: {
@@ -21,25 +22,29 @@ const UserStatus = () => {
 
   return (
     <View style={styles.container}>
-      <View style={styles.userStatusContainer}>
-        <FImage uri={uri} imgStyle="myPage" alt="유저 이미지" />
-        <View style={styles.userTextContainer}>
-          <View style={styles.userNicknameContainer}>
-            <FText
-              fStyle="B_16"
-              color={colors.text}
-              text={`${user.user.userName}님`}
-            />
-            <RankComponent rank={user.user.userRank} />
-          </View>
+      <FImage
+        uri={uri}
+        imgStyle="myPage"
+        resizeMode="stretch"
+        alt="유저 이미지"
+      />
+      <View style={styles.userTextContainer}>
+        <View style={styles.userNicknameContainer}>
           <FText
-            mTop={FWidth * 4}
-            fStyle="R_14"
-            color={colors.btnBG}
-            text={`${user.user.email}`}
+            fStyle="B_18"
+            color={colors.text}
+            text={`${user.user.userName}님`}
           />
+          <RankComponent rank={user.user.userRank} />
         </View>
+        <FText
+          mTop={FWidth * 4}
+          fStyle="R_14"
+          color={colors.btnBG}
+          text={`${user.user.email}`}
+        />
       </View>
+      <RecipeActions />
     </View>
   );
 };
@@ -48,16 +53,12 @@ export default UserStatus;
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: FWidth * 32,
-  },
-
-  userStatusContainer: {
-    flexDirection: 'row',
+    marginTop: FWidth * 24,
     alignItems: 'center',
-    padding: FWidth * 24,
+    paddingVertical: FWidth * 24,
+    paddingHorizontal: FWidth * 22,
     borderRadius: 14,
-    backgroundColor: colors.background3,
-    borderWidth: 1,
+    backgroundColor: colors.background2,
     borderColor: colors.disabled2,
   },
 
@@ -68,5 +69,6 @@ const styles = StyleSheet.create({
   userNicknameContainer: {
     flexDirection: 'row',
     alignItems: 'center',
+    marginTop: FWidth * 12,
   },
 });

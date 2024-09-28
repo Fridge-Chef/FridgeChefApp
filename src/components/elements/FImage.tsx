@@ -58,6 +58,7 @@ const styles = StyleSheet.create({
     height: FWidth * 60,
     borderRadius: 8,
   },
+
   sub2Image: {
     width: FWidth * 80,
     height: FWidth * 80,
@@ -65,9 +66,9 @@ const styles = StyleSheet.create({
   },
 
   myPageUser: {
-    width: 48,
-    height: 48,
-    borderRadius: 50,
+    width: FWidth * 48,
+    height: FWidth * 48,
+    // borderRadius: 50,
   },
 
   addImageView: {

@@ -219,7 +219,7 @@ export const userInfo = {
   user: {
     userName: '김민영',
     email: 'asdasd@naver.com',
-    userImg: require('../assets/images/userImg.png'),
+    userImg: require('../assets/images/Frame.png'),
     userRank: '마스터 셰프',
   },
 };

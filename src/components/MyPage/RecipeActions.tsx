@@ -32,7 +32,7 @@ const RecipeActions = () => {
     <View style={styles.container}>
       {recipeActionInfo.map((item, index) => (
         <View key={index} style={styles.textContainer}>
-          <FText fStyle="M_14" color={colors.text} text={item.recipeAction} />
+          <FText fStyle="R_14" color={colors.text} text={item.recipeAction} />
           <FButton
             buttonStyle="noneStyle"
             onPress={() => handleList(item.recipeAction)}>
@@ -53,17 +53,17 @@ export default RecipeActions;
 
 const styles = StyleSheet.create({
   container: {
+    marginTop: FWidth * 20,
+    width: '100%',
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginTop: FWidth * 16,
-    borderRadius: 16,
+    borderRadius: 12,
     padding: FWidth * 20,
-    borderWidth: 1,
-    borderColor: colors.border,
+    backgroundColor: colors.white,
   },
 
   textContainer: {
-    paddingHorizontal: FWidth * 16.83,
+    paddingHorizontal: FWidth * 6.83,
     alignItems: 'center',
   },
 });

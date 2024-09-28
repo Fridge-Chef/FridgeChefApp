@@ -1,4 +1,4 @@
-import {StyleSheet, View} from 'react-native';
+import {ScrollView, StyleSheet, View} from 'react-native';
 import React from 'react';
 import {colors, FWidth} from '../../../globalStyle';
 import UserStatus from '../../components/MyPage/UserStatus';
@@ -9,12 +9,13 @@ import FText from '../../components/elements/FText';
 const MyPage = () => {
   return (
     <View style={styles.container}>
-      <View style={styles.mainTitleContainer}>
-        <FText fStyle="B_18" color={colors.text} text="설정" />
-      </View>
-      <UserStatus />
-      <RecipeActions />
-      <MenuList />
+      <ScrollView overScrollMode="never" showsVerticalScrollIndicator={false}>
+        <View style={styles.mainTitleContainer}>
+          <FText fStyle="B_18" color={colors.text} text="설정" />
+        </View>
+        <UserStatus />
+        <MenuList />
+      </ScrollView>
     </View>
   );
 };
@@ -29,6 +30,6 @@ const styles = StyleSheet.create({
   },
 
   mainTitleContainer: {
-    paddingVertical: FWidth * 10,
+    paddingVertical: FWidth * 12,
   },
 });

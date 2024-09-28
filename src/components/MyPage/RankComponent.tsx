@@ -19,7 +19,7 @@ export default RankComponent;
 
 const styles = StyleSheet.create({
   rankContainer: {
-    marginLeft: FWidth * 6,
+    marginLeft: FWidth * 4,
     paddingHorizontal: FWidth * 6,
     borderWidth: 1,
     borderRadius: 10,
