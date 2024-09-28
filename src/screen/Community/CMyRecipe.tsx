@@ -8,7 +8,7 @@ import CAddReviewButton from '../../components/Community/CAddReviewButton';
 
 const CMyRecipe = () => {
   const [onClick, setonClick] = useState(1);
-  const [scrollOffset, setScrollOffset] = useState(0);
+  const [scrollOffset, setScrollOffset] = useState(-0.1);
   const [prevScrollOffset, setPrevScrollOffset] = useState(0);
 
   return (
