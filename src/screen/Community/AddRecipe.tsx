@@ -24,18 +24,20 @@ const AddRecipe = ({title}: AddRecipeProps) => {
     reviewContent: '',
     reviewImg: '',
   });
-  console.log(reviewData);
+
   return (
-    <Pressable style={styles.container} onPress={() => Keyboard.dismiss()}>
+    <>
       <ScrollView>
-        <View style={styles.topContainer}>
-          <AddScore reviewData={reviewData} setReviewData={setReviewData} />
-          <AddContent reviewData={reviewData} setReviewData={setReviewData} />
-          <ImageView uri={reviewData.reviewImg} />
-        </View>
+        <Pressable style={styles.container} onPress={() => Keyboard.dismiss()}>
+          <View style={styles.topContainer}>
+            <AddScore reviewData={reviewData} setReviewData={setReviewData} />
+            <AddContent reviewData={reviewData} setReviewData={setReviewData} />
+            <ImageView uri={reviewData.reviewImg} />
+          </View>
+        </Pressable>
       </ScrollView>
       <AddImage reviewData={reviewData} setReviewData={setReviewData} />
-    </Pressable>
+    </>
   );
 };
 
@@ -45,6 +47,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingTop: FWidth * 24,
+    paddingBottom: FWidth * 47,
     justifyContent: 'space-between',
   },
 

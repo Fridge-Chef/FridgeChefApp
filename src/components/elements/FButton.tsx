@@ -244,7 +244,6 @@ const styles = StyleSheet.create({
 
   addButton: {
     paddingVertical: FWidth * 12,
-
     borderRadius: 40,
   },
 

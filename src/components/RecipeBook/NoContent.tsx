@@ -19,6 +19,7 @@ const NoContent = ({title, buttonTitle, onPress}: NoContentProps) => {
           buttonStyle="addButton"
           fBStyle={{
             marginTop: FWidth * 24,
+            paddingHorizontal: FWidth * 20,
             borderWidth: 1,
             borderColor: colors.border,
           }}

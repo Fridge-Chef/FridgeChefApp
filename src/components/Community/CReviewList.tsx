@@ -18,6 +18,7 @@ const CReviewList = () => {
       <FlatList
         data={myRecipes}
         overScrollMode="never"
+        contentContainerStyle={{paddingBottom: FWidth * 20}}
         showsVerticalScrollIndicator={false}
         keyExtractor={item => item.id.toString()}
         renderItem={({item}) => (
@@ -32,6 +33,7 @@ export default CReviewList;
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
     marginTop: FWidth * 24,
   },
 

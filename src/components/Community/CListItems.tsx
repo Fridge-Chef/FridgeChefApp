@@ -45,6 +45,7 @@ const CListItems = ({
         data={myRecipes}
         overScrollMode="never"
         onScroll={handleScroll}
+        contentContainerStyle={{paddingBottom: FWidth * 20}}
         showsVerticalScrollIndicator={false}
         keyExtractor={item => item.id.toString()}
         renderItem={({item}) => (
