@@ -35,6 +35,7 @@ import Heart4 from '../../utils/Svg/Heart4';
 import StarReview1 from '../../utils/Svg/StarReview1';
 import StarReview2 from '../../utils/Svg/StarReview2';
 import ImageIcon from '../../utils/Svg/ImageIcon';
+import MenuIcon from '../../utils/Svg/MenuIcon';
 
 type SvgListProps = {
   type:
@@ -58,6 +59,7 @@ type SvgListProps = {
     | 'kakaoLogo'
     | 'likeIcon'
     | 'loginIcon'
+    | 'menuIcon'
     | 'more'
     | 'moreList'
     | 'notification'
@@ -115,6 +117,8 @@ const SvgList = ({type}: SvgListProps) => {
       return <LikeIcon />;
     case 'loginIcon':
       return <LoginIcon />;
+    case 'menuIcon':
+      return <MenuIcon />;
     case 'more':
       return <More />;
     case 'moreList':

@@ -15,7 +15,7 @@ const UserInfo = ({name, point}: UserInfoProps) => {
     <View style={styles.container}>
       <UserIcon2 />
       <FText
-        mLeft={FWidth * 4}
+        mHor={FWidth * 6}
         fStyle="M_14"
         color={colors.text}
         text={`${name}님`}
@@ -38,6 +38,5 @@ const styles = StyleSheet.create({
   reviewPointContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginLeft: FWidth * 6,
   },
 });

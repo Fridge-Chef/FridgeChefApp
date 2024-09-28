@@ -112,6 +112,7 @@ const FButton = ({
         borderRadius: radius,
         borderWidth: borderWidth,
         marginTop: marginTop,
+        marginRight: marginRight,
         marginBottom: marginBottom,
       },
     ],
@@ -196,7 +197,6 @@ const styles = StyleSheet.create({
 
   iconButton: {
     flexDirection: 'row',
-    marginRight: FWidth * 6,
     paddingHorizontal: FWidth * 14,
     paddingVertical: FWidth * 8,
     alignItems: 'center',

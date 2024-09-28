@@ -1,9 +1,9 @@
 import {StyleSheet, View} from 'react-native';
 import React from 'react';
-import {colors, FWidth} from '../../../globalStyle';
-import FButton from '../../components/elements/FButton';
-import ImageIcon from '../../utils/Svg/ImageIcon';
-import FText from '../../components/elements/FText';
+import {colors, FWidth} from '../../../../globalStyle';
+import FButton from '../../elements/FButton';
+import ImageIcon from '../../../utils/Svg/ImageIcon';
+import FText from '../../elements/FText';
 import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
 
 type AddImageProps = {

@@ -25,6 +25,7 @@ type IconProps =
   | 'kakaoLogo'
   | 'likeIcon'
   | 'loginIcon'
+  | 'menuIcon'
   | 'more'
   | 'moreList'
   | 'notification'

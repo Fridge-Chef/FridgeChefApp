@@ -52,6 +52,7 @@ const CondimentList = () => {
               key={item.id}
               buttonStyle="iconButton"
               marginTop={FHeight * 12}
+              marginRight={FWidth * 6}
               borderWidth={0}
               buttonColor={colors.background}
               radius={50}>

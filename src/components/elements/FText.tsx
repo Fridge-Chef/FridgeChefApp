@@ -31,6 +31,8 @@ type FTextProps = {
   mLeft?: DimensionValue;
   mRight?: DimensionValue;
   mBottom?: DimensionValue;
+  mHor?: DimensionValue;
+  mVer?: DimensionValue;
 };
 
 const FText = ({
@@ -43,6 +45,8 @@ const FText = ({
   mLeft,
   mRight,
   mBottom,
+  mHor,
+  mVer,
 }: FTextProps) => {
   const boxHeightList = {
     B_26: styles.lineHeight36,
@@ -99,6 +103,8 @@ const FText = ({
               marginLeft: mLeft,
               marginRight: mRight,
               marginBottom: mBottom,
+              marginHorizontal: mHor,
+              marginVertical: mVer,
             },
           ]}>
           <Text style={[fontSizeList[fStyle], {color, lineHeight: lineH}]}>

@@ -1,10 +1,10 @@
 import {StyleSheet, View} from 'react-native';
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useState} from 'react';
 import {colors, FWidth} from '../../../globalStyle';
-import CListMenu from './CListMenu';
+import CListMenu from '../../components/Community/CListMenu';
 import {menuList} from '../../utils/list';
-import CListItems from './CListItems';
-import CAddReviewButton from './CAddReviewButton';
+import CListItems from '../../components/Community/CListItems';
+import CAddReviewButton from '../../components/Community/CAddReviewButton';
 
 const CMyRecipe = () => {
   const [onClick, setonClick] = useState(1);

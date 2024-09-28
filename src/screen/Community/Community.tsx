@@ -1,14 +1,22 @@
 import {Dimensions, StyleSheet} from 'react-native';
 import {colors, fontStyles, FWidth} from '../../../globalStyle';
 import {useCommunityTopTabBar, useTopTabBar} from '../../store/store';
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import {SceneMap, TabBar, TabView} from 'react-native-tab-view';
-import CMyRecipe from '../../components/Community/CMyRecipe';
-import CRecipeReview from '../../components/Community/CRecipeReview';
+import CMyRecipe from './CMyRecipe';
+import CRecipeReview from './CRecipeReview';
+import {RouteProp, useRoute} from '@react-navigation/native';
 
 const initialLayout = {width: Dimensions.get('window').width};
 
+type IndexType = {
+  params: {
+    initialIndex: number;
+  };
+};
+
 const Community = () => {
+  const route = useRoute<RouteProp<IndexType>>();
   const {index, setIndex} = useCommunityTopTabBar();
   const [routes] = useState([
     {key: 'myRecipe', title: '나만의 레시피'},
@@ -23,6 +31,12 @@ const Community = () => {
   const handleIndexChange = (newIndex: number) => {
     setIndex(newIndex);
   };
+
+  useEffect(() => {
+    if (route.params?.initialIndex !== undefined) {
+      setIndex(route.params.initialIndex);
+    }
+  }, [route.params]);
 
   const renderTabBar = (props: any) => (
     <TabBar

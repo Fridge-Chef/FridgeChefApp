@@ -1,9 +1,9 @@
 import {StyleSheet, Text, View} from 'react-native';
 import React, {useState} from 'react';
-import {FWidth} from '../../../globalStyle';
-import FButton from '../../components/elements/FButton';
-import StarReview2 from '../../utils/Svg/StarReview2';
-import StarReview1 from '../../utils/Svg/StarReview1';
+import {FWidth} from '../../../../globalStyle';
+import FButton from '../../elements/FButton';
+import StarReview2 from '../../../utils/Svg/StarReview2';
+import StarReview1 from '../../../utils/Svg/StarReview1';
 
 type ReviewType = {
   id: number;

@@ -38,7 +38,7 @@ const MyFridgeScreen = () => {
                 title="추천 레시피"
                 onlyBackIcon={true}
                 rightOn={true}
-                rType1="back"
+                rType2="back"
               />
             );
           },

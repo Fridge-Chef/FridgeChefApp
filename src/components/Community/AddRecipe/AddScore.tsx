@@ -1,7 +1,7 @@
 import {StyleSheet, View} from 'react-native';
 import React from 'react';
-import {colors, FWidth} from '../../../globalStyle';
-import FText from '../../components/elements/FText';
+import {colors, FWidth} from '../../../../globalStyle';
+import FText from '../../elements/FText';
 import ScoreList from './ScoreList';
 
 type ReviewDataProps = {

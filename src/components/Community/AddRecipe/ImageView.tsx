@@ -1,7 +1,7 @@
 import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
-import {FWidth} from '../../../globalStyle';
-import FImage from '../../components/elements/FImage';
+import FImage from '../../elements/FImage';
+import {FWidth} from '../../../../globalStyle';
 
 type ImageViewProps = {
   uri: string;

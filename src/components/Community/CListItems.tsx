@@ -5,12 +5,14 @@ import {
   StyleSheet,
   View,
 } from 'react-native';
-import React, {MutableRefObject, useRef} from 'react';
+import React from 'react';
 import {colors, FWidth} from '../../../globalStyle';
 import ArrowDown2 from '../../utils/Svg/ArrowDown2';
 import SubTitleComponent from '../Ingredients/SubTitleComponent';
 import CListItem from './CListItem';
 import {myRecipes} from '../../utils/list';
+import {ParamListBase, useNavigation} from '@react-navigation/native';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 
 type CListItemsProps = {
   scrollOffset: number;
@@ -23,6 +25,8 @@ const CListItems = ({
   setScrollOffset,
   setPrevScrollOffset,
 }: CListItemsProps) => {
+  const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
+
   const handleScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
     const currentOffset = event.nativeEvent.contentOffset.y;
     setScrollOffset(currentOffset);
@@ -44,7 +48,14 @@ const CListItems = ({
         showsVerticalScrollIndicator={false}
         keyExtractor={item => item.id.toString()}
         renderItem={({item}) => (
-          <CListItem item={item} onPress={() => console.log(item.id)} />
+          <CListItem
+            item={item}
+            onPress={() =>
+              navigation.navigate('reviewDetail', {
+                item,
+              })
+            }
+          />
         )}
       />
     </View>

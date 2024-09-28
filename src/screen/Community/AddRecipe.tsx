@@ -8,10 +8,10 @@ import {
 } from 'react-native';
 import React, {useState} from 'react';
 import {FWidth} from '../../../globalStyle';
-import AddImage from './AddImage';
-import AddScore from './AddScore';
-import AddContent from './AddContent';
-import ImageView from './ImageView';
+import AddImage from '../../components/Community/AddRecipe/AddImage';
+import AddScore from '../../components/Community/AddRecipe/AddScore';
+import AddContent from '../../components/Community/AddRecipe/AddContent';
+import ImageView from '../../components/Community/AddRecipe/ImageView';
 
 type AddRecipeProps = {
   title: string;

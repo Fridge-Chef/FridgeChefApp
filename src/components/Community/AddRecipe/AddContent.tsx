@@ -1,7 +1,7 @@
 import {StyleSheet, View} from 'react-native';
 import React from 'react';
-import {FWidth} from '../../../globalStyle';
-import FInput from '../../components/elements/FInput';
+import {FWidth} from '../../../../globalStyle';
+import FInput from '../../elements/FInput';
 
 type AddContentProps = {
   reviewData: {
@@ -41,6 +41,5 @@ export default AddContent;
 const styles = StyleSheet.create({
   container: {
     marginTop: FWidth * 32,
-    backgroundColor: 'yellow',
   },
 });

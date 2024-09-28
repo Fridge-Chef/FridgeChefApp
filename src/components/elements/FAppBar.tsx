@@ -25,13 +25,28 @@ const FAppBar = ({
   const navigation = useNavigation();
   return (
     <View style={[styles.appBar, {borderBottomWidth: borderBottomWidth}]}>
-      <FButton
-        buttonStyle={'noneStyle'}
-        fBStyle={{width: 50, alignItems: 'flex-start'}}
-        onPress={() => navigation.goBack()}>
-        <SvgList type={type} />
-      </FButton>
-      {titleOn && <FText fStyle="B_18" color={colors.b900} text={title} />}
+      <View style={styles.rightIconContainer}>
+        <FButton
+          buttonStyle={'noneStyle'}
+          fBStyle={{
+            height: FWidth * 48,
+            justifyContent: 'center',
+            width: onlyBackIcon || rType1 === undefined ? 50 : null,
+            marginRight: rType1 && rType2 ? FWidth * 16 : null,
+          }}
+          onPress={() => navigation.goBack()}>
+          <SvgList type={type} />
+        </FButton>
+        <FButton
+          buttonStyle={'noneStyle'}
+          fBStyle={{
+            display: rType1 && rType2 ? 'flex' : 'none',
+            opacity: 0,
+          }}>
+          <SvgList type={type} />
+        </FButton>
+      </View>
+      {titleOn && <FText fStyle="B_16" color={colors.b900} text={title} />}
       {rightOn && rightTitleOn ? (
         <FButton
           buttonStyle="noneStyle"
@@ -46,31 +61,32 @@ const FAppBar = ({
             {display: rightOn ? 'flex' : 'none'},
           ]}>
           {rType1 && (
-            <View
-              style={{
+            <FButton
+              buttonStyle="noneStyle"
+              fBStyle={{
                 display: rType1 ? 'flex' : 'none',
                 opacity: onlyBackIcon ? 0 : 1,
-              }}>
-              <FButton
-                buttonStyle="noneStyle"
-                onPress={onlyBackIcon ? undefined : onPress1}>
-                <SvgList type={rType1} />
-              </FButton>
-            </View>
+                width: !rType2 ? 50 : null,
+              }}
+              onPress={onlyBackIcon ? undefined : onPress1}>
+              <SvgList type={rType1} />
+            </FButton>
           )}
           {rType2 && (
-            <View
-              style={{
+            <FButton
+              buttonStyle="noneStyle"
+              fBStyle={{
                 display: rType2 ? 'flex' : 'none',
                 opacity: onlyBackIcon ? 0 : 1,
-                marginLeft: FWidth * 16,
-              }}>
-              <FButton
-                buttonStyle="noneStyle"
-                onPress={onlyBackIcon ? undefined : onPress2}>
-                <SvgList type={rType2} />
-              </FButton>
-            </View>
+                marginLeft: rType1 !== undefined ? FWidth * 16 : null,
+                width: rType1 === undefined ? 50 : null,
+                height: FWidth * 48,
+                alignItems: 'flex-end',
+                justifyContent: 'center',
+              }}
+              onPress={onlyBackIcon ? undefined : onPress2}>
+              <SvgList type={rType2} />
+            </FButton>
           )}
         </View>
       )}
