@@ -236,9 +236,9 @@ const styles = StyleSheet.create({
   },
 
   bigButton: {
-    paddingVertical: FWidth * 14,
-    borderRadius: 14,
-    // paddingVertical: FWidth * 16,
+    // paddingVertical: FWidth * 14,
+    // borderRadius: 14,
+    paddingVertical: FWidth * 16,
     alignItems: 'center',
   },
 

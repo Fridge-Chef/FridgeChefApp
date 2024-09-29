@@ -1,4 +1,4 @@
-import {StyleSheet} from 'react-native';
+import {Alert, StyleSheet} from 'react-native';
 import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import MyFridgeScreen from './MyFridgeScreen';
@@ -10,6 +10,7 @@ import IconComponent from './TebMenu/IconComponent';
 import {colors} from '../../../globalStyle';
 const BottomTab = () => {
   const Tab = createBottomTabNavigator();
+  const isMoreEnabled = false;
   return (
     <Tab.Navigator
       sceneContainerStyle={{backgroundColor: colors.white}}
@@ -33,7 +34,21 @@ const BottomTab = () => {
         },
       })}>
       <Tab.Screen name="나의 냉장고" component={MyFridgeScreen} />
-      <Tab.Screen name="레시피북" component={RecipeBookScreen} />
+      <Tab.Screen
+        name="레시피북"
+        component={RecipeBookScreen}
+        listeners={() => {
+          return {
+            tabPress: e => {
+              if (!isMoreEnabled) {
+                // 더보기 탭이 비활성화된 경우 알럿 띄우기
+                e.preventDefault(); // 기본 탭 전환 동작 막기
+                Alert.alert('안내', '더보기 기능을 사용할 수 없습니다.');
+              }
+            },
+          };
+        }}
+      />
       <Tab.Screen name="커뮤니티" component={CommunityScreen} />
       <Tab.Screen name="더보기" component={MoreScreen} />
     </Tab.Navigator>

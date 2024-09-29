@@ -34,7 +34,7 @@ const AddList = ({onClicked}: AddListProps) => {
     <View style={styles.container}>
       {dataList.map((item: ListData, index: number) => (
         <View key={index} style={{}}>
-          <SubTitleComponent title={item.title} color={colors.b400} />
+          {/* <SubTitleComponent title={item.title} color={colors.b400} /> */}
           <View>
             {item.items.map((itemList, index) => (
               <ItemComponent itemList={itemList} key={index} />
@@ -50,10 +50,10 @@ export default AddList;
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: FWidth * 40,
-    // marginTop: FWidth * 12,
+    // marginTop: FWidth * 40,
+    marginTop: FWidth * 12,
     paddingHorizontal: FWidth * 22,
-    marginBottom: FWidth * 132, // 기본 100에서 32 추가
-    // marginBottom: FWidth * 78, // 기본 60에서 18 추가
+    // marginBottom: FWidth * 132, // 기본 100에서 32 추가
+    marginBottom: FWidth * 78, // 기본 60에서 18 추가
   },
 });

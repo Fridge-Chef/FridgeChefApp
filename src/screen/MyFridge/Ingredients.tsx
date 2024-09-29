@@ -54,12 +54,12 @@ const Ingredients = () => {
             <TouchableOpacity onPress={handleTest}>
               <TopComponent />
             </TouchableOpacity>
-            <CondimentList />
-            <InfoComponent />
-            {/* <CondimentButton
+            {/* <CondimentList /> */}
+            <CondimentButton
               onClicked={onClicked}
               setonClicked={setonClicked}
-            /> */}
+            />
+            <InfoComponent />
           </>
         )}
         <View
@@ -94,8 +94,8 @@ const styles = StyleSheet.create({
   },
 
   buttonContainer: {
-    paddingHorizontal: FWidth * 22,
-    marginBottom: FHeight * 38,
+    // paddingHorizontal: FWidth * 22,
+    // marginBottom: FHeight * 38,
     position: 'absolute',
     width: '100%',
     bottom: 0,

@@ -31,7 +31,7 @@ const CondimentButton = ({onClicked, setonClicked}: CondimentButtonProps) => {
             ]}
             onPress={() => setonClicked(item.id)}>
             <FText
-              fStyle={`${onClicked === item.id ? 'B_18' : 'M_18'}`}
+              fStyle={`${onClicked === item.id ? 'B_16' : 'M_16'}`}
               color={onClicked === item.id ? colors.text : colors.b400}
               text={item.name}
             />
@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     borderRadius: 14,
-    paddingVertical: FWidth * 10,
+    paddingVertical: FWidth * 12,
     marginHorizontal: FWidth * 4,
   },
 });

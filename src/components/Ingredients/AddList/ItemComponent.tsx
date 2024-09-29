@@ -69,10 +69,10 @@ const ItemComponent = ({itemList}: ItemComponentProps) => {
         <View style={styles.titleContainer}>
           <FText fStyle="B_16" color={colors.text} text={itemList.name} />
         </View>
-        {/* {itemList.expiry_date && <DDayText day={date()} />} */}
+        {itemList.expiry_date && <DDayText day={date()} />}
       </View>
       <View style={styles.iconAndTextContainer}>
-        {itemList.expiry_date && <DDayText day={date()} />}
+        {/* {itemList.expiry_date && <DDayText day={date()} />} */}
         <View style={{marginHorizontal: FWidth * 12}}>
           <FButton
             buttonStyle="noneStyle"
