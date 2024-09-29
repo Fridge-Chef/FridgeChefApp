@@ -7,7 +7,7 @@ import CommunityScreen from './CommunityScreen';
 import MoreScreen from './MoreScreen';
 import NameComponent from './TebMenu/NameComponent';
 import IconComponent from './TebMenu/IconComponent';
-import {colors, fontFamilies, FWidth} from '../../../globalStyle';
+import {colors, FWidth} from '../../../globalStyle';
 const BottomTab = () => {
   const Tab = createBottomTabNavigator();
   const isMoreEnabled = true;
