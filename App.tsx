@@ -6,6 +6,8 @@ import MainStackScreen from './src/components/BottomTebScreen/MainStackScreen';
 import FBottomSheet from './src/components/BottomSheet/FBottomSheet';
 import Loading from './src/components/elements/Loading';
 import FToast from './src/utils/FToast';
+import {subscribeForKeyboardEvents} from 'react-native-reanimated/lib/typescript/core';
+import {SlideInLeft} from 'react-native-reanimated';
 
 function App() {
   useEffect(() => {

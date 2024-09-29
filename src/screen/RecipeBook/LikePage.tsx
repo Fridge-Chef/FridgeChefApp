@@ -8,11 +8,7 @@ const LikePage = () => {
   const [data] = useState(true);
   return (
     <View style={styles.container}>
-      {!data ? (
-        <NoContent title="아직 찜한 레시피가 없습니다" />
-      ) : (
-        <ListComponent />
-      )}
+      {data ? <NoContent title="아직 찜하기가 없어요." /> : <ListComponent />}
     </View>
   );
 };
@@ -23,7 +19,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colors.white,
-    paddingTop: FWidth * 24,
+    paddingTop: FWidth * 273,
     paddingHorizontal: FWidth * 22,
   },
 });

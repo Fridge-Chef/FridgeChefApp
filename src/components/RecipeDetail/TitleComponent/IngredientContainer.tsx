@@ -14,7 +14,7 @@ type IngredientContainerProps = {
 const IngredientContainer = ({title, detailList}: IngredientContainerProps) => {
   return (
     <View style={styles.container}>
-      <FText fStyle="R_14" color={colors.subText} text={title} />
+      <FText fStyle="R_14" color={colors.black} text={title} />
       <View style={styles.itemContainer}>
         <View style={styles.itemSubContainer}>
           <ItemsComponent list={detailList} />

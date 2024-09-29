@@ -19,6 +19,6 @@ export default ImageView;
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: FWidth * 32,
+    marginTop: FWidth * 24,
   },
 });

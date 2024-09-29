@@ -7,16 +7,16 @@ import CommunityScreen from './CommunityScreen';
 import MoreScreen from './MoreScreen';
 import NameComponent from './TebMenu/NameComponent';
 import IconComponent from './TebMenu/IconComponent';
-import {colors} from '../../../globalStyle';
+import {colors, fontFamilies, FWidth} from '../../../globalStyle';
 const BottomTab = () => {
   const Tab = createBottomTabNavigator();
-  const isMoreEnabled = false;
+  const isMoreEnabled = true;
   return (
     <Tab.Navigator
       sceneContainerStyle={{backgroundColor: colors.white}}
       screenOptions={({route}) => ({
         tabBarStyle: {
-          height: 64,
+          height: FWidth * 64,
           elevation: 0,
         },
         tabBarHideOnKeyboard: true,
@@ -49,7 +49,7 @@ const BottomTab = () => {
           };
         }}
       />
-      <Tab.Screen name="커뮤니티" component={CommunityScreen} />
+      <Tab.Screen name="나만의 레시피" component={CommunityScreen} />
       <Tab.Screen name="더보기" component={MoreScreen} />
     </Tab.Navigator>
   );

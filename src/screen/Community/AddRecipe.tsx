@@ -28,7 +28,7 @@ const AddRecipe = () => {
           <View style={styles.topContainer}>
             <AddScore reviewData={reviewData} setReviewData={setReviewData} />
             <AddContent reviewData={reviewData} setReviewData={setReviewData} />
-            <ImageView uri={reviewData.reviewImg} />
+            {reviewData.reviewImg && <ImageView uri={reviewData.reviewImg} />}
           </View>
         </Pressable>
       </ScrollView>

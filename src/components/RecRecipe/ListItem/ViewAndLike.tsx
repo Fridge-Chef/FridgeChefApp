@@ -18,7 +18,7 @@ const ViewAndLike = ({like, favorites}: ViewAndLikeProps) => {
         <Star2 />
         <FText
           mLeft={FWidth * 4}
-          fStyle="B_12"
+          fStyle="R_14"
           color={colors.b500}
           text={favorites}
         />
@@ -27,7 +27,7 @@ const ViewAndLike = ({like, favorites}: ViewAndLikeProps) => {
         <Heart />
         <FText
           mLeft={FWidth * 2}
-          fStyle="B_12"
+          fStyle="R_14"
           color={colors.b500}
           text={like}
         />

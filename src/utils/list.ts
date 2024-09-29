@@ -116,13 +116,13 @@ export const list = [
         expiry_date: '2024-09-09T15:45:00', // 유통기한
         create_time: '2024-09-09T15:45:00', // 재료 추가 날짜
       },
-      // {
-      //   ingredient: '오징어 젓갈',
-      //   category: '',
-      //   ingredient_id: 12,
-      //   expiry_date: '2024-09-09T15:45:00', // 유통기한
-      //   create_time: '2024-09-09T15:45:00', // 재료 추가 날짜
-      // },
+      {
+        ingredient: '오징어 젓갈',
+        category: '',
+        ingredient_id: 12,
+        expiry_date: '2024-09-09T15:45:00', // 유통기한
+        create_time: '2024-09-09T15:45:00', // 재료 추가 날짜
+      },
       // {
       //   ingredient: '김치',
       //   category: '',

@@ -6,25 +6,26 @@ import FText from '../elements/FText';
 
 type NoContentProps = {
   title: string;
+  title2?: string;
   buttonTitle?: string;
   onPress?: () => void;
 };
 
-const NoContent = ({title, buttonTitle, onPress}: NoContentProps) => {
+const NoContent = ({title, title2, buttonTitle, onPress}: NoContentProps) => {
   return (
     <View style={styles.container}>
-      <FText fStyle="M_18" color={colors.b400} text={title} />
+      <FText fStyle="R_16" color={colors.b500} text={title} />
+      {title2 && <FText fStyle="R_16" color={colors.b500} text={title2} />}
       {buttonTitle && (
         <FButton
           buttonStyle="addButton"
           fBStyle={{
-            marginTop: FWidth * 24,
+            marginTop: FWidth * 32,
             paddingHorizontal: FWidth * 20,
-            borderWidth: 1,
-            borderColor: colors.border,
+            backgroundColor: colors.text,
           }}
           onPress={onPress}>
-          <FText fStyle="B_16" color={colors.text} text={buttonTitle} />
+          <FText fStyle="B_16" color={colors.white} text={buttonTitle} />
         </FButton>
       )}
     </View>
@@ -35,7 +36,6 @@ export default NoContent;
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: FWidth * 244,
     alignItems: 'center',
   },
 });

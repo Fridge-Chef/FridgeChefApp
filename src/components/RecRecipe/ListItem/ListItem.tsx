@@ -62,6 +62,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'flex-start',
     justifyContent: 'space-between',
-    marginBottom: FWidth * 2,
+    marginBottom: FWidth * 8,
   },
 });

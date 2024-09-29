@@ -29,7 +29,6 @@ const FAppBar = ({
         <FButton
           buttonStyle={'noneStyle'}
           fBStyle={{
-            height: FWidth * 48,
             justifyContent: 'center',
             width: onlyBackIcon || rType1 === undefined ? 50 : null,
             marginRight: rType1 && rType2 ? FWidth * 16 : null,
@@ -80,7 +79,6 @@ const FAppBar = ({
                 opacity: onlyBackIcon ? 0 : 1,
                 marginLeft: rType1 !== undefined ? FWidth * 16 : null,
                 width: rType1 === undefined ? 50 : null,
-                height: FWidth * 48,
                 alignItems: 'flex-end',
                 justifyContent: 'center',
               }}
@@ -98,7 +96,7 @@ export default FAppBar;
 
 const styles = StyleSheet.create({
   appBar: {
-    height: FWidth * 48,
+    paddingVertical: FWidth * 14,
     flexDirection: 'row',
     paddingHorizontal: FWidth * 22,
     justifyContent: 'space-between',

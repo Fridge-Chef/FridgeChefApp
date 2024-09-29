@@ -77,7 +77,7 @@ const styles = StyleSheet.create({
   },
 
   bottomTextContainer: {
-    marginTop: FWidth * 16,
+    marginTop: FWidth * 8,
   },
 
   textAndIconContainer: {

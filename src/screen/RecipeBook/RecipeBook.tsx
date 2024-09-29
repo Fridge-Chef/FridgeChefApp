@@ -12,7 +12,7 @@ const initialLayout = {width: Dimensions.get('window').width};
 const RecipeBook = () => {
   const {index, setIndex} = useTopTabBar();
   const [routes] = useState([
-    {key: 'like', title: '좋아요'},
+    {key: 'like', title: '찜하기'},
     {key: 'myRecipe', title: '나만의 레시피'},
     {key: 'recipeReview', title: '레시피 후기'},
   ]);

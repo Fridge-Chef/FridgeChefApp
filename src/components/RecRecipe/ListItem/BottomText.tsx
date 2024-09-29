@@ -12,14 +12,14 @@ const BottomText = ({ingredients}: BottomTextProps) => {
     <View style={styles.container}>
       <View style={styles.textContainer}>
         <FText
-          fStyle="B_12"
+          fStyle="M_12"
           color={colors.b500}
-          text={`필요 재료 ${ingredients.length}개 /`}
+          text={`재료 ${ingredients.length}개 중 `}
         />
         <FText
-          fStyle="B_12"
+          fStyle="M_12"
           color={colors.secondary[1]}
-          text={` 보유 재료 ${ingredients.length}개`}
+          text={`${ingredients.length}개 보유`}
         />
       </View>
       <FText fStyle="M_12" color={colors.b500} text="없는 재료 : 참기름" />
@@ -31,7 +31,7 @@ export default BottomText;
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: FWidth * 16,
+    marginTop: FWidth * 8,
   },
 
   textContainer: {

@@ -36,7 +36,7 @@ const CListItem = ({item, onPress}: CListItemProps) => {
           />
           <View style={styles.bottomTextContainer}>
             <UserInfo name={item.writer} point={item.point} />
-            <View style={{marginTop: FWidth * 6}}>
+            <View style={{marginTop: FWidth * 8}}>
               <ViewAndLike like={item.likes} favorites={item.views} />
             </View>
           </View>
@@ -64,6 +64,6 @@ const styles = StyleSheet.create({
   },
 
   bottomTextContainer: {
-    marginTop: FWidth * 12,
+    marginTop: FWidth * 8,
   },
 });

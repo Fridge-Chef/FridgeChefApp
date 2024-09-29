@@ -8,9 +8,10 @@ const RecipeReviewPage = () => {
   const [data] = useState(true);
   return (
     <View style={styles.container}>
-      {!data ? (
+      {data ? (
         <NoContent
-          title="아직 찜한 레시피가 없습니다"
+          title="아직 후기가 없어요!"
+          title2="첫번째 후기를 남겨보세요"
           buttonTitle="레시피 후기 작성하기"
         />
       ) : (
@@ -26,7 +27,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colors.white,
-    paddingTop: FWidth * 24,
+    paddingTop: FWidth * 224,
     paddingHorizontal: FWidth * 22,
   },
 });

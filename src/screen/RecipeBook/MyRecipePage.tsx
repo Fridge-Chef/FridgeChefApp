@@ -10,7 +10,8 @@ const MyRecipePage = () => {
     <View style={styles.container}>
       {data ? (
         <NoContent
-          title="아직 작성된 나의 레시피가 없습니다"
+          title="아직 나만의 레시피가 없어요."
+          title2="첫번째 레시피를 남겨보세요"
           buttonTitle="나만의 레시피 작성하기"
         />
       ) : (
@@ -26,7 +27,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colors.white,
-    paddingTop: FWidth * 24,
+    paddingTop: FWidth * 224,
     paddingHorizontal: FWidth * 22,
   },
 });
