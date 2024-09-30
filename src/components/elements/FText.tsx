@@ -27,6 +27,7 @@ type FTextProps = {
   text?: string | number;
   color?: ColorValue;
   lineH?: number;
+  flexShrink?: number;
   nLine?: number;
   mTop?: DimensionValue;
   mLeft?: DimensionValue;
@@ -41,6 +42,7 @@ const FText = ({
   text,
   color,
   lineH,
+  flexShrink,
   nLine,
   mTop,
   mLeft,
@@ -97,7 +99,7 @@ const FText = ({
 
   return (
     <>
-      {!nLine ? (
+      {!flexShrink ? (
         <View
           style={[
             boxHeightList[fStyle],
@@ -119,7 +121,7 @@ const FText = ({
           numberOfLines={nLine}
           style={[
             fontSizeList[fStyle],
-            {color, lineHeight: lineH, flexShrink: 1},
+            {color, lineHeight: lineH, flexShrink: flexShrink},
           ]}>
           {text}
         </Text>

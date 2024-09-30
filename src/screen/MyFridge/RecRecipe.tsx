@@ -7,9 +7,7 @@ const RecRecipe = () => {
   return (
     <View style={styles.container}>
       <TopComponent />
-      <View style={{flex: 1}}>
-        <Recipes />
-      </View>
+      <Recipes />
     </View>
   );
 };

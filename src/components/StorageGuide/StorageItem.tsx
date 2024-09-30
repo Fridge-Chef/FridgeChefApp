@@ -18,7 +18,7 @@ const StorageItem = ({item}: StorageItemProps) => {
       <FText fStyle="B_16" color={colors.text} text={item.title} />
       <View style={styles.expiryDateContainer}>
         <FText
-          nLine={10}
+          flexShrink={1}
           fStyle="B_14"
           lineH={FWidth * 20}
           color={colors.secondary[1]}
@@ -27,7 +27,7 @@ const StorageItem = ({item}: StorageItemProps) => {
       </View>
       <View style={styles.contentContainer}>
         <FText
-          nLine={10}
+          flexShrink={1}
           fStyle="R_14"
           lineH={FWidth * 20}
           color={colors.b500}

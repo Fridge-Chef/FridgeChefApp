@@ -5,15 +5,22 @@ import FButton from '../elements/FButton';
 import FText from '../elements/FText';
 
 type NoContentProps = {
+  marginTop?: number;
   title: string;
   title2?: string;
   buttonTitle?: string;
   onPress?: () => void;
 };
 
-const NoContent = ({title, title2, buttonTitle, onPress}: NoContentProps) => {
+const NoContent = ({
+  marginTop,
+  title,
+  title2,
+  buttonTitle,
+  onPress,
+}: NoContentProps) => {
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, {marginTop: marginTop}]}>
       <FText fStyle="R_16" color={colors.b500} text={title} />
       {title2 && <FText fStyle="R_16" color={colors.b500} text={title2} />}
       {buttonTitle && (

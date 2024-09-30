@@ -13,32 +13,34 @@ const Recipes = () => {
   const listData = require('../../../utils/recipeListData.json');
   const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
   return (
-    <View style={styles.mainListContainer}>
-      <View style={styles.titleContainer}>
-        <SubTitleComponent title="최근순" color={colors.subText} />
-        <View style={{marginLeft: FWidth * 4}}>
-          <ArrowDown2 />
+    <View style={styles.container}>
+      <View style={styles.mainListContainer}>
+        <View style={styles.titleContainer}>
+          <SubTitleComponent title="최근순" color={colors.subText} />
+          <View style={{marginLeft: FWidth * 4}}>
+            <ArrowDown2 />
+          </View>
         </View>
+        <FlatList
+          data={listData}
+          showsVerticalScrollIndicator={false}
+          contentContainerStyle={{
+            paddingBottom: FWidth * 146,
+          }}
+          keyExtractor={(_, index) => index.toString()}
+          renderItem={({item}: {item: RecipeListType}) => (
+            <FButton
+              buttonStyle="noneStyle"
+              onPress={() =>
+                navigation.navigate('recipeDetail', {
+                  title: item.title,
+                })
+              }>
+              <ListItem item={item} />
+            </FButton>
+          )}
+        />
       </View>
-      <FlatList
-        data={listData}
-        showsVerticalScrollIndicator={false}
-        contentContainerStyle={{
-          paddingBottom: FWidth * 146,
-        }}
-        keyExtractor={(_, index) => index.toString()}
-        renderItem={({item}: {item: RecipeListType}) => (
-          <FButton
-            buttonStyle="noneStyle"
-            onPress={() =>
-              navigation.navigate('recipeDetail', {
-                title: item.title,
-              })
-            }>
-            <ListItem item={item} />
-          </FButton>
-        )}
-      />
     </View>
   );
 };
@@ -46,6 +48,10 @@ const Recipes = () => {
 export default Recipes;
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+
   mainListContainer: {
     marginTop: FWidth * 24,
     height: '100%',

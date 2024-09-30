@@ -14,7 +14,7 @@ const UserContent = ({uri, content}: UserContentProps) => {
     <>
       <View style={styles.container}>
         <FText
-          nLine={1000}
+          flexShrink={1}
           fStyle="R_16"
           lineH={FWidth * 24}
           color={colors.text}

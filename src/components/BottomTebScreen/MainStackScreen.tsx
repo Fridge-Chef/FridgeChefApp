@@ -6,12 +6,13 @@ import Login from '../../screen/Login';
 import AddRecipe from '../../screen/Community/AddRecipe';
 import FAppBar from '../elements/FAppBar';
 import StorageGuide from '../../screen/MyFridge/StorageGuide';
+import SplashScreen from '../../screen/SplashScreen';
 
 const MainStackScreen = () => {
   const Stack = createNativeStackNavigator();
   return (
     <Stack.Navigator
-      initialRouteName="login"
+      initialRouteName="splash"
       screenOptions={{
         headerShown: false,
         navigationBarColor: colors.white,
@@ -20,9 +21,11 @@ const MainStackScreen = () => {
         contentStyle: {backgroundColor: colors.white},
       }}>
       <Stack.Screen
-        name="bottomTab"
-        component={BottomTab}
+        name="splash"
+        component={SplashScreen}
         options={{
+          statusBarColor: colors.primary[1],
+          navigationBarColor: colors.primary[1],
           title: '',
           headerShadowVisible: false,
         }}
@@ -30,6 +33,14 @@ const MainStackScreen = () => {
       <Stack.Screen
         name="login"
         component={Login}
+        options={{
+          title: '',
+          headerShadowVisible: false,
+        }}
+      />
+      <Stack.Screen
+        name="bottomTab"
+        component={BottomTab}
         options={{
           title: '',
           headerShadowVisible: false,

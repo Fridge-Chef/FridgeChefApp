@@ -11,7 +11,7 @@ const ContentComponent = ({content}: ContentComponentProps) => {
   return (
     <View style={styles.container}>
       <FText
-        nLine={2000}
+        flexShrink={1}
         fStyle="R_16"
         lineH={FWidth * 24}
         color={colors.black}

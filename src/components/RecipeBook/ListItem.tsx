@@ -26,6 +26,7 @@ const ListItem = ({item}: ListItemProps) => {
       <View style={[styles.textContainerAlign]}>
         <View style={[styles.titleContainer]}>
           <FText
+            flexShrink={1}
             nLine={2}
             fStyle="B_16"
             lineH={FWidth * 22.5}

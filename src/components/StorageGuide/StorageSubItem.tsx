@@ -17,7 +17,7 @@ const StorageSubItem = ({item}: StorageSubItemProps) => {
       <FText fStyle="B_16" color={colors.text} text={item.title} />
       <View style={styles.contentContainer}>
         <FText
-          nLine={10}
+          flexShrink={1}
           lineH={FWidth * 20}
           fStyle="R_14"
           color={colors.b600}
