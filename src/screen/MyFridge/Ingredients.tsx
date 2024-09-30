@@ -13,13 +13,14 @@ import FText from '../../components/elements/FText';
 import {showToast} from '../../helpers/ShowToast';
 import CondimentButton from '../../components/Ingredients/CondimentButton';
 import InfoComponent from '../../components/Ingredients/InfoComponent';
+import FModal from '../../components/elements/FModal';
 const Ingredients = () => {
   const {setLoading, setLoadingTitle} = useLoading();
   const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
   const [onClicked, setonClicked] = useState(1);
   // const [test] = useState(false);
   const [test] = useState(true);
-
+  const [modal, setModal] = useState(false);
   const handleSearch = () => {
     setLoadingTitle('레시피 검색중');
     setLoading(true);
@@ -34,6 +35,7 @@ const Ingredients = () => {
 
   // 테스트용 함수
   const handleTest = () => {
+    setModal(!modal);
     showToast({
       text: '기본 재료를 등록했어요. 언제든 삭제할 수 있어요!',
       time: 5000,
@@ -46,6 +48,14 @@ const Ingredients = () => {
 
   return (
     <View style={styles.container}>
+      <FModal
+        modalVisible={modal}
+        setVisible={setModal}
+        text="반갑습니다"
+        text2="반갑습니다"
+        buttonText="좋아요"
+        cancel
+      />
       <ScrollView showsVerticalScrollIndicator={false} overScrollMode="never">
         <LoginAndUser test={test} />
         {/* 테스트 터쳐블 삭제바람 */}

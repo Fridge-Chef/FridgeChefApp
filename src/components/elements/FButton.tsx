@@ -15,6 +15,7 @@ type FButtonProps = {
     | 'selected'
     | 'svgButton'
     | 'loginButton'
+    | 'modal'
     | 'menuButton'
     | 'menuButton2'
     | 'iconButton'
@@ -101,7 +102,10 @@ const FButton = ({
         marginBottom: marginBottom,
       },
     ],
-
+    modal: [
+      styles.modal,
+      {backgroundColor: buttonColor, marginRight: marginRight},
+    ],
     menuButton: styles.menu,
     menuButton2: styles.menuButton2,
     svgButton: [
@@ -284,6 +288,14 @@ const styles = StyleSheet.create({
     borderRadius: 40,
     borderWidth: 1,
     borderColor: colors.border,
+  },
+
+  modal: {
+    flex: 1,
+    width: '100%',
+    paddingVertical: FWidth * 12,
+    borderRadius: 12,
+    alignItems: 'center',
   },
 
   noneStyle: {},

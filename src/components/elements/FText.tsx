@@ -11,6 +11,7 @@ type FTextProps = {
     | 'M_20'
     | 'B_18'
     | 'M_18'
+    | 'R_18'
     | 'B_16'
     | 'M_16'
     | 'R_16'
@@ -56,6 +57,7 @@ const FText = ({
     M_20: styles.lineHeight28,
     B_18: styles.lineHeight28,
     M_18: styles.lineHeight28,
+    R_18: styles.lineHeight28,
     B_16: styles.lineHeight24,
     M_16: styles.lineHeight24,
     R_16: styles.lineHeight24,
@@ -78,6 +80,7 @@ const FText = ({
     M_20: styles.fontSizeM20,
     B_18: styles.fontSizeB18,
     M_18: styles.fontSizeM18,
+    R_18: styles.fontSizeR18,
     B_16: styles.fontSizeB16,
     M_16: styles.fontSizeM16,
     R_16: styles.fontSizeR16,
@@ -207,6 +210,13 @@ const styles = StyleSheet.create({
 
   fontSizeM18: {
     fontFamily: fontFamilies.pretendardMedium,
+    fontSize: FWidth * 18,
+    includeFontPadding: false,
+    letterSpacing: FWidth * -0.2,
+  },
+
+  fontSizeR18: {
+    fontFamily: fontFamilies.pretendardRegular,
     fontSize: FWidth * 18,
     includeFontPadding: false,
     letterSpacing: FWidth * -0.2,
