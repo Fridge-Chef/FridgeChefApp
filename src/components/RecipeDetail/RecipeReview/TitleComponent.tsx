@@ -5,12 +5,17 @@ import {colors, FWidth} from '../../../../globalStyle';
 import FButton from '../../elements/FButton';
 import Edit from '../../../utils/Svg/Edit';
 import FText from '../../elements/FText';
+import {ParamListBase, useNavigation} from '@react-navigation/native';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 
 const TitleComponent = () => {
+  const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
   return (
     <View style={styles.container}>
       <SubTitleComponent title="레시피 후기" />
-      <FButton buttonStyle="noneStyle" onPress={() => console.log('후기작성')}>
+      <FButton
+        buttonStyle="noneStyle"
+        onPress={() => navigation.navigate('addRecipe')}>
         <View style={styles.buttonContainer}>
           <Edit />
           <FText

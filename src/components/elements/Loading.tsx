@@ -2,18 +2,22 @@ import {StatusBar, StyleSheet, View} from 'react-native';
 import React from 'react';
 import {ActivityIndicator} from 'react-native';
 import {Dimensions} from 'react-native';
-import {colors} from '../../../globalStyle';
+import {colors, FWidth} from '../../../globalStyle';
 import {useLoading} from '../../store/store';
 import FText from './FText';
 
 const statusBarHeight = StatusBar.currentHeight;
+const screenHeight = Dimensions.get('screen').height;
+const windowHeight = Dimensions.get('window').height;
+const bottomBarHeight = screenHeight - (windowHeight + statusBarHeight!);
 const Loading = () => {
   const {loading, loadingTitle} = useLoading();
 
+  console.log('이건 바텀바', screenHeight - (windowHeight + statusBarHeight!));
   return (
     <>
       {loading && (
-        <View style={styles.background}>
+        <View style={styles.container}>
           <View style={styles.indicatorContainer}>
             <ActivityIndicator
               size="large"
@@ -25,7 +29,12 @@ const Loading = () => {
               style={{width: FWidth * 120, height: FHeight * 120}}
               autoPlay
             /> */}
-            <FText fStyle="R_16" color={colors.text} text={loadingTitle} />
+            <FText
+              mTop={FWidth * 20}
+              fStyle="R_16"
+              color={colors.text}
+              text={loadingTitle}
+            />
           </View>
         </View>
       )}
@@ -36,9 +45,9 @@ const Loading = () => {
 export default Loading;
 
 const styles = StyleSheet.create({
-  background: {
+  container: {
     width: '100%',
-    height: Dimensions.get('screen').height - statusBarHeight!,
+    height: screenHeight - statusBarHeight! - bottomBarHeight,
     backgroundColor: colors.white,
     // opacity: 0.6,
     position: 'absolute',
