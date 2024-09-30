@@ -8,13 +8,17 @@ import FText from '../elements/FText';
 
 type TopTitleProps = {
   title: string;
+  setIsOpen?: React.Dispatch<React.SetStateAction<boolean>>;
+  setCategory?: React.Dispatch<React.SetStateAction<string>>;
 };
 
-const TopTitle = ({title}: TopTitleProps) => {
+const TopTitle = ({title, setIsOpen, setCategory}: TopTitleProps) => {
   const {bottomSheetRef} = useBottomSheetRef();
   const {setAddTitle} = useAddModalInputText();
   const handleClose = () => {
     setAddTitle('');
+    setIsOpen?.(false);
+    setCategory?.('미분류');
     bottomSheetRef.current?.close();
   };
 

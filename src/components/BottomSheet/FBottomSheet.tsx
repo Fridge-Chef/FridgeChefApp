@@ -1,4 +1,4 @@
-import {StyleSheet} from 'react-native';
+import {Keyboard, StatusBar, StyleSheet} from 'react-native';
 import React, {useCallback, useEffect, useMemo, useRef} from 'react';
 import BottomSheet, {
   BottomSheetBackdrop,
@@ -10,11 +10,12 @@ import AddIngredient from './AddIngredient/AddIngredient';
 import ExpiryDate from './ExpiryDate/ExpiryDate';
 import AddCondiment from './AddCondiment/AddCondiment';
 import IngredientList from './IngredientList/IngredientList';
+import Management from './ExpiryDate/Management';
 
 const FBottomSheet = () => {
   const {title} = useBottomSheetTitle();
   const snapPoints = useMemo(() => {
-    return ['99.5%'];
+    return ['100%'];
   }, []);
   const {setBottomSheetRef} = useBottomSheetRef();
   const bottomRef = useRef<BottomSheet>(null);
@@ -29,6 +30,13 @@ const FBottomSheet = () => {
     [],
   );
 
+  const handleChange = useCallback((index: number) => {
+    StatusBar.setBackgroundColor(
+      index === -1 ? colors.white : colors.black + '65',
+    );
+    Keyboard.dismiss();
+  }, []);
+
   const bottomScreen = () => {
     switch (title) {
       case '재료 추가':
@@ -36,7 +44,7 @@ const FBottomSheet = () => {
       case '조미료 추가':
         return <AddCondiment />;
       case '유통기한 등록':
-        return <ExpiryDate />;
+        return <Management />;
       case '재료보기':
         return <IngredientList />;
       default:
@@ -58,6 +66,8 @@ const FBottomSheet = () => {
         height: FWidth * 36,
         elevation: 0,
       }}
+      handleComponent={null}
+      onChange={handleChange}
       enablePanDownToClose={true}
       enableContentPanningGesture={true}
       backdropComponent={renderBackdrop}

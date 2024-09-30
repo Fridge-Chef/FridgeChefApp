@@ -11,6 +11,8 @@ import {colors, FWidth} from '../../../globalStyle';
 
 type FButtonProps = {
   buttonStyle:
+    | 'indicator'
+    | 'selected'
     | 'svgButton'
     | 'loginButton'
     | 'menuButton'
@@ -88,6 +90,8 @@ const FButton = ({
 }: FButtonProps) => {
   const styleList = {
     noneStyle: styles.noneStyle,
+    indicator: styles.indicator,
+    selected: [styles.selected, {marginTop: marginTop}],
     loginButton: [
       styles.login,
       {
@@ -175,6 +179,23 @@ const FButton = ({
 export default FButton;
 
 const styles = StyleSheet.create({
+  indicator: {
+    position: 'relative',
+    flex: 1,
+    alignItems: 'center',
+    paddingVertical: FWidth * 16,
+    borderBottomWidth: 1,
+    borderColor: colors.b200,
+  },
+
+  selected: {
+    paddingVertical: FWidth * 14,
+    borderWidth: 1,
+    borderColor: colors.field,
+    borderRadius: 10,
+    paddingHorizontal: FWidth * 12,
+  },
+
   login: {
     flexDirection: 'row',
     alignItems: 'center',

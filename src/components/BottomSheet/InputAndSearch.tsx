@@ -7,7 +7,10 @@ import {useAddModalInputText} from '../../store/store';
 import FText from '../elements/FText';
 
 type InputAndSearchProps = {
-  itemList: any;
+  itemList: {
+    id: number;
+    name: string;
+  }[];
   setItemList: Dispatch<React.SetStateAction<string[]>>;
 };
 
@@ -38,7 +41,7 @@ const InputAndSearch = ({itemList, setItemList}: InputAndSearchProps) => {
   }, [addTitle, filteredIngredients]);
 
   return (
-    <View>
+    <>
       <View style={styles.inputContainer}>
         <FInput
           inputStyle="default"
@@ -68,7 +71,7 @@ const InputAndSearch = ({itemList, setItemList}: InputAndSearchProps) => {
           ))}
         </View>
       )}
-    </View>
+    </>
   );
 };
 
@@ -76,7 +79,7 @@ export default InputAndSearch;
 
 const styles = StyleSheet.create({
   inputContainer: {
-    marginTop: FWidth * 24,
+    marginTop: FWidth * 8,
   },
 
   listContainer: {

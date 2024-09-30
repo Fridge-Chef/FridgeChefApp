@@ -31,17 +31,19 @@ const AddList = ({onClicked}: AddListProps) => {
   }, [onClicked]);
 
   return (
-    <View style={styles.container}>
-      {dataList.map((item: ListData, index: number) => (
-        <View key={index} style={{}}>
-          {/* <SubTitleComponent title={item.title} color={colors.b400} /> */}
-          <View>
-            {item.items.map((itemList, index) => (
-              <ItemComponent itemList={itemList} key={index} />
-            ))}
+    <View style={styles.container1}>
+      <View style={styles.listContainer}>
+        {dataList.map((item: ListData, index: number) => (
+          <View key={index} style={{}}>
+            {/* <SubTitleComponent title={item.title} color={colors.b400} /> */}
+            <View>
+              {item.items.map((itemList, index) => (
+                <ItemComponent itemList={itemList} key={index} />
+              ))}
+            </View>
           </View>
-        </View>
-      ))}
+        ))}
+      </View>
     </View>
   );
 };
@@ -49,7 +51,10 @@ const AddList = ({onClicked}: AddListProps) => {
 export default AddList;
 
 const styles = StyleSheet.create({
-  container: {
+  container1: {
+    flex: 1,
+  },
+  listContainer: {
     // marginTop: FWidth * 40,
     marginTop: FWidth * 12,
     paddingHorizontal: FWidth * 22,

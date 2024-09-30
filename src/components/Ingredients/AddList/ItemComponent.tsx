@@ -11,6 +11,7 @@ import {
 import DDayText from './DDayText';
 import Close3 from '../../../utils/Svg/Close3';
 import FText from '../../elements/FText';
+import Option from '../../../utils/Svg/Option';
 
 type ItemComponentProps = {
   itemList: {
@@ -31,16 +32,13 @@ const ItemComponent = ({itemList}: ItemComponentProps) => {
     setTitle(buttonName);
   };
 
-  const today = Number.parseInt(
-    new Date().toJSON().slice(0, 10).replace(/-/g, ''),
-  );
+  const today = new Date();
   let date = () => {
     if (!itemList.expiry_date) return;
-    switch (
-      Number.parseInt(
-        new Date(itemList.expiry_date).toJSON().slice(0, 10).replace(/-/g, ''),
-      ) - today
-    ) {
+    const expiryDate = new Date(itemList.expiry_date);
+    const timeDifference = expiryDate.getTime() - today.getTime();
+    const dayDifference = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+    switch (dayDifference) {
       case 3:
         return 'D-3';
       case 2:
@@ -77,10 +75,11 @@ const ItemComponent = ({itemList}: ItemComponentProps) => {
           <FButton
             buttonStyle="noneStyle"
             onPress={() => handleAddExpiration(itemList.name)}>
-            <Calendar
+            {/* <Calendar
               day={date()?.replace('D-', '')}
               expiryDate={itemList.expiry_date}
-            />
+            /> */}
+            <Option />
           </FButton>
         </View>
         <FButton buttonStyle="noneStyle">

@@ -62,12 +62,7 @@ const Ingredients = () => {
             <InfoComponent />
           </>
         )}
-        <View
-          style={{
-            flex: 1,
-          }}>
-          <AddList onClicked={onClicked} />
-        </View>
+        <AddList onClicked={onClicked} />
       </ScrollView>
       <View style={styles.buttonContainer}>
         <FButton

@@ -1,45 +1,24 @@
 import {StyleSheet, View} from 'react-native';
 import React, {useState} from 'react';
 import TopTitle from '../TopTitle';
-import {colors, FHeight, FWidth} from '../../../../globalStyle';
+import {colors, FWidth} from '../../../../globalStyle';
 import {useBottomSheetRef, useIngredientTitle} from '../../../store/store';
-import FInput from '../../elements/FInput';
 import BottomButton from '../BottomButton';
+import FText from '../../elements/FText';
+import SubTitleBS from '../SubTitleBS';
+import FButton from '../../elements/FButton';
 
 const ExpiryDate = () => {
-  const [inputTitle, setInputTitle] = useState('');
-  const {ingredientTitle} = useIngredientTitle();
-  const {bottomSheetRef} = useBottomSheetRef();
-
-  const handleSubmit = () => {
-    setInputTitle('');
-    bottomSheetRef.current?.close();
-  };
-
   return (
     <View style={styles.container}>
-      <View style={styles.contentContainer}>
-        <TopTitle title={`${ingredientTitle} 유통기한 등록하기`} />
-        <View style={styles.inputContainer}>
-          <FInput
-            inputStyle="default"
-            value={inputTitle}
-            placeholder="유통기한을 입력해주세요"
-            onChangeText={text => {
-              setInputTitle(text);
-            }}
-            onSubmitEditing={() => {
-              handleSubmit();
-            }}
-            fontSize={16}
-          />
-        </View>
-      </View>
-      <BottomButton
-        title="확인"
-        buttonColor={inputTitle ? colors.text : colors.disabled2}
-        onPress={handleSubmit}
-      />
+      <SubTitleBS title="유통기한" />
+      <FButton marginTop={FWidth * 10} buttonStyle="selected">
+        <FText
+          fStyle="M_16"
+          color={colors.disabled}
+          text={'유통기한을 선택해주세요'}
+        />
+      </FButton>
     </View>
   );
 };
@@ -48,14 +27,6 @@ export default ExpiryDate;
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-  },
-  contentContainer: {
-    flexGrow: 1,
-    paddingHorizontal: FWidth * 28,
-  },
-
-  inputContainer: {
-    marginTop: FHeight * 24,
+    marginTop: FWidth * 32,
   },
 });
