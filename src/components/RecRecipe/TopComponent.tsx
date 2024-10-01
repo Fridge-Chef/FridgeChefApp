@@ -57,6 +57,7 @@ const TopComponent = () => {
             style={[
               styles.itemListContainer,
               {
+                position: 'relative',
                 maxHeight: itemHeight * 2 + FWidth * 10,
               },
             ]}>
@@ -88,16 +89,27 @@ const TopComponent = () => {
                     />
                   </FButton>
                 ))}
-              {item.ingredients.length > 0 && (
-                <FButton
-                  buttonStyle="noneStyle"
-                  onPress={handleBottomSheetOpen}>
-                  <View style={{marginTop: FWidth * 10}}>
-                    <BottomButton buttonHeight={itemHeight} />
-                  </View>
-                </FButton>
-              )}
             </View>
+            {item.ingredients.length > 0 && (
+              <FButton
+                buttonStyle="noneStyle"
+                fBStyle={{
+                  position: 'absolute',
+                  bottom: 0,
+                  right: 0,
+                }}
+                onPress={handleBottomSheetOpen}>
+                <View
+                  style={{
+                    marginTop: FWidth * 10,
+                    backgroundColor: colors.background,
+                    borderRadius: FWidth * 50,
+                    elevation: 2,
+                  }}>
+                  <BottomButton buttonHeight={itemHeight} />
+                </View>
+              </FButton>
+            )}
           </View>
         )}
       />
@@ -113,7 +125,6 @@ const styles = StyleSheet.create({
   },
 
   listItemContainer: {
-    position: 'relative',
     flexDirection: 'row',
     flexWrap: 'wrap',
     marginTop: FWidth * -10,
