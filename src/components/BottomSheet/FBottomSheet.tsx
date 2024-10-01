@@ -16,13 +16,25 @@ import AddCondiment from './AddCondiment/AddCondiment';
 import IngredientList from './IngredientList/IngredientList';
 import Management from './ExpiryDate/Management';
 import FBottomSheetSub from './BottomSheetSub/FBottomSheetSub';
+import Ranking from './Ranking/Ranking';
 
 const FBottomSheet = () => {
   const {title} = useBottomSheetTitle();
+  console.log(title);
   const {setCategory, setExpiryDate, setItemNumber} = useCategoriesText();
   const snapPoints = useMemo(() => {
-    return ['100%'];
-  }, []);
+    switch (title) {
+      case '재료 추가':
+      case '조미료 추가':
+      case '유통기한 등록':
+      case '재료보기':
+        return ['100%'];
+      case '순위':
+        return ['32%'];
+      default:
+        return ['100%'];
+    }
+  }, [title]);
   const {setBottomSheetRef} = useBottomSheetRef();
   const bottomRef = useRef<BottomSheet>(null);
   const renderBackdrop = useCallback(
@@ -58,6 +70,8 @@ const FBottomSheet = () => {
         return <Management />;
       case '재료보기':
         return <IngredientList />;
+      case '순위':
+        return <Ranking />;
       default:
         break;
     }

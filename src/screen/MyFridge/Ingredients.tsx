@@ -4,7 +4,11 @@ import {colors} from '../../../globalStyle';
 import TopComponent from '../../components/Ingredients/TopComponent';
 import AddList from '../../components/Ingredients/AddList/AddList';
 import FButton from '../../components/elements/FButton';
-import {useLoading} from '../../store/store';
+import {
+  useBottomSheetRef,
+  useBottomSheetTitle,
+  useLoading,
+} from '../../store/store';
 import {ParamListBase, useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import LoginAndUser from '../../components/Ingredients/LoginAndUser';
@@ -31,9 +35,12 @@ const Ingredients = () => {
     } else {
     }
   };
-
+  const {setTitle} = useBottomSheetTitle();
+  const {bottomSheetRef} = useBottomSheetRef();
   // 테스트용 함수
   const handleTest = () => {
+    setTitle('순위');
+    bottomSheetRef.current?.expand();
     setModal(!modal);
     showToast({
       text: '기본 재료를 등록했어요. 언제든 삭제할 수 있어요!',

@@ -23,6 +23,13 @@ const AddIngredient = () => {
     bottomSheetRef.current?.close();
   };
 
+  const handleClose = () => {
+    setIsClicked(1);
+    setItemList([]);
+    setItemList2([]);
+    bottomSheetRef.current?.close();
+  };
+
   return (
     <Pressable
       style={styles.container}
@@ -34,8 +41,7 @@ const AddIngredient = () => {
         <TopMenu
           isClicked={isClicked}
           setIsClicked={setIsClicked}
-          setItemList={setItemList}
-          setItemList2={setItemList2}
+          onPress={handleClose}
         />
         <View style={styles.subTitleContainer}>
           <SubTitleBS title="재료명" />

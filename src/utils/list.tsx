@@ -465,3 +465,10 @@ export const categoryList = [
   {id: 15, name: '고기류', icon: <Bowl />, icon2: <Vegetable />},
   {id: 16, name: '고기류', icon: <Bowl />, icon2: <Vegetable />},
 ];
+
+export const rankingMenuList = [
+  {id: 1, text: '재료 많은순'},
+  {id: 2, text: '별점순'},
+  {id: 3, text: '좋아요순'},
+  {id: 4, text: '최근순'},
+];

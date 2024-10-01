@@ -1,41 +1,26 @@
-import {StyleSheet, Text, View} from 'react-native';
-import React, {useState} from 'react';
+import {StyleSheet, View} from 'react-native';
+import React from 'react';
 import {colors, FWidth} from '../../../../globalStyle';
 import FText from '../../elements/FText';
 import Close from '../../../utils/Svg/Close';
 import FButton from '../../elements/FButton';
-import {useBottomSheetRef} from '../../../store/store';
 
 type TopMenuProps = {
   isClicked: number;
   setIsClicked: React.Dispatch<React.SetStateAction<number>>;
-  setItemList: React.Dispatch<React.SetStateAction<string[]>>;
-  setItemList2: React.Dispatch<React.SetStateAction<string[]>>;
+  onPress: () => void;
 };
 
-const TopMenu = ({
-  isClicked,
-  setIsClicked,
-  setItemList,
-  setItemList2,
-}: TopMenuProps) => {
-  const {bottomSheetRef} = useBottomSheetRef();
+const TopMenu = ({isClicked, setIsClicked, onPress}: TopMenuProps) => {
   const list = [
     {id: 1, title: '냉장고 재료 등록'},
     {id: 2, title: '실온보관 재료 등록'},
   ];
 
-  const handleClose = () => {
-    setIsClicked(1);
-    setItemList([]);
-    setItemList2([]);
-    bottomSheetRef.current?.close();
-  };
-
   return (
     <>
       <View style={styles.closeIcon}>
-        <FButton buttonStyle="noneStyle" onPress={handleClose}>
+        <FButton buttonStyle="noneStyle" onPress={onPress}>
           <Close />
         </FButton>
       </View>
