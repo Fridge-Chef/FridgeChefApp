@@ -8,15 +8,28 @@ import FButton from '../../elements/FButton';
 import {ParamListBase, useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import ArrowDown2 from '../../../utils/Svg/ArrowDown2';
+import {useBottomSheetRef, useBottomSheetTitle} from '../../../store/store';
 
 const Recipes = () => {
   const listData = require('../../../utils/recipeListData.json');
   const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
+  const {bottomSheetRef} = useBottomSheetRef();
+  const {setTitle} = useBottomSheetTitle();
+
+  const handleBottomSheetOpen = () => {
+    setTitle('순위');
+    bottomSheetRef.current?.expand();
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.mainListContainer}>
         <View style={styles.titleContainer}>
-          <SubTitleComponent title="최근순" color={colors.subText} />
+          <SubTitleComponent
+            title="최근순"
+            color={colors.subText}
+            onPress={handleBottomSheetOpen}
+          />
           <View style={{marginLeft: FWidth * 4}}>
             <ArrowDown2 />
           </View>
