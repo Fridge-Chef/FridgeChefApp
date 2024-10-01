@@ -1,5 +1,5 @@
 import axios from 'axios';
-
+import Config from 'react-native-config';
 export const baseUrl = axios.create({
-  baseURL: ' https://fridgebe.site/',
+  baseURL: Config.BASE_URL,
 });
