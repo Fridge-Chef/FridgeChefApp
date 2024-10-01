@@ -3,8 +3,8 @@ import React from 'react';
 import FButton from '../elements/FButton';
 import {useAddModalInputText, useBottomSheetRef} from '../../store/store';
 import {colors} from '../../../globalStyle';
-import Close from '../../utils/Svg/Close';
 import FText from '../elements/FText';
+import BottomClose from '../../utils/Svg/BottomClose';
 
 type TopTitleProps = {
   title: string;
@@ -26,7 +26,7 @@ const TopTitle = ({title, setCategory, setItemNumber}: TopTitleProps) => {
     <View style={styles.titleContainer}>
       <FText fStyle="B_18" color={colors.black} text={title} />
       <FButton buttonStyle="noneStyle" onPress={handleClose}>
-        <Close />
+        <BottomClose />
       </FButton>
     </View>
   );

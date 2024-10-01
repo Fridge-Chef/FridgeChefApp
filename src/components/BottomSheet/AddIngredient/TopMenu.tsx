@@ -2,8 +2,8 @@ import {StyleSheet, View} from 'react-native';
 import React from 'react';
 import {colors, FWidth} from '../../../../globalStyle';
 import FText from '../../elements/FText';
-import Close from '../../../utils/Svg/Close';
 import FButton from '../../elements/FButton';
+import BottomClose from '../../../utils/Svg/BottomClose';
 
 type TopMenuProps = {
   isClicked: number;
@@ -21,7 +21,7 @@ const TopMenu = ({isClicked, setIsClicked, onPress}: TopMenuProps) => {
     <>
       <View style={styles.closeIcon}>
         <FButton buttonStyle="noneStyle" onPress={onPress}>
-          <Close />
+          <BottomClose />
         </FButton>
       </View>
       <View style={styles.menubar}>
