@@ -44,6 +44,6 @@ const styles = StyleSheet.create({
   },
   contentContainer: {
     flexGrow: 1,
-    paddingHorizontal: FWidth * 28,
+    paddingHorizontal: FWidth * 22,
   },
 });
