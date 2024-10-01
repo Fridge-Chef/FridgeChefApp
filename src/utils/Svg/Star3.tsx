@@ -1,10 +1,15 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet} from 'react-native';
 import React from 'react';
 import {Path, Svg} from 'react-native-svg';
+import {FWidth} from '../../../globalStyle';
 
 const Star3 = () => {
   return (
-    <Svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+    <Svg
+      width={FWidth * 16}
+      height={FWidth * 16}
+      viewBox="0 0 16 16"
+      fill="none">
       <Path
         fillRule="evenodd"
         clipRule="evenodd"

@@ -7,12 +7,10 @@ import FButton from '../elements/FButton';
 import BottomButton from '../../utils/Svg/BottomButton';
 import {RecipeList} from '../../type/types';
 import {useBottomSheetRef, useBottomSheetTitle} from '../../store/store';
-import MoreButtonComponent from '../Ingredients/MoreButtonComponent';
 import FText from '../elements/FText';
 
 const TopComponent = () => {
   const [itemHeight, setItemHeight] = useState(0);
-  const [containerOpen, setContainerOpen] = useState(false);
   const [containerHeight, setContainerHeight] = useState(0);
   const {bottomSheetRef} = useBottomSheetRef();
   const {setTitle} = useBottomSheetTitle();
@@ -59,7 +57,7 @@ const TopComponent = () => {
             style={[
               styles.itemListContainer,
               {
-                maxHeight: containerOpen ? null : itemHeight * 2 + FWidth * 10,
+                maxHeight: itemHeight * 2 + FWidth * 10,
               },
             ]}>
             <View style={[styles.listItemContainer]} onLayout={onLayout2}>
@@ -100,13 +98,6 @@ const TopComponent = () => {
                 </FButton>
               )}
             </View>
-            {containerHeight > itemHeight * 3 + FWidth * 12 && (
-              <MoreButtonComponent
-                buttonHeight={itemHeight}
-                containerOpen={containerOpen}
-                onPress={() => setContainerOpen(!containerOpen)}
-              />
-            )}
           </View>
         )}
       />

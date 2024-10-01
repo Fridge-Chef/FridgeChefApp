@@ -1,11 +1,15 @@
 import {StyleSheet} from 'react-native';
 import React from 'react';
 import {G, Mask, Path, Svg} from 'react-native-svg';
-import {colors} from '../../../globalStyle';
+import {FWidth} from '../../../globalStyle';
 
 const Heart = () => {
   return (
-    <Svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+    <Svg
+      width={FWidth * 16}
+      height={FWidth * 16}
+      viewBox="0 0 16 16"
+      fill="none">
       <Mask
         id="mask0_389_10545"
         maskType="luminance"

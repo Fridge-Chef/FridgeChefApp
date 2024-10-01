@@ -13,7 +13,7 @@ type BottomButtonProps = {
 const BottomButton = ({title, buttonColor, onPress}: BottomButtonProps) => {
   return (
     <FButton buttonStyle="submit" buttonColor={buttonColor} onPress={onPress}>
-      <FText fStyle="B_20" color={colors.white} text={title} />
+      <FText fStyle="B_18" color={colors.white} text={title} />
     </FButton>
   );
 };

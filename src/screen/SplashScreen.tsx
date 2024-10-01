@@ -1,4 +1,4 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {Image, StyleSheet, Text, View} from 'react-native';
 import React, {useEffect} from 'react';
 import {colors} from '../../globalStyle';
 import {ParamListBase, useNavigation} from '@react-navigation/native';
@@ -24,7 +24,7 @@ const SplashScreen = () => {
 
   return (
     <View style={styles.container}>
-      <Text>SplashScreen</Text>
+      <Image source={require('../assets/images/logo.png')} />
     </View>
   );
 };

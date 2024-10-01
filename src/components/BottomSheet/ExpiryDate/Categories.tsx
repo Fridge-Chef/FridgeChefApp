@@ -5,64 +5,47 @@ import SubTitleBS from '../SubTitleBS';
 import FButton from '../../elements/FButton';
 import FText from '../../elements/FText';
 import ArrowDown from '../../../utils/Svg/ArrowDown';
+import Bowl from '../../../utils/Svg/Bowl';
+import Category from './Category';
+import {categoryList} from '../../../utils/list';
 
 type CategoriesProps = {
-  isOpen: boolean;
-  setIsOpen: (value: boolean) => void;
-  category: string;
+  itemNumber: number;
+  setItemNumber: (value: number) => void;
   setCategory: (value: string) => void;
 };
 
 const Categories = ({
-  isOpen,
-  setIsOpen,
-  category,
+  itemNumber,
+  setItemNumber,
   setCategory,
 }: CategoriesProps) => {
-  const list = [
-    {id: 1, name: '채소류'},
-    {id: 2, name: '과일류'},
-    {id: 3, name: '육류'},
-    {id: 4, name: '해산물'},
-    {id: 5, name: '곡류 및 견과류'},
-    {id: 6, name: '유제품 및 계란'},
-    {id: 7, name: '가공식품'},
-    {id: 8, name: '양념 및 조미료'},
-    {id: 9, name: '빵 및 곡류 가공품'},
-  ];
-
-  const handleSelectItem = (item: string) => {
-    setCategory(item);
-    setIsOpen(false);
-  };
-
   return (
     <View style={styles.container}>
-      <SubTitleBS title="카테고리" />
-      <FButton
-        marginTop={FWidth * 10}
-        buttonStyle="selected"
-        fBStyle={styles.buttonAlign}
-        onPress={() => setIsOpen(!isOpen)}>
-        <FText
-          fStyle="M_16"
-          color={category !== '미분류' ? colors.black : colors.disabled}
-          text={category}
-        />
-        <ArrowDown />
-      </FButton>
-      {isOpen && (
-        <View style={styles.listContainer}>
-          {list.map(item => (
-            <FButton
-              key={item.id}
-              buttonStyle="noneStyle"
-              onPress={() => handleSelectItem(item.name)}>
-              <FText fStyle="R_16" color={colors.black} text={item.name} />
-            </FButton>
-          ))}
-        </View>
-      )}
+      <SubTitleBS title="카테고리 선택" />
+      <View style={styles.listContainer}>
+        {categoryList.map(item => (
+          <Category
+            key={item.id}
+            width={itemNumber === item.id ? FWidth * 78 : FWidth * 78}
+            height={itemNumber === item.id ? FWidth * 78 : FWidth * 78}
+            borderColor={
+              itemNumber === item.id ? colors.primary[1] : 'transparent'
+            }
+            borderWidth={itemNumber === item.id ? 1.6 : 0}
+            buttonColor={
+              itemNumber === item.id ? colors.white : colors.background
+            }
+            name={item.name}
+            nameColor={itemNumber === item.id ? colors.primary[1] : colors.b600}
+            onPress={() => {
+              setCategory(item.name);
+              setItemNumber(item.id);
+            }}>
+            {itemNumber === item.id ? item.icon2 : item.icon}
+          </Category>
+        ))}
+      </View>
     </View>
   );
 };
@@ -81,11 +64,9 @@ const styles = StyleSheet.create({
   },
 
   listContainer: {
-    marginTop: FWidth * 16,
-    paddingVertical: FWidth * 8,
-    paddingHorizontal: FWidth * 12,
-    borderRadius: 10,
-    borderWidth: 1,
-    borderColor: colors.field,
+    marginTop: FWidth * 13,
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'space-between',
   },
 });

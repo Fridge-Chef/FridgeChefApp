@@ -1,8 +1,7 @@
 import {ScrollView, StyleSheet, TouchableOpacity, View} from 'react-native';
-import React, {useEffect, useState} from 'react';
-import {colors, FHeight, FWidth} from '../../../globalStyle';
+import React, {useState} from 'react';
+import {colors} from '../../../globalStyle';
 import TopComponent from '../../components/Ingredients/TopComponent';
-import CondimentList from '../../components/Ingredients/CondimentList';
 import AddList from '../../components/Ingredients/AddList/AddList';
 import FButton from '../../components/elements/FButton';
 import {useLoading} from '../../store/store';

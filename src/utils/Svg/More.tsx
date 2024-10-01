@@ -1,7 +1,7 @@
 import {StyleSheet} from 'react-native';
 import React from 'react';
 import {Path, Svg} from 'react-native-svg';
-import {colors} from '../../../globalStyle';
+import {colors, FWidth} from '../../../globalStyle';
 
 type MoreProps = {
   focused?: boolean;
@@ -9,7 +9,11 @@ type MoreProps = {
 
 const More = ({focused}: MoreProps) => {
   return (
-    <Svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+    <Svg
+      width={FWidth * 24}
+      height={FWidth * 24}
+      viewBox="0 0 24 24"
+      fill="none">
       <Path
         fillRule="evenodd"
         clipRule="evenodd"

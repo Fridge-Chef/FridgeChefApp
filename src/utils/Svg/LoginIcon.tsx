@@ -1,7 +1,7 @@
 import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import {ClipPath, Defs, G, Mask, Path, Rect, Svg} from 'react-native-svg';
-import {colors} from '../../../globalStyle';
+import {colors, FWidth} from '../../../globalStyle';
 
 type LoginIconProps = {
   test?: boolean;
@@ -9,7 +9,11 @@ type LoginIconProps = {
 
 const LoginIcon = ({test}: LoginIconProps) => {
   return (
-    <Svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+    <Svg
+      width={FWidth * 22}
+      height={FWidth * 22}
+      viewBox="0 0 22 22"
+      fill="none">
       <G clip-path="url(#clip0_2121_5315)">
         <Mask
           id="mask0_2121_5315"

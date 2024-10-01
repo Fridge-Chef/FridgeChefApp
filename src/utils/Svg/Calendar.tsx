@@ -1,7 +1,7 @@
 import {StyleSheet} from 'react-native';
 import React from 'react';
 import {Path, Svg} from 'react-native-svg';
-import {colors} from '../../../globalStyle';
+import {colors, FWidth} from '../../../globalStyle';
 
 type CalendarProps = {
   day?: string;
@@ -10,7 +10,11 @@ type CalendarProps = {
 
 const Calendar = ({day, expiryDate}: CalendarProps) => {
   return (
-    <Svg width="23" height="24" viewBox="0 0 23 24" fill="none">
+    <Svg
+      width={FWidth * 23}
+      height={FWidth * 24}
+      viewBox="0 0 23 24"
+      fill="none">
       <Path
         d="M18.2083 4H4.79167C3.73312 4 2.875 4.89543 2.875 6V20C2.875 21.1046 3.73312 22 4.79167 22H18.2083C19.2669 22 20.125 21.1046 20.125 20V6C20.125 4.89543 19.2669 4 18.2083 4Z"
         stroke={

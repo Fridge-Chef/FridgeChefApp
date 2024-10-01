@@ -1,10 +1,15 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet} from 'react-native';
 import React from 'react';
 import {G, Mask, Path, Svg} from 'react-native-svg';
+import {FWidth} from '../../../globalStyle';
 
 const ImageIcon = () => {
   return (
-    <Svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+    <Svg
+      width={FWidth * 18}
+      height={FWidth * 18}
+      viewBox="0 0 18 18"
+      fill="none">
       <Mask
         id="mask0_92_2954"
         maskType="luminance"

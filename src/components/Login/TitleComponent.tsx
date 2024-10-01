@@ -20,7 +20,8 @@ export default TitleComponent;
 const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
-    marginBottom: FWidth * 160,
+    // marginBottom: FWidth * 160,
+    marginBottom: FWidth * 64,
   },
 
   titleAlign: {

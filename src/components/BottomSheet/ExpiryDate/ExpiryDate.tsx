@@ -1,23 +1,32 @@
 import {StyleSheet, View} from 'react-native';
-import React, {useState} from 'react';
-import TopTitle from '../TopTitle';
+import React from 'react';
 import {colors, FWidth} from '../../../../globalStyle';
-import {useBottomSheetRef, useIngredientTitle} from '../../../store/store';
-import BottomButton from '../BottomButton';
 import FText from '../../elements/FText';
 import SubTitleBS from '../SubTitleBS';
 import FButton from '../../elements/FButton';
+import Calendar2 from '../../../utils/Svg/Calendar2';
+import {
+  useSubBottomSheetRef,
+  useSubBottomSheetTitle,
+} from '../../../store/store';
 
 const ExpiryDate = () => {
+  const {subBottomSheetRef} = useSubBottomSheetRef();
+  const {setSubTitle} = useSubBottomSheetTitle();
+  const handleAddExpiryDate = () => {
+    setSubTitle('유통기한');
+    subBottomSheetRef.current?.expand();
+  };
+
   return (
     <View style={styles.container}>
-      <SubTitleBS title="유통기한" />
-      <FButton marginTop={FWidth * 10} buttonStyle="selected">
-        <FText
-          fStyle="M_16"
-          color={colors.disabled}
-          text={'유통기한을 선택해주세요'}
-        />
+      <SubTitleBS title="유통기한 등록" />
+      <FButton
+        marginTop={FWidth * 14}
+        buttonStyle="selected"
+        onPress={handleAddExpiryDate}>
+        <FText fStyle="R_16" color={colors.b400} text={'날짜를 선택해주세요'} />
+        <Calendar2 />
       </FButton>
     </View>
   );
@@ -27,6 +36,6 @@ export default ExpiryDate;
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: FWidth * 32,
+    marginTop: FWidth * 40,
   },
 });

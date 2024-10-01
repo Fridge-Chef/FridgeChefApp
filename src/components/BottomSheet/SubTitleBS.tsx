@@ -8,7 +8,7 @@ type SubTitleBSProps = {
 };
 
 const SubTitleBS = ({title}: SubTitleBSProps) => {
-  return <FText fStyle="R_16" color={colors.black} text={title} />;
+  return <FText fStyle="M_16" color={colors.text} text={title} />;
 };
 
 export default SubTitleBS;

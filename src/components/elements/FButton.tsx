@@ -1,4 +1,6 @@
 import {
+  ColorValue,
+  DimensionValue,
   LayoutChangeEvent,
   StyleProp,
   StyleSheet,
@@ -23,12 +25,13 @@ type FButtonProps = {
     | 'smallIcon'
     | 'iconText'
     | 'submit'
+    | 'category'
     | 'bigButton'
     | 'buyButton'
     | 'addButton'
     | 'addButton2'
     | 'noneStyle';
-  buttonColor?: string;
+  buttonColor?: ColorValue;
   radius?: number;
   fBStyle?: StyleProp<ViewStyle>;
   fontFamily?:
@@ -42,8 +45,11 @@ type FButtonProps = {
     | 'Pretendard-SemiBold'
     | 'Pretendard-Thin';
   borderWidth?: number;
+  borderColor?: ColorValue;
   paddingVertical?: number;
   title?: string;
+  width?: DimensionValue;
+  height?: DimensionValue;
   titlePadding?: number;
   marginTop?: number;
   marginRight?: number;
@@ -51,7 +57,7 @@ type FButtonProps = {
   fontSize?: number;
   lineHeight?: number;
   letterSpacing?: number;
-  titleColor?: string;
+  titleColor?: ColorValue;
   titleWeight?:
     | 'bold'
     | 'normal'
@@ -65,6 +71,12 @@ type FButtonProps = {
     | '800'
     | '900';
   onPress?: () => void;
+  hitSlop?: {
+    top?: number;
+    left?: number;
+    bottom?: number;
+    right?: number;
+  };
   onLayout?: (event: LayoutChangeEvent) => void;
   children?: React.ReactNode;
 };
@@ -74,8 +86,11 @@ const FButton = ({
   buttonColor = colors.white,
   radius = 12,
   borderWidth = 0,
+  borderColor,
   paddingVertical,
   title,
+  width,
+  height,
   fontSize,
   fontFamily,
   lineHeight,
@@ -86,12 +101,23 @@ const FButton = ({
   marginBottom,
   titleColor,
   onPress,
+  hitSlop,
   onLayout,
   children,
 }: FButtonProps) => {
   const styleList = {
     noneStyle: styles.noneStyle,
     indicator: styles.indicator,
+    category: [
+      styles.category,
+      {
+        width: width,
+        height: height,
+        backgroundColor: buttonColor,
+        borderWidth: borderWidth,
+        borderColor: borderColor,
+      },
+    ],
     selected: [styles.selected, {marginTop: marginTop}],
     loginButton: [
       styles.login,
@@ -161,7 +187,8 @@ const FButton = ({
       style={[styleList[buttonStyle], fBStyle]}
       activeOpacity={1}
       onLayout={onLayout}
-      onPress={onPress}>
+      onPress={onPress}
+      hitSlop={hitSlop}>
       {children ? (
         children
       ) : (
@@ -193,11 +220,21 @@ const styles = StyleSheet.create({
   },
 
   selected: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
     paddingVertical: FWidth * 14,
     borderWidth: 1,
     borderColor: colors.field,
     borderRadius: 10,
     paddingHorizontal: FWidth * 12,
+  },
+
+  category: {
+    marginBottom: FWidth * 12,
+    borderRadius: 100,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 
   login: {
@@ -255,7 +292,7 @@ const styles = StyleSheet.create({
   },
 
   submitButton: {
-    height: FWidth * 64,
+    paddingVertical: FWidth * 16,
     justifyContent: 'center',
     alignItems: 'center',
   },

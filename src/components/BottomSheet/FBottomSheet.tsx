@@ -4,16 +4,22 @@ import BottomSheet, {
   BottomSheetBackdrop,
   BottomSheetScrollView,
 } from '@gorhom/bottom-sheet';
-import {useBottomSheetRef, useBottomSheetTitle} from '../../store/store';
+import {
+  useBottomSheetRef,
+  useBottomSheetTitle,
+  useCategoriesText,
+} from '../../store/store';
 import {colors, FWidth} from '../../../globalStyle';
 import AddIngredient from './AddIngredient/AddIngredient';
 import ExpiryDate from './ExpiryDate/ExpiryDate';
 import AddCondiment from './AddCondiment/AddCondiment';
 import IngredientList from './IngredientList/IngredientList';
 import Management from './ExpiryDate/Management';
+import FBottomSheetSub from './BottomSheetSub/FBottomSheetSub';
 
 const FBottomSheet = () => {
   const {title} = useBottomSheetTitle();
+  const {setCategory, setExpiryDate, setItemNumber} = useCategoriesText();
   const snapPoints = useMemo(() => {
     return ['100%'];
   }, []);
@@ -34,6 +40,11 @@ const FBottomSheet = () => {
     StatusBar.setBackgroundColor(
       index === -1 ? colors.white : colors.black + '65',
     );
+    if (index === -1) {
+      setCategory('');
+      setExpiryDate('');
+      setItemNumber(0);
+    }
     Keyboard.dismiss();
   }, []);
 
@@ -57,31 +68,34 @@ const FBottomSheet = () => {
   }, []);
 
   return (
-    <BottomSheet
-      ref={bottomRef}
-      snapPoints={snapPoints}
-      handleStyle={{
-        borderTopLeftRadius: 20,
-        borderTopRightRadius: 20,
-        height: FWidth * 36,
-        elevation: 0,
-      }}
-      handleComponent={null}
-      onChange={handleChange}
-      enablePanDownToClose={true}
-      enableContentPanningGesture={true}
-      backdropComponent={renderBackdrop}
-      backgroundStyle={{
-        backgroundColor: colors.white,
-      }}
-      index={-1}
-      style={[styles.contentContainer]}>
-      <BottomSheetScrollView
-        showsVerticalScrollIndicator={false}
-        contentContainerStyle={{flexGrow: 1}}>
-        {bottomScreen()}
-      </BottomSheetScrollView>
-    </BottomSheet>
+    <>
+      <BottomSheet
+        ref={bottomRef}
+        snapPoints={snapPoints}
+        handleStyle={{
+          borderTopLeftRadius: 20,
+          borderTopRightRadius: 20,
+          height: FWidth * 36,
+          elevation: 0,
+        }}
+        handleComponent={null}
+        onChange={handleChange}
+        enablePanDownToClose={true}
+        enableContentPanningGesture={true}
+        backdropComponent={renderBackdrop}
+        backgroundStyle={{
+          backgroundColor: colors.white,
+        }}
+        index={-1}
+        style={[styles.contentContainer]}>
+        <BottomSheetScrollView
+          showsVerticalScrollIndicator={false}
+          contentContainerStyle={{flexGrow: 1}}>
+          {bottomScreen()}
+        </BottomSheetScrollView>
+      </BottomSheet>
+      <FBottomSheetSub />
+    </>
   );
 };
 

@@ -7,9 +7,19 @@ type BottomSheetRefType = {
   setBottomSheetRef: (ref: RefObject<BottomSheet>) => void;
 };
 
+type SubBottomSheetRefType = {
+  subBottomSheetRef: RefObject<BottomSheet>;
+  setSubBottomSheetRef: (ref: RefObject<BottomSheet>) => void;
+};
+
 type BottomSheetTitleType = {
   title: string;
   setTitle: (title: string) => void;
+};
+
+type SubBottomSheetTitleType = {
+  subTitle: string;
+  setSubTitle: (subTitle: string) => void;
 };
 
 type IngredientTitleTitleType = {
@@ -34,14 +44,33 @@ type TopTabBarType = {
   setIndex: (index: number) => void;
 };
 
+type CategoriesTextType = {
+  category: string;
+  expiryDate: string;
+  itemNumber: number;
+  setItemNumber: (itemNumber: number) => void;
+  setCategory: (category: string) => void;
+  setExpiryDate: (expiryDate: string) => void;
+};
+
 export const useBottomSheetRef = create<BottomSheetRefType>(set => ({
   bottomSheetRef: {current: null},
   setBottomSheetRef: ref => set({bottomSheetRef: ref}),
 }));
 
+export const useSubBottomSheetRef = create<SubBottomSheetRefType>(set => ({
+  subBottomSheetRef: {current: null},
+  setSubBottomSheetRef: ref => set({subBottomSheetRef: ref}),
+}));
+
 export const useBottomSheetTitle = create<BottomSheetTitleType>(set => ({
   title: '',
   setTitle: (title: string) => set({title}),
+}));
+
+export const useSubBottomSheetTitle = create<SubBottomSheetTitleType>(set => ({
+  subTitle: '',
+  setSubTitle: (subTitle: string) => set({subTitle}),
 }));
 
 export const useIngredientTitle = create<IngredientTitleTitleType>(set => ({
@@ -69,4 +98,13 @@ export const useTopTabBar = create<TopTabBarType>(set => ({
 export const useCommunityTopTabBar = create<TopTabBarType>(set => ({
   index: 0,
   setIndex: (index: number) => set({index}),
+}));
+
+export const useCategoriesText = create<CategoriesTextType>(set => ({
+  category: '',
+  expiryDate: '',
+  itemNumber: 0,
+  setItemNumber: (itemNumber: number) => set({itemNumber}),
+  setCategory: (category: string) => set({category}),
+  setExpiryDate: (expiryDate: string) => set({expiryDate}),
 }));

@@ -8,23 +8,23 @@ import FText from '../elements/FText';
 
 type TopTitleProps = {
   title: string;
-  setIsOpen?: React.Dispatch<React.SetStateAction<boolean>>;
-  setCategory?: React.Dispatch<React.SetStateAction<string>>;
+  setCategory?: (value: string) => void;
+  setItemNumber?: (value: number) => void;
 };
 
-const TopTitle = ({title, setIsOpen, setCategory}: TopTitleProps) => {
+const TopTitle = ({title, setCategory, setItemNumber}: TopTitleProps) => {
   const {bottomSheetRef} = useBottomSheetRef();
   const {setAddTitle} = useAddModalInputText();
   const handleClose = () => {
     setAddTitle('');
-    setIsOpen?.(false);
-    setCategory?.('미분류');
+    setCategory?.('');
+    setItemNumber?.(0);
     bottomSheetRef.current?.close();
   };
 
   return (
     <View style={styles.titleContainer}>
-      <FText fStyle="B_18" color={colors.text} text={title} />
+      <FText fStyle="B_18" color={colors.black} text={title} />
       <FButton buttonStyle="noneStyle" onPress={handleClose}>
         <Close />
       </FButton>

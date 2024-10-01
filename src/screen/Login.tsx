@@ -1,4 +1,4 @@
-import {StyleSheet, View} from 'react-native';
+import {Image, StyleSheet, View} from 'react-native';
 import React from 'react';
 import {ParamListBase, useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
@@ -13,6 +13,13 @@ const Login = () => {
   return (
     <View style={styles.container}>
       <TitleComponent />
+      <View style={{alignItems: 'center', marginBottom: FWidth * 128}}>
+        <Image
+          style={{width: FWidth * 127, height: FWidth * 137}}
+          source={require('../assets/images/LogoImg.png')}
+          alt="로고이미지"
+        />
+      </View>
       <KakaoLogin navigation={navigation} />
       <GoogleLogin navigation={navigation} />
       <TakeTour navigation={navigation} />

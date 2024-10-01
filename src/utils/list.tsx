@@ -1,3 +1,6 @@
+import Bowl from './Svg/Bowl';
+import Vegetable from './Svg/Vegetable';
+
 export const ingredients = [
   {id: 1, name: '소금류'},
   {id: 2, name: '설탕류'},
@@ -102,27 +105,27 @@ export const list = [
         expiry_date: '2024-09-09T15:45:00', // 유통기한
         create_time: '2024-09-09T15:45:00', // 재료 추가 날짜
       },
-      {
-        ingredient: '카레가루',
-        category: '',
-        ingredient_id: 10,
-        expiry_date: '2024-09-09T15:45:00', // 유통기한
-        create_time: '2024-09-09T15:45:00', // 재료 추가 날짜
-      },
-      {
-        ingredient: '자장면 가루',
-        category: '',
-        ingredient_id: 11,
-        expiry_date: '2024-09-09T15:45:00', // 유통기한
-        create_time: '2024-09-09T15:45:00', // 재료 추가 날짜
-      },
-      {
-        ingredient: '오징어 젓갈',
-        category: '',
-        ingredient_id: 12,
-        expiry_date: '2024-09-09T15:45:00', // 유통기한
-        create_time: '2024-09-09T15:45:00', // 재료 추가 날짜
-      },
+      // {
+      //   ingredient: '카레가루',
+      //   category: '',
+      //   ingredient_id: 10,
+      //   expiry_date: '2024-09-09T15:45:00', // 유통기한
+      //   create_time: '2024-09-09T15:45:00', // 재료 추가 날짜
+      // },
+      // {
+      //   ingredient: '자장면 가루',
+      //   category: '',
+      //   ingredient_id: 11,
+      //   expiry_date: '2024-09-09T15:45:00', // 유통기한
+      //   create_time: '2024-09-09T15:45:00', // 재료 추가 날짜
+      // },
+      // {
+      //   ingredient: '오징어 젓갈',
+      //   category: '',
+      //   ingredient_id: 12,
+      //   expiry_date: '2024-09-09T15:45:00', // 유통기한
+      //   create_time: '2024-09-09T15:45:00', // 재료 추가 날짜
+      // },
       // {
       //   ingredient: '김치',
       //   category: '',
@@ -442,4 +445,23 @@ export const storageSubList = [
     content:
       '냉장고는 4˚C 이하로 설정하면 식재료를 더 신선하게 보관할 수 있어요.',
   },
+];
+
+export const categoryList = [
+  {id: 1, name: '미분류', icon: <Bowl />, icon2: <Vegetable />},
+  {id: 2, name: '채소류', icon: <Bowl />, icon2: <Vegetable />},
+  {id: 3, name: '고기류', icon: <Bowl />, icon2: <Vegetable />},
+  {id: 4, name: '생선류', icon: <Bowl />, icon2: <Vegetable />},
+  {id: 5, name: '유제품', icon: <Bowl />, icon2: <Vegetable />},
+  {id: 6, name: '과일류', icon: <Bowl />, icon2: <Vegetable />},
+  {id: 7, name: '고기류', icon: <Bowl />, icon2: <Vegetable />},
+  {id: 8, name: '고기류', icon: <Bowl />, icon2: <Vegetable />},
+  {id: 9, name: '고기류', icon: <Bowl />, icon2: <Vegetable />},
+  {id: 10, name: '고기류', icon: <Bowl />, icon2: <Vegetable />},
+  {id: 11, name: '고기류', icon: <Bowl />, icon2: <Vegetable />},
+  {id: 12, name: '고기류', icon: <Bowl />, icon2: <Vegetable />},
+  {id: 13, name: '고기류', icon: <Bowl />, icon2: <Vegetable />},
+  {id: 14, name: '고기류', icon: <Bowl />, icon2: <Vegetable />},
+  {id: 15, name: '고기류', icon: <Bowl />, icon2: <Vegetable />},
+  {id: 16, name: '고기류', icon: <Bowl />, icon2: <Vegetable />},
 ];

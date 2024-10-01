@@ -1,10 +1,15 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet} from 'react-native';
 import React from 'react';
 import {ClipPath, Defs, G, Mask, Path, Rect, Svg} from 'react-native-svg';
+import {FWidth} from '../../../globalStyle';
 
 const UserIcon2 = () => {
   return (
-    <Svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+    <Svg
+      width={FWidth * 16}
+      height={FWidth * 16}
+      viewBox="0 0 16 16"
+      fill="none">
       <G clip-path="url(#clip0_53_4351)">
         <Mask
           id="mask0_53_4351"

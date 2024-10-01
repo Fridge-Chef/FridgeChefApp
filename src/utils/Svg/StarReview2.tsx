@@ -1,10 +1,15 @@
 import {StyleSheet} from 'react-native';
 import React from 'react';
 import {Path, Svg} from 'react-native-svg';
+import {FWidth} from '../../../globalStyle';
 
 const StarReview2 = () => {
   return (
-    <Svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+    <Svg
+      width={FWidth * 28}
+      height={FWidth * 28}
+      viewBox="0 0 28 28"
+      fill="none">
       <Path
         fillRule="evenodd"
         clipRule="evenodd"

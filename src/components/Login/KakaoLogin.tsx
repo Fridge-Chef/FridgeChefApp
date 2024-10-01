@@ -44,7 +44,7 @@ const KakaoLogin = ({navigation}: KakaoLoginProps) => {
       paddingVertical={14}
       buttonColor="#F9E007"
       marginBottom={16}
-      onPress={handleKakaologin}>
+      onPress={() => navigation.navigate('splash')}>
       <KakaoLogo />
       <LoginButtonTitle title="카카오톡 간편 로그인" />
       <View style={styles.hideIcon}>

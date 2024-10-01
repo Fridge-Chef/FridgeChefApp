@@ -1,7 +1,7 @@
 import {StyleSheet} from 'react-native';
 import React from 'react';
 import {G, Mask, Path, Svg} from 'react-native-svg';
-import {colors} from '../../../globalStyle';
+import {colors, FWidth} from '../../../globalStyle';
 
 type TabHeartProps = {
   focused?: boolean;
@@ -9,7 +9,11 @@ type TabHeartProps = {
 
 const TabHeart = ({focused}: TabHeartProps) => {
   return (
-    <Svg width="25" height="24" viewBox="0 0 25 24" fill="none">
+    <Svg
+      width={FWidth * 25}
+      height={FWidth * 25}
+      viewBox="0 0 25 24"
+      fill="none">
       <Mask
         id="mask0_2113_5127"
         maskType="luminance"
