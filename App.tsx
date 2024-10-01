@@ -6,15 +6,26 @@ import MainStackScreen from './src/components/BottomTebScreen/MainStackScreen';
 import FBottomSheet from './src/components/BottomSheet/FBottomSheet';
 import Loading from './src/components/elements/Loading';
 import FToast from './src/utils/FToast';
-import {subscribeForKeyboardEvents} from 'react-native-reanimated/lib/typescript/core';
-import {SlideInLeft} from 'react-native-reanimated';
+import {GoogleSignin} from '@react-native-google-signin/google-signin';
+import Config from 'react-native-config';
 
 function App() {
+  const googleSignInConfigure = () => {
+    GoogleSignin.configure({
+      webClientId: Config.GOOGLE_OAUTH_TYPE3_CLIENT_ID,
+    });
+  };
+
   useEffect(() => {
     setTimeout(() => {
       SplashScreen.hide();
     }, 100);
   });
+
+  useEffect(() => {
+    googleSignInConfigure();
+    console.log('구글 로그인 설정');
+  }, []);
 
   return (
     <>

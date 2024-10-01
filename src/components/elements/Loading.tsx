@@ -13,7 +13,6 @@ const bottomBarHeight = screenHeight - (windowHeight + statusBarHeight!);
 const Loading = () => {
   const {loading, loadingTitle} = useLoading();
 
-  console.log('이건 바텀바', screenHeight - (windowHeight + statusBarHeight!));
   return (
     <>
       {loading && (

@@ -1,6 +1,16 @@
 apply plugin: "com.android.application"
 apply plugin: "org.jetbrains.kotlin.android"
 apply plugin: "com.facebook.react"
+apply plugin: "com.google.gms.google-services"
+
+project.ext.envConfigFiles = [
+    debug: ".env",
+    release: ".env",
+    anothercustombuild: ".env",
+]
+
+apply from: project(':react-native-config').projectDir.getPath() + "/dotenv.gradle"
+
 
 /**
  * This is the configuration block to customize your React Native Android app.
@@ -84,6 +94,17 @@ android {
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
+        resValue "string", "kakao_manifest_app_key", project.env.get("KAKAO_MANIFEST_KEY")
+        resValue "string", "kakao_app_key", project.env.get("KAKAO_API_KEY")
+        resValue "string", "google_mobilesdk_app_id", project.env.get("GOOGLE_MOBILESDK_APP_ID")
+        resValue "string", "google_oauth_type1_client_id", project.env.get("GOOGLE_OAUTH_TYPE1_CLIENT_ID")
+        resValue "string", "google_oauth_type1_certificate_hash", project.env.get("GOOGLE_OAUTH_TYPE1_CERTIFICATE_HASH")
+        resValue "string", "google_oauth_type1_1_client_id", project.env.get("GOOGLE_OAUTH_TYPE1_1_CLIENT_ID")
+        resValue "string", "google_oauth_type1_1_certificate_hash", project.env.get("GOOGLE_OAUTH_TYPE1_1_CERTIFICATE_HASH")
+        resValue "string", "google_oauth_type3_client_id", project.env.get("GOOGLE_OAUTH_TYPE3_CLIENT_ID")
+        resValue "string", "google_oauth_current_key", project.env.get("GOOGLE_OAUTH_CURRENT_KEY")
+
+        resValue "string", "build_config_package", "com.fridgechefapp"
     }
     signingConfigs {
         debug {

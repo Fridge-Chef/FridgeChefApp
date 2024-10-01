@@ -6,12 +6,33 @@ import {ParamListBase} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import FButton from '../elements/FButton';
 import LoginButtonTitle from './LoginButtonTitle';
+import {GoogleSignin} from '@react-native-google-signin/google-signin';
 
 type GoogleLoginProps = {
   navigation: NativeStackNavigationProp<ParamListBase>;
 };
 
 const GoogleLogin = ({navigation}: GoogleLoginProps) => {
+  const handleGoogleSignIn = async () => {
+    try {
+      await GoogleSignin.hasPlayServices();
+      const response = await GoogleSignin.signIn();
+      console.log(response);
+    } catch (error) {
+      console.log('구글 로그인 error', error);
+    }
+  };
+
+  const handleLogout = async () => {
+    try {
+      await GoogleSignin.revokeAccess();
+      const aaa = await GoogleSignin.signOut();
+      console.log('aaa', aaa);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <FButton
       buttonStyle="loginButton"
@@ -19,7 +40,7 @@ const GoogleLogin = ({navigation}: GoogleLoginProps) => {
       paddingVertical={12}
       buttonColor={colors.white}
       marginBottom={16}
-      onPress={() => navigation.replace('bottomTab')}>
+      onPress={handleLogout}>
       <GoogleLogo />
       <LoginButtonTitle title="구글 로그인" />
       <View style={styles.hideIcon}>

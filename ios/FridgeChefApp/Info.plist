@@ -59,5 +59,27 @@
 		<string>Pretendard-SemiBold.otf</string>
 		<string>Pretendard-Thin.otf</string>
 	</array>
+	<key>CFBundleURLTypes</key>
+		<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>kakaob99b0f224ab3865f4bf4f60f3af59779</string>
+			</array>
+		</dict>
+		</array>
+		<key>CFBundleVersion</key>
+		<string>1</string>
+		<key>KAKAO_APP_KEY</key>
+		<string>b99b0f224ab3865f4bf4f60f3af59779</string>
+		<key>LSApplicationQueriesSchemes</key>
+		<array>
+			<string>kakao0123456789</string>
+			<string>kakaokompassauth</string>
+			<string>storykompassauth</string>
+			<string>kakaolink</string>
+		</array>
 </dict>
 </plist>
