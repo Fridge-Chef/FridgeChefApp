@@ -36,6 +36,9 @@ import StarReview1 from '../../utils/Svg/StarReview1';
 import StarReview2 from '../../utils/Svg/StarReview2';
 import ImageIcon from '../../utils/Svg/ImageIcon';
 import MenuIcon from '../../utils/Svg/MenuIcon';
+import DetailHeart from '../../utils/Svg/DetailHeart';
+import DetailShare from '../../utils/Svg/DetailShare';
+import DetailBack from '../../utils/Svg/DetailBack';
 
 type SvgListProps = {
   type:
@@ -51,6 +54,9 @@ type SvgListProps = {
     | 'edit2'
     | 'editSquare'
     | 'googleLogo'
+    | 'detailBack'
+    | 'detailHeart'
+    | 'detailShare'
     | 'heart'
     | 'heart2'
     | 'heart3'
@@ -93,6 +99,12 @@ const SvgList = ({type}: SvgListProps) => {
       return <Close2 />;
     case 'close3':
       return <Close3 />;
+    case 'detailBack':
+      return <DetailBack />;
+    case 'detailHeart':
+      return <DetailHeart />;
+    case 'detailShare':
+      return <DetailShare />;
     case 'edit':
       return <Edit />;
     case 'edit2':

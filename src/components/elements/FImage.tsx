@@ -6,6 +6,7 @@ type FImageProps = {
   imgStyle:
     | 'main'
     | 'detail'
+    | 'detailSub'
     | 'sub'
     | 'sub2'
     | 'myPage'
@@ -20,6 +21,7 @@ const FImage = ({imgStyle, uri, resizeMode, alt}: FImageProps) => {
   const imgStyleList = {
     main: styles.mainImage,
     detail: styles.detailImage,
+    detailSub: styles.detailSubImage,
     sub: styles.subImage,
     sub2: styles.sub2Image,
     myPage: styles.myPageUser,
@@ -51,6 +53,11 @@ const styles = StyleSheet.create({
     width: '100%',
     height: FWidth * 277,
     backgroundColor: colors.white,
+  },
+
+  detailSubImage: {
+    width: '100%',
+    height: FWidth * 200,
   },
 
   subImage: {

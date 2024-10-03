@@ -5,13 +5,21 @@ import SubTitleComponent from '../SubTitleComponent';
 import ContentComponent from './ContentComponent';
 import {detailContent} from '../../../utils/list';
 import UserRecipeMore from '../MoreUserRecipe/UserRecipeMore';
+import Num from '../../../utils/Svg/Num';
 
 const RecipeComponent = () => {
   return (
     <View style={styles.container}>
-      <SubTitleComponent title="레시피" />
-      <ContentComponent content={detailContent.content} />
-      <UserRecipeMore />
+      <View style={{marginBottom: FWidth * 24}}>
+        <SubTitleComponent title="레시피" />
+      </View>
+      <ContentComponent
+        title={detailContent.content.title}
+        content={detailContent.content.content}
+        img={detailContent.content.img}>
+        <Num />
+      </ContentComponent>
+      {/* <UserRecipeMore /> */}
     </View>
   );
 };
@@ -22,7 +30,7 @@ const styles = StyleSheet.create({
   container: {
     marginTop: FWidth * 12,
     paddingTop: FWidth * 24,
-    paddingBottom: FWidth * 40,
+    // paddingBottom: FWidth * 40,
     paddingHorizontal: FWidth * 22,
     backgroundColor: colors.white,
   },

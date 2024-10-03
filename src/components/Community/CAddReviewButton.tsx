@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
   buttonStyle: {
     position: 'absolute',
     bottom: FWidth * 34,
-    right: FWidth * 21,
+    right: FWidth * 22,
     backgroundColor: colors.text,
   },
 

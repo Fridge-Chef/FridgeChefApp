@@ -69,6 +69,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     marginTop: FWidth * 24,
+    paddingHorizontal: FWidth * 22,
   },
 
   titleContainer: {

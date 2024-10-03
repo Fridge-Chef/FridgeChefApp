@@ -9,6 +9,8 @@ import {ParamListBase, useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import ArrowDown2 from '../../../utils/Svg/ArrowDown2';
 import {useBottomSheetRef, useBottomSheetTitle} from '../../../store/store';
+import RankArrow from '../../../utils/Svg/RankArrow';
+import RankButton from './RankButton';
 
 const Recipes = () => {
   const listData = require('../../../utils/recipeListData.json');
@@ -24,16 +26,7 @@ const Recipes = () => {
   return (
     <View style={styles.container}>
       <View style={styles.mainListContainer}>
-        <View style={styles.titleContainer}>
-          <SubTitleComponent
-            title="최근순"
-            color={colors.subText}
-            onPress={handleBottomSheetOpen}
-          />
-          <View style={{marginLeft: FWidth * 4}}>
-            <ArrowDown2 />
-          </View>
-        </View>
+        <RankButton onPress={handleBottomSheetOpen} />
         <FlatList
           data={listData}
           showsVerticalScrollIndicator={false}
@@ -68,10 +61,5 @@ const styles = StyleSheet.create({
   mainListContainer: {
     marginTop: FWidth * 24,
     height: '100%',
-  },
-
-  titleContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
   },
 });

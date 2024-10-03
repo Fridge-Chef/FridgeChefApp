@@ -10,7 +10,7 @@ type ItemBoxProps = {
 const ItemBox = ({title}: ItemBoxProps) => {
   return (
     <View style={styles.itemBox}>
-      <FText fStyle="R_12" color={colors.text} text={title} />
+      <FText fStyle="R_12" color={colors.black} text={title} />
     </View>
   );
 };
@@ -19,11 +19,12 @@ export default ItemBox;
 
 const styles = StyleSheet.create({
   itemBox: {
+    flexWrap: 'wrap',
     marginTop: FWidth * 8,
     marginRight: FWidth * 8,
-    paddingHorizontal: FWidth * 12,
-    paddingVertical: FWidth * 6,
+    paddingHorizontal: FWidth * 8,
+    paddingVertical: FWidth * 4,
     borderRadius: 50,
-    backgroundColor: colors.background,
+    backgroundColor: colors.b100,
   },
 });

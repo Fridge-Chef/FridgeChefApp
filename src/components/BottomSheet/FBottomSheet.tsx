@@ -20,7 +20,6 @@ import Ranking from './Ranking/Ranking';
 
 const FBottomSheet = () => {
   const {title} = useBottomSheetTitle();
-  console.log(title);
   const {setCategory, setExpiryDate, setItemNumber} = useCategoriesText();
   const snapPoints = useMemo(() => {
     switch (title) {

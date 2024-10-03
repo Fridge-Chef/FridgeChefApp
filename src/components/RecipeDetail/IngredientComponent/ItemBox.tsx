@@ -12,9 +12,9 @@ type ItemBoxProps = {
 const ItemBox = ({title, onPress}: ItemBoxProps) => {
   return (
     <View style={styles.container}>
-      <FText fStyle="M_16" color={colors.black} text={title} />
+      <FText fStyle="R_16" color={colors.black} text={title} />
       <FButton buttonStyle="buyButton" onPress={onPress}>
-        <FText fStyle="M_14" color={colors.text} text="구매" />
+        <FText fStyle="M_14" color={colors.black} text="구매" />
       </FButton>
     </View>
   );

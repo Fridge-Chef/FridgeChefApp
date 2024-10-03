@@ -24,7 +24,6 @@ function App() {
 
   useEffect(() => {
     googleSignInConfigure();
-    console.log('구글 로그인 설정');
   }, []);
 
   return (

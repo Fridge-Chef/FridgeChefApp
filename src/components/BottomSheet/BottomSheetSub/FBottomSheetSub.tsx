@@ -13,7 +13,7 @@ const FBottomSheetSub = () => {
   const {subTitle} = useSubBottomSheetTitle();
   const {setSubBottomSheetRef} = useSubBottomSheetRef();
   const snapPoints = useMemo(() => {
-    return ['58%'];
+    return ['45%'];
   }, []);
 
   const bottomRef = useRef<BottomSheet>(null);

@@ -5,7 +5,7 @@ import CListMenu from '../../components/Community/CListMenu';
 import {menuList} from '../../utils/list';
 import CListItems from '../../components/Community/CListItems';
 import CAddReviewButton from '../../components/Community/CAddReviewButton';
-import EditSquare from '../../utils/Svg/EditSquare';
+import CTopTitle from './CTopTitle';
 
 const CMyRecipe = () => {
   const [onClick, setonClick] = useState(1);
@@ -14,6 +14,7 @@ const CMyRecipe = () => {
 
   return (
     <View style={styles.container}>
+      <CTopTitle />
       <CListMenu onClick={onClick} setonClick={setonClick} list={menuList} />
       <CListItems
         scrollOffset={scrollOffset}
@@ -36,7 +37,5 @@ const styles = StyleSheet.create({
     flex: 1,
     position: 'relative',
     backgroundColor: colors.white,
-    paddingTop: FWidth * 24,
-    paddingHorizontal: FWidth * 22,
   },
 });

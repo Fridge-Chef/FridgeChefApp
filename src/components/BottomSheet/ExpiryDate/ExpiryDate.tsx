@@ -6,6 +6,7 @@ import SubTitleBS from '../SubTitleBS';
 import FButton from '../../elements/FButton';
 import Calendar2 from '../../../utils/Svg/Calendar2';
 import {
+  useSubBottomSheetDate,
   useSubBottomSheetRef,
   useSubBottomSheetTitle,
 } from '../../../store/store';
@@ -13,6 +14,7 @@ import {
 const ExpiryDate = () => {
   const {subBottomSheetRef} = useSubBottomSheetRef();
   const {setSubTitle} = useSubBottomSheetTitle();
+  const {selectedDate} = useSubBottomSheetDate();
   const handleAddExpiryDate = () => {
     setSubTitle('유통기한');
     subBottomSheetRef.current?.expand();
@@ -25,7 +27,7 @@ const ExpiryDate = () => {
         marginTop={FWidth * 14}
         buttonStyle="selected"
         onPress={handleAddExpiryDate}>
-        <FText fStyle="R_16" color={colors.b400} text={'날짜를 선택해주세요'} />
+        <FText fStyle="R_16" color={colors.b400} text={selectedDate} />
         <Calendar2 />
       </FButton>
     </View>

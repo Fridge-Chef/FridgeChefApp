@@ -41,6 +41,8 @@ export default CListMenu;
 
 const styles = StyleSheet.create({
   container: {
+    marginTop: FWidth * 24,
+    paddingHorizontal: FWidth * 22,
     flexDirection: 'row',
     alignItems: 'center',
   },

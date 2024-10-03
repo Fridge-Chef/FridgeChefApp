@@ -53,10 +53,10 @@ const MyFridgeScreen = () => {
           header() {
             return (
               <FAppBar
-                type="back"
+                type="detailBack"
                 rightOn={true}
-                rType1="heart4"
-                rType2="send"
+                rType1="detailHeart"
+                rType2="detailShare"
               />
             );
           },

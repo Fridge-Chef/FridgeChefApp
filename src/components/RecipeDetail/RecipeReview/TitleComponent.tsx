@@ -7,6 +7,7 @@ import Edit from '../../../utils/Svg/Edit';
 import FText from '../../elements/FText';
 import {ParamListBase, useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import DetailReviewEdit from '../../../utils/Svg/DetailReviewEdit';
 
 const TitleComponent = () => {
   const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
@@ -17,11 +18,11 @@ const TitleComponent = () => {
         buttonStyle="noneStyle"
         onPress={() => navigation.navigate('addRecipe')}>
         <View style={styles.buttonContainer}>
-          <Edit />
+          <DetailReviewEdit />
           <FText
             mLeft={FWidth * 6}
-            fStyle="B_14"
-            color={colors.text}
+            fStyle="M_14"
+            color={colors.black}
             text="후기 작성"
           />
         </View>
@@ -42,7 +43,7 @@ const styles = StyleSheet.create({
   buttonContainer: {
     flexDirection: 'row',
     paddingHorizontal: FWidth * 16,
-    paddingVertical: FWidth * 10,
+    paddingVertical: FWidth * 8,
     alignItems: 'center',
     borderWidth: 1,
     borderColor: colors.border,

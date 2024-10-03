@@ -22,6 +22,11 @@ type SubBottomSheetTitleType = {
   setSubTitle: (subTitle: string) => void;
 };
 
+type SubBottomSheetDateType = {
+  selectedDate: string;
+  setSelectedDate: (selectedDate: string) => void;
+};
+
 type IngredientTitleTitleType = {
   ingredientTitle: string;
   setIngredientTitle: (title: string) => void;
@@ -61,6 +66,11 @@ export const useBottomSheetRef = create<BottomSheetRefType>(set => ({
 export const useSubBottomSheetRef = create<SubBottomSheetRefType>(set => ({
   subBottomSheetRef: {current: null},
   setSubBottomSheetRef: ref => set({subBottomSheetRef: ref}),
+}));
+
+export const useSubBottomSheetDate = create<SubBottomSheetDateType>(set => ({
+  selectedDate: '날짜를 선택해주세요',
+  setSelectedDate: (selectedDate: string) => set({selectedDate}),
 }));
 
 export const useBottomSheetTitle = create<BottomSheetTitleType>(set => ({

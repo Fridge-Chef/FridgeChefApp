@@ -14,7 +14,7 @@ type IngredientContainerProps = {
 const IngredientContainer = ({title, detailList}: IngredientContainerProps) => {
   return (
     <View style={styles.container}>
-      <FText fStyle="R_14" color={colors.black} text={title} />
+      <FText fStyle="B_14" color={colors.subText} text={title} />
       <View style={styles.itemContainer}>
         <View style={styles.itemSubContainer}>
           <ItemsComponent list={detailList} />
@@ -28,7 +28,7 @@ export default IngredientContainer;
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: FWidth * 16,
+    marginTop: FWidth * 24,
   },
 
   itemContainer: {

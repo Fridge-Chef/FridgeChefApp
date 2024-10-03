@@ -1,4 +1,4 @@
-import {ScrollView, StyleSheet} from 'react-native';
+import {ScrollView, StyleSheet, View} from 'react-native';
 import React from 'react';
 import {colors} from '../../../globalStyle';
 import {RouteProp, useRoute} from '@react-navigation/native';
@@ -7,6 +7,9 @@ import IngredientComponent from '../../components/RecipeDetail/IngredientCompone
 import RecipeComponent from '../../components/RecipeDetail/RecipeComponent/RecipeComponent';
 import RecipeReview from '../../components/RecipeDetail/RecipeReview/RecipeReview';
 import FImage from '../../components/elements/FImage';
+import FText from '../../components/elements/FText';
+import Badge from '../../components/RecipeDetail/Badge';
+import RecipeNote from '../../components/RecipeDetail/RecipeNote/RecipeNote';
 
 type DetailItem = {
   params: {
@@ -19,8 +22,12 @@ const RecipeDetail = () => {
 
   return (
     <ScrollView style={styles.container} overScrollMode="never">
-      <FImage imgStyle="detail" uri="" resizeMode="stretch" alt="디테일" />
+      <View style={{position: 'relative'}}>
+        <FImage imgStyle="detail" uri="" resizeMode="stretch" alt="디테일" />
+        <Badge />
+      </View>
       <TitleComponent title={route.params.title} />
+      <RecipeNote />
       <IngredientComponent />
       <RecipeComponent />
       <RecipeReview />

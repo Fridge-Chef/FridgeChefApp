@@ -1,4 +1,11 @@
-import {ColorValue, DimensionValue, StyleSheet, Text, View} from 'react-native';
+import {
+  ColorValue,
+  DimensionValue,
+  LayoutChangeEvent,
+  StyleSheet,
+  Text,
+  View,
+} from 'react-native';
 import React from 'react';
 import {fontFamilies, FWidth} from '../../../globalStyle';
 
@@ -35,6 +42,7 @@ type FTextProps = {
   mBottom?: DimensionValue;
   mHor?: DimensionValue;
   mVer?: DimensionValue;
+  onLayout?: (event: LayoutChangeEvent) => void;
 };
 
 const FText = ({
@@ -50,6 +58,7 @@ const FText = ({
   mBottom,
   mHor,
   mVer,
+  onLayout,
 }: FTextProps) => {
   const boxHeightList = {
     B_26: styles.lineHeight36,
@@ -112,7 +121,9 @@ const FText = ({
               marginVertical: mVer,
             },
           ]}>
-          <Text style={[fontSizeList[fStyle], {color, lineHeight: lineH}]}>
+          <Text
+            style={[fontSizeList[fStyle], {color, lineHeight: lineH}]}
+            onLayout={onLayout}>
             {text}
           </Text>
         </View>
