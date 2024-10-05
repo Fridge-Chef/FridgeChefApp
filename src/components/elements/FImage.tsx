@@ -15,9 +15,16 @@ type FImageProps = {
   uri: string;
   resizeMode?: 'center' | 'contain' | 'cover' | 'repeat' | 'stretch';
   alt?: string;
+  borderRadius?: number;
 };
 
-const FImage = ({imgStyle, uri, resizeMode, alt}: FImageProps) => {
+const FImage = ({
+  imgStyle,
+  uri,
+  resizeMode,
+  alt,
+  borderRadius,
+}: FImageProps) => {
   const imgStyleList = {
     main: styles.mainImage,
     detail: styles.detailImage,
@@ -32,7 +39,7 @@ const FImage = ({imgStyle, uri, resizeMode, alt}: FImageProps) => {
   return (
     <Image
       source={uri ? {uri} : require('../../assets/images/noImage.png')}
-      style={imgStyleList[imgStyle]}
+      style={[imgStyleList[imgStyle], {borderRadius: borderRadius}]}
       resizeMode={resizeMode}
       alt={alt}
     />

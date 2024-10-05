@@ -16,7 +16,7 @@ const TitleComponent = () => {
       <SubTitleComponent title="레시피 후기" />
       <FButton
         buttonStyle="noneStyle"
-        onPress={() => navigation.navigate('addRecipe')}>
+        onPress={() => navigation.navigate('addRecipeReview')}>
         <View style={styles.buttonContainer}>
           <DetailReviewEdit />
           <FText

@@ -1,41 +1,78 @@
-import {
-  Keyboard,
-  Pressable,
-  ScrollView,
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
+import {Keyboard, Pressable, ScrollView, StyleSheet} from 'react-native';
 import React, {useState} from 'react';
-import {FWidth} from '../../../globalStyle';
-import AddImage from '../../components/MyFridge/AddRecipeReview/AddImage';
-import AddScore from '../../components/MyFridge/AddRecipeReview/AddScore';
-import AddContent from '../../components/MyFridge/AddRecipeReview/AddContent';
-import ImageView from '../../components/MyFridge/AddRecipeReview/ImageView';
+import {colors} from '../../../globalStyle';
+import MainTop from '../../components/Community/AddRecipe/MainTop/MainTop';
+import AddIngredient from '../../components/Community/AddRecipe/AddIngredient/AddIngredient';
+import {Ingredient, StepType} from '../../type/types';
+import RecipeSteps from '../../components/Community/AddRecipe/RecipeSteps/RecipeSteps';
+import Submit from '../../components/Community/AddRecipe/Submit/Submit';
 
 const AddRecipe = () => {
-  const [reviewData, setReviewData] = useState({
-    id: 1,
-    reviewPoint: 0,
-    reviewContent: '',
-    reviewImg: '',
+  const [addRecipeData, setAddRecipeData] = useState<{
+    mainImage: string;
+    mainTitle: string;
+    mainContent: string;
+    ingredients: Ingredient[];
+    step: StepType[];
+  }>({
+    mainImage: '',
+    mainTitle: '',
+    mainContent: '',
+    ingredients: [{name: '', quantity: ''}],
+    step: [{step: '', image: ''}],
   });
 
+  const addNewIngredient = () => {
+    setAddRecipeData(prevData => ({
+      ...prevData,
+      ingredients: [...prevData.ingredients, {name: '', quantity: ''}],
+    }));
+  };
+
+  const addStep = () => {
+    setAddRecipeData(prevData => ({
+      ...prevData,
+      step: [...prevData.step, {step: '', image: ''}],
+    }));
+  };
+
+  const deleteIngredient = (index: number) => {
+    setAddRecipeData(prevData => {
+      const newIngredients = prevData.ingredients.filter((_, i) => i !== index);
+      return {...prevData, ingredients: newIngredients};
+    });
+  };
+
+  const deleteStep = (index: number) => {
+    setAddRecipeData(prevData => {
+      const newStep = prevData.step.filter((_, i) => i !== index);
+      return {...prevData, step: newStep};
+    });
+  };
+
+  console.log('addRecipeData', addRecipeData);
   return (
-    <>
-      <ScrollView>
-        <Pressable style={styles.container} onPress={() => Keyboard.dismiss()}>
-          <View style={styles.topContainer}>
-            <AddScore reviewData={reviewData} setReviewData={setReviewData} />
-            <AddContent reviewData={reviewData} setReviewData={setReviewData} />
-            {reviewData.reviewImg && <ImageView uri={reviewData.reviewImg} />}
-          </View>
-        </Pressable>
-      </ScrollView>
-      <Pressable onPress={() => Keyboard.dismiss()}>
-        <AddImage reviewData={reviewData} setReviewData={setReviewData} />
+    <ScrollView overScrollMode="never">
+      <Pressable style={styles.container} onPress={() => Keyboard.dismiss()}>
+        <MainTop
+          addRecipeData={addRecipeData}
+          setAddRecipeData={setAddRecipeData}
+        />
+        <AddIngredient
+          addRecipeData={addRecipeData}
+          setAddRecipeData={setAddRecipeData}
+          addIngredient={addNewIngredient}
+          deleteIngredient={deleteIngredient}
+        />
+        <RecipeSteps
+          addRecipeData={addRecipeData}
+          setAddRecipeData={setAddRecipeData}
+          addStep={addStep}
+          deleteStep={deleteStep}
+        />
+        <Submit />
       </Pressable>
-    </>
+    </ScrollView>
   );
 };
 
@@ -44,12 +81,6 @@ export default AddRecipe;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: FWidth * 24,
-    paddingBottom: FWidth * 47,
-    justifyContent: 'space-between',
-  },
-
-  topContainer: {
-    paddingHorizontal: FWidth * 22,
+    backgroundColor: colors.background2,
   },
 });

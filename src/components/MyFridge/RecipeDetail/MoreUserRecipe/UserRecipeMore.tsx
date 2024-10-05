@@ -1,9 +1,9 @@
 import {Image, StyleSheet, View} from 'react-native';
 import React from 'react';
-import {colors, FWidth} from '../../../../globalStyle';
-import ArrowRight from '../../../utils/Svg/ArrowRight';
-import FText from '../../elements/FText';
-import FImage from '../../elements/FImage';
+import {colors, FWidth} from '../../../../../globalStyle';
+import ArrowRight from '../../../../utils/Svg/ArrowRight';
+import FText from '../../../elements/FText';
+import FImage from '../../../elements/FImage';
 
 const UserRecipeMore = () => {
   const {uri} = Image.resolveAssetSource(

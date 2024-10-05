@@ -7,7 +7,7 @@ import {ParamListBase, useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import AddRecipeButtonEdit from '../../utils/Svg/AddRecipeButtonEdit';
 
-type CAddReviewButtonProps = {
+type CAddRecipeButtonProps = {
   list: {
     id: number;
     text: string;
@@ -16,11 +16,11 @@ type CAddReviewButtonProps = {
   prevScrollOffset: number;
 };
 
-const CAddReviewButton = ({
+const CAddRecipeButton = ({
   list,
   scrollOffset,
   prevScrollOffset,
-}: CAddReviewButtonProps) => {
+}: CAddRecipeButtonProps) => {
   const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
 
   return (
@@ -53,7 +53,7 @@ const CAddReviewButton = ({
   );
 };
 
-export default CAddReviewButton;
+export default CAddRecipeButton;
 
 const styles = StyleSheet.create({
   buttonStyle: {

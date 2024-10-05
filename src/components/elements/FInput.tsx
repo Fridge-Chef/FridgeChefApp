@@ -1,4 +1,4 @@
-import {StyleSheet, TextInput, View} from 'react-native';
+import {DimensionValue, StyleSheet, TextInput, View} from 'react-native';
 import React from 'react';
 import {colors, fontFamilies, FWidth} from '../../../globalStyle';
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -10,7 +10,10 @@ type FInputProps = {
   deleteButton?: boolean;
   deleteValue?: () => void;
   placeholder?: string;
-  inputStyle: 'default' | 'noBorder';
+  inputStyle: 'default' | 'recipe' | 'subRecipe' | 'noBorder';
+  fontFamily?: string;
+  textAlignVertical?: 'auto' | 'top' | 'bottom' | 'center';
+  minHeight?: DimensionValue;
   fontSize?: number;
   editable?: boolean;
   secureTextEntry?: boolean;
@@ -30,6 +33,9 @@ const FInput = ({
   deleteValue,
   placeholder,
   inputStyle,
+  fontFamily = fontFamilies.pretendardMedium,
+  textAlignVertical,
+  minHeight,
   editable = true,
   secureTextEntry = false,
   onChangeText,
@@ -43,6 +49,8 @@ const FInput = ({
 }: FInputProps) => {
   const inputStyleList = {
     default: [styles.defaultStyle],
+    recipe: styles.recipeStyle,
+    subRecipe: styles.subRecipeStyle,
     noBorder: styles.noBorderStyle,
   };
 
@@ -52,10 +60,17 @@ const FInput = ({
         <TextInput
           value={value}
           underlineColorAndroid={'transparent'}
-          style={inputStyleList[inputStyle]}
+          style={[
+            inputStyleList[inputStyle],
+            {
+              textAlignVertical: textAlignVertical,
+              minHeight: minHeight,
+              fontFamily: fontFamily,
+            },
+          ]}
           placeholder={placeholder}
           editable={editable}
-          placeholderTextColor={'rgba(0, 0, 0, 0.3)'}
+          placeholderTextColor={colors.disabled}
           secureTextEntry={secureTextEntry}
           onChangeText={onChangeText}
           onSubmitEditing={onSubmitEditing}
@@ -101,16 +116,35 @@ const styles = StyleSheet.create({
 
   defaultStyle: {
     borderRadius: 10,
-    borderColor: colors.border2,
+    borderColor: colors.field,
     borderWidth: 1,
-    fontSize: 16,
+    fontSize: FWidth * 16,
+    lineHeight: FWidth * 24,
     color: colors.text,
-    lineHeight: FWidth * 22,
     letterSpacing: -0.1,
     paddingLeft: FWidth * 12,
     paddingRight: FWidth * 30,
     height: FWidth * 52,
-    fontFamily: fontFamilies.pretendardMedium,
+  },
+
+  recipeStyle: {
+    padding: FWidth * 14,
+    borderWidth: 1,
+    borderColor: colors.field,
+    fontSize: FWidth * 16,
+    lineHeight: FWidth * 24,
+    borderRadius: 10,
+  },
+
+  subRecipeStyle: {
+    paddingVertical: FWidth * 14,
+    paddingLeft: FWidth * 14,
+    paddingRight: FWidth * 54,
+    borderWidth: 1,
+    borderColor: colors.field,
+    fontSize: FWidth * 16,
+    lineHeight: FWidth * 24,
+    borderRadius: 10,
   },
 
   noBorderStyle: {

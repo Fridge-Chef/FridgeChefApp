@@ -65,3 +65,33 @@ export type RecipeList = {
   expiry_date: string;
   create_time: string;
 };
+
+export type Ingredient = {
+  name: string;
+  quantity: string;
+};
+
+export type StepType = {
+  step: string;
+  image: string;
+};
+
+export type AddIngredientType = {
+  addRecipeData: {
+    mainImage: string;
+    mainTitle: string;
+    mainContent: string;
+    ingredients: Ingredient[];
+    step: StepType[];
+  };
+
+  setAddRecipeData: React.Dispatch<
+    React.SetStateAction<{
+      mainImage: string;
+      mainTitle: string;
+      mainContent: string;
+      ingredients: Ingredient[];
+      step: StepType[];
+    }>
+  >;
+};

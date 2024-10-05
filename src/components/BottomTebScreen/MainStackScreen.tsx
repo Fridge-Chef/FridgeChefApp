@@ -3,10 +3,11 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import BottomTab from './BottomTab';
 import {colors} from '../../../globalStyle';
 import Login from '../../screen/Login';
-import AddRecipe from '../../screen/Community/AddRecipe';
 import FAppBar from '../elements/FAppBar';
 import StorageGuide from '../../screen/MyFridge/StorageGuide';
 import SplashScreen from '../../screen/SplashScreen';
+import AddRecipeReview from '../../screen/MyFridge/AddRecipeReview';
+import AddRecipe from '../../screen/Community/AddRecipe';
 
 const MainStackScreen = () => {
   const Stack = createNativeStackNavigator();
@@ -49,6 +50,27 @@ const MainStackScreen = () => {
       <Stack.Screen
         name="addRecipe"
         component={AddRecipe}
+        options={{
+          title: '',
+          headerShown: true,
+          header() {
+            return (
+              <FAppBar
+                type="headerClose"
+                titleOn={true}
+                title="나만의 레시피 작성"
+                onlyBackIcon={true}
+                rightOn={true}
+                rType1="headerClose"
+              />
+            );
+          },
+          headerShadowVisible: false,
+        }}
+      />
+      <Stack.Screen
+        name="addRecipeReview"
+        component={AddRecipeReview}
         options={{
           title: '',
           headerShown: true,

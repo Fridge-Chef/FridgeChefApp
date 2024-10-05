@@ -34,7 +34,7 @@ export const colors = {
   background3: '#FAFAFA',
   border: '#DDDDE3',
   border2: '#BABCC1',
-  field: '#BABCC1',
+  field: '#D4D4D4',
   disabled: '#BCBCC4',
   disabled2: '#CCCCCC',
 };
