@@ -1,8 +1,8 @@
 import {ScrollView, StyleSheet, TouchableOpacity, View} from 'react-native';
 import React, {useState} from 'react';
 import {colors} from '../../../globalStyle';
-import TopComponent from '../../components/Ingredients/TopComponent';
-import AddList from '../../components/Ingredients/AddList/AddList';
+import TopComponent from '../../components/MyFridge/Ingredients/TopComponent';
+import AddList from '../../components/MyFridge/Ingredients/AddList/AddList';
 import FButton from '../../components/elements/FButton';
 import {
   useBottomSheetRef,
@@ -11,11 +11,11 @@ import {
 } from '../../store/store';
 import {ParamListBase, useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import LoginAndUser from '../../components/Ingredients/LoginAndUser';
+import LoginAndUser from '../../components/MyFridge/Ingredients/LoginAndUser';
 import FText from '../../components/elements/FText';
 import {showToast} from '../../helpers/ShowToast';
-import CondimentButton from '../../components/Ingredients/CondimentButton';
-import InfoComponent from '../../components/Ingredients/InfoComponent';
+import CondimentButton from '../../components/MyFridge/Ingredients/CondimentButton';
+import InfoComponent from '../../components/MyFridge/Ingredients/InfoComponent';
 import FModal from '../../components/elements/FModal';
 const Ingredients = () => {
   const {setLoading, setLoadingTitle} = useLoading();

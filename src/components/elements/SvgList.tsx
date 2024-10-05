@@ -4,13 +4,10 @@ import Back from '../../utils/Svg/Back';
 import ArrowDown2 from '../../utils/Svg/ArrowDown2';
 import ArrowRight from '../../utils/Svg/ArrowRight';
 import BottomButton from '../../utils/Svg/BottomButton';
-
 import Close from '../../utils/Svg/Close';
 import Close2 from '../../utils/Svg/Close2';
 import Close3 from '../../utils/Svg/Close3';
 import Edit from '../../utils/Svg/Edit';
-import Edit2 from '../../utils/Svg/Edit2';
-
 import GoogleLogo from '../../utils/Svg/GoogleLogo';
 import Heart from '../../utils/Svg/Heart';
 import Heart2 from '../../utils/Svg/Heart2';
@@ -39,6 +36,7 @@ import MenuIcon from '../../utils/Svg/MenuIcon';
 import DetailHeart from '../../utils/Svg/DetailHeart';
 import DetailShare from '../../utils/Svg/DetailShare';
 import DetailBack from '../../utils/Svg/DetailBack';
+import HeaderCLose from '../../utils/Svg/HeaderCLose';
 
 type SvgListProps = {
   type:
@@ -57,6 +55,7 @@ type SvgListProps = {
     | 'detailBack'
     | 'detailHeart'
     | 'detailShare'
+    | 'headerClose'
     | 'heart'
     | 'heart2'
     | 'heart3'
@@ -107,12 +106,12 @@ const SvgList = ({type}: SvgListProps) => {
       return <DetailShare />;
     case 'edit':
       return <Edit />;
-    case 'edit2':
-      return <Edit2 />;
     case 'editSquare':
       return <EditSquare />;
     case 'googleLogo':
       return <GoogleLogo />;
+    case 'headerClose':
+      return <HeaderCLose />;
     case 'heart':
       return <Heart />;
     case 'heart2':

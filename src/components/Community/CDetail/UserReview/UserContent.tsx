@@ -1,15 +1,18 @@
 import {StyleSheet, View} from 'react-native';
-import React from 'react';
+import React, {useState} from 'react';
 import FImage from '../../../elements/FImage';
 import {colors, FWidth} from '../../../../../globalStyle';
 import FText from '../../../elements/FText';
+import LikeButton from '../../../elements/LikeButton';
 
 type UserContentProps = {
   uri: string;
   content: string;
+  views: number;
 };
 
-const UserContent = ({uri, content}: UserContentProps) => {
+const UserContent = ({uri, content, views}: UserContentProps) => {
+  const [isClicked, setIsClicked] = useState(false);
   return (
     <>
       <View style={styles.container}>
@@ -21,7 +24,14 @@ const UserContent = ({uri, content}: UserContentProps) => {
           text={content}
         />
       </View>
-      <View style={{marginTop: FWidth * 24}}>
+      <LikeButton
+        isClicked={isClicked}
+        like={views}
+        onPress={() => {
+          setIsClicked(!isClicked);
+        }}
+      />
+      <View style={{marginTop: FWidth * 16}}>
         <FImage uri={uri} imgStyle="rDetail" alt="리뷰 이미지" />
       </View>
     </>
@@ -32,6 +42,6 @@ export default UserContent;
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: FWidth * 24,
+    marginVertical: FWidth * 16,
   },
 });

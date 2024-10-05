@@ -85,6 +85,7 @@ const styles = StyleSheet.create({
 
   reviewDetail: {
     width: '100%',
-    height: FWidth * 240,
+    borderRadius: 8,
+    height: FWidth * 300,
   },
 });

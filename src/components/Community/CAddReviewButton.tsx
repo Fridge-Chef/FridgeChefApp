@@ -3,9 +3,9 @@ import React from 'react';
 import FText from '../elements/FText';
 import FButton from '../elements/FButton';
 import {colors, FWidth} from '../../../globalStyle';
-import Edit2 from '../../utils/Svg/Edit2';
 import {ParamListBase, useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import AddRecipeButtonEdit from '../../utils/Svg/AddRecipeButtonEdit';
 
 type CAddReviewButtonProps = {
   list: {
@@ -25,29 +25,25 @@ const CAddReviewButton = ({
 
   return (
     <FButton
-      buttonStyle="addButton"
+      buttonStyle="noneStyle"
       fBStyle={[
         styles.buttonStyle,
         {
+          paddingVertical: FWidth * 10,
+          borderRadius: 40,
           paddingHorizontal:
-            prevScrollOffset > scrollOffset ? FWidth * 20 : FWidth * 12,
+            prevScrollOffset > scrollOffset ? FWidth * 16 : FWidth * 12,
         },
       ]}
       onPress={() => navigation.navigate('addRecipe')}>
       <View style={styles.iconAlign}>
-        <View
-          style={[
-            styles.iconContainer,
-            {
-              width: prevScrollOffset > scrollOffset ? null : FWidth * 24,
-            },
-          ]}>
-          <Edit2 />
+        <View style={styles.iconContainer}>
+          <AddRecipeButtonEdit />
         </View>
         {prevScrollOffset > scrollOffset && (
           <FText
             mLeft={FWidth * 6}
-            fStyle="B_16"
+            fStyle="B_14"
             text="레시피 작성"
             color={colors.white}
           />
@@ -73,7 +69,7 @@ const styles = StyleSheet.create({
   },
 
   iconContainer: {
-    height: FWidth * 24,
+    height: FWidth * 20,
     alignItems: 'center',
     justifyContent: 'center',
   },

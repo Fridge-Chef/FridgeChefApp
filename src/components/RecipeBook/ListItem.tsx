@@ -1,7 +1,7 @@
 import {StyleSheet, View} from 'react-native';
 import React from 'react';
 import Close from '../../utils/Svg/Close';
-import ViewAndLike from '../RecRecipe/ListItem/ViewAndLike';
+import ViewAndLike from '../MyFridge/RecRecipe/ListItem/ViewAndLike';
 import {colors, FWidth} from '../../../globalStyle';
 import FText from '../elements/FText';
 import FImage from '../elements/FImage';

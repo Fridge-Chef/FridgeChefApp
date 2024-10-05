@@ -8,7 +8,7 @@ import {
 import React from 'react';
 import {colors, FWidth} from '../../../globalStyle';
 import ArrowDown2 from '../../utils/Svg/ArrowDown2';
-import SubTitleComponent from '../Ingredients/SubTitleComponent';
+import SubTitleComponent from '../MyFridge/Ingredients/SubTitleComponent';
 import CListItem from './CListItem';
 import {myRecipes} from '../../utils/list';
 import {ParamListBase, useNavigation} from '@react-navigation/native';
@@ -68,11 +68,11 @@ export default CListItems;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: FWidth * 24,
     paddingHorizontal: FWidth * 22,
   },
 
   titleContainer: {
+    marginBottom: FWidth * 14,
     flexDirection: 'row',
     alignItems: 'center',
   },

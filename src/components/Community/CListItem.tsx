@@ -1,6 +1,6 @@
 import {Image, StyleSheet, View} from 'react-native';
-import UserInfo from '../RecipeDetail/RecipeReview/UserInfo';
-import ViewAndLike from '../RecRecipe/ListItem/ViewAndLike';
+import UserInfo from '../MyFridge/RecipeDetail/RecipeReview/UserInfo';
+import ViewAndLike from '../MyFridge/RecRecipe/ListItem/ViewAndLike';
 import {colors, FWidth} from '../../../globalStyle';
 import FText from '../elements/FText';
 import FImage from '../elements/FImage';
@@ -30,8 +30,8 @@ const CListItem = ({item, onPress}: CListItemProps) => {
           <FText
             nLine={2}
             lineH={24}
-            fStyle="B_16"
-            color={colors.text}
+            fStyle="M_16"
+            color={colors.black}
             text={item.title}
           />
           <View style={styles.bottomTextContainer}>
@@ -51,11 +51,11 @@ export default CListItem;
 const styles = StyleSheet.create({
   itemsContainer: {
     flexDirection: 'row',
-    marginTop: FWidth * 12,
+    marginBottom: FWidth * 14,
     padding: FWidth * 14,
     borderWidth: 1,
     borderColor: colors.border,
-    borderRadius: 14,
+    borderRadius: 12,
   },
 
   itemTextContainer: {

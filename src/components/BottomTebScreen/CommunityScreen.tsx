@@ -21,8 +21,8 @@ const CommunityScreen = () => {
           header() {
             return (
               <FAppBar
-                borderBottomWidth={1}
-                type="back"
+                borderBottomWidth={0}
+                type="headerClose"
                 titleOn={true}
                 title="레시피 후기"
                 rightOn={true}

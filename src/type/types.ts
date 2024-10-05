@@ -21,6 +21,7 @@ type IconProps =
   | 'edit2'
   | 'editSquare'
   | 'googleLogo'
+  | 'headerClose'
   | 'heart'
   | 'heart2'
   | 'heart3'

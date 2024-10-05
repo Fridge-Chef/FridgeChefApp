@@ -8,10 +8,10 @@ import {
 } from 'react-native';
 import React, {useState} from 'react';
 import {FWidth} from '../../../globalStyle';
-import AddImage from '../../components/Community/AddRecipe/AddImage';
-import AddScore from '../../components/Community/AddRecipe/AddScore';
-import AddContent from '../../components/Community/AddRecipe/AddContent';
-import ImageView from '../../components/Community/AddRecipe/ImageView';
+import AddImage from '../../components/MyFridge/AddRecipeReview/AddImage';
+import AddScore from '../../components/MyFridge/AddRecipeReview/AddScore';
+import AddContent from '../../components/MyFridge/AddRecipeReview/AddContent';
+import ImageView from '../../components/MyFridge/AddRecipeReview/ImageView';
 
 const AddRecipe = () => {
   const [reviewData, setReviewData] = useState({

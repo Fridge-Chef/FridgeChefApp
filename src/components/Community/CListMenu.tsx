@@ -19,15 +19,16 @@ const CListMenu = ({onClick, setonClick, list}: CListMenuProps) => {
     <View style={styles.container}>
       {list.map(item => (
         <FButton
+          radius={100}
           key={item.id}
-          buttonStyle="menuButton"
+          buttonStyle="iconButton"
           fBStyle={{
             backgroundColor: onClick === item.id ? colors.black : colors.b100,
             marginRight: FWidth * 8,
           }}
           onPress={() => setonClick(item.id)}>
           <FText
-            fStyle="M_14"
+            fStyle={onClick === item.id ? 'B_14' : 'M_14'}
             text={item.text}
             color={onClick === item.id ? colors.white : colors.black}
           />
@@ -41,7 +42,7 @@ export default CListMenu;
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: FWidth * 24,
+    marginVertical: FWidth * 24,
     paddingHorizontal: FWidth * 22,
     flexDirection: 'row',
     alignItems: 'center',

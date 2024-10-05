@@ -4,7 +4,6 @@ import {RouteProp, useRoute} from '@react-navigation/native';
 import {colors, FWidth} from '../../../../../globalStyle';
 import TopComponent from './TopComponent';
 import UserContent from './UserContent';
-import LikeButton from './LikeButton';
 
 type RecipeType = {
   params: {
@@ -23,15 +22,13 @@ type RecipeType = {
 
 const UserReview = () => {
   const route = useRoute<RouteProp<RecipeType>>();
-  const {content, id, likes, point, title, views, writer, img} =
-    route.params.item;
-
+  const {content, likes, point, views, writer, img} = route.params.item;
   const {uri} = Image.resolveAssetSource(img);
+
   return (
     <View style={styles.container}>
-      <TopComponent title={title} uri={uri} writer={writer} point={point} />
-      <UserContent uri={uri} content={content} />
-      <LikeButton views={views} />
+      <TopComponent writer={writer} point={point} />
+      <UserContent uri={uri} content={content} views={views} />
     </View>
   );
 };

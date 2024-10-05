@@ -1,6 +1,6 @@
 import {FlatList, StyleSheet, View} from 'react-native';
 import React from 'react';
-import SubTitleComponent from '../Ingredients/SubTitleComponent';
+import SubTitleComponent from '../MyFridge/Ingredients/SubTitleComponent';
 import ArrowDown2 from '../../utils/Svg/ArrowDown2';
 import {colors, FWidth} from '../../../globalStyle';
 import ListItem from './ListItem';
