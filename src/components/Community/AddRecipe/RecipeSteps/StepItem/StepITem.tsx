@@ -15,7 +15,7 @@ type StepITemProps = {
   deleteOnPress: () => void;
   textValue: string;
   onChangeText: (text: string) => void;
-  onPress: () => void;
+  imageOnPress: () => void;
 };
 
 const StepITem = ({
@@ -24,7 +24,7 @@ const StepITem = ({
   deleteOnPress,
   textValue,
   onChangeText,
-  onPress,
+  imageOnPress,
 }: StepITemProps) => {
   return (
     <View style={styles.container}>
@@ -37,17 +37,21 @@ const StepITem = ({
       {uri && (
         <FButton
           buttonStyle="noneStyle"
-          hitSlop={{top: 10, bottom: 10, left: 10, right: 10}}
           fBStyle={styles.imgContainer}
-          onPress={onPress}>
-          <FImage uri={uri} imgStyle="detailSub" alt="step이미지" />
+          onPress={imageOnPress}>
+          <FImage
+            uri={uri}
+            imgStyle="detailSub"
+            resizeMode="cover"
+            alt="step이미지"
+          />
         </FButton>
       )}
       {!uri && (
         <FButton
           buttonStyle="noneStyle"
           fBStyle={styles.addImageButton}
-          onPress={onPress}>
+          onPress={imageOnPress}>
           <FText fStyle="R_14" color={colors.text} text="+ 이미지 추가" />
         </FButton>
       )}

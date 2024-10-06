@@ -13,7 +13,10 @@ const StepItemTitle = ({index, onPress}: StepItemTitleProps) => {
   return (
     <View style={styles.container}>
       <FText fStyle="B_14" color={colors.primary[1]} text={`STEP ${index}`} />
-      <FButton buttonStyle="noneStyle" onPress={onPress}>
+      <FButton
+        buttonStyle="noneStyle"
+        onPress={onPress}
+        hitSlop={{top: 10, bottom: 10, left: 10, right: 10}}>
         <AddRecipeDeleteIcon />
       </FButton>
     </View>

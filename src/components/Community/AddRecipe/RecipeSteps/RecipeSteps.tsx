@@ -5,6 +5,7 @@ import {AddIngredientType} from '../../../../type/types';
 import StepTitle from './StepTitle';
 import StepITem from './StepItem/StepITem';
 import AddRecipeSubButton from '../AddRecipeSubButton';
+import {handleImagePicker} from '../../../../service/SingleImagePicker';
 
 type RecipeStepsProps = {
   addStep: () => void;
@@ -36,7 +37,18 @@ const RecipeSteps = ({
           deleteOnPress={() =>
             addRecipeData.step.length === 1 ? null : deleteStep(index)
           }
-          onPress={() => {}}
+          imageOnPress={() =>
+            handleImagePicker({
+              pickerType: 'imageLibrary',
+              handleImage(imageUri) {
+                setAddRecipeData(addRecipeData => {
+                  const newStep = [...addRecipeData.step];
+                  newStep[index].image = imageUri;
+                  return {...addRecipeData, step: newStep};
+                });
+              },
+            })
+          }
         />
       ))}
       <View style={styles.buttonContainer}>
