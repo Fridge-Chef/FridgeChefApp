@@ -6,13 +6,19 @@ import FText from '../../../elements/FText';
 
 type ItemBoxProps = {
   title: string;
+  quantity?: string;
   onPress?: () => void;
 };
 
-const ItemBox = ({title, onPress}: ItemBoxProps) => {
+const ItemBox = ({title, quantity, onPress}: ItemBoxProps) => {
   return (
     <View style={styles.container}>
-      <FText fStyle="R_16" color={colors.black} text={title} />
+      <View style={styles.titleAlign}>
+        <FText fStyle="R_16" color={colors.black} text={title} />
+        {quantity && (
+          <FText fStyle="R_16" color={colors.black} text={` (${quantity})`} />
+        )}
+      </View>
       <FButton buttonStyle="buyButton" onPress={onPress}>
         <FText fStyle="M_14" color={colors.black} text="구매" />
       </FButton>
@@ -28,6 +34,11 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
+  },
+
+  titleAlign: {
+    flexDirection: 'row',
+    alignItems: 'center',
   },
 
   buyButton: {

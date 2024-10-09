@@ -2,16 +2,28 @@ import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import {colors, FWidth} from '../../../../../globalStyle';
 import FText from '../../../elements/FText';
+import FButton from '../../../elements/FButton';
 
-const Submit = () => {
+type SubmitProps = {
+  previewOnPress: () => void;
+  submitOnPress: () => void;
+};
+
+const Submit = ({previewOnPress, submitOnPress}: SubmitProps) => {
   return (
     <View style={styles.container}>
-      <View style={styles.viewButton}>
+      <FButton
+        buttonStyle="noneStyle"
+        fBStyle={styles.viewButton}
+        onPress={previewOnPress}>
         <FText fStyle="M_18" color={colors.text} text="미리보기" />
-      </View>
-      <View style={styles.submitButton}>
+      </FButton>
+      <FButton
+        buttonStyle="noneStyle"
+        fBStyle={styles.submitButton}
+        onPress={submitOnPress}>
         <FText fStyle="B_18" color={colors.white} text="작성완료" />
-      </View>
+      </FButton>
     </View>
   );
 };
@@ -20,6 +32,8 @@ export default Submit;
 
 const styles = StyleSheet.create({
   container: {
+    position: 'absolute',
+    bottom: 0,
     backgroundColor: colors.white,
     paddingHorizontal: FWidth * 22,
     paddingVertical: FWidth * 8,

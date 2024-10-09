@@ -68,6 +68,6 @@ const styles = StyleSheet.create({
   },
 
   buttonContainer: {
-    marginBottom: FWidth * 66,
+    marginBottom: FWidth * 133,
   },
 });

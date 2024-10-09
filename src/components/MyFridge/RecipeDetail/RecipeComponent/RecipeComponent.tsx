@@ -5,21 +5,30 @@ import SubTitleComponent from '../SubTitleComponent';
 import ContentComponent from './ContentComponent';
 import {detailContent} from '../../../../utils/list';
 
-const RecipeComponent = () => {
+type RecipeComponentProps = {
+  detailContent: {
+    step: string;
+    image: string;
+  }[];
+};
+
+const RecipeComponent = ({detailContent}: RecipeComponentProps) => {
   return (
     <View style={styles.container}>
       <View style={{marginBottom: FWidth * 24}}>
         <SubTitleComponent title="조리 방법" />
       </View>
-      {detailContent.map(item => (
-        <ContentComponent
-          id={item.content.id}
-          key={item.content.id}
-          title={item.content.title}
-          content={item.content.content}
-          img={item.content.img}
-        />
-      ))}
+      {detailContent.map((item, index) => {
+        console.log(index + 1);
+        return (
+          <ContentComponent
+            id={index + 1}
+            key={index}
+            step={item.step}
+            image={item.image}
+          />
+        );
+      })}
       {/* <UserRecipeMore /> */}
     </View>
   );

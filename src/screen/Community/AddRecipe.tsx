@@ -1,4 +1,4 @@
-import {Keyboard, Pressable, ScrollView, StyleSheet} from 'react-native';
+import {Keyboard, Pressable, ScrollView, StyleSheet, View} from 'react-native';
 import React, {useState} from 'react';
 import {colors} from '../../../globalStyle';
 import MainTop from '../../components/Community/AddRecipe/MainTop/MainTop';
@@ -6,8 +6,11 @@ import AddIngredient from '../../components/Community/AddRecipe/AddIngredient/Ad
 import {Ingredient, StepType} from '../../type/types';
 import RecipeSteps from '../../components/Community/AddRecipe/RecipeSteps/RecipeSteps';
 import Submit from '../../components/Community/AddRecipe/Submit/Submit';
+import {ParamListBase, useNavigation} from '@react-navigation/native';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 
 const AddRecipe = () => {
+  const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
   const [addRecipeData, setAddRecipeData] = useState<{
     mainImage: string;
     mainTitle: string;
@@ -52,33 +55,45 @@ const AddRecipe = () => {
 
   console.log('addRecipeData', addRecipeData);
   return (
-    <ScrollView overScrollMode="never">
-      <Pressable style={styles.container} onPress={() => Keyboard.dismiss()}>
-        <MainTop
-          addRecipeData={addRecipeData}
-          setAddRecipeData={setAddRecipeData}
-        />
-        <AddIngredient
-          addRecipeData={addRecipeData}
-          setAddRecipeData={setAddRecipeData}
-          addIngredient={addNewIngredient}
-          deleteIngredient={deleteIngredient}
-        />
-        <RecipeSteps
-          addRecipeData={addRecipeData}
-          setAddRecipeData={setAddRecipeData}
-          addStep={addStep}
-          deleteStep={deleteStep}
-        />
-        <Submit />
-      </Pressable>
-    </ScrollView>
+    <View style={styles.buttonContainer}>
+      <ScrollView overScrollMode="never">
+        <Pressable style={styles.container} onPress={() => Keyboard.dismiss()}>
+          <MainTop
+            addRecipeData={addRecipeData}
+            setAddRecipeData={setAddRecipeData}
+          />
+          <AddIngredient
+            addRecipeData={addRecipeData}
+            setAddRecipeData={setAddRecipeData}
+            addIngredient={addNewIngredient}
+            deleteIngredient={deleteIngredient}
+          />
+          <RecipeSteps
+            addRecipeData={addRecipeData}
+            setAddRecipeData={setAddRecipeData}
+            addStep={addStep}
+            deleteStep={deleteStep}
+          />
+        </Pressable>
+      </ScrollView>
+      <Submit
+        previewOnPress={() =>
+          navigation.navigate('preview', {
+            addRecipeData,
+          })
+        }
+        submitOnPress={() => {}}
+      />
+    </View>
   );
 };
 
 export default AddRecipe;
 
 const styles = StyleSheet.create({
+  buttonContainer: {
+    flex: 1,
+  },
   container: {
     flex: 1,
     backgroundColor: colors.background2,

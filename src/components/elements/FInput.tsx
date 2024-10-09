@@ -139,7 +139,7 @@ const styles = StyleSheet.create({
   subRecipeStyle: {
     paddingVertical: FWidth * 14,
     paddingLeft: FWidth * 14,
-    paddingRight: FWidth * 54,
+    paddingRight: FWidth * 44,
     borderWidth: 1,
     borderColor: colors.field,
     fontSize: FWidth * 16,

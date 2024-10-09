@@ -4,7 +4,8 @@ import ItemBox from './ItemBox';
 
 type ItemsComponentProps = {
   ingredientList: {
-    title: string;
+    name: string;
+    quantity?: string;
   }[];
 };
 
@@ -14,8 +15,9 @@ const ItemsComponent = ({ingredientList}: ItemsComponentProps) => {
       {ingredientList.map((item, index) => (
         <ItemBox
           key={index}
-          title={item.title}
-          onPress={() => console.log(item.title)}
+          title={item.name}
+          quantity={item.quantity}
+          onPress={() => console.log(item.name)}
         />
       ))}
     </>

@@ -8,6 +8,7 @@ import StorageGuide from '../../screen/MyFridge/StorageGuide';
 import SplashScreen from '../../screen/SplashScreen';
 import AddRecipeReview from '../../screen/MyFridge/AddRecipeReview';
 import AddRecipe from '../../screen/Community/AddRecipe';
+import AddRecipePreview from '../../screen/Community/AddRecipePreview';
 
 const MainStackScreen = () => {
   const Stack = createNativeStackNavigator();
@@ -62,6 +63,26 @@ const MainStackScreen = () => {
                 onlyBackIcon={true}
                 rightOn={true}
                 rType1="headerClose"
+              />
+            );
+          },
+          headerShadowVisible: false,
+        }}
+      />
+      <Stack.Screen
+        name="preview"
+        component={AddRecipePreview}
+        options={{
+          title: '',
+          headerShown: true,
+          header() {
+            return (
+              <FAppBar
+                type="detailBack"
+                // onlyBackIcon={true}
+                rightOn={true}
+                rType1="detailHeart"
+                rType2="detailShare"
               />
             );
           },

@@ -5,13 +5,19 @@ import ItemsComponent from './ItemsComponent';
 import {detailList3} from '../../../../utils/list';
 import SubTitleComponent from '../SubTitleComponent';
 
-const IngredientComponent = () => {
+type IngredientComponentProps = {
+  ingredientList: {
+    name: string;
+  }[];
+};
+
+const IngredientComponent = ({ingredientList}: IngredientComponentProps) => {
   return (
     <View style={styles.container}>
       <SubTitleComponent title="재료" />
       <View style={styles.itemsContainer}>
         <View style={styles.subContainer}>
-          <ItemsComponent ingredientList={detailList3} />
+          <ItemsComponent ingredientList={ingredientList} />
         </View>
       </View>
     </View>

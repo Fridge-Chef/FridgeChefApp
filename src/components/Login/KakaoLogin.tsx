@@ -16,7 +16,6 @@ const KakaoLogin = ({navigation}: KakaoLoginProps) => {
   const handleKakaologin = async () => {
     try {
       const token = await Kakao.login();
-      console.log(token);
       if (token.accessToken !== null) {
         const response = await baseUrl.post('api/mobile/auth/login', {
           token: token.accessToken,
@@ -44,7 +43,7 @@ const KakaoLogin = ({navigation}: KakaoLoginProps) => {
       paddingVertical={14}
       buttonColor="#F9E007"
       marginBottom={16}
-      onPress={() => navigation.navigate('splash')}>
+      onPress={handleKakaologin}>
       <KakaoLogo />
       <LoginButtonTitle title="카카오톡 간편 로그인" />
       <View style={styles.hideIcon}>
