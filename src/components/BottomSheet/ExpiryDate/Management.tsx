@@ -32,7 +32,7 @@ const Management = () => {
     <View style={styles.container}>
       <View style={styles.contentContainer}>
         <TopTitle
-          title={`${ingredientTitle} 상세 정보 등록`}
+          title={`${ingredientTitle} 재료 관리하기`}
           setCategory={setCategory}
           setItemNumber={setItemNumber}
         />

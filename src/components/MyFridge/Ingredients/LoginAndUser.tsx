@@ -1,52 +1,61 @@
-import {StyleSheet, View} from 'react-native';
+import {StyleSheet, TouchableOpacity, View} from 'react-native';
 import React, {useState} from 'react';
 import {colors, FWidth} from '../../../../globalStyle';
 import LoginIcon from '../../../utils/Svg/LoginIcon';
 import Notification from '../../../utils/Svg/Notification';
 import FText from '../../elements/FText';
 import LoginIcon2 from '../../../utils/Svg/LoginIcon2';
+import NotLoginUser from '../../../utils/Svg/NotLoginUser';
 
 type LoginAndUserProps = {
   test: boolean;
+  styTest: (test: boolean) => void;
 };
 
-const LoginAndUser = ({test}: LoginAndUserProps) => {
+const LoginAndUser = ({test, styTest}: LoginAndUserProps) => {
   return (
-    <View
-      style={[
-        styles.container,
-        {
-          backgroundColor: !test ? colors.background3 : '#FFF8F7',
-        },
-      ]}>
-      {!test ? (
-        <View style={styles.alignCenter}>
-          <LoginIcon2 test={test} />
-          <FText
-            mLeft={FWidth * 8}
-            fStyle="B_16"
-            text="로그인"
-            color={colors.text}
-          />
-        </View>
-      ) : (
-        <View style={styles.userContainer}>
+    <TouchableOpacity onPress={() => styTest(!test)}>
+      <View
+        style={[
+          styles.container,
+          {
+            backgroundColor: !test ? colors.background3 : colors.primary[4],
+          },
+        ]}>
+        {!test ? (
           <View style={styles.alignCenter}>
-            <LoginIcon2 test={test} />
-            <View style={styles.alignCenter}>
-              <FText
-                mLeft={FWidth * 8}
-                fStyle="B_16"
-                text="김민영"
-                color={colors.text}
-              />
-              <FText fStyle="M_16" color={colors.text} text="님의 냉장고" />
-            </View>
+            <NotLoginUser />
+            <FText
+              mLeft={FWidth * 8}
+              fStyle="B_16"
+              text="로그인"
+              color={colors.text}
+            />
+            <FText fStyle="R_16" text="이 필요해요." color={colors.text} />
           </View>
-          <Notification />
-        </View>
-      )}
-    </View>
+        ) : (
+          <View style={styles.userContainer}>
+            <View style={styles.alignCenter}>
+              <NotLoginUser />
+              <View style={styles.alignCenter}>
+                <FText
+                  mLeft={FWidth * 8}
+                  fStyle="B_16"
+                  text="김민영"
+                  color={colors.text}
+                />
+                <FText
+                  fStyle="M_16"
+                  color={colors.text}
+                  text="님의 냉장고입니다."
+                />
+              </View>
+            </View>
+            <Notification />
+          </View>
+        )}
+      </View>
+    </TouchableOpacity>
   );
 };
 
@@ -55,10 +64,8 @@ export default LoginAndUser;
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
-    paddingLeft: FWidth * 20,
-    paddingRight: FWidth * 14,
-    paddingVertical: FWidth * 14,
-    height: FWidth * 52,
+    paddingHorizontal: FWidth * 22,
+    paddingVertical: FWidth * 12,
   },
 
   alignCenter: {

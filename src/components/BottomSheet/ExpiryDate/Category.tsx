@@ -11,6 +11,27 @@ type CategoryProps = {
   borderWidth: number;
   borderColor: string;
   buttonColor: string;
+  fontSize:
+    | 'B_26'
+    | 'B_24'
+    | 'B_22'
+    | 'B_20'
+    | 'M_20'
+    | 'B_18'
+    | 'M_18'
+    | 'R_18'
+    | 'B_16'
+    | 'M_16'
+    | 'R_16'
+    | 'B_14'
+    | 'M_14'
+    | 'R_14'
+    | 'B_12'
+    | 'M_12'
+    | 'R_12'
+    | 'B_10'
+    | 'M_10'
+    | 'R_10';
   nameColor: string;
   name: string;
   children: React.ReactNode;
@@ -23,6 +44,7 @@ const Category = ({
   borderWidth,
   borderColor,
   buttonColor,
+  fontSize,
   nameColor,
   name,
   children,
@@ -38,7 +60,7 @@ const Category = ({
       buttonColor={buttonColor}
       onPress={onPress}>
       {children}
-      <FText mTop={2} fStyle="M_14" color={nameColor} text={name} />
+      <FText mTop={2} fStyle={fontSize} color={nameColor} text={name} />
     </FButton>
   );
 };

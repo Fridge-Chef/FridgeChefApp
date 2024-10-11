@@ -10,6 +10,7 @@ import {
   useSubBottomSheetRef,
   useSubBottomSheetTitle,
 } from '../../../store/store';
+import SubTitleBS2 from '../SubTitleBS2';
 
 const ExpiryDate = () => {
   const {subBottomSheetRef} = useSubBottomSheetRef();
@@ -22,7 +23,7 @@ const ExpiryDate = () => {
 
   return (
     <View style={styles.container}>
-      <SubTitleBS title="유통기한 등록" />
+      <SubTitleBS2 title="유통기한 등록" />
       <FButton
         marginTop={FWidth * 14}
         buttonStyle="selected"

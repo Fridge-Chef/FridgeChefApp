@@ -69,7 +69,7 @@ export const useSubBottomSheetRef = create<SubBottomSheetRefType>(set => ({
 }));
 
 export const useSubBottomSheetDate = create<SubBottomSheetDateType>(set => ({
-  selectedDate: '날짜를 선택해주세요',
+  selectedDate: '날짜를 선택해 주세요',
   setSelectedDate: (selectedDate: string) => set({selectedDate}),
 }));
 

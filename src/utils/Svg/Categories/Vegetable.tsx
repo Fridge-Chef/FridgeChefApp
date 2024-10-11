@@ -1,7 +1,7 @@
 import {StyleSheet} from 'react-native';
 import React from 'react';
 import {Path, Svg} from 'react-native-svg';
-import {FWidth} from '../../../globalStyle';
+import {FWidth} from '../../../../globalStyle';
 
 const Vegetable = () => {
   return (

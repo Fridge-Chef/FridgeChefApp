@@ -8,7 +8,14 @@ type DDayTextProps = {
 };
 
 const DDayText = ({day}: DDayTextProps) => {
-  return <FText fStyle="B_14" color={colors.error} text={day} />;
+  console.log('day', day);
+  return (
+    <FText
+      fStyle={day === '오늘 이후 폐기' ? 'M_12' : 'M_16'}
+      color={colors.error}
+      text={day}
+    />
+  );
 };
 
 export default DDayText;

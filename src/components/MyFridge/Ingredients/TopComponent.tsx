@@ -20,8 +20,12 @@ const TopComponent = () => {
   return (
     <View style={styles.container}>
       <View>
-        <FText fStyle="B_20" color={colors.text} text="냉정고 속 재료를" />
-        <FText fStyle="B_20" color={colors.text} text="등록해주세요" />
+        <FText
+          fStyle="B_20"
+          color={colors.text}
+          text="냉정고 재료를 등록하고"
+        />
+        <FText fStyle="B_20" color={colors.text} text="레시피를 찾아보세요" />
       </View>
       <FButton
         buttonStyle="svgButton"

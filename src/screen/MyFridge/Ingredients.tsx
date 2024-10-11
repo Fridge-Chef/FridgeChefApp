@@ -1,6 +1,6 @@
 import {ScrollView, StyleSheet, TouchableOpacity, View} from 'react-native';
 import React, {useState} from 'react';
-import {colors} from '../../../globalStyle';
+import {colors, FWidth} from '../../../globalStyle';
 import TopComponent from '../../components/MyFridge/Ingredients/TopComponent';
 import AddList from '../../components/MyFridge/Ingredients/AddList/AddList';
 import FButton from '../../components/elements/FButton';
@@ -17,12 +17,13 @@ import {showToast} from '../../helpers/ShowToast';
 import CondimentButton from '../../components/MyFridge/Ingredients/CondimentButton';
 import InfoComponent from '../../components/MyFridge/Ingredients/InfoComponent';
 import FModal from '../../components/elements/FModal';
+import SearchIcon from '../../utils/Svg/SearchIcon';
 const Ingredients = () => {
   const {setLoading, setLoadingTitle} = useLoading();
   const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
   const [onClicked, setonClicked] = useState(1);
   // const [test] = useState(false);
-  const [test] = useState(true);
+  const [test, styTest] = useState(true);
   const [modal, setModal] = useState(false);
   const handleSearch = () => {
     setLoadingTitle('레시피 검색중');
@@ -40,12 +41,12 @@ const Ingredients = () => {
   // 테스트용 함수
   const handleTest = () => {
     setTitle('순위');
-    bottomSheetRef.current?.expand();
-    setModal(!modal);
-    showToast({
-      text: '기본 재료를 등록했어요. 언제든 삭제할 수 있어요!',
-      time: 5000,
-    });
+    // bottomSheetRef.current?.expand();
+    // setModal(!modal);
+    // showToast({
+    //   text: '기본 재료를 등록했어요. 언제든 삭제할 수 있어요!',
+    //   time: 5000,
+    // });
   };
 
   // useEffect(() => {
@@ -63,29 +64,27 @@ const Ingredients = () => {
         cancel
       />
       <ScrollView showsVerticalScrollIndicator={false} overScrollMode="never">
-        <LoginAndUser test={test} />
+        <LoginAndUser test={test} styTest={styTest} />
         {/* 테스트 터쳐블 삭제바람 */}
-        {test && (
-          <>
-            <TouchableOpacity onPress={handleTest}>
-              <TopComponent />
-            </TouchableOpacity>
-            {/* <CondimentList /> */}
-            <CondimentButton
-              onClicked={onClicked}
-              setonClicked={setonClicked}
-            />
-            <InfoComponent />
-          </>
-        )}
+
+        <TouchableOpacity onPress={handleTest}>
+          <TopComponent />
+        </TouchableOpacity>
+        {/* <CondimentList /> */}
+        <CondimentButton onClicked={onClicked} setonClicked={setonClicked} />
+        <InfoComponent />
+
         <AddList onClicked={onClicked} />
       </ScrollView>
       <View style={styles.buttonContainer}>
         <FButton
           buttonStyle="bigButton"
+          fBStyle={styles.buttonStyle}
           buttonColor={colors.primary[1]}
           onPress={handleSearch}>
+          <SearchIcon />
           <FText
+            mLeft={FWidth * 6}
             fStyle="B_18"
             color={colors.white}
             text="이 재료로 레시피 검색"
@@ -105,10 +104,14 @@ const styles = StyleSheet.create({
   },
 
   buttonContainer: {
-    // paddingHorizontal: FWidth * 22,
-    // marginBottom: FHeight * 38,
     position: 'absolute',
     width: '100%',
     bottom: 0,
+  },
+
+  buttonStyle: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });

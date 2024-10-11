@@ -31,7 +31,7 @@ const AddList = ({onClicked}: AddListProps) => {
   }, [onClicked]);
 
   return (
-    <View style={styles.container1}>
+    <View style={styles.container}>
       <View style={styles.listContainer}>
         {dataList.map((item: ListData, index: number) => (
           <View key={index} style={{}}>
@@ -51,14 +51,12 @@ const AddList = ({onClicked}: AddListProps) => {
 export default AddList;
 
 const styles = StyleSheet.create({
-  container1: {
+  container: {
+    marginTop: FWidth * 4,
     flex: 1,
   },
   listContainer: {
-    // marginTop: FWidth * 40,
-    marginTop: FWidth * 12,
     paddingHorizontal: FWidth * 22,
-    // marginBottom: FWidth * 132, // 기본 100에서 32 추가
     marginBottom: FWidth * 78, // 기본 60에서 18 추가
   },
 });

@@ -4,14 +4,19 @@ import DatePicker from 'react-native-date-picker';
 import {colors, FWidth} from '../../../../globalStyle';
 import FText from '../../elements/FText';
 import FButton from '../../elements/FButton';
-import {useSubBottomSheetDate} from '../../../store/store';
+import {
+  useSubBottomSheetDate,
+  useSubBottomSheetRef,
+} from '../../../store/store';
 
 const SubExpiryDate = () => {
   const [date, setDate] = useState(new Date());
   const {setSelectedDate} = useSubBottomSheetDate();
+  const {subBottomSheetRef} = useSubBottomSheetRef();
 
   const handleSubmit = () => {
     setSelectedDate(date.toISOString().split('T')[0]);
+    subBottomSheetRef.current?.close();
   };
 
   return (

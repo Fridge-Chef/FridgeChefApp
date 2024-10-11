@@ -46,7 +46,7 @@ const ItemComponent = ({itemList}: ItemComponentProps) => {
       case 1:
         return 'D-1';
       case 0:
-        return 'D-day';
+        return '오늘 이후 폐기';
       default:
         return '';
     }
@@ -65,20 +65,15 @@ const ItemComponent = ({itemList}: ItemComponentProps) => {
           }}
         />
         <View style={styles.titleContainer}>
-          <FText fStyle="B_16" color={colors.text} text={itemList.name} />
+          <FText fStyle="M_16" color={colors.text} text={itemList.name} />
         </View>
         {itemList.expiry_date && <DDayText day={date()} />}
       </View>
       <View style={styles.iconAndTextContainer}>
-        {/* {itemList.expiry_date && <DDayText day={date()} />} */}
-        <View style={{marginHorizontal: FWidth * 12}}>
+        <View style={{marginRight: FWidth * 12}}>
           <FButton
             buttonStyle="noneStyle"
             onPress={() => handleAddExpiration(itemList.name)}>
-            {/* <Calendar
-              day={date()?.replace('D-', '')}
-              expiryDate={itemList.expiry_date}
-            /> */}
             <Option />
           </FButton>
         </View>
@@ -97,9 +92,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     marginTop: FHeight * 12,
-    paddingLeft: 18,
-    paddingVertical: 16,
-    paddingRight: 16,
+    padding: FWidth * 14,
     borderRadius: 14,
     backgroundColor: colors.background,
   },
@@ -110,8 +103,8 @@ const styles = StyleSheet.create({
   },
 
   titleContainer: {
-    marginLeft: FWidth * 6,
-    marginRight: FWidth * 12,
+    marginLeft: FWidth * 4,
+    marginRight: FWidth * 6,
   },
 
   iconAndTextContainer: {

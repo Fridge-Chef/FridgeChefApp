@@ -46,12 +46,11 @@ export default CondimentButton;
 
 const styles = StyleSheet.create({
   container: {
+    marginTop: FWidth * 32,
     paddingHorizontal: FWidth * 22,
   },
 
   buttonContainer: {
-    marginTop: FWidth * 32,
-    // marginTop: FWidth * 16,
     flexDirection: 'row',
     alignItems: 'center',
     borderRadius: 14,
