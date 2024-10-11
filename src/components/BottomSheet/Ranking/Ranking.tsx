@@ -13,12 +13,12 @@ const Ranking = () => {
   const handleClose = () => {
     bottomSheetRef.current?.close();
   };
-  const [ranking, setRanking] = useState(0);
+  const [ranking, setRanking] = useState(1);
 
   return (
     <View style={styles.container}>
       <RankingTop onPress={handleClose} />
-      {rankingMenuList.map((item, index) => (
+      {rankingMenuList.map(item => (
         <FButton
           key={item.id}
           buttonStyle="addButton"

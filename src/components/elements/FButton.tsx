@@ -246,8 +246,8 @@ const styles = StyleSheet.create({
   },
 
   menu: {
-    paddingHorizontal: FWidth * 12,
-    paddingVertical: FWidth * 6,
+    paddingHorizontal: FWidth * 6,
+    paddingVertical: FWidth * 4,
     borderRadius: 50,
   },
 

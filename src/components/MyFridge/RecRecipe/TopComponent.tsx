@@ -47,72 +47,76 @@ const TopComponent = () => {
 
   return (
     <View>
-      <SubTitleComponent title="보유 재료들" color={colors.subText} />
-      <FlatList
-        data={list}
-        showsHorizontalScrollIndicator={false}
-        keyExtractor={(_, index) => index.toString()}
-        renderItem={({item}) => (
-          <View
-            style={[
-              styles.itemListContainer,
-              {
-                position: 'relative',
-                maxHeight: itemHeight * 2 + FWidth * 10,
-              },
-            ]}>
-            <View style={[styles.listItemContainer]} onLayout={onLayout2}>
-              {list &&
-                item.ingredients?.map((ingredient: RecipeList) => (
-                  <FButton
-                    buttonStyle="menuButton"
-                    fBStyle={{
-                      backgroundColor: selectItems.includes(
-                        ingredient.ingredient,
-                      )
-                        ? colors.primary[1]
-                        : colors.background,
-                      marginTop: FWidth * 10,
-                      marginRight: FWidth * 8,
-                    }}
-                    key={ingredient.ingredient_id}
-                    onLayout={onLayout}
-                    onPress={() => handleIngredientClick(ingredient)}>
-                    <FText
-                      fStyle="M_14"
-                      color={
-                        selectItems.includes(ingredient.ingredient)
-                          ? colors.white
-                          : colors.black
-                      }
-                      text={ingredient.ingredient}
-                    />
-                  </FButton>
-                ))}
+      <SubTitleComponent title="보유 재료" color={colors.text} />
+      <View style={{position: 'relative'}}>
+        <FlatList
+          data={list}
+          showsHorizontalScrollIndicator={false}
+          horizontal
+          keyExtractor={(_, index) => index.toString()}
+          renderItem={({item}) => (
+            <View
+              style={[
+                styles.itemListContainer,
+                {
+                  position: 'relative',
+                },
+              ]}>
+              <View style={[styles.listItemContainer]} onLayout={onLayout2}>
+                {list &&
+                  item.ingredients?.map((ingredient: RecipeList) => (
+                    <View
+                      key={ingredient.ingredient_id}
+                      style={[styles.listItem, {backgroundColor: colors.b100}]}>
+                      <FText
+                        fStyle="M_14"
+                        color={
+                          selectItems.includes(ingredient.ingredient)
+                            ? colors.white
+                            : colors.black
+                        }
+                        text={ingredient.ingredient}
+                      />
+                    </View>
+
+                    // <FButton
+                    //   buttonStyle="menuButton"
+                    //   fBStyle={{
+                    //     backgroundColor: selectItems.includes(
+                    //       ingredient.ingredient,
+                    //     )
+                    //       ? colors.primary[1]
+                    //       : colors.background,
+                    //     marginRight: FWidth * 6,
+                    //   }}
+                    //   key={ingredient.ingredient_id}
+                    //   onLayout={onLayout}
+                    //   onPress={() => handleIngredientClick(ingredient)}>
+                    // </FButton>
+                  ))}
+              </View>
             </View>
-            {item.ingredients.length > 0 && (
-              <FButton
-                buttonStyle="noneStyle"
-                fBStyle={{
-                  position: 'absolute',
-                  bottom: 0,
-                  right: 0,
-                }}
-                onPress={handleBottomSheetOpen}>
-                <View
-                  style={{
-                    marginTop: FWidth * 10,
-                    backgroundColor: colors.background,
-                    borderRadius: FWidth * 50,
-                    elevation: 2,
-                  }}>
-                  <BottomButton buttonHeight={itemHeight} />
-                </View>
-              </FButton>
-            )}
+          )}
+        />
+        <FButton
+          buttonStyle="noneStyle"
+          fBStyle={{
+            position: 'absolute',
+            bottom: 0,
+            right: 0,
+          }}
+          onPress={handleBottomSheetOpen}>
+          <View
+            style={{
+              marginTop: FWidth * 10,
+              backgroundColor: colors.background,
+              borderRadius: FWidth * 50,
+              elevation: 2,
+            }}>
+            <BottomButton buttonHeight={itemHeight} />
           </View>
-        )}
-      />
+        </FButton>
+      </View>
     </View>
   );
 };
@@ -127,6 +131,12 @@ const styles = StyleSheet.create({
   listItemContainer: {
     flexDirection: 'row',
     flexWrap: 'wrap',
-    marginTop: FWidth * -10,
+  },
+
+  listItem: {
+    paddingHorizontal: FWidth * 6,
+    paddingVertical: FWidth * 4,
+    borderRadius: 50,
+    marginRight: FWidth * 6,
   },
 });

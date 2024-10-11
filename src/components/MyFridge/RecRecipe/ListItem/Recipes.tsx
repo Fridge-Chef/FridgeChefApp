@@ -53,10 +53,10 @@ export default Recipes;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    marginTop: FWidth * 32,
   },
 
   mainListContainer: {
-    marginTop: FWidth * 24,
     height: '100%',
   },
 });

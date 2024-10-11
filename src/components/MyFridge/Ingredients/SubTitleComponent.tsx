@@ -12,7 +12,7 @@ type SubTitleComponentProps = {
 const SubTitleComponent = ({title, color, onPress}: SubTitleComponentProps) => {
   return (
     <FButton buttonStyle="noneStyle" onPress={onPress}>
-      <FText fStyle="M_14" color={color} text={title} />
+      <FText fStyle="B_14" color={color} text={title} />
     </FButton>
   );
 };
