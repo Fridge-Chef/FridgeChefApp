@@ -9,7 +9,7 @@ type LoginButtonTitleProps = {
 
 const LoginButtonTitle = ({title}: LoginButtonTitleProps) => {
   return (
-    <FText mLeft={FWidth * 6} fStyle="B_18" color={colors.text} text={title} />
+    <FText mLeft={FWidth * 6} fStyle="B_16" color={colors.text} text={title} />
   );
 };
 

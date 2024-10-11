@@ -1,6 +1,6 @@
 import {StyleSheet, View} from 'react-native';
 import React from 'react';
-import {colors} from '../../../globalStyle';
+import {colors, FWidth} from '../../../globalStyle';
 import GoogleLogo from '../../utils/Svg/GoogleLogo';
 import {ParamListBase} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
@@ -37,12 +37,12 @@ const GoogleLogin = ({navigation}: GoogleLoginProps) => {
     <FButton
       buttonStyle="loginButton"
       borderWidth={1}
-      paddingVertical={12}
+      paddingVertical={FWidth * 16}
       buttonColor={colors.white}
-      marginBottom={16}
+      marginBottom={FWidth * 16}
       onPress={handleLogout}>
       <GoogleLogo />
-      <LoginButtonTitle title="구글 로그인" />
+      <LoginButtonTitle title="구글 간편 로그인" />
       <View style={styles.hideIcon}>
         <GoogleLogo />
       </View>

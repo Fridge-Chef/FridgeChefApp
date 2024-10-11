@@ -68,6 +68,7 @@ const FInput = ({
               fontFamily: fontFamily,
             },
           ]}
+          cursorColor={colors.text}
           placeholder={placeholder}
           editable={editable}
           placeholderTextColor={colors.disabled}

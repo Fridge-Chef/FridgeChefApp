@@ -13,7 +13,7 @@ const Login = () => {
   return (
     <View style={styles.container}>
       <TitleComponent />
-      <View style={{alignItems: 'center', marginBottom: FWidth * 128}}>
+      <View style={{alignItems: 'center', marginBottom: FWidth * 64}}>
         <Image
           style={{width: FWidth * 127, height: FWidth * 137}}
           source={require('../assets/images/LogoImg.png')}
@@ -32,7 +32,7 @@ export default Login;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: FWidth * 112,
+    paddingTop: FWidth * 96,
     paddingHorizontal: FWidth * 34,
     backgroundColor: colors.white,
   },

@@ -9,6 +9,8 @@ import SplashScreen from '../../screen/SplashScreen';
 import AddRecipeReview from '../../screen/MyFridge/AddRecipeReview';
 import AddRecipe from '../../screen/Community/AddRecipe';
 import AddRecipePreview from '../../screen/Community/AddRecipePreview';
+import NicknamePage from '../../screen/NicknamePage';
+import AddBasic from '../../screen/AddBasic';
 
 const MainStackScreen = () => {
   const Stack = createNativeStackNavigator();
@@ -35,6 +37,22 @@ const MainStackScreen = () => {
       <Stack.Screen
         name="login"
         component={Login}
+        options={{
+          title: '',
+          headerShadowVisible: false,
+        }}
+      />
+      <Stack.Screen
+        name="nickname"
+        component={NicknamePage}
+        options={{
+          title: '',
+          headerShadowVisible: false,
+        }}
+      />
+      <Stack.Screen
+        name="addBasic"
+        component={AddBasic}
         options={{
           title: '',
           headerShadowVisible: false,

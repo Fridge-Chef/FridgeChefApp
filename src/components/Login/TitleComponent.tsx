@@ -6,11 +6,11 @@ import FText from '../elements/FText';
 const TitleComponent = () => {
   return (
     <View style={styles.container}>
+      <FText fStyle="B_22" color={colors.text} text="오늘도 맛있는 한 끼," />
       <View style={styles.titleAlign}>
-        <FText fStyle="B_26" color={colors.primary[2]} text="프리지셰프" />
-        <FText fStyle="B_26" color={colors.text} text="에 오신걸" />
+        <FText fStyle="B_22" color={colors.primary[1]} text="프리지셰프" />
+        <FText fStyle="B_22" color={colors.text} text="가 도와드릴게요!" />
       </View>
-      <FText fStyle="B_26" color={colors.text} text="환영해요 :)" />
     </View>
   );
 };
@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
     // marginBottom: FWidth * 160,
-    marginBottom: FWidth * 64,
+    marginBottom: FWidth * 48,
   },
 
   titleAlign: {

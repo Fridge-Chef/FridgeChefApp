@@ -61,10 +61,10 @@ const FText = ({
   onLayout,
 }: FTextProps) => {
   const boxHeightList = {
-    B_26: styles.lineHeight36,
+    B_26: styles.lineHeight38,
     B_24: styles.lineHeight34,
     B_22: styles.lineHeight32,
-    B_20: styles.lineHeight28,
+    B_20: styles.lineHeight32,
     M_20: styles.lineHeight28,
     B_18: styles.lineHeight28,
     M_18: styles.lineHeight28,
@@ -144,6 +144,11 @@ const FText = ({
 export default FText;
 
 const styles = StyleSheet.create({
+  lineHeight38: {
+    height: FWidth * 38,
+    justifyContent: 'center',
+  },
+
   lineHeight36: {
     height: FWidth * 36,
     justifyContent: 'center',

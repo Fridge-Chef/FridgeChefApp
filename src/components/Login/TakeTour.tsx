@@ -15,9 +15,9 @@ const TakeTour = ({navigation}: TakeTourProps) => {
     <FButton
       buttonStyle="loginButton"
       buttonColor={colors.text}
-      paddingVertical={FHeight * 14}
-      onPress={() => navigation.navigate('bottomTab')}>
-      <FText fStyle="M_18" color={colors.white} text="오늘은 그냥 둘러볼게요" />
+      paddingVertical={FHeight * 16}
+      onPress={() => navigation.navigate('nickname')}>
+      <FText fStyle="M_18" color={colors.white} text="그냥 둘러볼게요" />
     </FButton>
   );
 };

@@ -7,6 +7,7 @@ import FButton from '../elements/FButton';
 import LoginButtonTitle from './LoginButtonTitle';
 import * as Kakao from '@react-native-seoul/kakao-login';
 import {baseUrl} from '../../api/axios';
+import {FWidth} from '../../../globalStyle';
 
 type KakaoLoginProps = {
   navigation: NativeStackNavigationProp<ParamListBase>;
@@ -40,9 +41,9 @@ const KakaoLogin = ({navigation}: KakaoLoginProps) => {
   return (
     <FButton
       buttonStyle="loginButton"
-      paddingVertical={14}
+      paddingVertical={FWidth * 16}
       buttonColor="#F9E007"
-      marginBottom={16}
+      marginBottom={FWidth * 16}
       onPress={handleKakaologin}>
       <KakaoLogo />
       <LoginButtonTitle title="카카오톡 간편 로그인" />
