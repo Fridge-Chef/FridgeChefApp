@@ -25,7 +25,12 @@ const CListItem = ({item, onPress}: CListItemProps) => {
   return (
     <FButton buttonStyle="noneStyle" onPress={onPress}>
       <View style={styles.itemsContainer}>
-        <FImage imgStyle="sub2" uri={uri} alt="커뮤 나만의 레시피" />
+        <FImage
+          imgStyle="sub2"
+          uri={uri}
+          borderRadius={8}
+          alt="커뮤 나만의 레시피"
+        />
         <View style={styles.itemTextContainer}>
           <FText
             nLine={2}
@@ -35,7 +40,7 @@ const CListItem = ({item, onPress}: CListItemProps) => {
             text={item.title}
           />
           <View style={styles.bottomTextContainer}>
-            <UserInfo name={item.writer} point={item.point} />
+            <UserInfo writer={item.writer} point={item.point} />
             <View style={{marginTop: FWidth * 8}}>
               <ViewAndLike like={item.likes} favorites={item.views} />
             </View>

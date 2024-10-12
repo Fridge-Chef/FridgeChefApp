@@ -3,6 +3,8 @@ import React, {useState} from 'react';
 import NoContent from '../../components/RecipeBook/NoContent';
 import {colors, FWidth} from '../../../globalStyle';
 import ListComponent from '../../components/RecipeBook/ListComponent';
+import ReviewsComponent from '../../components/MyFridge/RecipeDetail/RecipeReview/ReviewsComponent';
+import MyReview from '../../components/RecipeBook/MyReview/MyReview';
 
 const RecipeReviewPage = () => {
   const [data] = useState(true);
@@ -16,7 +18,7 @@ const RecipeReviewPage = () => {
           buttonTitle="레시피 후기 작성하기"
         />
       ) : (
-        <ListComponent />
+        <MyReview />
       )}
     </View>
   );
