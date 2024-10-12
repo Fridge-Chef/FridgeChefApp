@@ -13,7 +13,6 @@ import {ParamListBase, useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import LoginAndUser from '../../components/MyFridge/Ingredients/LoginAndUser';
 import FText from '../../components/elements/FText';
-import {showToast} from '../../helpers/ShowToast';
 import CondimentButton from '../../components/MyFridge/Ingredients/CondimentButton';
 import InfoComponent from '../../components/MyFridge/Ingredients/InfoComponent';
 import FModal from '../../components/elements/FModal';
@@ -57,11 +56,11 @@ const Ingredients = () => {
     <View style={styles.container}>
       <FModal
         modalVisible={modal}
-        setVisible={setModal}
         text="반갑습니다"
         text2="반갑습니다"
         buttonText="좋아요"
         cancel
+        onPress={() => {}}
       />
       <ScrollView showsVerticalScrollIndicator={false} overScrollMode="never">
         <LoginAndUser test={test} styTest={styTest} />

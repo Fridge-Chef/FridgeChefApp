@@ -72,8 +72,6 @@ const IngredientList = () => {
     }
   };
 
-  console.log('주재료', selectItems);
-  console.log('삭제할거', deleteItems);
   return (
     <View style={styles.container}>
       <View style={styles.contentContainer}>

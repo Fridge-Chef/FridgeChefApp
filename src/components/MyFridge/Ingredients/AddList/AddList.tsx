@@ -1,7 +1,6 @@
 import {StyleSheet, View} from 'react-native';
 import React, {useEffect, useState} from 'react';
-import {colors, FHeight, FWidth} from '../../../../../globalStyle';
-import SubTitleComponent from '../SubTitleComponent';
+import {FWidth} from '../../../../../globalStyle';
 import ItemComponent from './ItemComponent';
 
 type ListData = {
@@ -34,13 +33,10 @@ const AddList = ({onClicked}: AddListProps) => {
     <View style={styles.container}>
       <View style={styles.listContainer}>
         {dataList.map((item: ListData, index: number) => (
-          <View key={index} style={{}}>
-            {/* <SubTitleComponent title={item.title} color={colors.b400} /> */}
-            <View>
-              {item.items.map((itemList, index) => (
-                <ItemComponent itemList={itemList} key={index} />
-              ))}
-            </View>
+          <View key={index}>
+            {item.items.map((itemList, index) => (
+              <ItemComponent itemList={itemList} key={index} />
+            ))}
           </View>
         ))}
       </View>

@@ -1,35 +1,21 @@
 import {StyleSheet, View} from 'react-native';
 import React from 'react';
-import {FWidth} from '../../../../globalStyle';
+import {fontFamilies, FWidth} from '../../../../globalStyle';
 import FInput from '../../elements/FInput';
+import {useUserReview} from '../../../store/store';
 
-type AddContentProps = {
-  reviewData: {
-    id: number;
-    reviewPoint: number;
-    reviewContent: string;
-    reviewImg: string;
-  };
-
-  setReviewData: React.Dispatch<
-    React.SetStateAction<{
-      id: number;
-      reviewPoint: number;
-      reviewContent: string;
-      reviewImg: string;
-    }>
-  >;
-};
-
-const AddContent = ({reviewData, setReviewData}: AddContentProps) => {
+const AddContent = () => {
+  const {userReview, setUserReview} = useUserReview();
   return (
     <View style={styles.container}>
       <FInput
-        value={reviewData.reviewContent}
+        value={userReview.reviewContent}
         inputStyle="noBorder"
+        placeholder="내용을 입력하세요"
+        fontFamily={fontFamilies.pretendardRegular}
         multiline
         onChangeText={text => {
-          setReviewData({...reviewData, reviewContent: text});
+          setUserReview({reviewContent: text});
         }}
       />
     </View>

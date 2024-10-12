@@ -4,6 +4,7 @@ import {FWidth} from '../../../../globalStyle';
 import FButton from '../../elements/FButton';
 import StarReview2 from '../../../utils/Svg/StarReview2';
 import StarReview1 from '../../../utils/Svg/StarReview1';
+import {useUserReview} from '../../../store/store';
 
 type ReviewType = {
   id: number;
@@ -11,25 +12,8 @@ type ReviewType = {
   clicked: boolean;
 };
 
-type ReviewDataProps = {
-  reviewData: {
-    id: number;
-    reviewPoint: number;
-    reviewContent: string;
-    reviewImg: string;
-  };
-
-  setReviewData: React.Dispatch<
-    React.SetStateAction<{
-      id: number;
-      reviewPoint: number;
-      reviewContent: string;
-      reviewImg: string;
-    }>
-  >;
-};
-
-const ScoreList = ({reviewData, setReviewData}: ReviewDataProps) => {
+const ScoreList = () => {
+  const {setUserReview} = useUserReview();
   const [reViewPoint, setReViewPoint] = useState<ReviewType[]>([
     {id: 1, score: 1, clicked: false},
     {id: 2, score: 2, clicked: false},
@@ -40,7 +24,7 @@ const ScoreList = ({reviewData, setReviewData}: ReviewDataProps) => {
 
   const handlePress = (id: number) => {
     const clickedPoint = reViewPoint.find(item => item.id === id)?.score || 0;
-    setReviewData({...reviewData, reviewPoint: clickedPoint});
+    setUserReview({reviewPoint: clickedPoint});
     setReViewPoint(prev =>
       prev.map(item => ({
         ...item,
@@ -70,7 +54,7 @@ export default ScoreList;
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: FWidth * 14,
+    marginTop: FWidth * 16,
     flexDirection: 'row',
   },
 });

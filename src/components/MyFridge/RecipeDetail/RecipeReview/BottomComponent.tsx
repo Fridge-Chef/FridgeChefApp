@@ -9,7 +9,7 @@ import LikeButton from '../../../elements/LikeButton';
 
 type BottomComponentProps = {
   review: {
-    like: number;
+    views: number;
   };
   isClicked: boolean;
   onPress: () => void;
@@ -22,7 +22,11 @@ const BottomComponent = ({
 }: BottomComponentProps) => {
   return (
     <View style={styles.container}>
-      <LikeButton isClicked={isClicked} like={review.like} onPress={onPress} />
+      <LikeButton
+        isClicked={isClicked}
+        views={review.views}
+        onPress={onPress}
+      />
       <FText fStyle="R_12" color={colors.b300} text={'일주일 전'} />
     </View>
   );

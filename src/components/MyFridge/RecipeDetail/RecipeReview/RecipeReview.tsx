@@ -4,10 +4,14 @@ import {colors, FHeight, FWidth} from '../../../../../globalStyle';
 import TitleComponent from './TitleComponent';
 import ReviewsComponent from './ReviewsComponent';
 
-const RecipeReview = () => {
+type RecipeReviewProps = {
+  title: string;
+};
+
+const RecipeReview = ({title}: RecipeReviewProps) => {
   return (
     <View style={styles.container}>
-      <TitleComponent />
+      <TitleComponent title={title} />
       <ReviewsComponent />
     </View>
   );

@@ -15,7 +15,13 @@ type TitleComponentProps = {
 const TitleComponent = ({title}: TitleComponentProps) => {
   return (
     <View style={styles.container}>
-      <FText fStyle="B_22" color={colors.text} text={title} />
+      <FText
+        flexShrink={1}
+        fStyle="B_22"
+        lineH={FWidth * 32}
+        color={colors.text}
+        text={title}
+      />
       <DetailInfo />
       <IngredientContainer title="보유재료" detailList={detailList} />
       <IngredientContainer title="없는 재료" detailList={detailList2} />

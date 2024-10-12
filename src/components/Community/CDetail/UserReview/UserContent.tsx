@@ -6,7 +6,7 @@ import FText from '../../../elements/FText';
 import LikeButton from '../../../elements/LikeButton';
 
 type UserContentProps = {
-  uri: string;
+  uri?: string;
   content: string;
   views: number;
 };
@@ -26,14 +26,21 @@ const UserContent = ({uri, content, views}: UserContentProps) => {
       </View>
       <LikeButton
         isClicked={isClicked}
-        like={views}
+        views={views}
         onPress={() => {
           setIsClicked(!isClicked);
         }}
       />
-      <View style={{marginTop: FWidth * 16}}>
-        <FImage uri={uri} imgStyle="rDetail" alt="리뷰 이미지" />
-      </View>
+      {uri && (
+        <View style={{marginTop: FWidth * 16}}>
+          <FImage
+            uri={uri}
+            imgStyle="rDetail"
+            borderRadius={8}
+            alt="리뷰 이미지"
+          />
+        </View>
+      )}
     </>
   );
 };

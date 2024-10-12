@@ -20,7 +20,6 @@ const SubmitButtons = ({basicItem}: SubmitButtonsProps) => {
         buttonStyle="noneStyle"
         fBStyle={[styles.buttonStyle, {backgroundColor: colors.primary[1]}]}
         onPress={() => {
-          console.log(basicItem);
           navigation.reset({
             index: 0,
             routes: [{name: 'bottomTab'}],

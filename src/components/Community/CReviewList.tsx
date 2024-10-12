@@ -1,19 +1,15 @@
-import {FlatList, StyleSheet, Text, View} from 'react-native';
+import {FlatList, StyleSheet, View} from 'react-native';
 import React from 'react';
-import {colors, FWidth} from '../../../globalStyle';
-import SubTitleComponent from '../MyFridge/Ingredients/SubTitleComponent';
-import ArrowDown2 from '../../utils/Svg/ArrowDown2';
+import {FWidth} from '../../../globalStyle';
 import CListItem from './CListItem';
 import {myRecipes} from '../../utils/list';
+import ArrowSubTitle from '../elements/SubTitle/ArrowSubTitle';
 
 const CReviewList = () => {
   return (
     <View style={styles.container}>
       <View style={styles.titleContainer}>
-        <SubTitleComponent title="최근순" color={colors.subText} />
-        <View style={{marginLeft: FWidth * 4}}>
-          <ArrowDown2 />
-        </View>
+        <ArrowSubTitle />
       </View>
       <FlatList
         data={myRecipes}

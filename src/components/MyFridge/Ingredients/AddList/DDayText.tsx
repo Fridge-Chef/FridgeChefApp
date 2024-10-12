@@ -8,7 +8,6 @@ type DDayTextProps = {
 };
 
 const DDayText = ({day}: DDayTextProps) => {
-  console.log('day', day);
   return (
     <FText
       fStyle={day === '오늘 이후 폐기' ? 'M_12' : 'M_16'}

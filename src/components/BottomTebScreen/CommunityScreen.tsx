@@ -14,29 +14,6 @@ const CommunityScreen = () => {
       }}
       initialRouteName="community">
       <Stack.Screen name="community" component={CMyRecipe} />
-      <Stack.Screen
-        name="reviewDetail"
-        component={CRecipeReviewDetail}
-        options={{
-          header() {
-            return (
-              <FAppBar
-                borderBottomWidth={0}
-                type="headerClose"
-                titleOn={true}
-                title="레시피 후기"
-                rightOn={true}
-                // onlyBackIcon={true}
-                // rType1="menuIcon"
-                rType2="menuIcon"
-                onPress2={() => console.log('menuIcon')}
-              />
-            );
-          },
-          headerShown: true,
-          headerShadowVisible: false,
-        }}
-      />
     </Stack.Navigator>
   );
 };

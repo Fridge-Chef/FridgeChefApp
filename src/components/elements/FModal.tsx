@@ -6,45 +6,49 @@ import FButton from './FButton';
 
 type FModalProps = {
   modalVisible: boolean;
-  setVisible: (visible: boolean) => void;
   text: string;
-  text2?: string;
+  text2?: string | null;
   buttonText: string;
+  cancelText?: string;
   cancel?: boolean;
+  onPress: () => void;
+  cancelOnPress?: () => void;
 };
 
 const FModal = ({
   modalVisible = false,
-  setVisible,
   text,
   text2,
   buttonText,
+  cancelText,
   cancel,
+  onPress,
+  cancelOnPress,
 }: FModalProps) => {
   return (
     <Modal visible={modalVisible} transparent>
       <View style={styles.container}>
         <View style={styles.contentBox}>
-          <FText fStyle="R_18" color={colors.black} text={text} />
-          {text2 && <FText fStyle="R_18" color={colors.black} text={text2} />}
+          <FText
+            fStyle={text2 ? 'R_16' : 'R_18'}
+            color={colors.black}
+            text={text}
+          />
+          {text2 && <FText fStyle="R_16" color={colors.black} text={text2} />}
           <View style={styles.buttonContainer}>
             {cancel && (
               <FButton
                 buttonStyle="modal"
                 marginRight={FWidth * 12}
                 buttonColor={colors.b100}
-                onPress={() => {
-                  setVisible(false);
-                }}>
-                <FText fStyle="B_16" color={colors.black} text={buttonText} />
+                onPress={cancelOnPress}>
+                <FText fStyle="B_16" color={colors.black} text={cancelText} />
               </FButton>
             )}
             <FButton
               buttonStyle="modal"
               buttonColor={colors.primary[1]}
-              onPress={() => {
-                setVisible(false);
-              }}>
+              onPress={onPress}>
               <FText fStyle="B_16" color={colors.white} text={buttonText} />
             </FButton>
           </View>

@@ -8,11 +8,11 @@ import DetailUserBadge from '../../../../utils/Svg/DetailUserBadge';
 import DetailReviewMore from '../../../../utils/Svg/DetailReviewMore';
 
 type UserInfoProps = {
-  name: string;
+  writer: string;
   point: number;
 };
 
-const UserInfo = ({name, point}: UserInfoProps) => {
+const UserInfo = ({writer, point}: UserInfoProps) => {
   return (
     <View style={styles.container}>
       <DetailUserBadge />
@@ -20,7 +20,7 @@ const UserInfo = ({name, point}: UserInfoProps) => {
         mHor={FWidth * 6}
         fStyle="B_14"
         color={colors.text}
-        text={`${name}님`}
+        text={`${writer}님`}
       />
       <View style={styles.container}>
         <TotalPoint point={point} />

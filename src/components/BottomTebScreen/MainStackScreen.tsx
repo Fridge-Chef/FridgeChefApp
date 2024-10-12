@@ -11,9 +11,13 @@ import AddRecipe from '../../screen/Community/AddRecipe';
 import AddRecipePreview from '../../screen/Community/AddRecipePreview';
 import NicknamePage from '../../screen/NicknamePage';
 import AddBasic from '../../screen/AddBasic';
+import CRecipeReviewDetail from '../../screen/Community/CRecipeReviewDetail';
+import AddReviewAppBar from './AppBar/AddReviewAppBar';
+import ReviewDetailAppBar from './AppBar/ReviewDetailAppBar';
 
 const MainStackScreen = () => {
   const Stack = createNativeStackNavigator();
+
   return (
     <Stack.Navigator
       initialRouteName="splash"
@@ -67,6 +71,17 @@ const MainStackScreen = () => {
         }}
       />
       <Stack.Screen
+        name="reviewDetail"
+        component={CRecipeReviewDetail}
+        options={{
+          header() {
+            return <ReviewDetailAppBar />;
+          },
+          headerShown: true,
+          headerShadowVisible: false,
+        }}
+      />
+      <Stack.Screen
         name="addRecipe"
         component={AddRecipe}
         options={{
@@ -114,17 +129,7 @@ const MainStackScreen = () => {
           title: '',
           headerShown: true,
           header() {
-            return (
-              <FAppBar
-                type="close3"
-                titleOn={true}
-                title="후기 작성"
-                rightOn={true}
-                rightTitleOn={true}
-                rightTitle="완료"
-                textOnPress={() => console.log('완료')}
-              />
-            );
+            return <AddReviewAppBar />;
           },
         }}
       />

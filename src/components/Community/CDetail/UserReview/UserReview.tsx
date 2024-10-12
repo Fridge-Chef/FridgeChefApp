@@ -9,11 +9,8 @@ type RecipeType = {
   params: {
     item: {
       content: string;
-      id: number;
-      img: number;
-      likes: number;
+      img?: string;
       point: number;
-      title: string;
       views: number;
       writer: string;
     };
@@ -22,13 +19,14 @@ type RecipeType = {
 
 const UserReview = () => {
   const route = useRoute<RouteProp<RecipeType>>();
-  const {content, likes, point, views, writer, img} = route.params.item;
-  const {uri} = Image.resolveAssetSource(img);
+  const {content, point, views, writer, img} = route.params.item;
+  // console.log(img);
+  // const uri = img ? Image.resolveAssetSource(img).uri : undefined;
 
   return (
     <View style={styles.container}>
       <TopComponent writer={writer} point={point} />
-      <UserContent uri={uri} content={content} views={views} />
+      <UserContent uri={img} content={content} views={views} />
     </View>
   );
 };

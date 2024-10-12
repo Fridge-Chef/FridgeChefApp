@@ -5,26 +5,10 @@ import FButton from '../../elements/FButton';
 import ImageIcon from '../../../utils/Svg/ImageIcon';
 import FText from '../../elements/FText';
 import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
+import {useUserReview} from '../../../store/store';
 
-type AddImageProps = {
-  reviewData: {
-    id: number;
-    reviewPoint: number;
-    reviewContent: string;
-    reviewImg: string;
-  };
-
-  setReviewData: React.Dispatch<
-    React.SetStateAction<{
-      id: number;
-      reviewPoint: number;
-      reviewContent: string;
-      reviewImg: string;
-    }>
-  >;
-};
-
-const AddImage = ({reviewData, setReviewData}: AddImageProps) => {
+const AddImage = () => {
+  const {setUserReview} = useUserReview();
   const handleImagePicker = (pickerType: string) => {
     switch (pickerType) {
       case 'imageLibrary':
@@ -32,9 +16,9 @@ const AddImage = ({reviewData, setReviewData}: AddImageProps) => {
           {
             mediaType: 'photo',
             includeBase64: false,
-            maxHeight: 277,
-            maxWidth: 400,
-            quality: 1,
+            maxHeight: 1920,
+            maxWidth: 1080,
+            quality: 0.7,
           },
           res => {
             if (res.didCancel) {
@@ -43,8 +27,7 @@ const AddImage = ({reviewData, setReviewData}: AddImageProps) => {
               console.log('error: ', res.errorMessage);
             } else {
               if (res.assets![0].uri === undefined) return;
-              setReviewData({
-                ...reviewData,
+              setUserReview({
                 reviewImg: res.assets![0].uri,
               });
             }
@@ -57,8 +40,8 @@ const AddImage = ({reviewData, setReviewData}: AddImageProps) => {
           {
             mediaType: 'photo',
             includeBase64: false,
-            maxHeight: 200,
-            maxWidth: 200,
+            maxHeight: 1920,
+            maxWidth: 1080,
             quality: 0.7,
           },
           res => {
@@ -68,8 +51,7 @@ const AddImage = ({reviewData, setReviewData}: AddImageProps) => {
               console.log('error: ', res.errorMessage);
             } else {
               if (res.assets![0].uri === undefined) return;
-              setReviewData({
-                ...reviewData,
+              setUserReview({
                 reviewImg: res.assets![0].uri,
               });
             }
@@ -102,8 +84,8 @@ export default AddImage;
 
 const styles = StyleSheet.create({
   container: {
-    paddingVertical: FWidth * 16,
-    paddingHorizontal: FWidth * 20,
+    paddingVertical: FWidth * 10,
+    paddingHorizontal: FWidth * 22,
     alignItems: 'flex-start',
     justifyContent: 'center',
     borderTopWidth: 1,

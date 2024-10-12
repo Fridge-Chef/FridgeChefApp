@@ -1,6 +1,6 @@
 import {StyleSheet, Text, View} from 'react-native';
 import React, {useState} from 'react';
-import {useBottomSheetRef} from '../../../store/store';
+import {useBottomSheetRef, useRankName} from '../../../store/store';
 import {colors, FWidth} from '../../../../globalStyle';
 import RankingTop from './RankingTop';
 import FText from '../../elements/FText';
@@ -14,7 +14,7 @@ const Ranking = () => {
     bottomSheetRef.current?.close();
   };
   const [ranking, setRanking] = useState(1);
-
+  const {setRankName} = useRankName();
   return (
     <View style={styles.container}>
       <RankingTop onPress={handleClose} />
@@ -23,7 +23,10 @@ const Ranking = () => {
           key={item.id}
           buttonStyle="addButton"
           fBStyle={styles.alignButton}
-          onPress={() => setRanking(item.id)}>
+          onPress={() => {
+            setRankName(item.text);
+            setRanking(item.id);
+          }}>
           <View style={{opacity: ranking === item.id ? 1 : 0}}>
             <Check />
           </View>

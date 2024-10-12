@@ -12,28 +12,32 @@ import AddImage from '../../components/MyFridge/AddRecipeReview/AddImage';
 import AddScore from '../../components/MyFridge/AddRecipeReview/AddScore';
 import AddContent from '../../components/MyFridge/AddRecipeReview/AddContent';
 import ImageView from '../../components/MyFridge/AddRecipeReview/ImageView';
+import {useUserReview} from '../../store/store';
+import {RouteProp, useRoute} from '@react-navigation/native';
+
+type RecipeTitle = {
+  params: {
+    title: string;
+  };
+};
 
 const AddRecipeReview = () => {
-  const [reviewData, setReviewData] = useState({
-    id: 1,
-    reviewPoint: 0,
-    reviewContent: '',
-    reviewImg: '',
-  });
+  const route = useRoute<RouteProp<RecipeTitle>>();
+  const {userReview} = useUserReview();
 
   return (
     <>
       <ScrollView>
         <Pressable style={styles.container} onPress={() => Keyboard.dismiss()}>
           <View style={styles.topContainer}>
-            <AddScore reviewData={reviewData} setReviewData={setReviewData} />
-            <AddContent reviewData={reviewData} setReviewData={setReviewData} />
-            {reviewData.reviewImg && <ImageView uri={reviewData.reviewImg} />}
+            <AddScore title={route.params.title} />
+            <AddContent />
+            {userReview.reviewImg && <ImageView uri={userReview.reviewImg} />}
           </View>
         </Pressable>
       </ScrollView>
       <Pressable onPress={() => Keyboard.dismiss()}>
-        <AddImage reviewData={reviewData} setReviewData={setReviewData} />
+        <AddImage />
       </Pressable>
     </>
   );

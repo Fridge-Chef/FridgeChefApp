@@ -4,29 +4,21 @@ import {colors, FWidth} from '../../../../globalStyle';
 import FText from '../../elements/FText';
 import ScoreList from './ScoreList';
 
-type ReviewDataProps = {
-  reviewData: {
-    id: number;
-    reviewPoint: number;
-    reviewContent: string;
-    reviewImg: string;
-  };
-
-  setReviewData: React.Dispatch<
-    React.SetStateAction<{
-      id: number;
-      reviewPoint: number;
-      reviewContent: string;
-      reviewImg: string;
-    }>
-  >;
+type AddScoreProps = {
+  title: string;
 };
 
-const AddScore = ({reviewData, setReviewData}: ReviewDataProps) => {
+const AddScore = ({title}: AddScoreProps) => {
   return (
     <View style={styles.container}>
-      <FText fStyle="M_16" color={colors.text} text={'제목 적는곳'} />
-      <ScoreList reviewData={reviewData} setReviewData={setReviewData} />
+      <FText
+        flexShrink={1}
+        lineH={FWidth * 32}
+        fStyle="B_18"
+        color={colors.text}
+        text={title}
+      />
+      <ScoreList />
     </View>
   );
 };
@@ -39,6 +31,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderColor: colors.b200,
     paddingVertical: FWidth * 24,
+    paddingHorizontal: FWidth * 7,
     borderRadius: 14,
   },
 });

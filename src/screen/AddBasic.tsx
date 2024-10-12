@@ -10,7 +10,7 @@ const AddBasic = () => {
   const [basicItem, setBasicItem] = useState({
     items: ['계란', '김치', '케찹', '라면', '밥(햇반)', '소금', '설탕', '간장'],
   });
-  console.log(basicItem);
+
   return (
     <View style={styles.container}>
       <TopLine colorWidth={'100%'} />

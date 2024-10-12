@@ -8,7 +8,7 @@ const LikePage = () => {
   const [data] = useState(true);
   return (
     <View style={styles.container}>
-      {data ? (
+      {!data ? (
         <NoContent
           marginTop={242}
           title="아직 찜하기가 없어요."

@@ -1,3 +1,5 @@
+import {ColorValue} from 'react-native';
+
 export type RecipeListType = {
   title: string;
   likes: number;
@@ -16,6 +18,7 @@ type IconProps =
   | 'close3'
   | 'detailBack'
   | 'detailHeart'
+  | 'detailReviewMore'
   | 'detailShare'
   | 'edit'
   | 'edit2'
@@ -29,7 +32,6 @@ type IconProps =
   | 'kakaoLogo'
   | 'likeIcon'
   | 'loginIcon'
-  | 'menuIcon'
   | 'more'
   | 'moreList'
   | 'notification'
@@ -48,14 +50,20 @@ export type AppBarProps = {
   titleOn?: boolean;
   title?: string;
   rightOn?: boolean;
+  rightTextColor?: ColorValue;
   rightTitleOn?: boolean;
   rightTitle?: string;
   onlyBackIcon?: boolean;
   rType1?: IconProps;
   rType2?: IconProps;
+  rType3?: IconProps | null;
+  onBackPress?: () => void;
   onPress1?: () => void;
   onPress2?: () => void;
+  onPress3?: () => void;
   textOnPress?: () => void;
+  shadow?: boolean;
+  elevation?: number;
 };
 
 export type RecipeList = {

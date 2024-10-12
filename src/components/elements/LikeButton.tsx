@@ -9,10 +9,10 @@ import FText from './FText';
 type LikeButtonProps = {
   onPress: () => void;
   isClicked: boolean;
-  like: number;
+  views: number;
 };
 
-const LikeButton = ({onPress, isClicked, like}: LikeButtonProps) => {
+const LikeButton = ({onPress, isClicked, views}: LikeButtonProps) => {
   return (
     <FButton buttonStyle="noneStyle" onPress={onPress}>
       <View style={styles.iconAlign}>
@@ -21,7 +21,7 @@ const LikeButton = ({onPress, isClicked, like}: LikeButtonProps) => {
           mLeft={FWidth * 6}
           fStyle="M_14"
           color={isClicked ? colors.primary[1] : colors.b500}
-          text={like}
+          text={views}
         />
       </View>
     </FButton>

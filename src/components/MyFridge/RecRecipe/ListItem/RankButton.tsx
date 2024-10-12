@@ -1,33 +1,15 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet} from 'react-native';
 import React from 'react';
-import RankArrow from '../../../../utils/Svg/RankArrow';
-import SubTitleComponent from '../../Ingredients/SubTitleComponent';
-import {colors, FWidth} from '../../../../../globalStyle';
+import ArrowSubTitle from '../../../elements/SubTitle/ArrowSubTitle';
 
 type RankButtonProps = {
   onPress: () => void;
 };
 
 const RankButton = ({onPress}: RankButtonProps) => {
-  return (
-    <View style={styles.container}>
-      <SubTitleComponent
-        title="최신순"
-        color={colors.subText}
-        onPress={onPress}
-      />
-      <View style={{marginLeft: FWidth * 4}}>
-        <RankArrow />
-      </View>
-    </View>
-  );
+  return <ArrowSubTitle onPress={onPress} />;
 };
 
 export default RankButton;
 
-const styles = StyleSheet.create({
-  container: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-});
+const styles = StyleSheet.create({});

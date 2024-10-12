@@ -32,11 +32,12 @@ import Heart4 from '../../utils/Svg/Heart4';
 import StarReview1 from '../../utils/Svg/StarReview1';
 import StarReview2 from '../../utils/Svg/StarReview2';
 import ImageIcon from '../../utils/Svg/ImageIcon';
-import MenuIcon from '../../utils/Svg/MenuIcon';
 import DetailHeart from '../../utils/Svg/DetailHeart';
 import DetailShare from '../../utils/Svg/DetailShare';
 import DetailBack from '../../utils/Svg/DetailBack';
 import HeaderCLose from '../../utils/Svg/HeaderCLose';
+import DetailReviewEdit from '../../utils/Svg/DetailReviewEdit';
+import DetailReviewMore from '../../utils/Svg/DetailReviewMore';
 
 type SvgListProps = {
   type:
@@ -54,6 +55,7 @@ type SvgListProps = {
     | 'googleLogo'
     | 'detailBack'
     | 'detailHeart'
+    | 'detailReviewMore'
     | 'detailShare'
     | 'headerClose'
     | 'heart'
@@ -64,7 +66,6 @@ type SvgListProps = {
     | 'kakaoLogo'
     | 'likeIcon'
     | 'loginIcon'
-    | 'menuIcon'
     | 'more'
     | 'moreList'
     | 'notification'
@@ -102,6 +103,8 @@ const SvgList = ({type}: SvgListProps) => {
       return <DetailBack />;
     case 'detailHeart':
       return <DetailHeart />;
+    case 'detailReviewMore':
+      return <DetailReviewMore />;
     case 'detailShare':
       return <DetailShare />;
     case 'edit':
@@ -128,8 +131,6 @@ const SvgList = ({type}: SvgListProps) => {
       return <LikeIcon />;
     case 'loginIcon':
       return <LoginIcon />;
-    case 'menuIcon':
-      return <MenuIcon />;
     case 'more':
       return <More />;
     case 'moreList':

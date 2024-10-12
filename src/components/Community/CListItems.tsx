@@ -6,13 +6,12 @@ import {
   View,
 } from 'react-native';
 import React from 'react';
-import {colors, FWidth} from '../../../globalStyle';
-import ArrowDown2 from '../../utils/Svg/ArrowDown2';
-import SubTitleComponent from '../MyFridge/Ingredients/SubTitleComponent';
+import {FWidth} from '../../../globalStyle';
 import CListItem from './CListItem';
 import {myRecipes} from '../../utils/list';
 import {ParamListBase, useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import ArrowSubTitle from '../elements/SubTitle/ArrowSubTitle';
 
 type CListItemsProps = {
   scrollOffset: number;
@@ -36,10 +35,7 @@ const CListItems = ({
   return (
     <View style={styles.container}>
       <View style={styles.titleContainer}>
-        <SubTitleComponent title="최근순" color={colors.subText} />
-        <View style={{marginLeft: FWidth * 4}}>
-          <ArrowDown2 />
-        </View>
+        <ArrowSubTitle />
       </View>
       <FlatList
         data={myRecipes}

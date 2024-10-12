@@ -12,9 +12,9 @@ const initialLayout = {width: Dimensions.get('window').width};
 const RecipeBook = () => {
   const {index, setIndex} = useTopTabBar();
   const [routes] = useState([
-    {key: 'like', title: '찜하기'},
-    {key: 'myRecipe', title: '나만의 레시피'},
-    {key: 'recipeReview', title: '레시피 후기'},
+    {key: 'like', title: '좋아요'},
+    {key: 'myRecipe', title: '나의 레시피'},
+    {key: 'recipeReview', title: '나의 후기'},
   ]);
 
   const renderScene = SceneMap({
@@ -54,7 +54,7 @@ export default RecipeBook;
 
 const styles = StyleSheet.create({
   tabBar: {
-    height: FWidth * 54,
+    height: FWidth * 53,
     backgroundColor: colors.white,
     justifyContent: 'center',
     borderBottomWidth: 1,

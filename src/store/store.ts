@@ -58,6 +58,27 @@ type CategoriesTextType = {
   setExpiryDate: (expiryDate: string) => void;
 };
 
+type ScrollYType = {
+  scrollY: number;
+  setScrollY: (scrollY: number) => void;
+};
+
+type UserReviewType = {
+  userReview: {reviewPoint: number; reviewContent: string; reviewImg: string};
+  setUserReview: (
+    userReview: Partial<{
+      reviewPoint: number;
+      reviewContent: string;
+      reviewImg: string;
+    }>,
+  ) => void;
+};
+
+type RankNameType = {
+  rankName: string;
+  setRankName: (rankName: string) => void;
+};
+
 export const useBottomSheetRef = create<BottomSheetRefType>(set => ({
   bottomSheetRef: {current: null},
   setBottomSheetRef: ref => set({bottomSheetRef: ref}),
@@ -117,4 +138,31 @@ export const useCategoriesText = create<CategoriesTextType>(set => ({
   setItemNumber: (itemNumber: number) => set({itemNumber}),
   setCategory: (category: string) => set({category}),
   setExpiryDate: (expiryDate: string) => set({expiryDate}),
+}));
+
+export const useScrollY = create<ScrollYType>(set => ({
+  scrollY: 0,
+  setScrollY: (scrollY: number) => set({scrollY}),
+}));
+
+export const useUserReview = create<UserReviewType>(set => ({
+  userReview: {reviewPoint: 0, reviewContent: '', reviewImg: ''},
+  setUserReview: (
+    userReview: Partial<{
+      reviewPoint: number;
+      reviewContent: string;
+      reviewImg: string;
+    }>,
+  ) =>
+    set(state => ({
+      userReview: {
+        ...state.userReview,
+        ...userReview,
+      },
+    })),
+}));
+
+export const useRankName = create<RankNameType>(set => ({
+  rankName: '재료 많은순',
+  setRankName: (rankName: string) => set({rankName}),
 }));

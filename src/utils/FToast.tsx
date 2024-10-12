@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
   container: {
     width: '100%',
     paddingHorizontal: FWidth * 22,
-    marginBottom: FWidth * 62,
+    marginBottom: FWidth * 86,
   },
 
   toastContainer: {
@@ -42,8 +42,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     backgroundColor: 'rgba(44, 44, 46, 0.9)',
-    paddingVertical: FWidth * 10,
-    paddingHorizontal: FWidth * 12,
-    borderRadius: 8,
+    paddingVertical: FWidth * 12,
+    paddingHorizontal: FWidth * 14,
+    borderRadius: 10,
   },
 });

@@ -12,8 +12,8 @@ type TopComponentProps = {
 const TopComponent = ({writer, point}: TopComponentProps) => {
   return (
     <View style={styles.container}>
-      <UserInfo name={writer} point={point} />
-      <FText fStyle="M_12" color={colors.b400} text={'2024.10.03'} />
+      <UserInfo writer={writer} point={point} />
+      <FText fStyle="M_12" color={colors.b300} text={'일주일 전'} />
     </View>
   );
 };

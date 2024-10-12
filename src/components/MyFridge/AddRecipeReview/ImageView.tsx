@@ -10,7 +10,13 @@ type ImageViewProps = {
 const ImageView = ({uri}: ImageViewProps) => {
   return (
     <View style={styles.container}>
-      <FImage uri={uri} imgStyle="addImg" resizeMode="cover" alt="미리보기" />
+      <FImage
+        uri={uri}
+        imgStyle="addImg"
+        borderRadius={8}
+        resizeMode="cover"
+        alt="미리보기"
+      />
     </View>
   );
 };
@@ -19,6 +25,6 @@ export default ImageView;
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: FWidth * 24,
+    marginTop: FWidth * 56,
   },
 });

@@ -1,6 +1,5 @@
 import {FlatList, LayoutChangeEvent, StyleSheet, View} from 'react-native';
 import React, {useEffect, useState} from 'react';
-import SubTitleComponent from '../Ingredients/SubTitleComponent';
 import {colors, FWidth} from '../../../../globalStyle';
 import {list} from '../../../utils/list';
 import FButton from '../../elements/FButton';
@@ -8,6 +7,7 @@ import BottomButton from '../../../utils/Svg/BottomButton';
 import {RecipeList} from '../../../type/types';
 import {useBottomSheetRef, useBottomSheetTitle} from '../../../store/store';
 import FText from '../../elements/FText';
+import SubTitle from '../../elements/SubTitle/SubTitle';
 
 const TopComponent = () => {
   const [itemHeight, setItemHeight] = useState(0);
@@ -47,7 +47,7 @@ const TopComponent = () => {
 
   return (
     <View>
-      <SubTitleComponent title="보유 재료" color={colors.text} />
+      <SubTitle title="보유 재료" />
       <View style={{position: 'relative'}}>
         <FlatList
           data={list}
@@ -62,12 +62,13 @@ const TopComponent = () => {
                   position: 'relative',
                 },
               ]}>
-              <View style={[styles.listItemContainer]} onLayout={onLayout2}>
+              <View style={[styles.listItemContainer]}>
                 {list &&
                   item.ingredients?.map((ingredient: RecipeList) => (
                     <View
                       key={ingredient.ingredient_id}
-                      style={[styles.listItem, {backgroundColor: colors.b100}]}>
+                      style={[styles.listItem, {backgroundColor: colors.b100}]}
+                      onLayout={onLayout}>
                       <FText
                         fStyle="M_14"
                         color={

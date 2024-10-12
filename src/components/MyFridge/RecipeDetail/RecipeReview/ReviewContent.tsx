@@ -6,11 +6,11 @@ import FImage from '../../../elements/FImage';
 
 type ReviewContentProps = {
   content: {
-    name: string;
+    writer: string;
     point: number;
     content: string;
-    img: string;
-    like: number;
+    img?: string;
+    views: number;
   };
 };
 
@@ -26,41 +26,12 @@ const ReviewContent = ({content}: ReviewContentProps) => {
           color={colors.text}
           text={content.content}
         />
-        <View
-          style={{
-            position: 'absolute',
-            bottom: 0,
-            right: 0,
-            backgroundColor: colors.white,
-          }}>
-          {content.content.length > 74 && content.img ? (
-            <FText
-              flexShrink={1}
-              nLine={4}
-              fStyle="R_14"
-              lineH={FWidth * 20}
-              color={colors.text}
-              text={'... 더보기'}
-            />
-          ) : (
-            content.content.length > 110 &&
-            !content.img && (
-              <FText
-                flexShrink={1}
-                nLine={4}
-                fStyle="R_14"
-                lineH={FWidth * 20}
-                color={colors.text}
-                text={'... 더보기'}
-              />
-            )
-          )}
-        </View>
       </View>
       {content.img && (
         <FImage
           uri={content.img}
           imgStyle="sub2"
+          borderRadius={8}
           resizeMode="stretch"
           alt="리뷰 이미지"
         />

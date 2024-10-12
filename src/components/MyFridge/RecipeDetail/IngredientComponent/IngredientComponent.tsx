@@ -2,8 +2,7 @@ import {StyleSheet, View} from 'react-native';
 import React from 'react';
 import {colors, FWidth} from '../../../../../globalStyle';
 import ItemsComponent from './ItemsComponent';
-import {detailList3} from '../../../../utils/list';
-import SubTitleComponent from '../SubTitleComponent';
+import SubTitle2 from '../../../elements/SubTitle/SubTitle2';
 
 type IngredientComponentProps = {
   ingredientList: {
@@ -14,7 +13,7 @@ type IngredientComponentProps = {
 const IngredientComponent = ({ingredientList}: IngredientComponentProps) => {
   return (
     <View style={styles.container}>
-      <SubTitleComponent title="재료" />
+      <SubTitle2 title="재료" />
       <View style={styles.itemsContainer}>
         <View style={styles.subContainer}>
           <ItemsComponent ingredientList={ingredientList} />

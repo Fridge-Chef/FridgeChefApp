@@ -1,9 +1,8 @@
 import {StyleSheet, View} from 'react-native';
 import React from 'react';
 import {colors, FWidth} from '../../../../../globalStyle';
-import SubTitleComponent from '../SubTitleComponent';
 import ContentComponent from './ContentComponent';
-import {detailContent} from '../../../../utils/list';
+import SubTitle2 from '../../../elements/SubTitle/SubTitle2';
 
 type RecipeComponentProps = {
   detailContent: {
@@ -16,10 +15,9 @@ const RecipeComponent = ({detailContent}: RecipeComponentProps) => {
   return (
     <View style={styles.container}>
       <View style={{marginBottom: FWidth * 24}}>
-        <SubTitleComponent title="조리 방법" />
+        <SubTitle2 title="조리 방법" />
       </View>
       {detailContent.map((item, index) => {
-        console.log(index + 1);
         return (
           <ContentComponent
             id={index + 1}

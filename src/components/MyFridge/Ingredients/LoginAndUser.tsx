@@ -1,10 +1,8 @@
 import {StyleSheet, TouchableOpacity, View} from 'react-native';
-import React, {useState} from 'react';
+import React from 'react';
 import {colors, FWidth} from '../../../../globalStyle';
-import LoginIcon from '../../../utils/Svg/LoginIcon';
 import Notification from '../../../utils/Svg/Notification';
 import FText from '../../elements/FText';
-import LoginIcon2 from '../../../utils/Svg/LoginIcon2';
 import NotLoginUser from '../../../utils/Svg/NotLoginUser';
 
 type LoginAndUserProps = {

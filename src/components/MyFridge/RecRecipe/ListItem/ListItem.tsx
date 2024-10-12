@@ -20,7 +20,7 @@ const ListItem = ({item}: ListItemProps) => {
   const [isLike, setIsLike] = useState(false);
 
   return (
-    <View style={styles.mainItemContainer}>
+    <View style={styles.container}>
       <FImage imgStyle="main" uri="" alt="메인 리스트" />
       <View style={styles.itemTextContainer}>
         <View style={styles.itemTitleAndLikeContainer}>
@@ -44,13 +44,13 @@ const ListItem = ({item}: ListItemProps) => {
 export default ListItem;
 
 const styles = StyleSheet.create({
-  mainItemContainer: {
+  container: {
     padding: FWidth * 14,
     flexDirection: 'row',
     alignItems: 'flex-start',
     borderColor: colors.border,
     borderWidth: 1,
-    borderRadius: 14,
+    borderRadius: 12,
     marginTop: FWidth * 12,
   },
 

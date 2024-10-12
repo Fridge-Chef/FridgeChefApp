@@ -1,8 +1,8 @@
 import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import {colors, FWidth} from '../../../../../globalStyle';
-import SubTitleComponent from '../SubTitleComponent';
 import NoteContent from './NoteContent';
+import SubTitle2 from '../../../elements/SubTitle/SubTitle2';
 
 type RecipeNoteProps = {
   content: string;
@@ -11,7 +11,7 @@ type RecipeNoteProps = {
 const RecipeNote = ({content}: RecipeNoteProps) => {
   return (
     <View style={styles.container}>
-      <SubTitleComponent title="레시피 노트" />
+      <SubTitle2 title="레시피 노트" />
       <NoteContent content={content} />
     </View>
   );

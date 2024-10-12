@@ -7,7 +7,7 @@ const CRecipeReviewDetail = () => {
   return (
     <ScrollView style={styles.container} overScrollMode="never">
       <UserReview />
-      <ReviewList />
+      {/* <ReviewList /> */}
     </ScrollView>
   );
 };

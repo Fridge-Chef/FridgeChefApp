@@ -5,23 +5,34 @@ import ReviewContent from './ReviewContent';
 import UserInfo from './UserInfo';
 import BottomComponent from './BottomComponent';
 import DetailReviewMore from '../../../../utils/Svg/DetailReviewMore';
+import FButton from '../../../elements/FButton';
+import {ParamListBase, useNavigation} from '@react-navigation/native';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 
 type ReviewProps = {
   review: {
-    name: string;
+    writer: string;
     point: number;
     content: string;
     img: string;
-    like: number;
+    views: number;
   };
 };
 
 const Review = ({review}: ReviewProps) => {
   const [isClicked, setIsClicked] = useState(false);
+  const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
+  const handleReviewDetail = () => {
+    navigation.navigate('reviewDetail', {item: review});
+  };
+
   return (
-    <View style={styles.container}>
+    <FButton
+      buttonStyle="noneStyle"
+      fBStyle={styles.container}
+      onPress={handleReviewDetail}>
       <View style={styles.iconAlign}>
-        <UserInfo name={review.name} point={review.point} />
+        <UserInfo writer={review.writer} point={review.point} />
         <DetailReviewMore />
       </View>
       <ReviewContent content={review} />
@@ -30,7 +41,7 @@ const Review = ({review}: ReviewProps) => {
         review={review}
         onPress={() => setIsClicked(!isClicked)}
       />
-    </View>
+    </FButton>
   );
 };
 

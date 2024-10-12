@@ -25,7 +25,7 @@ type AddRecipePreviewProps = {
 
 const AddRecipePreview = () => {
   const route = useRoute<RouteProp<AddRecipePreviewProps>>();
-  console.log('route1', route);
+
   const item = route.params.addRecipeData;
   return (
     <ScrollView style={styles.container}>

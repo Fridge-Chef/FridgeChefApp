@@ -4,7 +4,6 @@ import {colors} from '../../../globalStyle';
 import CListMenu from '../../components/Community/CListMenu';
 import {menuList} from '../../utils/list';
 import CListItems from '../../components/Community/CListItems';
-import CAddReviewButton from '../../components/Community/CAddReviewButton';
 import CTopTitle from './CTopTitle';
 import CAddRecipeButton from '../../components/Community/CAddRecipeButton';
 

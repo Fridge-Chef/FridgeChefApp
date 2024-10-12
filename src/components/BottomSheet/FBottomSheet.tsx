@@ -17,6 +17,7 @@ import IngredientList from './IngredientList/IngredientList';
 import Management from './ExpiryDate/Management';
 import FBottomSheetSub from './BottomSheetSub/FBottomSheetSub';
 import Ranking from './Ranking/Ranking';
+import DetailReviewOption from './DetailReviewOption/DetailReviewOption';
 
 const FBottomSheet = () => {
   const {title} = useBottomSheetTitle();
@@ -30,6 +31,8 @@ const FBottomSheet = () => {
         return ['100%'];
       case '순위':
         return ['32%'];
+      case '디테일리뷰옵션':
+        return ['20%'];
       default:
         return ['100%'];
     }
@@ -71,6 +74,8 @@ const FBottomSheet = () => {
         return <IngredientList />;
       case '순위':
         return <Ranking />;
+      case '디테일리뷰옵션':
+        return <DetailReviewOption />;
       default:
         break;
     }
