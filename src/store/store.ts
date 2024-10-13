@@ -1,15 +1,15 @@
-import BottomSheet from '@gorhom/bottom-sheet';
+import BottomSheet, {BottomSheetModal} from '@gorhom/bottom-sheet';
 import {RefObject} from 'react';
 import {create} from 'zustand';
 
 type BottomSheetRefType = {
-  bottomSheetRef: RefObject<BottomSheet>;
-  setBottomSheetRef: (ref: RefObject<BottomSheet>) => void;
+  bottomSheetRef: RefObject<BottomSheetModal>;
+  setBottomSheetRef: (ref: RefObject<BottomSheetModal>) => void;
 };
 
 type SubBottomSheetRefType = {
-  subBottomSheetRef: RefObject<BottomSheet>;
-  setSubBottomSheetRef: (ref: RefObject<BottomSheet>) => void;
+  subBottomSheetRef: RefObject<BottomSheetModal>;
+  setSubBottomSheetRef: (ref: RefObject<BottomSheetModal>) => void;
 };
 
 type BottomSheetTitleType = {

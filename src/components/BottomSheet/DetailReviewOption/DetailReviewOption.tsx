@@ -1,4 +1,4 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {LayoutChangeEvent, StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import Close3 from '../../../utils/Svg/Close3';
 import Close2 from '../../../utils/Svg/Close2';

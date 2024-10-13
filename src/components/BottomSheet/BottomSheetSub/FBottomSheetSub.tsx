@@ -1,6 +1,11 @@
 import {Keyboard, StatusBar, StyleSheet, Text, View} from 'react-native';
-import React, {useCallback, useEffect, useMemo, useRef} from 'react';
-import {BottomSheetBackdrop, BottomSheetScrollView} from '@gorhom/bottom-sheet';
+import React, {useCallback, useEffect, useMemo, useRef, useState} from 'react';
+import {
+  BottomSheetBackdrop,
+  BottomSheetModal,
+  BottomSheetModalProvider,
+  BottomSheetScrollView,
+} from '@gorhom/bottom-sheet';
 import BottomSheet from '@gorhom/bottom-sheet';
 import {colors, FWidth} from '../../../../globalStyle';
 import {
@@ -16,7 +21,7 @@ const FBottomSheetSub = () => {
     return ['45%'];
   }, []);
 
-  const bottomRef = useRef<BottomSheet>(null);
+  const bottomRef1 = useRef<BottomSheetModal>(null);
   const renderBackdrop = useCallback(
     (props: any) => (
       <BottomSheetBackdrop
@@ -38,40 +43,43 @@ const FBottomSheetSub = () => {
       case '유통기한':
         return <SubExpiryDate />;
       default:
-        break;
+        return null;
     }
   };
 
   useEffect(() => {
-    setSubBottomSheetRef(bottomRef);
-  }, []);
+    setSubBottomSheetRef(bottomRef1);
+  }, [setSubBottomSheetRef]);
 
   return (
-    <BottomSheet
-      ref={bottomRef}
-      snapPoints={snapPoints}
-      handleStyle={{
-        borderTopLeftRadius: 20,
-        borderTopRightRadius: 20,
-        height: FWidth * 36,
-        elevation: 0,
-      }}
-      handleComponent={null}
-      onChange={handleChange}
-      enablePanDownToClose={true}
-      enableContentPanningGesture={true}
-      backdropComponent={renderBackdrop}
-      backgroundStyle={{
-        backgroundColor: colors.white,
-      }}
-      index={-1}
-      style={[styles.contentContainer]}>
-      <BottomSheetScrollView
-        showsVerticalScrollIndicator={false}
-        contentContainerStyle={{flexGrow: 1}}>
-        {bottomScreen()}
-      </BottomSheetScrollView>
-    </BottomSheet>
+    <BottomSheetModalProvider>
+      <BottomSheetModal
+        ref={bottomRef1}
+        // snapPoints={snapPoints}
+        enableDynamicSizing={true}
+        handleStyle={{
+          borderTopLeftRadius: 20,
+          borderTopRightRadius: 20,
+          height: FWidth * 36,
+          elevation: 0,
+        }}
+        handleComponent={null}
+        onChange={handleChange}
+        enablePanDownToClose={true}
+        enableContentPanningGesture={true}
+        backdropComponent={renderBackdrop}
+        backgroundStyle={{
+          backgroundColor: colors.white,
+        }}
+        index={0}
+        style={[styles.contentContainer]}>
+        <BottomSheetScrollView
+          showsVerticalScrollIndicator={false}
+          contentContainerStyle={{flexGrow: 0}}>
+          {bottomScreen()}
+        </BottomSheetScrollView>
+      </BottomSheetModal>
+    </BottomSheetModalProvider>
   );
 };
 

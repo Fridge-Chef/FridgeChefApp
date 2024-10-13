@@ -18,7 +18,8 @@ const ExpiryDate = () => {
   const {selectedDate} = useSubBottomSheetDate();
   const handleAddExpiryDate = () => {
     setSubTitle('유통기한');
-    subBottomSheetRef.current?.expand();
+
+    subBottomSheetRef.current?.present();
   };
 
   return (

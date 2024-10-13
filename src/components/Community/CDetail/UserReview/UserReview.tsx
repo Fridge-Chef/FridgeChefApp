@@ -21,7 +21,7 @@ const UserReview = () => {
   const route = useRoute<RouteProp<RecipeType>>();
   const {content, point, views, writer, img} = route.params.item;
   // console.log(img);
-  // const uri = img ? Image.resolveAssetSource(img).uri : undefined;
+  // const {uri} = Image.resolveAssetSource(img!);
 
   return (
     <View style={styles.container}>

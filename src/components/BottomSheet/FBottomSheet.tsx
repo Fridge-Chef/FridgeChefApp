@@ -1,7 +1,9 @@
-import {Keyboard, StatusBar, StyleSheet} from 'react-native';
-import React, {useCallback, useEffect, useMemo, useRef} from 'react';
+import {Keyboard, LayoutChangeEvent, StatusBar, StyleSheet} from 'react-native';
+import React, {useCallback, useEffect, useMemo, useRef, useState} from 'react';
 import BottomSheet, {
   BottomSheetBackdrop,
+  BottomSheetModal,
+  BottomSheetModalProvider,
   BottomSheetScrollView,
 } from '@gorhom/bottom-sheet';
 import {
@@ -22,6 +24,7 @@ import DetailReviewOption from './DetailReviewOption/DetailReviewOption';
 const FBottomSheet = () => {
   const {title} = useBottomSheetTitle();
   const {setCategory, setExpiryDate, setItemNumber} = useCategoriesText();
+  const [contentHeight, setContentHeight] = useState(0);
   const snapPoints = useMemo(() => {
     switch (title) {
       case '재료 추가':
@@ -30,15 +33,14 @@ const FBottomSheet = () => {
       case '재료보기':
         return ['100%'];
       case '순위':
-        return ['32%'];
       case '디테일리뷰옵션':
-        return ['20%'];
+        return ['30%'];
       default:
         return ['100%'];
     }
   }, [title]);
   const {setBottomSheetRef} = useBottomSheetRef();
-  const bottomRef = useRef<BottomSheet>(null);
+  const bottomRef = useRef<BottomSheetModal>(null);
   const renderBackdrop = useCallback(
     (props: any) => (
       <BottomSheetBackdrop
@@ -87,32 +89,38 @@ const FBottomSheet = () => {
 
   return (
     <>
-      <BottomSheet
-        ref={bottomRef}
-        snapPoints={snapPoints}
-        handleStyle={{
-          borderTopLeftRadius: 20,
-          borderTopRightRadius: 20,
-          height: FWidth * 36,
-          elevation: 0,
-        }}
-        handleComponent={null}
-        onChange={handleChange}
-        enablePanDownToClose={true}
-        enableContentPanningGesture={true}
-        backdropComponent={renderBackdrop}
-        backgroundStyle={{
-          backgroundColor: colors.white,
-        }}
-        index={-1}
-        style={[styles.contentContainer]}>
-        <BottomSheetScrollView
-          showsVerticalScrollIndicator={false}
-          contentContainerStyle={{flexGrow: 1}}>
-          {bottomScreen()}
-        </BottomSheetScrollView>
-      </BottomSheet>
-      <FBottomSheetSub />
+      <BottomSheetModalProvider>
+        <BottomSheetModal
+          ref={bottomRef}
+          snapPoints={snapPoints}
+          enableDynamicSizing={
+            title === '순위' || title === '디테일리뷰옵션' ? true : false
+          }
+          handleStyle={{
+            borderTopLeftRadius: 20,
+            borderTopRightRadius: 20,
+            height: FWidth * 36,
+            elevation: 0,
+          }}
+          handleComponent={null}
+          onChange={handleChange}
+          enablePanDownToClose={true}
+          enableContentPanningGesture={true}
+          backdropComponent={renderBackdrop}
+          backgroundStyle={{
+            backgroundColor: colors.white,
+          }}
+          index={0}
+          style={[styles.contentContainer]}>
+          <BottomSheetScrollView
+            showsVerticalScrollIndicator={false}
+            contentContainerStyle={{
+              flexGrow: title === '순위' || title === '디테일리뷰옵션' ? 0 : 1,
+            }}>
+            {bottomScreen()}
+          </BottomSheetScrollView>
+        </BottomSheetModal>
+      </BottomSheetModalProvider>
     </>
   );
 };

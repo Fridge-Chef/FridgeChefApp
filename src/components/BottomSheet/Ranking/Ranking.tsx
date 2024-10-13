@@ -1,4 +1,4 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {LayoutChangeEvent, StyleSheet, Text, View} from 'react-native';
 import React, {useState} from 'react';
 import {useBottomSheetRef, useRankName} from '../../../store/store';
 import {colors, FWidth} from '../../../../globalStyle';

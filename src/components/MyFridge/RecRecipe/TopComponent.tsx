@@ -27,7 +27,7 @@ const TopComponent = () => {
 
   const handleBottomSheetOpen = () => {
     setTitle('재료보기');
-    bottomSheetRef.current?.expand();
+    bottomSheetRef.current?.present();
   };
 
   const handleIngredientClick = (ingredient: RecipeList) => {

@@ -8,6 +8,7 @@ import Loading from './src/components/elements/Loading';
 import FToast from './src/utils/FToast';
 import {GoogleSignin} from '@react-native-google-signin/google-signin';
 import Config from 'react-native-config';
+import FBottomSheetSub from './src/components/BottomSheet/BottomSheetSub/FBottomSheetSub';
 
 function App() {
   const googleSignInConfigure = () => {
@@ -32,6 +33,7 @@ function App() {
         <NavigationContainer>
           <MainStackScreen />
           <FBottomSheet />
+          <FBottomSheetSub />
           <Loading />
         </NavigationContainer>
       </GestureHandlerRootView>

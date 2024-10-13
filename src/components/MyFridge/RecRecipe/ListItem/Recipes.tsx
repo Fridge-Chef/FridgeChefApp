@@ -17,7 +17,7 @@ const Recipes = () => {
 
   const handleBottomSheetOpen = () => {
     setTitle('순위');
-    bottomSheetRef.current?.expand();
+    bottomSheetRef.current?.present();
   };
 
   return (

@@ -23,7 +23,7 @@ const ReviewsComponent = () => {
 
   const handleBottomSheetOpen = () => {
     setTitle('순위');
-    bottomSheetRef.current?.expand();
+    bottomSheetRef.current?.present();
   };
   const reviews: ReviewType[] | null = [
     // {

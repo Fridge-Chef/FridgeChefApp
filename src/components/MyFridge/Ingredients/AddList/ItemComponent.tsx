@@ -27,7 +27,7 @@ const ItemComponent = ({itemList}: ItemComponentProps) => {
   const {bottomSheetRef} = useBottomSheetRef();
 
   const handleAddExpiration = (title: string) => {
-    bottomSheetRef.current?.expand();
+    bottomSheetRef.current?.present();
     setIngredientTitle(title);
     setTitle(buttonName);
   };

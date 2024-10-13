@@ -18,7 +18,7 @@ const ReviewDetailAppBar = () => {
       rType2="detailReviewMore"
       onPress2={() => {
         setTitle('디테일리뷰옵션');
-        bottomSheetRef.current?.expand();
+        bottomSheetRef.current?.present();
       }}
     />
   );

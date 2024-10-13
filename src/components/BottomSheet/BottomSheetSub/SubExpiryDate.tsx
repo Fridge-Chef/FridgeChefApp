@@ -1,7 +1,7 @@
-import {StyleSheet, View} from 'react-native';
+import {LayoutChangeEvent, StyleSheet, View} from 'react-native';
 import React, {useState} from 'react';
 import DatePicker from 'react-native-date-picker';
-import {colors, FWidth} from '../../../../globalStyle';
+import {colors, FHeight, FWidth} from '../../../../globalStyle';
 import FText from '../../elements/FText';
 import FButton from '../../elements/FButton';
 import {
@@ -36,7 +36,6 @@ export default SubExpiryDate;
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     paddingTop: FWidth * 56,
     alignItems: 'center',
     paddingHorizontal: FWidth * 22,
@@ -44,7 +43,7 @@ const styles = StyleSheet.create({
 
   buttonStyle: {
     marginTop: FWidth * 64,
-    marginBottom: FWidth * 32,
+    // marginBottom: FWidth * 40,
     width: '100%',
     alignItems: 'center',
     backgroundColor: colors.text,

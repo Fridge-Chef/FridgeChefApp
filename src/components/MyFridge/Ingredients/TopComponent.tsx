@@ -14,7 +14,7 @@ const TopComponent = () => {
 
   const handleAddIngredient = () => {
     setTitle(buttonName);
-    bottomSheetRef.current?.expand();
+    bottomSheetRef.current?.present();
   };
 
   return (
