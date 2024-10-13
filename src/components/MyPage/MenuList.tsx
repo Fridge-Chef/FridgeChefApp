@@ -6,9 +6,9 @@ import FButton from '../elements/FButton';
 
 const MenuList = () => {
   const menu = [
-    {id: 1, title: '공지사항'},
+    {id: 1, title: '프리지셰프 소개'},
     {id: 2, title: '로그아웃'},
-    {id: 3, title: '서비스 탈퇴'},
+    {id: 3, title: '회원 탈퇴'},
   ];
 
   return (
@@ -33,10 +33,12 @@ export default MenuList;
 const styles = StyleSheet.create({
   menuButton: {
     marginTop: FWidth * 12,
-    paddingVertical: FWidth * 20,
-    paddingLeft: FWidth * 22,
-    paddingRight: FWidth * 16,
+    paddingVertical: FWidth * 19,
+    paddingLeft: FWidth * 21,
+    paddingRight: FWidth * 15,
     borderRadius: 14,
-    backgroundColor: colors.background2,
+    borderWidth: 1,
+    borderColor: colors.border,
+    backgroundColor: colors.white,
   },
 });

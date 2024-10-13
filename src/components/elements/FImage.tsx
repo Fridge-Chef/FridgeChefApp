@@ -80,8 +80,8 @@ const styles = StyleSheet.create({
   },
 
   myPageUser: {
-    width: FWidth * 48,
-    height: FWidth * 48,
+    width: FWidth * 58,
+    height: FWidth * 58,
     // borderRadius: 50,
   },
 

@@ -52,7 +52,7 @@ const BottomTab = () => {
           }}
         />
         <Tab.Screen name="나만의 레시피" component={CommunityScreen} />
-        <Tab.Screen name="더보기" component={MoreScreen} />
+        <Tab.Screen name="설정" component={MoreScreen} />
       </Tab.Navigator>
       {loginClicked && (
         <FModal

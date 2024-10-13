@@ -30,7 +30,7 @@ const IconComponent = ({focused, name}: IconComponentProps) => {
           <EditSquare focused={focused} />
         </View>
       );
-    case '더보기':
+    case '설정':
       return (
         <View style={styles.container}>
           <More focused={focused} />

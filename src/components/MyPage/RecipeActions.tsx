@@ -10,15 +10,12 @@ const RecipeActions = () => {
   const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
 
   const recipeActionInfo = [
-    {recipeAction: '레시피 검색', recipeActionCount: '2회'},
     {recipeAction: '레시피 작성', recipeActionCount: '5회'},
     {recipeAction: '후기 작성', recipeActionCount: '2회'},
   ];
 
   const handleList = (title: string) => {
     switch (title) {
-      case '레시피 검색':
-        return console.log('레시피 검색');
       case '레시피 작성':
         return console.log('레시피 작성');
       case '후기 작성':
@@ -56,14 +53,14 @@ const styles = StyleSheet.create({
     marginTop: FWidth * 20,
     width: '100%',
     flexDirection: 'row',
-    justifyContent: 'space-between',
+
     borderRadius: 12,
-    padding: FWidth * 20,
+    padding: FWidth * 16,
     backgroundColor: colors.white,
   },
 
   textContainer: {
-    paddingHorizontal: FWidth * 6.83,
+    flex: 1,
     alignItems: 'center',
   },
 });
