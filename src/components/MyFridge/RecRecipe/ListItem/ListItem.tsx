@@ -6,22 +6,19 @@ import LikeButton from './LikeButton';
 import BottomText from './BottomText';
 import FImage from '../../../elements/FImage';
 import FText from '../../../elements/FText';
+import {RecipeListDetailType} from '../../../../type/types';
 
-type ListItemProps = {
-  item: {
-    title: string;
-    likes: number;
-    favorites: number;
-    ingredients: string[];
-  };
-};
-
-const ListItem = ({item}: ListItemProps) => {
+const ListItem = ({item}: RecipeListDetailType) => {
   const [isLike, setIsLike] = useState(false);
 
   return (
     <View style={styles.container}>
-      <FImage imgStyle="main" uri="" alt="메인 리스트" />
+      <FImage
+        imgStyle="main"
+        borderRadius={8}
+        uri={item.mainImage}
+        alt="메인 리스트"
+      />
       <View style={styles.itemTextContainer}>
         <View style={styles.itemTitleAndLikeContainer}>
           <FText
@@ -30,7 +27,7 @@ const ListItem = ({item}: ListItemProps) => {
             fStyle="B_16"
             lineH={FWidth * 22.5}
             color={colors.text}
-            text={item.title}
+            text={item.mainTitle}
           />
           <LikeButton isLike={isLike} setIsLike={setIsLike} />
         </View>

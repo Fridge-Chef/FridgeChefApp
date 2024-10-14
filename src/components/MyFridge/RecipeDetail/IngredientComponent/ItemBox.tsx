@@ -16,7 +16,7 @@ const ItemBox = ({title, quantity, onPress}: ItemBoxProps) => {
       <View style={styles.titleAlign}>
         <FText fStyle="R_16" color={colors.black} text={title} />
         {quantity && (
-          <FText fStyle="R_16" color={colors.black} text={` (${quantity})`} />
+          <FText fStyle="R_16" color={colors.black} text={` ${quantity}`} />
         )}
       </View>
       <FButton buttonStyle="buyButton" onPress={onPress}>

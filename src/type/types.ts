@@ -1,10 +1,31 @@
 import {ColorValue} from 'react-native';
 
 export type RecipeListType = {
-  title: string;
+  id: number;
+  writer: string;
+  mainImage: string;
+  mainTitle: string;
   likes: number;
   favorites: number;
-  ingredients: string[];
+  myLike: number;
+  mainContent: string;
+  ingredients: {name: string; quantity: string}[];
+  step: {step: string; image: string}[];
+};
+
+export type RecipeListDetailType = {
+  item: {
+    id: number;
+    writer: string;
+    mainImage: string;
+    mainTitle: string;
+    likes: number;
+    favorites: number;
+    myLike: number;
+    mainContent: string;
+    ingredients: {name: string; quantity: string}[];
+    step: {step: string; image: string}[];
+  };
 };
 
 type IconProps =

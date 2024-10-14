@@ -95,7 +95,7 @@ android {
         versionCode 1
         versionName "1.0"
         resValue "string", "kakao_manifest_app_key", project.env.get("KAKAO_MANIFEST_KEY")
-        resValue "string", "kakao_app_key", project.env.get("KAKAO_API_KEY")
+        resValue "string", "kakao_key", project.env.get("KAKAO_API_KEY")
         resValue "string", "google_mobilesdk_app_id", project.env.get("GOOGLE_MOBILESDK_APP_ID")
         resValue "string", "google_oauth_type1_client_id", project.env.get("GOOGLE_OAUTH_TYPE1_CLIENT_ID")
         resValue "string", "google_oauth_type1_certificate_hash", project.env.get("GOOGLE_OAUTH_TYPE1_CERTIFICATE_HASH")

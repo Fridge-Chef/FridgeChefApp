@@ -10,7 +10,7 @@ import {useBottomSheetRef, useBottomSheetTitle} from '../../../../store/store';
 import RankButton from './RankButton';
 
 const Recipes = () => {
-  const listData = require('../../../../utils/recipeListData.json');
+  const listData = require('../../../../utils/detailListData.json');
   const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
   const {bottomSheetRef} = useBottomSheetRef();
   const {setTitle} = useBottomSheetTitle();
@@ -36,7 +36,7 @@ const Recipes = () => {
               buttonStyle="noneStyle"
               onPress={() =>
                 navigation.navigate('recipeDetail', {
-                  title: item.title,
+                  id: item.id - 1,
                 })
               }>
               <ListItem item={item} />

@@ -7,7 +7,8 @@ import FText from '../../../elements/FText';
 type IngredientContainerProps = {
   title: string;
   detailList: {
-    title: string;
+    name: string;
+    quantity: string;
   }[];
 };
 

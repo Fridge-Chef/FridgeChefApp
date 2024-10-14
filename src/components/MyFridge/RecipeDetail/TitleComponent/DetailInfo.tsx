@@ -6,7 +6,13 @@ import {colors, FWidth} from '../../../../../globalStyle';
 import DetailUserBadge from '../../../../utils/Svg/DetailUserBadge';
 import DetailLikeHeart from '../../../../utils/Svg/DetailLikeHeart';
 
-const DetailInfo = () => {
+type DetailInfoProps = {
+  writer: string;
+  like: number;
+  favorite: number;
+};
+
+const DetailInfo = ({writer, like, favorite}: DetailInfoProps) => {
   return (
     <View style={styles.container}>
       <View style={styles.iconAlign}>
@@ -15,7 +21,7 @@ const DetailInfo = () => {
           mLeft={FWidth * 4}
           fStyle="B_16"
           color={colors.text}
-          text="닉네임"
+          text={writer}
         />
       </View>
       <View style={[styles.iconAlign, {marginLeft: FWidth * 14}]}>
@@ -24,7 +30,7 @@ const DetailInfo = () => {
           mLeft={FWidth * 4}
           fStyle="M_14"
           color={colors.text}
-          text={'4.5'}
+          text={like}
         />
       </View>
       <View style={[styles.iconAlign, {marginLeft: FWidth * 14}]}>
@@ -33,7 +39,7 @@ const DetailInfo = () => {
           mLeft={FWidth * 4}
           fStyle="M_14"
           color={colors.text}
-          text={'120'}
+          text={favorite}
         />
       </View>
     </View>

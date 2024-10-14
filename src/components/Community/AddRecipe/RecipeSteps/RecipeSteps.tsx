@@ -18,6 +18,18 @@ const RecipeSteps = ({
   addStep,
   deleteStep,
 }: AddIngredientType & RecipeStepsProps) => {
+  const handleImage = (index: number) =>
+    handleImagePicker({
+      pickerType: 'imageLibrary',
+      handleImage(imageUri) {
+        setAddRecipeData(addRecipeData => {
+          const newStep = [...addRecipeData.step];
+          newStep[index].image = imageUri;
+          return {...addRecipeData, step: newStep};
+        });
+      },
+    });
+
   return (
     <View style={styles.container}>
       <StepTitle />
@@ -37,18 +49,14 @@ const RecipeSteps = ({
           deleteOnPress={() =>
             addRecipeData.step.length === 1 ? null : deleteStep(index)
           }
-          imageOnPress={() =>
-            handleImagePicker({
-              pickerType: 'imageLibrary',
-              handleImage(imageUri) {
-                setAddRecipeData(addRecipeData => {
-                  const newStep = [...addRecipeData.step];
-                  newStep[index].image = imageUri;
-                  return {...addRecipeData, step: newStep};
-                });
-              },
-            })
-          }
+          imageOnPress={() => handleImage(index)}
+          imageDeleteOnPress={() => {
+            setAddRecipeData(addRecipeData => {
+              const newStep = [...addRecipeData.step];
+              newStep[index].image = '';
+              return {...addRecipeData, step: newStep};
+            });
+          }}
         />
       ))}
       <View style={styles.buttonContainer}>

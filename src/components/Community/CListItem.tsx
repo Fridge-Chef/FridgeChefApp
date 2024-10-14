@@ -20,14 +20,14 @@ type CListItemProps = {
 };
 
 const CListItem = ({item, onPress}: CListItemProps) => {
-  const {uri} = Image.resolveAssetSource(item.img);
+  // const {uri} = Image.resolveAssetSource(item.img);
 
   return (
     <FButton buttonStyle="noneStyle" onPress={onPress}>
       <View style={styles.itemsContainer}>
         <FImage
           imgStyle="sub2"
-          uri={uri}
+          uri={item.img}
           borderRadius={8}
           alt="커뮤 나만의 레시피"
         />
@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
   },
 
   itemTextContainer: {
-    flex: 1,
+    // flex: 1,
     marginLeft: FWidth * 14,
   },
 

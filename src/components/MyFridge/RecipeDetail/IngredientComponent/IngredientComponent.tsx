@@ -7,6 +7,7 @@ import SubTitle2 from '../../../elements/SubTitle/SubTitle2';
 type IngredientComponentProps = {
   ingredientList: {
     name: string;
+    quantity: string;
   }[];
 };
 

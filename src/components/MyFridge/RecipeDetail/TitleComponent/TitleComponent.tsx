@@ -4,15 +4,26 @@ import {colors, FWidth} from '../../../../../globalStyle';
 import {detailList, detailList2} from '../../../../utils/list';
 import IngredientContainer from './IngredientContainer';
 import FText from '../../../elements/FText';
-import Star3 from '../../../../utils/Svg/Star3';
-import DetailScoreStar from '../../../../utils/Svg/DetailScoreStar';
 import DetailInfo from './DetailInfo';
 
 type TitleComponentProps = {
+  writer: string;
   title: string;
+  like: number;
+  favorites: number;
+  ingredients: {
+    name: string;
+    quantity: string;
+  }[];
 };
 
-const TitleComponent = ({title}: TitleComponentProps) => {
+const TitleComponent = ({
+  writer,
+  title,
+  like,
+  favorites,
+  ingredients,
+}: TitleComponentProps) => {
   return (
     <View style={styles.container}>
       <FText
@@ -22,9 +33,9 @@ const TitleComponent = ({title}: TitleComponentProps) => {
         color={colors.text}
         text={title}
       />
-      <DetailInfo />
-      <IngredientContainer title="보유재료" detailList={detailList} />
-      <IngredientContainer title="없는 재료" detailList={detailList2} />
+      <DetailInfo writer={writer} like={like} favorite={favorites} />
+      <IngredientContainer title="보유재료" detailList={ingredients} />
+      <IngredientContainer title="없는 재료" detailList={ingredients} />
     </View>
   );
 };

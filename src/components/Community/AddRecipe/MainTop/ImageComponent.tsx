@@ -7,43 +7,59 @@ import FButton from '../../../elements/FButton';
 import FImage from '../../../elements/FImage';
 import {handleImagePicker} from '../../../../service/SingleImagePicker';
 import {AddIngredientType} from '../../../../type/types';
+import ImageIcon from '../../../../utils/Svg/ImageIcon';
 
 const ImageComponent = ({
   addRecipeData,
   setAddRecipeData,
 }: AddIngredientType) => {
+  const handleImage = () =>
+    handleImagePicker({
+      pickerType: 'imageLibrary',
+      handleImage: (imageUri: string) => {
+        setAddRecipeData({...addRecipeData, mainImage: imageUri});
+      },
+    });
+
   return (
-    <FButton
-      buttonStyle="noneStyle"
-      onPress={() =>
-        handleImagePicker({
-          pickerType: 'imageLibrary',
-          handleImage: (imageUri: string) => {
-            setAddRecipeData({...addRecipeData, mainImage: imageUri});
-          },
-        })
-      }>
+    <>
       {addRecipeData?.mainImage ? (
-        <FImage
-          borderRadius={10}
-          uri={addRecipeData?.mainImage}
-          imgStyle="detail"
-          alt="add메인이미지"
-        />
-      ) : (
-        <View style={styles.container}>
-          <View style={styles.iconAlign}>
-            <AddRecipePlus />
+        <View style={styles.imgContainer}>
+          <FImage
+            borderRadius={10}
+            uri={addRecipeData?.mainImage}
+            imgStyle="detail"
+            alt="add메인이미지"
+          />
+          <FButton
+            buttonStyle="noneStyle"
+            fBStyle={[styles.iconAlign, styles.editButton]}
+            onPress={handleImage}>
+            <ImageIcon />
             <FText
-              mLeft={FWidth * 10}
-              fStyle="R_16"
+              mLeft={FWidth * 6}
+              fStyle="M_16"
               color={colors.text}
-              text="대표 이미지를 추가해주세요"
+              text={'사진 변경'}
             />
-          </View>
+          </FButton>
         </View>
+      ) : (
+        <FButton buttonStyle="noneStyle" onPress={handleImage}>
+          <View style={styles.container}>
+            <View style={styles.iconAlign}>
+              <AddRecipePlus />
+              <FText
+                mLeft={FWidth * 10}
+                fStyle="R_16"
+                color={colors.text}
+                text="대표 이미지를 추가해주세요"
+              />
+            </View>
+          </View>
+        </FButton>
       )}
-    </FButton>
+    </>
   );
 };
 
@@ -65,5 +81,20 @@ const styles = StyleSheet.create({
   iconAlign: {
     flexDirection: 'row',
     alignItems: 'center',
+  },
+
+  imgContainer: {
+    position: 'relative',
+  },
+
+  editButton: {
+    position: 'absolute',
+    top: FWidth * 20,
+    left: FWidth * 20,
+    paddingVertical: FWidth * 8,
+    paddingHorizontal: FWidth * 14,
+    borderRadius: 40,
+    backgroundColor: colors.white,
+    elevation: 2,
   },
 });

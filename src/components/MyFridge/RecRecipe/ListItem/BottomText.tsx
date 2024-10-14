@@ -4,7 +4,7 @@ import {colors, FWidth} from '../../../../../globalStyle';
 import FText from '../../../elements/FText';
 
 type BottomTextProps = {
-  ingredients: string[];
+  ingredients: {name: string; quantity: string}[];
 };
 
 const BottomText = ({ingredients}: BottomTextProps) => {

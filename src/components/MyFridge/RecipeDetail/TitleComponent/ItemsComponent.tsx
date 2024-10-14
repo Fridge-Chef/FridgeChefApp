@@ -4,7 +4,8 @@ import ItemBox from './ItemBox';
 
 type ItemsComponentProps = {
   list: {
-    title: string;
+    name: string;
+    quantity: string;
   }[];
 };
 
@@ -12,7 +13,7 @@ const ItemsComponent = ({list}: ItemsComponentProps) => {
   return (
     <>
       {list.map((item, index) => (
-        <ItemBox key={index} title={item.title} />
+        <ItemBox key={index} title={item.name} />
       ))}
     </>
   );

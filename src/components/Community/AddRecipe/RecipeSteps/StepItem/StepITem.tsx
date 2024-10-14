@@ -1,13 +1,13 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import React from 'react';
-import {colors, fontFamilies, FWidth} from '../../../../../../globalStyle';
+import {colors, FWidth} from '../../../../../../globalStyle';
 import FText from '../../../../elements/FText';
-import AddRecipeDeleteIcon from '../../../../../utils/Svg/AddRecipeDeleteIcon';
-import FInput from '../../../../elements/FInput';
 import FImage from '../../../../elements/FImage';
 import FButton from '../../../../elements/FButton';
 import StepItemTitle from './StepItemTitle';
 import StepItemInput from './StepItemInput';
+import DetailReviewEdit from '../../../../../utils/Svg/DetailReviewEdit';
+import AddRecipeClose from '../../../../../utils/Svg/AddRecipeClose';
 
 type StepITemProps = {
   index: number;
@@ -16,6 +16,7 @@ type StepITemProps = {
   textValue: string;
   onChangeText: (text: string) => void;
   imageOnPress: () => void;
+  imageDeleteOnPress: () => void;
 };
 
 const StepITem = ({
@@ -25,6 +26,7 @@ const StepITem = ({
   textValue,
   onChangeText,
   imageOnPress,
+  imageDeleteOnPress,
 }: StepITemProps) => {
   return (
     <View style={styles.container}>
@@ -35,17 +37,29 @@ const StepITem = ({
         onChangeText={onChangeText}
       />
       {uri && (
-        <FButton
-          buttonStyle="noneStyle"
-          fBStyle={styles.imgContainer}
-          onPress={imageOnPress}>
+        <View style={styles.imgContainer}>
           <FImage
             uri={uri}
             imgStyle="detailSub"
+            borderRadius={8}
             resizeMode="cover"
             alt="step이미지"
           />
-        </FButton>
+          <View style={styles.iconContainer}>
+            <FButton
+              buttonStyle="noneStyle"
+              fBStyle={styles.updateButton}
+              onPress={imageOnPress}>
+              <DetailReviewEdit />
+            </FButton>
+            <FButton
+              buttonStyle="noneStyle"
+              fBStyle={[styles.updateButton, {marginLeft: FWidth * 10}]}
+              onPress={imageDeleteOnPress}>
+              <AddRecipeClose />
+            </FButton>
+          </View>
+        </View>
       )}
       {!uri && (
         <FButton
@@ -83,5 +97,22 @@ const styles = StyleSheet.create({
   imgContainer: {
     marginTop: FWidth * 8,
     position: 'relative',
+  },
+
+  iconContainer: {
+    position: 'absolute',
+    top: FWidth * 16,
+    right: FWidth * 16,
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+
+  updateButton: {
+    padding: FWidth * 6,
+    backgroundColor: colors.white,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 100,
+    elevation: 2,
   },
 });

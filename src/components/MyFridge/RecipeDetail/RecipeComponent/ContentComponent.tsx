@@ -23,14 +23,17 @@ const ContentComponent = ({id, step, image}: ContentComponentProps) => {
         color={colors.black}
         text={step}
       />
-      <View style={{marginTop: FWidth * 8}}>
-        <FImage
-          uri={image}
-          imgStyle="detailSub"
-          resizeMode="stretch"
-          alt="디테일 이미지"
-        />
-      </View>
+      {image && (
+        <View style={{marginTop: FWidth * 8}}>
+          <FImage
+            uri={image}
+            borderRadius={8}
+            imgStyle="detailSub"
+            resizeMode="stretch"
+            alt="디테일 이미지"
+          />
+        </View>
+      )}
     </View>
   );
 };

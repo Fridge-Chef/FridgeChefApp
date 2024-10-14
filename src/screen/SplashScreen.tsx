@@ -4,7 +4,6 @@ import {colors} from '../../globalStyle';
 import {ParamListBase, useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import {useSubBottomSheetRef} from '../store/store';
 
 const SplashScreen = () => {
   const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();

@@ -279,7 +279,8 @@ export const myRecipes = [
     point: 3,
     likes: 12,
     views: 12,
-    img: require('../assets/images/textImage.jpg'),
+    // img: require('../assets/images/textImage.jpg'),
+    img: 'https://s3.ap-northeast-2.amazonaws.com/img.kormedi.com/news/article/__icsFiles/artimage/2015/05/23/c_km601/432212_540.jpg',
   },
   {
     id: 2,
@@ -289,7 +290,8 @@ export const myRecipes = [
     point: 5,
     likes: 40,
     views: 22,
-    img: require('../assets/images/testImage05.jpg'),
+    // img: require('../assets/images/testImage05.jpg'),
+    img: 'https://s3.ap-northeast-2.amazonaws.com/img.kormedi.com/news/article/__icsFiles/artimage/2015/05/23/c_km601/432212_540.jpg',
   },
   {
     id: 3,
@@ -299,7 +301,8 @@ export const myRecipes = [
     point: 2,
     likes: 20,
     views: 50,
-    img: require('../assets/images/testImage02.jpeg'),
+    // img: require('../assets/images/testImage02.jpeg'),
+    img: 'https://s3.ap-northeast-2.amazonaws.com/img.kormedi.com/news/article/__icsFiles/artimage/2015/05/23/c_km601/432212_540.jpg',
   },
   {
     id: 4,
@@ -309,7 +312,8 @@ export const myRecipes = [
     point: 4,
     likes: 33,
     views: 34,
-    img: require('../assets/images/testImage04.jpg'),
+    // img: require('../assets/images/testImage04.jpg'),
+    img: 'https://s3.ap-northeast-2.amazonaws.com/img.kormedi.com/news/article/__icsFiles/artimage/2015/05/23/c_km601/432212_540.jpg',
   },
   {
     id: 5,
@@ -319,7 +323,8 @@ export const myRecipes = [
     point: 4,
     likes: 14,
     views: 22,
-    img: require('../assets/images/testImage03.jpg'),
+    // img: require('../assets/images/testImage03.jpg'),
+    img: 'https://s3.ap-northeast-2.amazonaws.com/img.kormedi.com/news/article/__icsFiles/artimage/2015/05/23/c_km601/432212_540.jpg',
   },
   {
     id: 6,
@@ -329,7 +334,8 @@ export const myRecipes = [
     point: 3,
     likes: 12,
     views: 12,
-    img: require('../assets/images/textImage.jpg'),
+    // img: require('../assets/images/textImage.jpg'),
+    img: 'https://s3.ap-northeast-2.amazonaws.com/img.kormedi.com/news/article/__icsFiles/artimage/2015/05/23/c_km601/432212_540.jpg',
   },
   {
     id: 7,
@@ -339,7 +345,8 @@ export const myRecipes = [
     point: 5,
     likes: 40,
     views: 22,
-    img: require('../assets/images/testImage05.jpg'),
+    // img: require('../assets/images/testImage05.jpg'),
+    img: 'https://s3.ap-northeast-2.amazonaws.com/img.kormedi.com/news/article/__icsFiles/artimage/2015/05/23/c_km601/432212_540.jpg',
   },
   {
     id: 8,
@@ -349,7 +356,8 @@ export const myRecipes = [
     point: 2,
     likes: 20,
     views: 50,
-    img: require('../assets/images/testImage02.jpeg'),
+    // img: require('../assets/images/testImage02.jpeg'),
+    img: 'https://s3.ap-northeast-2.amazonaws.com/img.kormedi.com/news/article/__icsFiles/artimage/2015/05/23/c_km601/432212_540.jpg',
   },
   {
     id: 9,
@@ -359,7 +367,8 @@ export const myRecipes = [
     point: 4,
     likes: 33,
     views: 34,
-    img: require('../assets/images/testImage04.jpg'),
+    // img: require('../assets/images/testImage04.jpg'),
+    img: 'https://s3.ap-northeast-2.amazonaws.com/img.kormedi.com/news/article/__icsFiles/artimage/2015/05/23/c_km601/432212_540.jpg',
   },
   {
     id: 10,
@@ -369,7 +378,8 @@ export const myRecipes = [
     point: 4,
     likes: 14,
     views: 22,
-    img: require('../assets/images/testImage03.jpg'),
+    // img: require('../assets/images/testImage03.jpg'),
+    img: 'https://s3.ap-northeast-2.amazonaws.com/img.kormedi.com/news/article/__icsFiles/artimage/2015/05/23/c_km601/432212_540.jpg',
   },
 ];
 
