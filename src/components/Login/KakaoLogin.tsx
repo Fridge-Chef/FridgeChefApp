@@ -17,6 +17,7 @@ const KakaoLogin = ({navigation}: KakaoLoginProps) => {
   const handleKakaologin = async () => {
     try {
       const token = await Kakao.login();
+      console.log('token', token);
       if (token.accessToken !== null) {
         const response = await baseUrl.post('api/mobile/auth/login', {
           token: token.accessToken,

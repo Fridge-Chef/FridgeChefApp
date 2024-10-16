@@ -103,6 +103,7 @@ android {
         resValue "string", "google_oauth_type1_1_certificate_hash", project.env.get("GOOGLE_OAUTH_TYPE1_1_CERTIFICATE_HASH")
         resValue "string", "google_oauth_type3_client_id", project.env.get("GOOGLE_OAUTH_TYPE3_CLIENT_ID")
         resValue "string", "google_oauth_current_key", project.env.get("GOOGLE_OAUTH_CURRENT_KEY")
+        resValue "string", "release_key_password", project.env.get("RELEASE_KEY_PASSWORD")
 
         resValue "string", "build_config_package", "com.fridgechefapp"
     }
@@ -112,6 +113,14 @@ android {
             storePassword 'android'
             keyAlias 'androiddebugkey'
             keyPassword 'android'
+        }
+        release {
+            if (project.hasProperty('MYAPP_RELEASE_STORE_FILE')) {
+                storeFile file(MYAPP_RELEASE_STORE_FILE)
+                storePassword MYAPP_RELEASE_STORE_PASSWORD
+                keyAlias MYAPP_RELEASE_KEY_ALIAS
+                keyPassword MYAPP_RELEASE_KEY_PASSWORD
+            }
         }
     }
     buildTypes {

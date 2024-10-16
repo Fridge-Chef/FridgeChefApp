@@ -17,6 +17,7 @@ const GoogleLogin = ({navigation}: GoogleLoginProps) => {
     try {
       await GoogleSignin.hasPlayServices();
       const response = await GoogleSignin.signIn();
+
       console.log(response);
     } catch (error) {
       console.log('구글 로그인 error', error);
@@ -40,7 +41,7 @@ const GoogleLogin = ({navigation}: GoogleLoginProps) => {
       paddingVertical={FWidth * 16}
       buttonColor={colors.white}
       marginBottom={FWidth * 16}
-      onPress={handleLogout}>
+      onPress={handleGoogleSignIn}>
       <GoogleLogo />
       <LoginButtonTitle title="구글 간편 로그인" />
       <View style={styles.hideIcon}>
