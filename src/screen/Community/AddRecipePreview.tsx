@@ -17,6 +17,9 @@ type AddRecipePreviewProps = {
       mainImage: string;
       mainTitle: string;
       mainContent: string;
+      categories: {foodStyle: string; foodType: string};
+      cookTime: string;
+      cookLevel: string;
       ingredients: Ingredient[];
       step: StepType[];
     };
@@ -32,7 +35,12 @@ const AddRecipePreview = () => {
       <View>
         <FImage uri={item.mainImage} imgStyle="detail" alt="미리보기 메인" />
       </View>
-      <PreviewTitle title={item.mainTitle} />
+      <PreviewTitle
+        title={item.mainTitle}
+        categories={item.categories}
+        cookTime={item.cookTime}
+        cookLevel={item.cookLevel}
+      />
       <RecipeNote content={item.mainContent} />
       <IngredientComponent ingredientList={item.ingredients} />
       <RecipeComponent detailContent={item.step} />

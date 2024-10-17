@@ -19,7 +19,7 @@ const AddCondiment = () => {
   return (
     <View style={styles.container}>
       <View style={styles.contentContainer}>
-        <TopTitle title="조미료 등록하기" />
+        <TopTitle title="조미료 등록하기" onPress={() => {}} />
         <InputAndSearch itemList={IngredientList} setItemList={setItemList} />
         <ItemList
           itemList={itemList}

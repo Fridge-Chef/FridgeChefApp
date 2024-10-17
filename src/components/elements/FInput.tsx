@@ -12,7 +12,9 @@ type FInputProps = {
   placeholder?: string;
   inputStyle: 'default' | 'recipe' | 'subRecipe' | 'noBorder';
   fontFamily?: string;
+  recipe2PaddingRight?: number;
   textAlignVertical?: 'auto' | 'top' | 'bottom' | 'center';
+  textAlign?: 'auto' | 'left' | 'right' | 'center' | 'justify';
   autoFocus?: boolean;
   minHeight?: DimensionValue;
   fontSize?: number;
@@ -20,7 +22,12 @@ type FInputProps = {
   secureTextEntry?: boolean;
   onChangeText?: (text: string) => void;
   onSubmitEditing?: () => void;
-  keyboardType?: 'default' | 'numeric' | 'email-address' | 'phone-pad';
+  keyboardType?:
+    | 'default'
+    | 'numeric'
+    | 'email-address'
+    | 'phone-pad'
+    | 'number-pad';
   maxLength?: number;
   numberOfLines?: number;
   multiline?: boolean;
@@ -36,6 +43,8 @@ const FInput = ({
   inputStyle,
   fontFamily = fontFamilies.pretendardMedium,
   textAlignVertical,
+  recipe2PaddingRight,
+  textAlign,
   autoFocus,
   minHeight,
   editable = true,
@@ -52,6 +61,7 @@ const FInput = ({
   const inputStyleList = {
     default: [styles.defaultStyle],
     recipe: styles.recipeStyle,
+    recipe2: [styles.recipeStyle2],
     subRecipe: styles.subRecipeStyle,
     noBorder: styles.noBorderStyle,
   };
@@ -68,6 +78,8 @@ const FInput = ({
               textAlignVertical: textAlignVertical,
               minHeight: minHeight,
               fontFamily: fontFamily,
+              textAlign: textAlign,
+              paddingRight: recipe2PaddingRight,
             },
           ]}
           cursorColor={colors.text}
@@ -133,6 +145,15 @@ const styles = StyleSheet.create({
 
   recipeStyle: {
     padding: FWidth * 14,
+    borderWidth: 1,
+    borderColor: colors.field,
+    fontSize: FWidth * 16,
+    lineHeight: FWidth * 24,
+    borderRadius: 10,
+  },
+
+  recipeStyle2: {
+    paddingVertical: FWidth * 14,
     borderWidth: 1,
     borderColor: colors.field,
     fontSize: FWidth * 16,

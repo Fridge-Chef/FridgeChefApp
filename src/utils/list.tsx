@@ -516,3 +516,31 @@ export const RecipeBookRankingList = [
   {id: 2, text: '별점순'},
   {id: 3, text: '좋아요순'},
 ];
+
+export const AddRecipeFoodStyleList = [
+  {id: 1, text: '한식'},
+  {id: 2, text: '분식'},
+  {id: 3, text: '양식'},
+  {id: 4, text: '일식'},
+  {id: 5, text: '중식'},
+  {id: 6, text: '퓨전'},
+  {id: 7, text: '간식/디저트'},
+];
+
+export const AddRecipeFoodTypeList = [
+  {id: 1, text: '반찬'},
+  {id: 2, text: '밥류'},
+  {id: 3, text: '국/찌개'},
+  {id: 4, text: '찜/탕'},
+  {id: 5, text: '면류'},
+  {id: 6, text: '메인 요리'},
+  {id: 7, text: '간편식'},
+  {id: 8, text: '샐러드'},
+  {id: 9, text: '튀김'},
+];
+
+export const AddRecipeLevelList = [
+  {id: 1, text: '쉬움'},
+  {id: 2, text: '중간'},
+  {id: 3, text: '어려움'},
+];

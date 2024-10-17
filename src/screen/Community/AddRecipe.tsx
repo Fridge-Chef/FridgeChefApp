@@ -1,5 +1,5 @@
 import {Keyboard, Pressable, ScrollView, StyleSheet, View} from 'react-native';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {colors} from '../../../globalStyle';
 import MainTop from '../../components/Community/AddRecipe/MainTop/MainTop';
 import AddIngredient from '../../components/Community/AddRecipe/AddIngredient/AddIngredient';
@@ -8,22 +8,37 @@ import RecipeSteps from '../../components/Community/AddRecipe/RecipeSteps/Recipe
 import Submit from '../../components/Community/AddRecipe/Submit/Submit';
 import {ParamListBase, useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import {useSelectedCategory} from '../../store/store';
 
 const AddRecipe = () => {
   const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
+  const {selectedCategory} = useSelectedCategory();
   const [addRecipeData, setAddRecipeData] = useState<{
     mainImage: string;
     mainTitle: string;
     mainContent: string;
+    categories: {foodStyle: string; foodType: string};
+    cookTime: string;
+    cookLevel: string;
     ingredients: Ingredient[];
     step: StepType[];
   }>({
     mainImage: '',
     mainTitle: '',
     mainContent: '',
+    categories: selectedCategory,
+    cookTime: '',
+    cookLevel: '쉬움',
     ingredients: [{name: '', quantity: ''}],
     step: [{step: '', image: ''}],
   });
+
+  useEffect(() => {
+    setAddRecipeData(prevData => ({
+      ...prevData,
+      categories: selectedCategory,
+    }));
+  }, [selectedCategory]);
 
   const addNewIngredient = () => {
     setAddRecipeData(prevData => ({
@@ -53,6 +68,27 @@ const AddRecipe = () => {
     });
   };
 
+  const handlePreview = () => {
+    if (
+      addRecipeData.mainTitle === '' ||
+      addRecipeData.mainContent === '' ||
+      addRecipeData.mainImage === '' ||
+      addRecipeData.cookTime === '' ||
+      addRecipeData.categories.foodStyle === '' ||
+      addRecipeData.categories.foodType === '' ||
+      addRecipeData.cookLevel === '' ||
+      addRecipeData.ingredients.length <= 1 ||
+      addRecipeData.step.length <= 1
+    ) {
+      return;
+    }
+    navigation.navigate('preview', {
+      addRecipeData,
+    });
+  };
+
+  console.log(addRecipeData);
+
   return (
     <View style={styles.buttonContainer}>
       <ScrollView overScrollMode="never">
@@ -60,6 +96,7 @@ const AddRecipe = () => {
           <MainTop
             addRecipeData={addRecipeData}
             setAddRecipeData={setAddRecipeData}
+            selectedCategory={selectedCategory}
           />
           <AddIngredient
             addRecipeData={addRecipeData}
@@ -75,14 +112,7 @@ const AddRecipe = () => {
           />
         </Pressable>
       </ScrollView>
-      <Submit
-        previewOnPress={() =>
-          navigation.navigate('preview', {
-            addRecipeData,
-          })
-        }
-        submitOnPress={() => {}}
-      />
+      <Submit previewOnPress={handlePreview} submitOnPress={() => {}} />
     </View>
   );
 };

@@ -76,7 +76,7 @@ const IngredientList = () => {
   return (
     <View style={styles.container}>
       <View style={styles.titleContainer}>
-        <TopTitle title="주재료 선택하기" />
+        <TopTitle title="주재료 선택하기" onPress={() => {}} />
       </View>
       <View style={styles.contentContainer}>
         {list.map((item, index) => (

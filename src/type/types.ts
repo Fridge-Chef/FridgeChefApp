@@ -3,7 +3,7 @@ import {ColorValue} from 'react-native';
 export type RecipeListType = {
   id: number;
   writer: string;
-  category: string;
+  category: {style: string; type: string};
   time: string;
   level: string;
   mainImage: string;
@@ -97,6 +97,9 @@ export type AddIngredientType = {
     mainImage: string;
     mainTitle: string;
     mainContent: string;
+    categories: {foodStyle: string; foodType: string};
+    cookTime: string;
+    cookLevel: string;
     ingredients: Ingredient[];
     step: StepType[];
   };
@@ -106,8 +109,15 @@ export type AddIngredientType = {
       mainImage: string;
       mainTitle: string;
       mainContent: string;
+      categories: {foodStyle: string; foodType: string};
+      cookTime: string;
+      cookLevel: string;
       ingredients: Ingredient[];
       step: StepType[];
     }>
   >;
+  selectedCategory?: {
+    foodStyle: string;
+    foodType: string;
+  };
 };

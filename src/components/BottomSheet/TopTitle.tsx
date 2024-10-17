@@ -8,17 +8,15 @@ import BottomClose from '../../utils/Svg/BottomClose';
 
 type TopTitleProps = {
   title: string;
-  setCategory?: (value: string) => void;
-  setItemNumber?: (value: number) => void;
+  onPress: () => void;
 };
 
-const TopTitle = ({title, setCategory, setItemNumber}: TopTitleProps) => {
+const TopTitle = ({title, onPress}: TopTitleProps) => {
   const {bottomSheetRef} = useBottomSheetRef();
   const {setAddTitle} = useAddModalInputText();
   const handleClose = () => {
     setAddTitle('');
-    setCategory?.('');
-    setItemNumber?.(0);
+    onPress();
     bottomSheetRef.current?.close();
   };
 

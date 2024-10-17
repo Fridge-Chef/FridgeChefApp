@@ -5,7 +5,11 @@ import ImageComponent from './ImageComponent';
 import InputContent from './InputContent';
 import {AddIngredientType} from '../../../../type/types';
 
-const MainTop = ({addRecipeData, setAddRecipeData}: AddIngredientType) => {
+const MainTop = ({
+  addRecipeData,
+  selectedCategory,
+  setAddRecipeData,
+}: AddIngredientType) => {
   return (
     <View style={styles.container}>
       <ImageComponent
@@ -15,6 +19,7 @@ const MainTop = ({addRecipeData, setAddRecipeData}: AddIngredientType) => {
       <InputContent
         addRecipeData={addRecipeData}
         setAddRecipeData={setAddRecipeData}
+        selectedCategory={selectedCategory}
       />
     </View>
   );
@@ -27,6 +32,5 @@ const styles = StyleSheet.create({
     backgroundColor: colors.white,
     paddingTop: FWidth * 16,
     paddingBottom: FWidth * 32,
-    paddingHorizontal: FWidth * 22,
   },
 });

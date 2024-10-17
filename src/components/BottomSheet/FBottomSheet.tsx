@@ -7,6 +7,7 @@ import BottomSheet, {
   BottomSheetScrollView,
 } from '@gorhom/bottom-sheet';
 import {
+  useAddRecipeCategories,
   useBottomSheetRef,
   useBottomSheetTitle,
   useCategoriesText,
@@ -27,9 +28,11 @@ import {
   useMyReviewRankName,
   useRecipeLikeRankName,
 } from '../../store/rankingStore';
+import AddRecipeCategory from './AddRecipeCategory/AddRecipeCategory';
 
 const FBottomSheet = () => {
   const {title} = useBottomSheetTitle();
+  const {setAddTitle} = useAddRecipeCategories();
   const {setRankName, rankingId, setRankingId} = useRecipeLikeRankName();
   const {
     setRankName: setMyRanking,
@@ -48,6 +51,7 @@ const FBottomSheet = () => {
       case '조미료 추가':
       case '유통기한 등록':
       case '재료보기':
+      case '나의레시피등록':
         return ['100%'];
       case '순위':
       case '좋아요 랭킹':
@@ -80,6 +84,7 @@ const FBottomSheet = () => {
       setCategory('');
       setExpiryDate('');
       setItemNumber(0);
+      setAddTitle({foodStyle: '한식', foodType: ''});
     }
     Keyboard.dismiss();
   }, []);
@@ -94,6 +99,8 @@ const FBottomSheet = () => {
         return <Management />;
       case '재료보기':
         return <IngredientList />;
+      case '나의레시피등록':
+        return <AddRecipeCategory />;
       case '순위':
         return <Ranking />;
       case '좋아요 랭킹':

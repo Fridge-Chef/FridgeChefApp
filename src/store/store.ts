@@ -74,6 +74,19 @@ type UserReviewType = {
   ) => void;
 };
 
+type AddRecipeCategoriesType = {
+  addTitle: {foodStyle: string; foodType: string};
+  setAddTitle: (addTitle: {foodStyle: string; foodType: string}) => void;
+};
+
+type SelectedCategoryType = {
+  selectedCategory: {foodStyle: string; foodType: string};
+  setSelectedCategory: (selectedCategory: {
+    foodStyle: string;
+    foodType: string;
+  }) => void;
+};
+
 export const useBottomSheetRef = create<BottomSheetRefType>(set => ({
   bottomSheetRef: {current: null},
   setBottomSheetRef: ref => set({bottomSheetRef: ref}),
@@ -155,4 +168,24 @@ export const useUserReview = create<UserReviewType>(set => ({
         ...userReview,
       },
     })),
+}));
+
+export const useAddRecipeCategories = create<AddRecipeCategoriesType>(set => ({
+  addTitle: {
+    foodStyle: '한식',
+    foodType: '',
+  },
+  setAddTitle: (addTitle: {foodStyle: string; foodType: string}) =>
+    set({addTitle}),
+}));
+
+export const useSelectedCategory = create<SelectedCategoryType>(set => ({
+  selectedCategory: {
+    foodStyle: '',
+    foodType: '',
+  },
+  setSelectedCategory: (selectedCategory: {
+    foodStyle: string;
+    foodType: string;
+  }) => set({selectedCategory}),
 }));

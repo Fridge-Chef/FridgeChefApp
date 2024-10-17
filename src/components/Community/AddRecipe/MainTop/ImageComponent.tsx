@@ -22,7 +22,7 @@ const ImageComponent = ({
     });
 
   return (
-    <>
+    <View style={styles.mainContainer}>
       {addRecipeData?.mainImage ? (
         <View style={styles.imgContainer}>
           <FImage
@@ -59,13 +59,17 @@ const ImageComponent = ({
           </View>
         </FButton>
       )}
-    </>
+    </View>
   );
 };
 
 export default ImageComponent;
 
 const styles = StyleSheet.create({
+  mainContainer: {
+    paddingHorizontal: FWidth * 22,
+  },
+
   container: {
     width: '100%',
     height: FWidth * 277,

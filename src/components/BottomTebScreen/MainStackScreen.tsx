@@ -14,6 +14,7 @@ import AddBasic from '../../screen/AddBasic';
 import CRecipeReviewDetail from '../../screen/Community/CRecipeReviewDetail';
 import AddReviewAppBar from './AppBar/AddReviewAppBar';
 import ReviewDetailAppBar from './AppBar/ReviewDetailAppBar';
+import AddRecipeAppBar from './AppBar/AddRecipeAppBar';
 
 const MainStackScreen = () => {
   const Stack = createNativeStackNavigator();
@@ -88,16 +89,7 @@ const MainStackScreen = () => {
           title: '',
           headerShown: true,
           header() {
-            return (
-              <FAppBar
-                type="headerClose"
-                titleOn={true}
-                title="나만의 레시피 작성"
-                onlyBackIcon={true}
-                rightOn={true}
-                rType1="headerClose"
-              />
-            );
+            return <AddRecipeAppBar />;
           },
           headerShadowVisible: false,
         }}

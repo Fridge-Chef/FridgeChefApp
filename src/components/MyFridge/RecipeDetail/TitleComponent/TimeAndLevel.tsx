@@ -27,7 +27,7 @@ const TimeAndLevel = ({
           mLeft={FWidth * 2}
           fStyle="B_12"
           color={colors.b500}
-          text={recipeTime}
+          text={`${recipeTime}분`}
         />
       </View>
       <View style={[styles.iconContainer, {borderColor: colors.b500}]}>

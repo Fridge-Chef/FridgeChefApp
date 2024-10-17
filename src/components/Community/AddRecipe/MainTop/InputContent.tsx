@@ -1,30 +1,51 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import React from 'react';
 import RecipeSubTitle from '../RecipeSubTitle';
-import FInput from '../../../elements/FInput';
 import {FWidth} from '../../../../../globalStyle';
-import AddTitleInput from './AddTitleInput';
-import ContentTitleInput from './ContentTitleInput';
 import {AddIngredientType} from '../../../../type/types';
+import FootTitle from './FootTitle';
+import Category from './Category';
+import RecipePreview from './RecipePreview';
+import CookTime from './CookTime';
+import CookLevel from './CookLevel';
 
-const InputContent = ({addRecipeData, setAddRecipeData}: AddIngredientType) => {
+const InputContent = ({
+  addRecipeData,
+  selectedCategory,
+  setAddRecipeData,
+}: AddIngredientType) => {
   return (
     <View>
-      <RecipeSubTitle title="요리명" required={true} />
-      <View style={styles.inputContainer}>
-        <AddTitleInput
+      <View style={styles.container}>
+        <RecipeSubTitle title="요리명" required={true} />
+        <FootTitle
           value={addRecipeData?.mainTitle}
           onChangeText={text => {
             setAddRecipeData({...addRecipeData, mainTitle: text});
           }}
         />
-      </View>
-      <RecipeSubTitle title="레시피 소개" />
-      <View style={styles.inputContainer}>
-        <ContentTitleInput
+        <RecipeSubTitle title="카테고리" />
+        <Category selectedCategory={selectedCategory} />
+        <RecipeSubTitle title="레시피 소개" />
+        <RecipePreview
           value={addRecipeData?.mainContent}
           onChangeText={text => {
             setAddRecipeData({...addRecipeData, mainContent: text});
+          }}
+        />
+        <RecipeSubTitle title="조리 시간" />
+        <CookTime
+          value={addRecipeData.cookTime}
+          onChangeText={text => {
+            setAddRecipeData({...addRecipeData, cookTime: text});
+          }}
+        />
+        <RecipeSubTitle title="조리 난이도" />
+      </View>
+      <View style={styles.levelContainer}>
+        <CookLevel
+          onPress={text => {
+            setAddRecipeData({...addRecipeData, cookLevel: text});
           }}
         />
       </View>
@@ -35,7 +56,12 @@ const InputContent = ({addRecipeData, setAddRecipeData}: AddIngredientType) => {
 export default InputContent;
 
 const styles = StyleSheet.create({
-  inputContainer: {
-    marginTop: FWidth * 8,
+  container: {
+    paddingHorizontal: FWidth * 22,
+  },
+
+  levelContainer: {
+    paddingHorizontal: FWidth * 18,
+    marginBottom: FWidth * 32,
   },
 });
