@@ -14,7 +14,7 @@ const AddScore = ({title}: AddScoreProps) => {
       <FText
         flexShrink={1}
         lineH={FWidth * 32}
-        fStyle="B_18"
+        fStyle="B_16"
         color={colors.text}
         text={title}
       />
@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderColor: colors.b200,
     paddingVertical: FWidth * 24,
-    paddingHorizontal: FWidth * 7,
+    paddingHorizontal: FWidth * 24,
     borderRadius: 14,
   },
 });

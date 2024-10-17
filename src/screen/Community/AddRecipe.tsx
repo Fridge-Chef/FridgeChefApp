@@ -87,8 +87,6 @@ const AddRecipe = () => {
     });
   };
 
-  console.log(addRecipeData);
-
   return (
     <View style={styles.buttonContainer}>
       <ScrollView overScrollMode="never">

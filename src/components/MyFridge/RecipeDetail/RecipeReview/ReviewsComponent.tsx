@@ -16,7 +16,11 @@ type ReviewType = {
   views: number;
 };
 
-const ReviewsComponent = () => {
+type ReviewsComponentProps = {
+  title: string;
+};
+
+const ReviewsComponent = ({title}: ReviewsComponentProps) => {
   const {bottomSheetRef} = useBottomSheetRef();
   const {setTitle} = useBottomSheetTitle();
 
@@ -64,7 +68,9 @@ const ReviewsComponent = () => {
       <RankButton onPress={handleBottomSheetOpen} />
       <View style={styles.listContainer}>
         {reviews.length !== 0 ? (
-          reviews.map(item => <Review key={item.id} review={item} />)
+          reviews.map(item => (
+            <Review key={item.id} review={item} title={title} />
+          ))
         ) : (
           <NoData />
         )}

@@ -8,6 +8,7 @@ import DetailReviewMore from '../../../../utils/Svg/DetailReviewMore';
 import FButton from '../../../elements/FButton';
 import {ParamListBase, useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import {useRecipeReviewTitle} from '../../../../store/store';
 
 type ReviewProps = {
   review: {
@@ -17,12 +18,15 @@ type ReviewProps = {
     img: string;
     views: number;
   };
+  title: string;
 };
 
-const Review = ({review}: ReviewProps) => {
+const Review = ({review, title}: ReviewProps) => {
   const [isClicked, setIsClicked] = useState(false);
+  const {setReviewTitle} = useRecipeReviewTitle();
   const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
   const handleReviewDetail = () => {
+    setReviewTitle(title);
     navigation.navigate('reviewDetail', {item: review});
   };
 

@@ -87,6 +87,11 @@ type SelectedCategoryType = {
   }) => void;
 };
 
+type ReviewTitleType = {
+  reviewTitle: string;
+  setReviewTitle: (reviewTitle: string) => void;
+};
+
 export const useBottomSheetRef = create<BottomSheetRefType>(set => ({
   bottomSheetRef: {current: null},
   setBottomSheetRef: ref => set({bottomSheetRef: ref}),
@@ -188,4 +193,9 @@ export const useSelectedCategory = create<SelectedCategoryType>(set => ({
     foodStyle: string;
     foodType: string;
   }) => set({selectedCategory}),
+}));
+
+export const useRecipeReviewTitle = create<ReviewTitleType>(set => ({
+  reviewTitle: '',
+  setReviewTitle: (reviewTitle: string) => set({reviewTitle}),
 }));

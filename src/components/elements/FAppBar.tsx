@@ -65,7 +65,18 @@ const FAppBar = ({
           <SvgList type={type} />
         </FButton>
       </View>
-      {titleOn && <FText fStyle="B_18" color={colors.text} text={title} />}
+      {titleOn && (
+        <View style={{maxWidth: 270}}>
+          <FText
+            flexShrink={1}
+            lineH={FWidth * 24}
+            fStyle="B_16"
+            color={colors.text}
+            text={title}
+            nLine={1}
+          />
+        </View>
+      )}
       {rightOn && rightTitleOn ? (
         <FButton buttonStyle="noneStyle" onPress={textOnPress}>
           <FText fStyle="B_16" color={rightTextColor} text={rightTitle} />

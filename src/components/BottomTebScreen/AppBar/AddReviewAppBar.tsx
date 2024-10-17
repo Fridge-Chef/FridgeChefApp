@@ -9,23 +9,11 @@ const AddReviewAppBar = () => {
   const {userReview, setUserReview} = useUserReview();
 
   const handleSubmit = async () => {
-    if (userReview.reviewContent === '') {
-      showToast({
-        text: '앗! 후기를 입력해주세요 😊',
-        time: 3000,
-      });
-      return;
-    } else if (userReview.reviewPoint === 0) {
-      showToast({
-        text: '앗! 점수를 주세요 😊',
-        time: 3000,
-      });
-      return;
-    } else if (userReview.reviewContent.length < 10) {
-      showToast({
-        text: '앗! 최소 10자 이상 입력해 주세요 😊',
-        time: 3000,
-      });
+    if (
+      userReview.reviewContent === '' ||
+      userReview.reviewPoint === 0 ||
+      userReview.reviewContent.length < 10
+    ) {
       return;
     }
   };

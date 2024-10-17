@@ -12,7 +12,7 @@ const RecipeReview = ({title}: RecipeReviewProps) => {
   return (
     <View style={styles.container}>
       <TitleComponent title={title} />
-      <ReviewsComponent />
+      <ReviewsComponent title={title} />
     </View>
   );
 };

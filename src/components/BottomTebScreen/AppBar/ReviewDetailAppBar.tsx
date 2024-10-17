@@ -1,17 +1,22 @@
 import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import FAppBar from '../../elements/FAppBar';
-import {useBottomSheetRef, useBottomSheetTitle} from '../../../store/store';
+import {
+  useBottomSheetRef,
+  useBottomSheetTitle,
+  useRecipeReviewTitle,
+} from '../../../store/store';
 
 const ReviewDetailAppBar = () => {
   const {setTitle} = useBottomSheetTitle();
   const {bottomSheetRef} = useBottomSheetRef();
+  const {reviewTitle} = useRecipeReviewTitle();
   return (
     <FAppBar
       borderBottomWidth={0}
       type="headerClose"
       titleOn={true}
-      title="레시피 후기"
+      title={reviewTitle}
       rightOn={true}
       // onlyBackIcon={true}
       // rType1="menuIcon"

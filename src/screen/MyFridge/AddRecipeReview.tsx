@@ -1,12 +1,5 @@
-import {
-  Keyboard,
-  Pressable,
-  ScrollView,
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
-import React, {useState} from 'react';
+import {Keyboard, Pressable, ScrollView, StyleSheet, View} from 'react-native';
+import React from 'react';
 import {FWidth} from '../../../globalStyle';
 import AddImage from '../../components/MyFridge/AddRecipeReview/AddImage';
 import AddScore from '../../components/MyFridge/AddRecipeReview/AddScore';
@@ -23,7 +16,7 @@ type RecipeTitle = {
 
 const AddRecipeReview = () => {
   const route = useRoute<RouteProp<RecipeTitle>>();
-  const {userReview} = useUserReview();
+  const {userReview, setUserReview} = useUserReview();
 
   return (
     <>
@@ -32,7 +25,14 @@ const AddRecipeReview = () => {
           <View style={styles.topContainer}>
             <AddScore title={route.params.title} />
             <AddContent />
-            {userReview.reviewImg && <ImageView uri={userReview.reviewImg} />}
+            {userReview.reviewImg && (
+              <ImageView
+                uri={userReview.reviewImg}
+                onPress={() => {
+                  setUserReview({reviewImg: ''});
+                }}
+              />
+            )}
           </View>
         </Pressable>
       </ScrollView>

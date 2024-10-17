@@ -32,13 +32,16 @@ const UserContent = ({uri, content, views}: UserContentProps) => {
         }}
       />
       {uri && (
-        <View style={{marginTop: FWidth * 16}}>
+        <View style={styles.imgContainer}>
           <FImage
             uri={uri}
             imgStyle="rDetail"
             borderRadius={8}
             alt="리뷰 이미지"
           />
+          <View style={styles.pageNation}>
+            <FText fStyle="M_14" color={colors.black} text={'1/5'} />
+          </View>
         </View>
       )}
     </>
@@ -50,5 +53,20 @@ export default UserContent;
 const styles = StyleSheet.create({
   container: {
     marginVertical: FWidth * 16,
+  },
+
+  imgContainer: {
+    marginTop: FWidth * 16,
+    position: 'relative',
+  },
+
+  pageNation: {
+    position: 'absolute',
+    right: FWidth * 20,
+    bottom: FWidth * 24,
+    paddingVertical: FWidth * 6,
+    paddingHorizontal: FWidth * 16,
+    borderRadius: 40,
+    backgroundColor: 'rgba(255,255,255,0.8)',
   },
 });

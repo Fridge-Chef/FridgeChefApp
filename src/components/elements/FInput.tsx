@@ -177,6 +177,8 @@ const styles = StyleSheet.create({
     fontFamily: fontFamilies.pretendardRegular,
     color: colors.text,
     lineHeight: FWidth * 24,
+    paddingTop: 0,
+    // backgroundColor: 'red',
   },
 
   errorContainer: {
