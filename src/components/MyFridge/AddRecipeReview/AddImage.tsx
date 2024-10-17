@@ -1,4 +1,4 @@
-import {StyleSheet, View} from 'react-native';
+import {KeyboardAvoidingView, Platform, StyleSheet, View} from 'react-native';
 import React from 'react';
 import {colors, FWidth} from '../../../../globalStyle';
 import FButton from '../../elements/FButton';
