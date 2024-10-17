@@ -26,13 +26,16 @@ const CondimentButton = ({onClicked, setonClicked}: CondimentButtonProps) => {
               styles.buttonStyle,
               {
                 backgroundColor:
-                  onClicked === item.id ? colors.white : colors.background,
+                  // onClicked === item.id ? colors.white : colors.background,
+                  onClicked === item.id ? colors.white : '#EFF1F3',
+                elevation: onClicked === item.id ? 3 : 0,
               },
             ]}
             onPress={() => setonClicked(item.id)}>
             <FText
               fStyle={`${onClicked === item.id ? 'B_16' : 'M_16'}`}
-              color={onClicked === item.id ? colors.text : colors.b400}
+              // color={onClicked === item.id ? colors.text : colors.b400}
+              color={onClicked === item.id ? colors.text : '#8C9098'}
               text={item.name}
             />
           </FButton>
@@ -54,15 +57,18 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     borderRadius: 14,
-    backgroundColor: colors.background,
+    // backgroundColor: colors.background,
+    backgroundColor: '#EFF1F3',
     paddingVertical: FWidth * 4,
   },
 
   buttonStyle: {
     flex: 1,
     alignItems: 'center',
-    borderRadius: 14,
+    borderRadius: 10,
     paddingVertical: FWidth * 12,
     marginHorizontal: FWidth * 4,
+    shadowColor: 'rgba(0, 0, 0, 0.2)',
+    shadowOffset: {width: 0, height: 2},
   },
 });

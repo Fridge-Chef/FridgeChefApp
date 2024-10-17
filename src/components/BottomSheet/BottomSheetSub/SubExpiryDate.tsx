@@ -39,6 +39,7 @@ const styles = StyleSheet.create({
     paddingTop: FWidth * 56,
     alignItems: 'center',
     paddingHorizontal: FWidth * 22,
+    paddingBottom: FWidth * 40,
   },
 
   buttonStyle: {

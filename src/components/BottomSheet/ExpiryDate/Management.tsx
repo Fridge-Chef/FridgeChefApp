@@ -25,7 +25,6 @@ const Management = () => {
 
   const handleSubmit = () => {
     setCategory('');
-
     bottomSheetRef.current?.close();
   };
   return (

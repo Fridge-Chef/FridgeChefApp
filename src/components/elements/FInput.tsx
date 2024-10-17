@@ -13,6 +13,7 @@ type FInputProps = {
   inputStyle: 'default' | 'recipe' | 'subRecipe' | 'noBorder';
   fontFamily?: string;
   textAlignVertical?: 'auto' | 'top' | 'bottom' | 'center';
+  autoFocus?: boolean;
   minHeight?: DimensionValue;
   fontSize?: number;
   editable?: boolean;
@@ -35,6 +36,7 @@ const FInput = ({
   inputStyle,
   fontFamily = fontFamilies.pretendardMedium,
   textAlignVertical,
+  autoFocus,
   minHeight,
   editable = true,
   secureTextEntry = false,
@@ -69,6 +71,7 @@ const FInput = ({
             },
           ]}
           cursorColor={colors.text}
+          autoFocus={autoFocus}
           placeholder={placeholder}
           editable={editable}
           placeholderTextColor={colors.disabled}

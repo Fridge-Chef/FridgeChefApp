@@ -1,7 +1,6 @@
 import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import {colors, FWidth} from '../../../../globalStyle';
-import Bowl from '../../../utils/Svg/Bowl';
 import FText from '../../elements/FText';
 import FButton from '../../elements/FButton';
 

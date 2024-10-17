@@ -61,6 +61,7 @@ const IngredientList = () => {
       bWidth: isDeleted ? FWidth * 1 : 0,
       pVer: isDeleted ? FWidth * 8 : FWidth * 9,
       pHor: isDeleted ? FWidth * 11 : FWidth * 12,
+      iconClose: isSelected ? false : true,
     };
   };
 
@@ -74,12 +75,14 @@ const IngredientList = () => {
 
   return (
     <View style={styles.container}>
-      <View style={styles.contentContainer}>
+      <View style={styles.titleContainer}>
         <TopTitle title="주재료 선택하기" />
+      </View>
+      <View style={styles.contentContainer}>
         {list.map((item, index) => (
           <View key={index} style={styles.itemsContainer}>
             {item.ingredients.map((item, index) => {
-              const {backColor, iColor, tColor, bWidth, pVer, pHor} =
+              const {backColor, iColor, tColor, bWidth, pVer, pHor, iconClose} =
                 getItemStyle(item.ingredient);
               return (
                 <IngredientItem
@@ -88,6 +91,7 @@ const IngredientList = () => {
                   tColor={tColor}
                   bWidth={bWidth}
                   backColor={backColor}
+                  closeIcon={iconClose}
                   pVer={pVer}
                   pHor={pHor}
                   ingredients={item.ingredient}
@@ -120,9 +124,13 @@ const styles = StyleSheet.create({
     marginTop: FWidth * 22,
   },
 
+  titleContainer: {
+    paddingHorizontal: FWidth * 22,
+  },
+
   contentContainer: {
     flexGrow: 1,
-    paddingHorizontal: FWidth * 22,
+    paddingHorizontal: FWidth * 18,
   },
 
   itemsContainer: {

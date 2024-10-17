@@ -3,29 +3,18 @@ import {ColorValue} from 'react-native';
 export type RecipeListType = {
   id: number;
   writer: string;
+  category: string;
+  time: string;
+  level: string;
   mainImage: string;
   mainTitle: string;
   likes: number;
   favorites: number;
   myLike: number;
+  reviews: number;
   mainContent: string;
   ingredients: {name: string; quantity: string}[];
   step: {step: string; image: string}[];
-};
-
-export type RecipeListDetailType = {
-  item: {
-    id: number;
-    writer: string;
-    mainImage: string;
-    mainTitle: string;
-    likes: number;
-    favorites: number;
-    myLike: number;
-    mainContent: string;
-    ingredients: {name: string; quantity: string}[];
-    step: {step: string; image: string}[];
-  };
 };
 
 type IconProps =
@@ -47,8 +36,6 @@ type IconProps =
   | 'googleLogo'
   | 'headerClose'
   | 'heart'
-  | 'heart2'
-  | 'heart3'
   | 'heart4'
   | 'kakaoLogo'
   | 'likeIcon'

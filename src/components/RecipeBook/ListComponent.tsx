@@ -1,29 +1,38 @@
-import {FlatList, StyleSheet, View} from 'react-native';
+import {FlatList, ScrollView, StyleSheet, View} from 'react-native';
 import React from 'react';
 import {FWidth} from '../../../globalStyle';
 import ListItem from './ListItem';
-
 import ArrowSubTitle from '../elements/SubTitle/ArrowSubTitle';
+import {useMyRecipeRankName} from '../../store/rankingStore';
 
-const ListComponent = () => {
+type ListComponentProps = {
+  name: string;
+  onPress: () => void;
+};
+
+const ListComponent = ({name, onPress}: ListComponentProps) => {
   const list = require('../../utils/recipeListData.json');
+
   return (
-    <View style={styles.container}>
+    <ScrollView
+      contentContainerStyle={styles.container}
+      showsVerticalScrollIndicator={false}>
       <View style={styles.titleContainer}>
-        <ArrowSubTitle />
+        <ArrowSubTitle onPress={onPress} name={name} />
       </View>
       <View style={{marginTop: FWidth * 12}}>
         <View style={styles.subContainer}>
           <FlatList
             data={list}
+            scrollEnabled={false}
             showsVerticalScrollIndicator={false}
             overScrollMode="never"
             keyExtractor={(_, index) => index.toString()}
-            renderItem={({item}) => <ListItem item={item} />}
+            renderItem={({item}) => <ListItem item={item} onPress={() => {}} />}
           />
         </View>
       </View>
-    </View>
+    </ScrollView>
   );
 };
 
@@ -31,7 +40,7 @@ export default ListComponent;
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    paddingVertical: FWidth * 24,
   },
 
   titleContainer: {

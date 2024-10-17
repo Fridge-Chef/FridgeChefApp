@@ -13,8 +13,8 @@ type TopMenuProps = {
 
 const TopMenu = ({isClicked, setIsClicked, onPress}: TopMenuProps) => {
   const list = [
-    {id: 1, title: '냉장고 재료 등록'},
-    {id: 2, title: '실온보관 재료 등록'},
+    {id: 1, title: '냉장고 재료'},
+    {id: 2, title: '실온보관 재료'},
   ];
 
   return (

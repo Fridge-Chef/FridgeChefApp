@@ -29,7 +29,13 @@ const ExpiryDate = () => {
         marginTop={FWidth * 14}
         buttonStyle="selected"
         onPress={handleAddExpiryDate}>
-        <FText fStyle="R_16" color={colors.b400} text={selectedDate} />
+        <FText
+          fStyle={selectedDate !== '날짜를 선택해 주세요' ? 'B_16' : 'R_16'}
+          color={
+            selectedDate !== '날짜를 선택해 주세요' ? colors.text : colors.b400
+          }
+          text={selectedDate}
+        />
         <Calendar2 />
       </FButton>
     </View>

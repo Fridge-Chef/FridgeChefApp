@@ -25,8 +25,9 @@ const Recipes = () => {
       <View style={styles.mainListContainer}>
         <RankButton onPress={handleBottomSheetOpen} />
         <FlatList
+          scrollEnabled={false}
           data={listData}
-          showsVerticalScrollIndicator={false}
+          // showsVerticalScrollIndicator={false}
           contentContainerStyle={{
             paddingBottom: FWidth * 146,
           }}
@@ -52,7 +53,6 @@ export default Recipes;
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     marginTop: FWidth * 32,
   },
 

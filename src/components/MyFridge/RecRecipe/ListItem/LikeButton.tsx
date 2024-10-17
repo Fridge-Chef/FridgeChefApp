@@ -1,9 +1,9 @@
 import {StyleSheet, View} from 'react-native';
 import React from 'react';
 import FButton from '../../../elements/FButton';
-import Heart2 from '../../../../utils/Svg/Heart2';
-import Heart3 from '../../../../utils/Svg/Heart3';
 import {FWidth} from '../../../../../globalStyle';
+import RecipeListHeart from '../../../../utils/Svg/RecipeListHeart';
+import RecipeListHeart2 from '../../../../utils/Svg/RecipeListHeart2';
 
 type LikeButtonProps = {
   isLike: boolean;
@@ -14,7 +14,7 @@ const LikeButton = ({isLike, setIsLike}: LikeButtonProps) => {
   return (
     <View style={styles.container}>
       <FButton buttonStyle="noneStyle" onPress={() => setIsLike(!isLike)}>
-        {isLike ? <Heart2 /> : <Heart3 />}
+        {isLike ? <RecipeListHeart /> : <RecipeListHeart2 />}
       </FButton>
     </View>
   );

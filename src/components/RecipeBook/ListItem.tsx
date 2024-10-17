@@ -1,12 +1,12 @@
 import {StyleSheet, View} from 'react-native';
 import React from 'react';
-import Close from '../../utils/Svg/Close';
 import ViewAndLike from '../MyFridge/RecRecipe/ListItem/ViewAndLike';
 import {colors, FWidth} from '../../../globalStyle';
 import FText from '../elements/FText';
 import FImage from '../elements/FImage';
 import {useTopTabBar} from '../../store/store';
-import LikeIcon from '../../utils/Svg/LikeIcon';
+import RecipeBookClose from '../../utils/Svg/RecipeBookClose';
+import FButton from '../elements/FButton';
 
 type ListItemProps = {
   item: {
@@ -16,13 +16,13 @@ type ListItemProps = {
     myLike: number;
     ingredients: string[];
   };
+  onPress: () => void;
 };
 
-const ListItem = ({item}: ListItemProps) => {
-  const {index} = useTopTabBar();
+const ListItem = ({item, onPress}: ListItemProps) => {
   return (
     <View style={styles.listContainer}>
-      <FImage imgStyle="sub" uri="" alt="레시피북" />
+      <FImage imgStyle="sub" borderRadius={8} uri="" alt="레시피북" />
       <View style={[styles.textContainerAlign]}>
         <View style={[styles.titleContainer]}>
           <FText
@@ -33,22 +33,12 @@ const ListItem = ({item}: ListItemProps) => {
             color={colors.text}
             text={item.title}
           />
-          <Close />
+          <FButton buttonStyle="noneStyle" onPress={onPress}>
+            <RecipeBookClose />
+          </FButton>
         </View>
         <View style={styles.bottomTextContainer}>
-          {index !== 2 ? (
-            <ViewAndLike favorites={item.favorites} like={item.likes} />
-          ) : (
-            <View style={styles.textAndIconContainer}>
-              <LikeIcon />
-              <FText
-                mLeft={FWidth * 4}
-                fStyle="B_12"
-                color={colors.b500}
-                text={item.myLike}
-              />
-            </View>
-          )}
+          <ViewAndLike favorites={item.favorites} like={item.likes} />
         </View>
       </View>
     </View>

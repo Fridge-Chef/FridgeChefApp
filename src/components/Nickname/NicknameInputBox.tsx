@@ -22,6 +22,7 @@ const NicknameInputBox = ({nickname, setNickname}: NicknameInputBoxProps) => {
         value={nickname}
         inputStyle="recipe"
         placeholder="최소 2글자, 최대 10글자"
+        autoFocus={true}
         maxLength={10}
         onChangeText={setNickname}
         fontFamily={fontFamilies.pretendardRegular}

@@ -9,7 +9,6 @@ import RecipeReview from '../../components/MyFridge/RecipeDetail/RecipeReview/Re
 import FImage from '../../components/elements/FImage';
 import Badge from '../../components/MyFridge/RecipeDetail/Badge';
 import RecipeNote from '../../components/MyFridge/RecipeDetail/RecipeNote/RecipeNote';
-import {detailList3} from '../../utils/list';
 import {useScrollY} from '../../store/store';
 import {RecipeListType} from '../../type/types';
 
@@ -38,13 +37,7 @@ const RecipeDetail = () => {
         />
         <Badge />
       </View>
-      <TitleComponent
-        writer={detailData[route.params.id].writer}
-        title={detailData[route.params.id].mainTitle}
-        like={detailData[route.params.id].likes}
-        favorites={detailData[route.params.id].favorites}
-        ingredients={detailData[route.params.id].ingredients}
-      />
+      <TitleComponent detailData={detailData[route.params.id]} />
       <RecipeNote content={detailData[route.params.id].mainContent} />
       <IngredientComponent
         ingredientList={detailData[route.params.id].ingredients}

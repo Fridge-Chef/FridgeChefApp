@@ -16,7 +16,7 @@ export default Badge;
 const styles = StyleSheet.create({
   container: {
     position: 'absolute',
-    top: FWidth * 16,
+    top: FWidth * 20,
     left: FWidth * 22,
     paddingVertical: FWidth * 6,
     paddingHorizontal: FWidth * 14,

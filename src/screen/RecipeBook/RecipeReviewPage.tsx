@@ -12,10 +12,9 @@ const RecipeReviewPage = () => {
     <View style={styles.container}>
       {!data ? (
         <NoContent
-          marginTop={200}
-          title="아직 후기가 없어요!"
-          title2="첫번째 후기를 남겨보세요"
-          buttonTitle="레시피 후기 작성하기"
+          marginTop={240}
+          title="첫번째 후기를 남겨보세요"
+          buttonTitle="후기 작성하기"
         />
       ) : (
         <MyReview />
@@ -30,7 +29,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colors.white,
-    paddingTop: FWidth * 24,
     paddingHorizontal: FWidth * 22,
   },
 });

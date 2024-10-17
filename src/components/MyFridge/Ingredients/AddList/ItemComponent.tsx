@@ -12,6 +12,7 @@ import DDayText from './DDayText';
 import Close3 from '../../../../utils/Svg/Close3';
 import FText from '../../../elements/FText';
 import Option from '../../../../utils/Svg/Option';
+import IngredientClose from '../../../../utils/Svg/IngredientClose';
 
 type ItemComponentProps = {
   itemList: {
@@ -78,7 +79,7 @@ const ItemComponent = ({itemList}: ItemComponentProps) => {
           </FButton>
         </View>
         <FButton buttonStyle="noneStyle">
-          <Close3 />
+          <IngredientClose />
         </FButton>
       </View>
     </View>

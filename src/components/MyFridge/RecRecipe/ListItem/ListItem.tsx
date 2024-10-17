@@ -6,9 +6,13 @@ import LikeButton from './LikeButton';
 import BottomText from './BottomText';
 import FImage from '../../../elements/FImage';
 import FText from '../../../elements/FText';
-import {RecipeListDetailType} from '../../../../type/types';
+import {RecipeListType} from '../../../../type/types';
 
-const ListItem = ({item}: RecipeListDetailType) => {
+type ListItemProps = {
+  item: RecipeListType;
+};
+
+const ListItem = ({item}: ListItemProps) => {
   const [isLike, setIsLike] = useState(false);
 
   return (
@@ -24,7 +28,7 @@ const ListItem = ({item}: RecipeListDetailType) => {
           <FText
             nLine={2}
             flexShrink={1}
-            fStyle="B_16"
+            fStyle="M_16"
             lineH={FWidth * 22.5}
             color={colors.text}
             text={item.mainTitle}

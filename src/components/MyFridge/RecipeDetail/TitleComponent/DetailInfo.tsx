@@ -10,9 +10,10 @@ type DetailInfoProps = {
   writer: string;
   like: number;
   favorite: number;
+  reviews: number;
 };
 
-const DetailInfo = ({writer, like, favorite}: DetailInfoProps) => {
+const DetailInfo = ({writer, like, favorite, reviews}: DetailInfoProps) => {
   return (
     <View style={styles.container}>
       <View style={styles.iconAlign}>
@@ -32,6 +33,7 @@ const DetailInfo = ({writer, like, favorite}: DetailInfoProps) => {
           color={colors.text}
           text={like}
         />
+        <FText fStyle="M_14" color={colors.b500} text={` (${reviews})`} />
       </View>
       <View style={[styles.iconAlign, {marginLeft: FWidth * 14}]}>
         <DetailLikeHeart />

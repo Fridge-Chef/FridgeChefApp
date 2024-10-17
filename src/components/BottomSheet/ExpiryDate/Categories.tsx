@@ -16,6 +16,18 @@ const Categories = ({
   setItemNumber,
   setCategory,
 }: CategoriesProps) => {
+  const handlePress = (itemId: number, itemName: string) => {
+    if (itemNumber === itemId) {
+      // 이미 선택된 상태라면 미선택 상태로 전환
+      setItemNumber(-1);
+      setCategory('');
+    } else {
+      // 선택되지 않은 상태라면 선택
+      setItemNumber(itemId);
+      setCategory(itemName);
+    }
+  };
+
   return (
     <View style={styles.container}>
       <SubTitleBS2 title="카테고리 선택" />
@@ -35,10 +47,7 @@ const Categories = ({
             fontSize={itemNumber === item.id ? 'B_14' : 'M_14'}
             name={item.name}
             nameColor={itemNumber === item.id ? colors.primary[1] : colors.text}
-            onPress={() => {
-              setCategory(item.name);
-              setItemNumber(item.id);
-            }}>
+            onPress={() => handlePress(item.id, item.name)}>
             {itemNumber === item.id ? item.icon2 : item.icon}
           </Category>
         ))}

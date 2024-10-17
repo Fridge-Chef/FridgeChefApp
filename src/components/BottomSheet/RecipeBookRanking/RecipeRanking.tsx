@@ -1,4 +1,4 @@
-import {LayoutChangeEvent, StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import React, {useState} from 'react';
 import {useBottomSheetRef} from '../../../store/store';
 import {colors, FWidth} from '../../../../globalStyle';
@@ -6,28 +6,37 @@ import RankingTop from './RankingTop';
 import FText from '../../elements/FText';
 import FButton from '../../elements/FButton';
 import Check from '../../../utils/Svg/Check';
-import {rankingMenuList} from '../../../utils/list';
-import {useRankName} from '../../../store/rankingStore';
+import {RecipeBookRankingList} from '../../../utils/list';
 
-const Ranking = () => {
+type RecipeRankingProps = {
+  setRankName: (text: string) => void;
+  rankingId: number;
+  setRankingId: (id: number) => void;
+};
+
+const RecipeRanking = ({
+  setRankName,
+  rankingId,
+  setRankingId,
+}: RecipeRankingProps) => {
   const {bottomSheetRef} = useBottomSheetRef();
   const handleClose = () => {
     bottomSheetRef.current?.close();
   };
 
-  const {setRankName, rankingId, setRankingId} = useRankName();
+  const handleRanking = (text: string, id: number) => {
+    setRankName(text);
+    setRankingId(id);
+  };
   return (
     <View style={styles.container}>
       <RankingTop onPress={handleClose} />
-      {rankingMenuList.map(item => (
+      {RecipeBookRankingList.map(item => (
         <FButton
           key={item.id}
           buttonStyle="addButton"
           fBStyle={styles.alignButton}
-          onPress={() => {
-            setRankName(item.text);
-            setRankingId(item.id);
-          }}>
+          onPress={() => handleRanking(item.text, item.id)}>
           {rankingId === item.id && <Check />}
           <FText
             mLeft={FWidth * 6}
@@ -41,14 +50,14 @@ const Ranking = () => {
   );
 };
 
-export default Ranking;
+export default RecipeRanking;
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingTop: FWidth * 16,
-    paddingBottom: FWidth * 32,
     paddingHorizontal: FWidth * 22,
+    paddingBottom: FWidth * 32,
   },
 
   closeIcon: {

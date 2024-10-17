@@ -6,11 +6,10 @@ import FText from '../elements/FText';
 const BasicTopTitle = () => {
   return (
     <View style={styles.container}>
-      <FText fStyle="B_20" color={colors.text} text={'레시피 검색을 위해'} />
       <FText
         fStyle="B_20"
         color={colors.text}
-        text={'기본 재료들을 먼저 등록할까요?'}
+        text={'기본 재료를 먼저 등록할까요?'}
       />
     </View>
   );

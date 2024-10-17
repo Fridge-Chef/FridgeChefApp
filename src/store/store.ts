@@ -74,11 +74,6 @@ type UserReviewType = {
   ) => void;
 };
 
-type RankNameType = {
-  rankName: string;
-  setRankName: (rankName: string) => void;
-};
-
 export const useBottomSheetRef = create<BottomSheetRefType>(set => ({
   bottomSheetRef: {current: null},
   setBottomSheetRef: ref => set({bottomSheetRef: ref}),
@@ -160,9 +155,4 @@ export const useUserReview = create<UserReviewType>(set => ({
         ...userReview,
       },
     })),
-}));
-
-export const useRankName = create<RankNameType>(set => ({
-  rankName: '재료 많은순',
-  setRankName: (rankName: string) => set({rankName}),
 }));

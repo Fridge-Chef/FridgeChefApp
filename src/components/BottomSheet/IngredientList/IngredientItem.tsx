@@ -7,6 +7,7 @@ import Close2 from '../../../utils/Svg/Close2';
 
 type IngredientItemProps = {
   ingredients: string;
+  closeIcon: boolean;
   tColor: ColorValue;
   iColor: ColorValue;
   backColor: ColorValue;
@@ -19,6 +20,7 @@ type IngredientItemProps = {
 
 const IngredientItem = ({
   ingredients,
+  closeIcon,
   tColor,
   iColor,
   backColor,
@@ -41,7 +43,7 @@ const IngredientItem = ({
           },
         ]}>
         <FText
-          mRight={FWidth * 4}
+          mRight={closeIcon ? FWidth * 4 : 0}
           fStyle="M_16"
           color={tColor}
           text={ingredients}
@@ -50,7 +52,7 @@ const IngredientItem = ({
           buttonStyle="noneStyle"
           onPress={deleteOnPress}
           hitSlop={{top: 12, bottom: 15, right: 10}}>
-          <Close2 iconColor={iColor} />
+          {closeIcon && <Close2 iconColor={iColor} />}
         </FButton>
       </View>
     </FButton>
@@ -65,7 +67,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderRadius: 50,
     borderColor: colors.disabled,
-    marginRight: FWidth * 8,
+    marginHorizontal: FWidth * 4,
     marginBottom: FWidth * 16,
   },
 });

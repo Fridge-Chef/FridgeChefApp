@@ -4,14 +4,14 @@ import FButton from '../FButton';
 import FText from '../FText';
 import ArrowTitleIcon from '../../../utils/Svg/ArrowTitleIcon';
 import {colors, FWidth} from '../../../../globalStyle';
-import {useRankName} from '../../../store/store';
+import {useRankName, useRecipeLikeRankName} from '../../../store/rankingStore';
 
 type ArrowSubTitleProps = {
+  name: string;
   onPress?: () => void;
 };
 
-const ArrowSubTitle = ({onPress}: ArrowSubTitleProps) => {
-  const {rankName} = useRankName();
+const ArrowSubTitle = ({name, onPress}: ArrowSubTitleProps) => {
   return (
     <FButton
       buttonStyle="noneStyle"
@@ -21,7 +21,7 @@ const ArrowSubTitle = ({onPress}: ArrowSubTitleProps) => {
         mRight={FWidth * 4}
         fStyle="M_14"
         color={colors.text}
-        text={rankName}
+        text={name}
       />
       <ArrowTitleIcon />
     </FButton>

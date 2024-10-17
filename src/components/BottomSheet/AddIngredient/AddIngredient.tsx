@@ -44,7 +44,7 @@ const AddIngredient = () => {
           onPress={handleClose}
         />
         <View style={styles.subTitleContainer}>
-          <SubTitleBS title="재료명" />
+          {/* <SubTitleBS title="재료명" /> */}
           <InputAndSearch
             itemList={IngredientList}
             setItemList={isClicked === 1 ? setItemList : setItemList2}
@@ -84,6 +84,6 @@ const styles = StyleSheet.create({
   },
 
   subTitleContainer: {
-    marginTop: FWidth * 24,
+    marginTop: FWidth * 32,
   },
 });

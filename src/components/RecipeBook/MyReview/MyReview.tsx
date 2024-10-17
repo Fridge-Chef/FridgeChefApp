@@ -1,8 +1,11 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {ScrollView, StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import ArrowSubTitle from '../../elements/SubTitle/ArrowSubTitle';
 import MyReviewList from './MyReviewList';
 import {reviewContent} from '../../../utils/list';
+import {useBottomSheetRef, useBottomSheetTitle} from '../../../store/store';
+import {useMyReviewRankName} from '../../../store/rankingStore';
+import {FWidth} from '../../../../globalStyle';
 
 type ReviewType = {
   id: number;
@@ -14,6 +17,9 @@ type ReviewType = {
 };
 
 const MyReview = () => {
+  const {setTitle} = useBottomSheetTitle();
+  const {bottomSheetRef} = useBottomSheetRef();
+  const {rankName} = useMyReviewRankName();
   const reviews: ReviewType[] | null = [
     {
       id: 1,
@@ -48,14 +54,26 @@ const MyReview = () => {
       views: 12,
     },
   ];
+
+  const handleRanking = () => {
+    setTitle('나의후기');
+    bottomSheetRef.current?.present();
+  };
+
   return (
-    <View>
-      <ArrowSubTitle />
+    <ScrollView
+      contentContainerStyle={styles.container}
+      showsVerticalScrollIndicator={false}>
+      <ArrowSubTitle onPress={handleRanking} name={rankName} />
       <MyReviewList list={reviews} />
-    </View>
+    </ScrollView>
   );
 };
 
 export default MyReview;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  container: {
+    paddingVertical: FWidth * 24,
+  },
+});

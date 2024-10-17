@@ -8,6 +8,7 @@ import {RecipeList} from '../../../type/types';
 import {useBottomSheetRef, useBottomSheetTitle} from '../../../store/store';
 import FText from '../../elements/FText';
 import SubTitle from '../../elements/SubTitle/SubTitle';
+import RecipeRightArrow from '../../../utils/Svg/Categories/RecipeRightArrow';
 
 const TopComponent = () => {
   const [itemHeight, setItemHeight] = useState(0);
@@ -109,12 +110,12 @@ const TopComponent = () => {
           onPress={handleBottomSheetOpen}>
           <View
             style={{
-              marginTop: FWidth * 10,
-              backgroundColor: colors.background,
-              borderRadius: FWidth * 50,
-              elevation: 2,
+              // height: '100%',
+              alignItems: 'center',
+              backgroundColor: colors.white,
             }}>
-            <BottomButton buttonHeight={itemHeight} />
+            {/* <BottomButton buttonHeight={itemHeight} /> */}
+            <RecipeRightArrow />
           </View>
         </FButton>
       </View>
@@ -131,7 +132,7 @@ const styles = StyleSheet.create({
 
   listItemContainer: {
     flexDirection: 'row',
-    flexWrap: 'wrap',
+    alignItems: 'center',
   },
 
   listItem: {

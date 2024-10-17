@@ -42,18 +42,16 @@ const InputAndSearch = ({itemList, setItemList}: InputAndSearchProps) => {
 
   return (
     <>
-      <View style={styles.inputContainer}>
-        <FInput
-          inputStyle="default"
-          value={addTitle}
-          placeholder="재료를 입력해주세요"
-          errorMsg={true}
-          errorText={errorMsg}
-          onChangeText={text => {
-            setAddTitle(text);
-          }}
-        />
-      </View>
+      <FInput
+        inputStyle="default"
+        value={addTitle}
+        placeholder="재료를 입력해주세요"
+        errorMsg={true}
+        errorText={errorMsg}
+        onChangeText={text => {
+          setAddTitle(text);
+        }}
+      />
       {filteredIngredients.length > 0 && (
         <View style={styles.listContainer}>
           {filteredIngredients.map((item: any) => (

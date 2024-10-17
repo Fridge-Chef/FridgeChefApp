@@ -10,8 +10,6 @@ import Close3 from '../../utils/Svg/Close3';
 import Edit from '../../utils/Svg/Edit';
 import GoogleLogo from '../../utils/Svg/GoogleLogo';
 import Heart from '../../utils/Svg/Heart';
-import Heart2 from '../../utils/Svg/Heart2';
-import Heart3 from '../../utils/Svg/Heart3';
 import KakaoLogo from '../../utils/Svg/KakaoLogo';
 import LikeIcon from '../../utils/Svg/LikeIcon';
 import LoginIcon from '../../utils/Svg/LoginIcon';
@@ -59,8 +57,6 @@ type SvgListProps = {
     | 'detailShare'
     | 'headerClose'
     | 'heart'
-    | 'heart2'
-    | 'heart3'
     | 'heart4'
     | 'imageIcon'
     | 'kakaoLogo'
@@ -117,10 +113,7 @@ const SvgList = ({type}: SvgListProps) => {
       return <HeaderCLose />;
     case 'heart':
       return <Heart />;
-    case 'heart2':
-      return <Heart2 />;
-    case 'heart3':
-      return <Heart3 />;
+
     case 'heart4':
       return <Heart4 />;
     case 'imageIcon':

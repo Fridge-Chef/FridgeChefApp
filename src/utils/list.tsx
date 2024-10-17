@@ -1,5 +1,5 @@
-import Bowl from './Svg/Bowl';
 import AppleIcon from './Svg/Categories/AppleIcon';
+import Bowl from './Svg/Categories/Bowl';
 import Bread from './Svg/Categories/Bread';
 import Cheese from './Svg/Categories/Cheese';
 import ChickenThigh from './Svg/Categories/ChickenThigh';
@@ -508,5 +508,11 @@ export const rankingMenuList = [
   {id: 1, text: '재료 많은순'},
   {id: 2, text: '별점순'},
   {id: 3, text: '좋아요순'},
-  {id: 4, text: '최근순'},
+  {id: 4, text: '최신순'},
+];
+
+export const RecipeBookRankingList = [
+  {id: 1, text: '최신순'},
+  {id: 2, text: '별점순'},
+  {id: 3, text: '좋아요순'},
 ];

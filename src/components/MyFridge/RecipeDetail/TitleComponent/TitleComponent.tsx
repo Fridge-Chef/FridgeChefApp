@@ -1,41 +1,45 @@
 import {StyleSheet, View} from 'react-native';
 import React from 'react';
 import {colors, FWidth} from '../../../../../globalStyle';
-import {detailList, detailList2} from '../../../../utils/list';
 import IngredientContainer from './IngredientContainer';
 import FText from '../../../elements/FText';
 import DetailInfo from './DetailInfo';
+import TimeAndLevel from './TimeAndLevel';
+import {RecipeListType} from '../../../../type/types';
 
 type TitleComponentProps = {
-  writer: string;
-  title: string;
-  like: number;
-  favorites: number;
-  ingredients: {
-    name: string;
-    quantity: string;
-  }[];
+  detailData: RecipeListType;
 };
 
-const TitleComponent = ({
-  writer,
-  title,
-  like,
-  favorites,
-  ingredients,
-}: TitleComponentProps) => {
+const TitleComponent = ({detailData}: TitleComponentProps) => {
   return (
     <View style={styles.container}>
+      <TimeAndLevel
+        category={detailData.category}
+        recipeTime={detailData.time}
+        recipeLevel={detailData.level}
+      />
       <FText
         flexShrink={1}
         fStyle="B_22"
         lineH={FWidth * 32}
         color={colors.text}
-        text={title}
+        text={detailData.mainTitle}
       />
-      <DetailInfo writer={writer} like={like} favorite={favorites} />
-      <IngredientContainer title="보유재료" detailList={ingredients} />
-      <IngredientContainer title="없는 재료" detailList={ingredients} />
+      <DetailInfo
+        writer={detailData.writer}
+        like={detailData.likes}
+        favorite={detailData.favorites}
+        reviews={detailData.reviews}
+      />
+      <IngredientContainer
+        title="보유재료"
+        detailList={detailData.ingredients}
+      />
+      <IngredientContainer
+        title="없는 재료"
+        detailList={detailData.ingredients}
+      />
     </View>
   );
 };

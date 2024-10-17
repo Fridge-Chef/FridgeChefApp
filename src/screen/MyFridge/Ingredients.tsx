@@ -62,8 +62,8 @@ const Ingredients = () => {
         cancel
         onPress={() => {}}
       />
+      <LoginAndUser test={test} styTest={styTest} />
       <ScrollView showsVerticalScrollIndicator={false} overScrollMode="never">
-        <LoginAndUser test={test} styTest={styTest} />
         {/* 테스트 터쳐블 삭제바람 */}
 
         <TouchableOpacity onPress={handleTest}>

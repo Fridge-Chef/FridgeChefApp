@@ -40,7 +40,6 @@ const GoogleLogin = ({navigation}: GoogleLoginProps) => {
       borderWidth={1}
       paddingVertical={FWidth * 16}
       buttonColor={colors.white}
-      marginBottom={FWidth * 16}
       onPress={handleGoogleSignIn}>
       <GoogleLogo />
       <LoginButtonTitle title="구글 간편 로그인" />
