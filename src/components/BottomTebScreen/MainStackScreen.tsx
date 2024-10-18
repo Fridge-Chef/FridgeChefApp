@@ -26,6 +26,7 @@ const MainStackScreen = () => {
         headerShown: false,
         navigationBarColor: colors.white,
         statusBarColor: colors.white,
+
         statusBarStyle: 'dark',
         contentStyle: {backgroundColor: colors.white},
       }}>

@@ -1,9 +1,8 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet} from 'react-native';
 import React from 'react';
 import FAppBar from '../../elements/FAppBar';
 import {colors} from '../../../../globalStyle';
 import {useUserReview} from '../../../store/store';
-import {showToast} from '../../../helpers/ShowToast';
 
 const AddReviewAppBar = () => {
   const {userReview, setUserReview} = useUserReview();

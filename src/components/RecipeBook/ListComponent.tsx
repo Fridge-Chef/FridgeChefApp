@@ -1,16 +1,22 @@
-import {FlatList, ScrollView, StyleSheet, View} from 'react-native';
+import {
+  FlatList,
+  ListRenderItem,
+  ScrollView,
+  StyleSheet,
+  View,
+} from 'react-native';
 import React from 'react';
 import {FWidth} from '../../../globalStyle';
 import ListItem from './ListItem';
 import ArrowSubTitle from '../elements/SubTitle/ArrowSubTitle';
-import {useMyRecipeRankName} from '../../store/rankingStore';
 
 type ListComponentProps = {
   name: string;
+  renderItem: ListRenderItem<any>;
   onPress: () => void;
 };
 
-const ListComponent = ({name, onPress}: ListComponentProps) => {
+const ListComponent = ({name, renderItem, onPress}: ListComponentProps) => {
   const list = require('../../utils/recipeListData.json');
 
   return (
@@ -28,7 +34,7 @@ const ListComponent = ({name, onPress}: ListComponentProps) => {
             showsVerticalScrollIndicator={false}
             overScrollMode="never"
             keyExtractor={(_, index) => index.toString()}
-            renderItem={({item}) => <ListItem item={item} onPress={() => {}} />}
+            renderItem={renderItem}
           />
         </View>
       </View>

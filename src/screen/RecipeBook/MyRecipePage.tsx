@@ -5,6 +5,7 @@ import {colors, FWidth} from '../../../globalStyle';
 import ListComponent from '../../components/RecipeBook/ListComponent';
 import {useBottomSheetRef, useBottomSheetTitle} from '../../store/store';
 import {useMyRecipeRankName} from '../../store/rankingStore';
+import RecipeListItem from '../../components/RecipeBook/RecipeListItem';
 
 const MyRecipePage = () => {
   const {setTitle} = useBottomSheetTitle();
@@ -25,7 +26,13 @@ const MyRecipePage = () => {
           buttonTitle="레시피 작성하기"
         />
       ) : (
-        <ListComponent onPress={handleRanking} name={rankName} />
+        <ListComponent
+          onPress={handleRanking}
+          name={rankName}
+          renderItem={({item}) => (
+            <RecipeListItem item={item} onPress={() => {}} />
+          )}
+        />
       )}
     </View>
   );

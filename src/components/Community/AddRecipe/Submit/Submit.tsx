@@ -1,4 +1,4 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {ColorValue, StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import {colors, FWidth} from '../../../../../globalStyle';
 import FText from '../../../elements/FText';
@@ -7,20 +7,25 @@ import FButton from '../../../elements/FButton';
 type SubmitProps = {
   previewOnPress: () => void;
   submitOnPress: () => void;
+  backgroundColor: ColorValue;
 };
 
-const Submit = ({previewOnPress, submitOnPress}: SubmitProps) => {
+const Submit = ({
+  previewOnPress,
+  submitOnPress,
+  backgroundColor,
+}: SubmitProps) => {
   return (
     <View style={styles.container}>
       <FButton
         buttonStyle="noneStyle"
         fBStyle={styles.viewButton}
         onPress={previewOnPress}>
-        <FText fStyle="M_18" color={colors.text} text="미리보기" />
+        <FText fStyle="M_18" color={colors.white} text="미리보기" />
       </FButton>
       <FButton
         buttonStyle="noneStyle"
-        fBStyle={styles.submitButton}
+        fBStyle={[styles.submitButton, {backgroundColor: backgroundColor}]}
         onPress={submitOnPress}>
         <FText fStyle="B_18" color={colors.white} text="작성완료" />
       </FButton>
@@ -48,7 +53,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: FWidth * 22,
     marginRight: FWidth * 10,
     borderRadius: 8,
-    backgroundColor: colors.b100,
+    backgroundColor: colors.b200,
   },
 
   submitButton: {
@@ -56,6 +61,5 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingVertical: FWidth * 10,
     borderRadius: 8,
-    backgroundColor: colors.primary[1],
   },
 });

@@ -3,20 +3,27 @@ import React from 'react';
 import {colors, FWidth} from '../../../../../globalStyle';
 import AddIngredientTitle from './AddIngredientTitle';
 import AddIngredientInputComponent from './AddIngredientInputComponent';
-import {AddIngredientType} from '../../../../type/types';
 import AddRecipeSubButton from '../AddRecipeSubButton';
-
-type AddIngredientProps = {
-  addIngredient: () => void;
-  deleteIngredient: (index: number) => void;
-};
+import {AddIngredientPageType, AddIngredientType} from '../../../../type/types';
 
 const AddIngredient = ({
   addRecipeData,
   setAddRecipeData,
-  addIngredient,
-  deleteIngredient,
-}: AddIngredientType & AddIngredientProps) => {
+}: AddIngredientPageType) => {
+  const addIngredient = () => {
+    setAddRecipeData(prevData => ({
+      ...prevData,
+      ingredients: [...prevData.ingredients, {name: '', quantity: ''}],
+    }));
+  };
+
+  const deleteIngredient = (index: number) => {
+    setAddRecipeData(prevData => {
+      const newIngredients = prevData.ingredients.filter((_, i) => i !== index);
+      return {...prevData, ingredients: newIngredients};
+    });
+  };
+
   return (
     <View style={styles.container}>
       <AddIngredientTitle />

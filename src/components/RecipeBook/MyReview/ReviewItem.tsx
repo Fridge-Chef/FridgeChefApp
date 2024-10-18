@@ -1,35 +1,35 @@
-import {StyleSheet, View} from 'react-native';
+import {StyleSheet, Text, View} from 'react-native';
 import React, {useState} from 'react';
-import {colors, FWidth} from '../../../../../globalStyle';
-import ReviewContent from './ReviewContent';
-import UserInfo from './UserInfo';
-import BottomComponent from './BottomComponent';
-import DetailReviewMore from '../../../../utils/Svg/DetailReviewMore';
-import FButton from '../../../elements/FButton';
+import FButton from '../../elements/FButton';
+import UserInfo from '../../MyFridge/RecipeDetail/RecipeReview/UserInfo';
+import DetailReviewMore from '../../../utils/Svg/DetailReviewMore';
+import ReviewContent from '../../MyFridge/RecipeDetail/RecipeReview/ReviewContent';
+import BottomComponent from '../../MyFridge/RecipeDetail/RecipeReview/BottomComponent';
+import {colors, FWidth} from '../../../../globalStyle';
+import {useRecipeReviewTitle} from '../../../store/store';
 import {ParamListBase, useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import {useRecipeReviewTitle} from '../../../../store/store';
+import MyReviewTitle from './MyReviewTitle';
 
-type ReviewProps = {
+type ReviewItemProps = {
   review: {
     writer: string;
     point: number;
+    title: string;
     content: string;
     img: string;
     views: number;
   };
-  title: string;
 };
 
-const Review = ({review, title}: ReviewProps) => {
+const ReviewItem = ({review}: ReviewItemProps) => {
   const [isClicked, setIsClicked] = useState(false);
   const {setReviewTitle} = useRecipeReviewTitle();
   const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
   const handleReviewDetail = () => {
-    setReviewTitle(title);
+    setReviewTitle(review.title);
     navigation.navigate('reviewDetail', {item: review});
   };
-
   return (
     <FButton
       buttonStyle="noneStyle"
@@ -39,13 +39,13 @@ const Review = ({review, title}: ReviewProps) => {
         <UserInfo writer={review.writer} point={review.point} />
         <FButton
           buttonStyle="noneStyle"
-          hitSlop={{top: 10, bottom: 10, left: 10, right: 10}}
           onPress={() => {
             console.log('옵션버튼');
           }}>
           <DetailReviewMore />
         </FButton>
       </View>
+      <MyReviewTitle title={review.title} />
       <ReviewContent content={review} />
       <BottomComponent
         isClicked={isClicked}
@@ -56,7 +56,7 @@ const Review = ({review, title}: ReviewProps) => {
   );
 };
 
-export default Review;
+export default ReviewItem;
 
 const styles = StyleSheet.create({
   container: {

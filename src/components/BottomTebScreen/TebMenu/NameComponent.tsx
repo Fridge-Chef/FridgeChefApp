@@ -1,7 +1,7 @@
 import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import {colors, fontFamilies, FWidth} from '../../../../globalStyle';
-import FText from '../../elements/FText';
+
 type NameComponentProps = {
   focused: boolean;
   name: string;

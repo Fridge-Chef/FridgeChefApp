@@ -1,12 +1,4 @@
-import {
-  Keyboard,
-  KeyboardAvoidingView,
-  Platform,
-  Pressable,
-  ScrollView,
-  StyleSheet,
-  View,
-} from 'react-native';
+import {Keyboard, Pressable, ScrollView, StyleSheet, View} from 'react-native';
 import React from 'react';
 import {FWidth} from '../../../globalStyle';
 import AddImage from '../../components/MyFridge/AddRecipeReview/AddImage';

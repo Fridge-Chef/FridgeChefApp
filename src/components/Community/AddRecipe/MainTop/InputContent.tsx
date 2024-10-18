@@ -2,18 +2,25 @@ import {StyleSheet, View} from 'react-native';
 import React from 'react';
 import RecipeSubTitle from '../RecipeSubTitle';
 import {FWidth} from '../../../../../globalStyle';
-import {AddIngredientType} from '../../../../type/types';
+import {AddIngredientPageType, AddIngredientType} from '../../../../type/types';
 import FootTitle from './FootTitle';
 import Category from './Category';
 import RecipePreview from './RecipePreview';
 import CookTime from './CookTime';
 import CookLevel from './CookLevel';
 
+type InputContentType = {
+  selectedCategory: {
+    foodStyle: string;
+    foodType: string;
+  };
+};
+
 const InputContent = ({
   addRecipeData,
   selectedCategory,
   setAddRecipeData,
-}: AddIngredientType) => {
+}: AddIngredientPageType & InputContentType) => {
   return (
     <View>
       <View style={styles.container}>

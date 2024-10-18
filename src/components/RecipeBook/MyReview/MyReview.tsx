@@ -11,6 +11,7 @@ type ReviewType = {
   id: number;
   writer: string;
   point: number;
+  title: string;
   content: string;
   img: string;
   views: number;
@@ -25,6 +26,7 @@ const MyReview = () => {
       id: 1,
       writer: '김민영',
       point: 4,
+      title: '닭가슴살 어쩌구',
       content: reviewContent.content,
       img: '',
       views: 3,
@@ -33,6 +35,7 @@ const MyReview = () => {
       id: 2,
       writer: '김인영',
       point: 3,
+      title: '닭가슴살 어쩌구',
       content: reviewContent.content,
       img: 'https://www.adobe.com/kr/creativecloud/photography/hub/features/media_19243bf806dc1c5a3532f3e32f4c14d44f81cae9f.jpeg?width=2000&format=webply&optimize=medium',
       views: 5,
@@ -41,6 +44,7 @@ const MyReview = () => {
       id: 3,
       writer: '김한영',
       point: 5,
+      title: '닭가슴살 어쩌구',
       content: reviewContent.content,
       img: '',
       views: 7,
@@ -49,6 +53,7 @@ const MyReview = () => {
       id: 4,
       writer: '김현영',
       point: 2,
+      title: '닭가슴살 어쩌구',
       content: reviewContent.content,
       img: '',
       views: 12,

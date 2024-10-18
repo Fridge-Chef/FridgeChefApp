@@ -12,6 +12,8 @@ import {myRecipes} from '../../utils/list';
 import {ParamListBase, useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import ArrowSubTitle from '../elements/SubTitle/ArrowSubTitle';
+import {useCommunityMyRecipeName} from '../../store/rankingStore';
+import {useBottomSheetRef, useBottomSheetTitle} from '../../store/store';
 
 type CListItemsProps = {
   scrollOffset: number;
@@ -25,17 +27,24 @@ const CListItems = ({
   setPrevScrollOffset,
 }: CListItemsProps) => {
   const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
-
+  const {setTitle} = useBottomSheetTitle();
+  const {bottomSheetRef} = useBottomSheetRef();
+  const {rankName} = useCommunityMyRecipeName();
   const handleScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
     const currentOffset = event.nativeEvent.contentOffset.y;
     setScrollOffset(currentOffset);
     setPrevScrollOffset(scrollOffset);
   };
 
+  const handleRanking = () => {
+    setTitle('나만의레시피');
+    bottomSheetRef.current?.present();
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.titleContainer}>
-        <ArrowSubTitle />
+        <ArrowSubTitle name={rankName} onPress={handleRanking} />
       </View>
       <FlatList
         data={myRecipes}

@@ -1,7 +1,8 @@
 import {StyleSheet, Text, View} from 'react-native';
-import React from 'react';
+import React, {useState} from 'react';
 import FInput from '../../../elements/FInput';
-import {fontFamilies, FWidth} from '../../../../../globalStyle';
+import {colors, fontFamilies, FWidth} from '../../../../../globalStyle';
+import FText from '../../../elements/FText';
 
 type ContentTitleInputProps = {
   value: string;
@@ -9,21 +10,41 @@ type ContentTitleInputProps = {
 };
 
 const ContentTitleInput = ({value, onChangeText}: ContentTitleInputProps) => {
+  const [maxLength] = useState(150);
   return (
-    <FInput
-      value={value}
-      onChangeText={onChangeText}
-      textAlignVertical="top"
-      minHeight={FWidth * 148}
-      inputStyle="recipe"
-      placeholder={'레시피에 대한 소개를 간단히 적어주세요.\n최대 (150자)'}
-      multiline={true}
-      fontFamily={fontFamilies.pretendardRegular}
-      maxLength={150}
-    />
+    <View style={styles.container}>
+      <FInput
+        value={value}
+        onChangeText={onChangeText}
+        textAlignVertical="top"
+        minHeight={FWidth * 172}
+        inputStyle="recipe"
+        placeholder={'간단한 레시피 소개를 작성해주세요 최대 (150자)'}
+        multiline={true}
+        fontFamily={fontFamilies.pretendardRegular}
+        maxLength={maxLength}
+      />
+      <View style={styles.textContainer}>
+        <FText
+          fStyle="R_12"
+          color={colors.b300}
+          text={`${value.length}/${maxLength}`}
+        />
+      </View>
+    </View>
   );
 };
 
 export default ContentTitleInput;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  container: {
+    position: 'relative',
+  },
+
+  textContainer: {
+    position: 'absolute',
+    right: FWidth * 14,
+    bottom: FWidth * 14,
+  },
+});

@@ -6,13 +6,13 @@ import AddRecipePlus from '../../../../utils/Svg/AddRecipePlus';
 import FButton from '../../../elements/FButton';
 import FImage from '../../../elements/FImage';
 import {handleImagePicker} from '../../../../service/SingleImagePicker';
-import {AddIngredientType} from '../../../../type/types';
+import {AddIngredientPageType, AddIngredientType} from '../../../../type/types';
 import ImageIcon from '../../../../utils/Svg/ImageIcon';
 
 const ImageComponent = ({
   addRecipeData,
   setAddRecipeData,
-}: AddIngredientType) => {
+}: AddIngredientPageType) => {
   const handleImage = () =>
     handleImagePicker({
       pickerType: 'imageLibrary',

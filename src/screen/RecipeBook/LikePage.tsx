@@ -5,6 +5,7 @@ import {colors, FWidth} from '../../../globalStyle';
 import ListComponent from '../../components/RecipeBook/ListComponent';
 import {useBottomSheetRef, useBottomSheetTitle} from '../../store/store';
 import {useRecipeLikeRankName} from '../../store/rankingStore';
+import ListItem from '../../components/RecipeBook/ListItem';
 
 const LikePage = () => {
   const {setTitle} = useBottomSheetTitle();
@@ -22,7 +23,11 @@ const LikePage = () => {
       {!data ? (
         <NoContent marginTop={240} title="아직 좋아요가 없어요." />
       ) : (
-        <ListComponent onPress={handleRanking} name={rankName} />
+        <ListComponent
+          onPress={handleRanking}
+          name={rankName}
+          renderItem={({item}) => <ListItem item={item} onPress={() => {}} />}
+        />
       )}
     </View>
   );

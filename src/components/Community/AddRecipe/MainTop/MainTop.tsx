@@ -3,13 +3,20 @@ import React from 'react';
 import {colors, FWidth} from '../../../../../globalStyle';
 import ImageComponent from './ImageComponent';
 import InputContent from './InputContent';
-import {AddIngredientType} from '../../../../type/types';
+import {AddIngredientPageType, AddIngredientType} from '../../../../type/types';
+
+type MainTopType = {
+  selectedCategory: {
+    foodStyle: string;
+    foodType: string;
+  };
+};
 
 const MainTop = ({
   addRecipeData,
   selectedCategory,
   setAddRecipeData,
-}: AddIngredientType) => {
+}: AddIngredientPageType & MainTopType) => {
   return (
     <View style={styles.container}>
       <ImageComponent

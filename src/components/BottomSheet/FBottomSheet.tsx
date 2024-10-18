@@ -24,6 +24,7 @@ import DetailReviewOption from './DetailReviewOption/DetailReviewOption';
 import {RecipeBookRankingList} from '../../utils/list';
 import RecipeRanking from './RecipeBookRanking/RecipeRanking';
 import {
+  useCommunityMyRecipeName,
   useMyRecipeRankName,
   useMyReviewRankName,
   useRecipeLikeRankName,
@@ -34,6 +35,11 @@ const FBottomSheet = () => {
   const {title} = useBottomSheetTitle();
   const {setAddTitle} = useAddRecipeCategories();
   const {setRankName, rankingId, setRankingId} = useRecipeLikeRankName();
+  const {
+    setRankName: setCommunityRankingName,
+    rankingId: communityRankingId,
+    setRankingId: setCommunityRankingId,
+  } = useCommunityMyRecipeName();
   const {
     setRankName: setMyRanking,
     rankingId: myRankingId,
@@ -56,6 +62,7 @@ const FBottomSheet = () => {
       case '순위':
       case '좋아요 랭킹':
       case '나의레시피':
+      case '나만의레시피':
       case '나의후기':
       case '디테일리뷰옵션':
         return ['28%'];
@@ -119,6 +126,14 @@ const FBottomSheet = () => {
             setRankingId={setMyRankingId}
           />
         );
+      case '나만의레시피':
+        return (
+          <RecipeRanking
+            setRankName={setCommunityRankingName}
+            rankingId={communityRankingId}
+            setRankingId={setCommunityRankingId}
+          />
+        );
       case '나의후기':
         return (
           <RecipeRanking
@@ -139,6 +154,7 @@ const FBottomSheet = () => {
       title === '순위' ||
       title === '좋아요 랭킹' ||
       title === '나의레시피' ||
+      title === '나만의레시피' ||
       title === '나의후기' ||
       title === '디테일리뷰옵션'
     ) {
@@ -162,6 +178,7 @@ const FBottomSheet = () => {
             title === '순위' ||
             title === '좋아요 랭킹' ||
             title === '나의레시피' ||
+            title === '나만의레시피' ||
             title === '나의후기' ||
             title === '디테일리뷰옵션'
               ? true
@@ -190,6 +207,7 @@ const FBottomSheet = () => {
                 title === '순위' ||
                 title === '좋아요 랭킹' ||
                 title === '나의레시피' ||
+                title === '나만의레시피' ||
                 title === '나의후기' ||
                 title === '디테일리뷰옵션'
                   ? 0

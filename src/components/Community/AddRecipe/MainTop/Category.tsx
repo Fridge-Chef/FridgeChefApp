@@ -1,4 +1,4 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet} from 'react-native';
 import React from 'react';
 import FButton from '../../../elements/FButton';
 import FText from '../../../elements/FText';
@@ -7,7 +7,7 @@ import {colors, FWidth} from '../../../../../globalStyle';
 import {useBottomSheetRef, useBottomSheetTitle} from '../../../../store/store';
 
 type CategoryProps = {
-  selectedCategory?: {
+  selectedCategory: {
     foodStyle: string;
     foodType: string;
   };

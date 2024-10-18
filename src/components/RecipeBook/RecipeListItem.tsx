@@ -1,13 +1,14 @@
-import {StyleSheet, View} from 'react-native';
+import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
-import ViewAndLike from '../MyFridge/RecRecipe/ListItem/ViewAndLike';
 import {colors, FWidth} from '../../../globalStyle';
+import ViewAndLike from '../MyFridge/RecRecipe/ListItem/ViewAndLike';
+import FButton from '../elements/FButton';
+import RecipeBookClose from '../../utils/Svg/RecipeBookClose';
 import FText from '../elements/FText';
 import FImage from '../elements/FImage';
-import RecipeBookClose from '../../utils/Svg/RecipeBookClose';
-import FButton from '../elements/FButton';
+import DetailReviewMore from '../../utils/Svg/DetailReviewMore';
 
-type ListItemProps = {
+type RecipeListItemProps = {
   item: {
     title: string;
     likes: number;
@@ -18,7 +19,7 @@ type ListItemProps = {
   onPress: () => void;
 };
 
-const ListItem = ({item, onPress}: ListItemProps) => {
+const RecipeListItem = ({item, onPress}: RecipeListItemProps) => {
   return (
     <View style={styles.listContainer}>
       <FImage imgStyle="sub" borderRadius={8} uri="" alt="레시피북" />
@@ -33,7 +34,7 @@ const ListItem = ({item, onPress}: ListItemProps) => {
             text={item.title}
           />
           <FButton buttonStyle="noneStyle" onPress={onPress}>
-            <RecipeBookClose />
+            <DetailReviewMore />
           </FButton>
         </View>
         <View style={styles.bottomTextContainer}>
@@ -44,7 +45,7 @@ const ListItem = ({item, onPress}: ListItemProps) => {
   );
 };
 
-export default ListItem;
+export default RecipeListItem;
 
 const styles = StyleSheet.create({
   listContainer: {

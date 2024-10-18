@@ -1,9 +1,7 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import React, {useState} from 'react';
 import NoContent from '../../components/RecipeBook/NoContent';
 import {colors, FWidth} from '../../../globalStyle';
-import ListComponent from '../../components/RecipeBook/ListComponent';
-import ReviewsComponent from '../../components/MyFridge/RecipeDetail/RecipeReview/ReviewsComponent';
 import MyReview from '../../components/RecipeBook/MyReview/MyReview';
 
 const RecipeReviewPage = () => {

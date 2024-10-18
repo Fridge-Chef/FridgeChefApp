@@ -93,31 +93,17 @@ export type StepType = {
 };
 
 export type AddIngredientType = {
-  addRecipeData: {
-    mainImage: string;
-    mainTitle: string;
-    mainContent: string;
-    categories: {foodStyle: string; foodType: string};
-    cookTime: string;
-    cookLevel: string;
-    ingredients: Ingredient[];
-    step: StepType[];
-  };
+  mainImage: string;
+  mainTitle: string;
+  mainContent: string;
+  categories: {foodStyle: string; foodType: string};
+  cookTime: string;
+  cookLevel: string;
+  ingredients: Ingredient[];
+  step: StepType[];
+};
 
-  setAddRecipeData: React.Dispatch<
-    React.SetStateAction<{
-      mainImage: string;
-      mainTitle: string;
-      mainContent: string;
-      categories: {foodStyle: string; foodType: string};
-      cookTime: string;
-      cookLevel: string;
-      ingredients: Ingredient[];
-      step: StepType[];
-    }>
-  >;
-  selectedCategory?: {
-    foodStyle: string;
-    foodType: string;
-  };
+export type AddIngredientPageType = {
+  addRecipeData: AddIngredientType;
+  setAddRecipeData: React.Dispatch<React.SetStateAction<AddIngredientType>>;
 };

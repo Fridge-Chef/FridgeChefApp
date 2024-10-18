@@ -1,4 +1,4 @@
-import {KeyboardAvoidingView, Platform, StyleSheet, View} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import React from 'react';
 import {colors, FWidth} from '../../../../globalStyle';
 import FButton from '../../elements/FButton';
@@ -90,5 +90,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     borderTopWidth: 1,
     borderColor: colors.b200,
+    backgroundColor: 'red',
   },
 });

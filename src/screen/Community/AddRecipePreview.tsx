@@ -2,34 +2,24 @@ import {Image, ScrollView, StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import FImage from '../../components/elements/FImage';
 import {RouteProp, useRoute} from '@react-navigation/native';
-import {Ingredient, StepType} from '../../type/types';
+import {AddIngredientType, Ingredient, StepType} from '../../type/types';
 import PreviewTitle from '../../components/Community/AddRecipe/Preview/PreviewTitle';
 import {colors} from '../../../globalStyle';
 import RecipeNote from '../../components/MyFridge/RecipeDetail/RecipeNote/RecipeNote';
 import IngredientComponent from '../../components/MyFridge/RecipeDetail/IngredientComponent/IngredientComponent';
 import RecipeComponent from '../../components/MyFridge/RecipeDetail/RecipeComponent/RecipeComponent';
-import FText from '../../components/elements/FText';
 import PCloseButton from '../../components/Community/AddRecipe/Preview/PCloseButton';
 
 type AddRecipePreviewProps = {
   params: {
-    addRecipeData: {
-      mainImage: string;
-      mainTitle: string;
-      mainContent: string;
-      categories: {foodStyle: string; foodType: string};
-      cookTime: string;
-      cookLevel: string;
-      ingredients: Ingredient[];
-      step: StepType[];
-    };
+    recipeData: AddIngredientType;
   };
 };
 
 const AddRecipePreview = () => {
   const route = useRoute<RouteProp<AddRecipePreviewProps>>();
-
-  const item = route.params.addRecipeData;
+  const item = route.params.recipeData;
+  console.log('item', item);
   return (
     <ScrollView style={styles.container}>
       <View>
