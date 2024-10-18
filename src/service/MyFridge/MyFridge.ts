@@ -1,4 +1,3 @@
-import {baseUrl} from '../../api/axios';
 import {getUser} from '../../api/user';
 import {UserData} from '../../type/types';
 
