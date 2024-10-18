@@ -7,10 +7,10 @@ type LogoutProps = {
   setLogout: (logout: boolean) => void;
 };
 
-export const handleLogout = async ({navigation, setLogout}: LogoutProps) => {
+export const handleLogout = ({navigation, setLogout}: LogoutProps) => {
   setLogout(false);
-  await AsyncStorage.getItem('token');
-  setTimeout(() => {
+  setTimeout(async () => {
+    await AsyncStorage.removeItem('token');
     navigation.navigate('login');
   }, 200);
 };
