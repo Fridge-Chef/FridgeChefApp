@@ -103,8 +103,6 @@ android {
         resValue "string", "google_oauth_type1_1_certificate_hash", project.env.get("GOOGLE_OAUTH_TYPE1_1_CERTIFICATE_HASH")
         resValue "string", "google_oauth_type3_client_id", project.env.get("GOOGLE_OAUTH_TYPE3_CLIENT_ID")
         resValue "string", "google_oauth_current_key", project.env.get("GOOGLE_OAUTH_CURRENT_KEY")
-        resValue "string", "release_key_password", project.env.get("RELEASE_KEY_PASSWORD")
-
         resValue "string", "build_config_package", "com.fridgechefapp"
     }
     signingConfigs {
@@ -130,7 +128,7 @@ android {
         release {
             // Caution! In production, you need to generate your own keystore file.
             // see https://reactnative.dev/docs/signed-apk-android.
-            signingConfig signingConfigs.debug
+            signingConfig signingConfigs.release
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
         }
