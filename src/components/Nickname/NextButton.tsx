@@ -5,6 +5,7 @@ import {colors, FWidth} from '../../../globalStyle';
 import FButton from '../elements/FButton';
 import {ParamListBase, useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import {userNickname} from '../../service/Nickname/Nickname';
 
 type NextButtonProps = {
   nickname: string;
@@ -21,7 +22,7 @@ const NextButton = ({nickname}: NextButtonProps) => {
           backgroundColor: nickname ? colors.primary[1] : colors.b200,
         },
       ]}
-      onPress={() => navigation.navigate('addBasic')}>
+      onPress={() => userNickname({nickname, navigation})}>
       <FText fStyle="B_18" color={colors.white} text="다음" />
     </FButton>
   );

@@ -17,13 +17,12 @@ import CondimentButton from '../../components/MyFridge/Ingredients/CondimentButt
 import InfoComponent from '../../components/MyFridge/Ingredients/InfoComponent';
 import FModal from '../../components/elements/FModal';
 import SearchIcon from '../../utils/Svg/SearchIcon';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 const Ingredients = () => {
   const {setLoading, setLoadingTitle} = useLoading();
   const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
   const [onClicked, setonClicked] = useState(1);
-  // const [test] = useState(false);
-  const [test, styTest] = useState(true);
-  const [modal, setModal] = useState(false);
+
   const handleSearch = () => {
     setLoadingTitle('레시피 검색중');
     setLoading(true);
@@ -35,44 +34,21 @@ const Ingredients = () => {
     } else {
     }
   };
-  const {setTitle} = useBottomSheetTitle();
-  const {bottomSheetRef} = useBottomSheetRef();
-  // 테스트용 함수
-  const handleTest = () => {
-    setTitle('순위');
-    // bottomSheetRef.current?.expand();
-    // setModal(!modal);
-    // showToast({
-    //   text: '기본 재료를 등록했어요. 언제든 삭제할 수 있어요!',
-    //   time: 5000,
-    // });
-  };
 
-  // useEffect(() => {
-  //   handleTest()
-  // }, [])
+  // 테스트용 함수
+  const handleTest = async () => {
+    await AsyncStorage.removeItem('token');
+  };
 
   return (
     <View style={styles.container}>
-      <FModal
-        modalVisible={modal}
-        text="반갑습니다"
-        text2="반갑습니다"
-        buttonText="좋아요"
-        cancel
-        onPress={() => {}}
-      />
-      <LoginAndUser test={test} styTest={styTest} />
+      <LoginAndUser />
       <ScrollView showsVerticalScrollIndicator={false} overScrollMode="never">
-        {/* 테스트 터쳐블 삭제바람 */}
-
         <TouchableOpacity onPress={handleTest}>
           <TopComponent />
         </TouchableOpacity>
-        {/* <CondimentList /> */}
         <CondimentButton onClicked={onClicked} setonClicked={setonClicked} />
         <InfoComponent />
-
         <AddList onClicked={onClicked} />
       </ScrollView>
       <View style={styles.buttonContainer}>

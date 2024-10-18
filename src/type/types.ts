@@ -107,3 +107,13 @@ export type AddIngredientPageType = {
   addRecipeData: AddIngredientType;
   setAddRecipeData: React.Dispatch<React.SetStateAction<AddIngredientType>>;
 };
+
+export type UserData = {
+  user: {
+    createAt: string;
+    email: string;
+    profileLink: string;
+    role: string;
+    username: string;
+  };
+};
