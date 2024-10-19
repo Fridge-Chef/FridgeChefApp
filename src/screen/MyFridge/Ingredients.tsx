@@ -18,6 +18,7 @@ import InfoComponent from '../../components/MyFridge/Ingredients/InfoComponent';
 import FModal from '../../components/elements/FModal';
 import SearchIcon from '../../utils/Svg/SearchIcon';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import TestIcon from '../../utils/Svg/Categories/TestIcon';
 const Ingredients = () => {
   const {setLoading, setLoadingTitle} = useLoading();
   const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
@@ -52,6 +53,7 @@ const Ingredients = () => {
         <AddList onClicked={onClicked} />
       </ScrollView>
       <View style={styles.buttonContainer}>
+        {/* <TestIcon /> */}
         <FButton
           buttonStyle="bigButton"
           fBStyle={styles.buttonStyle}

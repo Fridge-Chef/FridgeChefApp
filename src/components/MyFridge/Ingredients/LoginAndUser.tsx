@@ -27,12 +27,12 @@ const LoginAndUser = () => {
       style={[
         styles.container,
         {
-          backgroundColor: !user.user.username
+          backgroundColor: !user?.user?.username
             ? colors.background3
             : colors.primary[4],
         },
       ]}>
-      {!user.user.username ? (
+      {!user?.user?.username ? (
         <View style={styles.alignCenter}>
           <NotLoginUser />
           <FText
