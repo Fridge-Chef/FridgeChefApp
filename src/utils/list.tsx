@@ -1,16 +1,28 @@
 import AppleIcon from './Svg/Categories/AppleIcon';
+import AppleIconDisable from './Svg/Categories/AppleIconDisable';
 import Bowl from './Svg/Categories/Bowl';
 import Bread from './Svg/Categories/Bread';
+import BreadDisable from './Svg/Categories/BreadDisable';
 import Cheese from './Svg/Categories/Cheese';
+import CheeseDisable from './Svg/Categories/CheeseDisable';
 import ChickenThigh from './Svg/Categories/ChickenThigh';
+import ChickenThighDisable from './Svg/Categories/ChickenThighDisable';
 import Egg from './Svg/Categories/Egg';
+import EggDisable from './Svg/Categories/EggDisable';
 import Fish from './Svg/Categories/Fish';
+import FishDisable from './Svg/Categories/FishDisable';
 import Grain from './Svg/Categories/Grain';
+import GrainDisable from './Svg/Categories/GrainDisable';
 import Instant from './Svg/Categories/Instant';
+import InstantDisable from './Svg/Categories/InstantDisable';
 import Kimchi from './Svg/Categories/Kimchi';
+import KimchiDisable from './Svg/Categories/KimchiDisable';
 import Seafood from './Svg/Categories/Seafood';
+import SeafoodDisable from './Svg/Categories/SeafoodDisable';
 import Soybeans from './Svg/Categories/Soybeans';
+import SoybeansDisable from './Svg/Categories/SoybeansDisable';
 import Vegetable from './Svg/Categories/Vegetable';
+import VegetableDisable from './Svg/Categories/VegetableDisable';
 
 export const ingredients = [
   {id: 1, name: '소금류'},
@@ -490,18 +502,18 @@ export const storageSubList = [
 
 export const categoryList = [
   {id: 1, name: '미분류', icon: <Bowl />, icon2: <Vegetable />},
-  {id: 2, name: '채소류', icon: <Vegetable />, icon2: <Vegetable />},
-  {id: 3, name: '육류', icon: <ChickenThigh />, icon2: <ChickenThigh />},
-  {id: 4, name: '생선류', icon: <Fish />, icon2: <Fish />},
-  {id: 5, name: '해산물류', icon: <Seafood />, icon2: <Seafood />},
-  {id: 6, name: '과일류', icon: <AppleIcon />, icon2: <AppleIcon />},
-  {id: 7, name: '곡류', icon: <Grain />, icon2: <Grain />},
-  {id: 8, name: '콩류', icon: <Soybeans />, icon2: <Soybeans />},
-  {id: 9, name: '달걀류', icon: <Egg />, icon2: <Egg />},
-  {id: 10, name: '유제품', icon: <Cheese />, icon2: <Cheese />},
-  {id: 11, name: '빵류', icon: <Bread />, icon2: <Bread />},
-  {id: 12, name: '가공식품', icon: <Instant />, icon2: <Instant />},
-  {id: 13, name: '김치류', icon: <Kimchi />, icon2: <Kimchi />},
+  {id: 2, name: '채소류', icon: <VegetableDisable />, icon2: <Vegetable />},
+  {id: 3, name: '육류', icon: <ChickenThighDisable />, icon2: <ChickenThigh />},
+  {id: 4, name: '생선류', icon: <FishDisable />, icon2: <Fish />},
+  {id: 5, name: '해산물류', icon: <SeafoodDisable />, icon2: <Seafood />},
+  {id: 6, name: '과일류', icon: <AppleIconDisable />, icon2: <AppleIcon />},
+  {id: 7, name: '곡류', icon: <GrainDisable />, icon2: <Grain />},
+  {id: 8, name: '콩류', icon: <SoybeansDisable />, icon2: <Soybeans />},
+  {id: 9, name: '달걀류', icon: <EggDisable />, icon2: <Egg />},
+  {id: 10, name: '유제품', icon: <CheeseDisable />, icon2: <Cheese />},
+  {id: 11, name: '빵류', icon: <BreadDisable />, icon2: <Bread />},
+  {id: 12, name: '가공식품', icon: <InstantDisable />, icon2: <Instant />},
+  {id: 13, name: '김치류', icon: <KimchiDisable />, icon2: <Kimchi />},
 ];
 
 export const rankingMenuList = [

@@ -53,7 +53,6 @@ const Ingredients = () => {
         <AddList onClicked={onClicked} />
       </ScrollView>
       <View style={styles.buttonContainer}>
-        {/* <TestIcon /> */}
         <FButton
           buttonStyle="bigButton"
           fBStyle={styles.buttonStyle}

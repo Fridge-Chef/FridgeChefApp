@@ -1,9 +1,9 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet} from 'react-native';
 import React from 'react';
-import Svg, {G, Mask, Path, Rect} from 'react-native-svg';
+import Svg, {G, Mask, Path} from 'react-native-svg';
 import {FWidth} from '../../../../globalStyle';
 
-const TestIcon = () => {
+const ChickenThighDisable = () => {
   return (
     <Svg
       width={FWidth * 32}
@@ -69,6 +69,6 @@ const TestIcon = () => {
   );
 };
 
-export default TestIcon;
+export default ChickenThighDisable;
 
 const styles = StyleSheet.create({});
