@@ -3,20 +3,20 @@ import React from 'react';
 import ItemBox from './ItemBox';
 
 type ItemsComponentProps = {
-  ingredientList: {
+  recipeIngredients: {
     name: string;
-    quantity?: string;
+    details?: string;
   }[];
 };
 
-const ItemsComponent = ({ingredientList}: ItemsComponentProps) => {
+const ItemsComponent = ({recipeIngredients}: ItemsComponentProps) => {
   return (
     <>
-      {ingredientList.map((item, index) => (
+      {recipeIngredients.map((item, index) => (
         <ItemBox
           key={index}
           title={item.name}
-          quantity={item.quantity}
+          quantity={item.details}
           onPress={() => console.log(item.name)}
         />
       ))}

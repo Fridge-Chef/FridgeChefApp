@@ -38,12 +38,14 @@ const RecipeDetail = () => {
         <Badge />
       </View>
       <TitleComponent detailData={detailData[route.params.id]} />
-      <RecipeNote content={detailData[route.params.id].mainContent} />
+      <RecipeNote content={detailData[route.params.id].description} />
       <IngredientComponent
-        ingredientList={detailData[route.params.id].ingredients}
+        recipeIngredients={detailData[route.params.id].recipeIngredients}
       />
-      <RecipeComponent detailContent={detailData[route.params.id].step} />
-      <RecipeReview title={detailData[route.params.id].mainTitle} />
+      <RecipeComponent
+        instructions={detailData[route.params.id].instructions}
+      />
+      <RecipeReview title={detailData[route.params.id].name} />
     </ScrollView>
   );
 };

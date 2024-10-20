@@ -5,7 +5,7 @@ import ItemBox from './ItemBox';
 type ItemsComponentProps = {
   list: {
     name: string;
-    quantity: string;
+    details: string;
   }[];
 };
 

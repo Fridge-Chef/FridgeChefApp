@@ -3,18 +3,18 @@ import {ColorValue} from 'react-native';
 export type RecipeListType = {
   id: number;
   writer: string;
-  category: {style: string; type: string};
-  time: string;
-  level: string;
+  dishCategory: {style: string; type: string};
+  dishTime: string;
+  dishLevel: string;
   mainImage: string;
-  mainTitle: string;
+  name: string;
   likes: number;
   favorites: number;
   myLike: number;
   reviews: number;
-  mainContent: string;
-  ingredients: {name: string; quantity: string}[];
-  step: {step: string; image: string}[];
+  description: string;
+  recipeIngredients: {name: string; details: string}[];
+  instructions: {content: string; image: string}[];
 };
 
 type IconProps =
@@ -82,25 +82,25 @@ export type RecipeList = {
   create_time: string;
 };
 
-export type Ingredient = {
+export type RecipeIngredientType = {
   name: string;
-  quantity: string;
+  details: string;
 };
 
-export type StepType = {
-  step: string;
+export type InstructionsType = {
+  content: string;
   image: string;
 };
 
 export type AddIngredientType = {
   mainImage: string;
-  mainTitle: string;
-  mainContent: string;
-  categories: {foodStyle: string; foodType: string};
-  cookTime: string;
-  cookLevel: string;
-  ingredients: Ingredient[];
-  step: StepType[];
+  name: string;
+  description: string;
+  dishCategory: {foodStyle: string; foodType: string};
+  dishTime: string;
+  dishLevel: string;
+  recipeIngredients: RecipeIngredientType[];
+  instructions: InstructionsType[];
 };
 
 export type AddIngredientPageType = {

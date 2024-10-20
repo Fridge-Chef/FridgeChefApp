@@ -15,16 +15,16 @@ const TitleComponent = ({detailData}: TitleComponentProps) => {
   return (
     <View style={styles.container}>
       <TimeAndLevel
-        category={`${detailData.category.style}, ${detailData.category.type}`}
-        recipeTime={detailData.time}
-        recipeLevel={detailData.level}
+        dishCategory={`${detailData.dishCategory.style}, ${detailData.dishCategory.type}`}
+        dishTime={detailData.dishTime}
+        dishLevel={detailData.dishLevel}
       />
       <FText
         flexShrink={1}
         fStyle="B_22"
         lineH={FWidth * 32}
         color={colors.text}
-        text={detailData.mainTitle}
+        text={detailData.name}
       />
       <DetailInfo
         writer={detailData.writer}
@@ -34,11 +34,11 @@ const TitleComponent = ({detailData}: TitleComponentProps) => {
       />
       <IngredientContainer
         title="보유재료"
-        detailList={detailData.ingredients}
+        detailList={detailData.recipeIngredients}
       />
       <IngredientContainer
         title="없는 재료"
-        detailList={detailData.ingredients}
+        detailList={detailData.recipeIngredients}
       />
     </View>
   );

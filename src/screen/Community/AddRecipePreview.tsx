@@ -1,8 +1,8 @@
-import {Image, ScrollView, StyleSheet, Text, View} from 'react-native';
+import {Image, ScrollView, StyleSheet, View} from 'react-native';
 import React from 'react';
 import FImage from '../../components/elements/FImage';
 import {RouteProp, useRoute} from '@react-navigation/native';
-import {AddIngredientType, Ingredient, StepType} from '../../type/types';
+import {AddIngredientType} from '../../type/types';
 import PreviewTitle from '../../components/Community/AddRecipe/Preview/PreviewTitle';
 import {colors} from '../../../globalStyle';
 import RecipeNote from '../../components/MyFridge/RecipeDetail/RecipeNote/RecipeNote';
@@ -26,14 +26,14 @@ const AddRecipePreview = () => {
         <FImage uri={item.mainImage} imgStyle="detail" alt="미리보기 메인" />
       </View>
       <PreviewTitle
-        title={item.mainTitle}
-        categories={item.categories}
-        cookTime={item.cookTime}
-        cookLevel={item.cookLevel}
+        title={item.name}
+        dishCategory={item.dishCategory}
+        dishTime={item.dishTime}
+        dishLevel={item.dishLevel}
       />
-      <RecipeNote content={item.mainContent} />
-      <IngredientComponent ingredientList={item.ingredients} />
-      <RecipeComponent detailContent={item.step} />
+      <RecipeNote content={item.description} />
+      <IngredientComponent recipeIngredients={item.recipeIngredients} />
+      <RecipeComponent instructions={item.instructions} />
       <PCloseButton />
     </ScrollView>
   );

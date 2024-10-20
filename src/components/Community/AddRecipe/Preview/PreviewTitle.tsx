@@ -7,23 +7,23 @@ import TimeAndLevel from '../../../MyFridge/RecipeDetail/TitleComponent/TimeAndL
 
 type PreviewTitleProps = {
   title: string;
-  categories: {foodStyle: string; foodType: string};
-  cookTime: string;
-  cookLevel: string;
+  dishCategory: {foodStyle: string; foodType: string};
+  dishTime: string;
+  dishLevel: string;
 };
 
 const PreviewTitle = ({
   title,
-  categories,
-  cookTime,
-  cookLevel,
+  dishCategory,
+  dishTime,
+  dishLevel,
 }: PreviewTitleProps) => {
   return (
     <View style={styles.container}>
       <TimeAndLevel
-        category={`${categories.foodStyle}, ${categories.foodType}`}
-        recipeTime={cookTime}
-        recipeLevel={cookLevel}
+        dishCategory={`${dishCategory.foodStyle}, ${dishCategory.foodType}`}
+        dishTime={dishTime}
+        dishLevel={dishLevel}
       />
       <FText fStyle="B_22" color={colors.text} text={title} />
       <View style={styles.userAlign}>

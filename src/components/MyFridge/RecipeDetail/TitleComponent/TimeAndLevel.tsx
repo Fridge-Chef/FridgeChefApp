@@ -6,20 +6,20 @@ import DetailTime from '../../../../utils/Svg/DetailTime';
 import DetailLevel from '../../../../utils/Svg/DetailLevel';
 
 type TimeAndLevelProps = {
-  category: string;
-  recipeTime: string;
-  recipeLevel: string;
+  dishCategory: string;
+  dishTime: string;
+  dishLevel: string;
 };
 
 const TimeAndLevel = ({
-  category,
-  recipeTime,
-  recipeLevel,
+  dishCategory,
+  dishTime,
+  dishLevel,
 }: TimeAndLevelProps) => {
   return (
     <View style={styles.container}>
       <View style={[styles.iconContainer, {borderColor: colors.secondary[1]}]}>
-        <FText fStyle="B_12" color={colors.secondary[1]} text={category} />
+        <FText fStyle="B_12" color={colors.secondary[1]} text={dishCategory} />
       </View>
       <View style={[styles.iconContainer, {borderColor: colors.b500}]}>
         <DetailTime />
@@ -27,7 +27,7 @@ const TimeAndLevel = ({
           mLeft={FWidth * 2}
           fStyle="B_12"
           color={colors.b500}
-          text={`${recipeTime}분`}
+          text={`${dishTime}분`}
         />
       </View>
       <View style={[styles.iconContainer, {borderColor: colors.b500}]}>
@@ -36,7 +36,7 @@ const TimeAndLevel = ({
           mLeft={FWidth * 2}
           fStyle="B_12"
           color={colors.b500}
-          text={recipeLevel}
+          text={dishLevel}
         />
       </View>
     </View>

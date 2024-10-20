@@ -31,12 +31,12 @@ const ListItem = ({item}: ListItemProps) => {
             fStyle="M_16"
             lineH={FWidth * 22.5}
             color={colors.text}
-            text={item.mainTitle}
+            text={item.name}
           />
           <LikeButton isLike={isLike} setIsLike={setIsLike} />
         </View>
         <ViewAndLike like={item.likes} favorites={item.favorites} />
-        <BottomText ingredients={item.ingredients} />
+        <BottomText recipeIngredients={item.recipeIngredients} />
       </View>
     </View>
   );

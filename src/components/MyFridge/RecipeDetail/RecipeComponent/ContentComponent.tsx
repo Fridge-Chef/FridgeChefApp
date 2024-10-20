@@ -6,11 +6,11 @@ import FImage from '../../../elements/FImage';
 
 type ContentComponentProps = {
   id: number;
-  step: string;
+  content: string;
   image: string;
 };
 
-const ContentComponent = ({id, step, image}: ContentComponentProps) => {
+const ContentComponent = ({id, content, image}: ContentComponentProps) => {
   return (
     <View style={styles.container}>
       <View style={styles.stepNumber}>
@@ -21,7 +21,7 @@ const ContentComponent = ({id, step, image}: ContentComponentProps) => {
         fStyle="R_16"
         lineH={FWidth * 24}
         color={colors.black}
-        text={step}
+        text={content}
       />
       {image && (
         <View style={{marginTop: FWidth * 8}}>

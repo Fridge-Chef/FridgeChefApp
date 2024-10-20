@@ -20,19 +20,19 @@ const AddRecipe = () => {
   const {selectedCategory} = useSelectedCategory();
   const [addRecipeData, setAddRecipeData] = useState<AddIngredientType>({
     mainImage: '',
-    mainTitle: '',
-    mainContent: '',
-    categories: selectedCategory,
-    cookTime: '',
-    cookLevel: '쉬움',
-    ingredients: [{name: '', quantity: ''}],
-    step: [{step: '', image: ''}],
+    name: '',
+    description: '',
+    dishCategory: selectedCategory,
+    dishTime: '',
+    dishLevel: '쉬움',
+    recipeIngredients: [{name: '', details: ''}],
+    instructions: [{content: '', image: ''}],
   });
 
   useEffect(() => {
     setAddRecipeData(prevData => ({
       ...prevData,
-      categories: selectedCategory,
+      dishCategory: selectedCategory,
     }));
   }, [selectedCategory]);
 

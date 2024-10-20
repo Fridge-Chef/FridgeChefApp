@@ -8,17 +8,17 @@ export const handlePreview = (
   navigation: NativeStackNavigationProp<ParamListBase>,
 ) => {
   if (
-    recipeData.mainTitle.trim() === '' ||
-    recipeData.mainContent.trim() === '' ||
+    recipeData.name.trim() === '' ||
+    recipeData.description.trim() === '' ||
     recipeData.mainImage.trim() === '' ||
-    recipeData.cookTime.trim() === '' ||
-    recipeData.categories.foodStyle.trim() === '' ||
-    recipeData.categories.foodType.trim() === '' ||
-    recipeData.cookLevel.trim() === '' ||
-    recipeData.ingredients.length <= 1 ||
-    recipeData.ingredients[1].name.trim() === '' ||
-    recipeData.step.length <= 1 ||
-    recipeData.step[1].step.trim() === ''
+    recipeData.dishLevel.trim() === '' ||
+    recipeData.dishCategory.foodStyle.trim() === '' ||
+    recipeData.dishCategory.foodType.trim() === '' ||
+    recipeData.dishLevel.trim() === '' ||
+    recipeData.recipeIngredients.length <= 1 ||
+    recipeData.recipeIngredients[1].name.trim() === '' ||
+    recipeData.instructions.length <= 1 ||
+    recipeData.instructions[1].content.trim() === ''
   ) {
     console.log('데이터를 모두 입력해주세요1');
     return;
@@ -31,17 +31,17 @@ export const handlePreview = (
 
 export const handleButtonColor = (recipeData: AddIngredientType) => {
   if (
-    recipeData.mainTitle.trim() === '' ||
-    recipeData.mainContent.trim() === '' ||
+    recipeData.name.trim() === '' ||
+    recipeData.description.trim() === '' ||
     recipeData.mainImage.trim() === '' ||
-    recipeData.cookTime.trim() === '' ||
-    recipeData.categories.foodStyle.trim() === '' ||
-    recipeData.categories.foodType.trim() === '' ||
-    recipeData.cookLevel.trim() === '' ||
-    recipeData.ingredients.length <= 1 ||
-    recipeData.ingredients[1].name.trim() === '' ||
-    recipeData.step.length <= 1 ||
-    recipeData.step[1].step.trim() === ''
+    recipeData.dishLevel.trim() === '' ||
+    recipeData.dishCategory.foodStyle.trim() === '' ||
+    recipeData.dishCategory.foodType.trim() === '' ||
+    recipeData.dishLevel.trim() === '' ||
+    recipeData.recipeIngredients.length <= 1 ||
+    recipeData.recipeIngredients[1].name.trim() === '' ||
+    recipeData.instructions.length <= 1 ||
+    recipeData.instructions[1].content.trim() === ''
   ) {
     console.log('데이터를 모두 입력해주세요2');
     return colors.b200;

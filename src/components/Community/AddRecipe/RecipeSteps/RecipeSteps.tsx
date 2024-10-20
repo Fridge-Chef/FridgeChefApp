@@ -16,9 +16,9 @@ const RecipeSteps = ({
       pickerType: 'imageLibrary',
       handleImage(imageUri) {
         setAddRecipeData(addRecipeData => {
-          const newStep = [...addRecipeData.step];
+          const newStep = [...addRecipeData.instructions];
           newStep[index].image = imageUri;
-          return {...addRecipeData, step: newStep};
+          return {...addRecipeData, instructions: newStep};
         });
       },
     });
@@ -26,42 +26,42 @@ const RecipeSteps = ({
   const addStep = () => {
     setAddRecipeData(prevData => ({
       ...prevData,
-      step: [...prevData.step, {step: '', image: ''}],
+      instructions: [...prevData.instructions, {content: '', image: ''}],
     }));
   };
 
   const deleteStep = (index: number) => {
     setAddRecipeData(prevData => {
-      const newStep = prevData.step.filter((_, i) => i !== index);
-      return {...prevData, step: newStep};
+      const newStep = prevData.instructions.filter((_, i) => i !== index);
+      return {...prevData, instructions: newStep};
     });
   };
 
   return (
     <View style={styles.container}>
       <StepTitle />
-      {addRecipeData.step.map((item, index) => (
+      {addRecipeData.instructions.map((item, index) => (
         <StepITem
           key={index}
           index={index + 1}
           uri={item?.image}
-          textValue={item?.step}
+          textValue={item?.content}
           onChangeText={text => {
             setAddRecipeData(addRecipeData => {
-              const newStep = [...addRecipeData.step];
-              newStep[index].step = text;
-              return {...addRecipeData, step: newStep};
+              const newStep = [...addRecipeData.instructions];
+              newStep[index].content = text;
+              return {...addRecipeData, content: newStep};
             });
           }}
           deleteOnPress={() =>
-            addRecipeData.step.length === 1 ? null : deleteStep(index)
+            addRecipeData.instructions.length === 1 ? null : deleteStep(index)
           }
           imageOnPress={() => handleImage(index)}
           imageDeleteOnPress={() => {
             setAddRecipeData(addRecipeData => {
-              const newStep = [...addRecipeData.step];
+              const newStep = [...addRecipeData.instructions];
               newStep[index].image = '';
-              return {...addRecipeData, step: newStep};
+              return {...addRecipeData, content: newStep};
             });
           }}
         />

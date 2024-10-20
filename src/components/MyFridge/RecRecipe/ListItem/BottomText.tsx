@@ -4,22 +4,22 @@ import {colors, FWidth} from '../../../../../globalStyle';
 import FText from '../../../elements/FText';
 
 type BottomTextProps = {
-  ingredients: {name: string; quantity: string}[];
+  recipeIngredients: {name: string; details: string}[];
 };
 
-const BottomText = ({ingredients}: BottomTextProps) => {
+const BottomText = ({recipeIngredients}: BottomTextProps) => {
   return (
     <View style={styles.container}>
       <View style={styles.textContainer}>
         <FText
           fStyle="M_12"
           color={colors.b500}
-          text={`재료 ${ingredients.length}개 중 `}
+          text={`재료 ${recipeIngredients.length}개 중 `}
         />
         <FText
           fStyle="M_12"
           color={colors.secondary[1]}
-          text={`${ingredients.length}개 보유`}
+          text={`${recipeIngredients.length}개 보유`}
         />
       </View>
       <FText fStyle="M_12" color={colors.b500} text="없는 재료 : 참기름" />

@@ -4,7 +4,7 @@ import {colors, FWidth} from '../../../../../globalStyle';
 import AddIngredientTitle from './AddIngredientTitle';
 import AddIngredientInputComponent from './AddIngredientInputComponent';
 import AddRecipeSubButton from '../AddRecipeSubButton';
-import {AddIngredientPageType, AddIngredientType} from '../../../../type/types';
+import {AddIngredientPageType} from '../../../../type/types';
 
 const AddIngredient = ({
   addRecipeData,
@@ -13,41 +13,46 @@ const AddIngredient = ({
   const addIngredient = () => {
     setAddRecipeData(prevData => ({
       ...prevData,
-      ingredients: [...prevData.ingredients, {name: '', quantity: ''}],
+      recipeIngredients: [
+        ...prevData.recipeIngredients,
+        {name: '', details: ''},
+      ],
     }));
   };
 
   const deleteIngredient = (index: number) => {
     setAddRecipeData(prevData => {
-      const newIngredients = prevData.ingredients.filter((_, i) => i !== index);
-      return {...prevData, ingredients: newIngredients};
+      const newIngredients = prevData.recipeIngredients.filter(
+        (_, i) => i !== index,
+      );
+      return {...prevData, recipeIngredients: newIngredients};
     });
   };
 
   return (
     <View style={styles.container}>
       <AddIngredientTitle />
-      {addRecipeData.ingredients.map((item, index) => (
+      {addRecipeData.recipeIngredients.map((item, index) => (
         <AddIngredientInputComponent
           key={index}
           titleValue={item?.name}
-          quantityValue={item?.quantity}
+          quantityValue={item?.details}
           onChangeTitleText={(text: string) =>
             setAddRecipeData(addRecipeData => {
-              const newIngredients = [...addRecipeData.ingredients];
+              const newIngredients = [...addRecipeData.recipeIngredients];
               newIngredients[index].name = text;
-              return {...addRecipeData, ingredients: newIngredients};
+              return {...addRecipeData, recipeIngredients: newIngredients};
             })
           }
           onChangeQuantityText={(text: string) =>
             setAddRecipeData(addRecipeData => {
-              const newIngredients = [...addRecipeData.ingredients];
-              newIngredients[index].quantity = text;
-              return {...addRecipeData, ingredients: newIngredients};
+              const newIngredients = [...addRecipeData.recipeIngredients];
+              newIngredients[index].details = text;
+              return {...addRecipeData, recipeIngredients: newIngredients};
             })
           }
           onPress={() =>
-            addRecipeData.ingredients.length === 1
+            addRecipeData.recipeIngredients.length === 1
               ? null
               : deleteIngredient(index)
           }

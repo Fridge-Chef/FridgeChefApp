@@ -8,7 +8,7 @@ type IngredientContainerProps = {
   title: string;
   detailList: {
     name: string;
-    quantity: string;
+    details: string;
   }[];
 };
 

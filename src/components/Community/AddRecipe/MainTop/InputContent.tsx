@@ -26,25 +26,25 @@ const InputContent = ({
       <View style={styles.container}>
         <RecipeSubTitle title="요리명" required={true} />
         <FootTitle
-          value={addRecipeData?.mainTitle}
+          value={addRecipeData?.name}
           onChangeText={text => {
-            setAddRecipeData({...addRecipeData, mainTitle: text});
+            setAddRecipeData({...addRecipeData, name: text});
           }}
         />
         <RecipeSubTitle title="카테고리" />
         <Category selectedCategory={selectedCategory} />
         <RecipeSubTitle title="레시피 소개" />
         <RecipePreview
-          value={addRecipeData?.mainContent}
+          value={addRecipeData?.description}
           onChangeText={text => {
-            setAddRecipeData({...addRecipeData, mainContent: text});
+            setAddRecipeData({...addRecipeData, description: text});
           }}
         />
         <RecipeSubTitle title="조리 시간" />
         <CookTime
-          value={addRecipeData.cookTime}
+          value={addRecipeData.dishTime}
           onChangeText={text => {
-            setAddRecipeData({...addRecipeData, cookTime: text});
+            setAddRecipeData({...addRecipeData, dishTime: text});
           }}
         />
         <RecipeSubTitle title="조리 난이도" />
@@ -52,7 +52,7 @@ const InputContent = ({
       <View style={styles.levelContainer}>
         <CookLevel
           onPress={text => {
-            setAddRecipeData({...addRecipeData, cookLevel: text});
+            setAddRecipeData({...addRecipeData, dishLevel: text});
           }}
         />
       </View>
