@@ -1,13 +1,14 @@
-import {StyleSheet, TouchableOpacity, View} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import {colors, FWidth} from '../../../../globalStyle';
 import Notification from '../../../utils/Svg/Notification';
 import FText from '../../elements/FText';
 import NotLoginUser from '../../../utils/Svg/NotLoginUser';
-import {getUserData} from '../../../service/MyFridge/MyFridge';
+import {getToken, getUserData} from '../../../service/MyFridge/MyFridge';
 import {UserData} from '../../../type/types';
 
 const LoginAndUser = () => {
+  const [userToken, setUserToken] = useState<string | null>('');
   const [user, setUser] = useState<UserData>({
     user: {
       createAt: '',
@@ -18,21 +19,25 @@ const LoginAndUser = () => {
     },
   });
 
+  const getUserToken = async () => {
+    const token = await getToken();
+    setUserToken(token);
+  };
+
   useEffect(() => {
     getUserData({setUser});
+    getUserToken();
   }, []);
-  console.log('유저 정보 여기는 나의 냉장고 메인 페이지', user);
+
   return (
     <View
       style={[
         styles.container,
         {
-          backgroundColor: !user?.user?.username
-            ? colors.background3
-            : colors.primary[4],
+          backgroundColor: !userToken ? colors.background3 : colors.primary[4],
         },
       ]}>
-      {!user?.user?.username ? (
+      {!userToken ? (
         <View style={styles.alignCenter}>
           <NotLoginUser />
           <FText

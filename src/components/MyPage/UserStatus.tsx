@@ -1,31 +1,25 @@
-import {Image, StyleSheet, View} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import React from 'react';
 import {colors, FWidth} from '../../../globalStyle';
-import RankComponent from './RankComponent';
-import {userInfo} from '../../utils/list';
 import FText from '../elements/FText';
-import FImage from '../elements/FImage';
 import RecipeActions from './RecipeActions';
 import UserImage from './UserImage';
+import {UserData} from '../../type/types';
 
 type UserStatus = {
-  user: {
-    userName: string;
-    email: string;
-    userImg: any;
-    userRank: string;
-  };
+  userData: UserData;
 };
 
-const UserStatus = () => {
-  const user: UserStatus = userInfo;
-  const {uri} = Image.resolveAssetSource(user.user.userImg);
-
+const UserStatus = ({userData}: UserStatus) => {
   return (
     <View style={styles.container}>
-      <UserImage uri={uri} />
+      <UserImage uri={userData?.user.profileLink} />
       <View style={styles.userNicknameContainer}>
-        <FText fStyle="B_18" color={colors.text} text={user.user.userName} />
+        <FText
+          fStyle="B_18"
+          color={colors.text}
+          text={userData?.user.username}
+        />
         <FText fStyle="M_16" color={colors.text} text={'님'} />
         {/* <RankComponent rank={user.user.userRank} /> */}
       </View>
@@ -33,7 +27,7 @@ const UserStatus = () => {
         mTop={FWidth * 4}
         fStyle="R_14"
         color={colors.btnBG}
-        text={`${user.user.email}`}
+        text={`${userData?.user.email}`}
       />
       <RecipeActions />
     </View>

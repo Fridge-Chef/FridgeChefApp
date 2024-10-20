@@ -2,11 +2,11 @@ import {Image, StyleSheet, View} from 'react-native';
 import React from 'react';
 import {ParamListBase, useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import {colors, FWidth} from '../../globalStyle';
-import TitleComponent from '../components/Login/TitleComponent';
-import KakaoLogin from '../components/Login/KakaoLogin';
-import GoogleLogin from '../components/Login/GoogleLogin';
-import TakeTour from '../components/Login/TakeTour';
+import TitleComponent from '../../components/Login/TitleComponent';
+import {colors, FWidth} from '../../../globalStyle';
+import KakaoLogin from '../../components/Login/KakaoLogin';
+import GoogleLogin from '../../components/Login/GoogleLogin';
+import TakeTour from '../../components/Login/TakeTour';
 
 const Login = () => {
   const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
@@ -16,7 +16,7 @@ const Login = () => {
       <View style={{alignItems: 'center', marginBottom: FWidth * 64}}>
         <Image
           style={{width: FWidth * 127, height: FWidth * 137}}
-          source={require('../assets/images/LogoImg.png')}
+          source={require('../../assets/images/LogoImg.png')}
           alt="로고이미지"
         />
       </View>

@@ -1,9 +1,7 @@
-import {Keyboard, Pressable, StyleSheet, Text, View} from 'react-native';
+import {Keyboard, Pressable, StyleSheet} from 'react-native';
 import React, {useState} from 'react';
-import {colors, fontFamilies, FWidth} from '../../globalStyle';
+import {colors} from '../../globalStyle';
 import TopLine from '../components/Nickname/TopLine';
-import FText from '../components/elements/FText';
-import FInput from '../components/elements/FInput';
 import NicknameInputBox from '../components/Nickname/NicknameInputBox';
 import RandomNickname from '../components/Nickname/RandomNickname';
 import NextButton from '../components/Nickname/NextButton';

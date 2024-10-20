@@ -14,6 +14,7 @@ const UserImage = ({uri}: UserImage) => {
       <FImage
         uri={uri}
         imgStyle="myPage"
+        borderRadius={100}
         resizeMode="stretch"
         alt="유저 이미지"
       />

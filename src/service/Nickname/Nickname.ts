@@ -14,6 +14,7 @@ export const userNickname = async ({nickname, navigation}: NicknameProps) => {
     const userNickname = await userUpdateNickname({nickname});
     if (userNickname === 200) {
       navigation.navigate('addBasic');
+      await AsyncStorage.setItem('nickname', nickname);
     }
   } catch (error) {
     console.log('닉네임 페이지', error);

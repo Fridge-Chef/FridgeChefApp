@@ -29,8 +29,8 @@ const FModal = ({
     <Modal visible={modalVisible} transparent>
       <View style={styles.container}>
         <View style={styles.contentBox}>
-          <FText fStyle={'M_16'} color={colors.black} text={text} />
-          {text2 && <FText fStyle="M_16" color={colors.black} text={text2} />}
+          <FText fStyle={'M_16'} color={colors.text} text={text} />
+          {text2 && <FText fStyle="M_16" color={colors.text} text={text2} />}
           <View style={styles.buttonContainer}>
             {cancel && (
               <FButton
@@ -38,7 +38,7 @@ const FModal = ({
                 marginRight={FWidth * 12}
                 buttonColor={colors.b100}
                 onPress={cancelOnPress}>
-                <FText fStyle="B_16" color={colors.black} text={cancelText} />
+                <FText fStyle="M_16" color={colors.black} text={cancelText} />
               </FButton>
             )}
             <FButton

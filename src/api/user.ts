@@ -55,3 +55,20 @@ export const getUser = async () => {
     console.log('유저 가져오기', error);
   }
 };
+
+export const userDelete = async (nickname: string) => {
+  try {
+    const response = await baseUrl.delete('api/user/account', {
+      headers: {
+        Authorization: `Bearer ${await AsyncStorage.getItem('token')}`,
+      },
+      data: {nickname: nickname},
+    });
+
+    if (response.status === 200) {
+      return response;
+    }
+  } catch (error) {
+    console.log('유저 삭제', error);
+  }
+};

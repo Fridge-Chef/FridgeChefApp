@@ -19,7 +19,17 @@ export const handleKakaologin = async ({navigation}: KakaoLoginProps) => {
       });
       if (user) {
         await AsyncStorage.setItem('token', user.user.token);
-        navigation.navigate('nickname');
+        if (await AsyncStorage.getItem('nickname')) {
+          navigation.reset({
+            index: 0,
+            routes: [{name: 'bottomTab'}],
+          });
+        } else {
+          navigation.reset({
+            index: 0,
+            routes: [{name: 'nickname'}],
+          });
+        }
       }
     }
   } catch (e) {

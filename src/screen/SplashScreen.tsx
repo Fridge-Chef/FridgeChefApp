@@ -10,8 +10,13 @@ const SplashScreen = () => {
   const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
 
   const handleNavigation = async () => {
-    if (await AsyncStorage.getItem('token')) {
+    const token = await AsyncStorage.getItem('token');
+    const nickname = await AsyncStorage.getItem('nickname');
+
+    if (token && nickname) {
       navigation.replace('bottomTab');
+    } else if (token) {
+      navigation.replace('nickname');
     } else {
       navigation.replace('login');
     }

@@ -3,18 +3,24 @@ import React, {useState} from 'react';
 import {colors, FWidth} from '../../../globalStyle';
 import FText from '../elements/FText';
 import FButton from '../elements/FButton';
-import {handleLogout} from '../../service/MyPage/MyPage';
+import {handleLogout, handleUserDelete} from '../../service/MyPage/MyPage';
 import {ParamListBase, useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import FModal from '../elements/FModal';
+import {UserData} from '../../type/types';
 
-const MenuList = () => {
+type MenuListProps = {
+  userData: UserData;
+};
+
+const MenuList = ({userData}: MenuListProps) => {
   const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
   const [logout, setLogout] = useState(false);
+  const [userDelete, setUserDelete] = useState(false);
   const menu = [
-    {id: 1, title: '프리지셰프 소개'},
-    {id: 2, title: '로그아웃'},
-    {id: 3, title: '회원 탈퇴'},
+    // {id: 1, title: '프리지셰프 소개'},
+    {id: 1, title: '로그아웃'},
+    {id: 2, title: '회원 탈퇴'},
   ];
 
   const handleMenu = (title: string) => {
@@ -24,7 +30,7 @@ const MenuList = () => {
       case '로그아웃':
         return setLogout(true);
       case '회원 탈퇴':
-        return console.log('회원 탈퇴');
+        return setUserDelete(true);
       default:
         return;
     }
@@ -32,17 +38,32 @@ const MenuList = () => {
 
   return (
     <>
-      {logout &&
+      {(logout || userDelete) &&
         FModal({
-          modalVisible: logout,
+          modalVisible: logout || userDelete,
           cancel: true,
-          text: '로그아웃 하시겠습니까?',
+          text: logout ? '로그아웃 하시겠습니까?' : '정말 떠나시나요?',
+          text2: userDelete ? '더 나은 서비스로 뵙길 바랄게요.' : null,
           buttonText: '확인',
           cancelText: '취소',
           cancelOnPress() {
-            setLogout(false);
+            if (logout) {
+              setLogout(false);
+            } else {
+              setUserDelete(false);
+              console.log('유저네임', userData.user.username);
+            }
           },
-          onPress: () => handleLogout({navigation, setLogout}),
+          onPress: () => {
+            if (logout) {
+              handleLogout({navigation, setLogout});
+            } else {
+              handleUserDelete({
+                userName: userData.user.username.trim(),
+                navigation,
+              });
+            }
+          },
         })}
       {menu.map(item => (
         <FButton

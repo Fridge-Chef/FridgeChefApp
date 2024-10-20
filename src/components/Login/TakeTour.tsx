@@ -1,10 +1,9 @@
 import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
-import {colors, FHeight, fontFamilies, FWidth} from '../../../globalStyle';
+import {colors, fontFamilies, FWidth} from '../../../globalStyle';
 import FButton from '../elements/FButton';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {ParamListBase} from '@react-navigation/native';
-import FText from '../elements/FText';
 
 type TakeTourProps = {
   navigation: NativeStackNavigationProp<ParamListBase>;
@@ -17,7 +16,7 @@ const TakeTour = ({navigation}: TakeTourProps) => {
         buttonStyle="noneStyle"
         fBStyle={styles.textContainer}
         buttonColor={colors.text}
-        onPress={() => navigation.navigate('nickname')}>
+        onPress={() => navigation.navigate('bottomTab')}>
         <Text style={styles.textStyle}>그냥 둘러볼게요</Text>
       </FButton>
     </View>

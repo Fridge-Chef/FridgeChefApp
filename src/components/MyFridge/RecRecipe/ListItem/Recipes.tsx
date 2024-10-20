@@ -1,5 +1,5 @@
 import {FlatList, StyleSheet, View} from 'react-native';
-import React from 'react';
+import React, {useEffect} from 'react';
 import ListItem from './ListItem';
 import {RecipeListType} from '../../../../type/types';
 import {FWidth} from '../../../../../globalStyle';
@@ -8,12 +8,17 @@ import {ParamListBase, useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {useBottomSheetRef, useBottomSheetTitle} from '../../../../store/store';
 import RankButton from './RankButton';
+import {getRecipeList} from '../../../../api/recipe';
 
 const Recipes = () => {
   const listData = require('../../../../utils/detailListData.json');
   const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
   const {bottomSheetRef} = useBottomSheetRef();
   const {setTitle} = useBottomSheetTitle();
+
+  useEffect(() => {
+    getRecipeList();
+  }, []);
 
   const handleBottomSheetOpen = () => {
     setTitle('순위');
@@ -27,7 +32,6 @@ const Recipes = () => {
         <FlatList
           scrollEnabled={false}
           data={listData}
-          // showsVerticalScrollIndicator={false}
           contentContainerStyle={{
             paddingBottom: FWidth * 146,
           }}

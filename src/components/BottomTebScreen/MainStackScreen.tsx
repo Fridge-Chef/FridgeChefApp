@@ -2,7 +2,7 @@ import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import BottomTab from './BottomTab';
 import {colors} from '../../../globalStyle';
-import Login from '../../screen/Login';
+
 import FAppBar from '../elements/FAppBar';
 import StorageGuide from '../../screen/MyFridge/StorageGuide';
 import SplashScreen from '../../screen/SplashScreen';
@@ -15,6 +15,8 @@ import CRecipeReviewDetail from '../../screen/Community/CRecipeReviewDetail';
 import AddReviewAppBar from './AppBar/AddReviewAppBar';
 import ReviewDetailAppBar from './AppBar/ReviewDetailAppBar';
 import AddRecipeAppBar from './AppBar/AddRecipeAppBar';
+import Login from '../../screen/Login/Login';
+import ServiceLogin from '../../screen/Login/ServiceLogin';
 
 const MainStackScreen = () => {
   const Stack = createNativeStackNavigator();
@@ -45,6 +47,27 @@ const MainStackScreen = () => {
         component={Login}
         options={{
           title: '',
+          headerShadowVisible: false,
+        }}
+      />
+      <Stack.Screen
+        name="serviceLogin"
+        component={ServiceLogin}
+        options={{
+          header() {
+            return (
+              <FAppBar
+                type="detailBack"
+                titleOn={true}
+                title="로그인"
+                onlyBackIcon={true}
+                rightOn={true}
+                rType1="detailBack"
+                borderBottomWidth={1}
+              />
+            );
+          },
+          headerShown: true,
           headerShadowVisible: false,
         }}
       />
