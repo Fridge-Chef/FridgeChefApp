@@ -1,4 +1,4 @@
-import {Alert, StyleSheet, View} from 'react-native';
+import {StyleSheet} from 'react-native';
 import React, {useState} from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import MyFridgeScreen from './MyFridgeScreen';
@@ -9,10 +9,14 @@ import NameComponent from './TebMenu/NameComponent';
 import IconComponent from './TebMenu/IconComponent';
 import {colors, FWidth} from '../../../globalStyle';
 import FModal from '../elements/FModal';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import {ParamListBase, useNavigation} from '@react-navigation/native';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 const BottomTab = () => {
+  const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
   const Tab = createBottomTabNavigator();
-  const isMoreEnabled = false;
   const [loginClicked, setLoginClicked] = useState(false);
+
   return (
     <>
       <Tab.Navigator
@@ -42,10 +46,13 @@ const BottomTab = () => {
           component={RecipeBookScreen}
           listeners={() => {
             return {
-              tabPress: e => {
-                if (!isMoreEnabled) {
-                  // e.preventDefault();
-                  // setLoginClicked(true);
+              tabPress: async e => {
+                e.preventDefault();
+                const userToken = await AsyncStorage.getItem('token');
+                if (!userToken) {
+                  setLoginClicked(true);
+                } else {
+                  navigation.navigate('레시피북');
                 }
               },
             };
@@ -63,6 +70,7 @@ const BottomTab = () => {
           }}
           onPress={() => {
             setLoginClicked(false);
+            navigation.navigate('serviceLogin');
           }}
           text="로그인이 필요합니다."
           buttonText="로그인 하기"

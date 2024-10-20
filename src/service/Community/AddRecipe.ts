@@ -2,6 +2,7 @@ import {ParamListBase} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {AddIngredientType} from '../../type/types';
 import {colors} from '../../../globalStyle';
+import {addMyRecipe} from '../../api/recipe';
 
 export const handlePreview = (
   recipeData: AddIngredientType,
@@ -50,4 +51,24 @@ export const handleButtonColor = (recipeData: AddIngredientType) => {
   }
 };
 
-export const handleSubmit = async () => {};
+export const handleSubmit = async (recipeData: AddIngredientType) => {
+  if (
+    recipeData.name.trim() === '' ||
+    recipeData.description.trim() === '' ||
+    recipeData.mainImage.trim() === '' ||
+    recipeData.dishLevel.trim() === '' ||
+    recipeData.dishCategory.foodStyle.trim() === '' ||
+    recipeData.dishCategory.foodType.trim() === '' ||
+    recipeData.dishLevel.trim() === '' ||
+    recipeData.recipeIngredients.length <= 1 ||
+    recipeData.recipeIngredients[1].name.trim() === '' ||
+    recipeData.instructions.length <= 1 ||
+    recipeData.instructions[1].content.trim() === ''
+  ) {
+    console.log('데이터를 모두 입력해주세요2');
+    return;
+  } else {
+    const addData = await addMyRecipe(recipeData);
+    console.log('addData', addData);
+  }
+};

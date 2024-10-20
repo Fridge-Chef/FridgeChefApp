@@ -58,7 +58,7 @@ const AddRecipe = () => {
       <Submit
         backgroundColor={handleButtonColor(addRecipeData)}
         previewOnPress={() => handlePreview(addRecipeData, navigation)}
-        submitOnPress={() => handleSubmit()}
+        submitOnPress={() => handleSubmit(addRecipeData)}
       />
     </View>
   );

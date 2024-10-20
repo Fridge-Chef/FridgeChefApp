@@ -14,10 +14,30 @@ export const getRecipeList = async () => {
 };
 
 export const addMyRecipe = async (data: AddIngredientType) => {
+  const formData = new FormData();
+  formData.append('mainImage', data.mainImage);
+  formData.append('name', data.name);
+  formData.append('description', data.description);
+  formData.append(
+    'dishCategory',
+    `${data.dishCategory.foodStyle}, ${data.dishCategory.foodType}`,
+  );
+  formData.append('dishTime', data.dishTime);
+  formData.append('dishLevel', data.dishLevel);
+  data.recipeIngredients.forEach((ingredient, index) => {
+    formData.append(`recipeIngredients[${index}].name`, ingredient.name);
+    formData.append(`recipeIngredients[${index}].details`, ingredient.details);
+  });
+  data.instructions.forEach((instruction, index) => {
+    formData.append(`instructions[${index}].content`, instruction.content);
+    formData.append(`instructions[${index}].image`, instruction.image);
+  });
+
+  console.log('formData', formData);
   try {
     const response = await baseUrl.post(
       'api/board',
-      {data},
+      {formData},
       {
         headers: {
           Authorization: `Bearer ${await AsyncStorage.getItem('token')}`,

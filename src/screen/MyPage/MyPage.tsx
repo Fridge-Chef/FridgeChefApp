@@ -31,7 +31,7 @@ const MyPage = () => {
       getUserData({setUser: setUserData});
     }
   }, [userToken]);
-  console.log('userData', userData);
+  console.log('여기는 마이페이지 유저 정보', userData);
   return (
     <View style={styles.container}>
       <View style={styles.mainTitleContainer}>

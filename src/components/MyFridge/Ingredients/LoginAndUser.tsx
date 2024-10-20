@@ -6,9 +6,13 @@ import FText from '../../elements/FText';
 import NotLoginUser from '../../../utils/Svg/NotLoginUser';
 import {getToken, getUserData} from '../../../service/MyFridge/MyFridge';
 import {UserData} from '../../../type/types';
+import FButton from '../../elements/FButton';
+import {ParamListBase, useNavigation} from '@react-navigation/native';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 
 const LoginAndUser = () => {
   const [userToken, setUserToken] = useState<string | null>('');
+  const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
   const [user, setUser] = useState<UserData>({
     user: {
       createAt: '',
@@ -25,10 +29,15 @@ const LoginAndUser = () => {
   };
 
   useEffect(() => {
-    getUserData({setUser});
     getUserToken();
   }, []);
 
+  useEffect(() => {
+    if (userToken) {
+      getUserData({setUser});
+    }
+  }, [userToken]);
+  console.log('여기는 메인 페이지 유저 정보', user);
   return (
     <View
       style={[
@@ -38,7 +47,10 @@ const LoginAndUser = () => {
         },
       ]}>
       {!userToken ? (
-        <View style={styles.alignCenter}>
+        <FButton
+          buttonStyle="noneStyle"
+          fBStyle={styles.alignCenter}
+          onPress={() => navigation.navigate('serviceLogin')}>
           <NotLoginUser />
           <FText
             mLeft={FWidth * 8}
@@ -47,7 +59,7 @@ const LoginAndUser = () => {
             color={colors.text}
           />
           <FText fStyle="R_16" text="이 필요해요." color={colors.text} />
-        </View>
+        </FButton>
       ) : (
         <View style={styles.userContainer}>
           <View style={styles.alignCenter}>
