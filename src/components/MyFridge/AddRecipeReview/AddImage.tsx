@@ -90,6 +90,5 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     borderTopWidth: 1,
     borderColor: colors.b200,
-    backgroundColor: 'red',
   },
 });

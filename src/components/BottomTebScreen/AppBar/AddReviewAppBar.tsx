@@ -1,12 +1,16 @@
 import {StyleSheet} from 'react-native';
-import React from 'react';
+import React, {useState} from 'react';
 import FAppBar from '../../elements/FAppBar';
 import {colors} from '../../../../globalStyle';
 import {useUserReview} from '../../../store/store';
+import FModal from '../../elements/FModal';
+import {ParamListBase, useNavigation} from '@react-navigation/native';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 
 const AddReviewAppBar = () => {
   const {userReview, setUserReview} = useUserReview();
-
+  const [isBack, setIsBack] = useState(false);
+  const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
   const handleSubmit = async () => {
     if (
       userReview.reviewContent === '' ||
@@ -26,23 +30,37 @@ const AddReviewAppBar = () => {
   };
 
   return (
-    <FAppBar
-      type="close3"
-      titleOn={true}
-      title="후기 작성"
-      rightOn={true}
-      rightTitleOn={true}
-      rightTitle="완료"
-      onBackPress={() => {
-        setUserReview({
-          reviewContent: '',
-          reviewPoint: 0,
-          reviewImg: '',
-        });
-      }}
-      rightTextColor={handleTextColor()}
-      textOnPress={handleSubmit}
-    />
+    <>
+      <FAppBar
+        type="close3"
+        titleOn={true}
+        title="후기 작성"
+        rightOn={true}
+        rightTitleOn={true}
+        rightTitle="완료"
+        onBackPress={() => {
+          setIsBack(true);
+        }}
+        rightTextColor={handleTextColor()}
+        textOnPress={handleSubmit}
+      />
+      {isBack && (
+        <FModal
+          modalVisible={isBack}
+          cancel
+          cancelOnPress={() => {
+            setIsBack(false);
+            navigation.goBack();
+          }}
+          onPress={() => {
+            setIsBack(false);
+          }}
+          text="작성을 취소하면 내용이 사라집니다."
+          buttonText="작성하기"
+          cancelText="나가기"
+        />
+      )}
+    </>
   );
 };
 

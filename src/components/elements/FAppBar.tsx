@@ -2,10 +2,11 @@ import {StyleSheet, View} from 'react-native';
 import React from 'react';
 import FButton from './FButton';
 import {colors, FWidth} from '../../../globalStyle';
-import {useNavigation} from '@react-navigation/native';
+import {ParamListBase, useNavigation} from '@react-navigation/native';
 import {AppBarProps} from '../../type/types';
 import FText from './FText';
 import SvgList from './SvgList';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 
 const FAppBar = ({
   type,
@@ -28,11 +29,17 @@ const FAppBar = ({
   elevation,
   textOnPress,
 }: AppBarProps) => {
-  const navigation = useNavigation();
+  const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
 
   const handleBackPress = () => {
+    const currentRoute =
+      navigation.getState().routes[navigation.getState().index].name;
+
     if (onBackPress) {
       onBackPress();
+    }
+    if (currentRoute === 'addRecipeReview') {
+      return;
     }
     navigation.goBack();
   };
