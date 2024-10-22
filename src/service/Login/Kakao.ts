@@ -3,7 +3,7 @@ import * as Kakao from '@react-native-seoul/kakao-login';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {ParamListBase} from '@react-navigation/native';
-import {userLogin} from '../../api/user';
+import {getRefreshToken, userLogin} from '../../api/user';
 
 type KakaoLoginProps = {
   navigation: NativeStackNavigationProp<ParamListBase>;
@@ -19,6 +19,7 @@ export const handleKakaologin = async ({navigation}: KakaoLoginProps) => {
       });
       if (user) {
         await AsyncStorage.setItem('token', user.user.token);
+        await getRefreshToken(user.user.token);
         if (await AsyncStorage.getItem('nickname')) {
           navigation.reset({
             index: 0,

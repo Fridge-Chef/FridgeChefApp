@@ -117,3 +117,17 @@ export type UserData = {
     username: string;
   };
 };
+
+export type GetRecipeListType = {
+  boardId: number;
+  click: number;
+  createTime: string;
+  hit: number;
+  mainImage: string;
+  mainImageId: number;
+  myHit: boolean;
+  sortType: 'LATEST' | 'ALL';
+  star: number;
+  title: string;
+  userName: string;
+};

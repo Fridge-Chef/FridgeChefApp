@@ -15,10 +15,8 @@ import LoginAndUser from '../../components/MyFridge/Ingredients/LoginAndUser';
 import FText from '../../components/elements/FText';
 import CondimentButton from '../../components/MyFridge/Ingredients/CondimentButton';
 import InfoComponent from '../../components/MyFridge/Ingredients/InfoComponent';
-import FModal from '../../components/elements/FModal';
 import SearchIcon from '../../utils/Svg/SearchIcon';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import TestIcon from '../../utils/Svg/Categories/TestIcon';
 const Ingredients = () => {
   const {setLoading, setLoadingTitle} = useLoading();
   const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();

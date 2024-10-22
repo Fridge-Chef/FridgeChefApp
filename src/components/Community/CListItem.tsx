@@ -5,17 +5,10 @@ import {colors, FWidth} from '../../../globalStyle';
 import FText from '../elements/FText';
 import FImage from '../elements/FImage';
 import FButton from '../elements/FButton';
+import {GetRecipeListType} from '../../type/types';
 
 type CListItemProps = {
-  item: {
-    id: number;
-    title: string;
-    writer: string;
-    point: number;
-    likes: number;
-    views: number;
-    img: any;
-  };
+  item: GetRecipeListType;
   onPress: () => void;
 };
 
@@ -27,7 +20,7 @@ const CListItem = ({item, onPress}: CListItemProps) => {
       <View style={styles.itemsContainer}>
         <FImage
           imgStyle="sub2"
-          uri={item.img}
+          uri={item.mainImage}
           borderRadius={8}
           alt="커뮤 나만의 레시피"
         />
@@ -40,9 +33,9 @@ const CListItem = ({item, onPress}: CListItemProps) => {
             text={item.title}
           />
           <View style={styles.bottomTextContainer}>
-            <UserInfo writer={item.writer} point={item.point} />
+            <UserInfo writer={item.userName} point={item.star} />
             <View style={{marginTop: FWidth * 8}}>
-              <ViewAndLike like={item.likes} favorites={item.views} />
+              <ViewAndLike like={item.star} favorites={item.hit} />
             </View>
           </View>
         </View>

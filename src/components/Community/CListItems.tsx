@@ -5,7 +5,7 @@ import {
   StyleSheet,
   View,
 } from 'react-native';
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {FWidth} from '../../../globalStyle';
 import CListItem from './CListItem';
 import {myRecipes} from '../../utils/list';
@@ -14,6 +14,8 @@ import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import ArrowSubTitle from '../elements/SubTitle/ArrowSubTitle';
 import {useCommunityMyRecipeName} from '../../store/rankingStore';
 import {useBottomSheetRef, useBottomSheetTitle} from '../../store/store';
+import {getRecipeList} from '../../api/recipe';
+import {GetRecipeListType, RecipeListType} from '../../type/types';
 
 type CListItemsProps = {
   scrollOffset: number;
@@ -36,6 +38,18 @@ const CListItems = ({
     setPrevScrollOffset(scrollOffset);
   };
 
+  const [recipeList, setRecipeList] = useState<GetRecipeListType[]>([]);
+
+  const getRecipes = async () => {
+    const list = await getRecipeList();
+    console.log(list?.data.content);
+    setRecipeList(list?.data.content);
+  };
+
+  useEffect(() => {
+    getRecipes();
+  }, []);
+
   const handleRanking = () => {
     setTitle('나만의레시피');
     bottomSheetRef.current?.present();
@@ -47,13 +61,13 @@ const CListItems = ({
         <ArrowSubTitle name={rankName} onPress={handleRanking} />
       </View>
       <FlatList
-        data={myRecipes}
+        data={recipeList}
         overScrollMode="never"
         onScroll={handleScroll}
         contentContainerStyle={{paddingBottom: FWidth * 20}}
         showsVerticalScrollIndicator={false}
-        keyExtractor={item => item.id.toString()}
-        renderItem={({item}) => (
+        keyExtractor={item => item.boardId.toString()}
+        renderItem={({item}: {item: GetRecipeListType}) => (
           <CListItem
             item={item}
             onPress={() =>

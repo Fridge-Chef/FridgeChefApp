@@ -7,9 +7,10 @@ type TotalPointProps = {
 };
 
 const TotalPoint = ({point}: TotalPointProps) => {
+  const roundedPoint = Math.round(point);
   return (
     <>
-      {Array.from({length: point}).map((_, index) => (
+      {Array.from({length: roundedPoint}).map((_, index) => (
         <ReviewPointContainer key={index} />
       ))}
     </>

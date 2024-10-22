@@ -1,7 +1,7 @@
 import {FlatList, StyleSheet, View} from 'react-native';
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import ListItem from './ListItem';
-import {RecipeListType} from '../../../../type/types';
+import {GetRecipeListType, RecipeListType} from '../../../../type/types';
 import {FWidth} from '../../../../../globalStyle';
 import FButton from '../../../elements/FButton';
 import {ParamListBase, useNavigation} from '@react-navigation/native';
@@ -15,10 +15,6 @@ const Recipes = () => {
   const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
   const {bottomSheetRef} = useBottomSheetRef();
   const {setTitle} = useBottomSheetTitle();
-
-  useEffect(() => {
-    getRecipeList();
-  }, []);
 
   const handleBottomSheetOpen = () => {
     setTitle('순위');
