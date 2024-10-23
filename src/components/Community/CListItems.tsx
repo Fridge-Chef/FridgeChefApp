@@ -72,7 +72,7 @@ const CListItems = ({
             item={item}
             onPress={() =>
               navigation.navigate('reviewDetail', {
-                item,
+                itemId: item.boardId,
               })
             }
           />

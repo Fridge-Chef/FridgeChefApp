@@ -13,6 +13,13 @@ export const getRecipeList = async () => {
   }
 };
 
+export const getRecipeDetail = async (boardId: number) => {
+  try {
+    const response = await baseUrl.get(`/api/boards/${boardId}`);
+    console.log('response', response);
+  } catch (error) {}
+};
+
 export const addMyRecipe = async (data: AddIngredientType) => {
   const formData = new FormData();
   formData.append('mainImage', data.mainImage);
