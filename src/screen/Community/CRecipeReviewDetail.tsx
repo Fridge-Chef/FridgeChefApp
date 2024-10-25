@@ -1,42 +1,59 @@
 import {ScrollView, StyleSheet, View} from 'react-native';
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import PCloseButton from '../../components/Community/AddRecipe/Preview/PCloseButton';
 import {RouteProp, useRoute} from '@react-navigation/native';
 import {colors} from '../../../globalStyle';
 import {getRecipeDetail} from '../../api/recipe';
+import {AddIngredientType} from '../../type/types';
+import FImage from '../../components/elements/FImage';
+import PreviewTitle from '../../components/Community/AddRecipe/Preview/PreviewTitle';
+import RecipeNote from '../../components/MyFridge/RecipeDetail/RecipeNote/RecipeNote';
+import IngredientComponent from '../../components/MyFridge/RecipeDetail/IngredientComponent/IngredientComponent';
+import RecipeComponent from '../../components/MyFridge/RecipeDetail/RecipeComponent/RecipeComponent';
+import {useLoading} from '../../store/store';
+import Loading from '../../components/elements/Loading';
 
 type CRecipeReviews = {
   params: {
-    boardId: number;
+    itemId: number;
   };
 };
 
 const CRecipeReviewDetail = () => {
   const data = useRoute<RouteProp<CRecipeReviews>>();
-  console.log('dd', data.params.boardId);
+  const [recipeData, setRecipeData] = useState<AddIngredientType>();
+  const {itemId} = data.params;
   const getRecipeData = async () => {
-    const data = await getRecipeDetail(data.params.boardId);
-    console.log('data', data);
+    const data = await getRecipeDetail(itemId);
+    setRecipeData(data.data);
   };
 
   useEffect(() => {
     getRecipeData();
   }, []);
 
+  console.log('recipeData', recipeData);
+
+  if (!recipeData) return null;
+
   return (
     <ScrollView style={styles.container} overScrollMode="never">
-      {/* <View>
-        <FImage uri={item.mainImage} imgStyle="detail" alt="미리보기 메인" />
+      <View>
+        <FImage
+          uri={recipeData.mainImage}
+          imgStyle="detail"
+          alt="미리보기 메인"
+        />
       </View>
       <PreviewTitle
-        title={item.name}
-        dishCategory={item.dishCategory}
-        dishTime={item.dishTime}
-        dishLevel={item.dishLevel}
+        title={recipeData.name}
+        dishCategory={recipeData.dishCategory}
+        dishTime={recipeData.dishTime}
+        dishLevel={recipeData.dishLevel}
       />
-      <RecipeNote content={item.description} />
-      <IngredientComponent recipeIngredients={item.recipeIngredients} />
-      <RecipeComponent instructions={item.instructions} /> */}
+      <RecipeNote content={recipeData.description} />
+      <IngredientComponent recipeIngredients={recipeData.recipeIngredients} />
+      <RecipeComponent instructions={recipeData.instructions} />
       <PCloseButton />
     </ScrollView>
   );

@@ -1,6 +1,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {baseUrl} from './axios';
 import {AddIngredientType} from '../type/types';
+import {useLoading} from '../store/store';
 
 export const getRecipeList = async () => {
   try {
@@ -14,10 +15,19 @@ export const getRecipeList = async () => {
 };
 
 export const getRecipeDetail = async (boardId: number) => {
+  const {setLoading} = useLoading();
   try {
+    // setLoading(true);
     const response = await baseUrl.get(`/api/boards/${boardId}`);
-    console.log('response', response);
-  } catch (error) {}
+    if (response.status === 200) {
+      // setLoading(false);
+      return response.data;
+    }
+    return response.data;
+  } catch (error) {
+    console.log('레시피 상세정보 가져오기', error);
+    // setLoading(false);
+  }
 };
 
 export const addMyRecipe = async (data: AddIngredientType) => {
