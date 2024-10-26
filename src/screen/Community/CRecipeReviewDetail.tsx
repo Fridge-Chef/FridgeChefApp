@@ -10,7 +10,7 @@ import PreviewTitle from '../../components/Community/AddRecipe/Preview/PreviewTi
 import RecipeNote from '../../components/MyFridge/RecipeDetail/RecipeNote/RecipeNote';
 import IngredientComponent from '../../components/MyFridge/RecipeDetail/IngredientComponent/IngredientComponent';
 import RecipeComponent from '../../components/MyFridge/RecipeDetail/RecipeComponent/RecipeComponent';
-import {useLoading} from '../../store/store';
+import {useGetRecipeDetail} from '../../api/recipeQuery';
 import Loading from '../../components/elements/Loading';
 
 type CRecipeReviews = {
@@ -20,43 +20,29 @@ type CRecipeReviews = {
 };
 
 const CRecipeReviewDetail = () => {
-  const data = useRoute<RouteProp<CRecipeReviews>>();
-  const [recipeData, setRecipeData] = useState<AddIngredientType>();
-  const {itemId} = data.params;
-  const getRecipeData = async () => {
-    const data = await getRecipeDetail(itemId);
-    setRecipeData(data.data);
-  };
-
-  useEffect(() => {
-    getRecipeData();
-  }, []);
-
-  console.log('recipeData', recipeData);
-
-  if (!recipeData) return null;
-
-  return (
-    <ScrollView style={styles.container} overScrollMode="never">
-      <View>
-        <FImage
-          uri={recipeData.mainImage}
-          imgStyle="detail"
-          alt="미리보기 메인"
+  const recipeId = useRoute<RouteProp<CRecipeReviews>>();
+  const {itemId} = recipeId.params;
+  const {data, isLoading} = useGetRecipeDetail(itemId);
+  console.log(data);
+  if (isLoading) return <Loading loadingTitle="검색중" />;
+  if (data)
+    return (
+      <ScrollView style={styles.container} overScrollMode="never">
+        <View>
+          <FImage uri={data.mainImage} imgStyle="detail" alt="미리보기 메인" />
+        </View>
+        <PreviewTitle
+          title={data.name}
+          dishCategory={data.dishCategory}
+          dishTime={data.dishTime}
+          dishLevel={data.dishLevel}
         />
-      </View>
-      <PreviewTitle
-        title={recipeData.name}
-        dishCategory={recipeData.dishCategory}
-        dishTime={recipeData.dishTime}
-        dishLevel={recipeData.dishLevel}
-      />
-      <RecipeNote content={recipeData.description} />
-      <IngredientComponent recipeIngredients={recipeData.recipeIngredients} />
-      <RecipeComponent instructions={recipeData.instructions} />
-      <PCloseButton />
-    </ScrollView>
-  );
+        <RecipeNote content={data.description} />
+        <IngredientComponent recipeIngredients={data.recipeIngredients} />
+        <RecipeComponent instructions={data.instructions} />
+        <PCloseButton />
+      </ScrollView>
+    );
 };
 
 export default CRecipeReviewDetail;

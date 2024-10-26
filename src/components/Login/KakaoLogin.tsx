@@ -7,19 +7,21 @@ import FButton from '../elements/FButton';
 import LoginButtonTitle from './LoginButtonTitle';
 import {FWidth} from '../../../globalStyle';
 import {handleKakaologin} from '../../service/Login/Kakao';
+import {useLogin} from '../../api/userQuery';
 
 type KakaoLoginProps = {
   navigation: NativeStackNavigationProp<ParamListBase>;
 };
 
 const KakaoLogin = ({navigation}: KakaoLoginProps) => {
+  const {mutate} = useLogin();
   return (
     <FButton
       buttonStyle="loginButton"
       paddingVertical={FWidth * 16}
       buttonColor="#F9E007"
       marginBottom={FWidth * 16}
-      onPress={() => handleKakaologin({navigation})}>
+      onPress={() => handleKakaologin({navigation, mutate})}>
       <KakaoLogo />
       <LoginButtonTitle title="카카오톡 간편 로그인" />
       <View style={styles.hideIcon}>

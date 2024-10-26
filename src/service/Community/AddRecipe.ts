@@ -13,8 +13,7 @@ export const handlePreview = (
     recipeData.description.trim() === '' ||
     recipeData.mainImage.trim() === '' ||
     recipeData.dishLevel.trim() === '' ||
-    recipeData.dishCategory.foodStyle.trim() === '' ||
-    recipeData.dishCategory.foodType.trim() === '' ||
+    recipeData.dishCategory.trim() === '' ||
     recipeData.dishLevel.trim() === '' ||
     recipeData.recipeIngredients.length <= 1 ||
     recipeData.recipeIngredients[1].name.trim() === '' ||
@@ -36,8 +35,7 @@ export const handleButtonColor = (recipeData: AddIngredientType) => {
     recipeData.description.trim() === '' ||
     recipeData.mainImage.trim() === '' ||
     recipeData.dishLevel.trim() === '' ||
-    recipeData.dishCategory.foodStyle.trim() === '' ||
-    recipeData.dishCategory.foodType.trim() === '' ||
+    recipeData.dishCategory.trim() === '' ||
     recipeData.dishLevel.trim() === '' ||
     recipeData.recipeIngredients.length <= 1 ||
     recipeData.recipeIngredients[1].name.trim() === '' ||
@@ -57,8 +55,7 @@ export const handleSubmit = async (recipeData: AddIngredientType) => {
     recipeData.description.trim() === '' ||
     recipeData.mainImage.trim() === '' ||
     recipeData.dishLevel.trim() === '' ||
-    recipeData.dishCategory.foodStyle.trim() === '' ||
-    recipeData.dishCategory.foodType.trim() === '' ||
+    recipeData.dishCategory.trim() === '' ||
     recipeData.dishLevel.trim() === '' ||
     recipeData.recipeIngredients.length <= 1 ||
     recipeData.recipeIngredients[1].name.trim() === '' ||

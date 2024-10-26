@@ -3,7 +3,7 @@ import {ColorValue} from 'react-native';
 export type RecipeListType = {
   id: number;
   writer: string;
-  dishCategory: {style: string; type: string};
+  dishCategory: string;
   dishTime: string;
   dishLevel: string;
   mainImage: string;
@@ -96,7 +96,7 @@ export type AddIngredientType = {
   mainImage: string;
   name: string;
   description: string;
-  dishCategory: {foodStyle: string; foodType: string};
+  dishCategory: string;
   dishTime: string;
   dishLevel: string;
   recipeIngredients: RecipeIngredientType[];

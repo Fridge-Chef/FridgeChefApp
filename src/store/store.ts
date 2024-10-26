@@ -80,11 +80,8 @@ type AddRecipeCategoriesType = {
 };
 
 type SelectedCategoryType = {
-  selectedCategory: {foodStyle: string; foodType: string};
-  setSelectedCategory: (selectedCategory: {
-    foodStyle: string;
-    foodType: string;
-  }) => void;
+  selectedCategory: string;
+  setSelectedCategory: (selectedCategory: string) => void;
 };
 
 type ReviewTitleType = {
@@ -185,14 +182,8 @@ export const useAddRecipeCategories = create<AddRecipeCategoriesType>(set => ({
 }));
 
 export const useSelectedCategory = create<SelectedCategoryType>(set => ({
-  selectedCategory: {
-    foodStyle: '',
-    foodType: '',
-  },
-  setSelectedCategory: (selectedCategory: {
-    foodStyle: string;
-    foodType: string;
-  }) => set({selectedCategory}),
+  selectedCategory: '',
+  setSelectedCategory: (selectedCategory: string) => set({selectedCategory}),
 }));
 
 export const useRecipeReviewTitle = create<ReviewTitleType>(set => ({

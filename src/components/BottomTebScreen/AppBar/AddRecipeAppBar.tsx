@@ -14,7 +14,7 @@ const AddRecipeAppBar = () => {
       rightOn={true}
       rType1="headerClose"
       onBackPress={() => {
-        setSelectedCategory({foodStyle: '', foodType: ''});
+        setSelectedCategory('');
       }}
     />
   );

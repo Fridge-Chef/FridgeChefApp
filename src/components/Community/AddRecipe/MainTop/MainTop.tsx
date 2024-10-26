@@ -6,10 +6,7 @@ import InputContent from './InputContent';
 import {AddIngredientPageType, AddIngredientType} from '../../../../type/types';
 
 type MainTopType = {
-  selectedCategory: {
-    foodStyle: string;
-    foodType: string;
-  };
+  selectedCategory: string;
 };
 
 const MainTop = ({

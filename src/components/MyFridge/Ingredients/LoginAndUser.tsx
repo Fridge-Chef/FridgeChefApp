@@ -9,19 +9,13 @@ import {UserData} from '../../../type/types';
 import FButton from '../../elements/FButton';
 import {ParamListBase, useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import {useGetUser} from '../../../api/userQuery';
+import Loading from '../../elements/Loading';
 
 const LoginAndUser = () => {
   const [userToken, setUserToken] = useState<string | null>('');
   const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
-  const [user, setUser] = useState<UserData>({
-    user: {
-      createAt: '',
-      role: '',
-      email: '',
-      profileLink: '',
-      username: '',
-    },
-  });
+  const {data, isLoading} = useGetUser();
 
   const getUserToken = async () => {
     const token = await getToken();
@@ -32,12 +26,7 @@ const LoginAndUser = () => {
     getUserToken();
   }, []);
 
-  useEffect(() => {
-    if (userToken) {
-      getUserData({setUser});
-    }
-  }, [userToken]);
-  console.log('여기는 메인 페이지 유저 정보', user);
+  if (isLoading) return <Loading loadingTitle="검색중" />;
   return (
     <View
       style={[
@@ -68,7 +57,7 @@ const LoginAndUser = () => {
               <FText
                 mLeft={FWidth * 8}
                 fStyle="B_16"
-                text={user.user.username}
+                text={data.user.username}
                 color={colors.text}
               />
               <FText

@@ -18,20 +18,11 @@ import InfoComponent from '../../components/MyFridge/Ingredients/InfoComponent';
 import SearchIcon from '../../utils/Svg/SearchIcon';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 const Ingredients = () => {
-  const {setLoading, setLoadingTitle} = useLoading();
   const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
   const [onClicked, setonClicked] = useState(1);
 
   const handleSearch = () => {
-    setLoadingTitle('레시피 검색중');
-    setLoading(true);
-    if (setLoading) {
-      setTimeout(() => {
-        setLoading(false);
-        navigation.navigate('recRecipe');
-      }, 1000);
-    } else {
-    }
+    navigation.navigate('recRecipe');
   };
 
   // 테스트용 함수

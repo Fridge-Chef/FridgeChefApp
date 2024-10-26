@@ -10,34 +10,23 @@ const statusBarHeight = StatusBar.currentHeight;
 const screenHeight = Dimensions.get('screen').height;
 const windowHeight = Dimensions.get('window').height;
 const bottomBarHeight = screenHeight - (windowHeight + statusBarHeight!);
-const Loading = () => {
-  const {loading, loadingTitle} = useLoading();
-
+const Loading = ({loadingTitle}: {loadingTitle: string}) => {
   return (
-    <>
-      {loading && (
-        <View style={styles.container}>
-          <View style={styles.indicatorContainer}>
-            <ActivityIndicator
-              size="large"
-              color={colors.primary[1]}
-              style={styles.indicatorStyle}
-            />
-            {/* <LottieView
-              source={require('../../assets/lottie/loading.json')}
-              style={{width: FWidth * 120, height: FHeight * 120}}
-              autoPlay
-            /> */}
-            <FText
-              mTop={FWidth * 20}
-              fStyle="R_16"
-              color={colors.text}
-              text={loadingTitle}
-            />
-          </View>
-        </View>
-      )}
-    </>
+    <View style={styles.container}>
+      <View style={styles.indicatorContainer}>
+        <ActivityIndicator
+          size="large"
+          color={colors.primary[1]}
+          style={styles.indicatorStyle}
+        />
+        <FText
+          mTop={FWidth * 20}
+          fStyle="R_16"
+          color={colors.white}
+          text={loadingTitle}
+        />
+      </View>
+    </View>
   );
 };
 
@@ -47,7 +36,7 @@ const styles = StyleSheet.create({
   container: {
     width: '100%',
     height: screenHeight - statusBarHeight! - bottomBarHeight,
-    backgroundColor: colors.white,
+    backgroundColor: 'rgba(0,0,0,0.4)',
     // opacity: 0.6,
     position: 'absolute',
     zIndex: 10,

@@ -15,7 +15,7 @@ const TitleComponent = ({detailData}: TitleComponentProps) => {
   return (
     <View style={styles.container}>
       <TimeAndLevel
-        dishCategory={`${detailData.dishCategory.style}, ${detailData.dishCategory.type}`}
+        dishCategory={`${detailData.dishCategory}`}
         dishTime={detailData.dishTime}
         dishLevel={detailData.dishLevel}
       />

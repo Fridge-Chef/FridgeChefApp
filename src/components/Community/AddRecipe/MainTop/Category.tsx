@@ -7,10 +7,7 @@ import {colors, FWidth} from '../../../../../globalStyle';
 import {useBottomSheetRef, useBottomSheetTitle} from '../../../../store/store';
 
 type CategoryProps = {
-  selectedCategory: {
-    foodStyle: string;
-    foodType: string;
-  };
+  selectedCategory: string;
 };
 
 const Category = ({selectedCategory}: CategoryProps) => {
@@ -27,16 +24,8 @@ const Category = ({selectedCategory}: CategoryProps) => {
       onPress={handleCategory}>
       <FText
         fStyle="R_16"
-        color={
-          selectedCategory?.foodStyle && selectedCategory?.foodType
-            ? colors.text
-            : colors.b400
-        }
-        text={
-          selectedCategory?.foodStyle && selectedCategory?.foodType
-            ? `${selectedCategory.foodStyle}, ${selectedCategory.foodType}`
-            : '요리 종류, 요리 유형'
-        }
+        color={selectedCategory ? colors.text : colors.b400}
+        text={selectedCategory ? `${selectedCategory}` : '요리 종류, 요리 유형'}
       />
       <AddRecipeBottomArrow />
     </FButton>

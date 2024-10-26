@@ -7,8 +7,6 @@ import CListItems from '../../components/Community/CListItems';
 import CTopTitle from './CTopTitle';
 import CAddRecipeButton from '../../components/Community/CAddRecipeButton';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import {GetRecipeListType} from '../../type/types';
-import {getRecipeList} from '../../api/recipe';
 
 const CMyRecipe = () => {
   const [onClick, setonClick] = useState(1);

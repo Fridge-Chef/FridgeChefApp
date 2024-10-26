@@ -1,7 +1,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {baseUrl} from './axios';
 
-type UserLoginProps = {
+export type UserLoginProps = {
   token: string;
   registration: string;
 };
@@ -30,19 +30,21 @@ export const getRefreshToken = async (token: string) => {
 };
 
 export const getUSerToken = async () => {
+  const refreshToken = await AsyncStorage.getItem('refreshToken');
+  console.log('리프레시 토큰', refreshToken);
   try {
-    const response = await baseUrl.get('/api/auth/access', {
+    const response = await baseUrl.get('api/auth/access', {
       headers: {
-        Authorization: `Bearer ${await AsyncStorage.getItem('refreshToken')}`,
+        Authorization: `Bearer ${refreshToken}`,
       },
     });
+    console.log('여기까지 오나', response);
     if (response.status === 200) {
       await AsyncStorage.setItem('token', response.data.user.token);
     }
-
     console.log('유저 토큰 재발급', response);
   } catch (error) {
-    console.log('일반 토큰 에러', error);
+    console.log('토큰 재발급 에러', error);
   }
 };
 
@@ -89,8 +91,9 @@ export const getUser = async () => {
       return response.data;
     }
   } catch (error: any) {
-    console.log('유저 가져오기', error);
+    console.log('유저토큰 가져오기', error.response.status);
     if (userToken && error.response.status === 401) {
+      console.log('토큰 재발급1');
       await getUSerToken();
     }
   }

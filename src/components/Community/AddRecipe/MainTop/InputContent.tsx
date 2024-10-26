@@ -10,10 +10,7 @@ import CookTime from './CookTime';
 import CookLevel from './CookLevel';
 
 type InputContentType = {
-  selectedCategory: {
-    foodStyle: string;
-    foodType: string;
-  };
+  selectedCategory: string;
 };
 
 const InputContent = ({

@@ -19,7 +19,7 @@ const AddRecipeCategory = () => {
     if (addTitle.foodStyle === '' || addTitle.foodType === '') {
       return;
     }
-    setSelectedCategory(addTitle);
+    setSelectedCategory(`${addTitle.foodStyle}, ${addTitle.foodType}`);
     bottomSheetRef.current?.close();
   };
 

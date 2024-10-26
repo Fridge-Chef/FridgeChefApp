@@ -16,6 +16,8 @@ import {useCommunityMyRecipeName} from '../../store/rankingStore';
 import {useBottomSheetRef, useBottomSheetTitle} from '../../store/store';
 import {getRecipeList} from '../../api/recipe';
 import {GetRecipeListType, RecipeListType} from '../../type/types';
+import {useGetRecipeList} from '../../api/recipeQuery';
+import Loading from '../elements/Loading';
 
 type CListItemsProps = {
   scrollOffset: number;
@@ -37,23 +39,14 @@ const CListItems = ({
     setScrollOffset(currentOffset);
     setPrevScrollOffset(scrollOffset);
   };
-
-  const [recipeList, setRecipeList] = useState<GetRecipeListType[]>([]);
-
-  const getRecipes = async () => {
-    const list = await getRecipeList();
-    console.log(list?.data.content);
-    setRecipeList(list?.data.content);
-  };
-
-  useEffect(() => {
-    getRecipes();
-  }, []);
+  const {data, isLoading} = useGetRecipeList();
 
   const handleRanking = () => {
     setTitle('나만의레시피');
     bottomSheetRef.current?.present();
   };
+
+  if (isLoading) return <Loading loadingTitle="검색중" />;
 
   return (
     <View style={styles.container}>
@@ -61,7 +54,7 @@ const CListItems = ({
         <ArrowSubTitle name={rankName} onPress={handleRanking} />
       </View>
       <FlatList
-        data={recipeList}
+        data={data.content}
         overScrollMode="never"
         onScroll={handleScroll}
         contentContainerStyle={{paddingBottom: FWidth * 20}}
