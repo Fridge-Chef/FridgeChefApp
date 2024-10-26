@@ -15,8 +15,8 @@ const Recipes = () => {
   const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
   const {bottomSheetRef} = useBottomSheetRef();
   const {setTitle} = useBottomSheetTitle();
-  const {data} = useGetRecommendedRecipeList({page: 1, size: 10});
-  console.log('데이터', data);
+  // const {data} = useGetRecommendedRecipeList({page: 1, size: 10});
+  // console.log('데이터', data);
   const handleBottomSheetOpen = () => {
     setTitle('순위');
     bottomSheetRef.current?.present();
