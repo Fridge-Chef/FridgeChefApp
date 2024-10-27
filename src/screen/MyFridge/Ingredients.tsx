@@ -17,6 +17,7 @@ import CondimentButton from '../../components/MyFridge/Ingredients/CondimentButt
 import InfoComponent from '../../components/MyFridge/Ingredients/InfoComponent';
 import SearchIcon from '../../utils/Svg/SearchIcon';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import {getUSerToken} from '../../api/user';
 const Ingredients = () => {
   const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
   const [onClicked, setonClicked] = useState(1);
@@ -27,7 +28,7 @@ const Ingredients = () => {
 
   // 테스트용 함수
   const handleTest = async () => {
-    await AsyncStorage.removeItem('token');
+    await getUSerToken();
   };
 
   return (

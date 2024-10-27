@@ -72,7 +72,7 @@ export const addMyRecipe = async (data: AddIngredientType) => {
     formData.append(`instructions[${index}].image`, instruction.image);
   });
 
-  console.log('formData', formData);
+  console.log('formData 여기까진 오는데', formData);
   try {
     const response = await baseUrl.post(
       'api/board',
@@ -80,6 +80,7 @@ export const addMyRecipe = async (data: AddIngredientType) => {
       {
         headers: {
           Authorization: `Bearer ${await AsyncStorage.getItem('token')}`,
+          'Content-Type': 'multipart/form-data',
         },
       },
     );
@@ -88,5 +89,21 @@ export const addMyRecipe = async (data: AddIngredientType) => {
     }
   } catch (error) {
     console.log('레시피 추가 실패', error);
+  }
+};
+
+export const getMyFridgeList = async () => {
+  try {
+    const response = await baseUrl.get('api/fridges/', {
+      headers: {
+        Authorization: `Bearer ${await AsyncStorage.getItem('token')}`,
+      },
+    });
+    console.log('냉장고 재료 가져오기', response);
+    if (response.status === 200) {
+      return response.data;
+    }
+  } catch (error) {
+    console.log('냉장고 재료 가져오기', error);
   }
 };

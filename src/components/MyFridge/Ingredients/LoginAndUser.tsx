@@ -11,6 +11,7 @@ import {ParamListBase, useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {useGetUser} from '../../../api/userQuery';
 import Loading from '../../elements/Loading';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const LoginAndUser = () => {
   const [userToken, setUserToken] = useState<string | null>('');
@@ -19,6 +20,10 @@ const LoginAndUser = () => {
 
   const getUserToken = async () => {
     const token = await getToken();
+    console.log(
+      '리프레시 토큰입니다',
+      await AsyncStorage.getItem('refreshToken'),
+    );
     setUserToken(token);
   };
 
@@ -57,7 +62,7 @@ const LoginAndUser = () => {
               <FText
                 mLeft={FWidth * 8}
                 fStyle="B_16"
-                text={data.user.username}
+                text={data?.user.username}
                 color={colors.text}
               />
               <FText

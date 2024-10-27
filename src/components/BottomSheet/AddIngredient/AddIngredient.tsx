@@ -1,5 +1,5 @@
 import {Keyboard, Pressable, StyleSheet, View} from 'react-native';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {colors, FWidth} from '../../../../globalStyle';
 import InputAndSearch from '../InputAndSearch';
 import {useAddModalInputText, useBottomSheetRef} from '../../../store/store';
@@ -7,7 +7,7 @@ import ItemList from '../ItemList';
 import BottomButton from '../BottomButton';
 import {IngredientList} from '../../../utils/list';
 import TopMenu from './TopMenu';
-import SubTitleBS from '../SubTitleBS';
+import {getMyFridgeList} from '../../../api/recipe';
 
 const AddIngredient = () => {
   const {bottomSheetRef} = useBottomSheetRef();
@@ -29,6 +29,14 @@ const AddIngredient = () => {
     setItemList2([]);
     bottomSheetRef.current?.close();
   };
+
+  useEffect(() => {
+    const getData = async () => {
+      const data = await getMyFridgeList();
+      console.log(data);
+    };
+    getData();
+  }, []);
 
   return (
     <Pressable

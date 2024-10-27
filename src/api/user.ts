@@ -80,6 +80,7 @@ export const userUpdateNickname = async ({nickname}: UserNicknameProps) => {
 };
 
 export const getUser = async () => {
+  if (!(await AsyncStorage.getItem('token'))) return;
   const userToken = await AsyncStorage.getItem('token');
   try {
     const response = await baseUrl.get('/api/user', {
