@@ -16,7 +16,7 @@ const TakeTour = ({navigation}: TakeTourProps) => {
         buttonStyle="noneStyle"
         fBStyle={styles.textContainer}
         buttonColor={colors.text}
-        onPress={() => navigation.navigate('bottomTab')}>
+        onPress={() => navigation.navigate('addBasic')}>
         <Text style={styles.textStyle}>그냥 둘러볼게요</Text>
       </FButton>
     </View>
