@@ -107,7 +107,7 @@ export const userDelete = async (nickname: string) => {
       headers: {
         Authorization: `Bearer ${await AsyncStorage.getItem('token')}`,
       },
-      data: {nickname: nickname},
+      data: {username: nickname},
     });
 
     if (response.status === 200) {

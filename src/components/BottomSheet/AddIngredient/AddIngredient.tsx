@@ -5,9 +5,9 @@ import InputAndSearch from '../InputAndSearch';
 import {useAddModalInputText, useBottomSheetRef} from '../../../store/store';
 import ItemList from '../ItemList';
 import BottomButton from '../BottomButton';
-import {IngredientList} from '../../../utils/list';
 import TopMenu from './TopMenu';
-import {getMyFridgeList} from '../../../api/recipe';
+import {useGetMyFridgeList} from '../../../api/recipeQuery';
+import Loading from '../../elements/Loading';
 
 const AddIngredient = () => {
   const {bottomSheetRef} = useBottomSheetRef();
@@ -15,7 +15,7 @@ const AddIngredient = () => {
   const [isClicked, setIsClicked] = useState(1);
   const [itemList, setItemList] = useState<string[]>([]);
   const [itemList2, setItemList2] = useState<string[]>([]);
-
+  const {data, isLoading} = useGetMyFridgeList();
   const handleSubmit = () => {
     if (itemList.length <= 0 && itemList2.length <= 0) return;
     setItemList([]);
@@ -31,12 +31,11 @@ const AddIngredient = () => {
   };
 
   useEffect(() => {
-    const getData = async () => {
-      const data = await getMyFridgeList();
-      console.log(data);
-    };
+    const getData = async () => {};
     getData();
   }, []);
+
+  if (isLoading) return <Loading loadingTitle="로딩중" />;
 
   return (
     <Pressable
@@ -54,7 +53,7 @@ const AddIngredient = () => {
         <View style={styles.subTitleContainer}>
           {/* <SubTitleBS title="재료명" /> */}
           <InputAndSearch
-            itemList={IngredientList}
+            itemList={data?.ingredientNames}
             setItemList={isClicked === 1 ? setItemList : setItemList2}
           />
         </View>

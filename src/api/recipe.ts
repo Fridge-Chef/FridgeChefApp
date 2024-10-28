@@ -1,6 +1,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {baseUrl} from './axios';
 import {AddIngredientType} from '../type/types';
+import {useAddModalInputText} from '../store/store';
 
 export const getRecommendedRecipeList = async ({
   page,
@@ -92,14 +93,17 @@ export const addMyRecipe = async (data: AddIngredientType) => {
   }
 };
 
-export const getMyFridgeList = async () => {
+export const getMyFridgeList = async (text: string) => {
   try {
-    const response = await baseUrl.get('api/fridges/', {
-      headers: {
-        Authorization: `Bearer ${await AsyncStorage.getItem('token')}`,
+    const response = await baseUrl.get(
+      `api/ingredient/search?keyword=${text}`,
+      {
+        headers: {
+          Authorization: `Bearer ${await AsyncStorage.getItem('token')}`,
+        },
       },
-    });
-    console.log('냉장고 재료 가져오기', response);
+    );
+    console.log('냉장고 재료 가져오기', response.data);
     if (response.status === 200) {
       return response.data;
     }

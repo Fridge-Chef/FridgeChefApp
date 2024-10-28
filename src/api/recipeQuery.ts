@@ -1,5 +1,6 @@
 import {useQuery} from '@tanstack/react-query';
 import {
+  getMyFridgeList,
   getRecipeDetail,
   getRecipeList,
   getRecommendedRecipeList,
@@ -14,6 +15,14 @@ export const useGetRecipeList = () => {
   const queryFn = () => getRecipeList();
   return useQuery({
     queryKey: ['recipeList'],
+    queryFn,
+  });
+};
+
+export const useGetMyFridgeList = () => {
+  const queryFn = () => getMyFridgeList('');
+  return useQuery({
+    queryKey: ['myFridgeList'],
     queryFn,
   });
 };

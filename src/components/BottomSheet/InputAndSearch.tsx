@@ -7,10 +7,7 @@ import {useAddModalInputText} from '../../store/store';
 import FText from '../elements/FText';
 
 type InputAndSearchProps = {
-  itemList: {
-    id: number;
-    name: string;
-  }[];
+  itemList: string[];
   setItemList: Dispatch<React.SetStateAction<string[]>>;
 };
 
@@ -18,7 +15,7 @@ const InputAndSearch = ({itemList, setItemList}: InputAndSearchProps) => {
   const {addTitle, setAddTitle} = useAddModalInputText();
   const [errorMsg, setErrorMsg] = useState('');
   const filteredIngredients = addTitle
-    ? itemList.filter((itemList: any) => itemList.name.includes(addTitle))
+    ? itemList.filter((itemList: any) => itemList.includes(addTitle))
     : [];
 
   const addItemToList = (item: string) => {
@@ -54,17 +51,17 @@ const InputAndSearch = ({itemList, setItemList}: InputAndSearchProps) => {
       />
       {filteredIngredients.length > 0 && (
         <View style={styles.listContainer}>
-          {filteredIngredients.map((item: any) => (
+          {filteredIngredients.map((item: string, index) => (
             <FButton
-              key={item.id}
+              key={index}
               buttonStyle="noneStyle"
               fBStyle={{paddingVertical: FWidth * 12}}
               onPress={() => {
                 Keyboard.dismiss();
                 setAddTitle('');
-                addItemToList(item.name);
+                addItemToList(item);
               }}>
-              <FText fStyle="M_16" color={colors.text} text={item.name} />
+              <FText fStyle="M_16" color={colors.text} text={item} />
             </FButton>
           ))}
         </View>

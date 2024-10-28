@@ -14,14 +14,10 @@ import {
 } from '../../store/store';
 import {colors, FWidth} from '../../../globalStyle';
 import AddIngredient from './AddIngredient/AddIngredient';
-import ExpiryDate from './ExpiryDate/ExpiryDate';
-import AddCondiment from './AddCondiment/AddCondiment';
 import IngredientList from './IngredientList/IngredientList';
 import Management from './ExpiryDate/Management';
-import FBottomSheetSub from './BottomSheetSub/FBottomSheetSub';
 import Ranking from './Ranking/Ranking';
 import DetailReviewOption from './DetailReviewOption/DetailReviewOption';
-import {RecipeBookRankingList} from '../../utils/list';
 import RecipeRanking from './RecipeBookRanking/RecipeRanking';
 import {
   useCommunityMyRecipeName,
@@ -100,8 +96,6 @@ const FBottomSheet = () => {
     switch (title) {
       case '재료 추가':
         return <AddIngredient />;
-      case '조미료 추가':
-        return <AddCondiment />;
       case '유통기한 등록':
         return <Management />;
       case '재료보기':
