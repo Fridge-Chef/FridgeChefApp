@@ -15,13 +15,13 @@ import Option from '../../../../utils/Svg/Option';
 import IngredientClose from '../../../../utils/Svg/IngredientClose';
 
 type ItemComponentProps = {
-  itemList: {
-    name: string;
-    expiry_date: string;
+  item: {
+    ingredientName: string;
+    storage: 'REFRIGERATION' | 'TEMPERATURE';
   };
 };
 
-const ItemComponent = ({itemList}: ItemComponentProps) => {
+const ItemComponent = ({item}: ItemComponentProps) => {
   const [buttonName] = useState('유통기한 등록');
   const {setTitle} = useBottomSheetTitle();
   const {setIngredientTitle} = useIngredientTitle();
@@ -33,27 +33,27 @@ const ItemComponent = ({itemList}: ItemComponentProps) => {
     setTitle(buttonName);
   };
 
-  const today = new Date();
-  let date = () => {
-    if (!itemList.expiry_date) return;
-    const expiryDate = new Date(itemList.expiry_date);
-    const timeDifference = expiryDate.getTime() - today.getTime();
-    const dayDifference = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
-    switch (dayDifference) {
-      case 3:
-        return 'D-3';
-      case 2:
-        return 'D-2';
-      case 1:
-        return 'D-1';
-      case 0:
-        return '오늘 이후 폐기';
-      default:
-        return '';
-    }
-  };
+  // const today = new Date();
+  // let date = () => {
+  //   if (!item.expiry_date) return;
+  //   const expiryDate = new Date(item.expiry_date);
+  //   const timeDifference = expiryDate.getTime() - today.getTime();
+  //   const dayDifference = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+  //   switch (dayDifference) {
+  //     case 3:
+  //       return 'D-3';
+  //     case 2:
+  //       return 'D-2';
+  //     case 1:
+  //       return 'D-1';
+  //     case 0:
+  //       return '오늘 이후 폐기';
+  //     default:
+  //       return '';
+  //   }
+  // };
 
-  useEffect(() => {}, [date]);
+  // useEffect(() => {}, [date]);
 
   return (
     <View style={styles.container}>
@@ -66,15 +66,15 @@ const ItemComponent = ({itemList}: ItemComponentProps) => {
           }}
         />
         <View style={styles.titleContainer}>
-          <FText fStyle="M_16" color={colors.text} text={itemList.name} />
+          <FText fStyle="M_16" color={colors.text} text={item.ingredientName} />
         </View>
-        {itemList.expiry_date && <DDayText day={date()} />}
+        {/* {item.expiry_date && <DDayText day={date()} />} */}
       </View>
       <View style={styles.iconAndTextContainer}>
         <View style={{marginRight: FWidth * 12}}>
           <FButton
             buttonStyle="noneStyle"
-            onPress={() => handleAddExpiration(itemList.name)}>
+            onPress={() => handleAddExpiration(item.ingredientName)}>
             <Option />
           </FButton>
         </View>

@@ -2,13 +2,11 @@ import {StyleSheet, View} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import {FWidth} from '../../../../../globalStyle';
 import ItemComponent from './ItemComponent';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 type ListData = {
-  title: string;
-  items: {
-    name: string;
-    expiry_date: string;
-  }[];
+  ingredientName: string;
+  storage: 'REFRIGERATION' | 'TEMPERATURE';
 };
 
 type AddListProps = {
@@ -16,28 +14,41 @@ type AddListProps = {
 };
 
 const AddList = ({onClicked}: AddListProps) => {
-  const data = require('../../../../utils/listData.json');
-  const data1 = require('../../../../utils/listData2.json');
-  const [dataList, setDataList] = useState<ListData[]>(data);
-  useEffect(() => {
-    switch (onClicked) {
-      case 1:
-        setDataList(data);
-        break;
-      case 2:
-        setDataList(data1);
-    }
-  }, [onClicked]);
+  const [dataList, setDataList] = useState<ListData[]>();
 
+  const handleData = async (): Promise<ListData[]> => {
+    if ((await AsyncStorage.getItem('token')) === null) {
+      const data = await AsyncStorage.getItem('ingredients');
+      return data ? JSON.parse(data) : [];
+    } else {
+      const data: ListData[] = [
+        {ingredientName: '계란', storage: 'REFRIGERATION'},
+        {ingredientName: '간장', storage: 'TEMPERATURE'},
+      ];
+      return data;
+    }
+  };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = await handleData();
+      if (onClicked === 1) {
+        // 냉장 재료 필터링
+        setDataList(data.filter(item => item.storage === 'REFRIGERATION'));
+      } else if (onClicked === 2) {
+        // 온실 재료 필터링
+        setDataList(data.filter(item => item.storage === 'TEMPERATURE'));
+      }
+    };
+
+    fetchData();
+  }, [onClicked]);
+  console.log(dataList);
   return (
     <View style={styles.container}>
       <View style={styles.listContainer}>
-        {dataList.map((item: ListData, index: number) => (
-          <View key={index}>
-            {item.items.map((itemList, index) => (
-              <ItemComponent itemList={itemList} key={index} />
-            ))}
-          </View>
+        {dataList?.map((item: ListData, index: number) => (
+          <ItemComponent item={item} key={index} />
         ))}
       </View>
     </View>

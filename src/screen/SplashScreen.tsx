@@ -1,4 +1,4 @@
-import {Image, StyleSheet, Text, View} from 'react-native';
+import {Image, StyleSheet, View} from 'react-native';
 import React, {useEffect} from 'react';
 import {colors, FWidth} from '../../globalStyle';
 import {ParamListBase, useNavigation} from '@react-navigation/native';

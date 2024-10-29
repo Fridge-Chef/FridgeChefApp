@@ -5,25 +5,50 @@ import FButton from '../elements/FButton';
 import FText from '../elements/FText';
 import {ParamListBase, useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import {useAddIngredients} from '../../api/ingredientsQuery';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 type SubmitButtonsProps = {
   basicItem: {
-    items: string[];
-  };
+    ingredientName: string;
+    storage: string;
+  }[];
 };
 
 const SubmitButtons = ({basicItem}: SubmitButtonsProps) => {
   const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
+  const {mutate} = useAddIngredients();
   return (
     <View style={styles.container}>
       <FButton
         buttonStyle="noneStyle"
         fBStyle={[styles.buttonStyle, {backgroundColor: colors.primary[1]}]}
-        onPress={() => {
-          navigation.reset({
-            index: 0,
-            routes: [{name: 'bottomTab'}],
-          });
+        onPress={async () => {
+          if ((await AsyncStorage.getItem('token')) !== null) {
+            mutate(
+              {ingredients: basicItem},
+              {
+                onSuccess: () => {
+                  navigation.reset({
+                    index: 0,
+                    routes: [{name: 'bottomTab'}],
+                  });
+                },
+                onError: () => {
+                  console.log('재료등록 실패');
+                },
+              },
+            );
+          } else {
+            await AsyncStorage.setItem(
+              'ingredients',
+              JSON.stringify(basicItem),
+            );
+            navigation.reset({
+              index: 0,
+              routes: [{name: 'bottomTab'}],
+            });
+          }
         }}>
         <FText
           fStyle="B_16"

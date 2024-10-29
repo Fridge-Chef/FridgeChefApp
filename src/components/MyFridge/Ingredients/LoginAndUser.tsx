@@ -19,11 +19,9 @@ const LoginAndUser = () => {
   const {data, isLoading} = useGetUser();
 
   const getUserToken = async () => {
+    if ((await AsyncStorage.getItem('token')) === null) return;
     const token = await getToken();
-    console.log(
-      '리프레시 토큰입니다',
-      await AsyncStorage.getItem('refreshToken'),
-    );
+    console.log('토큰입니다', await AsyncStorage.getItem('token'));
     setUserToken(token);
   };
 

@@ -7,10 +7,17 @@ import BasicTopTitle from '../components/AddBasic/BasicTopTitle';
 import SubmitButtons from '../components/AddBasic/SubmitButtons';
 
 const AddBasic = () => {
-  const [basicItem, setBasicItem] = useState({
-    items: ['계란', '김치', '케찹', '라면', '밥(햇반)', '소금', '설탕', '간장'],
-  });
-
+  const [basicItem, setBasicItem] = useState([
+    {ingredientName: '계란', storage: 'REFRIGERATION'},
+    {ingredientName: '김치', storage: 'REFRIGERATION'},
+    {ingredientName: '케찹', storage: 'REFRIGERATION'},
+    {ingredientName: '라면', storage: 'TEMPERATURE'},
+    {ingredientName: '밥(햇반)', storage: 'TEMPERATURE'},
+    {ingredientName: '소금', storage: 'TEMPERATURE'},
+    {ingredientName: '설탕', storage: 'TEMPERATURE'},
+    {ingredientName: '간장', storage: 'TEMPERATURE'},
+  ]);
+  console.log(basicItem);
   return (
     <View style={styles.container}>
       <TopLine colorWidth={'100%'} />

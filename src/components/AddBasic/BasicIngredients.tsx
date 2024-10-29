@@ -6,9 +6,11 @@ import BasicCloseItem from './BasicCloseItem';
 
 type BasicIngredientsProps = {
   initialItems: {
-    items: string[];
-  };
-  setBasicItem: (value: {items: string[]}) => void;
+    ingredientName: string;
+    storage: string;
+  }[];
+
+  setBasicItem: (value: {ingredientName: string; storage: string}[]) => void;
 };
 
 const BasicIngredients = ({
@@ -16,21 +18,21 @@ const BasicIngredients = ({
   setBasicItem,
 }: BasicIngredientsProps) => {
   const handleRemoveItem = (itemToRemove: string) => {
-    const updatedItems = initialItems.items.filter(
-      item => item !== itemToRemove,
+    const updatedItems = initialItems.filter(
+      item => item.ingredientName !== itemToRemove,
     );
-    setBasicItem({items: updatedItems});
+    setBasicItem(updatedItems);
   };
 
   return (
     <View style={styles.container}>
       <SubTitleBS title="기본 재료들" />
       <View style={styles.listContainer}>
-        {initialItems.items.map((item, index) => (
+        {initialItems.map((item, index) => (
           <BasicCloseItem
             key={index}
-            item={item}
-            onPress={() => handleRemoveItem(item)}
+            item={item.ingredientName}
+            onPress={() => handleRemoveItem(item.ingredientName)}
           />
         ))}
       </View>

@@ -16,7 +16,6 @@ import FText from '../../components/elements/FText';
 import CondimentButton from '../../components/MyFridge/Ingredients/CondimentButton';
 import InfoComponent from '../../components/MyFridge/Ingredients/InfoComponent';
 import SearchIcon from '../../utils/Svg/SearchIcon';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import {getUSerToken} from '../../api/user';
 const Ingredients = () => {
   const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();

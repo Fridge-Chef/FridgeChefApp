@@ -8,6 +8,7 @@ import {ParamListBase, useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import FModal from '../elements/FModal';
 import {UserData} from '../../type/types';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 type MenuListProps = {
   userData: UserData;
@@ -54,9 +55,10 @@ const MenuList = ({userData}: MenuListProps) => {
               console.log('유저네임', userData.user.username);
             }
           },
-          onPress: () => {
+          onPress: async () => {
             if (logout) {
               handleLogout({navigation, setLogout});
+              await AsyncStorage.removeItem('nickname');
             } else {
               handleUserDelete({
                 userName: userData.user.username.trim(),
