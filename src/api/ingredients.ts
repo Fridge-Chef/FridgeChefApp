@@ -12,9 +12,9 @@ export const addIngredients = async ({ingredients}: Ingredients) => {
   console.log('재료등록', ingredients);
   try {
     const response = await baseUrl.post(
-      'api/fridges',
+      'api/fridges/',
       {
-        ingredients,
+        ingredients: ingredients,
       },
       {
         headers: {

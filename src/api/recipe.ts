@@ -58,25 +58,25 @@ export const getRecipeDetail = async (boardId: number) => {
 
 export const addMyRecipe = async (data: AddIngredientType) => {
   const formData = new FormData();
-  formData.append('mainImage', data.mainImage);
   formData.append('name', data.name);
-  formData.append('description', data.description);
-  formData.append('dishCategory', data.dishCategory);
-  formData.append('dishTime', data.dishTime);
-  formData.append('dishLevel', data.dishLevel);
+  formData.append('intro', data.description);
+  formData.append('cookTime', data.dishTime);
+  formData.append('difficult', data.dishLevel);
+  formData.append('category', data.dishCategory);
+  formData.append('mainImage', data.mainImage);
   data.recipeIngredients.forEach((ingredient, index) => {
     formData.append(`recipeIngredients[${index}].name`, ingredient.name);
     formData.append(`recipeIngredients[${index}].details`, ingredient.details);
   });
   data.instructions.forEach((instruction, index) => {
-    formData.append(`instructions[${index}].content`, instruction.content);
-    formData.append(`instructions[${index}].image`, instruction.image);
+    formData.append(`descriptions[${index}].content`, instruction.content);
+    formData.append(`descriptions[${index}].image`, instruction.image);
   });
 
   console.log('formData 여기까진 오는데', formData);
   try {
     const response = await baseUrl.post(
-      'api/board',
+      'api/recipes/',
       {formData},
       {
         headers: {

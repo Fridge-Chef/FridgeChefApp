@@ -65,7 +65,6 @@ export const handleSubmit = async (recipeData: AddIngredientType) => {
     console.log('데이터를 모두 입력해주세요2');
     return;
   } else {
-    const addData = await addMyRecipe(recipeData);
-    console.log('addData', addData);
+    await addMyRecipe(recipeData);
   }
 };

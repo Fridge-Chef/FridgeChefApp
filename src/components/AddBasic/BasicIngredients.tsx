@@ -10,7 +10,9 @@ type BasicIngredientsProps = {
     storage: string;
   }[];
 
-  setBasicItem: (value: {ingredientName: string; storage: string}[]) => void;
+  setBasicItem: (value: {
+    ingredients: {ingredientName: string; storage: string}[];
+  }) => void;
 };
 
 const BasicIngredients = ({
@@ -21,7 +23,7 @@ const BasicIngredients = ({
     const updatedItems = initialItems.filter(
       item => item.ingredientName !== itemToRemove,
     );
-    setBasicItem(updatedItems);
+    setBasicItem({ingredients: updatedItems});
   };
 
   return (
