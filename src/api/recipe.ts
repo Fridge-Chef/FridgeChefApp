@@ -75,16 +75,12 @@ export const addMyRecipe = async (data: AddIngredientType) => {
 
   console.log('formData 여기까진 오는데', formData);
   try {
-    const response = await baseUrl.post(
-      'api/recipes/',
-      {formData},
-      {
-        headers: {
-          Authorization: `Bearer ${await AsyncStorage.getItem('token')}`,
-          'Content-Type': 'multipart/form-data',
-        },
+    const response = await baseUrl.post('api/recipes/', formData, {
+      headers: {
+        Authorization: `Bearer ${await AsyncStorage.getItem('token')}`,
+        'Content-Type': 'multipart/form-data',
       },
-    );
+    });
     if (response.status === 200) {
       console.log('레시피 추가 성공');
     }

@@ -20,38 +20,43 @@ type SubmitButtonsProps = {
 const SubmitButtons = ({basicItem}: SubmitButtonsProps) => {
   const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
   const {mutate} = useAddIngredients();
+
+  const handleSubmit = async () => {
+    try {
+      const token = await AsyncStorage.getItem('token');
+      if (token !== null) {
+        mutate(
+          {ingredients: basicItem.ingredients},
+          {
+            onSuccess: () => {
+              navigation.reset({
+                index: 0,
+                routes: [{name: 'bottomTab'}],
+              });
+            },
+            onError: () => {
+              console.log('재료등록 실패');
+            },
+          },
+        );
+      } else {
+        await AsyncStorage.setItem('ingredients', JSON.stringify(basicItem));
+        navigation.reset({
+          index: 0,
+          routes: [{name: 'bottomTab'}],
+        });
+      }
+    } catch (error) {
+      console.log('냉장고 등록 에러', error);
+    }
+  };
+
   return (
     <View style={styles.container}>
       <FButton
         buttonStyle="noneStyle"
         fBStyle={[styles.buttonStyle, {backgroundColor: colors.primary[1]}]}
-        onPress={async () => {
-          if ((await AsyncStorage.getItem('token')) !== null) {
-            mutate(
-              {ingredients: basicItem.ingredients},
-              {
-                onSuccess: () => {
-                  navigation.reset({
-                    index: 0,
-                    routes: [{name: 'bottomTab'}],
-                  });
-                },
-                onError: () => {
-                  console.log('재료등록 실패');
-                },
-              },
-            );
-          } else {
-            await AsyncStorage.setItem(
-              'ingredients',
-              JSON.stringify(basicItem),
-            );
-            navigation.reset({
-              index: 0,
-              routes: [{name: 'bottomTab'}],
-            });
-          }
-        }}>
+        onPress={handleSubmit}>
         <FText
           fStyle="B_16"
           color={colors.white}
