@@ -8,19 +8,53 @@ import BottomButton from '../BottomButton';
 import TopMenu from './TopMenu';
 import {useGetMyFridgeList} from '../../../api/recipeQuery';
 import Loading from '../../elements/Loading';
+import {baseUrl} from '../../../api/axios';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import {useGetIngredients} from '../../../api/ingredientsQuery';
+
+export type ListData = {
+  ingredientName: string;
+  storage: 'REFRIGERATION' | 'TEMPERATURE';
+};
 
 const AddIngredient = () => {
   const {bottomSheetRef} = useBottomSheetRef();
   const {setAddTitle} = useAddModalInputText();
   const [isClicked, setIsClicked] = useState(1);
-  const [itemList, setItemList] = useState<string[]>([]);
-  const [itemList2, setItemList2] = useState<string[]>([]);
+  const [itemList, setItemList] = useState<ListData[]>([]);
+  const [itemList2, setItemList2] = useState<ListData[]>([]);
   const {data, isLoading} = useGetMyFridgeList();
-  const handleSubmit = () => {
+  const {refetch} = useGetIngredients();
+  const handleSubmit = async () => {
     if (itemList.length <= 0 && itemList2.length <= 0) return;
-    setItemList([]);
-    setItemList2([]);
-    bottomSheetRef.current?.close();
+    console.log('리스트 아이템', itemList);
+    try {
+      const token = await AsyncStorage.getItem('token');
+      const response = await baseUrl.post('api/fridges/ingredients', itemList, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      const response2 = await baseUrl.post(
+        'api/fridges/ingredients',
+        itemList2,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        },
+      );
+      if (response.status === 201 && response2.status === 201) {
+        setItemList([]);
+        setItemList2([]);
+        bottomSheetRef.current?.close();
+        refetch();
+      }
+      console.log('리스트1', response.data);
+      console.log('리스트2', response2);
+    } catch (error: any) {
+      console.log(error.response.data);
+    }
   };
 
   const handleClose = () => {
@@ -53,6 +87,7 @@ const AddIngredient = () => {
         <View style={styles.subTitleContainer}>
           {/* <SubTitleBS title="재료명" /> */}
           <InputAndSearch
+            isClicked={isClicked}
             itemList={data?.ingredientNames}
             setItemList={isClicked === 1 ? setItemList : setItemList2}
           />

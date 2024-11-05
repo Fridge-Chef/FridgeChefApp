@@ -11,23 +11,11 @@ import {ParamListBase, useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {useGetUser} from '../../../api/userQuery';
 import Loading from '../../elements/Loading';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const LoginAndUser = () => {
-  const [userToken, setUserToken] = useState<string | null>('');
   const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
   const {data, isLoading} = useGetUser();
-
-  const getUserToken = async () => {
-    if ((await AsyncStorage.getItem('token')) === null) return;
-    const token = await getToken();
-    console.log('토큰입니다', await AsyncStorage.getItem('token'));
-    setUserToken(token);
-  };
-
-  useEffect(() => {
-    getUserToken();
-  }, []);
+  console.log('유저정보', data);
 
   if (isLoading) return <Loading loadingTitle="검색중" />;
   return (
@@ -35,10 +23,10 @@ const LoginAndUser = () => {
       style={[
         styles.container,
         {
-          backgroundColor: !userToken ? colors.background3 : colors.primary[4],
+          backgroundColor: !data ? colors.background3 : colors.primary[4],
         },
       ]}>
-      {!userToken ? (
+      {!data ? (
         <FButton
           buttonStyle="noneStyle"
           fBStyle={styles.alignCenter}

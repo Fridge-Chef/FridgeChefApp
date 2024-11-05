@@ -9,6 +9,7 @@ import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import FModal from '../elements/FModal';
 import {UserData} from '../../type/types';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import {useQueryClient} from '@tanstack/react-query';
 
 type MenuListProps = {
   userData: UserData;
@@ -16,6 +17,7 @@ type MenuListProps = {
 
 const MenuList = ({userData}: MenuListProps) => {
   const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
+  const queryClient = useQueryClient();
   const [logout, setLogout] = useState(false);
   const [userDelete, setUserDelete] = useState(false);
   const menu = [
@@ -57,6 +59,9 @@ const MenuList = ({userData}: MenuListProps) => {
           },
           onPress: async () => {
             if (logout) {
+              queryClient.removeQueries({
+                queryKey: ['user'],
+              });
               handleLogout({navigation, setLogout});
               await AsyncStorage.removeItem('nickname');
             } else {

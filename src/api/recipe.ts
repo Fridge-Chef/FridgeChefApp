@@ -89,21 +89,18 @@ export const addMyRecipe = async (data: AddIngredientType) => {
   }
 };
 
-export const getMyFridgeList = async (text: string) => {
+export const getMyFridgeList = async () => {
   try {
-    const response = await baseUrl.get(
-      `api/ingredient/search?keyword=${text}`,
-      {
-        headers: {
-          Authorization: `Bearer ${await AsyncStorage.getItem('token')}`,
-        },
+    const response = await baseUrl.get('api/ingredient/search?keyword=', {
+      headers: {
+        Authorization: `Bearer ${await AsyncStorage.getItem('token')}`,
       },
-    );
-    console.log('냉장고 재료 가져오기', response.data);
+    });
+
     if (response.status === 200) {
       return response.data;
     }
-  } catch (error) {
-    console.log('냉장고 재료 가져오기', error);
+  } catch (error: any) {
+    console.log('냉장고 재료 가져오기 에러', error.response.data);
   }
 };

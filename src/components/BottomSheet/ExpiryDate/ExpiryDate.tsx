@@ -2,11 +2,10 @@ import {StyleSheet, View} from 'react-native';
 import React from 'react';
 import {colors, FWidth} from '../../../../globalStyle';
 import FText from '../../elements/FText';
-import SubTitleBS from '../SubTitleBS';
 import FButton from '../../elements/FButton';
 import Calendar2 from '../../../utils/Svg/Calendar2';
 import {
-  useSubBottomSheetDate,
+  useCategoriesText,
   useSubBottomSheetRef,
   useSubBottomSheetTitle,
 } from '../../../store/store';
@@ -15,10 +14,9 @@ import SubTitleBS2 from '../SubTitleBS2';
 const ExpiryDate = () => {
   const {subBottomSheetRef} = useSubBottomSheetRef();
   const {setSubTitle} = useSubBottomSheetTitle();
-  const {selectedDate} = useSubBottomSheetDate();
+  const {expiryDate} = useCategoriesText();
   const handleAddExpiryDate = () => {
     setSubTitle('유통기한');
-
     subBottomSheetRef.current?.present();
   };
 
@@ -30,11 +28,11 @@ const ExpiryDate = () => {
         buttonStyle="selected"
         onPress={handleAddExpiryDate}>
         <FText
-          fStyle={selectedDate !== '날짜를 선택해 주세요' ? 'B_16' : 'R_16'}
+          fStyle={expiryDate !== '날짜를 선택해 주세요' ? 'B_16' : 'R_16'}
           color={
-            selectedDate !== '날짜를 선택해 주세요' ? colors.text : colors.b400
+            expiryDate !== '날짜를 선택해 주세요' ? colors.text : colors.b400
           }
-          text={selectedDate}
+          text={expiryDate}
         />
         <Calendar2 />
       </FButton>

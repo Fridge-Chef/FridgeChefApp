@@ -20,7 +20,7 @@ export const useGetRecipeList = () => {
 };
 
 export const useGetMyFridgeList = () => {
-  const queryFn = () => getMyFridgeList('');
+  const queryFn = () => getMyFridgeList();
   return useQuery({
     queryKey: ['myFridgeList'],
     queryFn,

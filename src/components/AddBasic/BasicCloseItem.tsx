@@ -36,7 +36,6 @@ const styles = StyleSheet.create({
     paddingVertical: 9,
     borderRadius: 100,
     backgroundColor: colors.background,
-    marginRight: FWidth * 6,
     marginTop: FWidth * 14,
   },
 });

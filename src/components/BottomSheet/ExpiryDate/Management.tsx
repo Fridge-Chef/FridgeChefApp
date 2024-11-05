@@ -10,10 +10,12 @@ import BottomButton from '../BottomButton';
 import {colors, FWidth} from '../../../../globalStyle';
 import ExpiryDate from './ExpiryDate';
 import Categories from './Categories';
+import {useIngredientsCategory} from '../../../api/ingredientsQuery';
 
 const Management = () => {
   const {ingredientTitle} = useIngredientTitle();
   const {bottomSheetRef} = useBottomSheetRef();
+  const {mutate} = useIngredientsCategory();
   const {
     category,
     setCategory,
@@ -24,8 +26,22 @@ const Management = () => {
   } = useCategoriesText();
 
   const handleSubmit = () => {
-    setCategory('');
-    bottomSheetRef.current?.close();
+    if (!category || !expiryDate) {
+      return;
+    }
+    mutate(
+      {
+        category,
+        expiryDate,
+      },
+      {
+        onSuccess: () => {
+          setCategory('');
+          setExpiryDate('날짜를 선택해 주세요');
+          bottomSheetRef.current?.close();
+        },
+      },
+    );
   };
   return (
     <View style={styles.container}>
@@ -46,7 +62,9 @@ const Management = () => {
       </View>
       <BottomButton
         title="확인"
-        buttonColor={category ? colors.primary[1] : colors.disabled2}
+        buttonColor={
+          category && expiryDate ? colors.primary[1] : colors.disabled2
+        }
         onPress={handleSubmit}
       />
     </View>

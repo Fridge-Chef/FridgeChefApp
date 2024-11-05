@@ -8,52 +8,83 @@ import {
   useBottomSheetTitle,
   useIngredientTitle,
 } from '../../../../store/store';
-import DDayText from './DDayText';
-import Close3 from '../../../../utils/Svg/Close3';
 import FText from '../../../elements/FText';
 import Option from '../../../../utils/Svg/Option';
 import IngredientClose from '../../../../utils/Svg/IngredientClose';
+import {baseUrl} from '../../../../api/axios';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import {
+  useDeleteIngredients,
+  useGetIngredients,
+} from '../../../../api/ingredientsQuery';
+import {useQueryClient} from '@tanstack/react-query';
+import {ListData} from './AddList';
 
 type ItemComponentProps = {
-  item: {
-    ingredientName: string;
-    storage: 'REFRIGERATION' | 'TEMPERATURE';
-  };
+  item: ListData;
 };
 
 const ItemComponent = ({item}: ItemComponentProps) => {
+  const {refetch} = useGetIngredients();
+  const queryClient = useQueryClient();
   const [buttonName] = useState('유통기한 등록');
   const {setTitle} = useBottomSheetTitle();
   const {setIngredientTitle} = useIngredientTitle();
   const {bottomSheetRef} = useBottomSheetRef();
-
+  const {mutate} = useDeleteIngredients();
   const handleAddExpiration = (title: string) => {
     bottomSheetRef.current?.present();
     setIngredientTitle(title);
     setTitle(buttonName);
   };
 
-  // const today = new Date();
-  // let date = () => {
-  //   if (!item.expiry_date) return;
-  //   const expiryDate = new Date(item.expiry_date);
-  //   const timeDifference = expiryDate.getTime() - today.getTime();
-  //   const dayDifference = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
-  //   switch (dayDifference) {
-  //     case 3:
-  //       return 'D-3';
-  //     case 2:
-  //       return 'D-2';
-  //     case 1:
-  //       return 'D-1';
-  //     case 0:
-  //       return '오늘 이후 폐기';
-  //     default:
-  //       return '';
-  //   }
-  // };
+  const handleDelete = async (title: string) => {
+    mutate(title, {
+      onSuccess: () => {
+        queryClient.invalidateQueries({
+          queryKey: ['getIngredients'],
+        });
+        refetch();
+      },
+    });
+    try {
+      const token = await AsyncStorage.getItem('token');
+      const response = await baseUrl.delete(
+        `/api/fridges/ingredients/${title}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        },
+      );
+      if (response.status === 204) {
+      }
+    } catch (error: any) {
+      console.log(error.response.data);
+    }
+  };
 
-  // useEffect(() => {}, [date]);
+  const today = new Date();
+  let date = () => {
+    if (!item.expirationDate) return;
+    const expiryDate = new Date(item.expirationDate);
+    const timeDifference = expiryDate.getTime() - today.getTime();
+    const dayDifference = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+    switch (dayDifference) {
+      case 3:
+        return 'D-3';
+      case 2:
+        return 'D-2';
+      case 1:
+        return 'D-1';
+      case 0:
+        return '오늘 이후 폐기';
+      default:
+        return '';
+    }
+  };
+
+  useEffect(() => {}, [date]);
 
   return (
     <View style={styles.container}>
@@ -78,7 +109,9 @@ const ItemComponent = ({item}: ItemComponentProps) => {
             <Option />
           </FButton>
         </View>
-        <FButton buttonStyle="noneStyle">
+        <FButton
+          buttonStyle="noneStyle"
+          onPress={() => handleDelete(item.ingredientName)}>
           <IngredientClose />
         </FButton>
       </View>

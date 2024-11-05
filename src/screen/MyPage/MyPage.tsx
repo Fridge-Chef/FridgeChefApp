@@ -8,43 +8,26 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import NotLoginUser from './NotLoginUser';
 import {UserData} from '../../type/types';
 import {getUserData} from '../../service/MyFridge/MyFridge';
+import {useGetUser} from '../../api/userQuery';
+import Loading from '../../components/elements/Loading';
 
 const MyPage = () => {
-  const [userToken, setUserToken] = useState<string | null>('');
-  const [userData, setUserData] = useState<UserData>({
-    user: {
-      createAt: '',
-      role: '',
-      email: '',
-      profileLink: '',
-      username: '',
-    },
-  });
-  const getUserToken = async () => {
-    const token = await AsyncStorage.getItem('token');
-    setUserToken(token);
-  };
-
-  useEffect(() => {
-    getUserToken();
-    if (userToken) {
-      getUserData({setUser: setUserData});
-    }
-  }, [userToken]);
-  console.log('여기는 마이페이지 유저 정보', userData);
+  const {data, isLoading} = useGetUser();
+  console.log('유저정보', data);
+  if (isLoading) return <Loading loadingTitle="로딩중" />;
   return (
     <View style={styles.container}>
       <View style={styles.mainTitleContainer}>
         <FText fStyle="B_18" color={colors.text} text="설정" />
       </View>
 
-      {userToken ? (
+      {data ? (
         <ScrollView
           style={styles.paddingContainer}
           overScrollMode="never"
           showsVerticalScrollIndicator={false}>
-          <UserStatus userData={userData} />
-          <MenuList userData={userData} />
+          <UserStatus userData={data} />
+          <MenuList userData={data} />
         </ScrollView>
       ) : (
         <View style={styles.paddingContainer}>

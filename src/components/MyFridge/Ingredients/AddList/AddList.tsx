@@ -3,8 +3,12 @@ import React, {useEffect, useState} from 'react';
 import {FWidth} from '../../../../../globalStyle';
 import ItemComponent from './ItemComponent';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import {useGetIngredients} from '../../../../api/ingredientsQuery';
+import Loading from '../../../elements/Loading';
 
-type ListData = {
+export type ListData = {
+  expirationDate?: string;
+  ingredientCategory?: string;
   ingredientName: string;
   storage: 'REFRIGERATION' | 'TEMPERATURE';
 };
@@ -15,35 +19,36 @@ type AddListProps = {
 
 const AddList = ({onClicked}: AddListProps) => {
   const [dataList, setDataList] = useState<ListData[]>();
-
-  const handleData = async (): Promise<ListData[]> => {
-    if ((await AsyncStorage.getItem('token')) === null) {
-      const data = await AsyncStorage.getItem('ingredients');
-      return data ? JSON.parse(data) : [];
-    } else {
-      const data: ListData[] = [
-        {ingredientName: '계란', storage: 'REFRIGERATION'},
-        {ingredientName: '간장', storage: 'TEMPERATURE'},
-      ];
-      return data;
-    }
-  };
-
+  const {data: listData, isLoading} = useGetIngredients();
   useEffect(() => {
     const fetchData = async () => {
-      const data = await handleData();
+      if (isLoading) return; // 로딩 중일 때는 아무 작업도 하지 않음
+
+      const token = await AsyncStorage.getItem('token');
+      let data: ListData[] = [];
+
+      if (token === null) {
+        const storedData = await AsyncStorage.getItem('ingredients');
+        data = storedData ? JSON.parse(storedData) : [];
+      } else if (listData) {
+        data = listData; // listData를 바로 사용
+      }
+
       if (onClicked === 1) {
-        // 냉장 재료 필터링
         setDataList(data.filter(item => item.storage === 'REFRIGERATION'));
       } else if (onClicked === 2) {
-        // 온실 재료 필터링
         setDataList(data.filter(item => item.storage === 'TEMPERATURE'));
+      } else {
+        setDataList(data); // 모든 데이터를 보여줌
       }
     };
 
     fetchData();
-  }, [onClicked]);
+  }, [onClicked, listData, isLoading]);
   console.log(dataList);
+  if (isLoading) {
+    return <Loading loadingTitle="로딩중" />;
+  }
   return (
     <View style={styles.container}>
       <View style={styles.listContainer}>

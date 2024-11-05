@@ -85,7 +85,7 @@ const FBottomSheet = () => {
     );
     if (index === -1) {
       setCategory('');
-      setExpiryDate('');
+      setExpiryDate('날짜를 선택해 주세요');
       setItemNumber(0);
       setAddTitle({foodStyle: '한식', foodType: ''});
     }

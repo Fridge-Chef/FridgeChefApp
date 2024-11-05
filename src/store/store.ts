@@ -99,11 +99,6 @@ export const useSubBottomSheetRef = create<SubBottomSheetRefType>(set => ({
   setSubBottomSheetRef: ref => set({subBottomSheetRef: ref}),
 }));
 
-export const useSubBottomSheetDate = create<SubBottomSheetDateType>(set => ({
-  selectedDate: '날짜를 선택해 주세요',
-  setSelectedDate: (selectedDate: string) => set({selectedDate}),
-}));
-
 export const useBottomSheetTitle = create<BottomSheetTitleType>(set => ({
   title: '',
   setTitle: (title: string) => set({title}),
@@ -143,7 +138,7 @@ export const useCommunityTopTabBar = create<TopTabBarType>(set => ({
 
 export const useCategoriesText = create<CategoriesTextType>(set => ({
   category: '',
-  expiryDate: '',
+  expiryDate: '날짜를 선택해 주세요',
   itemNumber: 0,
   setItemNumber: (itemNumber: number) => set({itemNumber}),
   setCategory: (category: string) => set({category}),

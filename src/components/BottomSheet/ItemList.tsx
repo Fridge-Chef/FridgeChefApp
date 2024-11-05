@@ -3,16 +3,19 @@ import React from 'react';
 import {FWidth} from '../../../globalStyle';
 import CloseItem from './CloseItem';
 import SubTitleBS from './SubTitleBS';
+import {ListData} from './AddIngredient/AddIngredient';
 
 type ItemListProps = {
-  itemList: string[];
-  setItemList: React.Dispatch<React.SetStateAction<string[]>>;
+  itemList: ListData[];
+  setItemList: React.Dispatch<React.SetStateAction<ListData[]>>;
   title: string;
 };
 
 const ItemList = ({itemList, setItemList, title}: ItemListProps) => {
   const handleRemoveItem = (item: string) => {
-    setItemList(prev => prev.filter(i => i !== item));
+    setItemList(
+      itemList.filter((listItem: ListData) => listItem.ingredientName !== item),
+    );
   };
 
   return (
@@ -25,8 +28,8 @@ const ItemList = ({itemList, setItemList, title}: ItemListProps) => {
               {itemList.map((item, index) => (
                 <CloseItem
                   key={index}
-                  name={item}
-                  onPress={() => handleRemoveItem(item)}
+                  name={item.ingredientName}
+                  onPress={() => handleRemoveItem(item.ingredientName)}
                 />
               ))}
             </View>

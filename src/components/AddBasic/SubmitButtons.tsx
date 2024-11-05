@@ -10,11 +10,9 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 type SubmitButtonsProps = {
   basicItem: {
-    ingredients: {
-      ingredientName: string;
-      storage: string;
-    }[];
-  };
+    ingredientName: string;
+    storage: string;
+  }[];
 };
 
 const SubmitButtons = ({basicItem}: SubmitButtonsProps) => {
@@ -26,15 +24,16 @@ const SubmitButtons = ({basicItem}: SubmitButtonsProps) => {
       const token = await AsyncStorage.getItem('token');
       if (token !== null) {
         mutate(
-          {ingredients: basicItem.ingredients},
+          {ingredients: basicItem},
           {
             onSuccess: () => {
               navigation.reset({
                 index: 0,
                 routes: [{name: 'bottomTab'}],
               });
+              console.log('재료등록 성공');
             },
-            onError: () => {
+            onError: async () => {
               console.log('재료등록 실패');
             },
           },

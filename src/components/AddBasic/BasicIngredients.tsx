@@ -10,9 +10,7 @@ type BasicIngredientsProps = {
     storage: string;
   }[];
 
-  setBasicItem: (value: {
-    ingredients: {ingredientName: string; storage: string}[];
-  }) => void;
+  setBasicItem: (value: {ingredientName: string; storage: string}[]) => void;
 };
 
 const BasicIngredients = ({
@@ -23,7 +21,7 @@ const BasicIngredients = ({
     const updatedItems = initialItems.filter(
       item => item.ingredientName !== itemToRemove,
     );
-    setBasicItem({ingredients: updatedItems});
+    setBasicItem(updatedItems);
   };
 
   return (
@@ -53,5 +51,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     flexWrap: 'wrap',
+    columnGap: FWidth * 6,
   },
 });

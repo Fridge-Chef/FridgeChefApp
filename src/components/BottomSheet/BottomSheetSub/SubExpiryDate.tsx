@@ -1,21 +1,18 @@
-import {LayoutChangeEvent, StyleSheet, View} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import React, {useState} from 'react';
 import DatePicker from 'react-native-date-picker';
-import {colors, FHeight, FWidth} from '../../../../globalStyle';
+import {colors, FWidth} from '../../../../globalStyle';
 import FText from '../../elements/FText';
 import FButton from '../../elements/FButton';
-import {
-  useSubBottomSheetDate,
-  useSubBottomSheetRef,
-} from '../../../store/store';
+import {useCategoriesText, useSubBottomSheetRef} from '../../../store/store';
 
 const SubExpiryDate = () => {
   const [date, setDate] = useState(new Date());
-  const {setSelectedDate} = useSubBottomSheetDate();
   const {subBottomSheetRef} = useSubBottomSheetRef();
+  const {setExpiryDate} = useCategoriesText();
 
   const handleSubmit = () => {
-    setSelectedDate(date.toISOString().split('T')[0]);
+    setExpiryDate(date.toISOString().split('T')[0]);
     subBottomSheetRef.current?.close();
   };
 

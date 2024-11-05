@@ -5,13 +5,19 @@ import {colors, FWidth} from '../../../globalStyle';
 import FInput from '../elements/FInput';
 import {useAddModalInputText} from '../../store/store';
 import FText from '../elements/FText';
+import {ListData} from './AddIngredient/AddIngredient';
 
 type InputAndSearchProps = {
   itemList: string[];
-  setItemList: Dispatch<React.SetStateAction<string[]>>;
+  setItemList: Dispatch<React.SetStateAction<ListData[]>>;
+  isClicked: number;
 };
 
-const InputAndSearch = ({itemList, setItemList}: InputAndSearchProps) => {
+const InputAndSearch = ({
+  itemList,
+  setItemList,
+  isClicked,
+}: InputAndSearchProps) => {
   const {addTitle, setAddTitle} = useAddModalInputText();
   const [errorMsg, setErrorMsg] = useState('');
   const filteredIngredients = addTitle
@@ -19,14 +25,13 @@ const InputAndSearch = ({itemList, setItemList}: InputAndSearchProps) => {
     : [];
 
   const addItemToList = (item: string) => {
-    setItemList(prev => {
-      if (!prev.includes(item)) {
-        return [...prev, item];
-      } else {
-        Alert.alert('이미 추가된 재료입니다.');
-        return prev;
-      }
-    });
+    setItemList(prev => [
+      ...prev,
+      {
+        ingredientName: item,
+        storage: isClicked === 1 ? 'REFRIGERATION' : 'TEMPERATURE',
+      },
+    ]);
   };
 
   useEffect(() => {
@@ -51,7 +56,7 @@ const InputAndSearch = ({itemList, setItemList}: InputAndSearchProps) => {
       />
       {filteredIngredients.length > 0 && (
         <View style={styles.listContainer}>
-          {filteredIngredients.map((item: string, index) => (
+          {filteredIngredients.map((item, index) => (
             <FButton
               key={index}
               buttonStyle="noneStyle"
