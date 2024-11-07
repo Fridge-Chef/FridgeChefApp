@@ -19,7 +19,11 @@ const TimeAndLevel = ({
   return (
     <View style={styles.container}>
       <View style={[styles.iconContainer, {borderColor: colors.secondary[1]}]}>
-        <FText fStyle="B_12" color={colors.secondary[1]} text={dishCategory} />
+        <FText
+          fStyle="B_12"
+          color={colors.secondary[1]}
+          text={dishCategory ? dishCategory : ''}
+        />
       </View>
       <View style={[styles.iconContainer, {borderColor: colors.b500}]}>
         <DetailTime />
@@ -27,7 +31,7 @@ const TimeAndLevel = ({
           mLeft={FWidth * 2}
           fStyle="B_12"
           color={colors.b500}
-          text={`${dishTime}분`}
+          text={`${dishTime ? dishTime : 0}분`}
         />
       </View>
       <View style={[styles.iconContainer, {borderColor: colors.b500}]}>
@@ -36,7 +40,7 @@ const TimeAndLevel = ({
           mLeft={FWidth * 2}
           fStyle="B_12"
           color={colors.b500}
-          text={dishLevel}
+          text={dishLevel ? dishLevel : ''}
         />
       </View>
     </View>

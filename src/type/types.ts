@@ -131,3 +131,10 @@ export type GetRecipeListType = {
   title: string;
   userName: string;
 };
+
+export type ListData = {
+  expirationDate?: string;
+  ingredientCategory?: string;
+  ingredientName: string;
+  storage: 'REFRIGERATION' | 'TEMPERATURE';
+};

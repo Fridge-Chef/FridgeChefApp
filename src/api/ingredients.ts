@@ -1,5 +1,6 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {baseUrl} from './axios';
+import {ListData} from '../type/types';
 
 export type Ingredients = {
   ingredients: {
@@ -9,8 +10,13 @@ export type Ingredients = {
 };
 
 export type IngredientCategory = {
-  category: string;
-  expiryDate: string;
+  ingredientName: string;
+  IngredientCategory: string;
+  expirationDate: string;
+};
+
+export type IngredientsType = {
+  itemList: ListData[];
 };
 
 export const addIngredients = async ({ingredients}: Ingredients) => {
@@ -24,10 +30,26 @@ export const addIngredients = async ({ingredients}: Ingredients) => {
         Authorization: `Bearer ${token}`,
       },
     });
-    console.log('재료등록 성공', response);
+    return response.data;
   } catch (error: any) {
     console.log('재료등록 실패', error.response.data);
     throw new Error('재료등록 실패');
+  }
+};
+
+export const addIngredients2 = async ({itemList}: IngredientsType) => {
+  try {
+    const token = await AsyncStorage.getItem('token');
+    const response = await baseUrl.post('api/fridges/ingredients', itemList, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    if (response.status === 201) {
+      return response.data;
+    }
+  } catch (error: any) {
+    console.log(error.response.data);
   }
 };
 
@@ -40,7 +62,6 @@ export const getIngredients = async () => {
       },
     });
     if (response.status === 200) {
-      console.log('재료가져오기 성공', response.data);
       return response.data;
     }
   } catch (error: any) {
@@ -61,19 +82,23 @@ export const deleteIngredients = async (title: string) => {
       console.log('재료 삭제 성공');
     }
   } catch (error: any) {
-    console.log(error.response.data);
+    console.log('재료삭제 에러', error.response.data);
   }
 };
 
 export const addIngredientCategory = async (data: IngredientCategory) => {
   try {
     const token = await AsyncStorage.getItem('token');
-    const response = await baseUrl.post('api/categories/', data, {
+    const response = await baseUrl.put('api/fridges/ingredients', data, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
     });
-    console.log('카테고리 추가 성공', response);
+    if (response.status === 204) {
+      return response.data;
+    }
+
+    return response.data;
   } catch (error: any) {
     console.log(error.response.data);
   }

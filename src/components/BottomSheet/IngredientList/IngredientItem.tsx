@@ -67,7 +67,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderRadius: 50,
     borderColor: colors.disabled,
-    marginHorizontal: FWidth * 4,
     marginBottom: FWidth * 16,
   },
 });

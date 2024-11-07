@@ -5,55 +5,48 @@ import ItemComponent from './ItemComponent';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {useGetIngredients} from '../../../../api/ingredientsQuery';
 import Loading from '../../../elements/Loading';
-
-export type ListData = {
-  expirationDate?: string;
-  ingredientCategory?: string;
-  ingredientName: string;
-  storage: 'REFRIGERATION' | 'TEMPERATURE';
-};
+import {ListData} from '../../../../type/types';
 
 type AddListProps = {
+  dataList: ListData[] | undefined;
+  setDataList: (ingredientList: ListData[]) => void;
   onClicked?: number;
 };
 
-const AddList = ({onClicked}: AddListProps) => {
-  const [dataList, setDataList] = useState<ListData[]>();
+const AddList = ({dataList, setDataList, onClicked}: AddListProps) => {
   const {data: listData, isLoading} = useGetIngredients();
+  const fetchData = async () => {
+    if (isLoading) return;
+    const token = await AsyncStorage.getItem('token');
+    const storedData = await AsyncStorage.getItem('ingredients');
+    let data: ListData[] = [];
+    if (token === null) {
+      data = storedData ? JSON.parse(storedData) : [];
+    } else if (listData) {
+      data = listData;
+    }
+    setDataList(data);
+  };
+
   useEffect(() => {
-    const fetchData = async () => {
-      if (isLoading) return; // 로딩 중일 때는 아무 작업도 하지 않음
-
-      const token = await AsyncStorage.getItem('token');
-      let data: ListData[] = [];
-
-      if (token === null) {
-        const storedData = await AsyncStorage.getItem('ingredients');
-        data = storedData ? JSON.parse(storedData) : [];
-      } else if (listData) {
-        data = listData; // listData를 바로 사용
-      }
-
-      if (onClicked === 1) {
-        setDataList(data.filter(item => item.storage === 'REFRIGERATION'));
-      } else if (onClicked === 2) {
-        setDataList(data.filter(item => item.storage === 'TEMPERATURE'));
-      } else {
-        setDataList(data); // 모든 데이터를 보여줌
-      }
-    };
-
     fetchData();
   }, [onClicked, listData, isLoading]);
-  console.log(dataList);
+
   if (isLoading) {
     return <Loading loadingTitle="로딩중" />;
   }
+
+  const filteredDataList = dataList?.filter(item => {
+    if (onClicked === 1) return item.storage === 'REFRIGERATION';
+    if (onClicked === 2) return item.storage === 'TEMPERATURE';
+    return true; // onClicked가 1도 아니고, 2도 아닐 때 (기본적으로 모든 항목을 반환)
+  });
+
   return (
     <View style={styles.container}>
       <View style={styles.listContainer}>
-        {dataList?.map((item: ListData, index: number) => (
-          <ItemComponent item={item} key={index} />
+        {filteredDataList?.map((item: ListData, index: number) => (
+          <ItemComponent item={item} key={index} fetchData={fetchData} />
         ))}
       </View>
     </View>

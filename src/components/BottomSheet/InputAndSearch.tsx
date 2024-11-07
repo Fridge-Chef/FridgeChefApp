@@ -5,7 +5,7 @@ import {colors, FWidth} from '../../../globalStyle';
 import FInput from '../elements/FInput';
 import {useAddModalInputText} from '../../store/store';
 import FText from '../elements/FText';
-import {ListData} from './AddIngredient/AddIngredient';
+import {ListData} from '../../type/types';
 
 type InputAndSearchProps = {
   itemList: string[];

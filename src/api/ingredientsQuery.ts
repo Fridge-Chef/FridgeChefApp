@@ -2,10 +2,12 @@ import {useMutation, useQuery} from '@tanstack/react-query';
 import {
   addIngredientCategory,
   addIngredients,
+  addIngredients2,
   deleteIngredients,
   getIngredients,
   IngredientCategory,
   Ingredients,
+  IngredientsType,
 } from './ingredients';
 
 export const useAddIngredients = () => {
@@ -14,6 +16,16 @@ export const useAddIngredients = () => {
 
   return useMutation({
     mutationKey: ['addIngredients'],
+    mutationFn,
+  });
+};
+
+export const useAddIngredients2 = () => {
+  const mutationFn = ({itemList}: IngredientsType) =>
+    addIngredients2({itemList});
+
+  return useMutation({
+    mutationKey: ['addIngredients2'],
     mutationFn,
   });
 };

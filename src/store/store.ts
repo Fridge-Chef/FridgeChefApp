@@ -1,6 +1,7 @@
 import BottomSheet, {BottomSheetModal} from '@gorhom/bottom-sheet';
 import {RefObject} from 'react';
 import {create} from 'zustand';
+import {ListData} from '../type/types';
 
 type BottomSheetRefType = {
   bottomSheetRef: RefObject<BottomSheetModal>;
@@ -87,6 +88,11 @@ type SelectedCategoryType = {
 type ReviewTitleType = {
   reviewTitle: string;
   setReviewTitle: (reviewTitle: string) => void;
+};
+
+type IngredientListType = {
+  ingredientList: ListData[];
+  setIngredientList: (ingredientList: ListData[]) => void;
 };
 
 export const useBottomSheetRef = create<BottomSheetRefType>(set => ({
@@ -184,4 +190,9 @@ export const useSelectedCategory = create<SelectedCategoryType>(set => ({
 export const useRecipeReviewTitle = create<ReviewTitleType>(set => ({
   reviewTitle: '',
   setReviewTitle: (reviewTitle: string) => set({reviewTitle}),
+}));
+
+export const useIngredientList = create<IngredientListType>(set => ({
+  ingredientList: [],
+  setIngredientList: (ingredientList: ListData[]) => set({ingredientList}),
 }));

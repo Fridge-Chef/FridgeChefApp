@@ -5,37 +5,38 @@ import {colors, FWidth} from '../../../../globalStyle';
 import BottomButton from '../BottomButton';
 import {list} from '../../../utils/list';
 import IngredientItem from './IngredientItem';
-import {RecipeList} from '../../../type/types';
+import {ListData, RecipeList} from '../../../type/types';
+import {useIngredientList} from '../../../store/store';
 
 const IngredientList = () => {
   const [selectItems, setSelectItems] = useState<string[]>([]);
   const [deleteItems, setDeleteItems] = useState<string[]>([]);
-
-  const handleIngredientClick = (ingredient: RecipeList) => {
-    if (deleteItems.includes(ingredient.ingredient)) {
+  const {ingredientList} = useIngredientList();
+  const handleIngredientClick = (ingredient: ListData) => {
+    if (deleteItems.includes(ingredient.ingredientName)) {
       return;
     }
 
-    if (selectItems.includes(ingredient.ingredient)) {
+    if (selectItems.includes(ingredient.ingredientName)) {
       setSelectItems(
-        selectItems.filter(item => item !== ingredient.ingredient),
+        selectItems.filter(item => item !== ingredient.ingredientName),
       );
     } else {
-      setSelectItems([...selectItems, ingredient.ingredient]);
+      setSelectItems([...selectItems, ingredient.ingredientName]);
     }
   };
 
-  const handleDeleteClick = (ingredient: RecipeList) => {
-    if (selectItems.includes(ingredient.ingredient)) {
+  const handleDeleteClick = (ingredient: ListData) => {
+    if (selectItems.includes(ingredient.ingredientName)) {
       return;
     }
 
-    if (deleteItems.includes(ingredient.ingredient)) {
+    if (deleteItems.includes(ingredient.ingredientName)) {
       setDeleteItems(
-        deleteItems.filter(item => item !== ingredient.ingredient),
+        deleteItems.filter(item => item !== ingredient.ingredientName),
       );
     } else {
-      setDeleteItems([...deleteItems, ingredient.ingredient]);
+      setDeleteItems([...deleteItems, ingredient.ingredientName]);
     }
   };
 
@@ -75,36 +76,32 @@ const IngredientList = () => {
 
   return (
     <View style={styles.container}>
-      <View style={styles.titleContainer}>
+      <View style={styles.paddingContainer}>
         <TopTitle title="주재료 선택하기" onPress={() => {}} />
-      </View>
-      <View style={styles.contentContainer}>
-        {list.map((item, index) => (
-          <View key={index} style={styles.itemsContainer}>
-            {item.ingredients.map((item, index) => {
-              const {backColor, iColor, tColor, bWidth, pVer, pHor, iconClose} =
-                getItemStyle(item.ingredient);
-              return (
-                <IngredientItem
-                  key={index}
-                  iColor={iColor}
-                  tColor={tColor}
-                  bWidth={bWidth}
-                  backColor={backColor}
-                  closeIcon={iconClose}
-                  pVer={pVer}
-                  pHor={pHor}
-                  ingredients={item.ingredient}
-                  onPress={() => handleIngredientClick(item)}
-                  deleteOnPress={() => handleDeleteClick(item)}
-                />
-              );
-            })}
-          </View>
-        ))}
+        <View style={styles.contentContainer}>
+          {ingredientList.map((item, index) => {
+            const {backColor, iColor, tColor, bWidth, pVer, pHor, iconClose} =
+              getItemStyle(item.ingredientName);
+            return (
+              <IngredientItem
+                key={index}
+                iColor={iColor}
+                tColor={tColor}
+                bWidth={bWidth}
+                backColor={backColor}
+                closeIcon={iconClose}
+                pVer={pVer}
+                pHor={pHor}
+                ingredients={item.ingredientName}
+                onPress={() => handleIngredientClick(item)}
+                deleteOnPress={() => handleDeleteClick(item)}
+              />
+            );
+          })}
+        </View>
       </View>
       <BottomButton
-        title="다음"
+        title="확인"
         buttonColor={
           selectItems.length > 0 || deleteItems.length > 0
             ? colors.primary[1]
@@ -124,19 +121,16 @@ const styles = StyleSheet.create({
     marginTop: FWidth * 22,
   },
 
-  titleContainer: {
+  paddingContainer: {
+    flexGrow: 1,
     paddingHorizontal: FWidth * 22,
   },
 
   contentContainer: {
-    flexGrow: 1,
-    paddingHorizontal: FWidth * 18,
-  },
-
-  itemsContainer: {
     marginTop: FWidth * 32,
-    flexDirection: 'row',
     alignItems: 'center',
+    flexDirection: 'row',
     flexWrap: 'wrap',
+    columnGap: FWidth * 8,
   },
 });

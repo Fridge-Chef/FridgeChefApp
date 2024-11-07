@@ -8,66 +8,50 @@ import BottomButton from '../BottomButton';
 import TopMenu from './TopMenu';
 import {useGetMyFridgeList} from '../../../api/recipeQuery';
 import Loading from '../../elements/Loading';
-import {baseUrl} from '../../../api/axios';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import {useGetIngredients} from '../../../api/ingredientsQuery';
 
-export type ListData = {
-  ingredientName: string;
-  storage: 'REFRIGERATION' | 'TEMPERATURE';
-};
+import {
+  useAddIngredients2,
+  useGetIngredients,
+} from '../../../api/ingredientsQuery';
+import {ListData} from '../../../type/types';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const AddIngredient = () => {
   const {bottomSheetRef} = useBottomSheetRef();
   const {setAddTitle} = useAddModalInputText();
   const [isClicked, setIsClicked] = useState(1);
   const [itemList, setItemList] = useState<ListData[]>([]);
-  const [itemList2, setItemList2] = useState<ListData[]>([]);
   const {data, isLoading} = useGetMyFridgeList();
   const {refetch} = useGetIngredients();
+  const {mutate} = useAddIngredients2();
+
   const handleSubmit = async () => {
-    if (itemList.length <= 0 && itemList2.length <= 0) return;
-    console.log('리스트 아이템', itemList);
-    try {
-      const token = await AsyncStorage.getItem('token');
-      const response = await baseUrl.post('api/fridges/ingredients', itemList, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      const response2 = await baseUrl.post(
-        'api/fridges/ingredients',
-        itemList2,
+    if (itemList.length <= 0) return;
+    const token = await AsyncStorage.getItem('token');
+    if (token) {
+      mutate(
+        {itemList},
         {
-          headers: {
-            Authorization: `Bearer ${token}`,
+          onSuccess: () => {
+            refetch();
+            handleClose();
           },
         },
       );
-      if (response.status === 201 && response2.status === 201) {
-        setItemList([]);
-        setItemList2([]);
-        bottomSheetRef.current?.close();
-        refetch();
-      }
-      console.log('리스트1', response.data);
-      console.log('리스트2', response2);
-    } catch (error: any) {
-      console.log(error.response.data);
+    } else {
+      const storedData = await AsyncStorage.getItem('ingredients');
+      const data = storedData ? JSON.parse(storedData) : [];
+      const newData = [...data, ...itemList];
+      await AsyncStorage.setItem('ingredients', JSON.stringify(newData));
+      handleClose();
     }
   };
 
   const handleClose = () => {
     setIsClicked(1);
     setItemList([]);
-    setItemList2([]);
     bottomSheetRef.current?.close();
   };
-
-  useEffect(() => {
-    const getData = async () => {};
-    getData();
-  }, []);
 
   if (isLoading) return <Loading loadingTitle="로딩중" />;
 
@@ -89,22 +73,19 @@ const AddIngredient = () => {
           <InputAndSearch
             isClicked={isClicked}
             itemList={data?.ingredientNames}
-            setItemList={isClicked === 1 ? setItemList : setItemList2}
+            setItemList={setItemList}
           />
         </View>
         <ItemList
-          itemList={isClicked === 1 ? itemList : itemList2}
-          setItemList={isClicked === 1 ? setItemList : setItemList2}
+          isClicked={isClicked}
+          itemList={itemList}
+          setItemList={setItemList}
           title="등록된 재료들"
         />
       </View>
       <BottomButton
         title="재료 등록하기"
-        buttonColor={
-          itemList.length > 0 || itemList2.length > 0
-            ? colors.text
-            : colors.disabled2
-        }
+        buttonColor={itemList.length > 0 ? colors.text : colors.disabled2}
         onPress={handleSubmit}
       />
     </Pressable>

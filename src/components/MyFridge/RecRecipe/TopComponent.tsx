@@ -1,18 +1,19 @@
 import {FlatList, LayoutChangeEvent, StyleSheet, View} from 'react-native';
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import {colors, FWidth} from '../../../../globalStyle';
-import {list} from '../../../utils/list';
 import FButton from '../../elements/FButton';
-import BottomButton from '../../../utils/Svg/BottomButton';
-import {RecipeList} from '../../../type/types';
+import {ListData, RecipeList} from '../../../type/types';
 import {useBottomSheetRef, useBottomSheetTitle} from '../../../store/store';
 import FText from '../../elements/FText';
 import SubTitle from '../../elements/SubTitle/SubTitle';
 import RecipeRightArrow from '../../../utils/Svg/Categories/RecipeRightArrow';
 
-const TopComponent = () => {
+type TopComponentProps = {
+  ingredients: ListData[];
+};
+
+const TopComponent = ({ingredients}: TopComponentProps) => {
   const [itemHeight, setItemHeight] = useState(0);
-  const [containerHeight, setContainerHeight] = useState(0);
   const {bottomSheetRef} = useBottomSheetRef();
   const {setTitle} = useBottomSheetTitle();
   const [selectItems, setSelectItems] = useState<string[]>([]);
@@ -20,10 +21,6 @@ const TopComponent = () => {
     if (itemHeight === 0) {
       setItemHeight(e.nativeEvent.layout.height);
     }
-  };
-
-  const onLayout2 = (e: LayoutChangeEvent) => {
-    setContainerHeight(e.nativeEvent.layout.height);
   };
 
   const handleBottomSheetOpen = () => {
@@ -41,17 +38,12 @@ const TopComponent = () => {
     }
   };
 
-  useEffect(() => {
-    if (list.length > 0) {
-    }
-  }, [containerHeight]);
-
   return (
     <View>
       <SubTitle title="보유 재료" />
       <View style={{position: 'relative'}}>
         <FlatList
-          data={list}
+          data={ingredients}
           showsHorizontalScrollIndicator={false}
           horizontal
           keyExtractor={(_, index) => index.toString()}
@@ -64,38 +56,19 @@ const TopComponent = () => {
                 },
               ]}>
               <View style={[styles.listItemContainer]}>
-                {list &&
-                  item.ingredients?.map((ingredient: RecipeList) => (
-                    <View
-                      key={ingredient.ingredient_id}
-                      style={[styles.listItem, {backgroundColor: colors.b100}]}
-                      onLayout={onLayout}>
-                      <FText
-                        fStyle="M_14"
-                        color={
-                          selectItems.includes(ingredient.ingredient)
-                            ? colors.white
-                            : colors.black
-                        }
-                        text={ingredient.ingredient}
-                      />
-                    </View>
-
-                    // <FButton
-                    //   buttonStyle="menuButton"
-                    //   fBStyle={{
-                    //     backgroundColor: selectItems.includes(
-                    //       ingredient.ingredient,
-                    //     )
-                    //       ? colors.primary[1]
-                    //       : colors.background,
-                    //     marginRight: FWidth * 6,
-                    //   }}
-                    //   key={ingredient.ingredient_id}
-                    //   onLayout={onLayout}
-                    //   onPress={() => handleIngredientClick(ingredient)}>
-                    // </FButton>
-                  ))}
+                <View
+                  style={[styles.listItem, {backgroundColor: colors.b100}]}
+                  onLayout={onLayout}>
+                  <FText
+                    fStyle="M_14"
+                    color={
+                      selectItems.includes(item.ingredientName)
+                        ? colors.white
+                        : colors.black
+                    }
+                    text={item.ingredientName}
+                  />
+                </View>
               </View>
             </View>
           )}
@@ -110,11 +83,9 @@ const TopComponent = () => {
           onPress={handleBottomSheetOpen}>
           <View
             style={{
-              // height: '100%',
               alignItems: 'center',
-              backgroundColor: colors.white,
+              backgroundColor: 'rgba(255, 255, 255, 0.7)',
             }}>
-            {/* <BottomButton buttonHeight={itemHeight} /> */}
             <RecipeRightArrow />
           </View>
         </FButton>

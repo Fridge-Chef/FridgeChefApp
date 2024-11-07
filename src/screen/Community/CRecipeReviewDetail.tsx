@@ -29,7 +29,7 @@ const CRecipeReviewDetail = () => {
     return (
       <ScrollView style={styles.container} overScrollMode="never">
         <View>
-          <FImage uri={data.mainImage} imgStyle="detail" alt="미리보기 메인" />
+          <FImage uri={data.mainImage} imgStyle="detail" alt="디테일 메인" />
         </View>
         <PreviewTitle
           title={data.name}
@@ -40,7 +40,7 @@ const CRecipeReviewDetail = () => {
         <RecipeNote content={data.description} />
         <IngredientComponent recipeIngredients={data.recipeIngredients} />
         <RecipeComponent instructions={data.instructions} />
-        <PCloseButton />
+        {/* <PCloseButton /> */}
       </ScrollView>
     );
 };

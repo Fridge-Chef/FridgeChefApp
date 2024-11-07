@@ -10,11 +10,15 @@ import BottomButton from '../BottomButton';
 import {colors, FWidth} from '../../../../globalStyle';
 import ExpiryDate from './ExpiryDate';
 import Categories from './Categories';
-import {useIngredientsCategory} from '../../../api/ingredientsQuery';
+import {
+  useGetIngredients,
+  useIngredientsCategory,
+} from '../../../api/ingredientsQuery';
 
 const Management = () => {
   const {ingredientTitle} = useIngredientTitle();
   const {bottomSheetRef} = useBottomSheetRef();
+  const {refetch} = useGetIngredients();
   const {mutate} = useIngredientsCategory();
   const {
     category,
@@ -31,11 +35,13 @@ const Management = () => {
     }
     mutate(
       {
-        category,
-        expiryDate,
+        ingredientName: ingredientTitle,
+        IngredientCategory: category,
+        expirationDate: expiryDate,
       },
       {
         onSuccess: () => {
+          refetch();
           setCategory('');
           setExpiryDate('날짜를 선택해 주세요');
           bottomSheetRef.current?.close();
@@ -43,6 +49,9 @@ const Management = () => {
       },
     );
   };
+
+  console.log('category', category);
+  console.log('expiryDate', expiryDate);
   return (
     <View style={styles.container}>
       <View style={styles.contentContainer}>

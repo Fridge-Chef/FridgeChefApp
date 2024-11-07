@@ -4,11 +4,7 @@ import {colors, FWidth} from '../../../globalStyle';
 import TopComponent from '../../components/MyFridge/Ingredients/TopComponent';
 import AddList from '../../components/MyFridge/Ingredients/AddList/AddList';
 import FButton from '../../components/elements/FButton';
-import {
-  useBottomSheetRef,
-  useBottomSheetTitle,
-  useLoading,
-} from '../../store/store';
+import {useIngredientList} from '../../store/store';
 import {ParamListBase, useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import LoginAndUser from '../../components/MyFridge/Ingredients/LoginAndUser';
@@ -17,10 +13,12 @@ import CondimentButton from '../../components/MyFridge/Ingredients/CondimentButt
 import InfoComponent from '../../components/MyFridge/Ingredients/InfoComponent';
 import SearchIcon from '../../utils/Svg/SearchIcon';
 import {getUSerToken} from '../../api/user';
+
 const Ingredients = () => {
   const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
   const [onClicked, setonClicked] = useState(1);
-
+  const {ingredientList, setIngredientList} = useIngredientList();
+  console.log('dataList', ingredientList);
   const handleSearch = () => {
     navigation.navigate('recRecipe');
   };
@@ -39,7 +37,11 @@ const Ingredients = () => {
         </TouchableOpacity>
         <CondimentButton onClicked={onClicked} setonClicked={setonClicked} />
         <InfoComponent />
-        <AddList onClicked={onClicked} />
+        <AddList
+          onClicked={onClicked}
+          dataList={ingredientList}
+          setDataList={setIngredientList}
+        />
       </ScrollView>
       <View style={styles.buttonContainer}>
         <FButton

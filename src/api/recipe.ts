@@ -91,11 +91,7 @@ export const addMyRecipe = async (data: AddIngredientType) => {
 
 export const getMyFridgeList = async () => {
   try {
-    const response = await baseUrl.get('api/ingredient/search?keyword=', {
-      headers: {
-        Authorization: `Bearer ${await AsyncStorage.getItem('token')}`,
-      },
-    });
+    const response = await baseUrl.get('api/ingredient/search');
 
     if (response.status === 200) {
       return response.data;

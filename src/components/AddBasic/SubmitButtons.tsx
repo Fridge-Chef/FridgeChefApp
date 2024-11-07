@@ -65,7 +65,8 @@ const SubmitButtons = ({basicItem}: SubmitButtonsProps) => {
       <FButton
         buttonStyle="noneStyle"
         fBStyle={[styles.buttonStyle, {backgroundColor: colors.text}]}
-        onPress={() => {
+        onPress={async () => {
+          await AsyncStorage.removeItem('ingredients');
           navigation.reset({
             index: 0,
             routes: [{name: 'bottomTab'}],

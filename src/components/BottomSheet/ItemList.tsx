@@ -6,32 +6,53 @@ import SubTitleBS from './SubTitleBS';
 import {ListData} from './AddIngredient/AddIngredient';
 
 type ItemListProps = {
+  isClicked: number;
   itemList: ListData[];
   setItemList: React.Dispatch<React.SetStateAction<ListData[]>>;
   title: string;
 };
 
-const ItemList = ({itemList, setItemList, title}: ItemListProps) => {
+const ItemList = ({isClicked, itemList, setItemList, title}: ItemListProps) => {
   const handleRemoveItem = (item: string) => {
     setItemList(
       itemList.filter((listItem: ListData) => listItem.ingredientName !== item),
     );
   };
-
+  console.log('아이템리스트', itemList);
   return (
     <View>
       {itemList.length > 0 && (
         <View style={styles.itemContainer}>
-          <SubTitleBS title={title} />
+          {isClicked === 1 ? (
+            itemList.filter(item => item.storage === 'REFRIGERATION').length >
+            0 ? (
+              <SubTitleBS title={title} />
+            ) : null
+          ) : itemList.filter(item => item.storage === 'TEMPERATURE').length >
+            0 ? (
+            <SubTitleBS title={title} />
+          ) : null}
           <View style={styles.itemListContainer}>
             <View style={styles.itemSubContainer}>
-              {itemList.map((item, index) => (
-                <CloseItem
-                  key={index}
-                  name={item.ingredientName}
-                  onPress={() => handleRemoveItem(item.ingredientName)}
-                />
-              ))}
+              {isClicked === 1
+                ? itemList
+                    .filter(item => item.storage === 'REFRIGERATION')
+                    .map((item, index) => (
+                      <CloseItem
+                        key={index}
+                        name={item.ingredientName}
+                        onPress={() => handleRemoveItem(item.ingredientName)}
+                      />
+                    ))
+                : itemList
+                    .filter(item => item.storage === 'TEMPERATURE')
+                    .map((item, index) => (
+                      <CloseItem
+                        key={index}
+                        name={item.ingredientName}
+                        onPress={() => handleRemoveItem(item.ingredientName)}
+                      />
+                    ))}
             </View>
           </View>
         </View>
