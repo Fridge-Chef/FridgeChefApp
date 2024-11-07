@@ -7,7 +7,7 @@ export type RecipeListType = {
   dishTime: string;
   dishLevel: string;
   mainImage: string;
-  title: string;
+  name: string;
   likes: number;
   favorites: number;
   myLike: number;
@@ -120,16 +120,16 @@ export type UserData = {
 
 export type GetRecipeListType = {
   boardId: number;
-  click: number;
-  createTime: string;
-  hit: number;
-  mainImage: string;
-  mainImageId: number;
-  myHit: boolean;
-  sortType: 'LATEST' | 'ALL';
-  star: number;
   title: string;
   userName: string;
+  mainImage: string;
+  star: number;
+  hit: number;
+  myHit: boolean;
+  click: number;
+  have: number;
+  withoutCount: number;
+  without: string[];
 };
 
 export type ListData = {

@@ -6,6 +6,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import {useGetIngredients} from '../../../../api/ingredientsQuery';
 import Loading from '../../../elements/Loading';
 import {ListData} from '../../../../type/types';
+import {useAddCheck} from '../../../../store/store';
 
 type AddListProps = {
   dataList: ListData[] | undefined;
@@ -15,7 +16,9 @@ type AddListProps = {
 
 const AddList = ({dataList, setDataList, onClicked}: AddListProps) => {
   const {data: listData, isLoading} = useGetIngredients();
+  const {check} = useAddCheck();
   const fetchData = async () => {
+    console.log('dd', await AsyncStorage.getItem('nickname'));
     if (isLoading) return;
     const token = await AsyncStorage.getItem('token');
     const storedData = await AsyncStorage.getItem('ingredients');
@@ -30,7 +33,7 @@ const AddList = ({dataList, setDataList, onClicked}: AddListProps) => {
 
   useEffect(() => {
     fetchData();
-  }, [onClicked, listData, isLoading]);
+  }, [onClicked, listData, isLoading, check]);
 
   if (isLoading) {
     return <Loading loadingTitle="로딩중" />;
@@ -62,6 +65,6 @@ const styles = StyleSheet.create({
   },
   listContainer: {
     paddingHorizontal: FWidth * 22,
-    marginBottom: FWidth * 78, // 기본 60에서 18 추가
+    marginBottom: FWidth * 78,
   },
 });

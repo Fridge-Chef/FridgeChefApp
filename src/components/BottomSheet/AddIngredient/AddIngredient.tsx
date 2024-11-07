@@ -2,7 +2,11 @@ import {Keyboard, Pressable, StyleSheet, View} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import {colors, FWidth} from '../../../../globalStyle';
 import InputAndSearch from '../InputAndSearch';
-import {useAddModalInputText, useBottomSheetRef} from '../../../store/store';
+import {
+  useAddCheck,
+  useAddModalInputText,
+  useBottomSheetRef,
+} from '../../../store/store';
 import ItemList from '../ItemList';
 import BottomButton from '../BottomButton';
 import TopMenu from './TopMenu';
@@ -24,7 +28,7 @@ const AddIngredient = () => {
   const {data, isLoading} = useGetMyFridgeList();
   const {refetch} = useGetIngredients();
   const {mutate} = useAddIngredients2();
-
+  const {check, setCheck} = useAddCheck();
   const handleSubmit = async () => {
     if (itemList.length <= 0) return;
     const token = await AsyncStorage.getItem('token');
@@ -43,6 +47,7 @@ const AddIngredient = () => {
       const data = storedData ? JSON.parse(storedData) : [];
       const newData = [...data, ...itemList];
       await AsyncStorage.setItem('ingredients', JSON.stringify(newData));
+      setCheck(!check);
       handleClose();
     }
   };

@@ -95,6 +95,11 @@ type IngredientListType = {
   setIngredientList: (ingredientList: ListData[]) => void;
 };
 
+type AddCheckType = {
+  check: boolean;
+  setCheck: (check: boolean) => void;
+};
+
 export const useBottomSheetRef = create<BottomSheetRefType>(set => ({
   bottomSheetRef: {current: null},
   setBottomSheetRef: ref => set({bottomSheetRef: ref}),
@@ -195,4 +200,9 @@ export const useRecipeReviewTitle = create<ReviewTitleType>(set => ({
 export const useIngredientList = create<IngredientListType>(set => ({
   ingredientList: [],
   setIngredientList: (ingredientList: ListData[]) => set({ingredientList}),
+}));
+
+export const useAddCheck = create<AddCheckType>(set => ({
+  check: false,
+  setCheck: (check: boolean) => set({check}),
 }));

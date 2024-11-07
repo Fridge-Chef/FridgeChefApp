@@ -1,16 +1,40 @@
 import {FlatList, StyleSheet, View} from 'react-native';
-import React from 'react';
+import React, {useEffect} from 'react';
 import ListItem from './ListItem';
-import {RecipeListType} from '../../../../type/types';
+import {ListData, RecipeListType} from '../../../../type/types';
 import {FWidth} from '../../../../../globalStyle';
 import FButton from '../../../elements/FButton';
 import {ParamListBase, useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {useBottomSheetRef, useBottomSheetTitle} from '../../../../store/store';
 import RankButton from './RankButton';
+import {baseUrl} from '../../../../api/axios';
 
-const Recipes = () => {
+type RecipesProps = {
+  ingredientList: ListData[];
+};
+
+const Recipes = ({ingredientList}: RecipesProps) => {
   const listData = require('../../../../utils/detailListData.json');
+  const ingredients = ingredientList.map(item => item.ingredientName);
+  const ingredientsQuery = ingredients
+    .map(ingredient => `ingredients=${ingredient}`)
+    .join('&');
+
+  console.log('ingredientsQuery', `api/recipes/?${ingredientsQuery}`);
+  const testGetApi = async () => {
+    try {
+      const response = await baseUrl.get(`api/recipes/?${ingredientsQuery}`);
+      console.log('데이터', response);
+    } catch (error: any) {
+      console.log('에러', error.response.data);
+    }
+  };
+
+  useEffect(() => {
+    testGetApi();
+  }, []);
+
   const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
   const {bottomSheetRef} = useBottomSheetRef();
   const {setTitle} = useBottomSheetTitle();

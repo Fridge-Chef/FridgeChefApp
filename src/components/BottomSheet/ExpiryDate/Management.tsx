@@ -2,6 +2,7 @@ import {StyleSheet, Text, View} from 'react-native';
 import React, {useState} from 'react';
 import TopTitle from '../TopTitle';
 import {
+  useAddCheck,
   useBottomSheetRef,
   useCategoriesText,
   useIngredientTitle,
@@ -14,12 +15,15 @@ import {
   useGetIngredients,
   useIngredientsCategory,
 } from '../../../api/ingredientsQuery';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import {ListData} from '../../../type/types';
 
 const Management = () => {
   const {ingredientTitle} = useIngredientTitle();
   const {bottomSheetRef} = useBottomSheetRef();
   const {refetch} = useGetIngredients();
   const {mutate} = useIngredientsCategory();
+  const {check, setCheck} = useAddCheck();
   const {
     category,
     setCategory,
@@ -29,25 +33,47 @@ const Management = () => {
     setItemNumber,
   } = useCategoriesText();
 
-  const handleSubmit = () => {
-    if (!category || !expiryDate) {
+  const handleSubmit = async () => {
+    if (!category || expiryDate === '날짜를 선택해 주세요') {
       return;
     }
-    mutate(
-      {
-        ingredientName: ingredientTitle,
-        IngredientCategory: category,
-        expirationDate: expiryDate,
-      },
-      {
-        onSuccess: () => {
-          refetch();
-          setCategory('');
-          setExpiryDate('날짜를 선택해 주세요');
-          bottomSheetRef.current?.close();
+    const token = await AsyncStorage.getItem('token');
+    if (token) {
+      mutate(
+        {
+          ingredientName: ingredientTitle,
+          IngredientCategory: category,
+          expirationDate: expiryDate,
         },
-      },
-    );
+        {
+          onSuccess: () => {
+            refetch();
+            setCategory('');
+            setExpiryDate('날짜를 선택해 주세요');
+            bottomSheetRef.current?.close();
+          },
+        },
+      );
+    } else {
+      const storedData = await AsyncStorage.getItem('ingredients');
+      const data = storedData ? JSON.parse(storedData) : [];
+      const updatedData = data.map(
+        (item: ListData) =>
+          item.ingredientName === ingredientTitle
+            ? {
+                ...item,
+                IngredientCategory: category,
+                expirationDate: expiryDate,
+              } // 수정된 항목
+            : item, // 수정되지 않은 항목
+      );
+
+      await AsyncStorage.setItem('ingredients', JSON.stringify(updatedData));
+      setCheck(!check);
+      setCategory('');
+      setExpiryDate('날짜를 선택해 주세요');
+      bottomSheetRef.current?.close();
+    }
   };
 
   console.log('category', category);
@@ -72,7 +98,9 @@ const Management = () => {
       <BottomButton
         title="확인"
         buttonColor={
-          category && expiryDate ? colors.primary[1] : colors.disabled2
+          category && expiryDate !== '날짜를 선택해 주세요'
+            ? colors.primary[1]
+            : colors.disabled2
         }
         onPress={handleSubmit}
       />

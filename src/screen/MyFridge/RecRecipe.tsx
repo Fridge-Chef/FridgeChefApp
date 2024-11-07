@@ -7,10 +7,11 @@ import {useIngredientList} from '../../store/store';
 
 const RecRecipe = () => {
   const {ingredientList} = useIngredientList();
+
   return (
     <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
       <TopComponent ingredients={ingredientList} />
-      <Recipes />
+      <Recipes ingredientList={ingredientList} />
     </ScrollView>
   );
 };
