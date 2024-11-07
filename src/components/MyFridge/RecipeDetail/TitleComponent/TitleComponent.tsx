@@ -24,7 +24,7 @@ const TitleComponent = ({detailData}: TitleComponentProps) => {
         fStyle="B_22"
         lineH={FWidth * 32}
         color={colors.text}
-        text={detailData.name}
+        text={detailData.title}
       />
       <DetailInfo
         writer={detailData.writer}

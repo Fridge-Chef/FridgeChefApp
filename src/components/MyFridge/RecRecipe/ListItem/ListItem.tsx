@@ -31,7 +31,7 @@ const ListItem = ({item}: ListItemProps) => {
             fStyle="M_16"
             lineH={FWidth * 22.5}
             color={colors.text}
-            text={item.name}
+            text={item.title}
           />
           <LikeButton isLike={isLike} setIsLike={setIsLike} />
         </View>

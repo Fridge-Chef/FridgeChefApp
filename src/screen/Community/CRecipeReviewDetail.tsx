@@ -32,7 +32,7 @@ const CRecipeReviewDetail = () => {
           <FImage uri={data.mainImage} imgStyle="detail" alt="디테일 메인" />
         </View>
         <PreviewTitle
-          title={data.name}
+          title={data.title}
           dishCategory={data.dishCategory}
           dishTime={data.dishTime}
           dishLevel={data.dishLevel}

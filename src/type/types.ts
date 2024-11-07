@@ -7,7 +7,7 @@ export type RecipeListType = {
   dishTime: string;
   dishLevel: string;
   mainImage: string;
-  name: string;
+  title: string;
   likes: number;
   favorites: number;
   myLike: number;

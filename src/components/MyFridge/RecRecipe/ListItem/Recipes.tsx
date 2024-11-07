@@ -1,14 +1,13 @@
 import {FlatList, StyleSheet, View} from 'react-native';
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import ListItem from './ListItem';
-import {GetRecipeListType, RecipeListType} from '../../../../type/types';
+import {RecipeListType} from '../../../../type/types';
 import {FWidth} from '../../../../../globalStyle';
 import FButton from '../../../elements/FButton';
 import {ParamListBase, useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {useBottomSheetRef, useBottomSheetTitle} from '../../../../store/store';
 import RankButton from './RankButton';
-import {useGetRecommendedRecipeList} from '../../../../api/recipeQuery';
 
 const Recipes = () => {
   const listData = require('../../../../utils/detailListData.json');

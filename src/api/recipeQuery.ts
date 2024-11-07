@@ -5,11 +5,7 @@ import {
   getRecipeList,
   getRecommendedRecipeList,
 } from './recipe';
-import {
-  AddIngredientType,
-  GetRecipeListType,
-  RecipeListType,
-} from '../type/types';
+import {GetRecipeListType, RecipeListType} from '../type/types';
 
 export const useGetRecipeList = () => {
   const queryFn = () => getRecipeList();

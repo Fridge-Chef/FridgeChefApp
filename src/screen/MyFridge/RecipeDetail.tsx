@@ -45,7 +45,7 @@ const RecipeDetail = () => {
       <RecipeComponent
         instructions={detailData[route.params.id].instructions}
       />
-      <RecipeReview title={detailData[route.params.id].name} />
+      <RecipeReview title={detailData[route.params.id].title} />
     </ScrollView>
   );
 };
