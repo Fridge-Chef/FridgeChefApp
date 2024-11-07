@@ -1,4 +1,4 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet} from 'react-native';
 import React from 'react';
 import Svg, {G, Path} from 'react-native-svg';
 import {FWidth} from '../../../../globalStyle';

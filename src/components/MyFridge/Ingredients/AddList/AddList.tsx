@@ -18,7 +18,6 @@ const AddList = ({dataList, setDataList, onClicked}: AddListProps) => {
   const {data: listData, isLoading} = useGetIngredients();
   const {check} = useAddCheck();
   const fetchData = async () => {
-    console.log('dd', await AsyncStorage.getItem('nickname'));
     if (isLoading) return;
     const token = await AsyncStorage.getItem('token');
     const storedData = await AsyncStorage.getItem('ingredients');
@@ -30,7 +29,7 @@ const AddList = ({dataList, setDataList, onClicked}: AddListProps) => {
     }
     setDataList(data);
   };
-
+  console.log('이게 안되나', listData);
   useEffect(() => {
     fetchData();
   }, [onClicked, listData, isLoading, check]);

@@ -501,7 +501,7 @@ export const storageSubList = [
 ];
 
 export const categoryList = [
-  {id: 1, name: '미분류', icon: <Bowl />, icon2: <Vegetable />},
+  {id: 1, name: '미분류', icon: <Bowl />, icon2: <Bowl />},
   {id: 2, name: '채소류', icon: <VegetableDisable />, icon2: <Vegetable />},
   {id: 3, name: '육류', icon: <ChickenThighDisable />, icon2: <ChickenThigh />},
   {id: 4, name: '생선류', icon: <FishDisable />, icon2: <Fish />},

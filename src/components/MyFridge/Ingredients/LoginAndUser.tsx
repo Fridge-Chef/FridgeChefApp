@@ -15,7 +15,6 @@ import Loading from '../../elements/Loading';
 const LoginAndUser = () => {
   const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
   const {data, isLoading} = useGetUser();
-  console.log('유저정보', data);
 
   if (isLoading) return <Loading loadingTitle="검색중" />;
   return (
