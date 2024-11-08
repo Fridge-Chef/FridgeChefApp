@@ -13,7 +13,15 @@ type LikeButtonProps = {
 const LikeButton = ({isLike, setIsLike}: LikeButtonProps) => {
   return (
     <View style={styles.container}>
-      <FButton buttonStyle="noneStyle" onPress={() => setIsLike(!isLike)}>
+      <FButton
+        buttonStyle="noneStyle"
+        hitSlop={{
+          top: 10,
+          bottom: 10,
+          left: 10,
+          right: 10,
+        }}
+        onPress={() => setIsLike(!isLike)}>
         {isLike ? <RecipeListHeart /> : <RecipeListHeart2 />}
       </FButton>
     </View>

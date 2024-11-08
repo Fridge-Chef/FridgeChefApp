@@ -1,5 +1,5 @@
-import {StyleSheet, Text, View} from 'react-native';
-import React, {useState} from 'react';
+import {StyleSheet, View} from 'react-native';
+import React from 'react';
 import {FWidth} from '../../../globalStyle';
 import SubTitleBS from '../BottomSheet/SubTitleBS';
 import BasicCloseItem from './BasicCloseItem';

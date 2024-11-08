@@ -1,4 +1,4 @@
-import {StyleSheet, View} from 'react-native';
+import {StyleSheet} from 'react-native';
 import React, {useState} from 'react';
 import {colors, FWidth} from '../../../globalStyle';
 import FText from '../elements/FText';

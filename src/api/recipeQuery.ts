@@ -31,15 +31,9 @@ export const useGetRecipeDetail = (id: number) => {
   });
 };
 
-export const useGetRecommendedRecipeList = ({
-  page,
-  size,
-}: {
-  page: number;
-  size: number;
-}) => {
-  const queryFn = () => getRecommendedRecipeList({page, size});
-  return useQuery<GetRecipeListType>({
+export const useGetRecommendedRecipeList = (ingredientsQuery: string) => {
+  const queryFn = () => getRecommendedRecipeList(ingredientsQuery);
+  return useQuery<{content: GetRecipeListType[]}>({
     queryKey: ['recommendedRecipeList'],
     queryFn,
   });

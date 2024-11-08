@@ -1,4 +1,4 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import React from 'react';
 import FText from '../../../elements/FText';
 import {colors, FWidth} from '../../../../../globalStyle';
@@ -31,7 +31,7 @@ const TimeAndLevel = ({
           mLeft={FWidth * 2}
           fStyle="B_12"
           color={colors.b500}
-          text={`${dishTime ? dishTime : 0}분`}
+          text={`${dishTime ? dishTime : 0}`}
         />
       </View>
       <View style={[styles.iconContainer, {borderColor: colors.b500}]}>

@@ -1,19 +1,31 @@
 import {StyleSheet, View} from 'react-native';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {colors, FWidth} from '../../../../../globalStyle';
 import ViewAndLike from './ViewAndLike';
 import LikeButton from './LikeButton';
 import BottomText from './BottomText';
 import FImage from '../../../elements/FImage';
 import FText from '../../../elements/FText';
-import {RecipeListType} from '../../../../type/types';
+import {GetRecipeListType} from '../../../../type/types';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 type ListItemProps = {
-  item: RecipeListType;
+  item: GetRecipeListType;
 };
 
 const ListItem = ({item}: ListItemProps) => {
   const [isLike, setIsLike] = useState(false);
+  const myLike = async () => {
+    if (isLike) {
+      await AsyncStorage.setItem(`myLike${item.id}`, JSON.stringify(isLike));
+    } else {
+      await AsyncStorage.removeItem(`myLike${item.id}`);
+    }
+  };
+
+  useEffect(() => {
+    myLike();
+  }, [isLike]);
 
   return (
     <View style={styles.container}>
@@ -35,8 +47,8 @@ const ListItem = ({item}: ListItemProps) => {
           />
           <LikeButton isLike={isLike} setIsLike={setIsLike} />
         </View>
-        <ViewAndLike like={item.likes} favorites={item.favorites} />
-        <BottomText recipeIngredients={item.recipeIngredients} />
+        <ViewAndLike like={item.star} favorites={item.hit} />
+        <BottomText recipeIngredients={item.without} have={item.have} />
       </View>
     </View>
   );

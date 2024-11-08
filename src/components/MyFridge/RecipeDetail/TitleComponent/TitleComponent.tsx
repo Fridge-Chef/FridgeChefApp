@@ -5,13 +5,18 @@ import IngredientContainer from './IngredientContainer';
 import FText from '../../../elements/FText';
 import DetailInfo from './DetailInfo';
 import TimeAndLevel from './TimeAndLevel';
-import {RecipeListType} from '../../../../type/types';
+import {ListData, RecipeListType} from '../../../../type/types';
 
 type TitleComponentProps = {
   detailData: RecipeListType;
+  items: {
+    id: number;
+    without: string[];
+    myIngredients: string[];
+  };
 };
 
-const TitleComponent = ({detailData}: TitleComponentProps) => {
+const TitleComponent = ({detailData, items}: TitleComponentProps) => {
   return (
     <View style={styles.container}>
       <TimeAndLevel
@@ -32,14 +37,8 @@ const TitleComponent = ({detailData}: TitleComponentProps) => {
         favorite={detailData.favorites}
         reviews={detailData.reviews}
       />
-      <IngredientContainer
-        title="보유재료"
-        detailList={detailData.recipeIngredients}
-      />
-      <IngredientContainer
-        title="없는 재료"
-        detailList={detailData.recipeIngredients}
-      />
+      <IngredientContainer title="보유재료" detailList={items.myIngredients} />
+      <IngredientContainer title="없는 재료" detailList={items.without} />
     </View>
   );
 };

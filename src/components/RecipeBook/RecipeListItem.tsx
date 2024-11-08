@@ -1,9 +1,8 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import React from 'react';
 import {colors, FWidth} from '../../../globalStyle';
 import ViewAndLike from '../MyFridge/RecRecipe/ListItem/ViewAndLike';
 import FButton from '../elements/FButton';
-import RecipeBookClose from '../../utils/Svg/RecipeBookClose';
 import FText from '../elements/FText';
 import FImage from '../elements/FImage';
 import DetailReviewMore from '../../utils/Svg/DetailReviewMore';

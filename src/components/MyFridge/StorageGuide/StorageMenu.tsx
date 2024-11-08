@@ -1,5 +1,5 @@
 import {StyleSheet, View} from 'react-native';
-import React, {useState} from 'react';
+import React from 'react';
 import FButton from '../../elements/FButton';
 import {colors, FWidth} from '../../../../globalStyle';
 import FText from '../../elements/FText';

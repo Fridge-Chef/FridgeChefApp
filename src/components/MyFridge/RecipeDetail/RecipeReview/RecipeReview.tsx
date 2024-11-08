@@ -1,6 +1,6 @@
 import {StyleSheet, View} from 'react-native';
 import React from 'react';
-import {colors, FHeight, FWidth} from '../../../../../globalStyle';
+import {colors, FWidth} from '../../../../../globalStyle';
 import TitleComponent from './TitleComponent';
 import ReviewsComponent from './ReviewsComponent';
 

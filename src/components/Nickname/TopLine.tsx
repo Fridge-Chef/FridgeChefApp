@@ -1,4 +1,4 @@
-import {DimensionValue, StyleSheet, Text, View} from 'react-native';
+import {DimensionValue, StyleSheet, View} from 'react-native';
 import React from 'react';
 import {colors, FWidth} from '../../../globalStyle';
 

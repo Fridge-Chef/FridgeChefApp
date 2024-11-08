@@ -10,9 +10,9 @@ export type Ingredients = {
 };
 
 export type IngredientCategory = {
-  ingredientName: string;
-  IngredientCategory: string;
-  expirationDate: string;
+  name: string;
+  category: string;
+  date: string;
 };
 
 export type IngredientsType = {

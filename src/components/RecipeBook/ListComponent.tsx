@@ -7,7 +7,6 @@ import {
 } from 'react-native';
 import React from 'react';
 import {FWidth} from '../../../globalStyle';
-import ListItem from './ListItem';
 import ArrowSubTitle from '../elements/SubTitle/ArrowSubTitle';
 
 type ListComponentProps = {

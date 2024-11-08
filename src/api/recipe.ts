@@ -1,32 +1,10 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {baseUrl} from './axios';
 import {AddIngredientType} from '../type/types';
-import {useAddModalInputText} from '../store/store';
 
-export const getRecommendedRecipeList = async ({
-  page,
-  size,
-}: {
-  page: number;
-  size: number;
-}) => {
+export const getRecommendedRecipeList = async (ingredientsQuery: string) => {
   try {
-    const response = await baseUrl.get(`api/recipes`, {
-      params: {
-        page,
-        size,
-        mainIngredients: JSON.stringify([
-          {ingredient: {id: 1}},
-          {ingredient: {id: 2}},
-          {ingredient: {id: 3}},
-        ]),
-        subIngredients: JSON.stringify([
-          {ingredient: {id: 4}},
-          {ingredient: {id: 5}},
-          {ingredient: {id: 6}},
-        ]),
-      },
-    });
+    const response = await baseUrl.get(`api/recipes/?${ingredientsQuery}`);
     return response.data;
   } catch (error) {
     console.log('추천 레시피 가져오기', error);

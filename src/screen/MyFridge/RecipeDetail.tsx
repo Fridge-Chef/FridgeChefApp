@@ -10,19 +10,25 @@ import FImage from '../../components/elements/FImage';
 import Badge from '../../components/MyFridge/RecipeDetail/Badge';
 import RecipeNote from '../../components/MyFridge/RecipeDetail/RecipeNote/RecipeNote';
 import {useScrollY} from '../../store/store';
-import {RecipeListType} from '../../type/types';
+import {useGetRecipeDetail} from '../../api/recipeQuery';
+import Loading from '../../components/elements/Loading';
 
 type DetailItem = {
   params: {
     id: number;
+    without: string[];
+    myIngredients: string[];
   };
 };
 
 const RecipeDetail = () => {
   const route = useRoute<RouteProp<DetailItem>>();
+  const items = route.params;
   const {setScrollY} = useScrollY();
-  const detailData: RecipeListType[] = require('../../utils/detailListData.json');
+  const {data, isLoading} = useGetRecipeDetail(route.params.id);
 
+  if (isLoading)
+    return <Loading loadingTitle="로딩중" backColor={colors.white} />;
   return (
     <ScrollView
       style={styles.container}
@@ -31,21 +37,17 @@ const RecipeDetail = () => {
       <View style={{position: 'relative'}}>
         <FImage
           imgStyle="detail"
-          uri={detailData[route.params.id].mainImage}
+          uri={data!.mainImage}
           resizeMode="stretch"
           alt="디테일"
         />
         <Badge />
       </View>
-      <TitleComponent detailData={detailData[route.params.id]} />
-      <RecipeNote content={detailData[route.params.id].description} />
-      <IngredientComponent
-        recipeIngredients={detailData[route.params.id].recipeIngredients}
-      />
-      <RecipeComponent
-        instructions={detailData[route.params.id].instructions}
-      />
-      <RecipeReview title={detailData[route.params.id].title} />
+      <TitleComponent detailData={data!} items={items} />
+      <RecipeNote content={data!.description} />
+      <IngredientComponent recipeIngredients={data!.recipeIngredients} />
+      <RecipeComponent instructions={data!.instructions} />
+      <RecipeReview title={data!.title} />
     </ScrollView>
   );
 };

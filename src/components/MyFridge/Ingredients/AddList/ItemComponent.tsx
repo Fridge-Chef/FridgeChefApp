@@ -1,5 +1,5 @@
 import {StyleSheet, View} from 'react-native';
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import {colors, FHeight, FWidth} from '../../../../../globalStyle';
 import FButton from '../../../elements/FButton';
 import {
@@ -19,19 +19,6 @@ import {useQueryClient} from '@tanstack/react-query';
 import {date, ingredientCategory} from '../../../../service/MyFridge/MyFridge';
 import {ListData} from '../../../../type/types';
 import DDayText from './DDayText';
-import Bowl from '../../../../utils/Svg/Categories/Bowl';
-import Vegetable from '../../../../utils/Svg/Categories/Vegetable';
-import ChickenThigh from '../../../../utils/Svg/Categories/ChickenThigh';
-import Fish from '../../../../utils/Svg/Categories/Fish';
-import Seafood from '../../../../utils/Svg/Categories/Seafood';
-import AppleIcon from '../../../../utils/Svg/Categories/AppleIcon';
-import Grain from '../../../../utils/Svg/Categories/Grain';
-import Soybeans from '../../../../utils/Svg/Categories/Soybeans';
-import Egg from '../../../../utils/Svg/Categories/Egg';
-import Cheese from '../../../../utils/Svg/Categories/Cheese';
-import Bread from '../../../../utils/Svg/Categories/Bread';
-import Instant from '../../../../utils/Svg/Categories/Instant';
-import Kimchi from '../../../../utils/Svg/Categories/Kimchi';
 
 type ItemComponentProps = {
   item: ListData;
@@ -74,7 +61,7 @@ const ItemComponent = ({item, fetchData}: ItemComponentProps) => {
       fetchData();
     }
   };
-  console.log('아이템', item);
+
   return (
     <View style={styles.container}>
       <View style={styles.textContainer}>

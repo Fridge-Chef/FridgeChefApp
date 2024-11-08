@@ -6,10 +6,7 @@ import FText from '../../../elements/FText';
 
 type IngredientContainerProps = {
   title: string;
-  detailList: {
-    name: string;
-    details: string;
-  }[];
+  detailList: string[];
 };
 
 const IngredientContainer = ({title, detailList}: IngredientContainerProps) => {

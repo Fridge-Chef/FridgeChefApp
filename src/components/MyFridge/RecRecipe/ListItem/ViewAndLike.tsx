@@ -3,7 +3,6 @@ import React from 'react';
 import {colors, FWidth} from '../../../../../globalStyle';
 import Heart from '../../../../utils/Svg/Heart';
 import Star2 from '../../../../utils/Svg/Star2';
-import {useTopTabBar} from '../../../../store/store';
 import FText from '../../../elements/FText';
 
 type ViewAndLikeProps = {

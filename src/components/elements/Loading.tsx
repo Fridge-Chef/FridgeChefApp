@@ -1,4 +1,4 @@
-import {StatusBar, StyleSheet, View} from 'react-native';
+import {ColorValue, StatusBar, StyleSheet, View} from 'react-native';
 import React from 'react';
 import {ActivityIndicator} from 'react-native';
 import {Dimensions} from 'react-native';
@@ -10,9 +10,15 @@ const statusBarHeight = StatusBar.currentHeight;
 const screenHeight = Dimensions.get('screen').height;
 const windowHeight = Dimensions.get('window').height;
 const bottomBarHeight = screenHeight - (windowHeight + statusBarHeight!);
-const Loading = ({loadingTitle}: {loadingTitle: string}) => {
+const Loading = ({
+  loadingTitle,
+  backColor = 'rgba(0,0,0,0.4)',
+}: {
+  loadingTitle: string;
+  backColor?: ColorValue;
+}) => {
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, {backgroundColor: backColor}]}>
       <View style={styles.indicatorContainer}>
         <ActivityIndicator
           size="large"
@@ -36,7 +42,6 @@ const styles = StyleSheet.create({
   container: {
     width: '100%',
     height: screenHeight - statusBarHeight! - bottomBarHeight,
-    backgroundColor: 'rgba(0,0,0,0.4)',
     // opacity: 0.6,
     position: 'absolute',
     zIndex: 10,

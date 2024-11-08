@@ -1,19 +1,19 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {getUser} from '../../api/user';
 import {ListData, UserData} from '../../type/types';
-import Vegetable from '../../utils/Svg/Categories/Vegetable';
-import ChickenThigh from '../../utils/Svg/Categories/ChickenThigh';
-import Fish from '../../utils/Svg/Categories/Fish';
-import Seafood from '../../utils/Svg/Categories/Seafood';
-import AppleIcon from '../../utils/Svg/Categories/AppleIcon';
-import Grain from '../../utils/Svg/Categories/Grain';
-import Soybeans from '../../utils/Svg/Categories/Soybeans';
-import Egg from '../../utils/Svg/Categories/Egg';
-import Cheese from '../../utils/Svg/Categories/Cheese';
-import Bread from '../../utils/Svg/Categories/Bread';
-import Instant from '../../utils/Svg/Categories/Instant';
-import Kimchi from '../../utils/Svg/Categories/Kimchi';
-import Bowl from '../../utils/Svg/Categories/Bowl';
+import Vegetable24 from '../../utils/Svg/Categories/size24/Vegetable24';
+import ChickenThigh24 from '../../utils/Svg/Categories/size24/ChickenThigh24';
+import Fish24 from '../../utils/Svg/Categories/size24/Fish24';
+import Seafood24 from '../../utils/Svg/Categories/size24/Seafood24';
+import Apple24 from '../../utils/Svg/Categories/size24/Apple24';
+import Grain24 from '../../utils/Svg/Categories/size24/Grain24';
+import Soybeans24 from '../../utils/Svg/Categories/size24/Soybeans24';
+import Egg24 from '../../utils/Svg/Categories/size24/Egg24';
+import Cheese24 from '../../utils/Svg/Categories/size24/Cheese24';
+import Bread24 from '../../utils/Svg/Categories/size24/Bread24';
+import Instant24 from '../../utils/Svg/Categories/size24/Instant24';
+import Kimchi24 from '../../utils/Svg/Categories/size24/Kimchi24';
+import Bowl24 from '../../utils/Svg/Categories/size24/Bowl24';
 
 type TokenProps = {
   setUser: (user: UserData) => void;
@@ -62,31 +62,31 @@ export let date = ({item, today}: DateType) => {
 
 export const ingredientCategory = (item: ListData) => {
   switch (item.ingredientCategory) {
-    case '채로류':
-      return <Vegetable />;
+    case '채소류':
+      return <Vegetable24 />;
     case '육류':
-      return <ChickenThigh />;
+      return <ChickenThigh24 />;
     case '생선류':
-      return <Fish />;
+      return <Fish24 />;
     case '해산물류':
-      return <Seafood />;
+      return <Seafood24 />;
     case '과일류':
-      return <AppleIcon />;
+      return <Apple24 />;
     case '곡류':
-      return <Grain />;
+      return <Grain24 />;
     case '콩류':
-      return <Soybeans />;
+      return <Soybeans24 />;
     case '달걀류':
-      return <Egg />;
+      return <Egg24 />;
     case '유제품':
-      return <Cheese />;
+      return <Cheese24 />;
     case '빵류':
-      return <Bread />;
+      return <Bread24 />;
     case '가공식품':
-      return <Instant />;
+      return <Instant24 />;
     case '김치류':
-      return <Kimchi />;
+      return <Kimchi24 />;
     default:
-      return <Bowl />;
+      return <Bowl24 />;
   }
 };

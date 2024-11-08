@@ -1,7 +1,6 @@
 import {StyleSheet} from 'react-native';
 import React from 'react';
 import Back from '../../utils/Svg/Back';
-import ArrowDown2 from '../../utils/Svg/ArrowDown2';
 import ArrowRight from '../../utils/Svg/ArrowRight';
 import BottomButton from '../../utils/Svg/BottomButton';
 import Close from '../../utils/Svg/Close';
@@ -18,14 +17,11 @@ import MoreList from '../../utils/Svg/MoreList';
 import Notification from '../../utils/Svg/Notification';
 import Plus from '../../utils/Svg/Plus';
 import Plus2 from '../../utils/Svg/Plus2';
-import Star from '../../utils/Svg/Star';
 import Star2 from '../../utils/Svg/Star2';
 import TabHeart from '../../utils/Svg/TabHeart';
-import UserIcon2 from '../../utils/Svg/UserIcon2';
 import Wallet from '../../utils/Svg/Wallet';
 import EditSquare from '../../utils/Svg/EditSquare';
 import Calendar from '../../utils/Svg/Calendar';
-import Send from '../../utils/Svg/Send';
 import Heart4 from '../../utils/Svg/Heart4';
 import StarReview1 from '../../utils/Svg/StarReview1';
 import StarReview2 from '../../utils/Svg/StarReview2';
@@ -34,13 +30,11 @@ import DetailHeart from '../../utils/Svg/DetailHeart';
 import DetailShare from '../../utils/Svg/DetailShare';
 import DetailBack from '../../utils/Svg/DetailBack';
 import HeaderCLose from '../../utils/Svg/HeaderCLose';
-import DetailReviewEdit from '../../utils/Svg/DetailReviewEdit';
 import DetailReviewMore from '../../utils/Svg/DetailReviewMore';
 
 type SvgListProps = {
   type:
     | 'back'
-    | 'arrowDown2'
     | 'arrowRight'
     | 'bottomButton'
     | 'calendar'
@@ -67,20 +61,15 @@ type SvgListProps = {
     | 'notification'
     | 'plus'
     | 'plus2'
-    | 'send'
-    | 'star'
     | 'star2'
     | 'starReview1'
     | 'starReview2'
     | 'tabHeart'
-    | 'userIcon2'
     | 'wallet';
 };
 
 const SvgList = ({type}: SvgListProps) => {
   switch (type) {
-    case 'arrowDown2':
-      return <ArrowDown2 />;
     case 'arrowRight':
       return <ArrowRight />;
     case 'back':
@@ -134,10 +123,6 @@ const SvgList = ({type}: SvgListProps) => {
       return <Plus />;
     case 'plus2':
       return <Plus2 />;
-    case 'send':
-      return <Send />;
-    case 'star':
-      return <Star />;
     case 'star2':
       return <Star2 />;
     case 'starReview1':
@@ -146,8 +131,6 @@ const SvgList = ({type}: SvgListProps) => {
       return <StarReview2 />;
     case 'tabHeart':
       return <TabHeart />;
-    case 'userIcon2':
-      return <UserIcon2 />;
     case 'wallet':
       return <Wallet />;
     default:

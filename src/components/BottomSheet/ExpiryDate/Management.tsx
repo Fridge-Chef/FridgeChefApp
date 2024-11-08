@@ -41,9 +41,9 @@ const Management = () => {
     if (token) {
       mutate(
         {
-          ingredientName: ingredientTitle,
-          IngredientCategory: category,
-          expirationDate: expiryDate,
+          name: ingredientTitle,
+          category: category,
+          date: expiryDate,
         },
         {
           onSuccess: () => {
@@ -62,7 +62,7 @@ const Management = () => {
           item.ingredientName === ingredientTitle
             ? {
                 ...item,
-                IngredientCategory: category,
+                ingredientCategory: category,
                 expirationDate: expiryDate,
               } // 수정된 항목
             : item, // 수정되지 않은 항목
@@ -76,8 +76,6 @@ const Management = () => {
     }
   };
 
-  console.log('category', category);
-  console.log('expiryDate', expiryDate);
   return (
     <View style={styles.container}>
       <View style={styles.contentContainer}>

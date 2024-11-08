@@ -1,10 +1,9 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet} from 'react-native';
 import React from 'react';
 import FButton from '../FButton';
 import FText from '../FText';
 import ArrowTitleIcon from '../../../utils/Svg/ArrowTitleIcon';
 import {colors, FWidth} from '../../../../globalStyle';
-import {useRankName, useRecipeLikeRankName} from '../../../store/rankingStore';
 
 type ArrowSubTitleProps = {
   name: string;

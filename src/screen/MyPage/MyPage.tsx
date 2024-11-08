@@ -1,13 +1,10 @@
 import {ScrollView, StyleSheet, View} from 'react-native';
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import {colors, FWidth} from '../../../globalStyle';
 import UserStatus from '../../components/MyPage/UserStatus';
 import MenuList from '../../components/MyPage/MenuList';
 import FText from '../../components/elements/FText';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import NotLoginUser from './NotLoginUser';
-import {UserData} from '../../type/types';
-import {getUserData} from '../../service/MyFridge/MyFridge';
 import {useGetUser} from '../../api/userQuery';
 import Loading from '../../components/elements/Loading';
 

@@ -1,5 +1,5 @@
-import {LayoutChangeEvent, StyleSheet, View} from 'react-native';
-import React, {useState} from 'react';
+import {StyleSheet, View} from 'react-native';
+import React from 'react';
 import {colors, FWidth} from '../../../../../globalStyle';
 import FText from '../../../elements/FText';
 import FImage from '../../../elements/FImage';

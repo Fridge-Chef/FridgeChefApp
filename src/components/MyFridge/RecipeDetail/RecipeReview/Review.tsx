@@ -27,7 +27,7 @@ const Review = ({review, title}: ReviewProps) => {
   const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
   const handleReviewDetail = () => {
     setReviewTitle(title);
-    navigation.navigate('reviewDetail', {item: review});
+    navigation.navigate('userReviewDetail', {item: review});
   };
 
   return (

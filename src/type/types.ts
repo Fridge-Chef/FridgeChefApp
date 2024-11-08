@@ -7,7 +7,7 @@ export type RecipeListType = {
   dishTime: string;
   dishLevel: string;
   mainImage: string;
-  name: string;
+  title: string;
   likes: number;
   favorites: number;
   myLike: number;
@@ -19,7 +19,6 @@ export type RecipeListType = {
 
 type IconProps =
   | 'back'
-  | 'arrowDown2'
   | 'arrowRight'
   | 'bottomButton'
   | 'calendar'
@@ -45,11 +44,8 @@ type IconProps =
   | 'notification'
   | 'plus'
   | 'plus2'
-  | 'send'
-  | 'star'
   | 'star2'
   | 'tabHeart'
-  | 'userIcon2'
   | 'wallet';
 
 export type AppBarProps = {
@@ -119,7 +115,7 @@ export type UserData = {
 };
 
 export type GetRecipeListType = {
-  boardId: number;
+  id: number;
   title: string;
   userName: string;
   mainImage: string;

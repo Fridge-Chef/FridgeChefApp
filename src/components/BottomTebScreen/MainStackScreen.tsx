@@ -17,6 +17,7 @@ import ReviewDetailAppBar from './AppBar/ReviewDetailAppBar';
 import AddRecipeAppBar from './AppBar/AddRecipeAppBar';
 import Login from '../../screen/Login/Login';
 import ServiceLogin from '../../screen/Login/ServiceLogin';
+import UserReview from '../Community/CDetail/UserReview/UserReview';
 
 const MainStackScreen = () => {
   const Stack = createNativeStackNavigator();
@@ -98,6 +99,17 @@ const MainStackScreen = () => {
       <Stack.Screen
         name="reviewDetail"
         component={CRecipeReviewDetail}
+        options={{
+          header() {
+            return <ReviewDetailAppBar />;
+          },
+          headerShown: true,
+          headerShadowVisible: false,
+        }}
+      />
+      <Stack.Screen
+        name="userReviewDetail"
+        component={UserReview}
         options={{
           header() {
             return <ReviewDetailAppBar />;

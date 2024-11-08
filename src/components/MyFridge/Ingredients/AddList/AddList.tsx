@@ -1,5 +1,5 @@
 import {StyleSheet, View} from 'react-native';
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import {FWidth} from '../../../../../globalStyle';
 import ItemComponent from './ItemComponent';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -29,7 +29,7 @@ const AddList = ({dataList, setDataList, onClicked}: AddListProps) => {
     }
     setDataList(data);
   };
-  console.log('이게 안되나', listData);
+
   useEffect(() => {
     fetchData();
   }, [onClicked, listData, isLoading, check]);

@@ -18,7 +18,6 @@ const Ingredients = () => {
   const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
   const [onClicked, setonClicked] = useState(1);
   const {ingredientList, setIngredientList} = useIngredientList();
-  console.log('dataList', ingredientList);
   const handleSearch = () => {
     navigation.navigate('recRecipe');
   };
@@ -43,21 +42,23 @@ const Ingredients = () => {
           setDataList={setIngredientList}
         />
       </ScrollView>
-      <View style={styles.buttonContainer}>
-        <FButton
-          buttonStyle="bigButton"
-          fBStyle={styles.buttonStyle}
-          buttonColor={colors.primary[1]}
-          onPress={handleSearch}>
-          <SearchIcon />
-          <FText
-            mLeft={FWidth * 6}
-            fStyle="B_18"
-            color={colors.white}
-            text="이 재료로 레시피 검색"
-          />
-        </FButton>
-      </View>
+      {ingredientList.length > 0 && (
+        <View style={styles.buttonContainer}>
+          <FButton
+            buttonStyle="bigButton"
+            fBStyle={styles.buttonStyle}
+            buttonColor={colors.primary[1]}
+            onPress={handleSearch}>
+            <SearchIcon />
+            <FText
+              mLeft={FWidth * 6}
+              fStyle="B_18"
+              color={colors.white}
+              text="이 재료로 레시피 검색"
+            />
+          </FButton>
+        </View>
+      )}
     </View>
   );
 };

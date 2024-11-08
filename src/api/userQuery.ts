@@ -3,11 +3,9 @@ import {getUser, userLogin, UserLoginProps} from './user';
 
 export const useGetUser = () => {
   const queryFn = () => getUser();
-  const user = queryFn();
   return useQuery({
     queryKey: ['user'],
     queryFn,
-    placeholderData: null,
   });
 };
 

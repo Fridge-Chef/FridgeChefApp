@@ -1,11 +1,9 @@
 import {StyleSheet, View} from 'react-native';
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import {colors, FWidth} from '../../../../globalStyle';
 import Notification from '../../../utils/Svg/Notification';
 import FText from '../../elements/FText';
 import NotLoginUser from '../../../utils/Svg/NotLoginUser';
-import {getToken, getUserData} from '../../../service/MyFridge/MyFridge';
-import {UserData} from '../../../type/types';
 import FButton from '../../elements/FButton';
 import {ParamListBase, useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';

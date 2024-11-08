@@ -1,4 +1,4 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import React, {useState} from 'react';
 import FButton from '../../elements/FButton';
 import UserInfo from '../../MyFridge/RecipeDetail/RecipeReview/UserInfo';
@@ -28,7 +28,7 @@ const ReviewItem = ({review}: ReviewItemProps) => {
   const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
   const handleReviewDetail = () => {
     setReviewTitle(review.title);
-    navigation.navigate('reviewDetail', {item: review});
+    navigation.navigate('userReviewDetail', {item: review});
   };
   return (
     <FButton
