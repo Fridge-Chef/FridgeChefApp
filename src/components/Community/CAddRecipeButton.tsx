@@ -8,16 +8,11 @@ import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import AddRecipeButtonEdit from '../../utils/Svg/AddRecipeButtonEdit';
 
 type CAddRecipeButtonProps = {
-  list: {
-    id: number;
-    text: string;
-  }[];
   scrollOffset: number;
   prevScrollOffset: number;
 };
 
 const CAddRecipeButton = ({
-  list,
   scrollOffset,
   prevScrollOffset,
 }: CAddRecipeButtonProps) => {

@@ -29,7 +29,7 @@ const ContentComponent = ({id, content, image}: ContentComponentProps) => {
             uri={image}
             borderRadius={8}
             imgStyle="detailSub"
-            resizeMode="stretch"
+            resizeMode="cover"
             alt="디테일 이미지"
           />
         </View>

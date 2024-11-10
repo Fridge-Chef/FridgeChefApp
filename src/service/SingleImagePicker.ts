@@ -6,7 +6,14 @@ export const handleImagePicker = ({
   handleImage,
 }: {
   pickerType: string;
-  handleImage: (imageUri: string, file: File) => void;
+  handleImage: (
+    imageUri: string,
+    file: {
+      name: string;
+      type: string;
+      uri: string;
+    },
+  ) => void;
 }) => {
   switch (pickerType) {
     case 'imageLibrary':
@@ -18,7 +25,7 @@ export const handleImagePicker = ({
           maxWidth: 1080,
           quality: 0.7,
         },
-        async res => {
+        res => {
           if (res.didCancel) {
             console.log('취소버튼을 눌렀습니다');
           } else if (res.errorCode) {
@@ -26,13 +33,11 @@ export const handleImagePicker = ({
           } else {
             if (res.assets![0].uri === undefined) return;
             try {
-              const response = await fetch(res.assets![0].uri);
-              const blob = await response.blob();
-              const file = new File([blob], res.assets![0].fileName, {
-                type: 'image/jpeg',
-                lastModified: Date.now(),
+              handleImage(res.assets![0].uri, {
+                name: res.assets![0].fileName!,
+                type: res.assets![0].type!,
+                uri: res.assets![0].uri!,
               });
-              handleImage(res.assets![0].uri, file);
             } catch (error) {
               console.error('이미지를 File으로 변환 중 에러 발생:', error);
             }

@@ -19,7 +19,7 @@ const ViewAndLike = ({like, favorites}: ViewAndLikeProps) => {
           mLeft={FWidth * 4}
           fStyle="R_14"
           color={colors.b500}
-          text={favorites}
+          text={like}
         />
       </View>
       <View style={styles.textAndIconContainer}>
@@ -28,7 +28,7 @@ const ViewAndLike = ({like, favorites}: ViewAndLikeProps) => {
           mLeft={FWidth * 2}
           fStyle="R_14"
           color={colors.b500}
-          text={like}
+          text={favorites}
         />
       </View>
     </View>

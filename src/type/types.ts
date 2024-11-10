@@ -17,7 +17,7 @@ export type RecipeListType = {
   reviews: number;
   description: string;
   recipeIngredients: {name: string; details: string}[];
-  instructions: {content: string; image: string}[];
+  instructions: {content: string; imageLink: string}[];
 };
 
 type IconProps =
@@ -88,13 +88,21 @@ export type RecipeIngredientType = {
 
 export type InstructionsType = {
   content: string;
-  image: string;
-  imageFile: File | null;
+  imageLink: string;
+  imageFile: {
+    name: string;
+    type: string;
+    uri: string;
+  };
 };
 
 export type AddIngredientType = {
   mainImage: string;
-  mainImageFile: File | null;
+  mainImageFile: {
+    name: string;
+    type: string;
+    uri: string;
+  };
   name: string;
   description: string;
   dishCategory: string;

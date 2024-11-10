@@ -1,5 +1,5 @@
 import {Dimensions, StyleSheet, useWindowDimensions, View} from 'react-native';
-import React, {useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import FImage from '../../../elements/FImage';
 import {colors, FWidth} from '../../../../../globalStyle';
 import FText from '../../../elements/FText';
@@ -15,7 +15,13 @@ type UserContentProps = {
 const UserContent = ({uri, content, views}: UserContentProps) => {
   const [isClicked, setIsClicked] = useState(false);
   const [imagesIndex, setImagesIndex] = useState(0);
+  const imagesIndexRef = useRef(0);
   const {width} = useWindowDimensions();
+
+  useEffect(() => {
+    setImagesIndex(imagesIndexRef.current);
+  }, [imagesIndexRef.current]);
+
   return (
     <>
       <View style={styles.container}>
@@ -40,7 +46,10 @@ const UserContent = ({uri, content, views}: UserContentProps) => {
             data={uri!}
             width={width - FWidth * 44}
             height={FWidth * 300}
-            onSnapToItem={index => setImagesIndex(index)}
+            onSnapToItem={index => {
+              imagesIndexRef.current = index;
+              setImagesIndex(index);
+            }}
             loop={true}
             renderItem={({item}: any) => (
               <FImage

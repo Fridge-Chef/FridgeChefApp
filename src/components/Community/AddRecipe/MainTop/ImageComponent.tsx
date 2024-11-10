@@ -6,7 +6,7 @@ import AddRecipePlus from '../../../../utils/Svg/AddRecipePlus';
 import FButton from '../../../elements/FButton';
 import FImage from '../../../elements/FImage';
 import {handleImagePicker} from '../../../../service/SingleImagePicker';
-import {AddIngredientPageType, AddIngredientType} from '../../../../type/types';
+import {AddIngredientPageType} from '../../../../type/types';
 import ImageIcon from '../../../../utils/Svg/ImageIcon';
 
 const ImageComponent = ({
@@ -16,7 +16,14 @@ const ImageComponent = ({
   const handleImage = () =>
     handleImagePicker({
       pickerType: 'imageLibrary',
-      handleImage: (imageUri: string, file: File) => {
+      handleImage: (
+        imageUri: string,
+        file: {
+          name: string;
+          type: string;
+          uri: string;
+        },
+      ) => {
         console.log('file: ', file);
         console.log('imageUri: ', imageUri);
         setAddRecipeData({

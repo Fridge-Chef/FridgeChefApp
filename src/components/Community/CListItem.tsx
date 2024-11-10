@@ -5,7 +5,7 @@ import {colors, FWidth} from '../../../globalStyle';
 import FText from '../elements/FText';
 import FImage from '../elements/FImage';
 import FButton from '../elements/FButton';
-import {GetMyRecipeListType, GetRecipeListType} from '../../type/types';
+import {GetMyRecipeListType} from '../../type/types';
 
 type CListItemProps = {
   item: GetMyRecipeListType;

@@ -1,6 +1,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {baseUrl} from './axios';
 import {AddIngredientType, AddRecipeReviewType} from '../type/types';
+import {Dispatch} from 'react';
 
 export const getRecommendedRecipeList = async (ingredientsQuery: string) => {
   try {
@@ -37,10 +38,10 @@ export const getRecipeDetail = async (boardId: number) => {
 export const addMyRecipe = async (data: AddIngredientType) => {
   const formData = new FormData();
   formData.append('name', data.name);
-  formData.append('intro', data.description);
-  formData.append('cookTime', `${data.dishTime}분`);
-  formData.append('difficult', data.dishLevel);
-  formData.append('category', data.dishCategory);
+  formData.append('description', data.description);
+  formData.append('dishTime', `${data.dishTime}분`);
+  formData.append('dishLevel', data.dishLevel);
+  formData.append('dishCategory', data.dishCategory);
   formData.append('mainImage', data.mainImageFile);
   data.recipeIngredients.forEach((ingredient, index) => {
     formData.append(`recipeIngredients[${index}].name`, ingredient.name);
@@ -56,13 +57,15 @@ export const addMyRecipe = async (data: AddIngredientType) => {
     const response = await baseUrl.post('api/board', formData, {
       headers: {
         Authorization: `Bearer ${await AsyncStorage.getItem('token')}`,
+        'Content-Type': 'multipart/form-data',
       },
     });
     if (response.status === 200) {
-      console.log('레시피 추가 성공');
+      return response.data;
     }
   } catch (error: any) {
-    console.log('레시피 추가 실패', error);
+    console.log('레시피 추가 실패', error.response.data);
+    throw new Error(error);
   }
 };
 

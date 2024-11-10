@@ -33,7 +33,6 @@ const CMyRecipe = () => {
       />
       {userToken && (
         <CAddRecipeButton
-          list={menuList}
           scrollOffset={scrollOffset}
           prevScrollOffset={prevScrollOffset}
         />

@@ -39,7 +39,7 @@ const RecipeDetail = () => {
         <FImage
           imgStyle="detail"
           uri={data!.mainImage}
-          resizeMode="stretch"
+          resizeMode="cover"
           alt="디테일"
         />
         <Badge />

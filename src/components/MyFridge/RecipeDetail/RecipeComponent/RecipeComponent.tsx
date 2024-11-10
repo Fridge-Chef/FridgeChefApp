@@ -7,7 +7,7 @@ import SubTitle2 from '../../../elements/SubTitle/SubTitle2';
 type RecipeComponentProps = {
   instructions: {
     content: string;
-    image: string;
+    imageLink: string;
   }[];
 };
 
@@ -23,7 +23,7 @@ const RecipeComponent = ({instructions}: RecipeComponentProps) => {
             id={index + 1}
             key={index}
             content={item.content}
-            image={item.image}
+            image={item.imageLink}
           />
         );
       })}

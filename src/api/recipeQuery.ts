@@ -1,5 +1,6 @@
 import {useMutation, useQuery} from '@tanstack/react-query';
 import {
+  addMyRecipe,
   AddRecipeReview,
   getMyFridgeList,
   getRecipeDetail,
@@ -8,6 +9,7 @@ import {
   getRecommendedRecipeList,
 } from './recipe';
 import {
+  AddIngredientType,
   GetRecipeListType,
   RecipeListType,
   recipeReviewDataType,
@@ -35,6 +37,14 @@ export const useGetRecipeDetail = (id: number) => {
   return useQuery<RecipeListType>({
     queryKey: ['recipeDetail', id],
     queryFn,
+  });
+};
+
+export const useAddRecipe = () => {
+  const mutationFn = (recipeData: AddIngredientType) => addMyRecipe(recipeData);
+  return useMutation({
+    mutationKey: ['addRecipe'],
+    mutationFn,
   });
 };
 

@@ -18,7 +18,7 @@ const RecipeSteps = ({
         setAddRecipeData(addRecipeData => {
           const newStep = [...addRecipeData.instructions];
           newStep[index].imageFile = file;
-          newStep[index].image = imageUri;
+          newStep[index].imageLink = imageUri;
           return {...addRecipeData, instructions: newStep};
         });
       },
@@ -29,7 +29,7 @@ const RecipeSteps = ({
       ...prevData,
       instructions: [
         ...prevData.instructions,
-        {content: '', image: '', imageFile: null},
+        {content: '', imageLink: '', imageFile: {name: '', type: '', uri: ''}},
       ],
     }));
   };
@@ -48,7 +48,7 @@ const RecipeSteps = ({
         <StepITem
           key={index}
           index={index + 1}
-          uri={item?.image}
+          uri={item?.imageLink}
           textValue={item?.content}
           onChangeText={text => {
             setAddRecipeData(addRecipeData => {
@@ -64,7 +64,7 @@ const RecipeSteps = ({
           imageDeleteOnPress={() => {
             setAddRecipeData(addRecipeData => {
               const newStep = [...addRecipeData.instructions];
-              newStep[index].image = '';
+              newStep[index].imageLink = '';
               return {...addRecipeData, content: newStep};
             });
           }}

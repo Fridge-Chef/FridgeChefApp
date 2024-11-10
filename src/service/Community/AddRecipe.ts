@@ -1,8 +1,8 @@
-import {ParamListBase} from '@react-navigation/native';
+import {ParamListBase, useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {AddIngredientType} from '../../type/types';
 import {colors} from '../../../globalStyle';
-import {addMyRecipe} from '../../api/recipe';
+import {UseMutateFunction} from '@tanstack/react-query';
 
 export const handlePreview = (
   recipeData: AddIngredientType,
@@ -49,8 +49,12 @@ export const handleButtonColor = (recipeData: AddIngredientType) => {
   }
 };
 
-export const handleSubmit = async (recipeData: AddIngredientType) => {
-  console.log('데이터가 모두 입력되었습니다', recipeData);
+export const handleSubmit = async (
+  recipeData: AddIngredientType,
+  mutate: UseMutateFunction<any, Error, AddIngredientType, unknown>,
+  refetch: () => void,
+  navigate: NativeStackNavigationProp<ParamListBase>,
+) => {
   if (
     recipeData.name.trim() === '' ||
     recipeData.description.trim() === '' ||
@@ -66,6 +70,12 @@ export const handleSubmit = async (recipeData: AddIngredientType) => {
     console.log('데이터를 모두 입력해주세요3');
     return;
   } else {
-    await addMyRecipe(recipeData);
+    mutate(recipeData, {
+      onSuccess: () => {
+        console.log('레시피 추가 성공');
+        refetch();
+        navigate.goBack();
+      },
+    });
   }
 };

@@ -38,12 +38,16 @@ const CListItems = ({
     setScrollOffset(currentOffset);
     setPrevScrollOffset(scrollOffset);
   };
-  const {data, isLoading} = useGetRecipeList();
+  const {data, isLoading, refetch} = useGetRecipeList();
 
   const handleRanking = () => {
     setTitle('나만의레시피');
     bottomSheetRef.current?.present();
   };
+
+  useEffect(() => {
+    refetch();
+  }, [data]);
 
   if (isLoading) return <Loading loadingTitle="검색중" />;
 

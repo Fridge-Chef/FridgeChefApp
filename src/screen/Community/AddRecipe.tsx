@@ -14,20 +14,37 @@ import {
   handlePreview,
   handleSubmit,
 } from '../../service/Community/AddRecipe';
+import {useAddRecipe, useGetRecipeList} from '../../api/recipeQuery';
 
 const AddRecipe = () => {
   const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
   const {selectedCategory} = useSelectedCategory();
+  const {refetch} = useGetRecipeList();
+  const {mutate} = useAddRecipe();
   const [addRecipeData, setAddRecipeData] = useState<AddIngredientType>({
     mainImage: '',
-    mainImageFile: null,
+    mainImageFile: {
+      name: '',
+      type: '',
+      uri: '',
+    },
     name: '',
     description: '',
     dishCategory: selectedCategory,
     dishTime: '',
     dishLevel: '쉬움',
     recipeIngredients: [{name: '', details: ''}],
-    instructions: [{content: '', image: '', imageFile: null}],
+    instructions: [
+      {
+        content: '',
+        imageLink: '',
+        imageFile: {
+          name: '',
+          type: '',
+          uri: '',
+        },
+      },
+    ],
   });
 
   useEffect(() => {
@@ -59,7 +76,9 @@ const AddRecipe = () => {
       <Submit
         backgroundColor={handleButtonColor(addRecipeData)}
         previewOnPress={() => handlePreview(addRecipeData, navigation)}
-        submitOnPress={() => handleSubmit(addRecipeData)}
+        submitOnPress={() =>
+          handleSubmit(addRecipeData, mutate, refetch, navigation)
+        }
       />
     </View>
   );
