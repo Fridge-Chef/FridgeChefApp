@@ -19,6 +19,7 @@ const AddImage = () => {
             maxHeight: 1920,
             maxWidth: 1080,
             quality: 0.7,
+            selectionLimit: 5,
           },
           res => {
             if (res.didCancel) {
@@ -26,38 +27,43 @@ const AddImage = () => {
             } else if (res.errorCode) {
               console.log('error: ', res.errorMessage);
             } else {
-              if (res.assets![0].uri === undefined) return;
+              if (!res.assets || res.assets.length === 0) return;
               setUserReview({
-                reviewImg: res.assets![0].uri,
+                reviewImg: res.assets.map(img => img.uri!),
+                reviewImgFile: res.assets.map(img => ({
+                  name: img.fileName!,
+                  type: img.type!,
+                  uri: img.uri!,
+                })),
               });
             }
           },
         );
 
         break;
-      case 'camera':
-        launchCamera(
-          {
-            mediaType: 'photo',
-            includeBase64: false,
-            maxHeight: 1920,
-            maxWidth: 1080,
-            quality: 0.7,
-          },
-          res => {
-            if (res.didCancel) {
-              console.log('취소버튼을 눌렀습니다');
-            } else if (res.errorCode) {
-              console.log('error: ', res.errorMessage);
-            } else {
-              if (res.assets![0].uri === undefined) return;
-              setUserReview({
-                reviewImg: res.assets![0].uri,
-              });
-            }
-          },
-        );
-        break;
+      // case 'camera':
+      //   launchCamera(
+      //     {
+      //       mediaType: 'photo',
+      //       includeBase64: false,
+      //       maxHeight: 1920,
+      //       maxWidth: 1080,
+      //       quality: 0.7,
+      //     },
+      //     res => {
+      //       if (res.didCancel) {
+      //         console.log('취소버튼을 눌렀습니다');
+      //       } else if (res.errorCode) {
+      //         console.log('error: ', res.errorMessage);
+      //       } else {
+      //         if (res.assets![0].uri === undefined) return;
+      //         setUserReview({
+      //           reviewImg: res.assets![0].uri,
+      //         });
+      //       }
+      //     },
+      //   );
+      //   break;
       default:
         break;
     }

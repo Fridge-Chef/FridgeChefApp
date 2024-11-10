@@ -20,7 +20,6 @@ export type IngredientsType = {
 };
 
 export const addIngredients = async ({ingredients}: Ingredients) => {
-  console.log('재료등록 요청', ingredients);
   try {
     const token = await AsyncStorage.getItem('token');
     console.log('token', token);
@@ -28,6 +27,7 @@ export const addIngredients = async ({ingredients}: Ingredients) => {
     const response = await baseUrl.post('api/fridges/', ingredients, {
       headers: {
         Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
       },
     });
     return response.data;
@@ -76,6 +76,7 @@ export const deleteIngredients = async (title: string) => {
     const response = await baseUrl.delete(`/api/fridges/ingredients/${title}`, {
       headers: {
         Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
       },
     });
     if (response.status === 204) {
@@ -92,6 +93,7 @@ export const addIngredientCategory = async (data: IngredientCategory) => {
     const response = await baseUrl.put('api/fridges/ingredients', data, {
       headers: {
         Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
       },
     });
     if (response.status === 204) {

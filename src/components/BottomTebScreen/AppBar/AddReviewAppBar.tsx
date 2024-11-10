@@ -6,18 +6,51 @@ import {useUserReview} from '../../../store/store';
 import FModal from '../../elements/FModal';
 import {ParamListBase, useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import {
+  useAddRecipeReview,
+  useGetRecipeDetailReview,
+} from '../../../api/recipeQuery';
 
 const AddReviewAppBar = () => {
   const {userReview, setUserReview} = useUserReview();
   const [isBack, setIsBack] = useState(false);
   const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
+  const {mutate} = useAddRecipeReview();
+  const {refetch} = useGetRecipeDetailReview(userReview.boardId);
+
   const handleSubmit = async () => {
     if (
       userReview.reviewContent === '' ||
       userReview.reviewPoint === 0 ||
       userReview.reviewContent.length < 10
     ) {
+      console.log('데이터를 모두 입력해주세요');
       return;
+    } else {
+      mutate(
+        {
+          boardId: userReview.boardId,
+          reviewData: {
+            comment: userReview.reviewContent,
+            images: userReview.reviewImg,
+            imagesFile: userReview.reviewImgFile!,
+            star: userReview.reviewPoint,
+          },
+        },
+        {
+          onSuccess: () => {
+            setUserReview({
+              boardId: 0,
+              reviewPoint: 0,
+              reviewContent: '',
+              reviewImg: [],
+              reviewImgFile: [],
+            });
+            refetch();
+            navigation.goBack();
+          },
+        },
+      );
     }
   };
 

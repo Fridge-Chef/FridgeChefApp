@@ -12,11 +12,14 @@ import {useRecipeReviewTitle} from '../../../../store/store';
 
 type ReviewProps = {
   review: {
-    writer: string;
-    point: number;
-    content: string;
-    img: string;
-    views: number;
+    boardId: number;
+    comments: string;
+    createdAt: string;
+    id: number;
+    imageLink: string[];
+    like: number;
+    star: number;
+    userName: string;
   };
   title: string;
 };
@@ -36,7 +39,7 @@ const Review = ({review, title}: ReviewProps) => {
       fBStyle={styles.container}
       onPress={handleReviewDetail}>
       <View style={styles.iconAlign}>
-        <UserInfo writer={review.writer} point={review.point} />
+        <UserInfo writer={review.userName} point={review.star} />
         <FButton
           buttonStyle="noneStyle"
           hitSlop={{top: 10, bottom: 10, left: 10, right: 10}}

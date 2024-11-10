@@ -22,8 +22,9 @@ type CRecipeReviews = {
 const CRecipeReviewDetail = () => {
   const recipeId = useRoute<RouteProp<CRecipeReviews>>();
   const {itemId} = recipeId.params;
+  console.log('아이템', itemId);
   const {data, isLoading} = useGetRecipeDetail(itemId);
-  console.log(data);
+  console.log('dd', data);
   if (isLoading) return <Loading loadingTitle="검색중" />;
   if (data)
     return (

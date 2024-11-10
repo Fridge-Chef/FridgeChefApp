@@ -31,29 +31,35 @@ export const getRefreshToken = async (token: string) => {
 
 export const getUSerToken = async () => {
   const refreshToken = await AsyncStorage.getItem('refreshToken');
-  console.log('리프레시 토큰', refreshToken);
   try {
     const response = await baseUrl.get('api/auth/access', {
       headers: {
         Authorization: `Bearer ${refreshToken}`,
       },
     });
-    console.log('여기까지 오나', response);
     if (response.status === 200) {
       await AsyncStorage.setItem('token', response.data.user.token);
+      getUser();
     }
-    console.log('유저 토큰 재발급', response);
-  } catch (error) {
-    console.log('토큰 재발급 에러', error);
+  } catch (error: any) {
+    console.log('토큰 재발급 에러', error.response.status);
   }
 };
 
 export const userLogin = async ({token, registration}: UserLoginProps) => {
   try {
-    const response = await baseUrl.post('api/mobile/auth/login', {
-      token: token,
-      registration: registration,
-    });
+    const response = await baseUrl.post(
+      'api/mobile/auth/login',
+      {
+        token: token,
+        registration: registration,
+      },
+      {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      },
+    );
     if (response.status === 200) {
       return response.data;
     }
@@ -70,6 +76,7 @@ export const userUpdateNickname = async ({nickname}: UserNicknameProps) => {
       {
         headers: {
           Authorization: `Bearer ${await AsyncStorage.getItem('token')}`,
+          'Content-Type': 'application/json',
         },
       },
     );
@@ -92,7 +99,7 @@ export const getUser = async () => {
       return response.data;
     }
   } catch (error: any) {
-    console.log('유저토큰 가져오기', error.response.status);
+    console.log('유저 정보 가져오기 에러', error.response.status);
     if (userToken && error.response.status === 401) {
       console.log('토큰 재발급1');
       await getUSerToken();
@@ -101,7 +108,6 @@ export const getUser = async () => {
 };
 
 export const userDelete = async (nickname: string) => {
-  console.log('회원탈퇴', nickname);
   try {
     const response = await baseUrl.delete('api/user/account', {
       headers: {

@@ -19,6 +19,7 @@ import {useQueryClient} from '@tanstack/react-query';
 import {date, ingredientCategory} from '../../../../service/MyFridge/MyFridge';
 import {ListData} from '../../../../type/types';
 import DDayText from './DDayText';
+import FModal from '../../../elements/FModal';
 
 type ItemComponentProps = {
   item: ListData;
@@ -33,6 +34,8 @@ const ItemComponent = ({item, fetchData}: ItemComponentProps) => {
   const {setIngredientTitle} = useIngredientTitle();
   const {bottomSheetRef} = useBottomSheetRef();
   const {mutate} = useDeleteIngredients();
+  const [isDelete, setIsDelete] = useState(false);
+
   const handleAddExpiration = (title: string) => {
     bottomSheetRef.current?.present();
     setIngredientTitle(title);
@@ -79,12 +82,24 @@ const ItemComponent = ({item, fetchData}: ItemComponentProps) => {
             <Option />
           </FButton>
         </View>
-        <FButton
-          buttonStyle="noneStyle"
-          onPress={() => handleDelete(item.ingredientName)}>
+        <FButton buttonStyle="noneStyle" onPress={() => setIsDelete(true)}>
           <IngredientClose />
         </FButton>
       </View>
+      {isDelete && (
+        <FModal
+          modalVisible={isDelete}
+          buttonText="삭제"
+          text={`${item.ingredientName} 삭제하나요?`}
+          onPress={() => {
+            handleDelete(item.ingredientName);
+            setIsDelete(false);
+          }}
+          cancelOnPress={() => setIsDelete(false)}
+          cancel={true}
+          cancelText="취소"
+        />
+      )}
     </View>
   );
 };

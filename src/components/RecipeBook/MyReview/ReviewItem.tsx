@@ -13,12 +13,14 @@ import MyReviewTitle from './MyReviewTitle';
 
 type ReviewItemProps = {
   review: {
-    writer: string;
-    point: number;
+    boardId: number;
+    username: string;
+    star: number;
     title: string;
-    content: string;
-    img: string;
-    views: number;
+    comments: string;
+    createdAt: string;
+    imageLink: string[];
+    like: number;
   };
 };
 
@@ -36,7 +38,7 @@ const ReviewItem = ({review}: ReviewItemProps) => {
       fBStyle={styles.container}
       onPress={handleReviewDetail}>
       <View style={styles.iconAlign}>
-        <UserInfo writer={review.writer} point={review.point} />
+        <UserInfo writer={review.username} point={review.star} />
         <FButton
           buttonStyle="noneStyle"
           onPress={() => {

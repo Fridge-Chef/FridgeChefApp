@@ -3,13 +3,14 @@ import React from 'react';
 import ReviewItem from './ReviewItem';
 
 type ReviewType = {
-  id: number;
-  writer: string;
-  point: number;
+  boardId: number;
+  username: string;
+  star: number;
+  createdAt: string;
   title: string;
-  content: string;
-  img: string;
-  views: number;
+  comments: string;
+  imageLink: string[];
+  like: number;
 }[];
 
 type MyReviewListProps = {
@@ -20,7 +21,7 @@ const MyReviewList = ({list}: MyReviewListProps) => {
   return (
     <View>
       {list.map(item => (
-        <ReviewItem key={item.id} review={item} />
+        <ReviewItem key={item.boardId} review={item} />
       ))}
     </View>
   );

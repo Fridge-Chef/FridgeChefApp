@@ -60,6 +60,30 @@ export let date = ({item, today}: DateType) => {
   }
 };
 
+export const getExpiryDateInfo = (expiryDate: string): string => {
+  const date = new Date(expiryDate);
+  const today = new Date();
+  const timeDifference = today.getTime() - date.getTime();
+  const dayDifference = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+  const minuteDifference = Math.floor(timeDifference / (1000 * 60));
+  const hourDifference = Math.floor(timeDifference / (1000 * 60 * 60));
+
+  if (minuteDifference < 1) return '방금';
+  if (minuteDifference < 60) return `${minuteDifference}분 전`;
+  if (hourDifference < 24) return `${hourDifference}시간 전`;
+
+  if (dayDifference >= 0 && dayDifference <= 6) {
+    return `${dayDifference}일 전`;
+  }
+
+  const monthDifference = Math.floor(dayDifference / 30);
+  if (dayDifference >= 7 && dayDifference < 30)
+    return `${Math.floor(dayDifference / 7)}주 전`;
+  if (monthDifference === 1) return '1개월 전';
+  if (monthDifference > 1) return `${monthDifference}개월 전`;
+  return '';
+};
+
 export const ingredientCategory = (item: ListData) => {
   switch (item.ingredientCategory) {
     case '채소류':

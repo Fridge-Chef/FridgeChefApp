@@ -1,7 +1,7 @@
 import {StyleSheet, View} from 'react-native';
 import React from 'react';
 import {colors, FWidth} from '../../../../../globalStyle';
-import {AddIngredientPageType, AddIngredientType} from '../../../../type/types';
+import {AddIngredientPageType} from '../../../../type/types';
 import StepTitle from './StepTitle';
 import StepITem from './StepItem/StepITem';
 import AddRecipeSubButton from '../AddRecipeSubButton';
@@ -14,9 +14,10 @@ const RecipeSteps = ({
   const handleImage = (index: number) =>
     handleImagePicker({
       pickerType: 'imageLibrary',
-      handleImage(imageUri) {
+      handleImage(imageUri, file) {
         setAddRecipeData(addRecipeData => {
           const newStep = [...addRecipeData.instructions];
+          newStep[index].imageFile = file;
           newStep[index].image = imageUri;
           return {...addRecipeData, instructions: newStep};
         });
@@ -26,7 +27,10 @@ const RecipeSteps = ({
   const addStep = () => {
     setAddRecipeData(prevData => ({
       ...prevData,
-      instructions: [...prevData.instructions, {content: '', image: ''}],
+      instructions: [
+        ...prevData.instructions,
+        {content: '', image: '', imageFile: null},
+      ],
     }));
   };
 

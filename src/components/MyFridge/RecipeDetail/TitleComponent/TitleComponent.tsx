@@ -5,7 +5,7 @@ import IngredientContainer from './IngredientContainer';
 import FText from '../../../elements/FText';
 import DetailInfo from './DetailInfo';
 import TimeAndLevel from './TimeAndLevel';
-import {ListData, RecipeListType} from '../../../../type/types';
+import {RecipeListType} from '../../../../type/types';
 
 type TitleComponentProps = {
   detailData: RecipeListType;
@@ -32,10 +32,10 @@ const TitleComponent = ({detailData, items}: TitleComponentProps) => {
         text={detailData.title}
       />
       <DetailInfo
-        writer={detailData.writer}
-        like={detailData.likes}
-        favorite={detailData.favorites}
-        reviews={detailData.reviews}
+        writer={detailData.username}
+        like={detailData.rating}
+        reviews={detailData.starTotal}
+        favorite={detailData.hitTotal}
       />
       <IngredientContainer title="보유재료" detailList={items.myIngredients} />
       <IngredientContainer title="없는 재료" detailList={items.without} />

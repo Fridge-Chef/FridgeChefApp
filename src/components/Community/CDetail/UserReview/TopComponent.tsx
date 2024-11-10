@@ -3,17 +3,23 @@ import React from 'react';
 import UserInfo from '../../../MyFridge/RecipeDetail/RecipeReview/UserInfo';
 import {colors, FWidth} from '../../../../../globalStyle';
 import FText from '../../../elements/FText';
+import {getExpiryDateInfo} from '../../../../service/MyFridge/MyFridge';
 
 type TopComponentProps = {
   writer: string;
   point: number;
+  createdAt: string;
 };
 
-const TopComponent = ({writer, point}: TopComponentProps) => {
+const TopComponent = ({writer, point, createdAt}: TopComponentProps) => {
   return (
     <View style={styles.container}>
       <UserInfo writer={writer} point={point} />
-      <FText fStyle="M_12" color={colors.b300} text={'일주일 전'} />
+      <FText
+        fStyle="M_12"
+        color={colors.b300}
+        text={getExpiryDateInfo(createdAt)}
+      />
     </View>
   );
 };

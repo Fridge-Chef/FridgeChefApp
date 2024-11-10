@@ -8,25 +8,27 @@ import UserContent from './UserContent';
 type RecipeType = {
   params: {
     item: {
-      content: string;
-      img?: string;
-      point: number;
-      views: number;
-      writer: string;
+      boardId: number;
+      comments: string;
+      createdAt: string;
+      id: number;
+      imageLink: string[];
+      like: number;
+      star: number;
+      userName: string;
     };
   };
 };
 
 const UserReview = () => {
   const route = useRoute<RouteProp<RecipeType>>();
-  const {content, point, views, writer, img} = route.params.item;
-  // console.log(img);
-  // const {uri} = Image.resolveAssetSource(img!);
+  const {comments, star, like, userName, imageLink, createdAt} =
+    route.params.item;
 
   return (
     <View style={styles.container}>
-      <TopComponent writer={writer} point={point} />
-      <UserContent uri={img} content={content} views={views} />
+      <TopComponent writer={userName} point={star} createdAt={createdAt} />
+      <UserContent uri={imageLink} content={comments} views={like} />
     </View>
   );
 };

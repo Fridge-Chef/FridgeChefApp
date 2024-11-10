@@ -24,6 +24,7 @@ type DetailItem = {
 const RecipeDetail = () => {
   const route = useRoute<RouteProp<DetailItem>>();
   const items = route.params;
+
   const {setScrollY} = useScrollY();
   const {data, isLoading} = useGetRecipeDetail(route.params.id);
 
@@ -47,7 +48,7 @@ const RecipeDetail = () => {
       <RecipeNote content={data!.description} />
       <IngredientComponent recipeIngredients={data!.recipeIngredients} />
       <RecipeComponent instructions={data!.instructions} />
-      <RecipeReview title={data!.title} />
+      <RecipeReview title={data!.title} boardId={data!.boardId} />
     </ScrollView>
   );
 };

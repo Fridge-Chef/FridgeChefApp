@@ -50,6 +50,7 @@ export const handleButtonColor = (recipeData: AddIngredientType) => {
 };
 
 export const handleSubmit = async (recipeData: AddIngredientType) => {
+  console.log('데이터가 모두 입력되었습니다', recipeData);
   if (
     recipeData.name.trim() === '' ||
     recipeData.description.trim() === '' ||
@@ -62,7 +63,7 @@ export const handleSubmit = async (recipeData: AddIngredientType) => {
     recipeData.instructions.length <= 1 ||
     recipeData.instructions[1].content.trim() === ''
   ) {
-    console.log('데이터를 모두 입력해주세요2');
+    console.log('데이터를 모두 입력해주세요3');
     return;
   } else {
     await addMyRecipe(recipeData);

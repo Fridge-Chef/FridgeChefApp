@@ -6,11 +6,13 @@ import FImage from '../../../elements/FImage';
 
 type ReviewContentProps = {
   content: {
-    writer: string;
-    point: number;
-    content: string;
-    img?: string;
-    views: number;
+    boardId: number;
+    comments: string;
+    createdAt: string;
+    imageLink: string[];
+    like: number;
+    star: number;
+    username: string;
   };
 };
 
@@ -24,12 +26,12 @@ const ReviewContent = ({content}: ReviewContentProps) => {
           fStyle="R_14"
           lineH={FWidth * 20}
           color={colors.text}
-          text={content.content}
+          text={content.comments}
         />
       </View>
-      {content.img && (
+      {content.imageLink[0] && (
         <FImage
-          uri={content.img}
+          uri={content.imageLink[0]}
           imgStyle="sub2"
           borderRadius={8}
           resizeMode="stretch"
@@ -46,6 +48,6 @@ const styles = StyleSheet.create({
   container: {
     marginTop: FWidth * 8,
     flexDirection: 'row',
-    alignItems: 'flex-start',
+    justifyContent: 'space-between',
   },
 });

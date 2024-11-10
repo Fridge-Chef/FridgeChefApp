@@ -1,18 +1,21 @@
-import {StyleSheet, View} from 'react-native';
+import {Dimensions, StyleSheet, useWindowDimensions, View} from 'react-native';
 import React, {useState} from 'react';
 import FImage from '../../../elements/FImage';
 import {colors, FWidth} from '../../../../../globalStyle';
 import FText from '../../../elements/FText';
 import LikeButton from '../../../elements/LikeButton';
+import Carousel from 'react-native-reanimated-carousel';
 
 type UserContentProps = {
-  uri?: string;
+  uri?: string[];
   content: string;
   views: number;
 };
 
 const UserContent = ({uri, content, views}: UserContentProps) => {
   const [isClicked, setIsClicked] = useState(false);
+  const [imagesIndex, setImagesIndex] = useState(0);
+  const {width} = useWindowDimensions();
   return (
     <>
       <View style={styles.container}>
@@ -31,16 +34,30 @@ const UserContent = ({uri, content, views}: UserContentProps) => {
           setIsClicked(!isClicked);
         }}
       />
-      {uri && (
+      {uri?.length !== 0 && (
         <View style={styles.imgContainer}>
-          <FImage
-            uri={uri}
-            imgStyle="rDetail"
-            borderRadius={8}
-            alt="리뷰 이미지"
+          <Carousel
+            data={uri!}
+            width={width - FWidth * 44}
+            height={FWidth * 300}
+            onSnapToItem={index => setImagesIndex(index)}
+            loop={true}
+            renderItem={({item}: any) => (
+              <FImage
+                uri={item}
+                imgStyle="rDetail"
+                borderRadius={8}
+                alt="리뷰 이미지"
+              />
+            )}
           />
+
           <View style={styles.pageNation}>
-            <FText fStyle="M_14" color={colors.black} text={'1/5'} />
+            <FText
+              fStyle="M_14"
+              color={colors.black}
+              text={`${imagesIndex + 1}/${uri?.length}`}
+            />
           </View>
         </View>
       )}
@@ -58,6 +75,7 @@ const styles = StyleSheet.create({
   imgContainer: {
     marginTop: FWidth * 16,
     position: 'relative',
+    height: FWidth * 300,
   },
 
   pageNation: {

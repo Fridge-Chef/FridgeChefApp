@@ -20,13 +20,14 @@ const AddRecipe = () => {
   const {selectedCategory} = useSelectedCategory();
   const [addRecipeData, setAddRecipeData] = useState<AddIngredientType>({
     mainImage: '',
+    mainImageFile: null,
     name: '',
     description: '',
     dishCategory: selectedCategory,
     dishTime: '',
     dishLevel: '쉬움',
     recipeIngredients: [{name: '', details: ''}],
-    instructions: [{content: '', image: ''}],
+    instructions: [{content: '', image: '', imageFile: null}],
   });
 
   useEffect(() => {

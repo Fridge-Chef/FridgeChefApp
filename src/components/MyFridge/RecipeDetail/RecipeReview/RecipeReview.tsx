@@ -5,14 +5,15 @@ import TitleComponent from './TitleComponent';
 import ReviewsComponent from './ReviewsComponent';
 
 type RecipeReviewProps = {
+  boardId: number;
   title: string;
 };
 
-const RecipeReview = ({title}: RecipeReviewProps) => {
+const RecipeReview = ({title, boardId}: RecipeReviewProps) => {
   return (
     <View style={styles.container}>
-      <TitleComponent title={title} />
-      <ReviewsComponent title={title} />
+      <TitleComponent title={title} boardId={boardId} />
+      <ReviewsComponent title={title} boardId={boardId} />
     </View>
   );
 };

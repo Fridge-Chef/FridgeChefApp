@@ -16,8 +16,14 @@ const ImageComponent = ({
   const handleImage = () =>
     handleImagePicker({
       pickerType: 'imageLibrary',
-      handleImage: (imageUri: string) => {
-        setAddRecipeData({...addRecipeData, mainImage: imageUri});
+      handleImage: (imageUri: string, file: File) => {
+        console.log('file: ', file);
+        console.log('imageUri: ', imageUri);
+        setAddRecipeData({
+          ...addRecipeData,
+          mainImage: imageUri,
+          mainImageFile: file,
+        });
       },
     });
 

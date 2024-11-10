@@ -1,5 +1,5 @@
 import {Keyboard, Pressable, ScrollView, StyleSheet, View} from 'react-native';
-import React from 'react';
+import React, {useEffect} from 'react';
 import {FWidth} from '../../../globalStyle';
 import AddImage from '../../components/MyFridge/AddRecipeReview/AddImage';
 import AddScore from '../../components/MyFridge/AddRecipeReview/AddScore';
@@ -10,6 +10,7 @@ import {RouteProp, useRoute} from '@react-navigation/native';
 
 type RecipeTitle = {
   params: {
+    boardId: number;
     title: string;
   };
 };
@@ -18,6 +19,16 @@ const AddRecipeReview = () => {
   const route = useRoute<RouteProp<RecipeTitle>>();
   const {userReview, setUserReview} = useUserReview();
 
+  useEffect(() => {
+    setUserReview({
+      reviewContent: '',
+      reviewImg: [],
+      reviewImgFile: [],
+      reviewPoint: 0,
+      boardId: route.params.boardId,
+    });
+  }, []);
+
   return (
     <>
       <ScrollView>
@@ -25,14 +36,25 @@ const AddRecipeReview = () => {
           <View style={styles.topContainer}>
             <AddScore title={route.params.title} />
             <AddContent />
-            {userReview.reviewImg && (
-              <ImageView
-                uri={userReview.reviewImg}
-                onPress={() => {
-                  setUserReview({reviewImg: ''});
-                }}
-              />
-            )}
+            {userReview.reviewImg.length > 0 &&
+              userReview.reviewImg.map((img, index) => (
+                <ImageView
+                  key={index}
+                  uri={img}
+                  onPress={() => {
+                    setUserReview({
+                      reviewImg: [
+                        ...userReview.reviewImg.slice(0, index),
+                        ...userReview.reviewImg.slice(index + 1),
+                      ],
+                      reviewImgFile: [
+                        ...userReview.reviewImgFile!.slice(0, index),
+                        ...userReview.reviewImgFile!.slice(index + 1),
+                      ],
+                    });
+                  }}
+                />
+              ))}
           </View>
         </Pressable>
       </ScrollView>

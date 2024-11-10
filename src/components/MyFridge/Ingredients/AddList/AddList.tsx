@@ -1,6 +1,6 @@
 import {StyleSheet, View} from 'react-native';
 import React, {useEffect} from 'react';
-import {FWidth} from '../../../../../globalStyle';
+import {colors, FWidth} from '../../../../../globalStyle';
 import ItemComponent from './ItemComponent';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {useGetIngredients} from '../../../../api/ingredientsQuery';
@@ -35,7 +35,7 @@ const AddList = ({dataList, setDataList, onClicked}: AddListProps) => {
   }, [onClicked, listData, isLoading, check]);
 
   if (isLoading) {
-    return <Loading loadingTitle="로딩중" />;
+    return <Loading loadingTitle="로딩중" backColor={colors.white} />;
   }
 
   const filteredDataList = dataList?.filter(item => {

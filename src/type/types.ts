@@ -1,13 +1,16 @@
 import {ColorValue} from 'react-native';
 
 export type RecipeListType = {
-  id: number;
-  writer: string;
+  title: string;
+  username: string;
+  boardId: number;
+  rating: number;
+  starTotal: number;
+  hitTotal: number;
   dishCategory: string;
   dishTime: string;
   dishLevel: string;
   mainImage: string;
-  title: string;
   likes: number;
   favorites: number;
   myLike: number;
@@ -86,10 +89,12 @@ export type RecipeIngredientType = {
 export type InstructionsType = {
   content: string;
   image: string;
+  imageFile: File | null;
 };
 
 export type AddIngredientType = {
   mainImage: string;
+  mainImageFile: File | null;
   name: string;
   description: string;
   dishCategory: string;
@@ -97,6 +102,17 @@ export type AddIngredientType = {
   dishLevel: string;
   recipeIngredients: RecipeIngredientType[];
   instructions: InstructionsType[];
+};
+
+export type AddRecipeReviewType = {
+  comment: string;
+  images: string[];
+  imagesFile: {
+    name: string;
+    type: string;
+    uri: string;
+  }[];
+  star: number;
 };
 
 export type AddIngredientPageType = {
@@ -128,9 +144,47 @@ export type GetRecipeListType = {
   without: string[];
 };
 
+export type GetMyRecipeListType = {
+  boardId: number;
+  title: string;
+  userName: string;
+  mainImage: string;
+  star: number;
+  hit: number;
+  myHit: boolean;
+  click: number;
+  have: number;
+  withoutCount: number;
+  without: string[];
+};
+
 export type ListData = {
   expirationDate?: string;
   ingredientCategory?: string;
   ingredientName: string;
   storage: 'REFRIGERATION' | 'TEMPERATURE';
+};
+
+export type recipeReviewDataType = {
+  boardId: number;
+  reviewData: AddRecipeReviewType;
+};
+
+export type RecipeReviewListType = {
+  content: {
+    boardId: number;
+    comments: string;
+    createdAt: string;
+    id: number;
+    imageLink: string[];
+    like: number;
+    star: number;
+    userName: string;
+  }[];
+  page: {
+    number: number;
+    size: number;
+    totalElements: number;
+    totalPages: number;
+  };
 };

@@ -41,19 +41,21 @@ const Recipes = ({ingredientList}: RecipesProps) => {
             paddingBottom: FWidth * 146,
           }}
           keyExtractor={(_, index) => index.toString()}
-          renderItem={({item}: {item: GetRecipeListType}) => (
-            <FButton
-              buttonStyle="noneStyle"
-              onPress={() =>
-                navigation.navigate('recipeDetail', {
-                  id: item.id,
-                  without: item.without,
-                  myIngredients: ingredients,
-                })
-              }>
-              <ListItem item={item} />
-            </FButton>
-          )}
+          renderItem={({item}: {item: GetRecipeListType}) => {
+            return (
+              <FButton
+                buttonStyle="noneStyle"
+                onPress={() =>
+                  navigation.navigate('recipeDetail', {
+                    id: item.id,
+                    without: item.without,
+                    myIngredients: ingredients,
+                  })
+                }>
+                <ListItem item={item} />
+              </FButton>
+            );
+          }}
         />
       </View>
     </View>

@@ -1,5 +1,5 @@
 import {StyleSheet, View} from 'react-native';
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {colors, FWidth} from '../../../../../globalStyle';
 import FButton from '../../../elements/FButton';
 import FText from '../../../elements/FText';
@@ -7,29 +7,58 @@ import {ParamListBase, useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import DetailReviewEdit from '../../../../utils/Svg/DetailReviewEdit';
 import SubTitle2 from '../../../elements/SubTitle/SubTitle2';
+import {useGetRecipeDetailReview} from '../../../../api/recipeQuery';
+import Loading from '../../../elements/Loading';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 type TitleComponentProps = {
   title: string;
+  boardId: number;
 };
 
-const TitleComponent = ({title}: TitleComponentProps) => {
+const TitleComponent = ({title, boardId}: TitleComponentProps) => {
   const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
+  const {data, isLoading} = useGetRecipeDetailReview(boardId);
+  const [isCheck, setIsCheck] = useState(true);
+  const userCheck = async () => {
+    const userName = await AsyncStorage.getItem('userName');
+    if (
+      data?.content
+        .filter(item => item.userName === userName)
+        .map(item => item.userName === userName)
+    ) {
+      setIsCheck(false);
+    } else {
+      setIsCheck(true);
+    }
+  };
+
+  useEffect(() => {
+    userCheck();
+  }, []);
+  console.log(isCheck);
+  if (isLoading)
+    return <Loading loadingTitle="로딩중" backColor={colors.white} />;
   return (
     <View style={styles.container}>
       <SubTitle2 title="레시피 후기" />
-      <FButton
-        buttonStyle="noneStyle"
-        onPress={() => navigation.navigate('addRecipeReview', {title})}>
-        <View style={styles.buttonContainer}>
-          <DetailReviewEdit />
-          <FText
-            mLeft={FWidth * 4}
-            fStyle="M_14"
-            color={colors.black}
-            text="후기 작성"
-          />
-        </View>
-      </FButton>
+      {isCheck && (
+        <FButton
+          buttonStyle="noneStyle"
+          onPress={() =>
+            navigation.navigate('addRecipeReview', {title, boardId})
+          }>
+          <View style={styles.buttonContainer}>
+            <DetailReviewEdit />
+            <FText
+              mLeft={FWidth * 4}
+              fStyle="M_14"
+              color={colors.black}
+              text="후기 작성"
+            />
+          </View>
+        </FButton>
+      )}
     </View>
   );
 };

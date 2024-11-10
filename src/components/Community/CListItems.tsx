@@ -14,8 +14,7 @@ import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import ArrowSubTitle from '../elements/SubTitle/ArrowSubTitle';
 import {useCommunityMyRecipeName} from '../../store/rankingStore';
 import {useBottomSheetRef, useBottomSheetTitle} from '../../store/store';
-import {getRecipeList} from '../../api/recipe';
-import {GetRecipeListType, RecipeListType} from '../../type/types';
+import {GetMyRecipeListType} from '../../type/types';
 import {useGetRecipeList} from '../../api/recipeQuery';
 import Loading from '../elements/Loading';
 
@@ -60,7 +59,7 @@ const CListItems = ({
         contentContainerStyle={{paddingBottom: FWidth * 20}}
         showsVerticalScrollIndicator={false}
         keyExtractor={item => item.boardId.toString()}
-        renderItem={({item}: {item: GetRecipeListType}) => (
+        renderItem={({item}: {item: GetMyRecipeListType}) => (
           <CListItem
             item={item}
             onPress={() =>

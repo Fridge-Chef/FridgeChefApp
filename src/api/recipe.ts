@@ -1,6 +1,6 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {baseUrl} from './axios';
-import {AddIngredientType} from '../type/types';
+import {AddIngredientType, AddRecipeReviewType} from '../type/types';
 
 export const getRecommendedRecipeList = async (ingredientsQuery: string) => {
   try {
@@ -38,31 +38,30 @@ export const addMyRecipe = async (data: AddIngredientType) => {
   const formData = new FormData();
   formData.append('name', data.name);
   formData.append('intro', data.description);
-  formData.append('cookTime', data.dishTime);
+  formData.append('cookTime', `${data.dishTime}분`);
   formData.append('difficult', data.dishLevel);
   formData.append('category', data.dishCategory);
-  formData.append('mainImage', data.mainImage);
+  formData.append('mainImage', data.mainImageFile);
   data.recipeIngredients.forEach((ingredient, index) => {
     formData.append(`recipeIngredients[${index}].name`, ingredient.name);
     formData.append(`recipeIngredients[${index}].details`, ingredient.details);
   });
   data.instructions.forEach((instruction, index) => {
     formData.append(`descriptions[${index}].content`, instruction.content);
-    formData.append(`descriptions[${index}].image`, instruction.image);
+    formData.append(`descriptions[${index}].image`, instruction.imageFile);
   });
 
   console.log('formData 여기까진 오는데', formData);
   try {
-    const response = await baseUrl.post('api/recipes/', formData, {
+    const response = await baseUrl.post('api/board', formData, {
       headers: {
         Authorization: `Bearer ${await AsyncStorage.getItem('token')}`,
-        'Content-Type': 'multipart/form-data',
       },
     });
     if (response.status === 200) {
       console.log('레시피 추가 성공');
     }
-  } catch (error) {
+  } catch (error: any) {
     console.log('레시피 추가 실패', error);
   }
 };
@@ -76,5 +75,45 @@ export const getMyFridgeList = async () => {
     }
   } catch (error: any) {
     console.log('냉장고 재료 가져오기 에러', error.response.data);
+  }
+};
+
+export const AddRecipeReview = async (
+  boardId: number,
+  data: AddRecipeReviewType,
+) => {
+  const formData = new FormData();
+  formData.append('comment', data.comment);
+  formData.append('star', data.star);
+  data.imagesFile.forEach(image => {
+    formData.append(`images`, image);
+  });
+  try {
+    const token = await AsyncStorage.getItem('token');
+    console.log('여기까진 오나', token);
+    const response = await baseUrl.post(`api/boards/${boardId}`, formData, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'multipart/form-data',
+      },
+    });
+    if (response.status === 200) {
+      console.log('레시피 후기 작성 성공');
+      return response.data;
+    }
+  } catch (error: any) {
+    console.log('레시피 후기 작성 실패', error);
+    throw new Error(error.response.data);
+  }
+};
+
+export const getRecipeDetailReview = async (boardId: number) => {
+  try {
+    const response = await baseUrl.get(`api/boards/${boardId}/comments`);
+    if (response.status === 200) {
+      return response.data;
+    }
+  } catch (error: any) {
+    console.log('레시피 디테일 리뷰 리스트 가져오기 실패', error);
   }
 };

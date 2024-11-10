@@ -3,10 +3,12 @@ import React from 'react';
 import FText from '../../../elements/FText';
 import {colors, FHeight, FWidth} from '../../../../../globalStyle';
 import LikeButton from '../../../elements/LikeButton';
+import {getExpiryDateInfo} from '../../../../service/MyFridge/MyFridge';
 
 type BottomComponentProps = {
   review: {
-    views: number;
+    like: number;
+    createdAt: string;
   };
   isClicked: boolean;
   onPress: () => void;
@@ -19,12 +21,12 @@ const BottomComponent = ({
 }: BottomComponentProps) => {
   return (
     <View style={styles.container}>
-      <LikeButton
-        isClicked={isClicked}
-        views={review.views}
-        onPress={onPress}
+      <LikeButton isClicked={isClicked} views={review.like} onPress={onPress} />
+      <FText
+        fStyle="R_12"
+        color={colors.b300}
+        text={getExpiryDateInfo(review.createdAt)}
       />
-      <FText fStyle="R_12" color={colors.b300} text={'일주일 전'} />
     </View>
   );
 };

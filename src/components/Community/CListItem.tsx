@@ -5,10 +5,10 @@ import {colors, FWidth} from '../../../globalStyle';
 import FText from '../elements/FText';
 import FImage from '../elements/FImage';
 import FButton from '../elements/FButton';
-import {GetRecipeListType} from '../../type/types';
+import {GetMyRecipeListType, GetRecipeListType} from '../../type/types';
 
 type CListItemProps = {
-  item: GetRecipeListType;
+  item: GetMyRecipeListType;
   onPress: () => void;
 };
 

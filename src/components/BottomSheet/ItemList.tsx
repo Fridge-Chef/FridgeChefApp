@@ -3,7 +3,7 @@ import React from 'react';
 import {FWidth} from '../../../globalStyle';
 import CloseItem from './CloseItem';
 import SubTitleBS from './SubTitleBS';
-import {ListData} from './AddIngredient/AddIngredient';
+import {ListData} from '../../type/types';
 
 type ItemListProps = {
   isClicked: number;
@@ -18,7 +18,7 @@ const ItemList = ({isClicked, itemList, setItemList, title}: ItemListProps) => {
       itemList.filter((listItem: ListData) => listItem.ingredientName !== item),
     );
   };
-  console.log('아이템리스트', itemList);
+
   return (
     <View>
       {itemList.length > 0 && (
