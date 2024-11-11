@@ -56,6 +56,7 @@ const FAppBar = ({
       <View style={styles.rightIconContainer}>
         <FButton
           buttonStyle={'noneStyle'}
+          hitSlop={{top: 10, bottom: 10, left: 10, right: 10}}
           fBStyle={{
             justifyContent: 'center',
             marginRight: rType1 && rType2 ? FWidth * 16 : null,

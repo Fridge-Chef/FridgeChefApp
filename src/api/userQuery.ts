@@ -1,9 +1,10 @@
 import {useMutation, useQuery} from '@tanstack/react-query';
 import {getUser, userLogin, UserLoginProps} from './user';
+import {UserData} from '../type/types';
 
 export const useGetUser = () => {
   const queryFn = () => getUser();
-  return useQuery({
+  return useQuery<UserData>({
     queryKey: ['user'],
     queryFn,
   });

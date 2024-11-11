@@ -52,7 +52,6 @@ export const addMyRecipe = async (data: AddIngredientType) => {
     formData.append(`descriptions[${index}].image`, instruction.imageFile);
   });
 
-  console.log('formData 여기까진 오는데', formData);
   try {
     const response = await baseUrl.post('api/board', formData, {
       headers: {
@@ -93,7 +92,6 @@ export const AddRecipeReview = async (
   });
   try {
     const token = await AsyncStorage.getItem('token');
-    console.log('여기까진 오나', token);
     const response = await baseUrl.post(`api/boards/${boardId}`, formData, {
       headers: {
         Authorization: `Bearer ${token}`,

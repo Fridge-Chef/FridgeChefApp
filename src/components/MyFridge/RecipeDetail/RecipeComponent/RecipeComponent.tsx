@@ -38,7 +38,6 @@ const styles = StyleSheet.create({
   container: {
     marginTop: FWidth * 12,
     paddingTop: FWidth * 24,
-    // paddingBottom: FWidth * 40,
     paddingHorizontal: FWidth * 22,
     backgroundColor: colors.white,
   },

@@ -19,30 +19,33 @@ type TitleComponentProps = {
 const TitleComponent = ({title, boardId}: TitleComponentProps) => {
   const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
   const {data, isLoading} = useGetRecipeDetailReview(boardId);
-  const [isCheck, setIsCheck] = useState(true);
+  const [isCheck, setIsCheck] = useState(false);
+
   const userCheck = async () => {
-    const userName = await AsyncStorage.getItem('userName');
-    if (
-      data?.content
-        .filter(item => item.userName === userName)
-        .map(item => item.userName === userName)
-    ) {
-      setIsCheck(false);
-    } else {
+    if (!data) return;
+    const userName = await AsyncStorage.getItem('nickname');
+    const userCheck =
+      data!.content.map(item => item.userName).filter(item => item === userName)
+        .length > 0;
+    console.log(userName);
+    console.log(userCheck);
+    if (userCheck) {
       setIsCheck(true);
+    } else {
+      setIsCheck(false);
     }
   };
 
   useEffect(() => {
     userCheck();
-  }, []);
-  console.log(isCheck);
+  }, [data]);
   if (isLoading)
     return <Loading loadingTitle="로딩중" backColor={colors.white} />;
+
   return (
     <View style={styles.container}>
       <SubTitle2 title="레시피 후기" />
-      {isCheck && (
+      {!isCheck && (
         <FButton
           buttonStyle="noneStyle"
           onPress={() =>

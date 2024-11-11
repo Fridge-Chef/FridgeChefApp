@@ -1,5 +1,5 @@
 import {StyleSheet, View} from 'react-native';
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {colors, FWidth} from '../../../../globalStyle';
 import Notification from '../../../utils/Svg/Notification';
 import FText from '../../elements/FText';
@@ -9,10 +9,16 @@ import {ParamListBase, useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {useGetUser} from '../../../api/userQuery';
 import Loading from '../../elements/Loading';
+import {UserData} from '../../../type/types';
 
 const LoginAndUser = () => {
   const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
+  const [user, setUser] = useState<UserData>();
   const {data, isLoading} = useGetUser();
+
+  useEffect(() => {
+    setUser(data);
+  }, [data]);
 
   if (isLoading) return <Loading loadingTitle="검색중" />;
   return (
@@ -20,7 +26,7 @@ const LoginAndUser = () => {
       style={[
         styles.container,
         {
-          backgroundColor: !data ? colors.background3 : colors.primary[4],
+          backgroundColor: !user ? colors.background3 : colors.primary[4],
         },
       ]}>
       {!data ? (
@@ -45,7 +51,7 @@ const LoginAndUser = () => {
               <FText
                 mLeft={FWidth * 8}
                 fStyle="B_16"
-                text={data?.user.username}
+                text={user?.user.username}
                 color={colors.text}
               />
               <FText
