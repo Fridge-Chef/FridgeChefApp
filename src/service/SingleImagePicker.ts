@@ -22,9 +22,10 @@ export const handleImagePicker = ({
           mediaType: 'photo',
           includeBase64: false,
           maxHeight: FWidth * 1920,
-          maxWidth: 1080,
+          maxWidth: FWidth * 1080,
           quality: 0.7,
         },
+
         res => {
           if (res.didCancel) {
             console.log('취소버튼을 눌렀습니다');

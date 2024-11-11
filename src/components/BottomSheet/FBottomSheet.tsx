@@ -1,6 +1,6 @@
-import {Keyboard, LayoutChangeEvent, StatusBar, StyleSheet} from 'react-native';
-import React, {useCallback, useEffect, useMemo, useRef, useState} from 'react';
-import BottomSheet, {
+import {Keyboard, StatusBar, StyleSheet} from 'react-native';
+import React, {useCallback, useEffect, useMemo, useRef} from 'react';
+import {
   BottomSheetBackdrop,
   BottomSheetModal,
   BottomSheetModalProvider,
@@ -13,19 +13,16 @@ import {
   useCategoriesText,
 } from '../../store/store';
 import {colors, FWidth} from '../../../globalStyle';
-import AddIngredient from './AddIngredient/AddIngredient';
-import IngredientList from './IngredientList/IngredientList';
-import Management from './ExpiryDate/Management';
-import Ranking from './Ranking/Ranking';
-import DetailReviewOption from './DetailReviewOption/DetailReviewOption';
-import RecipeRanking from './RecipeBookRanking/RecipeRanking';
 import {
   useCommunityMyRecipeName,
   useMyRecipeRankName,
   useMyReviewRankName,
   useRecipeLikeRankName,
 } from '../../store/rankingStore';
-import AddRecipeCategory from './AddRecipeCategory/AddRecipeCategory';
+import {
+  bottomScreen,
+  handleIndex,
+} from '../../service/FBottomSheet/FBottomSheet';
 
 const FBottomSheet = () => {
   const {title} = useBottomSheetTitle();
@@ -61,7 +58,7 @@ const FBottomSheet = () => {
       case '나만의레시피':
       case '나의후기':
       case '디테일리뷰옵션':
-        return ['28%'];
+        return ['10%'];
       default:
         return ['100%'];
     }
@@ -91,72 +88,6 @@ const FBottomSheet = () => {
     }
     Keyboard.dismiss();
   }, []);
-
-  const bottomScreen = () => {
-    switch (title) {
-      case '재료 추가':
-        return <AddIngredient />;
-      case '유통기한 등록':
-        return <Management />;
-      case '재료보기':
-        return <IngredientList />;
-      case '나의레시피등록':
-        return <AddRecipeCategory />;
-      case '순위':
-        return <Ranking />;
-      case '좋아요 랭킹':
-        return (
-          <RecipeRanking
-            setRankName={setRankName}
-            rankingId={rankingId}
-            setRankingId={setRankingId}
-          />
-        );
-      case '나의레시피':
-        return (
-          <RecipeRanking
-            setRankName={setMyRanking}
-            rankingId={myRankingId}
-            setRankingId={setMyRankingId}
-          />
-        );
-      case '나만의레시피':
-        return (
-          <RecipeRanking
-            setRankName={setCommunityRankingName}
-            rankingId={communityRankingId}
-            setRankingId={setCommunityRankingId}
-          />
-        );
-      case '나의후기':
-        return (
-          <RecipeRanking
-            setRankName={setMyReviewRanking}
-            rankingId={myReviewRankingId}
-            setRankingId={setMyReviewRankingId}
-          />
-        );
-      case '디테일리뷰옵션':
-        return <DetailReviewOption />;
-      default:
-        break;
-    }
-  };
-
-  const handleIndex = () => {
-    if (
-      title === '순위' ||
-      title === '좋아요 랭킹' ||
-      title === '나의레시피' ||
-      title === '나만의레시피' ||
-      title === '나의후기' ||
-      title === '디테일리뷰옵션'
-    ) {
-      return 1;
-    } else {
-      return 0;
-    }
-  };
 
   useEffect(() => {
     setBottomSheetRef(bottomRef);
@@ -192,7 +123,7 @@ const FBottomSheet = () => {
           backgroundStyle={{
             backgroundColor: colors.white,
           }}
-          index={handleIndex()}
+          index={handleIndex(title)}
           style={[styles.contentContainer]}>
           <BottomSheetScrollView
             showsVerticalScrollIndicator={false}
@@ -207,7 +138,21 @@ const FBottomSheet = () => {
                   ? 0
                   : 1,
             }}>
-            {bottomScreen()}
+            {bottomScreen({
+              communityRankingId,
+              myRankingId,
+              myReviewRankingId,
+              rankingId,
+              setCommunityRankingId,
+              setCommunityRankingName,
+              setMyRanking,
+              setMyRankingId,
+              setMyReviewRanking,
+              setMyReviewRankingId,
+              setRankingId,
+              setRankName,
+              title,
+            })}
           </BottomSheetScrollView>
         </BottomSheetModal>
       </BottomSheetModalProvider>

@@ -9,10 +9,11 @@ type ReviewContentProps = {
     boardId: number;
     comments: string;
     createdAt: string;
+    id: number;
     imageLink: string[];
     like: number;
     star: number;
-    username: string;
+    userName: string;
   };
 };
 

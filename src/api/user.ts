@@ -18,7 +18,6 @@ export const getRefreshToken = async (token: string) => {
       },
     });
     if (response.status === 200) {
-      console.log('리프레시 토큰', response.data.user.refreshToken);
       await AsyncStorage.setItem(
         'refreshToken',
         response.data.user.refreshToken,

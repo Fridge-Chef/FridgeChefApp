@@ -1,5 +1,5 @@
 import {StyleSheet, View} from 'react-native';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {colors, FWidth} from '../../../../../globalStyle';
 import ReviewContent from './ReviewContent';
 import UserInfo from './UserInfo';
@@ -9,25 +9,23 @@ import FButton from '../../../elements/FButton';
 import {ParamListBase, useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {useRecipeReviewTitle} from '../../../../store/store';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import {useLikeRecipeReview} from '../../../../api/recipeQuery';
+import FModal from '../../../elements/FModal';
+import {RecipeReviewDetailType} from '../../../../type/types';
 
 type ReviewProps = {
-  review: {
-    boardId: number;
-    comments: string;
-    createdAt: string;
-    id: number;
-    imageLink: string[];
-    like: number;
-    star: number;
-    userName: string;
-  };
+  review: RecipeReviewDetailType;
+
   title: string;
+  refetch: () => void;
 };
 
-const Review = ({review, title}: ReviewProps) => {
-  const [isClicked, setIsClicked] = useState(false);
+const Review = ({review, title, refetch}: ReviewProps) => {
+  const [loginCheck, setLoginCheck] = useState(false);
   const {setReviewTitle} = useRecipeReviewTitle();
   const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
+  const {mutate} = useLikeRecipeReview();
   const handleReviewDetail = () => {
     setReviewTitle(title);
     navigation.navigate('userReviewDetail', {item: review});
@@ -51,10 +49,41 @@ const Review = ({review, title}: ReviewProps) => {
       </View>
       <ReviewContent content={review} />
       <BottomComponent
-        isClicked={isClicked}
+        isClicked={review.myHit}
         review={review}
-        onPress={() => setIsClicked(!isClicked)}
+        onPress={async () => {
+          const token = await AsyncStorage.getItem('token');
+          if (token) {
+            mutate(
+              {
+                boardId: review.boardId,
+                commentId: review.id,
+              },
+              {
+                onSuccess: () => {
+                  refetch();
+                },
+              },
+            );
+          } else {
+            setLoginCheck(true);
+          }
+        }}
       />
+      {loginCheck && (
+        <FModal
+          modalVisible={loginCheck}
+          buttonText="로그인"
+          text="로그인이 필요한 서비스입니다."
+          cancel={true}
+          cancelText="취소"
+          cancelOnPress={() => setLoginCheck(false)}
+          onPress={() => {
+            navigation.navigate('serviceLogin');
+            setLoginCheck(false);
+          }}
+        />
+      )}
     </FButton>
   );
 };

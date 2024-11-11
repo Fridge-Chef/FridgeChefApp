@@ -1,7 +1,10 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {baseUrl} from './axios';
-import {AddIngredientType, AddRecipeReviewType} from '../type/types';
-import {Dispatch} from 'react';
+import {
+  AddIngredientType,
+  AddRecipeReviewType,
+  RecipeReviewLikeType,
+} from '../type/types';
 
 export const getRecommendedRecipeList = async (ingredientsQuery: string) => {
   try {
@@ -99,7 +102,6 @@ export const AddRecipeReview = async (
       },
     });
     if (response.status === 200) {
-      console.log('레시피 후기 작성 성공');
       return response.data;
     }
   } catch (error: any) {
@@ -110,11 +112,59 @@ export const AddRecipeReview = async (
 
 export const getRecipeDetailReview = async (boardId: number) => {
   try {
-    const response = await baseUrl.get(`api/boards/${boardId}/comments`);
+    const token = await AsyncStorage.getItem('token');
+    const response = await baseUrl.get(`api/boards/${boardId}/comments`, {
+      headers: {
+        Authorization: token ? `Bearer ${token}` : null,
+      },
+    });
     if (response.status === 200) {
       return response.data;
     }
   } catch (error: any) {
     console.log('레시피 디테일 리뷰 리스트 가져오기 실패', error);
+  }
+};
+
+export const likeRecipeReview = async (likeData: RecipeReviewLikeType) => {
+  try {
+    const token = await AsyncStorage.getItem('token');
+    const response = await baseUrl.patch(
+      `api/boards/${likeData.boardId}/comments/${likeData.commentId}/like`,
+      {},
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      },
+    );
+    if (response.status === 200) {
+      return response.data;
+    }
+  } catch (error: any) {
+    console.log(error.response.data);
+    throw new Error(error);
+  }
+};
+
+export const recipeReviewDetail = async (
+  boardId: number,
+  commentId: number,
+) => {
+  try {
+    const token = await AsyncStorage.getItem('token');
+    const response = await baseUrl.get(
+      `api/boards/${boardId}/comments/${commentId}`,
+      {
+        headers: {
+          Authorization: token ? `Bearer ${token}` : null,
+        },
+      },
+    );
+    if (response.status === 200) {
+      return response.data;
+    }
+  } catch (error: any) {
+    console.log('레시피 후기 상세정보 가져오기', error.response.data);
   }
 };

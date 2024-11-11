@@ -184,6 +184,7 @@ export type RecipeReviewListType = {
     comments: string;
     createdAt: string;
     id: number;
+    myHit: boolean;
     imageLink: string[];
     like: number;
     star: number;
@@ -195,4 +196,21 @@ export type RecipeReviewListType = {
     totalElements: number;
     totalPages: number;
   };
+};
+
+export type RecipeReviewDetailType = {
+  boardId: number;
+  comments: string;
+  createdAt: string;
+  id: number;
+  myHit: boolean;
+  imageLink: string[];
+  like: number;
+  star: number;
+  userName: string;
+};
+
+export type RecipeReviewLikeType = {
+  boardId: number;
+  commentId: number;
 };

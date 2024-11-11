@@ -1,35 +1,52 @@
-import {Image, StyleSheet, View} from 'react-native';
-import React from 'react';
+import {StyleSheet, View} from 'react-native';
+import React, {useEffect} from 'react';
 import {RouteProp, useRoute} from '@react-navigation/native';
 import {colors, FWidth} from '../../../../../globalStyle';
 import TopComponent from './TopComponent';
 import UserContent from './UserContent';
+import {useGetRecipeReviewDetail} from '../../../../api/recipeQuery';
+import Loading from '../../../elements/Loading';
+import {RecipeReviewDetailType} from '../../../../type/types';
 
 type RecipeType = {
   params: {
-    item: {
-      boardId: number;
-      comments: string;
-      createdAt: string;
-      id: number;
-      imageLink: string[];
-      like: number;
-      star: number;
-      userName: string;
-    };
+    item: RecipeReviewDetailType;
   };
 };
 
 const UserReview = () => {
   const route = useRoute<RouteProp<RecipeType>>();
-  const {comments, star, like, userName, imageLink, createdAt} =
-    route.params.item;
+  const {boardId, id} = route.params.item;
+  const {data, isLoading, refetch} = useGetRecipeReviewDetail(boardId, id);
+  console.log('이거지', data);
 
+  useEffect(() => {
+    refetch();
+  }, [data]);
+
+  if (isLoading)
+    return <Loading loadingTitle="로딩중" backColor={colors.white} />;
   return (
-    <View style={styles.container}>
-      <TopComponent writer={userName} point={star} createdAt={createdAt} />
-      <UserContent uri={imageLink} content={comments} views={like} />
-    </View>
+    <>
+      {data && (
+        <View style={styles.container}>
+          <TopComponent
+            writer={data.userName}
+            point={data.star}
+            createdAt={data.createdAt}
+          />
+          <UserContent
+            uri={data.imageLink}
+            content={data.comments}
+            views={data.like}
+            boardId={data.boardId}
+            commentId={data.id}
+            myHit={data.myHit}
+            refetch={refetch}
+          />
+        </View>
+      )}
+    </>
   );
 };
 

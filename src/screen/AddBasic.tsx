@@ -17,7 +17,7 @@ const AddBasic = () => {
     {ingredientName: '설탕', storage: 'TEMPERATURE'},
     {ingredientName: '간장', storage: 'TEMPERATURE'},
   ]);
-  console.log(basicItem);
+
   return (
     <View style={styles.container}>
       <TopLine colorWidth={'100%'} />

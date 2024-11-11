@@ -7,12 +7,16 @@ import {
   getRecipeDetailReview,
   getRecipeList,
   getRecommendedRecipeList,
+  likeRecipeReview,
+  recipeReviewDetail,
 } from './recipe';
 import {
   AddIngredientType,
   GetRecipeListType,
   RecipeListType,
   recipeReviewDataType,
+  RecipeReviewDetailType,
+  RecipeReviewLikeType,
   RecipeReviewListType,
 } from '../type/types';
 
@@ -71,5 +75,25 @@ export const useGetRecipeDetailReview = (id: number) => {
     queryKey: ['recipeDetailReviewList', id],
     queryFn,
     select: data => data || [],
+  });
+};
+
+export const useGetRecipeReviewDetail = (
+  boardId: number,
+  commentId: number,
+) => {
+  const queryFn = () => recipeReviewDetail(boardId, commentId);
+  return useQuery<RecipeReviewDetailType>({
+    queryKey: ['recipeReviewDetail', `${boardId}의 ${commentId}`],
+    queryFn,
+  });
+};
+
+export const useLikeRecipeReview = () => {
+  const mutationFn = (likeData: RecipeReviewLikeType) =>
+    likeRecipeReview(likeData);
+  return useMutation({
+    mutationKey: ['likeRecipeReview'],
+    mutationFn,
   });
 };

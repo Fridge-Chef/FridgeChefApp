@@ -14,7 +14,10 @@ type LikeButtonProps = {
 
 const LikeButton = ({onPress, isClicked, views}: LikeButtonProps) => {
   return (
-    <FButton buttonStyle="noneStyle" onPress={onPress}>
+    <FButton
+      buttonStyle="noneStyle"
+      onPress={onPress}
+      fBStyle={{alignSelf: 'flex-start'}}>
       <View style={styles.iconAlign}>
         {isClicked ? <DetailReviewLikeColor /> : <DetailReviewLike />}
         <FText

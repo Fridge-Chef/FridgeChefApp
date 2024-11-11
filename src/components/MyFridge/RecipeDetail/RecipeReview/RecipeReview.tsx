@@ -1,8 +1,10 @@
 import {StyleSheet, View} from 'react-native';
-import React from 'react';
+import React, {useEffect} from 'react';
 import {colors, FWidth} from '../../../../../globalStyle';
 import TitleComponent from './TitleComponent';
 import ReviewsComponent from './ReviewsComponent';
+import {useGetRecipeDetailReview} from '../../../../api/recipeQuery';
+import Loading from '../../../elements/Loading';
 
 type RecipeReviewProps = {
   boardId: number;
@@ -10,10 +12,18 @@ type RecipeReviewProps = {
 };
 
 const RecipeReview = ({title, boardId}: RecipeReviewProps) => {
+  const {data, isLoading, refetch} = useGetRecipeDetailReview(boardId);
+
+  useEffect(() => {
+    refetch();
+  }, [data]);
+
+  if (isLoading)
+    return <Loading loadingTitle="로딩중" backColor={colors.white} />;
   return (
     <View style={styles.container}>
-      <TitleComponent title={title} boardId={boardId} />
-      <ReviewsComponent title={title} boardId={boardId} />
+      <TitleComponent title={title} data={data} boardId={boardId} />
+      <ReviewsComponent title={title} data={data} refetch={refetch} />
     </View>
   );
 };

@@ -10,15 +10,16 @@ import SubTitle2 from '../../../elements/SubTitle/SubTitle2';
 import {useGetRecipeDetailReview} from '../../../../api/recipeQuery';
 import Loading from '../../../elements/Loading';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import {RecipeReviewListType} from '../../../../type/types';
 
 type TitleComponentProps = {
   title: string;
+  data: RecipeReviewListType | undefined;
   boardId: number;
 };
 
-const TitleComponent = ({title, boardId}: TitleComponentProps) => {
+const TitleComponent = ({title, boardId, data}: TitleComponentProps) => {
   const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
-  const {data, isLoading} = useGetRecipeDetailReview(boardId);
   const [isCheck, setIsCheck] = useState(false);
 
   const userCheck = async () => {
@@ -27,8 +28,6 @@ const TitleComponent = ({title, boardId}: TitleComponentProps) => {
     const userCheck =
       data!.content.map(item => item.userName).filter(item => item === userName)
         .length > 0;
-    console.log(userName);
-    console.log(userCheck);
     if (userCheck) {
       setIsCheck(true);
     } else {
@@ -39,8 +38,6 @@ const TitleComponent = ({title, boardId}: TitleComponentProps) => {
   useEffect(() => {
     userCheck();
   }, [data]);
-  if (isLoading)
-    return <Loading loadingTitle="로딩중" backColor={colors.white} />;
 
   return (
     <View style={styles.container}>

@@ -1,19 +1,41 @@
-import {Dimensions, StyleSheet, useWindowDimensions, View} from 'react-native';
+import {StyleSheet, useWindowDimensions, View} from 'react-native';
 import React, {useEffect, useRef, useState} from 'react';
 import FImage from '../../../elements/FImage';
 import {colors, FWidth} from '../../../../../globalStyle';
 import FText from '../../../elements/FText';
 import LikeButton from '../../../elements/LikeButton';
 import Carousel from 'react-native-reanimated-carousel';
+import {
+  useGetRecipeDetailReview,
+  useLikeRecipeReview,
+} from '../../../../api/recipeQuery';
+import FModal from '../../../elements/FModal';
+import {ParamListBase, useNavigation} from '@react-navigation/native';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 type UserContentProps = {
   uri?: string[];
   content: string;
   views: number;
+  myHit: boolean;
+  boardId: number;
+  commentId: number;
+  refetch: () => void;
 };
 
-const UserContent = ({uri, content, views}: UserContentProps) => {
-  const [isClicked, setIsClicked] = useState(false);
+const UserContent = ({
+  uri,
+  content,
+  views,
+  myHit,
+  boardId,
+  commentId,
+  refetch,
+}: UserContentProps) => {
+  const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
+  const [loginCheck, setLoginCheck] = useState(false);
+  const {mutate} = useLikeRecipeReview();
   const [imagesIndex, setImagesIndex] = useState(0);
   const imagesIndexRef = useRef(0);
   const {width} = useWindowDimensions();
@@ -34,10 +56,25 @@ const UserContent = ({uri, content, views}: UserContentProps) => {
         />
       </View>
       <LikeButton
-        isClicked={isClicked}
+        isClicked={myHit}
         views={views}
-        onPress={() => {
-          setIsClicked(!isClicked);
+        onPress={async () => {
+          const token = await AsyncStorage.getItem('token');
+          if (token) {
+            mutate(
+              {
+                boardId: boardId,
+                commentId: commentId,
+              },
+              {
+                onSuccess: () => {
+                  refetch();
+                },
+              },
+            );
+          } else {
+            setLoginCheck(true);
+          }
         }}
       />
       {uri?.length !== 0 && (
@@ -69,6 +106,20 @@ const UserContent = ({uri, content, views}: UserContentProps) => {
             />
           </View>
         </View>
+      )}
+      {loginCheck && (
+        <FModal
+          modalVisible={loginCheck}
+          buttonText="로그인"
+          text="로그인이 필요한 서비스입니다."
+          cancel={true}
+          cancelText="취소"
+          cancelOnPress={() => setLoginCheck(false)}
+          onPress={() => {
+            navigation.navigate('serviceLogin');
+            setLoginCheck(false);
+          }}
+        />
       )}
     </>
   );
