@@ -10,52 +10,72 @@ import {
   useAddRecipeReview,
   useGetRecipeDetailReview,
 } from '../../../api/recipeQuery';
+import {useUpdateDetailReview} from '../../../api/commentReviewQuery';
 
 const AddReviewAppBar = () => {
   const {userReview, setUserReview} = useUserReview();
   const [isBack, setIsBack] = useState(false);
+  const [updateCheck, setUpdateCheck] = useState(false);
   const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
   const {mutate} = useAddRecipeReview();
+  const {mutate: updateMutate} = useUpdateDetailReview();
   const {refetch} = useGetRecipeDetailReview(userReview.boardId);
 
   const handleSubmit = async () => {
+    console.log(userReview);
     if (
-      userReview.reviewContent === '' ||
-      userReview.reviewPoint === 0 ||
-      userReview.reviewContent.length < 10
+      userReview.comment === '' ||
+      userReview.star === 0 ||
+      userReview.comment.length < 10
     ) {
       console.log('데이터를 모두 입력해주세요');
       return;
     } else {
-      mutate(
-        {
-          boardId: userReview.boardId,
-          reviewData: {
-            comment: userReview.reviewContent,
-            images: userReview.reviewImg,
-            imagesFile: userReview.reviewImgFile!,
-            star: userReview.reviewPoint,
+      if (userReview.type === 'update') {
+        updateMutate(
+          {
+            boardId: userReview.boardId,
+            commentId: userReview.commentId!,
+            review: userReview,
           },
-        },
-        {
-          onSuccess: () => {
-            setUserReview({
-              boardId: 0,
-              reviewPoint: 0,
-              reviewContent: '',
-              reviewImg: [],
-              reviewImgFile: [],
-            });
-            refetch();
-            navigation.goBack();
+          {
+            onSuccess: () => {
+              console.log('수정');
+              setUpdateCheck(true);
+            },
           },
-        },
-      );
+        );
+      } else {
+        mutate(
+          {
+            boardId: userReview.boardId,
+            reviewData: {
+              comment: userReview.comment,
+              images: userReview.reviewImg,
+              imagesFile: userReview.imagesFile!,
+              star: userReview.star,
+            },
+          },
+          {
+            onSuccess: () => {
+              setUserReview({
+                boardId: 0,
+                star: 0,
+                comment: '',
+                reviewImg: [],
+                imagesFile: [],
+              });
+              refetch();
+              navigation.goBack();
+            },
+          },
+        );
+      }
     }
   };
 
   const handleTextColor = () => {
-    if (userReview.reviewContent.length < 10 || userReview.reviewPoint === 0) {
+    if (userReview.comment.length < 10 || userReview.star === 0) {
       return colors.disabled;
     } else {
       return colors.secondary[1];
@@ -77,19 +97,37 @@ const AddReviewAppBar = () => {
         rightTextColor={handleTextColor()}
         textOnPress={handleSubmit}
       />
-      {isBack && (
+      {(updateCheck || isBack) && (
         <FModal
-          modalVisible={isBack}
-          cancel
+          modalVisible={updateCheck || isBack}
+          cancel={updateCheck ? false : true}
           cancelOnPress={() => {
-            setIsBack(false);
-            navigation.goBack();
+            if (!updateCheck) {
+              setIsBack(false);
+              navigation.goBack();
+            }
           }}
           onPress={() => {
+            if (updateCheck) {
+              setUserReview({
+                boardId: 0,
+                star: 0,
+                comment: '',
+                reviewImg: [],
+                imagesFile: [],
+              });
+              refetch();
+              setUpdateCheck(false);
+              navigation.goBack();
+            }
             setIsBack(false);
           }}
-          text="작성을 취소하면 내용이 사라집니다."
-          buttonText="작성하기"
+          text={
+            updateCheck
+              ? '수정이 완료되었습니다.'
+              : '작성을 취소하면 내용이 사라집니다.'
+          }
+          buttonText={updateCheck ? '확인' : '작성하기'}
           cancelText="나가기"
         />
       )}

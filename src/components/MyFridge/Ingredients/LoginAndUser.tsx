@@ -7,17 +7,18 @@ import NotLoginUser from '../../../utils/Svg/NotLoginUser';
 import FButton from '../../elements/FButton';
 import {ParamListBase, useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import {useGetUser} from '../../../api/userQuery';
+import {useGetRefreshUser, useGetUser} from '../../../api/userQuery';
 import Loading from '../../elements/Loading';
 import {UserData} from '../../../type/types';
 
 const LoginAndUser = () => {
   const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
   const [user, setUser] = useState<UserData>();
-  const {data, isLoading} = useGetUser();
+  const {data, isLoading, refetch} = useGetUser();
 
   useEffect(() => {
     setUser(data);
+    refetch();
   }, [data]);
 
   if (isLoading) return <Loading loadingTitle="검색중" />;

@@ -7,26 +7,43 @@ import AddContent from '../../components/MyFridge/AddRecipeReview/AddContent';
 import ImageView from '../../components/MyFridge/AddRecipeReview/ImageView';
 import {useUserReview} from '../../store/store';
 import {RouteProp, useRoute} from '@react-navigation/native';
+import {RecipeReviewDetailType} from '../../type/types';
 
 type RecipeTitle = {
   params: {
     boardId: number;
     title: string;
+    type: string;
+    review?: RecipeReviewDetailType;
   };
 };
 
 const AddRecipeReview = () => {
   const route = useRoute<RouteProp<RecipeTitle>>();
+  const item = route.params.review;
   const {userReview, setUserReview} = useUserReview();
-
   useEffect(() => {
-    setUserReview({
-      reviewContent: '',
-      reviewImg: [],
-      reviewImgFile: [],
-      reviewPoint: 0,
-      boardId: route.params.boardId,
-    });
+    if (item) {
+      setUserReview({
+        type: route.params.type,
+        commentId: item.id,
+        comment: item.comments,
+        reviewImg: item.imageLink,
+        imagesFile: [],
+        star: item.star,
+        boardId: item.boardId,
+      });
+    } else {
+      setUserReview({
+        type: '',
+        commentId: 0,
+        comment: '',
+        reviewImg: [],
+        imagesFile: [],
+        star: 0,
+        boardId: route.params.boardId,
+      });
+    }
   }, []);
 
   return (
@@ -36,20 +53,20 @@ const AddRecipeReview = () => {
           <View style={styles.topContainer}>
             <AddScore title={route.params.title} />
             <AddContent />
-            {userReview.reviewImg.length > 0 &&
-              userReview.reviewImg.map((img, index) => (
+            {userReview.reviewImg!.length > 0 &&
+              userReview.reviewImg!.map((img, index) => (
                 <ImageView
                   key={index}
                   uri={img}
                   onPress={() => {
                     setUserReview({
                       reviewImg: [
-                        ...userReview.reviewImg.slice(0, index),
-                        ...userReview.reviewImg.slice(index + 1),
+                        ...userReview.reviewImg!.slice(0, index),
+                        ...userReview.reviewImg!.slice(index + 1),
                       ],
-                      reviewImgFile: [
-                        ...userReview.reviewImgFile!.slice(0, index),
-                        ...userReview.reviewImgFile!.slice(index + 1),
+                      imagesFile: [
+                        ...userReview.imagesFile!.slice(0, index),
+                        ...userReview.imagesFile!.slice(index + 1),
                       ],
                     });
                   }}

@@ -113,13 +113,17 @@ export type AddIngredientType = {
 };
 
 export type AddRecipeReviewType = {
+  type?: string | undefined;
+  commentId?: number | undefined;
   comment: string;
-  images: string[];
-  imagesFile: {
-    name: string;
-    type: string;
-    uri: string;
-  }[];
+  images?: string[];
+  imagesFile?:
+    | {
+        name: string;
+        type: string;
+        uri: string;
+      }[]
+    | undefined;
   star: number;
 };
 
@@ -213,4 +217,10 @@ export type RecipeReviewDetailType = {
 export type RecipeReviewLikeType = {
   boardId: number;
   commentId: number;
+};
+
+export type RecipeDetailReviewUpdateType = {
+  boardId: number;
+  commentId: number;
+  review: AddRecipeReviewType;
 };

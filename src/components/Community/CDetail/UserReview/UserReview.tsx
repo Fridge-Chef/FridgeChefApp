@@ -18,7 +18,6 @@ const UserReview = () => {
   const route = useRoute<RouteProp<RecipeType>>();
   const {boardId, id} = route.params.item;
   const {data, isLoading, refetch} = useGetRecipeReviewDetail(boardId, id);
-  console.log('이거지', data);
 
   useEffect(() => {
     refetch();
@@ -30,20 +29,8 @@ const UserReview = () => {
     <>
       {data && (
         <View style={styles.container}>
-          <TopComponent
-            writer={data.userName}
-            point={data.star}
-            createdAt={data.createdAt}
-          />
-          <UserContent
-            uri={data.imageLink}
-            content={data.comments}
-            views={data.like}
-            boardId={data.boardId}
-            commentId={data.id}
-            myHit={data.myHit}
-            refetch={refetch}
-          />
+          <TopComponent data={data} />
+          <UserContent data={data} refetch={refetch} />
         </View>
       )}
     </>

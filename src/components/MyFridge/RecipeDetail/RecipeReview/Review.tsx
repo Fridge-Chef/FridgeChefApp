@@ -13,22 +13,56 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import {useLikeRecipeReview} from '../../../../api/recipeQuery';
 import FModal from '../../../elements/FModal';
 import {RecipeReviewDetailType} from '../../../../type/types';
+import AppBarMenu from '../../../elements/AppBarMenu';
+import {useDeleteDetailReview} from '../../../../api/commentReviewQuery';
 
 type ReviewProps = {
   review: RecipeReviewDetailType;
-
+  menuOpen: boolean;
+  setMenuOpen: React.Dispatch<React.SetStateAction<boolean>>;
   title: string;
   refetch: () => void;
 };
 
-const Review = ({review, title, refetch}: ReviewProps) => {
+const Review = ({
+  review,
+  title,
+  refetch,
+  menuOpen,
+  setMenuOpen,
+}: ReviewProps) => {
   const [loginCheck, setLoginCheck] = useState(false);
+
+  const [modalCheck, setModalCheck] = useState(false);
+  const [deleteCheck, setDeleteCheck] = useState(true);
+  const [userCheck, setUserCheck] = useState(false);
+  const {mutate: commentDelete} = useDeleteDetailReview();
   const {setReviewTitle} = useRecipeReviewTitle();
   const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
   const {mutate} = useLikeRecipeReview();
   const handleReviewDetail = () => {
     setReviewTitle(title);
     navigation.navigate('userReviewDetail', {item: review});
+  };
+
+  const userChecked = async () => {
+    const userName = await AsyncStorage.getItem('nickname');
+    const userCheck = userName === review.userName;
+    if (userCheck) {
+      setUserCheck(true);
+    } else {
+      setUserCheck(false);
+    }
+  };
+
+  useEffect(() => {
+    userChecked();
+  }, [review]);
+
+  const handleClose = () => {
+    setMenuOpen(false);
+    setModalCheck(false);
+    refetch();
   };
 
   return (
@@ -38,14 +72,30 @@ const Review = ({review, title, refetch}: ReviewProps) => {
       onPress={handleReviewDetail}>
       <View style={styles.iconAlign}>
         <UserInfo writer={review.userName} point={review.star} />
-        <FButton
-          buttonStyle="noneStyle"
-          hitSlop={{top: 10, bottom: 10, left: 10, right: 10}}
-          onPress={() => {
-            console.log('옵션버튼');
-          }}>
-          <DetailReviewMore />
-        </FButton>
+        {userCheck && (
+          <FButton
+            buttonStyle="noneStyle"
+            hitSlop={{top: 10, bottom: 10, left: 10, right: 10}}
+            onPress={() => setMenuOpen(!menuOpen)}>
+            <DetailReviewMore />
+          </FButton>
+        )}
+        {menuOpen && (
+          <View style={styles.menuContainer}>
+            <AppBarMenu
+              id={review.id}
+              updateOnPress={() => {
+                navigation.navigate('addRecipeReview', {
+                  type: 'update',
+                  title,
+                  review,
+                });
+                setMenuOpen(false);
+              }}
+              deleteOnPress={() => setModalCheck(true)}
+            />
+          </View>
+        )}
       </View>
       <ReviewContent content={review} />
       <BottomComponent
@@ -84,6 +134,36 @@ const Review = ({review, title, refetch}: ReviewProps) => {
           }}
         />
       )}
+      {modalCheck && (
+        <FModal
+          modalVisible={modalCheck}
+          buttonText={deleteCheck ? '삭제' : '확인'}
+          cancelText="취소"
+          cancel={deleteCheck ? true : false}
+          text={
+            deleteCheck
+              ? '정말로 이글을 삭제하시겠습니까?'
+              : '삭제가 완료되었습니다.'
+          }
+          text2={deleteCheck ? '삭제한 글은 복구할 수 없습니다.' : null}
+          onPress={() =>
+            deleteCheck
+              ? commentDelete(
+                  {
+                    boardId: review.boardId,
+                    commentId: review.id,
+                  },
+                  {
+                    onSuccess: () => {
+                      setDeleteCheck(false);
+                    },
+                  },
+                )
+              : handleClose()
+          }
+          cancelOnPress={() => setModalCheck(false)}
+        />
+      )}
     </FButton>
   );
 };
@@ -99,8 +179,16 @@ const styles = StyleSheet.create({
     padding: 16,
   },
   iconAlign: {
+    position: 'relative',
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
+  },
+
+  menuContainer: {
+    zIndex: 10,
+    right: FWidth * -16,
+    top: FWidth * 30,
+    position: 'absolute',
   },
 });

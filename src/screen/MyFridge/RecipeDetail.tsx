@@ -1,5 +1,5 @@
-import {ScrollView, StyleSheet, View} from 'react-native';
-import React from 'react';
+import {Pressable, ScrollView, StyleSheet, View} from 'react-native';
+import React, {useState} from 'react';
 import {colors} from '../../../globalStyle';
 import {RouteProp, useRoute} from '@react-navigation/native';
 import TitleComponent from '../../components/MyFridge/RecipeDetail/TitleComponent/TitleComponent';
@@ -24,7 +24,7 @@ type DetailItem = {
 const RecipeDetail = () => {
   const route = useRoute<RouteProp<DetailItem>>();
   const items = route.params;
-
+  const [menuOpen, setMenuOpen] = useState(false);
   const {setScrollY} = useScrollY();
   const {data, isLoading} = useGetRecipeDetail(route.params.id);
 
@@ -35,20 +35,27 @@ const RecipeDetail = () => {
       style={styles.container}
       overScrollMode="never"
       onScroll={e => setScrollY(e.nativeEvent.contentOffset.y)}>
-      <View style={{position: 'relative'}}>
-        <FImage
-          imgStyle="detail"
-          uri={data!.mainImage}
-          resizeMode="cover"
-          alt="디테일"
+      <Pressable onPress={() => setMenuOpen(false)}>
+        <View style={{position: 'relative'}}>
+          <FImage
+            imgStyle="detail"
+            uri={data!.mainImage}
+            resizeMode="cover"
+            alt="디테일"
+          />
+          <Badge />
+        </View>
+        <TitleComponent detailData={data!} items={items} />
+        <RecipeNote content={data!.description} />
+        <IngredientComponent recipeIngredients={data!.recipeIngredients} />
+        <RecipeComponent instructions={data!.instructions} />
+        <RecipeReview
+          title={data!.title}
+          boardId={data!.boardId}
+          menuOpen={menuOpen}
+          setMenuOpen={setMenuOpen}
         />
-        <Badge />
-      </View>
-      <TitleComponent detailData={data!} items={items} />
-      <RecipeNote content={data!.description} />
-      <IngredientComponent recipeIngredients={data!.recipeIngredients} />
-      <RecipeComponent instructions={data!.instructions} />
-      <RecipeReview title={data!.title} boardId={data!.boardId} />
+      </Pressable>
     </ScrollView>
   );
 };

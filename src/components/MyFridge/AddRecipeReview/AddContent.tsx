@@ -9,13 +9,13 @@ const AddContent = () => {
   return (
     <View style={styles.container}>
       <FInput
-        value={userReview.reviewContent}
+        value={userReview.comment}
         inputStyle="noBorder"
         placeholder="내용을 입력하세요"
         fontFamily={fontFamilies.pretendardRegular}
         multiline
         onChangeText={text => {
-          setUserReview({reviewContent: text});
+          setUserReview({comment: text});
         }}
       />
     </View>

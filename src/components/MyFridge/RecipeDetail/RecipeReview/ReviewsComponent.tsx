@@ -10,10 +10,18 @@ import {RecipeReviewListType} from '../../../../type/types';
 type ReviewsComponentProps = {
   title: string;
   data: RecipeReviewListType | undefined;
+  menuOpen: boolean;
+  setMenuOpen: React.Dispatch<React.SetStateAction<boolean>>;
   refetch: () => void;
 };
 
-const ReviewsComponent = ({title, data, refetch}: ReviewsComponentProps) => {
+const ReviewsComponent = ({
+  title,
+  data,
+  refetch,
+  menuOpen,
+  setMenuOpen,
+}: ReviewsComponentProps) => {
   const {bottomSheetRef} = useBottomSheetRef();
   const {setTitle} = useBottomSheetTitle();
   const handleBottomSheetOpen = () => {
@@ -32,6 +40,8 @@ const ReviewsComponent = ({title, data, refetch}: ReviewsComponentProps) => {
               review={item}
               title={title}
               refetch={refetch}
+              menuOpen={menuOpen}
+              setMenuOpen={setMenuOpen}
             />
           ))
         ) : (

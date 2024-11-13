@@ -30,7 +30,7 @@ const AddImage = () => {
               if (!res.assets || res.assets.length === 0) return;
               setUserReview({
                 reviewImg: res.assets.map(img => img.uri!),
-                reviewImgFile: res.assets.map(img => ({
+                imagesFile: res.assets.map(img => ({
                   name: img.fileName!,
                   type: img.type!,
                   uri: img.uri!,

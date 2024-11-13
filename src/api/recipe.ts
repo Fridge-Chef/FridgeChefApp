@@ -90,7 +90,7 @@ export const AddRecipeReview = async (
   const formData = new FormData();
   formData.append('comment', data.comment);
   formData.append('star', data.star);
-  data.imagesFile.forEach(image => {
+  data.imagesFile?.forEach(image => {
     formData.append(`images`, image);
   });
   try {

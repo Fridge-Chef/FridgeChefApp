@@ -11,6 +11,7 @@ import {useGetRecipeDetailReview} from '../../../../api/recipeQuery';
 import Loading from '../../../elements/Loading';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {RecipeReviewListType} from '../../../../type/types';
+import FModal from '../../../elements/FModal';
 
 type TitleComponentProps = {
   title: string;
@@ -21,7 +22,7 @@ type TitleComponentProps = {
 const TitleComponent = ({title, boardId, data}: TitleComponentProps) => {
   const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
   const [isCheck, setIsCheck] = useState(false);
-
+  const [loginCheck, setLoginCheck] = useState(false);
   const userCheck = async () => {
     if (!data) return;
     const userName = await AsyncStorage.getItem('nickname');
@@ -45,9 +46,14 @@ const TitleComponent = ({title, boardId, data}: TitleComponentProps) => {
       {!isCheck && (
         <FButton
           buttonStyle="noneStyle"
-          onPress={() =>
-            navigation.navigate('addRecipeReview', {title, boardId})
-          }>
+          onPress={async () => {
+            const token = await AsyncStorage.getItem('token');
+            if (token) {
+              navigation.navigate('addRecipeReview', {title, boardId});
+            } else {
+              setLoginCheck(true);
+            }
+          }}>
           <View style={styles.buttonContainer}>
             <DetailReviewEdit />
             <FText
@@ -58,6 +64,20 @@ const TitleComponent = ({title, boardId, data}: TitleComponentProps) => {
             />
           </View>
         </FButton>
+      )}
+      {loginCheck && (
+        <FModal
+          modalVisible={loginCheck}
+          buttonText="로그인"
+          text="로그인이 필요한 서비스입니다."
+          cancel={true}
+          cancelText="취소"
+          cancelOnPress={() => setLoginCheck(false)}
+          onPress={() => {
+            navigation.navigate('serviceLogin');
+            setLoginCheck(false);
+          }}
+        />
       )}
     </View>
   );

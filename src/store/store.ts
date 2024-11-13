@@ -66,31 +66,34 @@ type ScrollYType = {
 
 type UserReviewType = {
   userReview: {
+    type?: string;
+    commentId?: number;
     boardId: number;
-    reviewPoint: number;
-    reviewContent: string;
-    reviewImg: string[];
-    reviewImgFile:
+    star: number;
+    comment: string;
+    reviewImg?: string[];
+    imagesFile?:
       | {
           name: string;
           type: string;
           uri: string;
-        }[]
-      | null;
+        }[];
   };
   setUserReview: (
     userReview: Partial<{
+      type?: string | undefined;
+      commentId?: number | undefined;
       boardId: number;
-      reviewPoint: number;
-      reviewContent: string;
-      reviewImg: string[];
-      reviewImgFile:
+      star: number;
+      comment: string;
+      reviewImg?: string[];
+      imagesFile?:
         | {
             name: string;
             type: string;
             uri: string;
           }[]
-        | null;
+        | undefined;
     }>,
   ) => void;
 };
@@ -183,25 +186,29 @@ export const useScrollY = create<ScrollYType>(set => ({
 
 export const useUserReview = create<UserReviewType>(set => ({
   userReview: {
+    type: '',
+    commentId: 0,
     boardId: 0,
-    reviewPoint: 0,
-    reviewContent: '',
+    star: 0,
+    comment: '',
     reviewImg: [],
-    reviewImgFile: [],
+    imagesFile: [],
   },
   setUserReview: (
     userReview: Partial<{
+      type?: string | undefined;
+      commentId?: number | undefined;
       boardId: number;
-      reviewPoint: number;
-      reviewContent: string;
-      reviewImg: string[];
-      reviewImgFile:
+      star: number;
+      comment: string;
+      reviewImg?: string[];
+      imagesFile?:
         | {
             name: string;
             type: string;
             uri: string;
           }[]
-        | null;
+        | undefined;
     }>,
   ) =>
     set(state => ({

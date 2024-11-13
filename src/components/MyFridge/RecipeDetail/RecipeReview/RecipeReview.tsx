@@ -1,5 +1,5 @@
-import {StyleSheet, View} from 'react-native';
-import React, {useEffect} from 'react';
+import {Pressable, StyleSheet, View} from 'react-native';
+import React, {useEffect, useState} from 'react';
 import {colors, FWidth} from '../../../../../globalStyle';
 import TitleComponent from './TitleComponent';
 import ReviewsComponent from './ReviewsComponent';
@@ -8,10 +8,17 @@ import Loading from '../../../elements/Loading';
 
 type RecipeReviewProps = {
   boardId: number;
+  menuOpen: boolean;
+  setMenuOpen: React.Dispatch<React.SetStateAction<boolean>>;
   title: string;
 };
 
-const RecipeReview = ({title, boardId}: RecipeReviewProps) => {
+const RecipeReview = ({
+  title,
+  boardId,
+  menuOpen,
+  setMenuOpen,
+}: RecipeReviewProps) => {
   const {data, isLoading, refetch} = useGetRecipeDetailReview(boardId);
 
   useEffect(() => {
@@ -23,7 +30,13 @@ const RecipeReview = ({title, boardId}: RecipeReviewProps) => {
   return (
     <View style={styles.container}>
       <TitleComponent title={title} data={data} boardId={boardId} />
-      <ReviewsComponent title={title} data={data} refetch={refetch} />
+      <ReviewsComponent
+        title={title}
+        data={data}
+        refetch={refetch}
+        menuOpen={menuOpen}
+        setMenuOpen={setMenuOpen}
+      />
     </View>
   );
 };

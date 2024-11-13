@@ -5,34 +5,20 @@ import {colors, FWidth} from '../../../../../globalStyle';
 import FText from '../../../elements/FText';
 import LikeButton from '../../../elements/LikeButton';
 import Carousel from 'react-native-reanimated-carousel';
-import {
-  useGetRecipeDetailReview,
-  useLikeRecipeReview,
-} from '../../../../api/recipeQuery';
+import {useLikeRecipeReview} from '../../../../api/recipeQuery';
 import FModal from '../../../elements/FModal';
 import {ParamListBase, useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import {RecipeReviewDetailType} from '../../../../type/types';
 
 type UserContentProps = {
-  uri?: string[];
-  content: string;
-  views: number;
-  myHit: boolean;
-  boardId: number;
-  commentId: number;
+  data: RecipeReviewDetailType;
+
   refetch: () => void;
 };
 
-const UserContent = ({
-  uri,
-  content,
-  views,
-  myHit,
-  boardId,
-  commentId,
-  refetch,
-}: UserContentProps) => {
+const UserContent = ({data, refetch}: UserContentProps) => {
   const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
   const [loginCheck, setLoginCheck] = useState(false);
   const {mutate} = useLikeRecipeReview();
@@ -52,19 +38,19 @@ const UserContent = ({
           fStyle="R_16"
           lineH={FWidth * 24}
           color={colors.text}
-          text={content}
+          text={data.comments}
         />
       </View>
       <LikeButton
-        isClicked={myHit}
-        views={views}
+        isClicked={data.myHit}
+        views={data.like}
         onPress={async () => {
           const token = await AsyncStorage.getItem('token');
           if (token) {
             mutate(
               {
-                boardId: boardId,
-                commentId: commentId,
+                boardId: data.boardId,
+                commentId: data.id,
               },
               {
                 onSuccess: () => {
@@ -77,10 +63,10 @@ const UserContent = ({
           }
         }}
       />
-      {uri?.length !== 0 && (
+      {data.imageLink.length !== 0 && (
         <View style={styles.imgContainer}>
           <Carousel
-            data={uri!}
+            data={data.imageLink}
             width={width - FWidth * 44}
             height={FWidth * 300}
             onSnapToItem={index => {
@@ -102,7 +88,7 @@ const UserContent = ({
             <FText
               fStyle="M_14"
               color={colors.black}
-              text={`${imagesIndex + 1}/${uri?.length}`}
+              text={`${imagesIndex + 1}/${data.imageLink.length}`}
             />
           </View>
         </View>

@@ -1,5 +1,5 @@
 import {StyleSheet, View} from 'react-native';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {FWidth} from '../../../../globalStyle';
 import FButton from '../../elements/FButton';
 import StarReview2 from '../../../utils/Svg/StarReview2';
@@ -13,7 +13,7 @@ type ReviewType = {
 };
 
 const ScoreList = () => {
-  const {setUserReview} = useUserReview();
+  const {userReview, setUserReview} = useUserReview();
   const [reViewPoint, setReViewPoint] = useState<ReviewType[]>([
     {id: 1, score: 1, clicked: false},
     {id: 2, score: 2, clicked: false},
@@ -21,10 +21,11 @@ const ScoreList = () => {
     {id: 4, score: 4, clicked: false},
     {id: 5, score: 5, clicked: false},
   ]);
-
+  console.log(userReview.star);
   const handlePress = (id: number) => {
-    const clickedPoint = reViewPoint.find(item => item.id === id)?.score || 0;
-    setUserReview({reviewPoint: clickedPoint});
+    const clickedPoint =
+      reViewPoint.find(item => item.id === id)?.score || userReview.star;
+    setUserReview({star: clickedPoint});
     setReViewPoint(prev =>
       prev.map(item => ({
         ...item,
