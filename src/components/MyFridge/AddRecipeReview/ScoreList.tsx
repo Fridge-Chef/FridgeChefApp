@@ -14,24 +14,25 @@ type ReviewType = {
 
 const ScoreList = () => {
   const {userReview, setUserReview} = useUserReview();
-  const [reViewPoint, setReViewPoint] = useState<ReviewType[]>([
-    {id: 1, score: 1, clicked: false},
-    {id: 2, score: 2, clicked: false},
-    {id: 3, score: 3, clicked: false},
-    {id: 4, score: 4, clicked: false},
-    {id: 5, score: 5, clicked: false},
-  ]);
-  console.log(userReview.star);
-  const handlePress = (id: number) => {
-    const clickedPoint =
-      reViewPoint.find(item => item.id === id)?.score || userReview.star;
-    setUserReview({star: clickedPoint});
+  const [reViewPoint, setReViewPoint] = useState<ReviewType[]>(
+    Array.from({length: 5}, (_, index) => ({
+      id: index + 1,
+      score: index + 1,
+      clicked: index + 1 <= userReview.star,
+    })),
+  );
+  useEffect(() => {
     setReViewPoint(prev =>
       prev.map(item => ({
         ...item,
-        clicked: item.score <= clickedPoint,
+        clicked: item.score <= userReview.star,
       })),
     );
+  }, [userReview.star]);
+
+  const handlePress = (id: number) => {
+    const clickedPoint = reViewPoint.find(item => item.id === id)?.score || 0;
+    setUserReview({star: clickedPoint});
   };
 
   return (

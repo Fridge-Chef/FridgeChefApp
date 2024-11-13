@@ -8,13 +8,18 @@ import DetailReviewMore from '../../../../utils/Svg/DetailReviewMore';
 import FButton from '../../../elements/FButton';
 import {ParamListBase, useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import {useRecipeReviewTitle} from '../../../../store/store';
+import {useRecipeReviewTitle, useUserReview} from '../../../../store/store';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import {useLikeRecipeReview} from '../../../../api/recipeQuery';
-import FModal from '../../../elements/FModal';
+import {useGetRecipeDetail} from '../../../../api/recipeQuery';
 import {RecipeReviewDetailType} from '../../../../type/types';
 import AppBarMenu from '../../../elements/AppBarMenu';
-import {useDeleteDetailReview} from '../../../../api/commentReviewQuery';
+import {
+  useDeleteDetailReview,
+  useLikeRecipeReview,
+} from '../../../../api/commentReviewQuery';
+import LoginModal from '../../../elements/Modals/LoginModal';
+import DeleteModal from '../../../elements/Modals/DeleteModal';
+import {useQueryClient} from '@tanstack/react-query';
 
 type ReviewProps = {
   review: RecipeReviewDetailType;
@@ -32,16 +37,19 @@ const Review = ({
   setMenuOpen,
 }: ReviewProps) => {
   const [loginCheck, setLoginCheck] = useState(false);
-
   const [modalCheck, setModalCheck] = useState(false);
   const [deleteCheck, setDeleteCheck] = useState(true);
   const [userCheck, setUserCheck] = useState(false);
   const {mutate: commentDelete} = useDeleteDetailReview();
   const {setReviewTitle} = useRecipeReviewTitle();
+  const {refetch: detail} = useGetRecipeDetail(review.boardId);
   const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
   const {mutate} = useLikeRecipeReview();
+  const queryClient = useQueryClient();
+  const {setUserReview} = useUserReview();
   const handleReviewDetail = () => {
     setReviewTitle(title);
+    setMenuOpen(false);
     navigation.navigate('userReviewDetail', {item: review});
   };
 
@@ -60,8 +68,14 @@ const Review = ({
   }, [review]);
 
   const handleClose = () => {
+    const data = queryClient.getQueriesData({
+      queryKey: ['recipeReviewDetail', '91의 0'],
+    });
+    console.log(data);
     setMenuOpen(false);
     setModalCheck(false);
+    setUserReview({});
+    detail();
     refetch();
   };
 
@@ -120,50 +134,37 @@ const Review = ({
           }
         }}
       />
-      {loginCheck && (
-        <FModal
-          modalVisible={loginCheck}
-          buttonText="로그인"
-          text="로그인이 필요한 서비스입니다."
-          cancel={true}
-          cancelText="취소"
-          cancelOnPress={() => setLoginCheck(false)}
-          onPress={() => {
-            navigation.navigate('serviceLogin');
-            setLoginCheck(false);
-          }}
-        />
-      )}
-      {modalCheck && (
-        <FModal
-          modalVisible={modalCheck}
-          buttonText={deleteCheck ? '삭제' : '확인'}
-          cancelText="취소"
-          cancel={deleteCheck ? true : false}
-          text={
-            deleteCheck
-              ? '정말로 이글을 삭제하시겠습니까?'
-              : '삭제가 완료되었습니다.'
-          }
-          text2={deleteCheck ? '삭제한 글은 복구할 수 없습니다.' : null}
-          onPress={() =>
-            deleteCheck
-              ? commentDelete(
-                  {
-                    boardId: review.boardId,
-                    commentId: review.id,
+      <LoginModal
+        loginCheck={loginCheck}
+        onPress={() => {
+          navigation.navigate('serviceLogin');
+          setLoginCheck(false);
+        }}
+        cancelOnPress={() => setLoginCheck(false)}
+      />
+      <DeleteModal
+        modalCheck={modalCheck}
+        deleteCheck={deleteCheck}
+        onPress={() =>
+          deleteCheck
+            ? commentDelete(
+                {
+                  boardId: review.boardId,
+                  commentId: review.id,
+                },
+                {
+                  onSuccess: () => {
+                    setDeleteCheck(false);
                   },
-                  {
-                    onSuccess: () => {
-                      setDeleteCheck(false);
-                    },
-                  },
-                )
-              : handleClose()
-          }
-          cancelOnPress={() => setModalCheck(false)}
-        />
-      )}
+                },
+              )
+            : handleClose()
+        }
+        cancelOnPress={() => {
+          setModalCheck(false);
+          setMenuOpen(false);
+        }}
+      />
     </FButton>
   );
 };

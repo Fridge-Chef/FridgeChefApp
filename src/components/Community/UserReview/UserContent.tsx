@@ -1,16 +1,16 @@
 import {StyleSheet, useWindowDimensions, View} from 'react-native';
 import React, {useEffect, useRef, useState} from 'react';
-import FImage from '../../../elements/FImage';
-import {colors, FWidth} from '../../../../../globalStyle';
-import FText from '../../../elements/FText';
-import LikeButton from '../../../elements/LikeButton';
+import FImage from '../../elements/FImage';
+import {colors, FWidth} from '../../../../globalStyle';
+import FText from '../../elements/FText';
+import LikeButton from '../../elements/LikeButton';
 import Carousel from 'react-native-reanimated-carousel';
-import {useLikeRecipeReview} from '../../../../api/recipeQuery';
-import FModal from '../../../elements/FModal';
+import FModal from '../../elements/FModal';
 import {ParamListBase, useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import {RecipeReviewDetailType} from '../../../../type/types';
+import {RecipeReviewDetailType} from '../../../type/types';
+import {useLikeRecipeReview} from '../../../api/commentReviewQuery';
 
 type UserContentProps = {
   data: RecipeReviewDetailType;

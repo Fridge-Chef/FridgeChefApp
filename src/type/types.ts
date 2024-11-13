@@ -116,6 +116,7 @@ export type AddRecipeReviewType = {
   type?: string | undefined;
   commentId?: number | undefined;
   comment: string;
+  prevImages?: string[];
   images?: string[];
   imagesFile?:
     | {

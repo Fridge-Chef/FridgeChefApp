@@ -22,13 +22,15 @@ const AddRecipeReview = () => {
   const route = useRoute<RouteProp<RecipeTitle>>();
   const item = route.params.review;
   const {userReview, setUserReview} = useUserReview();
+
   useEffect(() => {
     if (item) {
       setUserReview({
         type: route.params.type,
         commentId: item.id,
         comment: item.comments,
-        reviewImg: item.imageLink,
+        prevImages: item.imageLink,
+        images: item.imageLink,
         imagesFile: [],
         star: item.star,
         boardId: item.boardId,
@@ -38,7 +40,7 @@ const AddRecipeReview = () => {
         type: '',
         commentId: 0,
         comment: '',
-        reviewImg: [],
+        images: [],
         imagesFile: [],
         star: 0,
         boardId: route.params.boardId,
@@ -53,16 +55,16 @@ const AddRecipeReview = () => {
           <View style={styles.topContainer}>
             <AddScore title={route.params.title} />
             <AddContent />
-            {userReview.reviewImg!.length > 0 &&
-              userReview.reviewImg!.map((img, index) => (
+            {userReview.images!.length > 0 &&
+              userReview.images!.map((img, index) => (
                 <ImageView
                   key={index}
                   uri={img}
                   onPress={() => {
                     setUserReview({
-                      reviewImg: [
-                        ...userReview.reviewImg!.slice(0, index),
-                        ...userReview.reviewImg!.slice(index + 1),
+                      images: [
+                        ...userReview.images!.slice(0, index),
+                        ...userReview.images!.slice(index + 1),
                       ],
                       imagesFile: [
                         ...userReview.imagesFile!.slice(0, index),

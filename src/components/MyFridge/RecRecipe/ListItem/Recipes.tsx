@@ -1,5 +1,5 @@
 import {FlatList, StyleSheet, View} from 'react-native';
-import React from 'react';
+import React, {useEffect} from 'react';
 import ListItem from './ListItem';
 import {GetRecipeListType, ListData} from '../../../../type/types';
 import {FWidth} from '../../../../../globalStyle';
@@ -20,10 +20,7 @@ const Recipes = ({ingredientList}: RecipesProps) => {
   const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
   const {bottomSheetRef} = useBottomSheetRef();
   const {setTitle} = useBottomSheetTitle();
-  const ingredientsQuery = ingredients
-    .map(ingredient => `ingredients=${ingredient}`)
-    .join('&');
-  const {data, isLoading} = useGetRecommendedRecipeList(ingredientsQuery);
+  const {data, isLoading} = useGetRecommendedRecipeList(ingredients);
   const handleBottomSheetOpen = () => {
     setTitle('순위');
     bottomSheetRef.current?.present();

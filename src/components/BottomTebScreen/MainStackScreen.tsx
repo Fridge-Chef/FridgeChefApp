@@ -17,7 +17,7 @@ import ReviewDetailAppBar from './AppBar/ReviewDetailAppBar';
 import AddRecipeAppBar from './AppBar/AddRecipeAppBar';
 import Login from '../../screen/Login/Login';
 import ServiceLogin from '../../screen/Login/ServiceLogin';
-import UserReview from '../Community/CDetail/UserReview/UserReview';
+import UserReview from '../Community/UserReview/UserReview';
 
 const MainStackScreen = () => {
   const Stack = createNativeStackNavigator();

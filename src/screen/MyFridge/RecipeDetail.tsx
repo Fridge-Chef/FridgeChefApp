@@ -26,7 +26,7 @@ const RecipeDetail = () => {
   const items = route.params;
   const [menuOpen, setMenuOpen] = useState(false);
   const {setScrollY} = useScrollY();
-  const {data, isLoading} = useGetRecipeDetail(route.params.id);
+  const {data, isLoading} = useGetRecipeDetail(items.id);
 
   if (isLoading)
     return <Loading loadingTitle="로딩중" backColor={colors.white} />;

@@ -9,7 +9,7 @@ import {RecipeReviewListType} from '../../../../type/types';
 
 type ReviewsComponentProps = {
   title: string;
-  data: RecipeReviewListType | undefined;
+  data?: RecipeReviewListType;
   menuOpen: boolean;
   setMenuOpen: React.Dispatch<React.SetStateAction<boolean>>;
   refetch: () => void;

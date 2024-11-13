@@ -7,11 +7,9 @@ import {ParamListBase, useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import DetailReviewEdit from '../../../../utils/Svg/DetailReviewEdit';
 import SubTitle2 from '../../../elements/SubTitle/SubTitle2';
-import {useGetRecipeDetailReview} from '../../../../api/recipeQuery';
-import Loading from '../../../elements/Loading';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {RecipeReviewListType} from '../../../../type/types';
-import FModal from '../../../elements/FModal';
+import LoginModal from '../../../elements/Modals/LoginModal';
 
 type TitleComponentProps = {
   title: string;
@@ -65,20 +63,14 @@ const TitleComponent = ({title, boardId, data}: TitleComponentProps) => {
           </View>
         </FButton>
       )}
-      {loginCheck && (
-        <FModal
-          modalVisible={loginCheck}
-          buttonText="로그인"
-          text="로그인이 필요한 서비스입니다."
-          cancel={true}
-          cancelText="취소"
-          cancelOnPress={() => setLoginCheck(false)}
-          onPress={() => {
-            navigation.navigate('serviceLogin');
-            setLoginCheck(false);
-          }}
-        />
-      )}
+      <LoginModal
+        loginCheck={loginCheck}
+        onPress={() => {
+          navigation.navigate('serviceLogin');
+          setLoginCheck(false);
+        }}
+        cancelOnPress={() => setLoginCheck(false)}
+      />
     </View>
   );
 };

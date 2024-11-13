@@ -1,14 +1,14 @@
-import {StyleSheet, View} from 'react-native';
+import {Keyboard, StyleSheet, View} from 'react-native';
 import React from 'react';
 import {colors, FWidth} from '../../../../globalStyle';
 import FButton from '../../elements/FButton';
 import ImageIcon from '../../../utils/Svg/ImageIcon';
 import FText from '../../elements/FText';
-import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
+import {launchImageLibrary} from 'react-native-image-picker';
 import {useUserReview} from '../../../store/store';
 
 const AddImage = () => {
-  const {setUserReview} = useUserReview();
+  const {userReview, setUserReview} = useUserReview();
   const handleImagePicker = (pickerType: string) => {
     switch (pickerType) {
       case 'imageLibrary':
@@ -29,13 +29,20 @@ const AddImage = () => {
             } else {
               if (!res.assets || res.assets.length === 0) return;
               setUserReview({
-                reviewImg: res.assets.map(img => img.uri!),
-                imagesFile: res.assets.map(img => ({
-                  name: img.fileName!,
-                  type: img.type!,
-                  uri: img.uri!,
-                })),
+                images: [
+                  ...(userReview.images || []),
+                  ...res.assets.map(img => img.uri!),
+                ],
+                imagesFile: [
+                  ...(userReview.imagesFile || []),
+                  ...res.assets.map(img => ({
+                    name: img.fileName!,
+                    type: img.type!,
+                    uri: img.uri!,
+                  })),
+                ],
               });
+              Keyboard.dismiss();
             }
           },
         );

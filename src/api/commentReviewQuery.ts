@@ -1,12 +1,57 @@
-import {useMutation} from '@tanstack/react-query';
+import {useMutation, useQuery} from '@tanstack/react-query';
 import {
   RecipeDetailReviewUpdateType,
+  recipeReviewDataType,
+  RecipeReviewDetailType,
   RecipeReviewLikeType,
+  RecipeReviewListType,
 } from '../type/types';
 import {
+  AddRecipeReview,
+  getRecipeDetailReviewList,
+  likeRecipeReview,
   recipeDetailReviewDelete,
   recipeDetailReviewUpdate,
+  recipeReviewDetail,
 } from './commentReview';
+
+export const useAddRecipeReview = () => {
+  const mutationFn = (recipeReviewData: recipeReviewDataType) =>
+    AddRecipeReview(recipeReviewData.boardId, recipeReviewData.reviewData);
+  return useMutation({
+    mutationKey: ['addRecipeReview'],
+    mutationFn,
+  });
+};
+
+export const useGetRecipeDetailReviewList = (id: number) => {
+  const queryFn = () => getRecipeDetailReviewList(id);
+  return useQuery<RecipeReviewListType>({
+    queryKey: ['recipeDetailReviewList', id],
+    queryFn,
+    select: data => data || [],
+  });
+};
+
+export const useGetRecipeReviewDetail = (
+  boardId: number,
+  commentId: number,
+) => {
+  const queryFn = () => recipeReviewDetail(boardId, commentId);
+  return useQuery<RecipeReviewDetailType>({
+    queryKey: ['recipeReviewDetail', `${boardId}의 ${commentId}`],
+    queryFn,
+  });
+};
+
+export const useLikeRecipeReview = () => {
+  const mutationFn = (likeData: RecipeReviewLikeType) =>
+    likeRecipeReview(likeData);
+  return useMutation({
+    mutationKey: ['likeRecipeReview'],
+    mutationFn,
+  });
+};
 
 export const useDeleteDetailReview = () => {
   const mutationFn = (deleteData: RecipeReviewLikeType) =>

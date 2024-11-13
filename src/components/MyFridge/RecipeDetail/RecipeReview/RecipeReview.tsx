@@ -1,10 +1,10 @@
-import {Pressable, StyleSheet, View} from 'react-native';
-import React, {useEffect, useState} from 'react';
+import {StyleSheet, View} from 'react-native';
+import React, {useEffect} from 'react';
 import {colors, FWidth} from '../../../../../globalStyle';
 import TitleComponent from './TitleComponent';
 import ReviewsComponent from './ReviewsComponent';
-import {useGetRecipeDetailReview} from '../../../../api/recipeQuery';
 import Loading from '../../../elements/Loading';
+import {useGetRecipeDetailReviewList} from '../../../../api/commentReviewQuery';
 
 type RecipeReviewProps = {
   boardId: number;
@@ -14,16 +14,16 @@ type RecipeReviewProps = {
 };
 
 const RecipeReview = ({
-  title,
   boardId,
   menuOpen,
   setMenuOpen,
+  title,
 }: RecipeReviewProps) => {
-  const {data, isLoading, refetch} = useGetRecipeDetailReview(boardId);
+  const {data, isLoading, refetch} = useGetRecipeDetailReviewList(boardId);
 
   useEffect(() => {
     refetch();
-  }, [data]);
+  }, [isLoading]);
 
   if (isLoading)
     return <Loading loadingTitle="로딩중" backColor={colors.white} />;

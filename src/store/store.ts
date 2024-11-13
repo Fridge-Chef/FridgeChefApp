@@ -67,11 +67,12 @@ type ScrollYType = {
 type UserReviewType = {
   userReview: {
     type?: string;
+    prevImages?: string[];
     commentId?: number;
     boardId: number;
     star: number;
     comment: string;
-    reviewImg?: string[];
+    images?: string[];
     imagesFile?:
       | {
           name: string;
@@ -82,11 +83,12 @@ type UserReviewType = {
   setUserReview: (
     userReview: Partial<{
       type?: string | undefined;
+      prevImages?: string[];
       commentId?: number | undefined;
       boardId: number;
       star: number;
       comment: string;
-      reviewImg?: string[];
+      images?: string[];
       imagesFile?:
         | {
             name: string;
@@ -187,21 +189,23 @@ export const useScrollY = create<ScrollYType>(set => ({
 export const useUserReview = create<UserReviewType>(set => ({
   userReview: {
     type: '',
+    prevImages: [],
     commentId: 0,
     boardId: 0,
     star: 0,
     comment: '',
-    reviewImg: [],
+    images: [],
     imagesFile: [],
   },
   setUserReview: (
     userReview: Partial<{
       type?: string | undefined;
+      prevImages?: string[];
       commentId?: number | undefined;
       boardId: number;
       star: number;
       comment: string;
-      reviewImg?: string[];
+      images?: string[];
       imagesFile?:
         | {
             name: string;

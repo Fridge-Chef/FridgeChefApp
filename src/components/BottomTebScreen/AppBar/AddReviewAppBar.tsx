@@ -6,11 +6,13 @@ import {useUserReview} from '../../../store/store';
 import FModal from '../../elements/FModal';
 import {ParamListBase, useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import {useGetRecipeDetail} from '../../../api/recipeQuery';
 import {
   useAddRecipeReview,
-  useGetRecipeDetailReview,
-} from '../../../api/recipeQuery';
-import {useUpdateDetailReview} from '../../../api/commentReviewQuery';
+  useGetRecipeDetailReviewList,
+  useGetRecipeReviewDetail,
+  useUpdateDetailReview,
+} from '../../../api/commentReviewQuery';
 
 const AddReviewAppBar = () => {
   const {userReview, setUserReview} = useUserReview();
@@ -19,10 +21,13 @@ const AddReviewAppBar = () => {
   const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
   const {mutate} = useAddRecipeReview();
   const {mutate: updateMutate} = useUpdateDetailReview();
-  const {refetch} = useGetRecipeDetailReview(userReview.boardId);
-
+  const {refetch} = useGetRecipeDetailReviewList(userReview.boardId);
+  const {refetch: recipeDetail} = useGetRecipeDetail(userReview.boardId);
+  const {refetch: reviewDetail} = useGetRecipeReviewDetail(
+    userReview.boardId,
+    userReview.commentId!,
+  );
   const handleSubmit = async () => {
-    console.log(userReview);
     if (
       userReview.comment === '' ||
       userReview.star === 0 ||
@@ -40,7 +45,6 @@ const AddReviewAppBar = () => {
           },
           {
             onSuccess: () => {
-              console.log('수정');
               setUpdateCheck(true);
             },
           },
@@ -51,20 +55,15 @@ const AddReviewAppBar = () => {
             boardId: userReview.boardId,
             reviewData: {
               comment: userReview.comment,
-              images: userReview.reviewImg,
+              images: userReview.images,
               imagesFile: userReview.imagesFile!,
               star: userReview.star,
             },
           },
           {
             onSuccess: () => {
-              setUserReview({
-                boardId: 0,
-                star: 0,
-                comment: '',
-                reviewImg: [],
-                imagesFile: [],
-              });
+              setUserReview({});
+              recipeDetail();
               refetch();
               navigation.goBack();
             },
@@ -113,11 +112,12 @@ const AddReviewAppBar = () => {
                 boardId: 0,
                 star: 0,
                 comment: '',
-                reviewImg: [],
+                images: [],
                 imagesFile: [],
               });
               refetch();
               setUpdateCheck(false);
+              reviewDetail();
               navigation.goBack();
             }
             setIsBack(false);
