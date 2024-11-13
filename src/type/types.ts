@@ -23,30 +23,21 @@ export type RecipeListType = {
 type IconProps =
   | 'back'
   | 'arrowRight'
-  | 'bottomButton'
-  | 'calendar'
-  | 'close'
   | 'close2'
   | 'close3'
   | 'detailBack'
   | 'detailHeart'
   | 'detailReviewMore'
   | 'detailShare'
-  | 'edit'
   | 'edit2'
   | 'editSquare'
   | 'googleLogo'
   | 'headerClose'
   | 'heart'
-  | 'heart4'
   | 'kakaoLogo'
-  | 'likeIcon'
-  | 'loginIcon'
   | 'more'
-  | 'moreList'
   | 'notification'
   | 'plus'
-  | 'plus2'
   | 'star2'
   | 'tabHeart'
   | 'wallet';
@@ -183,36 +174,26 @@ export type recipeReviewDataType = {
   reviewData: AddRecipeReviewType;
 };
 
+export type RecipeReviewDetailType = {
+  id: number;
+  boardId: number;
+  comments: string;
+  createdAt: string;
+  myHit: boolean;
+  imageLink: string[];
+  like: number;
+  star: number;
+  userName: string;
+};
+
 export type RecipeReviewListType = {
-  content: {
-    boardId: number;
-    comments: string;
-    createdAt: string;
-    id: number;
-    myHit: boolean;
-    imageLink: string[];
-    like: number;
-    star: number;
-    userName: string;
-  }[];
+  content: RecipeReviewDetailType[];
   page: {
     number: number;
     size: number;
     totalElements: number;
     totalPages: number;
   };
-};
-
-export type RecipeReviewDetailType = {
-  boardId: number;
-  comments: string;
-  createdAt: string;
-  id: number;
-  myHit: boolean;
-  imageLink: string[];
-  like: number;
-  star: number;
-  userName: string;
 };
 
 export type RecipeReviewLikeType = {

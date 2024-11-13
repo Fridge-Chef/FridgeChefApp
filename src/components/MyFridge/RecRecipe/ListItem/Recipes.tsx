@@ -6,10 +6,13 @@ import {FWidth} from '../../../../../globalStyle';
 import FButton from '../../../elements/FButton';
 import {ParamListBase, useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import {useBottomSheetRef, useBottomSheetTitle} from '../../../../store/store';
 import RankButton from './RankButton';
 import {useGetRecommendedRecipeList} from '../../../../api/recipeQuery';
 import Loading from '../../../elements/Loading';
+import {
+  useBottomSheetRef,
+  useBottomSheetTitle,
+} from '../../../../store/bottomSheetStore';
 
 type RecipesProps = {
   ingredientList: ListData[];

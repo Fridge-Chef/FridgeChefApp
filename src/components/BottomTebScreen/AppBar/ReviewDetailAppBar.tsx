@@ -1,11 +1,11 @@
 import {StyleSheet} from 'react-native';
 import React from 'react';
 import FAppBar from '../../elements/FAppBar';
+import {useRecipeReviewTitle} from '../../../store/store';
 import {
   useBottomSheetRef,
   useBottomSheetTitle,
-  useRecipeReviewTitle,
-} from '../../../store/store';
+} from '../../../store/bottomSheetStore';
 
 const ReviewDetailAppBar = () => {
   const {setTitle} = useBottomSheetTitle();

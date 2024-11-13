@@ -1,10 +1,6 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {baseUrl} from './axios';
-import {
-  AddIngredientType,
-  AddRecipeReviewType,
-  RecipeReviewLikeType,
-} from '../type/types';
+import {AddIngredientType} from '../type/types';
 
 export const getRecommendedRecipeList = async (ingredientsQuery: string) => {
   try {

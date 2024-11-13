@@ -1,12 +1,13 @@
 import {StyleSheet, View} from 'react-native';
-import React, {useState} from 'react';
-import {useBottomSheetRef} from '../../../store/store';
+import React from 'react';
+
 import {colors, FWidth} from '../../../../globalStyle';
 import RankingTop from './RankingTop';
 import FText from '../../elements/FText';
 import FButton from '../../elements/FButton';
 import Check from '../../../utils/Svg/Check';
 import {RecipeBookRankingList} from '../../../utils/list';
+import {useBottomSheetRef} from '../../../store/bottomSheetStore';
 
 type RecipeRankingProps = {
   setRankName: (text: string) => void;

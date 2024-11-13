@@ -1,31 +1,21 @@
-import BottomSheet, {BottomSheetModal} from '@gorhom/bottom-sheet';
-import {RefObject} from 'react';
 import {create} from 'zustand';
 import {ListData} from '../type/types';
 
-type BottomSheetRefType = {
-  bottomSheetRef: RefObject<BottomSheetModal>;
-  setBottomSheetRef: (ref: RefObject<BottomSheetModal>) => void;
-};
-
-type SubBottomSheetRefType = {
-  subBottomSheetRef: RefObject<BottomSheetModal>;
-  setSubBottomSheetRef: (ref: RefObject<BottomSheetModal>) => void;
-};
-
-type BottomSheetTitleType = {
-  title: string;
-  setTitle: (title: string) => void;
-};
-
-type SubBottomSheetTitleType = {
-  subTitle: string;
-  setSubTitle: (subTitle: string) => void;
-};
-
-type SubBottomSheetDateType = {
-  selectedDate: string;
-  setSelectedDate: (selectedDate: string) => void;
+type ReviewType = {
+  type?: string | undefined;
+  prevImages?: string[];
+  commentId?: number | undefined;
+  boardId: number;
+  star: number;
+  comment: string;
+  images?: string[];
+  imagesFile?:
+    | {
+        name: string;
+        type: string;
+        uri: string;
+      }[]
+    | undefined;
 };
 
 type IngredientTitleTitleType = {
@@ -36,13 +26,6 @@ type IngredientTitleTitleType = {
 type AddTitleType = {
   addTitle: string;
   setAddTitle: (addTitle: string) => void;
-};
-
-type LoadingType = {
-  loadingTitle: string;
-  setLoadingTitle: (loadingTitle: string) => void;
-  loading: boolean;
-  setLoading: (loading: boolean) => void;
 };
 
 type TopTabBarType = {
@@ -59,45 +42,9 @@ type CategoriesTextType = {
   setExpiryDate: (expiryDate: string) => void;
 };
 
-type ScrollYType = {
-  scrollY: number;
-  setScrollY: (scrollY: number) => void;
-};
-
 type UserReviewType = {
-  userReview: {
-    type?: string;
-    prevImages?: string[];
-    commentId?: number;
-    boardId: number;
-    star: number;
-    comment: string;
-    images?: string[];
-    imagesFile?:
-      | {
-          name: string;
-          type: string;
-          uri: string;
-        }[];
-  };
-  setUserReview: (
-    userReview: Partial<{
-      type?: string | undefined;
-      prevImages?: string[];
-      commentId?: number | undefined;
-      boardId: number;
-      star: number;
-      comment: string;
-      images?: string[];
-      imagesFile?:
-        | {
-            name: string;
-            type: string;
-            uri: string;
-          }[]
-        | undefined;
-    }>,
-  ) => void;
+  userReview: ReviewType;
+  setUserReview: (userReview: Partial<ReviewType>) => void;
 };
 
 type AddRecipeCategoriesType = {
@@ -125,26 +72,6 @@ type AddCheckType = {
   setCheck: (check: boolean) => void;
 };
 
-export const useBottomSheetRef = create<BottomSheetRefType>(set => ({
-  bottomSheetRef: {current: null},
-  setBottomSheetRef: ref => set({bottomSheetRef: ref}),
-}));
-
-export const useSubBottomSheetRef = create<SubBottomSheetRefType>(set => ({
-  subBottomSheetRef: {current: null},
-  setSubBottomSheetRef: ref => set({subBottomSheetRef: ref}),
-}));
-
-export const useBottomSheetTitle = create<BottomSheetTitleType>(set => ({
-  title: '',
-  setTitle: (title: string) => set({title}),
-}));
-
-export const useSubBottomSheetTitle = create<SubBottomSheetTitleType>(set => ({
-  subTitle: '',
-  setSubTitle: (subTitle: string) => set({subTitle}),
-}));
-
 export const useIngredientTitle = create<IngredientTitleTitleType>(set => ({
   ingredientTitle: '',
   setIngredientTitle: (ingredientTitle: string) => set({ingredientTitle}),
@@ -153,13 +80,6 @@ export const useIngredientTitle = create<IngredientTitleTitleType>(set => ({
 export const useAddModalInputText = create<AddTitleType>(set => ({
   addTitle: '',
   setAddTitle: (addTitle: string) => set({addTitle}),
-}));
-
-export const useLoading = create<LoadingType>(set => ({
-  loadingTitle: '재료 등록중',
-  setLoadingTitle: (loadingTitle: string) => set({loadingTitle}),
-  loading: false,
-  setLoading: (loading: boolean) => set({loading}),
 }));
 
 export const useTopTabBar = create<TopTabBarType>(set => ({
@@ -181,11 +101,6 @@ export const useCategoriesText = create<CategoriesTextType>(set => ({
   setExpiryDate: (expiryDate: string) => set({expiryDate}),
 }));
 
-export const useScrollY = create<ScrollYType>(set => ({
-  scrollY: 0,
-  setScrollY: (scrollY: number) => set({scrollY}),
-}));
-
 export const useUserReview = create<UserReviewType>(set => ({
   userReview: {
     type: '',
@@ -197,24 +112,7 @@ export const useUserReview = create<UserReviewType>(set => ({
     images: [],
     imagesFile: [],
   },
-  setUserReview: (
-    userReview: Partial<{
-      type?: string | undefined;
-      prevImages?: string[];
-      commentId?: number | undefined;
-      boardId: number;
-      star: number;
-      comment: string;
-      images?: string[];
-      imagesFile?:
-        | {
-            name: string;
-            type: string;
-            uri: string;
-          }[]
-        | undefined;
-    }>,
-  ) =>
+  setUserReview: (userReview: Partial<ReviewType>) =>
     set(state => ({
       userReview: {
         ...state.userReview,

@@ -2,10 +2,10 @@ import {StyleSheet, View} from 'react-native';
 import React from 'react';
 import FText from '../../elements/FText';
 import FButton from '../../elements/FButton';
-import Close from '../../../utils/Svg/Close';
 import {colors, FWidth} from '../../../../globalStyle';
 import {ParamListBase, useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import Close3 from '../../../utils/Svg/Close3';
 
 const StorageTitle = () => {
   const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
@@ -19,7 +19,7 @@ const StorageTitle = () => {
           width: FWidth * 50,
         }}
         onPress={() => navigation.goBack()}>
-        <Close />
+        <Close3 />
       </FButton>
     </View>
   );

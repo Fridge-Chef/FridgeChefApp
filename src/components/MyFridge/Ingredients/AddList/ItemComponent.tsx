@@ -2,11 +2,7 @@ import {StyleSheet, View} from 'react-native';
 import React, {useState} from 'react';
 import {colors, FHeight, FWidth} from '../../../../../globalStyle';
 import FButton from '../../../elements/FButton';
-import {
-  useBottomSheetRef,
-  useBottomSheetTitle,
-  useIngredientTitle,
-} from '../../../../store/store';
+import {useIngredientTitle} from '../../../../store/store';
 import FText from '../../../elements/FText';
 import Option from '../../../../utils/Svg/Option';
 import IngredientClose from '../../../../utils/Svg/IngredientClose';
@@ -20,6 +16,10 @@ import {date, ingredientCategory} from '../../../../service/MyFridge/MyFridge';
 import {ListData} from '../../../../type/types';
 import DDayText from './DDayText';
 import FModal from '../../../elements/FModal';
+import {
+  useBottomSheetRef,
+  useBottomSheetTitle,
+} from '../../../../store/bottomSheetStore';
 
 type ItemComponentProps = {
   item: ListData;

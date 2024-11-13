@@ -10,8 +10,6 @@ import {
   AddIngredientType,
   GetRecipeListType,
   RecipeListType,
-  RecipeReviewDetailType,
-  RecipeReviewLikeType,
 } from '../type/types';
 
 export const useGetRecipeList = () => {

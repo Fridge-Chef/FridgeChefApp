@@ -6,12 +6,7 @@ import {
   BottomSheetModalProvider,
   BottomSheetScrollView,
 } from '@gorhom/bottom-sheet';
-import {
-  useAddRecipeCategories,
-  useBottomSheetRef,
-  useBottomSheetTitle,
-  useCategoriesText,
-} from '../../store/store';
+import {useAddRecipeCategories, useCategoriesText} from '../../store/store';
 import {colors, FWidth} from '../../../globalStyle';
 import {
   useCommunityMyRecipeName,
@@ -23,6 +18,10 @@ import {
   bottomScreen,
   handleIndex,
 } from '../../service/FBottomSheet/FBottomSheet';
+import {
+  useBottomSheetRef,
+  useBottomSheetTitle,
+} from '../../store/bottomSheetStore';
 
 const FBottomSheet = () => {
   const {title} = useBottomSheetTitle();

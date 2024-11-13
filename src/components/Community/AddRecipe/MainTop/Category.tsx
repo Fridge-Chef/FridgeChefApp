@@ -4,7 +4,10 @@ import FButton from '../../../elements/FButton';
 import FText from '../../../elements/FText';
 import AddRecipeBottomArrow from '../../../../utils/Svg/AddRecipeBottomArrow';
 import {colors, FWidth} from '../../../../../globalStyle';
-import {useBottomSheetRef, useBottomSheetTitle} from '../../../../store/store';
+import {
+  useBottomSheetRef,
+  useBottomSheetTitle,
+} from '../../../../store/bottomSheetStore';
 
 type CategoryProps = {
   selectedCategory: string;

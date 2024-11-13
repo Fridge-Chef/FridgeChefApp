@@ -24,13 +24,6 @@ import SoybeansDisable from './Svg/Categories/SoybeansDisable';
 import Vegetable from './Svg/Categories/Vegetable';
 import VegetableDisable from './Svg/Categories/VegetableDisable';
 
-export const itemList = [
-  {id: 1, name: '라면'},
-  {id: 2, name: '밥 (햇반)'},
-  {id: 3, name: '김치류'},
-  {id: 4, name: '계란'},
-];
-
 export const menuList = [
   {id: 1, text: '전체'},
   {id: 2, text: '이 주의 레시피'},

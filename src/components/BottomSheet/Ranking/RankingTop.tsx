@@ -1,7 +1,6 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import React from 'react';
 import FButton from '../../elements/FButton';
-import Close from '../../../utils/Svg/Close';
 import BottomClose from '../../../utils/Svg/BottomClose';
 
 type RankingTopProps = {

@@ -9,9 +9,10 @@ import RecipeReview from '../../components/MyFridge/RecipeDetail/RecipeReview/Re
 import FImage from '../../components/elements/FImage';
 import Badge from '../../components/MyFridge/RecipeDetail/Badge';
 import RecipeNote from '../../components/MyFridge/RecipeDetail/RecipeNote/RecipeNote';
-import {useScrollY} from '../../store/store';
+
 import {useGetRecipeDetail} from '../../api/recipeQuery';
 import Loading from '../../components/elements/Loading';
+import {useScrollY} from '../../store/utillStore';
 
 type DetailItem = {
   params: {

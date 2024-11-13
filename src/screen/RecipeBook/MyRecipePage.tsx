@@ -3,9 +3,12 @@ import React, {useState} from 'react';
 import NoContent from '../../components/RecipeBook/NoContent';
 import {colors, FWidth} from '../../../globalStyle';
 import ListComponent from '../../components/RecipeBook/ListComponent';
-import {useBottomSheetRef, useBottomSheetTitle} from '../../store/store';
 import {useMyRecipeRankName} from '../../store/rankingStore';
 import RecipeListItem from '../../components/RecipeBook/RecipeListItem';
+import {
+  useBottomSheetRef,
+  useBottomSheetTitle,
+} from '../../store/bottomSheetStore';
 
 const MyRecipePage = () => {
   const {setTitle} = useBottomSheetTitle();

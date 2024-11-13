@@ -7,9 +7,9 @@ import FoodStyleList from './FoodStyleList';
 import FoodTypeList from './FoodTypeList';
 import {
   useAddRecipeCategories,
-  useBottomSheetRef,
   useSelectedCategory,
 } from '../../../store/store';
+import {useBottomSheetRef} from '../../../store/bottomSheetStore';
 
 const AddRecipeCategory = () => {
   const {addTitle, setAddTitle} = useAddRecipeCategories();

@@ -1,10 +1,11 @@
 import {StyleSheet, View} from 'react-native';
 import React from 'react';
 import FButton from '../elements/FButton';
-import {useAddModalInputText, useBottomSheetRef} from '../../store/store';
+import {useAddModalInputText} from '../../store/store';
 import {colors} from '../../../globalStyle';
 import FText from '../elements/FText';
 import BottomClose from '../../utils/Svg/BottomClose';
+import {useBottomSheetRef} from '../../store/bottomSheetStore';
 
 type TopTitleProps = {
   title: string;

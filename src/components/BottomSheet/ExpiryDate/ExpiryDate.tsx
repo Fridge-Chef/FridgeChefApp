@@ -4,12 +4,12 @@ import {colors, FWidth} from '../../../../globalStyle';
 import FText from '../../elements/FText';
 import FButton from '../../elements/FButton';
 import Calendar2 from '../../../utils/Svg/Calendar2';
+import {useCategoriesText} from '../../../store/store';
+import SubTitleBS2 from '../SubTitleBS2';
 import {
-  useCategoriesText,
   useSubBottomSheetRef,
   useSubBottomSheetTitle,
-} from '../../../store/store';
-import SubTitleBS2 from '../SubTitleBS2';
+} from '../../../store/bottomSheetStore';
 
 const ExpiryDate = () => {
   const {subBottomSheetRef} = useSubBottomSheetRef();

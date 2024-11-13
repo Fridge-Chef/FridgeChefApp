@@ -3,10 +3,13 @@ import React, {useState} from 'react';
 import {colors, FWidth} from '../../../../globalStyle';
 import FButton from '../../elements/FButton';
 import {ListData, RecipeList} from '../../../type/types';
-import {useBottomSheetRef, useBottomSheetTitle} from '../../../store/store';
 import FText from '../../elements/FText';
 import SubTitle from '../../elements/SubTitle/SubTitle';
 import RecipeRightArrow from '../../../utils/Svg/Categories/RecipeRightArrow';
+import {
+  useBottomSheetRef,
+  useBottomSheetTitle,
+} from '../../../store/bottomSheetStore';
 
 type TopComponentProps = {
   ingredients: ListData[];

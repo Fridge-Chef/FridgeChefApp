@@ -4,7 +4,8 @@ import DatePicker from 'react-native-date-picker';
 import {colors, FWidth} from '../../../../globalStyle';
 import FText from '../../elements/FText';
 import FButton from '../../elements/FButton';
-import {useCategoriesText, useSubBottomSheetRef} from '../../../store/store';
+import {useCategoriesText} from '../../../store/store';
+import {useSubBottomSheetRef} from '../../../store/bottomSheetStore';
 
 const SubExpiryDate = () => {
   const [date, setDate] = useState(new Date());

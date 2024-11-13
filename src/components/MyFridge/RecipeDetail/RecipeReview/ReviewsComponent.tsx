@@ -2,10 +2,13 @@ import {StyleSheet, View} from 'react-native';
 import React from 'react';
 import {FHeight, FWidth} from '../../../../../globalStyle';
 import Review from './Review';
-import {useBottomSheetRef, useBottomSheetTitle} from '../../../../store/store';
 import RankButton from '../../RecRecipe/ListItem/RankButton';
 import NoData from './NoData';
 import {RecipeReviewListType} from '../../../../type/types';
+import {
+  useBottomSheetRef,
+  useBottomSheetTitle,
+} from '../../../../store/bottomSheetStore';
 
 type ReviewsComponentProps = {
   title: string;

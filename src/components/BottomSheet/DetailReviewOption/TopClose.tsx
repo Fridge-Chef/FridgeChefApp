@@ -2,7 +2,7 @@ import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import BottomClose from '../../../utils/Svg/BottomClose';
 import FButton from '../../elements/FButton';
-import {useBottomSheetRef} from '../../../store/store';
+import {useBottomSheetRef} from '../../../store/bottomSheetStore';
 
 const TopClose = () => {
   const {bottomSheetRef} = useBottomSheetRef();

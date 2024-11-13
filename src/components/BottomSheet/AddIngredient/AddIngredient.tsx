@@ -2,11 +2,7 @@ import {Keyboard, Pressable, StyleSheet, View} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import {colors, FWidth} from '../../../../globalStyle';
 import InputAndSearch from '../InputAndSearch';
-import {
-  useAddCheck,
-  useAddModalInputText,
-  useBottomSheetRef,
-} from '../../../store/store';
+import {useAddCheck, useAddModalInputText} from '../../../store/store';
 import ItemList from '../ItemList';
 import BottomButton from '../BottomButton';
 import TopMenu from './TopMenu';
@@ -19,6 +15,7 @@ import {
 } from '../../../api/ingredientsQuery';
 import {ListData} from '../../../type/types';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import {useBottomSheetRef} from '../../../store/bottomSheetStore';
 
 const AddIngredient = () => {
   const {bottomSheetRef} = useBottomSheetRef();

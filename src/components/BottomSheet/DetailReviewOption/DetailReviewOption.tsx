@@ -4,7 +4,7 @@ import React, {useState} from 'react';
 import {FWidth} from '../../../../globalStyle';
 import TopClose from './TopClose';
 import MenuList from './MenuList';
-import {useBottomSheetRef, useUserReview} from '../../../store/store';
+import {useUserReview} from '../../../store/store';
 import {
   useDeleteDetailReview,
   useGetRecipeDetailReviewList,
@@ -12,6 +12,7 @@ import {
 import {ParamListBase, useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import DeleteModal from '../../elements/Modals/DeleteModal';
+import {useBottomSheetRef} from '../../../store/bottomSheetStore';
 
 const DetailReviewOption = () => {
   const {userReview} = useUserReview();

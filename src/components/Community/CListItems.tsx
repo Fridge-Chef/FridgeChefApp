@@ -5,18 +5,20 @@ import {
   StyleSheet,
   View,
 } from 'react-native';
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import {FWidth} from '../../../globalStyle';
 import CListItem from './CListItem';
-import {myRecipes} from '../../utils/list';
 import {ParamListBase, useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import ArrowSubTitle from '../elements/SubTitle/ArrowSubTitle';
 import {useCommunityMyRecipeName} from '../../store/rankingStore';
-import {useBottomSheetRef, useBottomSheetTitle} from '../../store/store';
 import {GetMyRecipeListType} from '../../type/types';
 import {useGetRecipeList} from '../../api/recipeQuery';
 import Loading from '../elements/Loading';
+import {
+  useBottomSheetRef,
+  useBottomSheetTitle,
+} from '../../store/bottomSheetStore';
 
 type CListItemsProps = {
   scrollOffset: number;

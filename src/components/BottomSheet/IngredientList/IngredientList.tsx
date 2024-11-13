@@ -3,7 +3,6 @@ import React, {useState} from 'react';
 import TopTitle from '../TopTitle';
 import {colors, FWidth} from '../../../../globalStyle';
 import BottomButton from '../BottomButton';
-import {list} from '../../../utils/list';
 import IngredientItem from './IngredientItem';
 import {ListData, RecipeList} from '../../../type/types';
 import {useIngredientList} from '../../../store/store';

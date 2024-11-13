@@ -1,13 +1,11 @@
-import {StyleSheet, View} from 'react-native';
-import React, {useState} from 'react';
+import {StyleSheet} from 'react-native';
+import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import Ingredients from '../../screen/MyFridge/Ingredients';
-import {colors, FWidth} from '../../../globalStyle';
+import {colors} from '../../../globalStyle';
 import RecRecipe from '../../screen/MyFridge/RecRecipe';
 import RecipeDetail from '../../screen/MyFridge/RecipeDetail';
 import FAppBar from '../elements/FAppBar';
-import AppBarMenu from '../elements/AppBarMenu';
-import {useScrollY} from '../../store/store';
 import RecipeDetailAppBar from './AppBar/RecipeDetailAppBar';
 const MyFridgeScreen = () => {
   const Stack = createNativeStackNavigator();

@@ -3,9 +3,12 @@ import React, {useState} from 'react';
 import NoContent from '../../components/RecipeBook/NoContent';
 import {colors, FWidth} from '../../../globalStyle';
 import ListComponent from '../../components/RecipeBook/ListComponent';
-import {useBottomSheetRef, useBottomSheetTitle} from '../../store/store';
 import {useRecipeLikeRankName} from '../../store/rankingStore';
 import ListItem from '../../components/RecipeBook/ListItem';
+import {
+  useBottomSheetRef,
+  useBottomSheetTitle,
+} from '../../store/bottomSheetStore';
 
 const LikePage = () => {
   const {setTitle} = useBottomSheetTitle();

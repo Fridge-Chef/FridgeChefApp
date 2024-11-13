@@ -6,13 +6,13 @@ import {
   BottomSheetModalProvider,
   BottomSheetScrollView,
 } from '@gorhom/bottom-sheet';
-import BottomSheet from '@gorhom/bottom-sheet';
 import {colors, FWidth} from '../../../../globalStyle';
+import {} from '../../../store/store';
+import SubExpiryDate from './SubExpiryDate';
 import {
   useSubBottomSheetRef,
   useSubBottomSheetTitle,
-} from '../../../store/store';
-import SubExpiryDate from './SubExpiryDate';
+} from '../../../store/bottomSheetStore';
 
 const FBottomSheetSub = () => {
   const {subTitle} = useSubBottomSheetTitle();

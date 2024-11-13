@@ -3,7 +3,6 @@ import React from 'react';
 import {ActivityIndicator} from 'react-native';
 import {Dimensions} from 'react-native';
 import {colors, FWidth} from '../../../globalStyle';
-import {useLoading} from '../../store/store';
 import FText from './FText';
 
 const statusBarHeight = StatusBar.currentHeight;

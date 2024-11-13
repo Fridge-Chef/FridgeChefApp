@@ -3,7 +3,6 @@ import React, {useState} from 'react';
 import TopTitle from '../TopTitle';
 import {
   useAddCheck,
-  useBottomSheetRef,
   useCategoriesText,
   useIngredientTitle,
 } from '../../../store/store';
@@ -17,6 +16,7 @@ import {
 } from '../../../api/ingredientsQuery';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {ListData} from '../../../type/types';
+import {useBottomSheetRef} from '../../../store/bottomSheetStore';
 
 const Management = () => {
   const {ingredientTitle} = useIngredientTitle();

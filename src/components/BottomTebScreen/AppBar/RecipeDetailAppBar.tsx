@@ -1,9 +1,9 @@
 import {StyleSheet, Text, View} from 'react-native';
 import React, {useState} from 'react';
-import {useScrollY} from '../../../store/store';
 import FAppBar from '../../elements/FAppBar';
 import AppBarMenu from '../../elements/AppBarMenu';
 import {FWidth} from '../../../../globalStyle';
+import {useScrollY} from '../../../store/utillStore';
 
 const RecipeDetailAppBar = () => {
   const [isClicked, setIsClicked] = useState(false);

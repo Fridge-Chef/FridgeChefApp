@@ -2,10 +2,12 @@ import {ScrollView, StyleSheet} from 'react-native';
 import React from 'react';
 import ArrowSubTitle from '../../elements/SubTitle/ArrowSubTitle';
 import MyReviewList from './MyReviewList';
-import {reviewContent} from '../../../utils/list';
-import {useBottomSheetRef, useBottomSheetTitle} from '../../../store/store';
 import {useMyReviewRankName} from '../../../store/rankingStore';
 import {FWidth} from '../../../../globalStyle';
+import {
+  useBottomSheetRef,
+  useBottomSheetTitle,
+} from '../../../store/bottomSheetStore';
 
 type ReviewType = {
   boardId: number;
@@ -28,7 +30,7 @@ const MyReview = () => {
       username: '김민영',
       star: 4,
       title: '닭가슴살 어쩌구',
-      comments: reviewContent.content,
+      comments: 'reviewContent.content',
       imageLink: [''],
       createdAt: '2021-09-01',
       like: 3,
@@ -38,7 +40,7 @@ const MyReview = () => {
       username: '김인영',
       star: 3,
       title: '닭가슴살 어쩌구',
-      comments: reviewContent.content,
+      comments: 'reviewContent.content',
       createdAt: '2021-09-01',
       imageLink: [
         'https://www.adobe.com/kr/creativecloud/photography/hub/features/media_19243bf806dc1c5a3532f3e32f4c14d44f81cae9f.jpeg?width=2000&format=webply&optimize=medium',
@@ -50,7 +52,7 @@ const MyReview = () => {
       username: '김한영',
       star: 5,
       title: '닭가슴살 어쩌구',
-      comments: reviewContent.content,
+      comments: 'reviewContent.content',
       createdAt: '2021-09-01',
       imageLink: [''],
       like: 7,
@@ -60,7 +62,7 @@ const MyReview = () => {
       username: '김현영',
       star: 2,
       title: '닭가슴살 어쩌구',
-      comments: reviewContent.content,
+      comments: 'reviewContent.content',
       createdAt: '2021-09-01',
       imageLink: [''],
       like: 12,
