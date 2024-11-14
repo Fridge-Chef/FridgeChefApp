@@ -12,10 +12,16 @@ type AddListProps = {
   dataList: ListData[] | undefined;
   setDataList: (ingredientList: ListData[]) => void;
   onClicked?: number;
+  userRefresh: boolean;
 };
 
-const AddList = ({dataList, setDataList, onClicked}: AddListProps) => {
-  const {data: listData, isLoading} = useGetIngredients();
+const AddList = ({
+  dataList,
+  setDataList,
+  onClicked,
+  userRefresh,
+}: AddListProps) => {
+  const {data: listData, isLoading, refetch} = useGetIngredients();
   const {check} = useAddCheck();
   const fetchData = async () => {
     if (isLoading) return;
@@ -32,7 +38,7 @@ const AddList = ({dataList, setDataList, onClicked}: AddListProps) => {
 
   useEffect(() => {
     fetchData();
-  }, [onClicked, listData, isLoading, check]);
+  }, [onClicked, listData, isLoading, check, userRefresh]);
 
   if (isLoading) {
     return <Loading loadingTitle="로딩중" backColor={colors.white} />;
@@ -41,7 +47,7 @@ const AddList = ({dataList, setDataList, onClicked}: AddListProps) => {
   const filteredDataList = dataList?.filter(item => {
     if (onClicked === 1) return item.storage === 'REFRIGERATION';
     if (onClicked === 2) return item.storage === 'TEMPERATURE';
-    return true; // onClicked가 1도 아니고, 2도 아닐 때 (기본적으로 모든 항목을 반환)
+    return true;
   });
 
   return (

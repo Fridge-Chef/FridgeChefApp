@@ -38,7 +38,7 @@ export const getUSerToken = async () => {
     });
     if (response.status === 200) {
       await AsyncStorage.setItem('token', response.data.user.token);
-      getUser();
+      return response.data.user.token; // 새 토큰 반환
     }
   } catch (error: any) {
     console.log('토큰 재발급 에러', error.response.status);
@@ -86,8 +86,9 @@ export const userUpdateNickname = async ({nickname}: UserNicknameProps) => {
 };
 
 export const getUser = async () => {
-  const userToken = await AsyncStorage.getItem('token');
+  let userToken = await AsyncStorage.getItem('token');
   if (!userToken) return;
+
   try {
     const response = await baseUrl.get('/api/user', {
       headers: {
@@ -99,9 +100,24 @@ export const getUser = async () => {
     }
   } catch (error: any) {
     console.log('유저 정보 가져오기 에러', error.response.status);
-    if (userToken && error.response.status === 401) {
-      console.log('토큰 재발급1');
-      await getUSerToken();
+    if (error.response.status === 401) {
+      console.log('토큰 재발급');
+      userToken = await getUSerToken(); // 새 토큰을 가져옴
+      if (userToken) {
+        try {
+          // 새 토큰으로 재시도
+          const retryResponse = await baseUrl.get('/api/user', {
+            headers: {
+              Authorization: `Bearer ${userToken}`,
+            },
+          });
+          if (retryResponse.status === 200) {
+            return retryResponse.data;
+          }
+        } catch (retryError) {
+          console.log('재시도 실패', retryError);
+        }
+      }
     }
   }
 };
