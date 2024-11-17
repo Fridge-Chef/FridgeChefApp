@@ -23,12 +23,7 @@ const UserContent = ({data, refetch}: UserContentProps) => {
   const [loginCheck, setLoginCheck] = useState(false);
   const {mutate} = useLikeRecipeReview();
   const [imagesIndex, setImagesIndex] = useState(0);
-  const imagesIndexRef = useRef(0);
   const {width} = useWindowDimensions();
-
-  useEffect(() => {
-    setImagesIndex(imagesIndexRef.current);
-  }, [imagesIndexRef.current]);
 
   return (
     <>
@@ -70,7 +65,6 @@ const UserContent = ({data, refetch}: UserContentProps) => {
             width={width - FWidth * 44}
             height={FWidth * 300}
             onSnapToItem={index => {
-              imagesIndexRef.current = index;
               setImagesIndex(index);
             }}
             loop={true}

@@ -120,7 +120,10 @@ export const recipeDetailReviewUpdate = async (
     const formData = new FormData();
     formData.append('comment', review.comment);
     formData.append('star', review.star);
-    if (review.prevImages?.length !== review.images?.length) {
+    const isImageChanged =
+      review.prevImages?.length !== review.images?.length ||
+      review.prevImages?.some((img, index) => img !== review.images?.[index]);
+    if (isImageChanged) {
       formData.append('isImage', true);
       review.imagesFile?.forEach(image => {
         formData.append('images', image);

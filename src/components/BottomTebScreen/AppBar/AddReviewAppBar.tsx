@@ -14,6 +14,7 @@ import {
   useUpdateDetailReview,
 } from '../../../api/commentReviewQuery';
 import {useQueryClient} from '@tanstack/react-query';
+import Loading from '../../elements/Loading';
 
 const AddReviewAppBar = () => {
   const {userReview, setUserReview} = useUserReview();
@@ -22,6 +23,7 @@ const AddReviewAppBar = () => {
   const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
   const {mutate} = useAddRecipeReview();
   const queryClient = useQueryClient();
+  const [dataLoading, setDataLoading] = useState(false);
   const {mutate: updateMutate} = useUpdateDetailReview();
   const {refetch} = useGetRecipeDetailReviewList(userReview.boardId);
   const {refetch: recipeDetail} = useGetRecipeDetail(userReview.boardId);
@@ -40,6 +42,7 @@ const AddReviewAppBar = () => {
     } else {
       console.log('데이터를 보냅니다', userReview.type);
       if (userReview.type === 'update') {
+        setDataLoading(true);
         updateMutate(
           {
             boardId: userReview.boardId,
@@ -49,6 +52,9 @@ const AddReviewAppBar = () => {
           {
             onSuccess: () => {
               setUpdateCheck(true);
+              setDataLoading(false);
+              recipeDetail();
+              refetch();
               queryClient.invalidateQueries({
                 queryKey: ['recipeReviewDetail', 'recipeDetailReviewList'],
               });
@@ -56,6 +62,7 @@ const AddReviewAppBar = () => {
           },
         );
       } else {
+        setDataLoading(true);
         mutate(
           {
             boardId: userReview.boardId,
@@ -68,6 +75,7 @@ const AddReviewAppBar = () => {
           },
           {
             onSuccess: () => {
+              setDataLoading(false);
               setUserReview({});
               recipeDetail();
               refetch();
@@ -89,6 +97,7 @@ const AddReviewAppBar = () => {
 
   return (
     <>
+      {dataLoading && <Loading loadingTitle="로딩중" />}
       <FAppBar
         type="close3"
         titleOn={true}
