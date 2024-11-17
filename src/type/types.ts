@@ -119,6 +119,23 @@ export type AddRecipeReviewType = {
   star: number;
 };
 
+export type ReviewType = {
+  type?: string | undefined;
+  prevImages?: string[];
+  commentId?: number | undefined;
+  boardId: number;
+  star: number;
+  comment: string;
+  images?: string[];
+  imagesFile?:
+    | {
+        name: string;
+        type: string;
+        uri: string;
+      }[]
+    | undefined;
+};
+
 export type AddIngredientPageType = {
   addRecipeData: AddIngredientType;
   setAddRecipeData: React.Dispatch<React.SetStateAction<AddIngredientType>>;

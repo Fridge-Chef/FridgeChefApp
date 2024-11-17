@@ -15,6 +15,7 @@ import {
 } from '../../../api/commentReviewQuery';
 import {useQueryClient} from '@tanstack/react-query';
 import Loading from '../../elements/Loading';
+import {isValidReview} from '../../../service/MyFridge/Reviews/Review';
 
 const AddReviewAppBar = () => {
   const {userReview, setUserReview} = useUserReview();
@@ -31,60 +32,63 @@ const AddReviewAppBar = () => {
     userReview.boardId,
     userReview.commentId!,
   );
+
   const handleSubmit = async () => {
-    if (
-      userReview.comment === '' ||
-      userReview.star === 0 ||
-      userReview?.comment.length < 10
-    ) {
-      console.log('데이터를 모두 입력해주세요');
-      return;
+    if (!isValidReview(userReview)) return;
+
+    setDataLoading(true);
+    if (userReview.type === 'update') {
+      handleUpdateReview();
     } else {
-      console.log('데이터를 보냅니다', userReview.type);
-      if (userReview.type === 'update') {
-        setDataLoading(true);
-        updateMutate(
-          {
-            boardId: userReview.boardId,
-            commentId: userReview.commentId!,
-            review: userReview,
-          },
-          {
-            onSuccess: () => {
-              setUpdateCheck(true);
-              setDataLoading(false);
-              recipeDetail();
-              refetch();
-              queryClient.invalidateQueries({
-                queryKey: ['recipeReviewDetail', 'recipeDetailReviewList'],
-              });
-            },
-          },
-        );
-      } else {
-        setDataLoading(true);
-        mutate(
-          {
-            boardId: userReview.boardId,
-            reviewData: {
-              comment: userReview.comment,
-              images: userReview.images,
-              imagesFile: userReview.imagesFile!,
-              star: userReview.star,
-            },
-          },
-          {
-            onSuccess: () => {
-              setDataLoading(false);
-              setUserReview({});
-              recipeDetail();
-              refetch();
-              navigation.goBack();
-            },
-          },
-        );
-      }
+      handleAddReview();
     }
+  };
+
+  const handleAddReview = () => {
+    mutate(
+      {
+        boardId: userReview.boardId,
+        reviewData: {
+          comment: userReview.comment,
+          images: userReview.images,
+          imagesFile: userReview.imagesFile!,
+          star: userReview.star,
+        },
+      },
+      {
+        onSuccess: () => {
+          setDataLoading(false);
+          setUserReview({});
+          refetchRecipeDetails();
+          navigation.goBack();
+        },
+      },
+    );
+  };
+
+  const handleUpdateReview = () => {
+    updateMutate(
+      {
+        boardId: userReview.boardId,
+        commentId: userReview.commentId!,
+        review: userReview,
+      },
+      {
+        onSuccess: () => {
+          setUpdateCheck(true);
+          setDataLoading(false);
+          refetchRecipeDetails();
+        },
+      },
+    );
+  };
+
+  const refetchRecipeDetails = () => {
+    recipeDetail();
+    refetch();
+    queryClient.invalidateQueries({
+      queryKey: ['recipeReviewDetail', 'recipeDetailReviewList'],
+    });
   };
 
   const handleTextColor = () => {
