@@ -31,7 +31,7 @@ export const useGetMyFridgeList = () => {
 export const useGetRecipeDetail = (id: number) => {
   const queryFn = () => getRecipeDetail(id);
   return useQuery<RecipeListType>({
-    queryKey: ['recipeDetail'],
+    queryKey: ['recipeDetail', id],
     queryFn,
   });
 };
@@ -50,7 +50,7 @@ export const useGetRecommendedRecipeList = (ingredients: string[]) => {
     .join('&');
   const queryFn = () => getRecommendedRecipeList(ingredientsQuery);
   return useQuery<{content: GetRecipeListType[]}>({
-    queryKey: ['recommendedRecipeList'],
+    queryKey: ['recommendedRecipeList', ingredients],
     queryFn,
   });
 };
