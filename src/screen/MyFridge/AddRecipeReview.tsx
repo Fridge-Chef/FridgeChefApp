@@ -56,6 +56,18 @@ const AddRecipeReview = () => {
     }
   }, [data]);
 
+  const handleImageRemove = (index: number) => {
+    const updatedImages = [...userReview.images!];
+    const updatedImagesFile = [...userReview.imagesFile!];
+    updatedImages.splice(index, 1);
+    updatedImagesFile.splice(index, 1);
+    setUserReview({
+      ...userReview,
+      images: updatedImages,
+      imagesFile: updatedImagesFile,
+    });
+  };
+
   return (
     <>
       <ScrollView>
@@ -69,19 +81,7 @@ const AddRecipeReview = () => {
                 <ImageView
                   key={index}
                   uri={img}
-                  onPress={() => {
-                    setUserReview({
-                      images: [
-                        ...userReview?.images!.slice(0, index),
-                        ...userReview?.images!.slice(index + 1),
-                      ],
-                      imagesFile: [
-                        ...userReview?.imagesFile!.slice(0, index),
-                        ...userReview?.imagesFile!.slice(index + 1),
-                      ],
-                    });
-                    console.log('이미지 체크', userReview);
-                  }}
+                  onPress={() => handleImageRemove(index)}
                 />
               ))}
           </View>
