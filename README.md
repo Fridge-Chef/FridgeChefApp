@@ -25,12 +25,6 @@
 - react native,typescript,react query,
 
 ## dev
-- oracle cloud Interface
-  - server cpu 3, memory 16
-  - dev cpu1, memory 6
-  - cloud Object Storage
-  - database oracle 19c
-- cloudflare dns
 - git
 
 ## 커밋 규칙
