@@ -51,6 +51,8 @@ export const handleButtonColor = (recipeData: AddIngredientType) => {
 
 export const handleSubmit = async (
   recipeData: AddIngredientType,
+  isLoading: boolean,
+  setIsLoading: React.Dispatch<React.SetStateAction<boolean>>,
   mutate: UseMutateFunction<any, Error, AddIngredientType, unknown>,
   refetch: () => void,
   navigate: NativeStackNavigationProp<ParamListBase>,
@@ -70,9 +72,11 @@ export const handleSubmit = async (
     console.log('데이터를 모두 입력해주세요3');
     return;
   } else {
+    setIsLoading(true);
     mutate(recipeData, {
       onSuccess: () => {
         console.log('레시피 추가 성공');
+        setIsLoading(false);
         refetch();
         navigate.goBack();
       },

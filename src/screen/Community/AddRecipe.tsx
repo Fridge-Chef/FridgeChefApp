@@ -15,10 +15,12 @@ import {
   handleSubmit,
 } from '../../service/Community/AddRecipe';
 import {useAddRecipe, useGetRecipeList} from '../../api/recipeQuery';
+import Loading from '../../components/elements/Loading';
 
 const AddRecipe = () => {
   const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
   const {selectedCategory} = useSelectedCategory();
+  const [isLoading, setIsLoading] = useState(false);
   const {refetch} = useGetRecipeList();
   const {mutate} = useAddRecipe();
   const [addRecipeData, setAddRecipeData] = useState<AddIngredientType>({
@@ -77,9 +79,17 @@ const AddRecipe = () => {
         backgroundColor={handleButtonColor(addRecipeData)}
         previewOnPress={() => handlePreview(addRecipeData, navigation)}
         submitOnPress={() =>
-          handleSubmit(addRecipeData, mutate, refetch, navigation)
+          handleSubmit(
+            addRecipeData,
+            isLoading,
+            setIsLoading,
+            mutate,
+            refetch,
+            navigation,
+          )
         }
       />
+      {isLoading && <Loading loadingTitle="레시피 등록중" />}
     </View>
   );
 };
