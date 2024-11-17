@@ -10,7 +10,10 @@ import {ParamListBase, useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {RecipeReviewDetailType} from '../../../type/types';
-import {useLikeRecipeReview} from '../../../api/commentReviewQuery';
+import {
+  useGetRecipeDetailReviewList,
+  useLikeRecipeReview,
+} from '../../../api/commentReviewQuery';
 
 type UserContentProps = {
   data: RecipeReviewDetailType;
@@ -20,6 +23,7 @@ type UserContentProps = {
 
 const UserContent = ({data, refetch}: UserContentProps) => {
   const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
+  const {refetch: listRefetch} = useGetRecipeDetailReviewList(data.boardId);
   const [loginCheck, setLoginCheck] = useState(false);
   const {mutate} = useLikeRecipeReview();
   const [imagesIndex, setImagesIndex] = useState(0);
@@ -50,6 +54,7 @@ const UserContent = ({data, refetch}: UserContentProps) => {
               {
                 onSuccess: () => {
                   refetch();
+                  listRefetch();
                 },
               },
             );

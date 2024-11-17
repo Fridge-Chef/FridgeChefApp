@@ -3,18 +3,16 @@ import {getUser, getUSerToken, userLogin, UserLoginProps} from './user';
 import {UserData} from '../type/types';
 
 export const useGetUser = () => {
-  const queryFn = () => getUser();
   return useQuery<UserData>({
     queryKey: ['user'],
-    queryFn,
+    queryFn: getUser,
   });
 };
 
 export const useGetRefreshUser = () => {
-  const queryFn = () => getUSerToken();
   return useQuery({
     queryKey: ['refreshUser'],
-    queryFn,
+    queryFn: getUSerToken,
   });
 };
 

@@ -45,7 +45,6 @@ const Review = ({
   const {refetch: detail} = useGetRecipeDetail(review.boardId);
   const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
   const {mutate} = useLikeRecipeReview();
-  const queryClient = useQueryClient();
   const {setUserReview} = useUserReview();
   const handleReviewDetail = () => {
     setReviewTitle(title);

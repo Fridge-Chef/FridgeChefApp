@@ -19,6 +19,7 @@ const UserReview = () => {
   const route = useRoute<RouteProp<RecipeType>>();
   const {boardId, id} = route.params.item;
   const {data, isLoading, refetch} = useGetRecipeReviewDetail(boardId, id);
+
   const {setUserReview} = useUserReview();
   useEffect(() => {
     setUserReview({
