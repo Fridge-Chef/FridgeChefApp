@@ -7,21 +7,17 @@ import {useGetIngredients} from '../../../../api/ingredientsQuery';
 import Loading from '../../../elements/Loading';
 import {ListData} from '../../../../type/types';
 import {useAddCheck} from '../../../../store/store';
+import {useGetUser} from '../../../../api/userQuery';
 
 type AddListProps = {
   dataList: ListData[] | undefined;
   setDataList: (ingredientList: ListData[]) => void;
   onClicked?: number;
-  userRefresh: boolean;
 };
 
-const AddList = ({
-  dataList,
-  setDataList,
-  onClicked,
-  userRefresh,
-}: AddListProps) => {
+const AddList = ({dataList, setDataList, onClicked}: AddListProps) => {
   const {data: listData, isLoading, refetch} = useGetIngredients();
+  const {data} = useGetUser();
   const {check} = useAddCheck();
   const fetchData = async () => {
     if (isLoading) return;
@@ -38,7 +34,8 @@ const AddList = ({
 
   useEffect(() => {
     fetchData();
-  }, [onClicked, listData, isLoading, check, userRefresh]);
+    refetch();
+  }, [onClicked, listData, isLoading, check, data]);
 
   if (isLoading) {
     return <Loading loadingTitle="로딩중" backColor={colors.white} />;

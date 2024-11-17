@@ -11,11 +11,7 @@ import {useGetRefreshUser, useGetUser} from '../../../api/userQuery';
 import Loading from '../../elements/Loading';
 import {UserData} from '../../../type/types';
 
-type LoginAndUserProps = {
-  setUserRefresh: (refresh: boolean) => void;
-};
-
-const LoginAndUser = ({setUserRefresh}: LoginAndUserProps) => {
+const LoginAndUser = () => {
   const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
   const [user, setUser] = useState<UserData>();
   const {data, isLoading, refetch} = useGetUser();
@@ -23,7 +19,6 @@ const LoginAndUser = ({setUserRefresh}: LoginAndUserProps) => {
   useEffect(() => {
     setUser(data);
     refetch();
-    setUserRefresh(true);
   }, [data]);
 
   if (isLoading) return <Loading loadingTitle="검색중" />;

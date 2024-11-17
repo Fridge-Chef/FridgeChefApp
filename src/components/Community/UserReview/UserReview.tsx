@@ -26,7 +26,11 @@ const UserReview = () => {
       commentId: data?.id,
       comment: data?.comments,
       images: data?.imageLink,
-      imagesFile: [],
+      imagesFile: data?.imageLink.map(img => {
+        const fileName = img.split('/').pop() || 'unknown.jpg';
+        const fileType = `image/${fileName.split('.').pop()}`;
+        return {uri: img, name: fileName, type: fileType};
+      }),
       prevImages: data?.imageLink,
       star: data?.star,
     });

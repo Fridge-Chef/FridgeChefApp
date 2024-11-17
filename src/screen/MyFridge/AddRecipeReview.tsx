@@ -22,7 +22,7 @@ const AddRecipeReview = () => {
   const route = useRoute<RouteProp<RecipeTitle>>();
   const item = route.params.review;
   const {userReview, setUserReview} = useUserReview();
-
+  console.log('리뷰 체크', item);
   useEffect(() => {
     if (item) {
       setUserReview({
@@ -31,7 +31,11 @@ const AddRecipeReview = () => {
         comment: item.comments,
         prevImages: item.imageLink,
         images: item.imageLink,
-        imagesFile: [],
+        imagesFile: item.imageLink.map(img => {
+          const fileName = img.split('/').pop() || 'unknown.jpg';
+          const fileType = `image/${fileName.split('.').pop()}`;
+          return {uri: img, name: fileName, type: fileType};
+        }),
         star: item.star,
         boardId: item.boardId,
       });
@@ -71,6 +75,7 @@ const AddRecipeReview = () => {
                         ...userReview.imagesFile!.slice(index + 1),
                       ],
                     });
+                    console.log('이미지 체크', userReview);
                   }}
                 />
               ))}

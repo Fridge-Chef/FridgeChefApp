@@ -31,7 +31,7 @@ export const useGetMyFridgeList = () => {
 export const useGetRecipeDetail = (id: number) => {
   const queryFn = () => getRecipeDetail(id);
   return useQuery<RecipeListType>({
-    queryKey: ['recipeDetail', id],
+    queryKey: ['recipeDetail'],
     queryFn,
   });
 };

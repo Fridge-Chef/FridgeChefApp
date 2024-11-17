@@ -27,7 +27,7 @@ export const useAddRecipeReview = () => {
 export const useGetRecipeDetailReviewList = (id: number) => {
   const queryFn = () => getRecipeDetailReviewList(id);
   return useQuery<RecipeReviewListType>({
-    queryKey: ['recipeDetailReviewList', id],
+    queryKey: ['recipeDetailReviewList'],
     queryFn,
     select: data => data || [],
   });
@@ -39,7 +39,7 @@ export const useGetRecipeReviewDetail = (
 ) => {
   const queryFn = () => recipeReviewDetail(boardId, commentId);
   return useQuery<RecipeReviewDetailType>({
-    queryKey: ['recipeReviewDetail', `${boardId}의 ${commentId}`],
+    queryKey: ['recipeReviewDetail'],
     queryFn,
   });
 };

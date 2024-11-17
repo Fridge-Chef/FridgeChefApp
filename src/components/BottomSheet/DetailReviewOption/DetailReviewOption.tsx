@@ -4,7 +4,7 @@ import React, {useState} from 'react';
 import {FWidth} from '../../../../globalStyle';
 import TopClose from './TopClose';
 import MenuList from './MenuList';
-import {useUserReview} from '../../../store/store';
+import {useRecipeReviewTitle, useUserReview} from '../../../store/store';
 import {
   useDeleteDetailReview,
   useGetRecipeDetailReviewList,
@@ -16,6 +16,7 @@ import {useBottomSheetRef} from '../../../store/bottomSheetStore';
 
 const DetailReviewOption = () => {
   const {userReview} = useUserReview();
+  const {reviewTitle} = useRecipeReviewTitle();
   const {mutate} = useDeleteDetailReview();
   const [deleteModal, setDeleteModal] = useState(false);
   const [deleteCheck, setDeleteCheck] = useState(false);
@@ -28,7 +29,7 @@ const DetailReviewOption = () => {
     bottomSheetRef.current?.close();
     navigation.goBack();
   };
-
+  console.log('이게 왜 초기화 되는거지', userReview);
   return (
     <View style={styles.container}>
       <TopClose />
@@ -44,6 +45,7 @@ const DetailReviewOption = () => {
               star: userReview.star,
             },
             type: 'update',
+            title: reviewTitle,
           });
         }}
         deleteOnPress={() => {

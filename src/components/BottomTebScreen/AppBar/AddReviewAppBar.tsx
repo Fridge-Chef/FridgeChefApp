@@ -36,6 +36,7 @@ const AddReviewAppBar = () => {
       console.log('데이터를 모두 입력해주세요');
       return;
     } else {
+      console.log('데이터를 보냅니다', userReview.type);
       if (userReview.type === 'update') {
         updateMutate(
           {
@@ -108,13 +109,6 @@ const AddReviewAppBar = () => {
           }}
           onPress={() => {
             if (updateCheck) {
-              setUserReview({
-                boardId: 0,
-                star: 0,
-                comment: '',
-                images: [],
-                imagesFile: [],
-              });
               refetch();
               setUpdateCheck(false);
               reviewDetail();

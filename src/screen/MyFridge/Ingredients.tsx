@@ -12,13 +12,11 @@ import FText from '../../components/elements/FText';
 import CondimentButton from '../../components/MyFridge/Ingredients/CondimentButton';
 import InfoComponent from '../../components/MyFridge/Ingredients/InfoComponent';
 import SearchIcon from '../../utils/Svg/SearchIcon';
-import {getUSerToken} from '../../api/user';
 
 const Ingredients = () => {
   const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
   const [onClicked, setonClicked] = useState(1);
   const {ingredientList, setIngredientList} = useIngredientList();
-  const [userRefresh, setUserRefresh] = useState(false);
 
   const handleSearch = () => {
     navigation.navigate('recRecipe');
@@ -26,12 +24,12 @@ const Ingredients = () => {
 
   // 테스트용 함수
   const handleTest = async () => {
-    await getUSerToken();
+    // await getUSerToken();
   };
 
   return (
     <View style={styles.container}>
-      <LoginAndUser setUserRefresh={setUserRefresh} />
+      <LoginAndUser />
       <ScrollView showsVerticalScrollIndicator={false} overScrollMode="never">
         <TouchableOpacity onPress={handleTest}>
           <TopComponent />
@@ -42,7 +40,6 @@ const Ingredients = () => {
           onClicked={onClicked}
           dataList={ingredientList}
           setDataList={setIngredientList}
-          userRefresh={userRefresh}
         />
       </ScrollView>
       {ingredientList.length > 0 && (
