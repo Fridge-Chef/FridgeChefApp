@@ -18,11 +18,11 @@
 | <img src="https://avatars.githubusercontent.com/u/105915960?v=4" width="180"/> | <img src="https://avatars.githubusercontent.com/u/96655921?s=96&v=4" width="180"/> |<img src="https://avatars.githubusercontent.com/u/95726561?s=96&v=4" width="180"/> |         |
 | 백엔드  |  백엔드 |  앱 |  디자이너   |
 
-# 백엔드 사용 기술 및 아키텍처
+# 프론트엔드 사용 기술 및 아키텍처
 
 ## skill
 
-- java,spring boot,jpa,rest doc
+- react native,typescript,react query,
 
 ## dev
 - oracle cloud Interface
@@ -33,21 +33,8 @@
 - cloudflare dns
 - git
 
-## 빌드 및 배포 전략
-- git action 
-
-
 ## 커밋 규칙
-- 브랜치명 : feat,fix,refactor,bug,test 
-- 메세지 :브랜치 명 or gitmoji 방식
-
-## ERD
-![erd](docs/db_erd.png)
-
-## 개발 환경 분리 
-
-- local 환경은 어느 곳 에서나 실행 가능 
-- dev,prod 환경은 Jasypt password 암호 필요
+- 혼자 개발이라 따로 규칙 안둠
 
 
 # 프로젝트 소개 
