@@ -34,8 +34,8 @@ export const useGetRecipeDetailReviewList = (id: number) => {
 };
 
 export const useGetRecipeReviewDetail = (
-  boardId: number,
-  commentId: number,
+  boardId: number | undefined,
+  commentId: number | undefined,
 ) => {
   const queryFn = () => recipeReviewDetail(boardId, commentId);
   return useQuery<RecipeReviewDetailType>({

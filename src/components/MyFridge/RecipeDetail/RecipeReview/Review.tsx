@@ -68,10 +68,6 @@ const Review = ({
   }, [review]);
 
   const handleClose = () => {
-    const data = queryClient.getQueriesData({
-      queryKey: ['recipeReviewDetail', '91의 0'],
-    });
-    console.log(data);
     setMenuOpen(false);
     setModalCheck(false);
     setUserReview({});

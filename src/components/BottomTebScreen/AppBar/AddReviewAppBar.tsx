@@ -13,6 +13,7 @@ import {
   useGetRecipeReviewDetail,
   useUpdateDetailReview,
 } from '../../../api/commentReviewQuery';
+import {useQueryClient} from '@tanstack/react-query';
 
 const AddReviewAppBar = () => {
   const {userReview, setUserReview} = useUserReview();
@@ -20,6 +21,7 @@ const AddReviewAppBar = () => {
   const [updateCheck, setUpdateCheck] = useState(false);
   const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
   const {mutate} = useAddRecipeReview();
+  const queryClient = useQueryClient();
   const {mutate: updateMutate} = useUpdateDetailReview();
   const {refetch} = useGetRecipeDetailReviewList(userReview.boardId);
   const {refetch: recipeDetail} = useGetRecipeDetail(userReview.boardId);
@@ -31,7 +33,7 @@ const AddReviewAppBar = () => {
     if (
       userReview.comment === '' ||
       userReview.star === 0 ||
-      userReview.comment.length < 10
+      userReview?.comment.length < 10
     ) {
       console.log('데이터를 모두 입력해주세요');
       return;
@@ -47,6 +49,9 @@ const AddReviewAppBar = () => {
           {
             onSuccess: () => {
               setUpdateCheck(true);
+              queryClient.invalidateQueries({
+                queryKey: ['recipeReviewDetail', 'recipeDetailReviewList'],
+              });
             },
           },
         );
@@ -75,7 +80,7 @@ const AddReviewAppBar = () => {
   };
 
   const handleTextColor = () => {
-    if (userReview.comment.length < 10 || userReview.star === 0) {
+    if (userReview.comment?.length < 10 || userReview.star === 0) {
       return colors.disabled;
     } else {
       return colors.secondary[1];

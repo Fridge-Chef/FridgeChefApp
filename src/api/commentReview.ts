@@ -67,8 +67,8 @@ export const likeRecipeReview = async (likeData: RecipeReviewLikeType) => {
 };
 
 export const recipeReviewDetail = async (
-  boardId: number,
-  commentId: number,
+  boardId: number | undefined,
+  commentId: number | undefined,
 ) => {
   try {
     const token = await AsyncStorage.getItem('token');

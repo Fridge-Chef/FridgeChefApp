@@ -29,7 +29,7 @@ const DetailReviewOption = () => {
     bottomSheetRef.current?.close();
     navigation.goBack();
   };
-  console.log('이게 왜 초기화 되는거지', userReview);
+
   return (
     <View style={styles.container}>
       <TopClose />
