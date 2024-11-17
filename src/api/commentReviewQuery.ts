@@ -39,7 +39,7 @@ export const useGetRecipeReviewDetail = (
 ) => {
   const queryFn = () => recipeReviewDetail(boardId, commentId);
   return useQuery<RecipeReviewDetailType>({
-    queryKey: ['recipeReviewDetail'],
+    queryKey: ['recipeReviewDetail', `${boardId}-${commentId}`],
     queryFn,
   });
 };
