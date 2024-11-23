@@ -7,10 +7,10 @@ import RecipeListHeart2 from '../../../../utils/Svg/RecipeListHeart2';
 
 type LikeButtonProps = {
   isLike: boolean;
-  setIsLike: React.Dispatch<React.SetStateAction<boolean>>;
+  onPress: () => void;
 };
 
-const LikeButton = ({isLike, setIsLike}: LikeButtonProps) => {
+const LikeButton = ({isLike, onPress}: LikeButtonProps) => {
   return (
     <View style={styles.container}>
       <FButton
@@ -21,7 +21,7 @@ const LikeButton = ({isLike, setIsLike}: LikeButtonProps) => {
           left: 10,
           right: 10,
         }}
-        onPress={() => setIsLike(!isLike)}>
+        onPress={onPress}>
         {isLike ? <RecipeListHeart /> : <RecipeListHeart2 />}
       </FButton>
     </View>

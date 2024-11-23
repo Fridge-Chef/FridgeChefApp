@@ -23,7 +23,7 @@ const Recipes = ({ingredientList}: RecipesProps) => {
   const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
   const {bottomSheetRef} = useBottomSheetRef();
   const {setTitle} = useBottomSheetTitle();
-  const {data, isLoading} = useGetRecommendedRecipeList(ingredients);
+  const {data, isLoading, refetch} = useGetRecommendedRecipeList(ingredients);
   const handleBottomSheetOpen = () => {
     setTitle('순위');
     bottomSheetRef.current?.present();
@@ -52,7 +52,7 @@ const Recipes = ({ingredientList}: RecipesProps) => {
                     myIngredients: ingredients,
                   })
                 }>
-                <ListItem item={item} />
+                <ListItem item={item} refetch={refetch} />
               </FButton>
             );
           }}

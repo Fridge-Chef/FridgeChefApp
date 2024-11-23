@@ -4,7 +4,12 @@ import {AddIngredientType} from '../type/types';
 
 export const getRecommendedRecipeList = async (ingredientsQuery: string) => {
   try {
-    const response = await baseUrl.get(`api/recipes/?${ingredientsQuery}`);
+    const token = await AsyncStorage.getItem('token');
+    const response = await baseUrl.get(`api/recipes/?${ingredientsQuery}`, {
+      headers: {
+        Authorization: token ? `Bearer ${token}` : null,
+      },
+    });
     return response.data;
   } catch (error) {
     console.log('추천 레시피 가져오기', error);
@@ -19,6 +24,28 @@ export const getRecipeList = async () => {
     }
   } catch (error) {
     console.log('추천 레시피 가져오기', error);
+  }
+};
+
+export const addLikeRecipe = async (boardId: number) => {
+  try {
+    const token = await AsyncStorage.getItem('token');
+    const response = await baseUrl.patch(
+      `api/boards/${boardId}/like`,
+      {},
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      },
+    );
+
+    if (response.status === 200) {
+      return response.data;
+    }
+  } catch (error: any) {
+    console.log(error.response.data);
+    throw new Error(error);
   }
 };
 
@@ -50,7 +77,7 @@ export const addMyRecipe = async (data: AddIngredientType) => {
     formData.append(`descriptions[${index}].content`, instruction.content);
     formData.append(`descriptions[${index}].image`, instruction.imageFile);
   });
-
+  console.log('formData', formData);
   try {
     const response = await baseUrl.post('api/board', formData, {
       headers: {

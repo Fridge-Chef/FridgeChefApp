@@ -9,18 +9,24 @@ import {
   useBottomSheetRef,
   useBottomSheetTitle,
 } from '../../store/bottomSheetStore';
+import {useGetRecipeBookLikeList} from '../../api/recipeBookQuery';
+import Loading from '../../components/elements/Loading';
+import {useAddLikeRecipe} from '../../api/recipeQuery';
+import {useQueryClient} from '@tanstack/react-query';
 
 const LikePage = () => {
   const {setTitle} = useBottomSheetTitle();
   const {bottomSheetRef} = useBottomSheetRef();
   const {rankName} = useRecipeLikeRankName();
-  const [data] = useState(true);
-
+  const {data, isLoading, refetch} = useGetRecipeBookLikeList();
+  const queryList = useQueryClient();
+  const {mutate} = useAddLikeRecipe();
   const handleRanking = () => {
     setTitle('좋아요 랭킹');
     bottomSheetRef.current?.present();
   };
 
+  if (isLoading) return <Loading loadingTitle="로딩중" />;
   return (
     <View style={styles.container}>
       {!data ? (
@@ -29,7 +35,22 @@ const LikePage = () => {
         <ListComponent
           onPress={handleRanking}
           name={rankName}
-          renderItem={({item}) => <ListItem item={item} onPress={() => {}} />}
+          data={data.content}
+          renderItem={({item}) => (
+            <ListItem
+              item={item}
+              onPress={() =>
+                mutate(item.id, {
+                  onSuccess: () => {
+                    queryList.invalidateQueries({
+                      queryKey: ['recommendedRecipeList'],
+                    });
+                    refetch();
+                  },
+                })
+              }
+            />
+          )}
         />
       )}
     </View>

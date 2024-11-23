@@ -11,12 +11,18 @@ import ArrowSubTitle from '../elements/SubTitle/ArrowSubTitle';
 
 type ListComponentProps = {
   name: string;
+  data: any;
   renderItem: ListRenderItem<any>;
   onPress: () => void;
 };
 
-const ListComponent = ({name, renderItem, onPress}: ListComponentProps) => {
-  const list = require('../../utils/recipeListData.json');
+const ListComponent = ({
+  name,
+  data,
+  renderItem,
+  onPress,
+}: ListComponentProps) => {
+  // const list = require('../../utils/recipeListData.json');
 
   return (
     <ScrollView
@@ -28,7 +34,7 @@ const ListComponent = ({name, renderItem, onPress}: ListComponentProps) => {
       <View style={{marginTop: FWidth * 12}}>
         <View style={styles.subContainer}>
           <FlatList
-            data={list}
+            data={data}
             scrollEnabled={false}
             showsVerticalScrollIndicator={false}
             overScrollMode="never"

@@ -7,25 +7,17 @@ import BottomText from './BottomText';
 import FImage from '../../../elements/FImage';
 import FText from '../../../elements/FText';
 import {GetRecipeListType} from '../../../../type/types';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import {useAddLikeRecipe} from '../../../../api/recipeQuery';
+import {useGetRecipeBookLikeList} from '../../../../api/recipeBookQuery';
 
 type ListItemProps = {
   item: GetRecipeListType;
+  refetch: () => void;
 };
 
-const ListItem = ({item}: ListItemProps) => {
-  const [isLike, setIsLike] = useState(false);
-  const myLike = async () => {
-    if (isLike) {
-      await AsyncStorage.setItem(`myLike${item.id}`, JSON.stringify(isLike));
-    } else {
-      await AsyncStorage.removeItem(`myLike${item.id}`);
-    }
-  };
-
-  useEffect(() => {
-    myLike();
-  }, [isLike]);
+const ListItem = ({item, refetch}: ListItemProps) => {
+  const {mutate} = useAddLikeRecipe();
+  const {refetch: bookRefetch} = useGetRecipeBookLikeList();
 
   return (
     <View style={styles.container}>
@@ -45,7 +37,17 @@ const ListItem = ({item}: ListItemProps) => {
             color={colors.text}
             text={item.title}
           />
-          <LikeButton isLike={isLike} setIsLike={setIsLike} />
+          <LikeButton
+            isLike={item.myHit}
+            onPress={() =>
+              mutate(item.id, {
+                onSuccess: () => {
+                  bookRefetch();
+                  refetch();
+                },
+              })
+            }
+          />
         </View>
         <ViewAndLike like={item.star} favorites={item.hit} />
         <BottomText recipeIngredients={item.without} have={item.have} />

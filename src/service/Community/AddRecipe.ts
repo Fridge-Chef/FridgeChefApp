@@ -51,7 +51,6 @@ export const handleButtonColor = (recipeData: AddIngredientType) => {
 
 export const handleSubmit = async (
   recipeData: AddIngredientType,
-  isLoading: boolean,
   setIsLoading: React.Dispatch<React.SetStateAction<boolean>>,
   mutate: UseMutateFunction<any, Error, AddIngredientType, unknown>,
   refetch: () => void,

@@ -79,14 +79,7 @@ const AddRecipe = () => {
         backgroundColor={handleButtonColor(addRecipeData)}
         previewOnPress={() => handlePreview(addRecipeData, navigation)}
         submitOnPress={() =>
-          handleSubmit(
-            addRecipeData,
-            isLoading,
-            setIsLoading,
-            mutate,
-            refetch,
-            navigation,
-          )
+          handleSubmit(addRecipeData, setIsLoading, mutate, refetch, navigation)
         }
       />
       {isLoading && <Loading loadingTitle="레시피 등록중" />}
