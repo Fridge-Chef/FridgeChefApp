@@ -16,7 +16,7 @@ const ItemsComponent = ({recipeIngredients}: ItemsComponentProps) => {
         <ItemBox
           key={index}
           title={item.name}
-          quantity={item.details}
+          quantity={item.details ? item.details : ''}
           onPress={() => console.log(item.name)}
         />
       ))}

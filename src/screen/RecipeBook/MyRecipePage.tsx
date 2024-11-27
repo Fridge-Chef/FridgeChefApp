@@ -1,4 +1,4 @@
-import {StyleSheet, View} from 'react-native';
+import {Pressable, StyleSheet} from 'react-native';
 import React, {useState} from 'react';
 import NoContent from '../../components/RecipeBook/NoContent';
 import {colors, FWidth} from '../../../globalStyle';
@@ -28,7 +28,7 @@ const MyRecipePage = () => {
   console.log('데이터', data?.content);
   if (isLoading) return <Loading loadingTitle="로딩중" />;
   return (
-    <View style={styles.container}>
+    <Pressable style={styles.container} onPress={() => setMenuOpen(null!)}>
       {!data?.content.length ? (
         <NoContent
           marginTop={240}
@@ -48,13 +48,14 @@ const MyRecipePage = () => {
                 setMenuOpen(prev => (prev === item.id ? null : item.id));
               }}
               refetch={refetch}
+              navigation={navigation}
               menuOpen={menuOpen}
               setMenuOpen={setMenuOpen}
             />
           )}
         />
       )}
-    </View>
+    </Pressable>
   );
 };
 

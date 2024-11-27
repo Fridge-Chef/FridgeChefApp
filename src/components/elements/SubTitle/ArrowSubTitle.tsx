@@ -15,6 +15,12 @@ const ArrowSubTitle = ({name, onPress}: ArrowSubTitleProps) => {
     <FButton
       buttonStyle="noneStyle"
       fBStyle={styles.container}
+      hitSlop={{
+        top: FWidth * 10,
+        bottom: FWidth * 10,
+        left: FWidth * 10,
+        right: FWidth * 10,
+      }}
       onPress={onPress}>
       <FText
         mRight={FWidth * 4}

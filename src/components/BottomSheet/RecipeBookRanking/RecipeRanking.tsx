@@ -37,7 +37,10 @@ const RecipeRanking = ({
           key={item.id}
           buttonStyle="addButton"
           fBStyle={styles.alignButton}
-          onPress={() => handleRanking(item.text, item.id)}>
+          onPress={() => {
+            handleRanking(item.text, item.id);
+            bottomSheetRef.current?.close();
+          }}>
           {rankingId === item.id && <Check />}
           <FText
             mLeft={FWidth * 6}

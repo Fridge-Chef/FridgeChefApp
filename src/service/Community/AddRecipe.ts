@@ -1,4 +1,4 @@
-import {ParamListBase, useNavigation} from '@react-navigation/native';
+import {ParamListBase} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {AddIngredientType} from '../../type/types';
 import {colors} from '../../../globalStyle';
@@ -27,6 +27,26 @@ export const handlePreview = (
   navigation.navigate('preview', {
     recipeData,
   });
+};
+
+export const handlePreviewButtonColor = (recipeData: AddIngredientType) => {
+  if (
+    recipeData.name.trim() === '' ||
+    recipeData.description.trim() === '' ||
+    recipeData.mainImage.trim() === '' ||
+    recipeData.dishLevel.trim() === '' ||
+    recipeData.dishCategory.trim() === '' ||
+    recipeData.dishLevel.trim() === '' ||
+    recipeData.recipeIngredients.length <= 1 ||
+    recipeData.recipeIngredients[1].name.trim() === '' ||
+    recipeData.instructions.length <= 1 ||
+    recipeData.instructions[1].content.trim() === ''
+  ) {
+    console.log('데이터를 모두 입력해주세요2');
+    return colors.b200;
+  } else {
+    return colors.text;
+  }
 };
 
 export const handleButtonColor = (recipeData: AddIngredientType) => {

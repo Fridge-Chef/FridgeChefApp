@@ -4,16 +4,41 @@ import {FWidth} from '../../../../globalStyle';
 import TopClose from '../DetailReviewOption/TopClose';
 import MenuList from '../DetailReviewOption/MenuList';
 import DeleteModal from '../../elements/Modals/DeleteModal';
+import {useRecipeId} from '../../../store/store';
+import {ParamListBase, useNavigation} from '@react-navigation/native';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack/lib/typescript/src/types';
+import {useBottomSheetRef} from '../../../store/bottomSheetStore';
+import {
+  useDeleteMyRecipe,
+  useGetRecipeBookList,
+} from '../../../api/recipeBookQuery';
 
 const RecipeBookOption = () => {
   const [deleteCheck, setDeleteCheck] = useState(true);
   const [deleteModal, setDeleteModal] = useState(false);
+  const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
+  const {bottomSheetRef} = useBottomSheetRef();
+  const {refetch} = useGetRecipeBookList('MYRECIPE');
+  const {recipeId} = useRecipeId();
+  const {mutate} = useDeleteMyRecipe();
+
+  const handleClose = () => {
+    setDeleteModal(false);
+    refetch();
+    bottomSheetRef.current?.close();
+    navigation.goBack();
+  };
+
   return (
     <View style={styles.container}>
       <TopClose />
       <MenuList
         updateOnPress={() => {
-          console.log('수정');
+          bottomSheetRef.current?.close(),
+            navigation.navigate('addRecipe', {
+              boardId: recipeId,
+              type: 'update',
+            });
         }}
         deleteOnPress={() => {
           setDeleteModal(true);
@@ -22,8 +47,19 @@ const RecipeBookOption = () => {
       <DeleteModal
         modalCheck={deleteModal}
         deleteCheck={deleteCheck}
-        onPress={() => {}}
-        cancelOnPress={() => setDeleteModal(false)}
+        onPress={() =>
+          deleteCheck
+            ? mutate(recipeId, {
+                onSuccess: () => {
+                  setDeleteCheck(false);
+                },
+              })
+            : handleClose()
+        }
+        cancelOnPress={() => {
+          setDeleteModal(false);
+          bottomSheetRef.current?.close();
+        }}
       />
     </View>
   );

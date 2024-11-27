@@ -7,6 +7,7 @@ import TimeAndLevel from '../../../MyFridge/RecipeDetail/TitleComponent/TimeAndL
 
 type PreviewTitleProps = {
   title: string;
+  username: string;
   dishCategory: string;
   dishTime: string;
   dishLevel: string;
@@ -14,6 +15,7 @@ type PreviewTitleProps = {
 
 const PreviewTitle = ({
   title,
+  username,
   dishCategory,
   dishTime,
   dishLevel,
@@ -32,7 +34,7 @@ const PreviewTitle = ({
           mLeft={FWidth * 6}
           fStyle="B_16"
           color={colors.text}
-          text={'자취의신'}
+          text={username}
         />
       </View>
     </View>

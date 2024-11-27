@@ -1,20 +1,38 @@
 import {StyleSheet, Text, View} from 'react-native';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {colors, FWidth} from '../../../../../globalStyle';
 import FButton from '../../../elements/FButton';
 import FText from '../../../elements/FText';
 import {AddRecipeLevelList} from '../../../../utils/list';
 
 type CookLevelProps = {
+  level: string;
   onPress: (text: string) => void;
 };
 
-const CookLevel = ({onPress}: CookLevelProps) => {
-  const [selectedLevel, setSelectedLevel] = useState(1);
+const CookLevel = ({level, onPress}: CookLevelProps) => {
+  const getInitialLevel = (level: string) => {
+    switch (level) {
+      case '쉬움':
+        return 1;
+      case '중간':
+        return 2;
+      case '어려움':
+        return 3;
+      default:
+        return 1;
+    }
+  };
+
+  const [selectedLevel, setSelectedLevel] = useState(getInitialLevel(level));
   const handleSelectedLevel = (id: number, text: string) => {
     setSelectedLevel(id);
     onPress(text);
   };
+
+  useEffect(() => {
+    setSelectedLevel(getInitialLevel(level));
+  }, [level]);
   return (
     <View style={styles.container}>
       <View style={styles.buttonContainer}>

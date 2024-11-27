@@ -16,14 +16,31 @@ export const getRecommendedRecipeList = async (ingredientsQuery: string) => {
   }
 };
 
-export const getRecipeList = async () => {
+export const getRecipeList = async ({
+  page,
+  size,
+  issue,
+  sort,
+}: {
+  page: number;
+  size: number;
+  issue: string;
+  sort?: string;
+}) => {
   try {
-    const response = await baseUrl.get('api/boards');
+    const response = await baseUrl.get('api/boards', {
+      params: {page, size, issue, sort},
+    });
     if (response.status === 200) {
-      return response.data;
+      const data = response.data;
+      return {
+        content: data.content,
+        hasNextPage: data.content.length === size,
+      };
     }
   } catch (error) {
     console.log('추천 레시피 가져오기', error);
+    throw error;
   }
 };
 

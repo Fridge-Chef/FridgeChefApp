@@ -8,18 +8,20 @@ type SubmitProps = {
   previewOnPress: () => void;
   submitOnPress: () => void;
   backgroundColor: ColorValue;
+  previewBackGroundColor: ColorValue;
 };
 
 const Submit = ({
   previewOnPress,
   submitOnPress,
   backgroundColor,
+  previewBackGroundColor,
 }: SubmitProps) => {
   return (
     <View style={styles.container}>
       <FButton
         buttonStyle="noneStyle"
-        fBStyle={styles.viewButton}
+        fBStyle={[styles.viewButton, {backgroundColor: previewBackGroundColor}]}
         onPress={previewOnPress}>
         <FText fStyle="M_18" color={colors.white} text="미리보기" />
       </FButton>
@@ -53,7 +55,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: FWidth * 22,
     marginRight: FWidth * 10,
     borderRadius: 8,
-    backgroundColor: colors.b200,
+    // backgroundColor: colors.b200,
   },
 
   submitButton: {

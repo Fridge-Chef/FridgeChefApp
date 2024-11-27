@@ -1,4 +1,4 @@
-import {useMutation, useQuery} from '@tanstack/react-query';
+import {useInfiniteQuery, useMutation, useQuery} from '@tanstack/react-query';
 import {
   addLikeRecipe,
   addMyRecipe,
@@ -13,11 +13,17 @@ import {
   RecipeListType,
 } from '../type/types';
 
-export const useGetRecipeList = () => {
-  const queryFn = () => getRecipeList();
-  return useQuery({
-    queryKey: ['recipeList'],
-    queryFn,
+export const useGetRecipeList = (size = 10, issue = 'ALL', sort = 'LATEST') => {
+  return useInfiniteQuery({
+    queryKey: ['recipeList', issue, sort],
+    queryFn: ({pageParam = 0}) =>
+      getRecipeList({page: pageParam, size, issue, sort}),
+    getNextPageParam: (lastPage, allPages) => {
+      // lastPage에 다음 페이지가 있는지 확인
+      const nextPage = lastPage?.hasNextPage ? allPages.length : undefined;
+      return nextPage;
+    },
+    initialPageParam: 0,
   });
 };
 

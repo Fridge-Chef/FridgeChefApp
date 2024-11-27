@@ -19,11 +19,7 @@ const Loading = ({
   return (
     <View style={[styles.container, {backgroundColor: backColor}]}>
       <View style={styles.indicatorContainer}>
-        <ActivityIndicator
-          size="large"
-          color={colors.primary[1]}
-          style={styles.indicatorStyle}
-        />
+        <ActivityIndicator size="large" color={colors.primary[1]} />
         <FText
           mTop={FWidth * 20}
           fStyle="R_16"
@@ -51,6 +47,4 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-
-  indicatorStyle: {},
 });

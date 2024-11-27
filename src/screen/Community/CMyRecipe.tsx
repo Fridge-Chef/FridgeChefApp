@@ -27,6 +27,7 @@ const CMyRecipe = () => {
       <CTopTitle />
       <CListMenu onClick={onClick} setonClick={setonClick} list={menuList} />
       <CListItems
+        onClick={onClick}
         scrollOffset={scrollOffset}
         setScrollOffset={setScrollOffset}
         setPrevScrollOffset={setPrevScrollOffset}

@@ -48,6 +48,7 @@ const InputContent = ({
       </View>
       <View style={styles.levelContainer}>
         <CookLevel
+          level={addRecipeData.dishLevel}
           onPress={text => {
             setAddRecipeData({...addRecipeData, dishLevel: text});
           }}

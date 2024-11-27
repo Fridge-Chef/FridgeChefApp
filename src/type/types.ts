@@ -79,6 +79,7 @@ export type RecipeIngredientType = {
 
 export type InstructionsType = {
   content: string;
+  imagePreview?: string;
   imageLink: string;
   imageFile: {
     name: string;
@@ -88,7 +89,10 @@ export type InstructionsType = {
 };
 
 export type AddIngredientType = {
+  id?: number;
+  mainImagePreview?: string;
   mainImage: string;
+  mainImageId?: number;
   mainImageFile: {
     name: string;
     type: string;

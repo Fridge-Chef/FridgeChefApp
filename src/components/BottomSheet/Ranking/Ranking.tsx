@@ -28,6 +28,7 @@ const Ranking = () => {
           onPress={() => {
             setRankName(item.text);
             setRankingId(item.id);
+            bottomSheetRef.current?.close();
           }}>
           {rankingId === item.id && <Check />}
           <FText

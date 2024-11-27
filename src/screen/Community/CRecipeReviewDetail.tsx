@@ -1,10 +1,7 @@
 import {ScrollView, StyleSheet, View} from 'react-native';
-import React, {useEffect, useState} from 'react';
-import PCloseButton from '../../components/Community/AddRecipe/Preview/PCloseButton';
+import React, {useEffect} from 'react';
 import {RouteProp, useRoute} from '@react-navigation/native';
 import {colors} from '../../../globalStyle';
-import {getRecipeDetail} from '../../api/recipe';
-import {AddIngredientType} from '../../type/types';
 import FImage from '../../components/elements/FImage';
 import PreviewTitle from '../../components/Community/AddRecipe/Preview/PreviewTitle';
 import RecipeNote from '../../components/MyFridge/RecipeDetail/RecipeNote/RecipeNote';
@@ -12,6 +9,7 @@ import IngredientComponent from '../../components/MyFridge/RecipeDetail/Ingredie
 import RecipeComponent from '../../components/MyFridge/RecipeDetail/RecipeComponent/RecipeComponent';
 import {useGetRecipeDetail} from '../../api/recipeQuery';
 import Loading from '../../components/elements/Loading';
+import {useRecipeId, useUsernameCheck} from '../../store/store';
 
 type CRecipeReviews = {
   params: {
@@ -22,9 +20,16 @@ type CRecipeReviews = {
 const CRecipeReviewDetail = () => {
   const recipeId = useRoute<RouteProp<CRecipeReviews>>();
   const {itemId} = recipeId.params;
-  console.log('아이템', itemId);
   const {data, isLoading} = useGetRecipeDetail(itemId);
-  console.log('dd', data);
+  const {setUsernameCheck} = useUsernameCheck();
+  const {setRecipeId} = useRecipeId();
+  useEffect(() => {
+    if (data) {
+      setUsernameCheck(data?.username);
+      setRecipeId(itemId);
+    }
+  }, [data]);
+
   if (isLoading) return <Loading loadingTitle="검색중" />;
   if (data)
     return (
@@ -34,6 +39,7 @@ const CRecipeReviewDetail = () => {
         </View>
         <PreviewTitle
           title={data.title}
+          username={data.username}
           dishCategory={data.dishCategory}
           dishTime={data.dishTime}
           dishLevel={data.dishLevel}

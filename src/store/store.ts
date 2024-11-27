@@ -55,6 +55,16 @@ type AddCheckType = {
   setCheck: (check: boolean) => void;
 };
 
+type UsernameCheckType = {
+  usernameCheck: string;
+  setUsernameCheck: (usernameCheck: string) => void;
+};
+
+type RecipeIdType = {
+  recipeId: number;
+  setRecipeId: (recipeId: number) => void;
+};
+
 export const useIngredientTitle = create<IngredientTitleTitleType>(set => ({
   ingredientTitle: '',
   setIngredientTitle: (ingredientTitle: string) => set({ingredientTitle}),
@@ -131,4 +141,14 @@ export const useIngredientList = create<IngredientListType>(set => ({
 export const useAddCheck = create<AddCheckType>(set => ({
   check: false,
   setCheck: (check: boolean) => set({check}),
+}));
+
+export const useUsernameCheck = create<UsernameCheckType>(set => ({
+  usernameCheck: '',
+  setUsernameCheck: (usernameCheck: string) => set({usernameCheck}),
+}));
+
+export const useRecipeId = create<RecipeIdType>(set => ({
+  recipeId: null!,
+  setRecipeId: (recipeId: number) => set({recipeId}),
 }));

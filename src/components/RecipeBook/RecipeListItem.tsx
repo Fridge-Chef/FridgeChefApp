@@ -6,7 +6,7 @@ import FButton from '../elements/FButton';
 import FText from '../elements/FText';
 import FImage from '../elements/FImage';
 import DetailReviewMore from '../../utils/Svg/DetailReviewMore';
-import {ParamListBase, useNavigation} from '@react-navigation/native';
+import {ParamListBase} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import AppBarMenu from '../elements/AppBarMenu';
 import DeleteModal from '../elements/Modals/DeleteModal';
@@ -23,6 +23,7 @@ type RecipeListItemProps = {
   };
   onPress: () => void;
   menuOpen: boolean | number;
+  navigation: NativeStackNavigationProp<ParamListBase>;
   setMenuOpen: React.Dispatch<React.SetStateAction<boolean | number>>;
   refetch: () => void;
 };
@@ -31,13 +32,20 @@ const RecipeListItem = ({
   item,
   onPress,
   menuOpen,
+  navigation,
   setMenuOpen,
   refetch,
 }: RecipeListItemProps) => {
-  const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
   const [modalCheck, setModalCheck] = useState(false);
-  const {mutate} = useDeleteMyRecipe();
   const [deleteCheck, setDeleteCheck] = useState(true);
+  const {mutate} = useDeleteMyRecipe();
+
+  const handleClose = () => {
+    setMenuOpen(null!);
+    setModalCheck(false);
+    refetch();
+  };
+
   return (
     <FButton
       buttonStyle="noneStyle"
@@ -71,7 +79,13 @@ const RecipeListItem = ({
           <View style={styles.menuContainer}>
             <AppBarMenu
               id={item.id}
-              updateOnPress={() => console.log('수정')}
+              updateOnPress={() => {
+                setMenuOpen(null!);
+                navigation.navigate('addRecipe', {
+                  boardId: item.id,
+                  type: 'update',
+                });
+              }}
               deleteOnPress={() => setModalCheck(true)}
             />
           </View>
@@ -80,14 +94,13 @@ const RecipeListItem = ({
       <DeleteModal
         modalCheck={modalCheck}
         onPress={() =>
-          mutate(item.id, {
-            onSuccess: () => {
-              setMenuOpen(null!);
-              setModalCheck(false);
-              setDeleteCheck(false);
-              refetch();
-            },
-          })
+          deleteCheck
+            ? mutate(item.id, {
+                onSuccess: () => {
+                  setDeleteCheck(false);
+                },
+              })
+            : handleClose()
         }
         deleteCheck={deleteCheck}
         cancelOnPress={() => {

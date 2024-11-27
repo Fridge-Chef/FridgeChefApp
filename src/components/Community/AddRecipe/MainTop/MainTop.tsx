@@ -3,7 +3,7 @@ import React from 'react';
 import {colors, FWidth} from '../../../../../globalStyle';
 import ImageComponent from './ImageComponent';
 import InputContent from './InputContent';
-import {AddIngredientPageType, AddIngredientType} from '../../../../type/types';
+import {AddIngredientPageType} from '../../../../type/types';
 
 type MainTopType = {
   selectedCategory: string;
