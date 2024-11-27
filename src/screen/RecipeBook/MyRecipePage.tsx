@@ -9,20 +9,23 @@ import {
   useBottomSheetRef,
   useBottomSheetTitle,
 } from '../../store/bottomSheetStore';
+import {useGetRecipeMyRecipeList} from '../../api/recipeBookQuery';
+import Loading from '../../components/elements/Loading';
 
 const MyRecipePage = () => {
   const {setTitle} = useBottomSheetTitle();
   const {bottomSheetRef} = useBottomSheetRef();
   const {rankName} = useMyRecipeRankName();
-  const [data] = useState(true);
+  const {data, isLoading, refetch} = useGetRecipeMyRecipeList();
 
   const handleRanking = () => {
     setTitle('나의레시피');
     bottomSheetRef.current?.present();
   };
+  if (isLoading) return <Loading loadingTitle="로딩중" />;
   return (
     <View style={styles.container}>
-      {!data ? (
+      {!data?.content ? (
         <NoContent
           marginTop={240}
           title="첫번째 레시피를 남겨보세요"
@@ -30,10 +33,14 @@ const MyRecipePage = () => {
         />
       ) : (
         <ListComponent
+          data={data.content}
           onPress={handleRanking}
           name={rankName}
           renderItem={({item}) => (
-            <RecipeListItem item={item} onPress={() => {}} />
+            <RecipeListItem
+              item={item}
+              onPress={() => console.log('모어 버튼', item.id)}
+            />
           )}
         />
       )}

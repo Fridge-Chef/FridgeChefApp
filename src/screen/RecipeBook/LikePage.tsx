@@ -29,7 +29,7 @@ const LikePage = () => {
   if (isLoading) return <Loading loadingTitle="로딩중" />;
   return (
     <View style={styles.container}>
-      {!data ? (
+      {!data?.content ? (
         <NoContent marginTop={240} title="아직 좋아요가 없어요." />
       ) : (
         <ListComponent

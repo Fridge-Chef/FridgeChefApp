@@ -6,41 +6,54 @@ import FButton from '../elements/FButton';
 import FText from '../elements/FText';
 import FImage from '../elements/FImage';
 import DetailReviewMore from '../../utils/Svg/DetailReviewMore';
+import {ParamListBase, useNavigation} from '@react-navigation/native';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 
 type RecipeListItemProps = {
   item: {
     title: string;
-    likes: number;
-    favorites: number;
+    id: number;
+    hit: number;
+    mainImageLink: string;
+    star: number;
     myLike: number;
-    ingredients: string[];
   };
   onPress: () => void;
 };
 
 const RecipeListItem = ({item, onPress}: RecipeListItemProps) => {
+  const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
   return (
-    <View style={styles.listContainer}>
-      <FImage imgStyle="sub" borderRadius={8} uri="" alt="레시피북" />
-      <View style={[styles.textContainerAlign]}>
-        <View style={[styles.titleContainer]}>
-          <FText
-            flexShrink={1}
-            nLine={2}
-            fStyle="B_16"
-            lineH={FWidth * 22.5}
-            color={colors.text}
-            text={item.title}
-          />
-          <FButton buttonStyle="noneStyle" onPress={onPress}>
-            <DetailReviewMore />
-          </FButton>
-        </View>
-        <View style={styles.bottomTextContainer}>
-          <ViewAndLike favorites={item.favorites} like={item.likes} />
+    <FButton
+      buttonStyle="noneStyle"
+      onPress={() => navigation.navigate('reviewDetail', {itemId: item.id})}>
+      <View style={styles.listContainer}>
+        <FImage
+          imgStyle="sub"
+          borderRadius={8}
+          uri={item.mainImageLink}
+          alt="레시피북"
+        />
+        <View style={[styles.textContainerAlign]}>
+          <View style={[styles.titleContainer]}>
+            <FText
+              flexShrink={1}
+              nLine={2}
+              fStyle="B_16"
+              lineH={FWidth * 22.5}
+              color={colors.text}
+              text={item.title}
+            />
+            <FButton buttonStyle="noneStyle" onPress={onPress}>
+              <DetailReviewMore />
+            </FButton>
+          </View>
+          <View style={styles.bottomTextContainer}>
+            <ViewAndLike favorites={item.hit} like={item.star} />
+          </View>
         </View>
       </View>
-    </View>
+    </FButton>
   );
 };
 

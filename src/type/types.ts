@@ -223,3 +223,13 @@ export type RecipeDetailReviewUpdateType = {
   commentId: number;
   review: AddRecipeReviewType;
 };
+
+export type RecipeBookListItemType = {
+  content: {
+    hit: number;
+    id: number;
+    mainImageLink: string;
+    star: number;
+    title: string;
+  };
+};

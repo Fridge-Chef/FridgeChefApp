@@ -62,6 +62,7 @@ export const getRecipeDetail = async (boardId: number) => {
 };
 
 export const addMyRecipe = async (data: AddIngredientType) => {
+  console.log('data', data);
   const formData = new FormData();
   formData.append('name', data.name);
   formData.append('description', data.description);
@@ -73,15 +74,20 @@ export const addMyRecipe = async (data: AddIngredientType) => {
     formData.append(`recipeIngredients[${index}].name`, ingredient.name);
     formData.append(`recipeIngredients[${index}].details`, ingredient.details);
   });
+
   data.instructions.forEach((instruction, index) => {
     formData.append(`descriptions[${index}].content`, instruction.content);
-    formData.append(`descriptions[${index}].image`, instruction.imageFile);
+    // 이미지가 있는 경우에만 추가
+    if (instruction.imageFile.name) {
+      formData.append(`descriptions[${index}].image`, instruction.imageFile);
+    }
   });
   console.log('formData', formData);
   try {
+    const token = await AsyncStorage.getItem('token');
     const response = await baseUrl.post('api/board', formData, {
       headers: {
-        Authorization: `Bearer ${await AsyncStorage.getItem('token')}`,
+        Authorization: `Bearer ${token}`,
         'Content-Type': 'multipart/form-data',
       },
     });
@@ -89,7 +95,7 @@ export const addMyRecipe = async (data: AddIngredientType) => {
       return response.data;
     }
   } catch (error: any) {
-    console.log('레시피 추가 실패', error.response.data);
+    console.log('레시피 추가 실패', error);
     throw new Error(error);
   }
 };

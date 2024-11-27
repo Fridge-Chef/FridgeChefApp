@@ -17,3 +17,20 @@ export const getLikedRecipeList = async () => {
     console.log(error.response.data);
   }
 };
+
+export const getMyRecipeList = async () => {
+  try {
+    const token = await AsyncStorage.getItem('token');
+    const response = await baseUrl.get('api/books/recipe?book=MYRECIPE', {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    if (response.status === 200) {
+      console.log(response.data);
+      return response.data;
+    }
+  } catch (error: any) {
+    console.log(error.response.data);
+  }
+};

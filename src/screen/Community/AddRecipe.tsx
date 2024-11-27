@@ -48,6 +48,9 @@ const AddRecipe = () => {
       },
     ],
   });
+  console.log(
+    addRecipeData.instructions.map(instruction => instruction.imageFile.name),
+  );
 
   useEffect(() => {
     setAddRecipeData(prevData => ({
@@ -82,7 +85,7 @@ const AddRecipe = () => {
           handleSubmit(addRecipeData, setIsLoading, mutate, refetch, navigation)
         }
       />
-      {isLoading && <Loading loadingTitle="레시피 등록중" />}
+      {/* {isLoading && <Loading loadingTitle="레시피 등록중" />} */}
     </View>
   );
 };
