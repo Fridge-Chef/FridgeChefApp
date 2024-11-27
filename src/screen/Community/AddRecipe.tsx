@@ -16,11 +16,13 @@ import {
 } from '../../service/Community/AddRecipe';
 import {useAddRecipe, useGetRecipeList} from '../../api/recipeQuery';
 import Loading from '../../components/elements/Loading';
+import {useGetRecipeBookList} from '../../api/recipeBookQuery';
 
 const AddRecipe = () => {
   const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
   const {selectedCategory} = useSelectedCategory();
   const [isLoading, setIsLoading] = useState(false);
+  const {refetch: myRecipe} = useGetRecipeBookList('MYRECIPE');
   const {refetch} = useGetRecipeList();
   const {mutate} = useAddRecipe();
   const [addRecipeData, setAddRecipeData] = useState<AddIngredientType>({
@@ -82,7 +84,14 @@ const AddRecipe = () => {
         backgroundColor={handleButtonColor(addRecipeData)}
         previewOnPress={() => handlePreview(addRecipeData, navigation)}
         submitOnPress={() =>
-          handleSubmit(addRecipeData, setIsLoading, mutate, refetch, navigation)
+          handleSubmit(
+            addRecipeData,
+            setIsLoading,
+            mutate,
+            refetch,
+            myRecipe,
+            navigation,
+          )
         }
       />
       {/* {isLoading && <Loading loadingTitle="레시피 등록중" />} */}

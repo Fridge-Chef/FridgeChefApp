@@ -8,7 +8,7 @@ import FImage from '../../../elements/FImage';
 import FText from '../../../elements/FText';
 import {GetRecipeListType} from '../../../../type/types';
 import {useAddLikeRecipe} from '../../../../api/recipeQuery';
-import {useGetRecipeBookLikeList} from '../../../../api/recipeBookQuery';
+import {useGetRecipeBookList} from '../../../../api/recipeBookQuery';
 
 type ListItemProps = {
   item: GetRecipeListType;
@@ -17,7 +17,7 @@ type ListItemProps = {
 
 const ListItem = ({item, refetch}: ListItemProps) => {
   const {mutate} = useAddLikeRecipe();
-  const {refetch: bookRefetch} = useGetRecipeBookLikeList();
+  const {refetch: bookRefetch} = useGetRecipeBookList('LIKE');
 
   return (
     <View style={styles.container}>

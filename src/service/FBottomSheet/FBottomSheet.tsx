@@ -4,6 +4,7 @@ import DetailReviewOption from '../../components/BottomSheet/DetailReviewOption/
 import Management from '../../components/BottomSheet/ExpiryDate/Management';
 import IngredientList from '../../components/BottomSheet/IngredientList/IngredientList';
 import Ranking from '../../components/BottomSheet/Ranking/Ranking';
+import RecipeBookOption from '../../components/BottomSheet/RecipeBookOption/RecipeBookOption';
 import RecipeRanking from '../../components/BottomSheet/RecipeBookRanking/RecipeRanking';
 
 type FBottomSheetProps = {
@@ -29,7 +30,8 @@ export const handleIndex = (title: string) => {
     title === '나의레시피' ||
     title === '나만의레시피' ||
     title === '나의후기' ||
-    title === '디테일리뷰옵션'
+    title === '디테일리뷰옵션' ||
+    title === '나의레시피디테일'
   ) {
     return 1;
   } else {
@@ -97,6 +99,8 @@ export const bottomScreen = ({
       );
     case '디테일리뷰옵션':
       return <DetailReviewOption />;
+    case '나의레시피디테일':
+      return <RecipeBookOption />;
     default:
       break;
   }

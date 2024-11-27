@@ -54,6 +54,7 @@ export const handleSubmit = async (
   setIsLoading: React.Dispatch<React.SetStateAction<boolean>>,
   mutate: UseMutateFunction<any, Error, AddIngredientType, unknown>,
   refetch: () => void,
+  myRecipe: () => void,
   navigate: NativeStackNavigationProp<ParamListBase>,
 ) => {
   if (
@@ -77,6 +78,7 @@ export const handleSubmit = async (
         console.log('레시피 추가 성공');
         setIsLoading(false);
         refetch();
+        myRecipe();
         navigate.goBack();
       },
     });

@@ -9,7 +9,7 @@ import {
   useBottomSheetRef,
   useBottomSheetTitle,
 } from '../../store/bottomSheetStore';
-import {useGetRecipeBookLikeList} from '../../api/recipeBookQuery';
+import {useGetRecipeBookList} from '../../api/recipeBookQuery';
 import Loading from '../../components/elements/Loading';
 import {useAddLikeRecipe} from '../../api/recipeQuery';
 import {useQueryClient} from '@tanstack/react-query';
@@ -18,7 +18,7 @@ const LikePage = () => {
   const {setTitle} = useBottomSheetTitle();
   const {bottomSheetRef} = useBottomSheetRef();
   const {rankName} = useRecipeLikeRankName();
-  const {data, isLoading, refetch} = useGetRecipeBookLikeList();
+  const {data, isLoading, refetch} = useGetRecipeBookList('LIKE');
   const queryList = useQueryClient();
   const {mutate} = useAddLikeRecipe();
   const handleRanking = () => {
@@ -29,7 +29,7 @@ const LikePage = () => {
   if (isLoading) return <Loading loadingTitle="로딩중" />;
   return (
     <View style={styles.container}>
-      {!data?.content ? (
+      {!data?.content.length ? (
         <NoContent marginTop={240} title="아직 좋아요가 없어요." />
       ) : (
         <ListComponent

@@ -231,5 +231,5 @@ export type RecipeBookListItemType = {
     mainImageLink: string;
     star: number;
     title: string;
-  };
+  }[];
 };

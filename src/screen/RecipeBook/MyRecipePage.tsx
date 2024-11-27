@@ -9,27 +9,32 @@ import {
   useBottomSheetRef,
   useBottomSheetTitle,
 } from '../../store/bottomSheetStore';
-import {useGetRecipeMyRecipeList} from '../../api/recipeBookQuery';
+import {useGetRecipeBookList} from '../../api/recipeBookQuery';
 import Loading from '../../components/elements/Loading';
+import {ParamListBase, useNavigation} from '@react-navigation/native';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 
 const MyRecipePage = () => {
   const {setTitle} = useBottomSheetTitle();
+  const [menuOpen, setMenuOpen] = useState<boolean | number>(false);
   const {bottomSheetRef} = useBottomSheetRef();
   const {rankName} = useMyRecipeRankName();
-  const {data, isLoading, refetch} = useGetRecipeMyRecipeList();
-
+  const {data, isLoading, refetch} = useGetRecipeBookList('MYRECIPE');
+  const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
   const handleRanking = () => {
     setTitle('나의레시피');
     bottomSheetRef.current?.present();
   };
+  console.log('데이터', data?.content);
   if (isLoading) return <Loading loadingTitle="로딩중" />;
   return (
     <View style={styles.container}>
-      {!data?.content ? (
+      {!data?.content.length ? (
         <NoContent
           marginTop={240}
           title="첫번째 레시피를 남겨보세요"
           buttonTitle="레시피 작성하기"
+          onPress={() => navigation.navigate('addRecipe')}
         />
       ) : (
         <ListComponent
@@ -39,7 +44,12 @@ const MyRecipePage = () => {
           renderItem={({item}) => (
             <RecipeListItem
               item={item}
-              onPress={() => console.log('모어 버튼', item.id)}
+              onPress={() => {
+                setMenuOpen(prev => (prev === item.id ? null : item.id));
+              }}
+              refetch={refetch}
+              menuOpen={menuOpen}
+              setMenuOpen={setMenuOpen}
             />
           )}
         />

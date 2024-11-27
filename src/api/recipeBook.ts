@@ -1,16 +1,15 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {baseUrl} from './axios';
 
-export const getLikedRecipeList = async () => {
+export const getRecipeBookItemList = async (listType: string) => {
   try {
     const token = await AsyncStorage.getItem('token');
-    const response = await baseUrl.get('api/books/recipe?book=LIKE', {
+    const response = await baseUrl.get(`api/books/recipe?book=${listType}`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
     });
     if (response.status === 200) {
-      console.log(response.data);
       return response.data;
     }
   } catch (error: any) {
@@ -18,19 +17,19 @@ export const getLikedRecipeList = async () => {
   }
 };
 
-export const getMyRecipeList = async () => {
+export const deleteMyRecipe = async (id: number) => {
   try {
     const token = await AsyncStorage.getItem('token');
-    const response = await baseUrl.get('api/books/recipe?book=MYRECIPE', {
+    const response = await baseUrl.delete(`api/boards/${id}`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
     });
     if (response.status === 200) {
-      console.log(response.data);
       return response.data;
     }
-  } catch (error: any) {
-    console.log(error.response.data);
+  } catch (error) {
+    console.log(error);
+    throw new Error('delete error');
   }
 };

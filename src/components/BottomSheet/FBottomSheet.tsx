@@ -57,6 +57,7 @@ const FBottomSheet = () => {
       case '나만의레시피':
       case '나의후기':
       case '디테일리뷰옵션':
+      case '나의레시피디테일':
         return ['10%'];
       default:
         return ['100%'];
@@ -104,7 +105,8 @@ const FBottomSheet = () => {
             title === '나의레시피' ||
             title === '나만의레시피' ||
             title === '나의후기' ||
-            title === '디테일리뷰옵션'
+            title === '디테일리뷰옵션' ||
+            title === '나의레시피디테일'
               ? true
               : false
           }
@@ -133,7 +135,8 @@ const FBottomSheet = () => {
                 title === '나의레시피' ||
                 title === '나만의레시피' ||
                 title === '나의후기' ||
-                title === '디테일리뷰옵션'
+                title === '디테일리뷰옵션' ||
+                title === '나의레시피디테일'
                   ? 0
                   : 1,
             }}>
