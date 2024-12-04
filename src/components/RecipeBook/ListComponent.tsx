@@ -43,7 +43,7 @@ const ListComponent = ({
       <View style={{marginTop: FWidth * 12}}>
         <FlatList
           data={data}
-          scrollEnabled={false}
+          // scrollEnabled={false}
           showsVerticalScrollIndicator={false}
           contentContainerStyle={{paddingBottom: FWidth * 60}}
           overScrollMode="never"
