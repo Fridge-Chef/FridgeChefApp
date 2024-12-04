@@ -7,11 +7,21 @@ import {
 } from './recipeBook';
 import {AddIngredientType, RecipeBookListItemType} from '../type/types';
 
-export const useGetRecipeBookList = (itemType: string) => {
-  const queryFn = () => getRecipeBookItemList(itemType);
-  return useQuery<RecipeBookListItemType>({
-    queryKey: ['getRecipeBookList', itemType],
-    queryFn,
+export const useGetRecipeBookList = (
+  itemType: string,
+  size = 10,
+  sort = 'LATEST',
+) => {
+  return useInfiniteQuery({
+    queryKey: ['getRecipeBookList', itemType, sort],
+    queryFn: ({pageParam = 0}) =>
+      getRecipeBookItemList(itemType, pageParam, size, sort),
+    getNextPageParam: (lastPage, allPages) => {
+      const currentPage = lastPage?.page?.number ?? 0;
+      const totalPages = lastPage?.page?.totalPages ?? 1;
+      return currentPage + 1 < totalPages ? currentPage + 1 : undefined;
+    },
+    initialPageParam: 0,
   });
 };
 

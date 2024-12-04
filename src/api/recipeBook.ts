@@ -2,10 +2,20 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import {baseUrl} from './axios';
 import {AddIngredientType} from '../type/types';
 
-export const getRecipeBookItemList = async (listType: string) => {
+export const getRecipeBookItemList = async (
+  listType: string,
+  page: number,
+  size: number,
+  sort: string,
+) => {
   try {
     const token = await AsyncStorage.getItem('token');
     const response = await baseUrl.get(`api/books/recipe?book=${listType}`, {
+      params: {
+        page,
+        size,
+        sort,
+      },
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -14,7 +24,7 @@ export const getRecipeBookItemList = async (listType: string) => {
       return response.data;
     }
   } catch (error: any) {
-    console.log(error.response.data);
+    console.log('레시피북 리스트 에러', error.response.data);
   }
 };
 
@@ -104,6 +114,6 @@ export const getMyRecipeReview = async (
       return response.data;
     }
   } catch (error: any) {
-    console.log(error.response.data);
+    console.log('나의 후기 에러', error.response.data);
   }
 };

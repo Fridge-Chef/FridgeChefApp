@@ -19,17 +19,38 @@ const MyRecipePage = () => {
   const [menuOpen, setMenuOpen] = useState<boolean | number>(false);
   const {bottomSheetRef} = useBottomSheetRef();
   const {rankName} = useMyRecipeRankName();
-  const {data, isLoading, refetch} = useGetRecipeBookList('MYRECIPE');
+  const rankingName = () => {
+    switch (rankName) {
+      case '최신순':
+        return 'LATEST';
+      case '별점순':
+        return 'RATING';
+      case '좋아요순':
+        return 'HIT';
+      default:
+        return 'LATEST';
+    }
+  };
+  const {
+    data,
+    isLoading,
+    fetchNextPage,
+    hasNextPage,
+    isFetchingNextPage,
+    refetch,
+  } = useGetRecipeBookList('MYRECIPE', 10, rankingName());
   const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
   const handleRanking = () => {
     setTitle('나의레시피');
     bottomSheetRef.current?.present();
   };
-  console.log('데이터', data?.content);
+
   if (isLoading) return <Loading loadingTitle="로딩중" />;
+  const newData = data?.pages.map(page => page.content).flat();
+  // const newData: any = [];/
   return (
     <Pressable style={styles.container} onPress={() => setMenuOpen(null!)}>
-      {!data?.content.length ? (
+      {!newData ? (
         <NoContent
           marginTop={240}
           title="첫번째 레시피를 남겨보세요"
@@ -38,7 +59,10 @@ const MyRecipePage = () => {
         />
       ) : (
         <ListComponent
-          data={data.content}
+          data={newData}
+          fetchNextPage={fetchNextPage}
+          hasNextPage={hasNextPage}
+          isFetchingNextPage={isFetchingNextPage}
           onPress={handleRanking}
           name={rankName}
           renderItem={({item}) => (

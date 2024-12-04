@@ -17,7 +17,7 @@ type ListItemProps = {
 
 const ListItem = ({item, refetch}: ListItemProps) => {
   const {mutate} = useAddLikeRecipe();
-  const {refetch: bookRefetch} = useGetRecipeBookList('LIKE');
+  const {refetch: bookRefetch} = useGetRecipeBookList('HIT');
 
   return (
     <View style={styles.container}>

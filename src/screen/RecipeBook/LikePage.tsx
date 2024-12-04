@@ -18,7 +18,26 @@ const LikePage = () => {
   const {setTitle} = useBottomSheetTitle();
   const {bottomSheetRef} = useBottomSheetRef();
   const {rankName} = useRecipeLikeRankName();
-  const {data, isLoading, refetch} = useGetRecipeBookList('LIKE');
+  const rankingName = () => {
+    switch (rankName) {
+      case '최신순':
+        return 'LATEST';
+      case '별점순':
+        return 'RATING';
+      case '좋아요순':
+        return 'HIT';
+      default:
+        return 'LATEST';
+    }
+  };
+  const {
+    data,
+    isLoading,
+    fetchNextPage,
+    hasNextPage,
+    isFetchingNextPage,
+    refetch,
+  } = useGetRecipeBookList('HIT', 10, rankingName());
   const queryList = useQueryClient();
   const {mutate} = useAddLikeRecipe();
   const handleRanking = () => {
@@ -27,15 +46,21 @@ const LikePage = () => {
   };
 
   if (isLoading) return <Loading loadingTitle="로딩중" />;
+  const newData = data?.pages.map(page => page.content).flat();
+  // console.log(data?.pages);
+  // const newData: any = [];
   return (
     <View style={styles.container}>
-      {!data?.content.length ? (
+      {!newData ? (
         <NoContent marginTop={240} title="아직 좋아요가 없어요." />
       ) : (
         <ListComponent
           onPress={handleRanking}
           name={rankName}
-          data={data.content}
+          data={newData}
+          fetchNextPage={fetchNextPage}
+          hasNextPage={hasNextPage}
+          isFetchingNextPage={isFetchingNextPage}
           renderItem={({item}) => (
             <ListItem
               item={item}

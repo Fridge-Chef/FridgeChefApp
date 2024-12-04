@@ -49,7 +49,7 @@ export const addIngredients2 = async ({itemList}: IngredientsType) => {
       return response.data;
     }
   } catch (error: any) {
-    console.log(error.response.data);
+    console.log('재료2 에러', error.response.data);
   }
 };
 
@@ -102,6 +102,6 @@ export const addIngredientCategory = async (data: IngredientCategory) => {
 
     return response.data;
   } catch (error: any) {
-    console.log(error.response.data);
+    console.log('카테고리 에러', error.response.data);
   }
 };

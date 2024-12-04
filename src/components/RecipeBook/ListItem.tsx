@@ -61,7 +61,7 @@ export default ListItem;
 const styles = StyleSheet.create({
   listContainer: {
     flexDirection: 'row',
-    marginTop: FWidth * 12,
+    marginBottom: FWidth * 12,
     borderRadius: 12,
     padding: FWidth * 14,
     borderWidth: 1,

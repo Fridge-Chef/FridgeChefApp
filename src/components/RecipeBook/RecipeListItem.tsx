@@ -118,7 +118,7 @@ const styles = StyleSheet.create({
   listContainer: {
     position: 'relative',
     flexDirection: 'row',
-    marginTop: FWidth * 12,
+    marginBottom: FWidth * 12,
     borderRadius: 12,
     padding: FWidth * 14,
     borderWidth: 1,

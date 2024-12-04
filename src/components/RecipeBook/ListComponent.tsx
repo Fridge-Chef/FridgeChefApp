@@ -1,4 +1,5 @@
 import {
+  ActivityIndicator,
   FlatList,
   ListRenderItem,
   ScrollView,
@@ -6,12 +7,15 @@ import {
   View,
 } from 'react-native';
 import React from 'react';
-import {FWidth} from '../../../globalStyle';
+import {colors, FWidth} from '../../../globalStyle';
 import ArrowSubTitle from '../elements/SubTitle/ArrowSubTitle';
 
 type ListComponentProps = {
   name: string;
   data: any;
+  fetchNextPage: () => void;
+  hasNextPage: boolean;
+  isFetchingNextPage: boolean;
   renderItem: ListRenderItem<any>;
   onPress: () => void;
 };
@@ -19,31 +23,41 @@ type ListComponentProps = {
 const ListComponent = ({
   name,
   data,
+  fetchNextPage,
+  hasNextPage,
+  isFetchingNextPage,
   renderItem,
   onPress,
 }: ListComponentProps) => {
-  // const list = require('../../utils/recipeListData.json');
-
+  const handleFetchNextPage = () => {
+    console.log('마지막');
+    if (hasNextPage && !isFetchingNextPage) {
+      fetchNextPage();
+    }
+  };
   return (
-    <ScrollView
-      contentContainerStyle={styles.container}
-      showsVerticalScrollIndicator={false}>
+    <View style={styles.container}>
       <View style={styles.titleContainer}>
         <ArrowSubTitle onPress={onPress} name={name} />
       </View>
       <View style={{marginTop: FWidth * 12}}>
-        <View style={styles.subContainer}>
-          <FlatList
-            data={data}
-            scrollEnabled={false}
-            showsVerticalScrollIndicator={false}
-            overScrollMode="never"
-            keyExtractor={(_, index) => index.toString()}
-            renderItem={renderItem}
-          />
-        </View>
+        <FlatList
+          data={data}
+          scrollEnabled={false}
+          showsVerticalScrollIndicator={false}
+          contentContainerStyle={{paddingBottom: FWidth * 60}}
+          overScrollMode="never"
+          keyExtractor={(_, index) => index.toString()}
+          renderItem={renderItem}
+          ListFooterComponent={
+            isFetchingNextPage ? (
+              <ActivityIndicator size="large" color={colors.primary[1]} />
+            ) : null
+          }
+          onEndReached={handleFetchNextPage}
+        />
       </View>
-    </ScrollView>
+    </View>
   );
 };
 
@@ -57,9 +71,5 @@ const styles = StyleSheet.create({
   titleContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-  },
-
-  subContainer: {
-    marginTop: FWidth * -12,
   },
 });

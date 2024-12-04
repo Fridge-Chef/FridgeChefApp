@@ -49,7 +49,7 @@ export const likeRecipeReview = async (likeData: RecipeReviewLikeType) => {
   try {
     const token = await AsyncStorage.getItem('token');
     const response = await baseUrl.patch(
-      `api/boards/${likeData.boardId}/comments/${likeData.commentId}/like`,
+      `api/boards/${likeData.boardId}/comments/${likeData.commentId}/hit`,
       {},
       {
         headers: {
@@ -61,7 +61,7 @@ export const likeRecipeReview = async (likeData: RecipeReviewLikeType) => {
       return response.data;
     }
   } catch (error: any) {
-    console.log(error.response.data);
+    console.log('추천레시피 디테일 리뷰 에러', error.response.data);
     throw new Error(error);
   }
 };

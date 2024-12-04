@@ -58,7 +58,7 @@ export const addLikeRecipe = async (boardId: number) => {
   try {
     const token = await AsyncStorage.getItem('token');
     const response = await baseUrl.patch(
-      `api/boards/${boardId}/like`,
+      `api/boards/${boardId}/hit`,
       {},
       {
         headers: {
@@ -71,7 +71,7 @@ export const addLikeRecipe = async (boardId: number) => {
       return response.data;
     }
   } catch (error: any) {
-    console.log(error.response.data);
+    console.log('좋아요 에러', error.response.data);
     throw new Error(error);
   }
 };
