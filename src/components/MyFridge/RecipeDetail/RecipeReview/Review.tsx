@@ -20,6 +20,7 @@ import {
 import LoginModal from '../../../elements/Modals/LoginModal';
 import DeleteModal from '../../../elements/Modals/DeleteModal';
 import {useQueryClient} from '@tanstack/react-query';
+import {useMyRecipeReviews} from '../../../../api/recipeBookQuery';
 
 type ReviewProps = {
   review: RecipeReviewDetailType;
@@ -42,6 +43,7 @@ const Review = ({
   const [userCheck, setUserCheck] = useState(false);
   const {mutate: commentDelete} = useDeleteDetailReview();
   const {setReviewTitle} = useRecipeReviewTitle();
+  const {refetch: myRecipeReviews} = useMyRecipeReviews();
   const {refetch: detail} = useGetRecipeDetail(review.boardId);
   const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
   const {mutate} = useLikeRecipeReview();
@@ -121,6 +123,7 @@ const Review = ({
               {
                 onSuccess: () => {
                   refetch();
+                  myRecipeReviews();
                 },
               },
             );
