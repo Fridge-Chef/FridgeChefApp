@@ -40,7 +40,7 @@ export const updateMyRecipe = async (updateData: AddIngredientType) => {
     formData.append('mainImageChange', false);
   }
   // formData.append('mainImageId', updateData.mainImageId);
-  formData.append('dishTime', updateData.dishTime);
+  formData.append('dishTime', `${updateData.dishTime}분`);
   formData.append('dishLevel', updateData.dishLevel);
   formData.append('dishCategory', updateData.dishCategory);
   updateData.recipeIngredients.forEach((ingredient, index) => {
