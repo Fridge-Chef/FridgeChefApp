@@ -6,14 +6,8 @@ import FImage from '../../../elements/FImage';
 
 type ReviewContentProps = {
   content: {
-    boardId: number;
     comments: string;
-    createdAt: string;
-    id: number;
     imageLink: string[];
-    like: number;
-    star: number;
-    userName: string;
   };
 };
 

@@ -2,10 +2,20 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import {baseUrl} from './axios';
 import {AddIngredientType} from '../type/types';
 
-export const getRecommendedRecipeList = async (ingredientsQuery: string) => {
+export const getRecommendedRecipeList = async (
+  ingredientsQuery: string,
+  page: number,
+  size: number,
+  sort: string,
+) => {
   try {
     const token = await AsyncStorage.getItem('token');
     const response = await baseUrl.get(`api/recipes/?${ingredientsQuery}`, {
+      params: {
+        page,
+        size,
+        sort,
+      },
       headers: {
         Authorization: token ? `Bearer ${token}` : null,
       },

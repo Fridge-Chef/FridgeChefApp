@@ -1,4 +1,4 @@
-import {ScrollView, StyleSheet} from 'react-native';
+import {ScrollView, StyleSheet, View} from 'react-native';
 import React from 'react';
 import {colors, FHeight, FWidth} from '../../../globalStyle';
 import TopComponent from '../../components/MyFridge/RecRecipe/TopComponent';
@@ -9,10 +9,10 @@ const RecRecipe = () => {
   const {ingredientList} = useIngredientList();
 
   return (
-    <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
+    <View style={styles.container}>
       <TopComponent ingredients={ingredientList} />
       <Recipes ingredientList={ingredientList} />
-    </ScrollView>
+    </View>
   );
 };
 
@@ -20,8 +20,9 @@ export default RecRecipe;
 
 const styles = StyleSheet.create({
   container: {
-    paddingTop: FHeight * 24,
-    paddingHorizontal: FWidth * 22,
+    flex: 1,
+    // paddingTop: FHeight * 24,
+    // paddingHorizontal: FWidth * 22,
     backgroundColor: colors.white,
   },
 });

@@ -16,6 +16,7 @@ import {
 import {useQueryClient} from '@tanstack/react-query';
 import Loading from '../../elements/Loading';
 import {isValidReview} from '../../../service/MyFridge/Reviews/Review';
+import {useMyRecipeReviews} from '../../../api/recipeBookQuery';
 
 const AddReviewAppBar = () => {
   const {userReview, setUserReview} = useUserReview();
@@ -26,6 +27,7 @@ const AddReviewAppBar = () => {
   const queryClient = useQueryClient();
   const [dataLoading, setDataLoading] = useState(false);
   const {mutate: updateMutate} = useUpdateDetailReview();
+  const {refetch: myRecipeReviews} = useMyRecipeReviews();
   const {refetch} = useGetRecipeDetailReviewList(userReview.boardId);
   const {refetch: recipeDetail} = useGetRecipeDetail(userReview.boardId);
   const {refetch: reviewDetail} = useGetRecipeReviewDetail(
@@ -60,6 +62,7 @@ const AddReviewAppBar = () => {
           setDataLoading(false);
           setUserReview({});
           refetchRecipeDetails();
+          myRecipeReviews();
           navigation.goBack();
         },
       },
@@ -87,7 +90,11 @@ const AddReviewAppBar = () => {
     recipeDetail();
     refetch();
     queryClient.invalidateQueries({
-      queryKey: ['recipeReviewDetail', 'recipeDetailReviewList'],
+      queryKey: [
+        'recipeReviewDetail',
+        'recipeDetailReviewList',
+        'myRecipeReviews',
+      ],
     });
   };
 

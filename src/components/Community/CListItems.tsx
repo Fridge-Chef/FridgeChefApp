@@ -77,11 +77,11 @@ const CListItems = ({
     isFetchingNextPage,
     refetch,
   } = useGetRecipeList(10, recipeWeek(), rankingData());
+
   const handleRanking = () => {
     setTitle('나만의레시피');
     bottomSheetRef.current?.present();
   };
-
   useEffect(() => {
     refetch();
     queryReset.invalidateQueries({

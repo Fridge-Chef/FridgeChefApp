@@ -1,29 +1,44 @@
-import {StyleSheet, View} from 'react-native';
+import {ActivityIndicator, FlatList, StyleSheet, View} from 'react-native';
 import React from 'react';
 import ReviewItem from './ReviewItem';
-
-type ReviewType = {
-  boardId: number;
-  username: string;
-  star: number;
-  createdAt: string;
-  title: string;
-  comments: string;
-  imageLink: string[];
-  like: number;
-}[];
+import {MyRecipeReviewsType} from '../../../type/types';
+import {colors, FWidth} from '../../../../globalStyle';
 
 type MyReviewListProps = {
-  list: ReviewType;
+  list: MyRecipeReviewsType[];
+  fetchNextPage: () => void;
+  hasNextPage: boolean;
+  isFetchingNextPage: boolean;
 };
 
-const MyReviewList = ({list}: MyReviewListProps) => {
+const MyReviewList = ({
+  list,
+  fetchNextPage,
+  hasNextPage,
+  isFetchingNextPage,
+}: MyReviewListProps) => {
+  const handleFetchNextPage = () => {
+    console.log('마지막');
+    if (hasNextPage && !isFetchingNextPage) {
+      fetchNextPage();
+    }
+  };
+
   return (
-    <View>
-      {list.map(item => (
-        <ReviewItem key={item.boardId} review={item} />
-      ))}
-    </View>
+    <FlatList
+      data={list}
+      showsVerticalScrollIndicator={false}
+      overScrollMode="never"
+      contentContainerStyle={{paddingBottom: FWidth * 60}}
+      keyExtractor={item => item.boardId.toString()}
+      renderItem={({item}) => <ReviewItem review={item} />}
+      ListFooterComponent={
+        isFetchingNextPage ? (
+          <ActivityIndicator size="large" color={colors.primary[1]} />
+        ) : null
+      }
+      onEndReached={handleFetchNextPage}
+    />
   );
 };
 

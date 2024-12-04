@@ -10,27 +10,29 @@ import {useRecipeReviewTitle} from '../../../store/store';
 import {ParamListBase, useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import MyReviewTitle from './MyReviewTitle';
+import {useQueryClient} from '@tanstack/react-query';
+import {useMyRecipeReviews} from '../../../api/recipeBookQuery';
+import {MyRecipeReviewsType} from '../../../type/types';
+import {useLikeRecipeReview} from '../../../api/commentReviewQuery';
 
 type ReviewItemProps = {
-  review: {
-    boardId: number;
-    username: string;
-    star: number;
-    title: string;
-    comments: string;
-    createdAt: string;
-    imageLink: string[];
-    like: number;
-  };
+  review: MyRecipeReviewsType;
 };
 
 const ReviewItem = ({review}: ReviewItemProps) => {
-  const [isClicked, setIsClicked] = useState(false);
+  const queryList = useQueryClient();
+  const {refetch} = useMyRecipeReviews();
+  const {mutate} = useLikeRecipeReview();
   const {setReviewTitle} = useRecipeReviewTitle();
   const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
   const handleReviewDetail = () => {
     setReviewTitle(review.title);
-    navigation.navigate('userReviewDetail', {item: review});
+    navigation.navigate('userReviewDetail', {
+      item: {
+        id: review.id,
+        boardId: review.boardId,
+      },
+    });
   };
   return (
     <FButton
@@ -38,7 +40,7 @@ const ReviewItem = ({review}: ReviewItemProps) => {
       fBStyle={styles.container}
       onPress={handleReviewDetail}>
       <View style={styles.iconAlign}>
-        <UserInfo writer={review.username} point={review.star} />
+        <UserInfo writer={review.userName} point={review.star} />
         <FButton
           buttonStyle="noneStyle"
           onPress={() => {
@@ -50,9 +52,24 @@ const ReviewItem = ({review}: ReviewItemProps) => {
       <MyReviewTitle title={review.title} />
       <ReviewContent content={review} />
       <BottomComponent
-        isClicked={isClicked}
+        isClicked={review.myHit}
         review={review}
-        onPress={() => setIsClicked(!isClicked)}
+        onPress={() =>
+          mutate(
+            {
+              boardId: review.boardId,
+              commentId: review.id,
+            },
+            {
+              onSuccess: () => {
+                queryList.invalidateQueries({
+                  queryKey: ['myRecipeReviews'],
+                });
+                refetch();
+              },
+            },
+          )
+        }
       />
     </FButton>
   );

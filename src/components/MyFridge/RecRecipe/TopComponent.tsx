@@ -1,6 +1,6 @@
 import {FlatList, LayoutChangeEvent, StyleSheet, View} from 'react-native';
 import React, {useState} from 'react';
-import {colors, FWidth} from '../../../../globalStyle';
+import {colors, FHeight, FWidth} from '../../../../globalStyle';
 import FButton from '../../elements/FButton';
 import {ListData, RecipeList} from '../../../type/types';
 import FText from '../../elements/FText';
@@ -42,7 +42,7 @@ const TopComponent = ({ingredients}: TopComponentProps) => {
   };
 
   return (
-    <View>
+    <View style={styles.container}>
       <SubTitle title="보유 재료" />
       <View style={{position: 'relative'}}>
         <FlatList
@@ -100,6 +100,11 @@ const TopComponent = ({ingredients}: TopComponentProps) => {
 export default TopComponent;
 
 const styles = StyleSheet.create({
+  container: {
+    paddingTop: FHeight * 24,
+    paddingHorizontal: FWidth * 22,
+  },
+
   itemListContainer: {
     marginTop: FWidth * 16,
   },

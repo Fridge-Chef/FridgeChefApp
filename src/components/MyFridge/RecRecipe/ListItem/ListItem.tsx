@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
     borderColor: colors.border,
     borderWidth: 1,
     borderRadius: 12,
-    marginTop: FWidth * 12,
+    marginBottom: FWidth * 12,
   },
 
   itemTextContainer: {

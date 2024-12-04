@@ -14,6 +14,7 @@ import {
   useGetRecipeDetailReviewList,
   useLikeRecipeReview,
 } from '../../../api/commentReviewQuery';
+import {useMyRecipeReviews} from '../../../api/recipeBookQuery';
 
 type UserContentProps = {
   data: RecipeReviewDetailType;
@@ -25,6 +26,7 @@ const UserContent = ({data, refetch}: UserContentProps) => {
   const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
   const {refetch: listRefetch} = useGetRecipeDetailReviewList(data.boardId);
   const [loginCheck, setLoginCheck] = useState(false);
+  const {refetch: myRecipeReviews} = useMyRecipeReviews();
   const {mutate} = useLikeRecipeReview();
   const [imagesIndex, setImagesIndex] = useState(0);
   const {width} = useWindowDimensions();
@@ -55,6 +57,7 @@ const UserContent = ({data, refetch}: UserContentProps) => {
                 onSuccess: () => {
                   refetch();
                   listRefetch();
+                  myRecipeReviews();
                 },
               },
             );

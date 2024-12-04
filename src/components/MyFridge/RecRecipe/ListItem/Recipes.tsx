@@ -1,8 +1,8 @@
-import {FlatList, StyleSheet, View} from 'react-native';
+import {ActivityIndicator, FlatList, StyleSheet, View} from 'react-native';
 import React, {useEffect} from 'react';
 import ListItem from './ListItem';
 import {GetRecipeListType, ListData} from '../../../../type/types';
-import {FWidth} from '../../../../../globalStyle';
+import {colors, FWidth} from '../../../../../globalStyle';
 import FButton from '../../../elements/FButton';
 import {ParamListBase, useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
@@ -13,6 +13,7 @@ import {
   useBottomSheetRef,
   useBottomSheetTitle,
 } from '../../../../store/bottomSheetStore';
+import {useRankName} from '../../../../store/rankingStore';
 
 type RecipesProps = {
   ingredientList: ListData[];
@@ -22,23 +23,58 @@ const Recipes = ({ingredientList}: RecipesProps) => {
   const ingredients = ingredientList.map(item => item.ingredientName);
   const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
   const {bottomSheetRef} = useBottomSheetRef();
+  const {rankName} = useRankName();
   const {setTitle} = useBottomSheetTitle();
-  const {data, isLoading, refetch} = useGetRecommendedRecipeList(ingredients);
+
+  const rankingName = () => {
+    switch (rankName) {
+      case '최신순':
+        return 'LATEST';
+      case '별점순':
+        return 'RATING';
+      case '좋아요순':
+        return 'HIT';
+      case '재료 많은순':
+        return 'MATCH';
+      default:
+        return 'MATCH';
+    }
+  };
+
+  const {
+    data,
+    isLoading,
+    fetchNextPage,
+    hasNextPage,
+    isFetchingNextPage,
+    refetch,
+  } = useGetRecommendedRecipeList(ingredients, 10, rankingName());
   const handleBottomSheetOpen = () => {
     setTitle('순위');
     bottomSheetRef.current?.present();
   };
 
+  const handleFetchNextPage = () => {
+    console.log('마지막');
+    if (hasNextPage && !isFetchingNextPage) {
+      fetchNextPage();
+    }
+  };
+
   if (isLoading) return <Loading loadingTitle="로딩중" />;
+  const newData = data?.pages.map(page => page.content).flat();
+  // const newData: any = [];
   return (
     <View style={styles.container}>
       <View style={styles.mainListContainer}>
         <RankButton onPress={handleBottomSheetOpen} />
         <FlatList
-          scrollEnabled={false}
-          data={data?.content}
+          style={{marginTop: FWidth * 12}}
+          data={newData}
+          showsVerticalScrollIndicator={false}
+          overScrollMode="never"
           contentContainerStyle={{
-            paddingBottom: FWidth * 146,
+            paddingBottom: FWidth * 148,
           }}
           keyExtractor={(_, index) => index.toString()}
           renderItem={({item}: {item: GetRecipeListType}) => {
@@ -56,6 +92,12 @@ const Recipes = ({ingredientList}: RecipesProps) => {
               </FButton>
             );
           }}
+          ListFooterComponent={
+            isFetchingNextPage ? (
+              <ActivityIndicator size="large" color={colors.primary[1]} />
+            ) : null
+          }
+          onEndReached={handleFetchNextPage}
         />
       </View>
     </View>
@@ -67,6 +109,7 @@ export default Recipes;
 const styles = StyleSheet.create({
   container: {
     marginTop: FWidth * 32,
+    paddingHorizontal: FWidth * 22,
   },
 
   mainListContainer: {

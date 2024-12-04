@@ -59,13 +59,23 @@ export const useAddRecipe = () => {
   });
 };
 
-export const useGetRecommendedRecipeList = (ingredients: string[]) => {
+export const useGetRecommendedRecipeList = (
+  ingredients: string[],
+  size = 10,
+  sort = 'LATEST',
+) => {
   const ingredientsQuery = ingredients
     .map(ingredient => `ingredients=${ingredient}`)
     .join('&');
-  const queryFn = () => getRecommendedRecipeList(ingredientsQuery);
-  return useQuery<{content: GetRecipeListType[]}>({
-    queryKey: ['recommendedRecipeList', ingredients],
-    queryFn,
+  return useInfiniteQuery({
+    queryKey: ['recommendedRecipeList', ingredients, sort],
+    queryFn: ({pageParam = 0}) =>
+      getRecommendedRecipeList(ingredientsQuery, pageParam, size, sort),
+    getNextPageParam: (lastPage, allPages) => {
+      const currentPage = lastPage?.page?.number ?? 0;
+      const totalPages = lastPage?.page?.totalPages ?? 1;
+      return currentPage + 1 < totalPages ? currentPage + 1 : undefined;
+    },
+    initialPageParam: 0,
   });
 };

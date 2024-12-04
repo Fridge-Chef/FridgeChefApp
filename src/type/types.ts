@@ -207,6 +207,19 @@ export type RecipeReviewDetailType = {
   userName: string;
 };
 
+export type MyRecipeReviewsType = {
+  boardId: number;
+  id: number;
+  comments: string;
+  imageLink: string[];
+  like: number;
+  myHit: boolean;
+  star: number;
+  userName: string;
+  createdAt: string;
+  title: string;
+};
+
 export type RecipeReviewListType = {
   content: RecipeReviewDetailType[];
   page: {

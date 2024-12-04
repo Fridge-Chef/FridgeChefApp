@@ -1,6 +1,7 @@
-import {useMutation, useQuery} from '@tanstack/react-query';
+import {useInfiniteQuery, useMutation, useQuery} from '@tanstack/react-query';
 import {
   deleteMyRecipe,
+  getMyRecipeReview,
   getRecipeBookItemList,
   updateMyRecipe,
 } from './recipeBook';
@@ -28,5 +29,18 @@ export const useDeleteMyRecipe = () => {
   return useMutation({
     mutationKey: ['deleteMyRecipe'],
     mutationFn,
+  });
+};
+
+export const useMyRecipeReviews = (size = 10, sort = 'LATEST') => {
+  return useInfiniteQuery({
+    queryKey: ['myRecipeReviews', sort],
+    queryFn: ({pageParam = 0}) => getMyRecipeReview(pageParam, size, sort),
+    getNextPageParam: (lastPage, allPages) => {
+      const currentPage = lastPage?.page?.number ?? 0;
+      const totalPages = lastPage?.page?.totalPages ?? 1;
+      return currentPage + 1 < totalPages ? currentPage + 1 : undefined;
+    },
+    initialPageParam: 0,
   });
 };

@@ -82,3 +82,28 @@ export const deleteMyRecipe = async (id: number) => {
     throw new Error('delete error');
   }
 };
+
+export const getMyRecipeReview = async (
+  page: number,
+  size: number,
+  sort: string,
+) => {
+  try {
+    const token = await AsyncStorage.getItem('token');
+    const response = await baseUrl.get('api/books/comment', {
+      params: {
+        page,
+        size,
+        sort,
+      },
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    if (response.status === 200) {
+      return response.data;
+    }
+  } catch (error: any) {
+    console.log(error.response.data);
+  }
+};

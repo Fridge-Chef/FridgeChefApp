@@ -4,12 +4,10 @@ import FText from '../../../elements/FText';
 import {colors, FHeight, FWidth} from '../../../../../globalStyle';
 import LikeButton from '../../../elements/LikeButton';
 import {getExpiryDateInfo} from '../../../../service/MyFridge/MyFridge';
+import {RecipeReviewDetailType} from '../../../../type/types';
 
 type BottomComponentProps = {
-  review: {
-    like: number;
-    createdAt: string;
-  };
+  review: RecipeReviewDetailType;
   isClicked: boolean;
   onPress: () => void;
 };
