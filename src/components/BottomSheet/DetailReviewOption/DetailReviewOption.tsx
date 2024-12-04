@@ -13,11 +13,13 @@ import {ParamListBase, useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import DeleteModal from '../../elements/Modals/DeleteModal';
 import {useBottomSheetRef} from '../../../store/bottomSheetStore';
+import {useMyRecipeReviews} from '../../../api/recipeBookQuery';
 
 const DetailReviewOption = () => {
   const {userReview} = useUserReview();
   const {reviewTitle} = useRecipeReviewTitle();
   const {mutate} = useDeleteDetailReview();
+  const {refetch: myRecipeReviews} = useMyRecipeReviews();
   const [deleteModal, setDeleteModal] = useState(false);
   const [deleteCheck, setDeleteCheck] = useState(false);
   const {bottomSheetRef} = useBottomSheetRef();
@@ -25,6 +27,7 @@ const DetailReviewOption = () => {
   const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
   const handleClose = () => {
     setDeleteModal(false);
+    myRecipeReviews();
     refetch();
     bottomSheetRef.current?.close();
     navigation.goBack();

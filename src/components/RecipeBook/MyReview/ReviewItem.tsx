@@ -13,7 +13,12 @@ import MyReviewTitle from './MyReviewTitle';
 import {useQueryClient} from '@tanstack/react-query';
 import {useMyRecipeReviews} from '../../../api/recipeBookQuery';
 import {MyRecipeReviewsType} from '../../../type/types';
-import {useLikeRecipeReview} from '../../../api/commentReviewQuery';
+import {
+  useDeleteDetailReview,
+  useLikeRecipeReview,
+} from '../../../api/commentReviewQuery';
+import AppBarMenu from '../../elements/AppBarMenu';
+import DeleteModal from '../../elements/Modals/DeleteModal';
 
 type ReviewItemProps = {
   review: MyRecipeReviewsType;
@@ -21,6 +26,10 @@ type ReviewItemProps = {
 
 const ReviewItem = ({review}: ReviewItemProps) => {
   const queryList = useQueryClient();
+  const [menuOpen, setMenuOpen] = useState<boolean | number | null>(false);
+  const [modalCheck, setModalCheck] = useState(false);
+  const [deleteCheck, setDeleteCheck] = useState(true);
+  const {mutate: deleteMutate} = useDeleteDetailReview();
   const {refetch} = useMyRecipeReviews();
   const {mutate} = useLikeRecipeReview();
   const {setReviewTitle} = useRecipeReviewTitle();
@@ -34,6 +43,11 @@ const ReviewItem = ({review}: ReviewItemProps) => {
       },
     });
   };
+  const handleClose = () => {
+    setMenuOpen(null!);
+    setModalCheck(false);
+    refetch();
+  };
   return (
     <FButton
       buttonStyle="noneStyle"
@@ -44,7 +58,7 @@ const ReviewItem = ({review}: ReviewItemProps) => {
         <FButton
           buttonStyle="noneStyle"
           onPress={() => {
-            console.log('옵션버튼');
+            setMenuOpen(prev => (prev === review.id ? null : review.id));
           }}>
           <DetailReviewMore />
         </FButton>
@@ -71,6 +85,42 @@ const ReviewItem = ({review}: ReviewItemProps) => {
           )
         }
       />
+      {menuOpen === review.id && (
+        <View style={styles.menuContainer}>
+          <AppBarMenu
+            id={review.id}
+            updateOnPress={() => {
+              setMenuOpen(null!);
+              navigation.navigate('addRecipeReview', {
+                type: 'update',
+                title: review.title,
+                review,
+              });
+            }}
+            deleteOnPress={() => setModalCheck(true)}
+          />
+        </View>
+      )}
+      <DeleteModal
+        modalCheck={modalCheck}
+        onPress={() =>
+          deleteCheck
+            ? deleteMutate(
+                {boardId: review.boardId, commentId: review.id},
+                {
+                  onSuccess: () => {
+                    setDeleteCheck(false);
+                  },
+                },
+              )
+            : handleClose()
+        }
+        deleteCheck={deleteCheck}
+        cancelOnPress={() => {
+          setMenuOpen(null!);
+          setModalCheck(false);
+        }}
+      />
     </FButton>
   );
 };
@@ -89,5 +139,12 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
+  },
+
+  menuContainer: {
+    zIndex: 5,
+    right: FWidth * 40,
+    top: FWidth * -10,
+    position: 'absolute',
   },
 });
