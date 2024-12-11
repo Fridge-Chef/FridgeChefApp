@@ -11,6 +11,7 @@ type UserStatus = {
 };
 
 const UserStatus = ({userData}: UserStatus) => {
+  console.log(userData);
   return (
     <View style={styles.container}>
       <UserImage

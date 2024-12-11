@@ -217,6 +217,7 @@ export type MyRecipeReviewsType = {
   imageLink: string[];
   like: number;
   myHit: boolean;
+  myMe: boolean;
   star: number;
   userName: string;
   createdAt: string;

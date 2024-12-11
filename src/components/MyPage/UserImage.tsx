@@ -17,7 +17,7 @@ const UserImage = ({uri, onPress}: UserImage) => {
         uri={uri}
         imgStyle="myPage"
         borderRadius={100}
-        resizeMode="stretch"
+        resizeMode="cover"
         alt="유저 이미지"
       />
       <FButton

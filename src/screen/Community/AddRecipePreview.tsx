@@ -1,5 +1,5 @@
 import {Image, ScrollView, StyleSheet, View} from 'react-native';
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import FImage from '../../components/elements/FImage';
 import {RouteProp, useRoute} from '@react-navigation/native';
 import {AddIngredientType} from '../../type/types';
@@ -9,6 +9,7 @@ import RecipeNote from '../../components/MyFridge/RecipeDetail/RecipeNote/Recipe
 import IngredientComponent from '../../components/MyFridge/RecipeDetail/IngredientComponent/IngredientComponent';
 import RecipeComponent from '../../components/MyFridge/RecipeDetail/RecipeComponent/RecipeComponent';
 import PCloseButton from '../../components/Community/AddRecipe/Preview/PCloseButton';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 type AddRecipePreviewProps = {
   params: {
@@ -19,6 +20,16 @@ type AddRecipePreviewProps = {
 const AddRecipePreview = () => {
   const route = useRoute<RouteProp<AddRecipePreviewProps>>();
   const item = route.params.recipeData;
+  const [userName, setUserName] = useState('');
+
+  const getUserName = async () => {
+    const name = await AsyncStorage.getItem('nickname');
+    if (name) setUserName(name);
+  };
+
+  useEffect(() => {
+    getUserName();
+  }, []);
 
   return (
     <ScrollView style={styles.container}>
@@ -26,6 +37,7 @@ const AddRecipePreview = () => {
         <FImage uri={item.mainImage} imgStyle="detail" alt="미리보기 메인" />
       </View>
       <PreviewTitle
+        username={userName}
         title={item.name}
         dishCategory={item.dishCategory}
         dishTime={item.dishTime}
