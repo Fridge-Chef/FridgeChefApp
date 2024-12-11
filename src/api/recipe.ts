@@ -78,7 +78,12 @@ export const addLikeRecipe = async (boardId: number) => {
 
 export const getRecipeDetail = async (boardId: number) => {
   try {
-    const response = await baseUrl.get(`/api/boards/${boardId}`);
+    const token = await AsyncStorage.getItem('token');
+    const response = await baseUrl.get(`/api/boards/${boardId}`, {
+      headers: {
+        Authorization: token ? `Bearer ${token}` : null,
+      },
+    });
     if (response.status === 200) {
       return response.data;
     }
@@ -89,7 +94,6 @@ export const getRecipeDetail = async (boardId: number) => {
 };
 
 export const addMyRecipe = async (data: AddIngredientType) => {
-  console.log('data', data);
   const formData = new FormData();
   formData.append('name', data.name);
   formData.append('description', data.description);
@@ -109,7 +113,7 @@ export const addMyRecipe = async (data: AddIngredientType) => {
       formData.append(`descriptions[${index}].image`, instruction.imageFile);
     }
   });
-  console.log('formData', formData);
+
   try {
     const token = await AsyncStorage.getItem('token');
     const response = await baseUrl.post('api/board', formData, {

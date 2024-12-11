@@ -11,6 +11,7 @@ export type RecipeListType = {
   dishTime: string;
   dishLevel: string;
   mainImage: string;
+  myMe: boolean;
   likes: number;
   favorites: number;
   myLike: number;
@@ -129,6 +130,7 @@ export type ReviewType = {
   commentId?: number | undefined;
   boardId: number;
   star: number;
+  myMe: boolean;
   comment: string;
   images?: string[];
   imagesFile?:
@@ -201,6 +203,7 @@ export type RecipeReviewDetailType = {
   comments: string;
   createdAt: string;
   myHit: boolean;
+  myMe: boolean;
   imageLink: string[];
   like: number;
   star: number;

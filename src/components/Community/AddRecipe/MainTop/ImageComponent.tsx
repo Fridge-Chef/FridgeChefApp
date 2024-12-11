@@ -24,8 +24,6 @@ const ImageComponent = ({
           uri: string;
         },
       ) => {
-        console.log('file: ', file);
-        console.log('imageUri: ', imageUri);
         setAddRecipeData({
           ...addRecipeData,
           mainImage: imageUri,

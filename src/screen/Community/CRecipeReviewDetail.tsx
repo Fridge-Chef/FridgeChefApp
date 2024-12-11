@@ -9,7 +9,7 @@ import IngredientComponent from '../../components/MyFridge/RecipeDetail/Ingredie
 import RecipeComponent from '../../components/MyFridge/RecipeDetail/RecipeComponent/RecipeComponent';
 import {useGetRecipeDetail} from '../../api/recipeQuery';
 import Loading from '../../components/elements/Loading';
-import {useRecipeId, useUsernameCheck} from '../../store/store';
+import {useRecipeId, useUserDetail, useUsernameCheck} from '../../store/store';
 
 type CRecipeReviews = {
   params: {
@@ -21,11 +21,14 @@ const CRecipeReviewDetail = () => {
   const recipeId = useRoute<RouteProp<CRecipeReviews>>();
   const {itemId} = recipeId.params;
   const {data, isLoading} = useGetRecipeDetail(itemId);
-  const {setUsernameCheck} = useUsernameCheck();
+  const {setUserDetail} = useUserDetail();
   const {setRecipeId} = useRecipeId();
   useEffect(() => {
     if (data) {
-      setUsernameCheck(data?.username);
+      setUserDetail({
+        boardId: data?.boardId,
+        myMe: data?.myMe,
+      });
       setRecipeId(itemId);
     }
   }, [data]);

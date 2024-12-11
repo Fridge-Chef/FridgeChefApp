@@ -25,6 +25,11 @@ type CategoriesTextType = {
   setExpiryDate: (expiryDate: string) => void;
 };
 
+type UserDetailType = {
+  userDetail: ReviewType;
+  setUserDetail: (userDetail: Partial<ReviewType>) => void;
+};
+
 type UserReviewType = {
   userReview: ReviewType;
   setUserReview: (userReview: Partial<ReviewType>) => void;
@@ -94,12 +99,34 @@ export const useCategoriesText = create<CategoriesTextType>(set => ({
   setExpiryDate: (expiryDate: string) => set({expiryDate}),
 }));
 
+export const useUserDetail = create<UserDetailType>(set => ({
+  userDetail: {
+    type: '',
+    prevImages: [],
+    commentId: 0,
+    boardId: 0,
+    myMe: false,
+    star: 0,
+    comment: '',
+    images: [],
+    imagesFile: [],
+  },
+  setUserDetail: (userDetail: Partial<ReviewType>) =>
+    set(state => ({
+      userDetail: {
+        ...state.userDetail,
+        ...userDetail,
+      },
+    })),
+}));
+
 export const useUserReview = create<UserReviewType>(set => ({
   userReview: {
     type: '',
     prevImages: [],
     commentId: 0,
     boardId: 0,
+    myMe: false,
     star: 0,
     comment: '',
     images: [],

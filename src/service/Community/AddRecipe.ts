@@ -23,7 +23,7 @@ export const handlePreview = (
     console.log('데이터를 모두 입력해주세요1');
     return;
   }
-  console.log('데이터가 모두 입력되었습니다', recipeData);
+  console.log('데이터가 모두 입력되었습니다');
   navigation.navigate('preview', {
     recipeData,
   });

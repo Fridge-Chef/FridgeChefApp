@@ -40,7 +40,7 @@ const Review = ({
   const [loginCheck, setLoginCheck] = useState(false);
   const [modalCheck, setModalCheck] = useState(false);
   const [deleteCheck, setDeleteCheck] = useState(true);
-  const [userCheck, setUserCheck] = useState(false);
+  // const [userCheck, setUserCheck] = useState(false);
   const {mutate: commentDelete} = useDeleteDetailReview();
   const {setReviewTitle} = useRecipeReviewTitle();
   const {refetch: myRecipeReviews} = useMyRecipeReviews();
@@ -53,20 +53,6 @@ const Review = ({
     setMenuOpen(false);
     navigation.navigate('userReviewDetail', {item: review});
   };
-
-  const userChecked = async () => {
-    const userName = await AsyncStorage.getItem('nickname');
-    const userCheck = userName === review.userName;
-    if (userCheck) {
-      setUserCheck(true);
-    } else {
-      setUserCheck(false);
-    }
-  };
-
-  useEffect(() => {
-    userChecked();
-  }, [review]);
 
   const handleClose = () => {
     setMenuOpen(false);
@@ -83,7 +69,7 @@ const Review = ({
       onPress={handleReviewDetail}>
       <View style={styles.iconAlign}>
         <UserInfo writer={review.userName} point={review.star} />
-        {userCheck && (
+        {review.myMe && (
           <FButton
             buttonStyle="noneStyle"
             hitSlop={{top: 10, bottom: 10, left: 10, right: 10}}

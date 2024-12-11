@@ -29,7 +29,9 @@ const BottomText = ({recipeIngredients, have}: BottomTextProps) => {
         lineH={FWidth * 18}
         fStyle="M_12"
         color={colors.b500}
-        text={`없는 재료 : ${recipeIngredients}`}
+        text={`없는 재료 : ${
+          recipeIngredients.length > 0 ? recipeIngredients : '없음'
+        }`}
       />
     </View>
   );

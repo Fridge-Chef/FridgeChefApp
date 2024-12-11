@@ -58,7 +58,7 @@ export const updateMyRecipe = async (updateData: AddIngredientType) => {
       formData.append('instructions.imageChange', false);
     }
   });
-  console.log(formData);
+
   try {
     const token = await AsyncStorage.getItem('token');
     const response = await baseUrl.put('api/board', formData, {

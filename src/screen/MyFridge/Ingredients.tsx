@@ -28,9 +28,9 @@ const Ingredients = () => {
   // 테스트용 함수
   const handleTest = async () => {
     // await getUSerToken();
-    // cliaa.removeQueries({
-    //   queryKey: ['getRecipeBookList'],
-    // });
+    cliaa.removeQueries({
+      queryKey: ['recipeList'],
+    });
   };
 
   return (

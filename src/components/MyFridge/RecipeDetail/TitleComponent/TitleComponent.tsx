@@ -37,7 +37,7 @@ const TitleComponent = ({detailData, items}: TitleComponentProps) => {
         reviews={detailData.starTotal}
         favorite={detailData.hitTotal}
       />
-      <IngredientContainer title="보유재료" detailList={items.myIngredients} />
+      <IngredientContainer title="보유 재료" detailList={items.myIngredients} />
       <IngredientContainer title="없는 재료" detailList={items.without} />
     </View>
   );

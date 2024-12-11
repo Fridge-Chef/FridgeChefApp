@@ -131,7 +131,7 @@ export const recipeDetailReviewUpdate = async (
     } else {
       formData.append('isImage', false);
     }
-    console.log(formData);
+
     const token = await AsyncStorage.getItem('token');
     const response = await baseUrl.put(
       `api/boards/${boardId}/comments/${commentId}`,

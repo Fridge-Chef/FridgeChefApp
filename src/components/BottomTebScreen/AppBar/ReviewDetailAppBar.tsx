@@ -1,7 +1,7 @@
 import {StyleSheet} from 'react-native';
 import React from 'react';
 import FAppBar from '../../elements/FAppBar';
-import {useRecipeReviewTitle} from '../../../store/store';
+import {useRecipeReviewTitle, useUserReview} from '../../../store/store';
 import {
   useBottomSheetRef,
   useBottomSheetTitle,
@@ -9,8 +9,10 @@ import {
 
 const ReviewDetailAppBar = () => {
   const {setTitle} = useBottomSheetTitle();
+  const {userReview} = useUserReview();
   const {bottomSheetRef} = useBottomSheetRef();
   const {reviewTitle} = useRecipeReviewTitle();
+  console.log('userReview', userReview.myMe);
   return (
     <FAppBar
       borderBottomWidth={0}
@@ -18,13 +20,17 @@ const ReviewDetailAppBar = () => {
       titleOn={true}
       title={reviewTitle}
       rightOn={true}
-      // onlyBackIcon={true}
+      onlyBackIcon={userReview.myMe ? false : true}
       // rType1="menuIcon"
-      rType2="detailReviewMore"
-      onPress2={() => {
-        setTitle('디테일리뷰옵션');
-        bottomSheetRef.current?.present();
-      }}
+      rType2={userReview.myMe ? 'detailReviewMore' : 'headerClose'}
+      onPress2={
+        userReview.myMe
+          ? () => {
+              setTitle('디테일리뷰옵션');
+              bottomSheetRef.current?.present();
+            }
+          : undefined
+      }
     />
   );
 };

@@ -26,6 +26,7 @@ const UserReview = () => {
       boardId: data?.boardId,
       commentId: data?.id,
       comment: data?.comments,
+      myMe: data?.myMe,
       images: data?.imageLink,
       imagesFile: data?.imageLink.map(img => {
         const fileName = img.split('/').pop() || 'unknown.jpg';

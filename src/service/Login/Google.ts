@@ -29,7 +29,6 @@ export const handleLogout = async () => {
   try {
     await GoogleSignin.revokeAccess();
     const aaa = await GoogleSignin.signOut();
-    console.log('aaa', aaa);
   } catch (error) {
     console.error(error);
   }

@@ -25,7 +25,7 @@ const AddRecipeReview = () => {
   const item = route.params.review;
   const {userReview, setUserReview} = useUserReview();
   const {data} = useGetRecipeReviewDetail(item?.boardId, item?.id);
-  console.log('리뷰 체크', item);
+
   useEffect(() => {
     if (item?.id) {
       setUserReview({

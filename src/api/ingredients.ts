@@ -22,8 +22,6 @@ export type IngredientsType = {
 export const addIngredients = async ({ingredients}: Ingredients) => {
   try {
     const token = await AsyncStorage.getItem('token');
-    console.log('token', token);
-
     const response = await baseUrl.post('api/fridges/', ingredients, {
       headers: {
         Authorization: `Bearer ${token}`,

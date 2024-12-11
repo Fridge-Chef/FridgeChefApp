@@ -46,7 +46,7 @@ const AddRecipe = () => {
     isLoading: detailLoading,
     refetch: recipeDetailRefetch,
   } = useGetRecipeDetail(itemId?.boardId);
-  console.log('레시피 상세', data);
+
   const [modalOpen, setModalOpen] = useState(false);
   const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
   const {selectedCategory, setSelectedCategory} = useSelectedCategory();

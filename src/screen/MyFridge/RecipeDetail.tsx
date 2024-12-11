@@ -13,7 +13,11 @@ import RecipeNote from '../../components/MyFridge/RecipeDetail/RecipeNote/Recipe
 import {useGetRecipeDetail} from '../../api/recipeQuery';
 import Loading from '../../components/elements/Loading';
 import {useScrollY} from '../../store/utillStore';
-import {useUsernameCheck, useUserReview} from '../../store/store';
+import {
+  useUserDetail,
+  useUsernameCheck,
+  useUserReview,
+} from '../../store/store';
 
 type DetailItem = {
   params: {
@@ -30,7 +34,7 @@ const RecipeDetail = () => {
   const {setScrollY} = useScrollY();
   const {data, isLoading} = useGetRecipeDetail(items.id);
   const {setUsernameCheck} = useUsernameCheck();
-  const {setUserReview} = useUserReview();
+  const {setUserDetail} = useUserDetail();
   useEffect(() => {
     if (data) {
       setUsernameCheck(data?.username);
@@ -39,8 +43,9 @@ const RecipeDetail = () => {
 
   useEffect(() => {
     if (items?.id) {
-      setUserReview({
+      setUserDetail({
         boardId: data?.boardId,
+        myMe: data?.myMe,
       });
     }
   }, [data]);

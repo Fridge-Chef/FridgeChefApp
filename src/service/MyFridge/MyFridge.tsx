@@ -30,7 +30,6 @@ export const getUserData = async ({setUser}: TokenProps) => {
     if (user) {
       return setUser(user);
     }
-    console.log(user);
   } catch (error: any) {
     console.log('유저 가져오기', error);
   }
