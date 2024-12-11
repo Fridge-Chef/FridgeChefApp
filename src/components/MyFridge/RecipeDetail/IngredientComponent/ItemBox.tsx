@@ -3,14 +3,17 @@ import React from 'react';
 import {colors, FWidth} from '../../../../../globalStyle';
 import FButton from '../../../elements/FButton';
 import FText from '../../../elements/FText';
+import {useGetPurch} from '../../../../api/recipeQuery';
+import {Linking} from 'react-native';
 
 type ItemBoxProps = {
   title: string;
   quantity?: string;
-  onPress?: () => void;
 };
 
-const ItemBox = ({title, quantity, onPress}: ItemBoxProps) => {
+const ItemBox = ({title, quantity}: ItemBoxProps) => {
+  const {data} = useGetPurch(title);
+
   return (
     <View style={styles.container}>
       <View style={styles.titleAlign}>
@@ -19,7 +22,9 @@ const ItemBox = ({title, quantity, onPress}: ItemBoxProps) => {
           <FText fStyle="R_16" color={colors.black} text={` ${quantity}`} />
         )}
       </View>
-      <FButton buttonStyle="buyButton" onPress={onPress}>
+      <FButton
+        buttonStyle="buyButton"
+        onPress={() => Linking.openURL(data.like)}>
         <FText fStyle="M_14" color={colors.black} text="구매" />
       </FButton>
     </View>

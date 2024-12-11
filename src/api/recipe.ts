@@ -138,3 +138,16 @@ export const getMyFridgeList = async () => {
     console.log('냉장고 재료 가져오기 에러', error.response.data);
   }
 };
+
+export const getPurch = async (search: string) => {
+  try {
+    const response = await baseUrl.get('api/purch', {
+      params: {search},
+    });
+    if (response.status === 200) {
+      return response.data;
+    }
+  } catch (error) {
+    console.log('구매정보 가져오기', error);
+  }
+};

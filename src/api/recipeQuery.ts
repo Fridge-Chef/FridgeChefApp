@@ -3,15 +3,12 @@ import {
   addLikeRecipe,
   addMyRecipe,
   getMyFridgeList,
+  getPurch,
   getRecipeDetail,
   getRecipeList,
   getRecommendedRecipeList,
 } from './recipe';
-import {
-  AddIngredientType,
-  GetRecipeListType,
-  RecipeListType,
-} from '../type/types';
+import {AddIngredientType, RecipeListType} from '../type/types';
 
 export const useGetRecipeList = (size = 10, issue = 'ALL', sort = 'LATEST') => {
   return useInfiniteQuery({
@@ -47,6 +44,14 @@ export const useGetRecipeDetail = (id: number) => {
   const queryFn = () => getRecipeDetail(id);
   return useQuery<RecipeListType>({
     queryKey: ['recipeDetail', id],
+    queryFn,
+  });
+};
+
+export const useGetPurch = (search: string) => {
+  const queryFn = () => getPurch(search);
+  return useQuery({
+    queryKey: ['purch', search],
     queryFn,
   });
 };

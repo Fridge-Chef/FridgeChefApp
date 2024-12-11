@@ -13,11 +13,13 @@ import CondimentButton from '../../components/MyFridge/Ingredients/CondimentButt
 import InfoComponent from '../../components/MyFridge/Ingredients/InfoComponent';
 import SearchIcon from '../../utils/Svg/SearchIcon';
 import {useQueryClient} from '@tanstack/react-query';
+import {useGetPurch} from '../../api/recipeQuery';
 
 const Ingredients = () => {
   const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
   const [onClicked, setonClicked] = useState(1);
   const {ingredientList, setIngredientList} = useIngredientList();
+
   const cliaa = useQueryClient();
   const handleSearch = () => {
     navigation.navigate('recRecipe');
@@ -26,9 +28,9 @@ const Ingredients = () => {
   // 테스트용 함수
   const handleTest = async () => {
     // await getUSerToken();
-    cliaa.removeQueries({
-      queryKey: ['getRecipeBookList'],
-    });
+    // cliaa.removeQueries({
+    //   queryKey: ['getRecipeBookList'],
+    // });
   };
 
   return (

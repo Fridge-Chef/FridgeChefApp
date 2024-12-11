@@ -1,5 +1,5 @@
 import {StyleSheet, View} from 'react-native';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {colors, FHeight, FWidth} from '../../../../../globalStyle';
 import FButton from '../../../elements/FButton';
 import {useIngredientTitle} from '../../../../store/store';
@@ -35,14 +35,13 @@ const ItemComponent = ({item, fetchData}: ItemComponentProps) => {
   const {bottomSheetRef} = useBottomSheetRef();
   const {mutate} = useDeleteIngredients();
   const [isDelete, setIsDelete] = useState(false);
-
   const handleAddExpiration = (title: string) => {
     bottomSheetRef.current?.present();
     setIngredientTitle(title);
     setTitle(buttonName);
   };
   const today = new Date();
-
+  const [expiryDate, setExpiryDate] = useState<number | undefined>();
   const handleDelete = async (title: string) => {
     const token = await AsyncStorage.getItem('token');
     if (token) {
@@ -65,8 +64,28 @@ const ItemComponent = ({item, fetchData}: ItemComponentProps) => {
     }
   };
 
+  useEffect(() => {
+    setExpiryDate(
+      item.expirationDate
+        ? Math.ceil(
+            (new Date(item.expirationDate).getTime() - today.getTime()) /
+              (1000 * 60 * 60 * 24),
+          )
+        : undefined,
+    );
+  }, [item.expirationDate]);
+
   return (
-    <View style={styles.container}>
+    <View
+      style={[
+        styles.container,
+        {
+          backgroundColor:
+            expiryDate != undefined && expiryDate < 0
+              ? 'rgb(255, 0, 0)'
+              : colors.background,
+        },
+      ]}>
       <View style={styles.textContainer}>
         {ingredientCategory(item)}
         <View style={styles.titleContainer}>
@@ -113,7 +132,6 @@ const styles = StyleSheet.create({
     marginTop: FHeight * 12,
     padding: FWidth * 14,
     borderRadius: 14,
-    backgroundColor: colors.background,
   },
 
   textContainer: {

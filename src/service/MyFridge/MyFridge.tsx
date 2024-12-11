@@ -46,6 +46,7 @@ export let date = ({item, today}: DateType) => {
   const expiryDate = new Date(item.expirationDate);
   const timeDifference = expiryDate.getTime() - today.getTime();
   const dayDifference = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+
   switch (dayDifference + 1) {
     case 3:
       return 'D-3';
