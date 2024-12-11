@@ -6,6 +6,7 @@ import FInput from '../elements/FInput';
 import {useAddModalInputText} from '../../store/store';
 import FText from '../elements/FText';
 import {ListData} from '../../type/types';
+import {Text} from 'react-native-svg';
 
 type InputAndSearchProps = {
   itemList: string[];
@@ -34,6 +35,17 @@ const InputAndSearch = ({
     ]);
   };
 
+  const highlightText = (text: string, highlight: string) => {
+    const parts = text.split(new RegExp(`(${highlight})`, 'gi'));
+    return parts.map((part, index) =>
+      part.toLowerCase() === highlight.toLowerCase() ? (
+        <FText key={index} fStyle="M_16" color={colors.error} text={part} />
+      ) : (
+        <FText key={index} fStyle="M_16" color={colors.text} text={part} />
+      ),
+    );
+  };
+
   useEffect(() => {
     if (addTitle && filteredIngredients.length === 0) {
       setErrorMsg('해당 재료명을 찾을 수 없습니다');
@@ -60,13 +72,13 @@ const InputAndSearch = ({
             <FButton
               key={index}
               buttonStyle="noneStyle"
-              fBStyle={{paddingVertical: FWidth * 12}}
+              fBStyle={{flexDirection: 'row', paddingVertical: FWidth * 12}}
               onPress={() => {
                 Keyboard.dismiss();
                 setAddTitle('');
                 addItemToList(item);
               }}>
-              <FText fStyle="M_16" color={colors.text} text={item} />
+              {highlightText(item, addTitle)}
             </FButton>
           ))}
         </View>
@@ -90,5 +102,10 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     borderColor: colors.border,
     zIndex: 999,
+  },
+
+  highlight: {
+    color: colors.error, // 빨간색
+    fontWeight: 'bold',
   },
 });
