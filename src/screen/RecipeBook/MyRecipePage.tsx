@@ -47,10 +47,10 @@ const MyRecipePage = () => {
 
   if (isLoading) return <Loading loadingTitle="로딩중" />;
   const newData = data?.pages.map(page => page.content).flat();
-  // const newData: any = [];/
+  console.log('newData', newData);
   return (
     <Pressable style={styles.container} onPress={() => setMenuOpen(null!)}>
-      {!newData ? (
+      {!newData?.length ? (
         <NoContent
           marginTop={240}
           title="첫번째 레시피를 남겨보세요"

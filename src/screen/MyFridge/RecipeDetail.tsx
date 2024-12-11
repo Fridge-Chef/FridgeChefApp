@@ -1,5 +1,5 @@
 import {Pressable, ScrollView, StyleSheet, View} from 'react-native';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {colors} from '../../../globalStyle';
 import {RouteProp, useRoute} from '@react-navigation/native';
 import TitleComponent from '../../components/MyFridge/RecipeDetail/TitleComponent/TitleComponent';
@@ -13,6 +13,7 @@ import RecipeNote from '../../components/MyFridge/RecipeDetail/RecipeNote/Recipe
 import {useGetRecipeDetail} from '../../api/recipeQuery';
 import Loading from '../../components/elements/Loading';
 import {useScrollY} from '../../store/utillStore';
+import {useUsernameCheck, useUserReview} from '../../store/store';
 
 type DetailItem = {
   params: {
@@ -28,6 +29,21 @@ const RecipeDetail = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const {setScrollY} = useScrollY();
   const {data, isLoading} = useGetRecipeDetail(items.id);
+  const {setUsernameCheck} = useUsernameCheck();
+  const {setUserReview} = useUserReview();
+  useEffect(() => {
+    if (data) {
+      setUsernameCheck(data?.username);
+    }
+  }, [data]);
+
+  useEffect(() => {
+    if (items?.id) {
+      setUserReview({
+        boardId: data?.boardId,
+      });
+    }
+  }, [data]);
 
   if (isLoading)
     return <Loading loadingTitle="로딩중" backColor={colors.white} />;
