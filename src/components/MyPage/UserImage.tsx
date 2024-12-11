@@ -3,12 +3,14 @@ import React from 'react';
 import FImage from '../elements/FImage';
 import MyOptionIcon from '../../utils/Svg/MyOptionIcon';
 import {colors, FWidth} from '../../../globalStyle';
+import FButton from '../elements/FButton';
 
 type UserImage = {
   uri: any;
+  onPress: () => void;
 };
 
-const UserImage = ({uri}: UserImage) => {
+const UserImage = ({uri, onPress}: UserImage) => {
   return (
     <View style={styles.container}>
       <FImage
@@ -18,9 +20,13 @@ const UserImage = ({uri}: UserImage) => {
         resizeMode="stretch"
         alt="유저 이미지"
       />
-      <View style={styles.iconContainer}>
+      <FButton
+        buttonStyle="noneStyle"
+        hitSlop={{top: 10, bottom: 10, left: 10, right: 10}}
+        fBStyle={styles.iconContainer}
+        onPress={onPress}>
         <MyOptionIcon />
-      </View>
+      </FButton>
     </View>
   );
 };

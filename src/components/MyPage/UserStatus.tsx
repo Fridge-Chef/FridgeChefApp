@@ -13,7 +13,10 @@ type UserStatus = {
 const UserStatus = ({userData}: UserStatus) => {
   return (
     <View style={styles.container}>
-      <UserImage uri={userData?.user.profileLink} />
+      <UserImage
+        uri={userData?.user.profileLink}
+        onPress={() => console.log('저보변경')}
+      />
       <View style={styles.userNicknameContainer}>
         <FText
           fStyle="B_18"
