@@ -37,7 +37,7 @@ const RecipeReviewPage = () => {
     refetch,
   } = useMyRecipeReviews(10, rankNameList());
   const newData = data?.pages.map((page: ReviewType) => page.content).flat();
-  console.log(data?.pages);
+
   useEffect(() => {
     refetch();
   }, [data]);

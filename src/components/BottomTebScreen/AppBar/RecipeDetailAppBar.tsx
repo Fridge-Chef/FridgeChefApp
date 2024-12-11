@@ -14,7 +14,7 @@ import {
   useGetRecipeBookList,
 } from '../../../api/recipeBookQuery';
 import {useGetRecommendedRecipeList} from '../../../api/recipeQuery';
-
+import {Share} from 'react-native';
 const RecipeDetailAppBar = () => {
   const [deleteCheck, setDeleteCheck] = useState(true);
   const [deleteModal, setDeleteModal] = useState(false);
@@ -52,7 +52,9 @@ const RecipeDetailAppBar = () => {
         rType2="detailShare"
         rType3={userChecked ? 'detailReviewMore' : null}
         onPress1={() => {}}
-        onPress2={() => {}}
+        onPress2={async () => {
+          Share.share({message: 'test', title: '타이틀', url: ''});
+        }}
         shadow
         elevation={scrollY > 0 ? 5 : 0}
         onPress3={() => setIsClicked(!isClicked)}

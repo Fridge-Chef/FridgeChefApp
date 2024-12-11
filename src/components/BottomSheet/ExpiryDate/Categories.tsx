@@ -1,5 +1,5 @@
 import {StyleSheet, View} from 'react-native';
-import React from 'react';
+import React, {useEffect} from 'react';
 import {colors, FWidth} from '../../../../globalStyle';
 import Category from './Category';
 import {categoryList} from '../../../utils/list';
@@ -7,12 +7,14 @@ import SubTitleBS2 from '../SubTitleBS2';
 
 type CategoriesProps = {
   itemNumber: number;
+  ingredientData: string | undefined;
   setItemNumber: (value: number) => void;
   setCategory: (value: string) => void;
 };
 
 const Categories = ({
   itemNumber,
+  ingredientData,
   setItemNumber,
   setCategory,
 }: CategoriesProps) => {
@@ -27,6 +29,19 @@ const Categories = ({
       setCategory(itemName);
     }
   };
+
+  useEffect(() => {
+    if (ingredientData) {
+      const matchedCategory = categoryList.find(
+        item => item.name === ingredientData,
+      );
+
+      if (matchedCategory) {
+        setItemNumber(matchedCategory.id);
+        setCategory(matchedCategory.name);
+      }
+    }
+  }, [ingredientData, setItemNumber, setCategory]);
 
   return (
     <View style={styles.container}>

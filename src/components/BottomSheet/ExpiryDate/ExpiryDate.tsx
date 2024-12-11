@@ -1,5 +1,5 @@
 import {StyleSheet, View} from 'react-native';
-import React from 'react';
+import React, {useEffect} from 'react';
 import {colors, FWidth} from '../../../../globalStyle';
 import FText from '../../elements/FText';
 import FButton from '../../elements/FButton';
@@ -11,14 +11,24 @@ import {
   useSubBottomSheetTitle,
 } from '../../../store/bottomSheetStore';
 
-const ExpiryDate = () => {
+type ExpiryDateProps = {
+  ingredientData: string | undefined;
+};
+
+const ExpiryDate = ({ingredientData}: ExpiryDateProps) => {
   const {subBottomSheetRef} = useSubBottomSheetRef();
   const {setSubTitle} = useSubBottomSheetTitle();
-  const {expiryDate} = useCategoriesText();
+  const {expiryDate, setExpiryDate} = useCategoriesText();
   const handleAddExpiryDate = () => {
     setSubTitle('유통기한');
     subBottomSheetRef.current?.present();
   };
+
+  useEffect(() => {
+    if (ingredientData) {
+      setExpiryDate(ingredientData);
+    }
+  }, [ingredientData]);
 
   return (
     <View style={styles.container}>

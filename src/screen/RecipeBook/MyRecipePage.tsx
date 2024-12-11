@@ -47,7 +47,7 @@ const MyRecipePage = () => {
 
   if (isLoading) return <Loading loadingTitle="로딩중" />;
   const newData = data?.pages.map(page => page.content).flat();
-  console.log('newData', newData);
+
   return (
     <Pressable style={styles.container} onPress={() => setMenuOpen(null!)}>
       {!newData?.length ? (

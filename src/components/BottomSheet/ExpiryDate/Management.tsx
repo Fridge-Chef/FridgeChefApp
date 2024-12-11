@@ -17,11 +17,12 @@ import {
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {ListData} from '../../../type/types';
 import {useBottomSheetRef} from '../../../store/bottomSheetStore';
+import Loading from '../../elements/Loading';
 
 const Management = () => {
   const {ingredientTitle} = useIngredientTitle();
   const {bottomSheetRef} = useBottomSheetRef();
-  const {refetch} = useGetIngredients();
+  const {data, isLoading, refetch} = useGetIngredients();
   const {mutate} = useIngredientsCategory();
   const {check, setCheck} = useAddCheck();
   const {
@@ -76,6 +77,11 @@ const Management = () => {
     }
   };
 
+  if (isLoading) return <Loading loadingTitle="로딩중" />;
+  const ingredientData: ListData[] = data.filter(
+    (item: ListData) => item.ingredientName === ingredientTitle,
+  );
+
   return (
     <View style={styles.container}>
       <View style={styles.contentContainer}>
@@ -86,11 +92,12 @@ const Management = () => {
             setItemNumber(0);
           }}
         />
-        <ExpiryDate />
+        <ExpiryDate ingredientData={ingredientData[0].expirationDate} />
         <Categories
           itemNumber={itemNumber}
           setItemNumber={setItemNumber}
           setCategory={setCategory}
+          ingredientData={ingredientData[0].ingredientCategory}
         />
       </View>
       <BottomButton
