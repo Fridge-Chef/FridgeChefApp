@@ -69,7 +69,8 @@ const FAppBar = ({
           fBStyle={{
             display: rType1 && rType2 ? 'flex' : 'none',
             opacity: 0,
-          }}>
+          }}
+          disabled={rType1 && rType2 ? false : undefined}>
           <SvgList type={type} />
         </FButton>
       </View>

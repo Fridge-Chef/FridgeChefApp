@@ -149,6 +149,7 @@ const AddRecipe = () => {
         previewOnPress={() => handlePreview(addRecipeData, navigation)}
         submitOnPress={() => {
           if (itemId?.type === 'update') {
+            console.log('업데이트 데이터', addRecipeData.instructions);
             updateMutate(addRecipeData, {
               onSuccess: () => {
                 setModalOpen(true);

@@ -63,7 +63,7 @@ const MenuList = ({userData}: MenuListProps) => {
                 queryKey: ['user'],
               });
               handleLogout({navigation, setLogout});
-              await AsyncStorage.removeItem('nickname');
+              // await AsyncStorage.removeItem('nickname');
             } else {
               handleUserDelete({
                 userName: userData.user.username.trim(),

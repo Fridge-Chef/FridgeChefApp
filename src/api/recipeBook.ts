@@ -50,12 +50,14 @@ export const updateMyRecipe = async (updateData: AddIngredientType) => {
   updateData.instructions.forEach((instruction, index) => {
     formData.append(`instructions[${index}].content`, instruction.content);
     if (instruction.imageLink !== instruction.imagePreview) {
-      formData.append('instructions.imageChange', true);
+      console.log('여기는 변경');
+      formData.append(`instructions[${index}].imageChange`, true);
       if (instruction.imageFile.name) {
         formData.append(`instructions[${index}].image`, instruction.imageFile);
       }
     } else {
-      formData.append('instructions.imageChange', false);
+      console.log('여기냐?? 여긴 변경 안해');
+      formData.append(`instructions[${index}].imageChange`, false);
     }
   });
 
