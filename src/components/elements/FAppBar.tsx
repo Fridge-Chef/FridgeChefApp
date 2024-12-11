@@ -102,6 +102,7 @@ const FAppBar = ({
                 display: rType1 ? 'flex' : 'none',
                 opacity: onlyBackIcon ? 0 : 1,
               }}
+              disabled={onlyBackIcon}
               onPress={onlyBackIcon ? undefined : onPress1}>
               <SvgList type={rType1} />
             </FButton>
@@ -116,6 +117,7 @@ const FAppBar = ({
                 alignItems: 'flex-end',
                 justifyContent: 'center',
               }}
+              disabled={onlyBackIcon}
               onPress={onlyBackIcon ? undefined : onPress2}>
               <SvgList type={rType2} />
             </FButton>
@@ -130,6 +132,7 @@ const FAppBar = ({
                 alignItems: 'flex-end',
                 justifyContent: 'center',
               }}
+              disabled={onlyBackIcon}
               onPress={onlyBackIcon ? undefined : onPress3}>
               <SvgList type={rType3} />
             </FButton>

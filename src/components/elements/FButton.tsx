@@ -77,6 +77,7 @@ type FButtonProps = {
     bottom?: number;
     right?: number;
   };
+  disabled?: boolean;
   onLayout?: (event: LayoutChangeEvent) => void;
   children?: React.ReactNode;
 };
@@ -100,6 +101,7 @@ const FButton = ({
   marginRight,
   marginBottom,
   titleColor,
+  disabled,
   onPress,
   hitSlop,
   onLayout,
@@ -188,7 +190,8 @@ const FButton = ({
       activeOpacity={1}
       onLayout={onLayout}
       onPress={onPress}
-      hitSlop={hitSlop}>
+      hitSlop={hitSlop}
+      disabled={disabled}>
       {children ? (
         children
       ) : (
