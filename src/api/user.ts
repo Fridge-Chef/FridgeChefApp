@@ -64,6 +64,7 @@ export const userLogin = async ({token, registration}: UserLoginProps) => {
     }
   } catch (error) {
     console.log('로그인 페이지', error);
+    throw new Error('로그인 실패');
   }
 };
 

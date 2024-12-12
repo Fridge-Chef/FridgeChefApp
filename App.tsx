@@ -5,27 +5,15 @@ import SplashScreen from 'react-native-splash-screen';
 import MainStackScreen from './src/components/BottomTebScreen/MainStackScreen';
 import FBottomSheet from './src/components/BottomSheet/FBottomSheet';
 import FToast from './src/utils/FToast';
-import {GoogleSignin} from '@react-native-google-signin/google-signin';
-import Config from 'react-native-config';
 import FBottomSheetSub from './src/components/BottomSheet/BottomSheetSub/FBottomSheetSub';
 import ReactQueryProvider from './src/ReactQuery/Provider';
 
 function App() {
-  const googleSignInConfigure = () => {
-    GoogleSignin.configure({
-      webClientId: Config.GOOGLE_OAUTH_TYPE3_CLIENT_ID,
-    });
-  };
-
   useEffect(() => {
     setTimeout(() => {
       SplashScreen.hide();
     }, 100);
   });
-
-  useEffect(() => {
-    googleSignInConfigure();
-  }, []);
 
   return (
     <>

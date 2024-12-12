@@ -1,4 +1,4 @@
-package com.fridgechefapp
+package com.fridgechef
 
 import android.app.Application
 import com.facebook.react.PackageList

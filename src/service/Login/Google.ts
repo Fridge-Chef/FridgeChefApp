@@ -1,26 +1,46 @@
 import {GoogleSignin} from '@react-native-google-signin/google-signin';
-import {userLogin} from '../../api/user';
+import {getRefreshToken, userLogin, UserLoginProps} from '../../api/user';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {ParamListBase} from '@react-navigation/native';
+import {UseMutateFunction} from '@tanstack/react-query';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 type GoogleLoginProps = {
   navigation: NativeStackNavigationProp<ParamListBase>;
+  mutate: UseMutateFunction<any, Error, UserLoginProps, unknown>;
 };
 
-export const handleGoogleSignIn = async ({navigation}: GoogleLoginProps) => {
+export const handleGoogleSignIn = async ({
+  navigation,
+  mutate,
+}: GoogleLoginProps) => {
   try {
     await GoogleSignin.hasPlayServices();
     const response = await GoogleSignin.signIn();
-    if (response.data?.idToken) {
-      const user = await userLogin({
-        token: response.data.idToken,
-        registration: 'google',
-      });
-      if (user) {
-        console.log('구글 로그인 response', user);
-      }
-    }
-  } catch (error) {
+    console.log('구글 로그인 11', response.data);
+    console.log('구글 로그인 response', response.data?.idToken!);
+    mutate(
+      {token: response.data?.idToken!, registration: 'google'},
+      {
+        onSuccess: async data => {
+          console.log('오나', data);
+          // await AsyncStorage.setItem('token', data.user.token);
+          // await getRefreshToken(data.user.token);
+          // if (await AsyncStorage.getItem('nickname')) {
+          //   navigation.reset({
+          //     index: 0,
+          //     routes: [{name: 'bottomTab'}],
+          //   });
+          // } else {
+          //   navigation.reset({
+          //     index: 0,
+          //     routes: [{name: 'nickname'}],
+          //   });
+          // }
+        },
+      },
+    );
+  } catch (error: any) {
     console.log('구글 로그인 error', error);
   }
 };

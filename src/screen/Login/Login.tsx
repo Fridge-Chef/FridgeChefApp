@@ -10,6 +10,7 @@ import TakeTour from '../../components/Login/TakeTour';
 
 const Login = () => {
   const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
+
   return (
     <View style={styles.container}>
       <TitleComponent />
