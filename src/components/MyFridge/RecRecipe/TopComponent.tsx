@@ -69,7 +69,6 @@ const TopComponent = ({ingredients}: TopComponentProps) => {
   };
 
   useEffect(() => {
-    console.log('하이');
     myIngredients();
   }, [myIngredientsChecked]);
 
