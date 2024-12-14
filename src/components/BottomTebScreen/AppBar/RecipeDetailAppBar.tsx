@@ -30,7 +30,7 @@ const RecipeDetailAppBar = () => {
     recipeList();
     navigation.goBack();
   };
-  console.log('dd', userDetail);
+
   return (
     <View style={{position: 'relative'}}>
       <FAppBar

@@ -82,13 +82,13 @@ const IngredientList = () => {
   };
 
   const handleSubmit = async () => {
-    if (selectItems.length > 0 || deleteItems.length > 0) {
+    if (deleteItems.length !== ingredientList.length) {
       console.log('확인');
       await AsyncStorage.setItem('myIngredients', JSON.stringify(deleteItems));
       setMyIngredientsChecked(!myIngredientsChecked);
       bottomSheetRef.current?.close();
     } else {
-      console.log('취소');
+      console.log('삭제할 재료를 선택해주세요');
     }
   };
 
@@ -121,9 +121,9 @@ const IngredientList = () => {
       <BottomButton
         title="확인"
         buttonColor={
-          selectItems.length > 0 || deleteItems.length > 0
-            ? colors.primary[1]
-            : colors.disabled
+          deleteItems.length === ingredientList.length
+            ? colors.disabled
+            : colors.primary[1]
         }
         onPress={handleSubmit}
       />
