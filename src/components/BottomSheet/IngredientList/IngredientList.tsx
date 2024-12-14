@@ -1,16 +1,32 @@
 import {StyleSheet, View} from 'react-native';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import TopTitle from '../TopTitle';
 import {colors, FWidth} from '../../../../globalStyle';
 import BottomButton from '../BottomButton';
 import IngredientItem from './IngredientItem';
-import {ListData, RecipeList} from '../../../type/types';
-import {useIngredientList} from '../../../store/store';
+import {ListData} from '../../../type/types';
+import {useIngredientList, useMyIngredientsChecked} from '../../../store/store';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import {useBottomSheetRef} from '../../../store/bottomSheetStore';
 
 const IngredientList = () => {
   const [selectItems, setSelectItems] = useState<string[]>([]);
   const [deleteItems, setDeleteItems] = useState<string[]>([]);
   const {ingredientList} = useIngredientList();
+  const {bottomSheetRef} = useBottomSheetRef();
+  const {myIngredientsChecked, setMyIngredientsChecked} =
+    useMyIngredientsChecked();
+  const myIngredients = async () => {
+    const items = await AsyncStorage.getItem('myIngredients');
+    if (items) {
+      setDeleteItems(JSON.parse(items));
+    }
+  };
+
+  useEffect(() => {
+    myIngredients();
+  }, []);
+
   const handleIngredientClick = (ingredient: ListData) => {
     if (deleteItems.includes(ingredient.ingredientName)) {
       return;
@@ -38,7 +54,7 @@ const IngredientList = () => {
       setDeleteItems([...deleteItems, ingredient.ingredientName]);
     }
   };
-
+  console.log(deleteItems);
   const getItemStyle = (ingredient: string) => {
     const isSelected = selectItems.includes(ingredient);
     const isDeleted = deleteItems.includes(ingredient);
@@ -68,6 +84,9 @@ const IngredientList = () => {
   const handleSubmit = async () => {
     if (selectItems.length > 0 || deleteItems.length > 0) {
       console.log('확인');
+      await AsyncStorage.setItem('myIngredients', JSON.stringify(deleteItems));
+      setMyIngredientsChecked(!myIngredientsChecked);
+      bottomSheetRef.current?.close();
     } else {
       console.log('취소');
     }

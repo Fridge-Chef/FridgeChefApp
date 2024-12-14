@@ -1,5 +1,5 @@
 import {ActivityIndicator, FlatList, StyleSheet, View} from 'react-native';
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import ListItem from './ListItem';
 import {GetRecipeListType, ListData} from '../../../../type/types';
 import {colors, FWidth} from '../../../../../globalStyle';
@@ -14,6 +14,8 @@ import {
   useBottomSheetTitle,
 } from '../../../../store/bottomSheetStore';
 import {useRankName} from '../../../../store/rankingStore';
+import {useMyIngredientsChecked} from '../../../../store/store';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 type RecipesProps = {
   ingredientList: ListData[];
@@ -21,10 +23,30 @@ type RecipesProps = {
 
 const Recipes = ({ingredientList}: RecipesProps) => {
   const ingredients = ingredientList.map(item => item.ingredientName);
+  const [newIngredients, setNewIngredients] = useState(ingredients);
   const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
   const {bottomSheetRef} = useBottomSheetRef();
+  const {myIngredientsChecked} = useMyIngredientsChecked();
   const {rankName} = useRankName();
   const {setTitle} = useBottomSheetTitle();
+
+  const myIngredients = async () => {
+    try {
+      const items = await AsyncStorage.getItem('myIngredients');
+      if (items) {
+        const parsedItems = JSON.parse(items);
+        const filteredIngredients = ingredients.filter(
+          item => !parsedItems.includes(item),
+        );
+        setNewIngredients(filteredIngredients);
+      } else {
+        setNewIngredients(ingredients);
+      }
+    } catch (error) {
+      console.error('Error fetching myIngredients:', error);
+      setNewIngredients(ingredients);
+    }
+  };
 
   const rankingName = () => {
     switch (rankName) {
@@ -48,7 +70,7 @@ const Recipes = ({ingredientList}: RecipesProps) => {
     hasNextPage,
     isFetchingNextPage,
     refetch,
-  } = useGetRecommendedRecipeList(ingredients, 10, rankingName());
+  } = useGetRecommendedRecipeList(newIngredients, 10, rankingName());
   const handleBottomSheetOpen = () => {
     setTitle('순위');
     bottomSheetRef.current?.present();
@@ -60,10 +82,16 @@ const Recipes = ({ingredientList}: RecipesProps) => {
       fetchNextPage();
     }
   };
+  console.log('newIngredients', newIngredients);
+
+  useEffect(() => {
+    myIngredients();
+    refetch();
+  }, [myIngredientsChecked]);
 
   if (isLoading) return <Loading loadingTitle="로딩중" />;
   const newData = data?.pages.map(page => page.content).flat();
-  // const newData: any = [];
+
   return (
     <View style={styles.container}>
       <View style={styles.mainListContainer}>
@@ -85,7 +113,7 @@ const Recipes = ({ingredientList}: RecipesProps) => {
                   navigation.navigate('recipeDetail', {
                     id: item.id,
                     without: item.without,
-                    myIngredients: ingredients,
+                    myIngredients: newIngredients,
                   })
                 }>
                 <ListItem item={item} refetch={refetch} />

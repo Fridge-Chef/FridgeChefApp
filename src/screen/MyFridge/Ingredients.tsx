@@ -13,7 +13,6 @@ import CondimentButton from '../../components/MyFridge/Ingredients/CondimentButt
 import InfoComponent from '../../components/MyFridge/Ingredients/InfoComponent';
 import SearchIcon from '../../utils/Svg/SearchIcon';
 import {useQueryClient} from '@tanstack/react-query';
-import {useGetPurch} from '../../api/recipeQuery';
 
 const Ingredients = () => {
   const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();

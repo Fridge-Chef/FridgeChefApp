@@ -70,6 +70,11 @@ type RecipeIdType = {
   setRecipeId: (recipeId: number) => void;
 };
 
+type MyIngredientsCheckedType = {
+  myIngredientsChecked: boolean;
+  setMyIngredientsChecked: (myIngredientsChecked: boolean) => void;
+};
+
 export const useIngredientTitle = create<IngredientTitleTitleType>(set => ({
   ingredientTitle: '',
   setIngredientTitle: (ingredientTitle: string) => set({ingredientTitle}),
@@ -105,6 +110,7 @@ export const useUserDetail = create<UserDetailType>(set => ({
     prevImages: [],
     commentId: 0,
     boardId: 0,
+    title: '',
     myMe: false,
     star: 0,
     comment: '',
@@ -126,6 +132,7 @@ export const useUserReview = create<UserReviewType>(set => ({
     prevImages: [],
     commentId: 0,
     boardId: 0,
+    title: '',
     myMe: false,
     star: 0,
     comment: '',
@@ -179,3 +186,11 @@ export const useRecipeId = create<RecipeIdType>(set => ({
   recipeId: null!,
   setRecipeId: (recipeId: number) => set({recipeId}),
 }));
+
+export const useMyIngredientsChecked = create<MyIngredientsCheckedType>(
+  set => ({
+    myIngredientsChecked: false,
+    setMyIngredientsChecked: (myIngredientsChecked: boolean) =>
+      set({myIngredientsChecked}),
+  }),
+);

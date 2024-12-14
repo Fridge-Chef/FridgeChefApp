@@ -1,9 +1,8 @@
 import {GoogleSignin} from '@react-native-google-signin/google-signin';
-import {getRefreshToken, userLogin, UserLoginProps} from '../../api/user';
+import {UserLoginProps} from '../../api/user';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {ParamListBase} from '@react-navigation/native';
 import {UseMutateFunction} from '@tanstack/react-query';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 
 type GoogleLoginProps = {
   navigation: NativeStackNavigationProp<ParamListBase>;
@@ -18,7 +17,7 @@ export const handleGoogleSignIn = async ({
     await GoogleSignin.hasPlayServices();
     const response = await GoogleSignin.signIn();
     console.log('구글 로그인 11', response.data);
-    console.log('구글 로그인 response', response.data?.idToken!);
+    console.log('구글 로그인 response : ', response.data?.idToken!);
     mutate(
       {token: response.data?.idToken!, registration: 'google'},
       {

@@ -46,6 +46,8 @@ const RecipeDetail = () => {
       setUserDetail({
         boardId: data?.boardId,
         myMe: data?.myMe,
+        title: data?.title,
+        comment: data?.description,
       });
     }
   }, [data]);

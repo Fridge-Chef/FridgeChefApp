@@ -129,6 +129,7 @@ export type ReviewType = {
   prevImages?: string[];
   commentId?: number | undefined;
   boardId: number;
+  title: string;
   star: number;
   myMe: boolean;
   comment: string;

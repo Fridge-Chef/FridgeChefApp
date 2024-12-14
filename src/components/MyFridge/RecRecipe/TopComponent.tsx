@@ -1,5 +1,5 @@
 import {FlatList, LayoutChangeEvent, StyleSheet, View} from 'react-native';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {colors, FHeight, FWidth} from '../../../../globalStyle';
 import FButton from '../../elements/FButton';
 import {ListData, RecipeList} from '../../../type/types';
@@ -10,22 +10,28 @@ import {
   useBottomSheetRef,
   useBottomSheetTitle,
 } from '../../../store/bottomSheetStore';
+import {useMyIngredientsChecked} from '../../../store/store';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import {useQueryClient} from '@tanstack/react-query';
 
 type TopComponentProps = {
   ingredients: ListData[];
+  setIngredientList?: (value: ListData[]) => void;
 };
 
 const TopComponent = ({ingredients}: TopComponentProps) => {
+  const [newIngredients, setNewIngredients] = useState(ingredients);
   const [itemHeight, setItemHeight] = useState(0);
   const {bottomSheetRef} = useBottomSheetRef();
   const {setTitle} = useBottomSheetTitle();
+  const queryCl = useQueryClient();
+  const {myIngredientsChecked} = useMyIngredientsChecked();
   const [selectItems, setSelectItems] = useState<string[]>([]);
   const onLayout = (e: LayoutChangeEvent) => {
     if (itemHeight === 0) {
       setItemHeight(e.nativeEvent.layout.height);
     }
   };
-
   const handleBottomSheetOpen = () => {
     setTitle('재료보기');
     bottomSheetRef.current?.present();
@@ -41,12 +47,35 @@ const TopComponent = ({ingredients}: TopComponentProps) => {
     }
   };
 
+  const myIngredients = async () => {
+    try {
+      const items = await AsyncStorage.getItem('myIngredients');
+      if (items) {
+        const parsedItems = JSON.parse(items);
+        const filteredIngredients = ingredients.filter(
+          item => !parsedItems.includes(item.ingredientName),
+        );
+        setNewIngredients(filteredIngredients);
+      } else {
+        setNewIngredients(ingredients);
+      }
+    } catch (error) {
+      console.error('Error fetching myIngredients:', error);
+      setNewIngredients(ingredients);
+    }
+  };
+
+  useEffect(() => {
+    console.log('하이');
+    myIngredients();
+  }, [myIngredientsChecked]);
+
   return (
     <View style={styles.container}>
       <SubTitle title="보유 재료" />
       <View style={{position: 'relative'}}>
         <FlatList
-          data={ingredients}
+          data={newIngredients}
           showsHorizontalScrollIndicator={false}
           horizontal
           keyExtractor={(_, index) => index.toString()}

@@ -30,7 +30,7 @@ const RecipeDetailAppBar = () => {
     recipeList();
     navigation.goBack();
   };
-
+  console.log('dd', userDetail);
   return (
     <View style={{position: 'relative'}}>
       <FAppBar
@@ -41,7 +41,11 @@ const RecipeDetailAppBar = () => {
         rType3={userDetail.myMe ? 'detailReviewMore' : null}
         onPress1={() => {}}
         onPress2={async () => {
-          Share.share({message: 'test', title: '타이틀', url: ''});
+          Share.share({
+            message: `${userDetail.title}\n${userDetail.comment}`,
+            title: `fridgeChef ${userDetail.title}`,
+            url: '',
+          });
         }}
         shadow
         elevation={scrollY > 0 ? 5 : 0}

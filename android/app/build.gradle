@@ -96,6 +96,7 @@ android {
         versionName "1.0"
         resValue "string", "kakao_manifest_app_key", project.env.get("KAKAO_MANIFEST_KEY")
         resValue "string", "kakao_key", project.env.get("KAKAO_API_KEY")
+        resValue "string", "google_client_id", project.env.get("GOOGLE_WEB_CLIENT_ID")
         resValue "string", "build_config_package", "com.fridgechef"
     }
     signingConfigs {
@@ -131,7 +132,7 @@ android {
 dependencies {
     // The version of react-native is set by the React Native Gradle Plugin
     implementation("com.facebook.react:react-android")
-
+    implementation 'com.google.android.gms:play-services-auth:20.7.0'
     if (hermesEnabled.toBoolean()) {
         implementation("com.facebook.react:hermes-android")
     } else {

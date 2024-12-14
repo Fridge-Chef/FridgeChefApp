@@ -6,7 +6,7 @@ import {ParamListBase} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import FButton from '../elements/FButton';
 import LoginButtonTitle from './LoginButtonTitle';
-import {handleGoogleSignIn, handleLogout} from '../../service/Login/Google';
+import {handleGoogleSignIn} from '../../service/Login/Google';
 import {GoogleSignin} from '@react-native-google-signin/google-signin';
 import {useLogin} from '../../api/userQuery';
 import Config from 'react-native-config';
@@ -20,7 +20,7 @@ const GoogleLogin = ({navigation}: GoogleLoginProps) => {
     GoogleSignin.configure({
       webClientId: Config.GOOGLE_WEB_CLIENT_ID,
       iosClientId: Config.GOOGLE_IOS_CLIENT_ID,
-      scopes: ['https://www.googleapis.com/auth/drive.readonly'],
+      // scopes: ['https://www.googleapis.com/auth/drive.readonly'],
       forceCodeForRefreshToken: false,
     });
   }, []);
