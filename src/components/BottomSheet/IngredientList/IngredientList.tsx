@@ -18,8 +18,12 @@ const IngredientList = () => {
     useMyIngredientsChecked();
   const myIngredients = async () => {
     const items = await AsyncStorage.getItem('myIngredients');
+    const firstItems = await AsyncStorage.getItem('firstIngredients');
     if (items) {
       setDeleteItems(JSON.parse(items));
+    }
+    if (firstItems) {
+      setSelectItems(JSON.parse(firstItems));
     }
   };
 
@@ -86,6 +90,10 @@ const IngredientList = () => {
       console.log('확인');
       await AsyncStorage.setItem('myIngredients', JSON.stringify(deleteItems));
       setMyIngredientsChecked(!myIngredientsChecked);
+      await AsyncStorage.setItem(
+        'firstIngredients',
+        JSON.stringify(selectItems),
+      );
       bottomSheetRef.current?.close();
     } else {
       console.log('삭제할 재료를 선택해주세요');

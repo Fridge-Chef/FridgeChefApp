@@ -24,7 +24,6 @@ const TopComponent = ({ingredients}: TopComponentProps) => {
   const [itemHeight, setItemHeight] = useState(0);
   const {bottomSheetRef} = useBottomSheetRef();
   const {setTitle} = useBottomSheetTitle();
-  const queryCl = useQueryClient();
   const {myIngredientsChecked} = useMyIngredientsChecked();
   const [selectItems, setSelectItems] = useState<string[]>([]);
   const onLayout = (e: LayoutChangeEvent) => {
@@ -37,19 +36,10 @@ const TopComponent = ({ingredients}: TopComponentProps) => {
     bottomSheetRef.current?.present();
   };
 
-  const handleIngredientClick = (ingredient: RecipeList) => {
-    if (selectItems.includes(ingredient.ingredient)) {
-      setSelectItems(
-        selectItems.filter(item => item !== ingredient.ingredient),
-      );
-    } else {
-      setSelectItems([...selectItems, ingredient.ingredient]);
-    }
-  };
-
   const myIngredients = async () => {
     try {
       const items = await AsyncStorage.getItem('myIngredients');
+      const firstItems = await AsyncStorage.getItem('firstIngredients');
       if (items) {
         const parsedItems = JSON.parse(items);
         const filteredIngredients = ingredients.filter(
@@ -58,6 +48,19 @@ const TopComponent = ({ingredients}: TopComponentProps) => {
         setNewIngredients(filteredIngredients);
       } else {
         setNewIngredients(ingredients);
+      }
+      if (firstItems) {
+        const parsedFirstItems = JSON.parse(firstItems);
+        setSelectItems(parsedFirstItems);
+        const sortedIngredients = [
+          ...ingredients.filter(item =>
+            parsedFirstItems.includes(item.ingredientName),
+          ),
+          ...ingredients.filter(
+            item => !parsedFirstItems.includes(item.ingredientName),
+          ),
+        ];
+        setNewIngredients(sortedIngredients);
       }
     } catch (error) {
       console.error('Error fetching myIngredients:', error);
@@ -89,7 +92,14 @@ const TopComponent = ({ingredients}: TopComponentProps) => {
               ]}>
               <View style={[styles.listItemContainer]}>
                 <View
-                  style={[styles.listItem, {backgroundColor: colors.b100}]}
+                  style={[
+                    styles.listItem,
+                    {
+                      backgroundColor: selectItems.includes(item.ingredientName)
+                        ? colors.text
+                        : colors.b100,
+                    },
+                  ]}
                   onLayout={onLayout}>
                   <FText
                     fStyle="M_14"
