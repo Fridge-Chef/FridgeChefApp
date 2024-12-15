@@ -1,8 +1,9 @@
 import {GoogleSignin} from '@react-native-google-signin/google-signin';
-import {UserLoginProps} from '../../api/user';
+import {getRefreshToken, UserLoginProps} from '../../api/user';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {ParamListBase} from '@react-navigation/native';
 import {UseMutateFunction} from '@tanstack/react-query';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 type GoogleLoginProps = {
   navigation: NativeStackNavigationProp<ParamListBase>;
@@ -22,20 +23,19 @@ export const handleGoogleSignIn = async ({
       {token: response.data?.idToken!, registration: 'google'},
       {
         onSuccess: async data => {
-          console.log('오나', data);
-          // await AsyncStorage.setItem('token', data.user.token);
-          // await getRefreshToken(data.user.token);
-          // if (await AsyncStorage.getItem('nickname')) {
-          //   navigation.reset({
-          //     index: 0,
-          //     routes: [{name: 'bottomTab'}],
-          //   });
-          // } else {
-          //   navigation.reset({
-          //     index: 0,
-          //     routes: [{name: 'nickname'}],
-          //   });
-          // }
+          await AsyncStorage.setItem('token', data.user.token);
+          await getRefreshToken(data.user.token);
+          if (await AsyncStorage.getItem('nickname')) {
+            navigation.reset({
+              index: 0,
+              routes: [{name: 'bottomTab'}],
+            });
+          } else {
+            navigation.reset({
+              index: 0,
+              routes: [{name: 'nickname'}],
+            });
+          }
         },
       },
     );
