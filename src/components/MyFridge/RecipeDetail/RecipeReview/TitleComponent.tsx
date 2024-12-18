@@ -22,14 +22,17 @@ const TitleComponent = ({title, boardId, data}: TitleComponentProps) => {
   const [isCheck, setIsCheck] = useState(false);
   const [loginCheck, setLoginCheck] = useState(false);
   const userCheck = async () => {
+    console.log(
+      '후기 리스트',
+      data?.content.map(item => item.myMe),
+    );
     if (!data) return;
-    const userName = await AsyncStorage.getItem('nickname');
-    const userCheck =
-      data!.content.map(item => item.userName).filter(item => item === userName)
-        .length > 0;
-    if (userCheck) {
+    const userCheck = data.content.map(item => item.myMe);
+    if (userCheck.length > 0) {
+      console.log('후기 작성 가능');
       setIsCheck(true);
     } else {
+      console.log('후기 작성 불가능');
       setIsCheck(false);
     }
   };
