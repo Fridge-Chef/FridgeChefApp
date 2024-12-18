@@ -11,7 +11,7 @@ import {UserData} from '../../type/types';
 
 const MyPage = () => {
   const [user, setUser] = useState<UserData>();
-  const {data, isLoading} = useGetUser();
+  const {data, isLoading, refetch} = useGetUser();
 
   useEffect(() => {
     setUser(data);
@@ -29,7 +29,7 @@ const MyPage = () => {
           style={styles.paddingContainer}
           overScrollMode="never"
           showsVerticalScrollIndicator={false}>
-          <UserStatus userData={user} />
+          <UserStatus userData={user} refetch={refetch} />
           <MenuList userData={user} />
         </ScrollView>
       ) : (

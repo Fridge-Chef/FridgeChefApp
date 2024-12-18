@@ -1,40 +1,55 @@
-import {StyleSheet, View} from 'react-native';
-import React from 'react';
+import {Pressable, StyleSheet, View} from 'react-native';
+import React, {useState} from 'react';
 import {colors, FWidth} from '../../../globalStyle';
 import FText from '../elements/FText';
 import RecipeActions from './RecipeActions';
 import UserImage from './UserImage';
 import {UserData} from '../../type/types';
+import UserChangeInput from './UserChangeInput';
 
 type UserStatus = {
   userData: UserData;
+  refetch?: () => void;
 };
 
-const UserStatus = ({userData}: UserStatus) => {
-  console.log(userData);
+const UserStatus = ({userData, refetch}: UserStatus) => {
+  const [changeOpen, setChangeOpen] = useState(false);
+  const [userNickname, setUserNickname] = useState<string>(
+    userData.user.username,
+  );
+  console.log('sss', userData);
   return (
-    <View style={styles.container}>
+    <Pressable style={styles.container} onPress={() => setChangeOpen(false)}>
       <UserImage
         uri={userData?.user.profileLink}
-        onPress={() => console.log('저보변경')}
+        onPress={() => setChangeOpen(true)}
       />
-      <View style={styles.userNicknameContainer}>
-        <FText
-          fStyle="B_18"
-          color={colors.text}
-          text={userData?.user.username}
+      {changeOpen ? (
+        <UserChangeInput
+          setChangeOpen={setChangeOpen}
+          value={userNickname!}
+          refetch={refetch}
+          onChangeText={text => setUserNickname(text)}
         />
-        <FText fStyle="M_16" color={colors.text} text={'님'} />
-        {/* <RankComponent rank={user.user.userRank} /> */}
-      </View>
+      ) : (
+        <View style={styles.userNicknameContainer}>
+          <FText
+            fStyle="B_18"
+            color={colors.text}
+            text={userData?.user.username}
+          />
+          <FText fStyle="M_16" color={colors.text} text={'님'} />
+          {/* <RankComponent rank={user.user.userRank} /> */}
+        </View>
+      )}
       <FText
         mTop={FWidth * 4}
         fStyle="R_14"
         color={colors.btnBG}
         text={`${userData?.user.email}`}
       />
-      <RecipeActions />
-    </View>
+      <RecipeActions userRecipeList={2} userCommentList={3} />
+    </Pressable>
   );
 };
 

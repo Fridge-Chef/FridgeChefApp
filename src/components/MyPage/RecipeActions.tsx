@@ -6,12 +6,20 @@ import {ParamListBase, useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import FText from '../elements/FText';
 
-const RecipeActions = () => {
+type RecipeActionsProps = {
+  userRecipeList: number;
+  userCommentList: number;
+};
+
+const RecipeActions = ({
+  userRecipeList,
+  userCommentList,
+}: RecipeActionsProps) => {
   const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
 
   const recipeActionInfo = [
-    {recipeAction: '레시피 작성', recipeActionCount: '5회'},
-    {recipeAction: '후기 작성', recipeActionCount: '2회'},
+    {actionTitle: '레시피 작성', actionCount: userRecipeList},
+    {actionTitle: '후기 작성', actionCount: userCommentList},
   ];
 
   const handleList = (title: string) => {
@@ -29,16 +37,18 @@ const RecipeActions = () => {
     <View style={styles.container}>
       {recipeActionInfo.map((item, index) => (
         <View key={index} style={styles.textContainer}>
-          <FText fStyle="R_14" color={colors.text} text={item.recipeAction} />
+          <FText fStyle="R_14" color={colors.text} text={item.actionTitle} />
           <FButton
             buttonStyle="noneStyle"
-            onPress={() => handleList(item.recipeAction)}>
-            <FText
-              fStyle="M_16"
-              mTop={FWidth * 6}
-              color={colors.primary[1]}
-              text={item.recipeActionCount}
-            />
+            onPress={() => handleList(item.actionTitle)}>
+            <View style={styles.textAlign}>
+              <FText
+                fStyle="M_16"
+                color={colors.primary[1]}
+                text={item.actionCount}
+              />
+              <FText fStyle="M_16" color={colors.primary[1]} text="회" />
+            </View>
           </FButton>
         </View>
       ))}
@@ -61,6 +71,12 @@ const styles = StyleSheet.create({
 
   textContainer: {
     flex: 1,
+    alignItems: 'center',
+  },
+
+  textAlign: {
+    marginTop: FWidth * 6,
+    flexDirection: 'row',
     alignItems: 'center',
   },
 });

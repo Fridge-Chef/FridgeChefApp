@@ -4,13 +4,14 @@ import {colors, fontFamilies, FWidth} from '../../../globalStyle';
 import Icon from 'react-native-vector-icons/Ionicons';
 import FButton from './FButton';
 import FText from './FText';
+import {userNickname} from '../../service/Nickname/Nickname';
 
 type FInputProps = {
   value?: string;
   deleteButton?: boolean;
   deleteValue?: () => void;
   placeholder?: string;
-  inputStyle: 'default' | 'recipe' | 'subRecipe' | 'noBorder';
+  inputStyle: 'default' | 'recipe' | 'subRecipe' | 'noBorder' | 'userNickname';
   fontFamily?: string;
   recipe2PaddingRight?: number;
   textAlignVertical?: 'auto' | 'top' | 'bottom' | 'center';
@@ -64,6 +65,7 @@ const FInput = ({
     recipe2: [styles.recipeStyle2],
     subRecipe: styles.subRecipeStyle,
     noBorder: styles.noBorderStyle,
+    userNickname: styles.userNicknameStyle,
   };
 
   return (
@@ -179,6 +181,17 @@ const styles = StyleSheet.create({
     lineHeight: FWidth * 24,
     paddingTop: 0,
     // backgroundColor: 'red',
+  },
+
+  userNicknameStyle: {
+    fontSize: FWidth * 16,
+    lineHeight: FWidth * 24,
+    borderRadius: 10,
+    paddingHorizontal: FWidth * 14,
+    color: colors.text,
+    borderWidth: 1,
+    borderColor: colors.field,
+    fontFamily: fontFamilies.pretendardBold,
   },
 
   errorContainer: {
