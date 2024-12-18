@@ -45,7 +45,7 @@ const RecipeReviewPage = () => {
   if (isLoading) return <Loading loadingTitle="로딩중" />;
   return (
     <View style={styles.container}>
-      {data?.pages.length! <= 0 ? (
+      {data?.pages.length! ? (
         <NoContent
           marginTop={240}
           title="첫번째 후기를 남겨보세요"

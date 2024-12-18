@@ -11,7 +11,9 @@ const SplashScreen = () => {
 
   const handleNavigation = async () => {
     const token = await AsyncStorage.getItem('token');
+    // const token = '';
     const nickname = await AsyncStorage.getItem('nickname');
+    // const nickname = '';
 
     if (token && nickname) {
       navigation.replace('bottomTab');

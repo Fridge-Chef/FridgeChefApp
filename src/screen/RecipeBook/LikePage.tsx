@@ -51,7 +51,7 @@ const LikePage = () => {
   // const newData: any = [];
   return (
     <View style={styles.container}>
-      {!newData ? (
+      {!newData?.length ? (
         <NoContent marginTop={240} title="아직 좋아요가 없어요." />
       ) : (
         <ListComponent

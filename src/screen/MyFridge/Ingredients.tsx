@@ -14,7 +14,7 @@ import InfoComponent from '../../components/MyFridge/Ingredients/InfoComponent';
 import SearchIcon from '../../utils/Svg/SearchIcon';
 import {useQueryClient} from '@tanstack/react-query';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-
+import * as Kakao from '@react-native-seoul/kakao-login';
 const Ingredients = () => {
   const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
   const [onClicked, setonClicked] = useState(1);
@@ -27,11 +27,13 @@ const Ingredients = () => {
 
   // 테스트용 함수
   const handleTest = async () => {
-    // await getUSerToken();
-    await AsyncStorage.removeItem('myIngredients');
-    cliaa.removeQueries({
-      queryKey: ['recipeList'],
-    });
+    Kakao.unlink();
+    // await AsyncStorage.removeItem('token');
+    // await AsyncStorage.removeItem('nickname');
+    // await AsyncStorage.removeItem('myIngredients');
+    // cliaa.removeQueries({
+    //   queryKey: ['recipeList'],
+    // });
   };
 
   return (

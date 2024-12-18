@@ -60,6 +60,7 @@ export const userLogin = async ({token, registration}: UserLoginProps) => {
       },
     );
     if (response.status === 200) {
+      console.log('로그인 성공', response.data);
       return response.data;
     }
   } catch (error) {
