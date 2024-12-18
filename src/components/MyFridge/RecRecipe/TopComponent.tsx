@@ -2,7 +2,7 @@ import {FlatList, LayoutChangeEvent, StyleSheet, View} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import {colors, FHeight, FWidth} from '../../../../globalStyle';
 import FButton from '../../elements/FButton';
-import {ListData, RecipeList} from '../../../type/types';
+import {ListData} from '../../../type/types';
 import FText from '../../elements/FText';
 import SubTitle from '../../elements/SubTitle/SubTitle';
 import RecipeRightArrow from '../../../utils/Svg/Categories/RecipeRightArrow';
@@ -12,7 +12,6 @@ import {
 } from '../../../store/bottomSheetStore';
 import {useMyIngredientsChecked} from '../../../store/store';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import {useQueryClient} from '@tanstack/react-query';
 
 type TopComponentProps = {
   ingredients: ListData[];
@@ -40,27 +39,30 @@ const TopComponent = ({ingredients}: TopComponentProps) => {
     try {
       const items = await AsyncStorage.getItem('myIngredients');
       const firstItems = await AsyncStorage.getItem('firstIngredients');
+      let filteredIngredients = ingredients;
       if (items) {
         const parsedItems = JSON.parse(items);
-        const filteredIngredients = ingredients.filter(
+        filteredIngredients = ingredients.filter(
           item => !parsedItems.includes(item.ingredientName),
         );
-        setNewIngredients(filteredIngredients);
-      } else {
-        setNewIngredients(ingredients);
       }
-      if (firstItems) {
+      if (firstItems && firstItems !== '[]') {
+        console.log('하이');
         const parsedFirstItems = JSON.parse(firstItems);
         setSelectItems(parsedFirstItems);
+
         const sortedIngredients = [
-          ...ingredients.filter(item =>
+          ...filteredIngredients.filter(item =>
             parsedFirstItems.includes(item.ingredientName),
           ),
-          ...ingredients.filter(
+          ...filteredIngredients.filter(
             item => !parsedFirstItems.includes(item.ingredientName),
           ),
         ];
+
         setNewIngredients(sortedIngredients);
+      } else {
+        setNewIngredients(filteredIngredients);
       }
     } catch (error) {
       console.error('Error fetching myIngredients:', error);
@@ -71,7 +73,7 @@ const TopComponent = ({ingredients}: TopComponentProps) => {
   useEffect(() => {
     myIngredients();
   }, [myIngredientsChecked]);
-
+  console.log('변경되냐 :', myIngredientsChecked);
   return (
     <View style={styles.container}>
       <SubTitle title="보유 재료" />
