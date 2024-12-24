@@ -17,6 +17,7 @@ export const handleGoogleSignIn = async ({
   try {
     await GoogleSignin.hasPlayServices();
     const response = await GoogleSignin.signIn();
+    console.log('구글 로그인 response', response.data);
     mutate(
       {token: response.data?.idToken!, registration: 'google'},
       {

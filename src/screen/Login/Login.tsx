@@ -1,4 +1,4 @@
-import {Image, StyleSheet, View} from 'react-native';
+import {Image, StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import {ParamListBase, useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
@@ -7,10 +7,10 @@ import {colors, FWidth} from '../../../globalStyle';
 import KakaoLogin from '../../components/Login/KakaoLogin';
 import GoogleLogin from '../../components/Login/GoogleLogin';
 import TakeTour from '../../components/Login/TakeTour';
+import FButton from '../../components/elements/FButton';
 
 const Login = () => {
   const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
-
   return (
     <View style={styles.container}>
       <TitleComponent />
