@@ -12,9 +12,10 @@ import {useLogin} from '../../api/userQuery';
 import Config from 'react-native-config';
 type GoogleLoginProps = {
   navigation: NativeStackNavigationProp<ParamListBase>;
+  setIsLoginLoading: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-const GoogleLogin = ({navigation}: GoogleLoginProps) => {
+const GoogleLogin = ({navigation, setIsLoginLoading}: GoogleLoginProps) => {
   const {mutate} = useLogin();
   useEffect(() => {
     GoogleSignin.configure({
@@ -32,7 +33,7 @@ const GoogleLogin = ({navigation}: GoogleLoginProps) => {
       buttonColor={colors.white}
       onPress={() => {
         // handleLogout();
-        handleGoogleSignIn({navigation, mutate});
+        handleGoogleSignIn({navigation, mutate, setIsLoginLoading});
       }}>
       <GoogleLogo />
       <LoginButtonTitle title="구글 간편 로그인" />

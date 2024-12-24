@@ -8,13 +8,16 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 type GoogleLoginProps = {
   navigation: NativeStackNavigationProp<ParamListBase>;
   mutate: UseMutateFunction<any, Error, UserLoginProps, unknown>;
+  setIsLoginLoading: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 export const handleGoogleSignIn = async ({
   navigation,
   mutate,
+  setIsLoginLoading,
 }: GoogleLoginProps) => {
   try {
+    setIsLoginLoading(true);
     await GoogleSignin.hasPlayServices();
     const response = await GoogleSignin.signIn();
     console.log('구글 로그인 response', response.data);
@@ -22,6 +25,7 @@ export const handleGoogleSignIn = async ({
       {token: response.data?.idToken!, registration: 'google'},
       {
         onSuccess: async data => {
+          setIsLoginLoading(false);
           await AsyncStorage.setItem('token', data.user.token);
           await getRefreshToken(data.user.token);
           if (await AsyncStorage.getItem('nickname')) {
@@ -36,10 +40,15 @@ export const handleGoogleSignIn = async ({
             });
           }
         },
+        onError: error => {
+          setIsLoginLoading(false);
+          console.log('구글 로그인 error1', error);
+        },
       },
     );
   } catch (error: any) {
-    console.log('구글 로그인 error', error);
+    setIsLoginLoading(false);
+    console.log('구글 로그인 error2', error);
   }
 };
 

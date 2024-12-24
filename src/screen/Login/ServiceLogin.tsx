@@ -1,5 +1,5 @@
 import {StyleSheet, Text, View} from 'react-native';
-import React from 'react';
+import React, {useState} from 'react';
 import {FWidth} from '../../../globalStyle';
 import KakaoLogin from '../../components/Login/KakaoLogin';
 import {ParamListBase, useNavigation} from '@react-navigation/native';
@@ -8,11 +8,18 @@ import GoogleLogin from '../../components/Login/GoogleLogin';
 
 const ServiceLogin = () => {
   const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
+  const [isLoginLoading, setIsLoginLoading] = useState(false);
   return (
     <View style={styles.container}>
       <View style={styles.loginContainer}>
-        <KakaoLogin navigation={navigation} />
-        <GoogleLogin navigation={navigation} />
+        <KakaoLogin
+          navigation={navigation}
+          setIsLoginLoading={setIsLoginLoading}
+        />
+        <GoogleLogin
+          navigation={navigation}
+          setIsLoginLoading={setIsLoginLoading}
+        />
       </View>
     </View>
   );

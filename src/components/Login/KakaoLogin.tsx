@@ -11,9 +11,10 @@ import {useLogin} from '../../api/userQuery';
 
 type KakaoLoginProps = {
   navigation: NativeStackNavigationProp<ParamListBase>;
+  setIsLoginLoading: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-const KakaoLogin = ({navigation}: KakaoLoginProps) => {
+const KakaoLogin = ({navigation, setIsLoginLoading}: KakaoLoginProps) => {
   const {mutate} = useLogin();
   return (
     <FButton
@@ -21,7 +22,7 @@ const KakaoLogin = ({navigation}: KakaoLoginProps) => {
       paddingVertical={FWidth * 16}
       buttonColor="#F9E007"
       marginBottom={FWidth * 16}
-      onPress={() => handleKakaologin({navigation, mutate})}>
+      onPress={() => handleKakaologin({navigation, mutate, setIsLoginLoading})}>
       <KakaoLogo />
       <LoginButtonTitle title="카카오톡 간편 로그인" />
       <View style={styles.hideIcon}>
