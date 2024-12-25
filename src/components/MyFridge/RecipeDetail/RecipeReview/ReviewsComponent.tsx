@@ -28,7 +28,7 @@ const ReviewsComponent = ({
   const {bottomSheetRef} = useBottomSheetRef();
   const {setTitle} = useBottomSheetTitle();
   const handleBottomSheetOpen = () => {
-    setTitle('순위');
+    setTitle('좋아요 랭킹');
     bottomSheetRef.current?.present();
   };
 
