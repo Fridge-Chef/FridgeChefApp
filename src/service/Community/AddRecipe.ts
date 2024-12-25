@@ -72,11 +72,14 @@ export const handleButtonColor = (recipeData: AddIngredientType) => {
 export const handleSubmit = async (
   recipeData: AddIngredientType,
   setIsLoading: React.Dispatch<React.SetStateAction<boolean>>,
+  setErrorCheck: React.Dispatch<React.SetStateAction<boolean>>,
   mutate: UseMutateFunction<any, Error, AddIngredientType, unknown>,
   refetch: () => void,
   myRecipe: () => void,
   navigate: NativeStackNavigationProp<ParamListBase>,
 ) => {
+  const textReg = /^[a-zA-Z0-9가-힣\s!@#$%^&*(),.?":{}|<>~`\-_=+\[\]\\/]*$/;
+  const emojiReg = /[\p{Emoji_Presentation}\u200D]/gu;
   if (
     recipeData.name.trim() === '' ||
     recipeData.description.trim() === '' ||
@@ -91,6 +94,24 @@ export const handleSubmit = async (
   ) {
     console.log('데이터를 모두 입력해주세요3');
     return;
+  } else if (
+    !textReg.test(recipeData.name) ||
+    emojiReg.test(recipeData.name) ||
+    !textReg.test(recipeData.description) ||
+    emojiReg.test(recipeData.description) ||
+    recipeData.recipeIngredients.some(
+      ingredient =>
+        !textReg.test(ingredient.name) || emojiReg.test(ingredient.name),
+    ) ||
+    recipeData.instructions.some(
+      instruction =>
+        !textReg.test(instruction.content) ||
+        emojiReg.test(instruction.content),
+    )
+  ) {
+    console.log('특수문자나 이모티콘이 포함되었습니다');
+    setErrorCheck(true);
+    return;
   } else {
     setIsLoading(true);
     mutate(recipeData, {
@@ -100,6 +121,10 @@ export const handleSubmit = async (
         refetch();
         myRecipe();
         navigate.goBack();
+      },
+      onError: () => {
+        console.log('레시피 추가 실패');
+        setIsLoading(false);
       },
     });
   }

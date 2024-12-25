@@ -1,4 +1,4 @@
-import {StyleSheet, View} from 'react-native';
+import {Pressable, StyleSheet, View} from 'react-native';
 import React, {useEffect} from 'react';
 import {colors, FWidth} from '../../../../../globalStyle';
 import TitleComponent from './TitleComponent';
@@ -8,8 +8,8 @@ import {useGetRecipeDetailReviewList} from '../../../../api/commentReviewQuery';
 
 type RecipeReviewProps = {
   boardId: number;
-  menuOpen: boolean;
-  setMenuOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  menuOpen: boolean | number;
+  setMenuOpen: React.Dispatch<React.SetStateAction<boolean | number>>;
   title: string;
 };
 
@@ -28,7 +28,7 @@ const RecipeReview = ({
   if (isLoading)
     return <Loading loadingTitle="로딩중" backColor={colors.white} />;
   return (
-    <View style={styles.container}>
+    <Pressable style={styles.container}>
       <TitleComponent title={title} data={data} boardId={boardId} />
       <ReviewsComponent
         title={title}
@@ -37,7 +37,7 @@ const RecipeReview = ({
         menuOpen={menuOpen}
         setMenuOpen={setMenuOpen}
       />
-    </View>
+    </Pressable>
   );
 };
 

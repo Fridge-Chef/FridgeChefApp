@@ -21,14 +21,14 @@ const TitleComponent = ({title, boardId, data}: TitleComponentProps) => {
   const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
   const [isCheck, setIsCheck] = useState(false);
   const [loginCheck, setLoginCheck] = useState(false);
+  console.log(
+    '데이터 zz',
+    data?.content.map(item => item.myMe),
+  );
   const userCheck = async () => {
-    console.log(
-      '후기 리스트',
-      data?.content.map(item => item.myMe),
-    );
     if (!data) return;
     const userCheck = data.content.map(item => item.myMe);
-    if (userCheck.length > 0) {
+    if (userCheck.length === 0 || !userCheck.includes(true)) {
       console.log('후기 작성 가능');
       setIsCheck(true);
     } else {
@@ -44,7 +44,7 @@ const TitleComponent = ({title, boardId, data}: TitleComponentProps) => {
   return (
     <View style={styles.container}>
       <SubTitle2 title="레시피 후기" />
-      {!isCheck && (
+      {isCheck && (
         <FButton
           buttonStyle="noneStyle"
           onPress={async () => {

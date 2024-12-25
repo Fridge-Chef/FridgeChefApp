@@ -30,7 +30,7 @@ type DetailItem = {
 const RecipeDetail = () => {
   const route = useRoute<RouteProp<DetailItem>>();
   const items = route.params;
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState<boolean | number>(false);
   const {setScrollY} = useScrollY();
   const {data, isLoading} = useGetRecipeDetail(items.id);
   const {setUsernameCheck} = useUsernameCheck();

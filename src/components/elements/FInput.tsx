@@ -4,7 +4,6 @@ import {colors, fontFamilies, FWidth} from '../../../globalStyle';
 import Icon from 'react-native-vector-icons/Ionicons';
 import FButton from './FButton';
 import FText from './FText';
-import {userNickname} from '../../service/Nickname/Nickname';
 
 type FInputProps = {
   value?: string;
@@ -147,6 +146,7 @@ const styles = StyleSheet.create({
 
   recipeStyle: {
     padding: FWidth * 14,
+    color: colors.text,
     borderWidth: 1,
     borderColor: colors.field,
     fontSize: FWidth * 16,
@@ -157,6 +157,7 @@ const styles = StyleSheet.create({
   recipeStyle2: {
     paddingVertical: FWidth * 14,
     borderWidth: 1,
+    color: colors.text,
     borderColor: colors.field,
     fontSize: FWidth * 16,
     lineHeight: FWidth * 24,
@@ -164,6 +165,7 @@ const styles = StyleSheet.create({
   },
 
   subRecipeStyle: {
+    color: colors.text,
     paddingVertical: FWidth * 14,
     paddingLeft: FWidth * 14,
     paddingRight: FWidth * 44,

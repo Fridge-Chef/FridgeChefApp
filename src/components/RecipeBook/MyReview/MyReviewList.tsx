@@ -9,11 +9,15 @@ type MyReviewListProps = {
   fetchNextPage: () => void;
   hasNextPage: boolean;
   isFetchingNextPage: boolean;
+  menuOpen: boolean | number | null;
+  setMenuOpen: React.Dispatch<React.SetStateAction<boolean | number | null>>;
 };
 
 const MyReviewList = ({
   list,
   fetchNextPage,
+  menuOpen,
+  setMenuOpen,
   hasNextPage,
   isFetchingNextPage,
 }: MyReviewListProps) => {
@@ -31,7 +35,13 @@ const MyReviewList = ({
       overScrollMode="never"
       contentContainerStyle={{paddingBottom: FWidth * 60}}
       keyExtractor={item => item.boardId.toString()}
-      renderItem={({item}) => <ReviewItem review={item} />}
+      renderItem={({item}) => (
+        <ReviewItem
+          review={item}
+          menuOpen={menuOpen}
+          setMenuOpen={setMenuOpen}
+        />
+      )}
       ListFooterComponent={
         isFetchingNextPage ? (
           <ActivityIndicator size="large" color={colors.primary[1]} />

@@ -10,7 +10,11 @@ import {ParamListBase} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import AppBarMenu from '../elements/AppBarMenu';
 import DeleteModal from '../elements/Modals/DeleteModal';
-import {useDeleteMyRecipe} from '../../api/recipeBookQuery';
+import {
+  useDeleteMyRecipe,
+  useGetRecipeBookList,
+} from '../../api/recipeBookQuery';
+import {useGetRecipeList} from '../../api/recipeQuery';
 
 type RecipeListItemProps = {
   item: {
@@ -39,11 +43,12 @@ const RecipeListItem = ({
   const [modalCheck, setModalCheck] = useState(false);
   const [deleteCheck, setDeleteCheck] = useState(true);
   const {mutate} = useDeleteMyRecipe();
-
+  const {refetch: CommunityList} = useGetRecipeList();
   const handleClose = () => {
     setMenuOpen(null!);
     setModalCheck(false);
     refetch();
+    CommunityList();
   };
 
   return (

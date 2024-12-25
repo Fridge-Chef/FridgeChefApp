@@ -12,6 +12,7 @@ import {
   useDeleteMyRecipe,
   useGetRecipeBookList,
 } from '../../../api/recipeBookQuery';
+import {useGetRecipeList} from '../../../api/recipeQuery';
 
 const RecipeBookOption = () => {
   const [deleteCheck, setDeleteCheck] = useState(true);
@@ -21,9 +22,10 @@ const RecipeBookOption = () => {
   const {refetch} = useGetRecipeBookList('MYRECIPE');
   const {recipeId} = useRecipeId();
   const {mutate} = useDeleteMyRecipe();
-
+  const {refetch: myRecipeList} = useGetRecipeList();
   const handleClose = () => {
     setDeleteModal(false);
+    myRecipeList();
     refetch();
     bottomSheetRef.current?.close();
     navigation.goBack();

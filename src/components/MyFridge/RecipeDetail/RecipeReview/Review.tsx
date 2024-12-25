@@ -24,8 +24,8 @@ import {useMyRecipeReviews} from '../../../../api/recipeBookQuery';
 
 type ReviewProps = {
   review: RecipeReviewDetailType;
-  menuOpen: boolean;
-  setMenuOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  menuOpen: boolean | number;
+  setMenuOpen: React.Dispatch<React.SetStateAction<boolean | number>>;
   title: string;
   refetch: () => void;
 };
@@ -73,11 +73,13 @@ const Review = ({
           <FButton
             buttonStyle="noneStyle"
             hitSlop={{top: 10, bottom: 10, left: 10, right: 10}}
-            onPress={() => setMenuOpen(!menuOpen)}>
+            onPress={() =>
+              setMenuOpen(review.id === menuOpen ? false : review.id)
+            }>
             <DetailReviewMore />
           </FButton>
         )}
-        {menuOpen && (
+        {menuOpen === review.id && (
           <View style={styles.menuContainer}>
             <AppBarMenu
               id={review.id}

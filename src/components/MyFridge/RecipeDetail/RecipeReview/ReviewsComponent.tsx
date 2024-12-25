@@ -13,8 +13,8 @@ import {
 type ReviewsComponentProps = {
   title: string;
   data?: RecipeReviewListType;
-  menuOpen: boolean;
-  setMenuOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  menuOpen: boolean | number;
+  setMenuOpen: React.Dispatch<React.SetStateAction<boolean | number>>;
   refetch: () => void;
 };
 

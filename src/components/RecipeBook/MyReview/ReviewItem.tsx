@@ -15,6 +15,7 @@ import {useMyRecipeReviews} from '../../../api/recipeBookQuery';
 import {MyRecipeReviewsType} from '../../../type/types';
 import {
   useDeleteDetailReview,
+  useGetRecipeDetailReviewList,
   useLikeRecipeReview,
 } from '../../../api/commentReviewQuery';
 import AppBarMenu from '../../elements/AppBarMenu';
@@ -22,17 +23,22 @@ import DeleteModal from '../../elements/Modals/DeleteModal';
 
 type ReviewItemProps = {
   review: MyRecipeReviewsType;
+  menuOpen: boolean | number | null;
+  setMenuOpen: React.Dispatch<React.SetStateAction<boolean | number | null>>;
 };
 
-const ReviewItem = ({review}: ReviewItemProps) => {
+const ReviewItem = ({review, menuOpen, setMenuOpen}: ReviewItemProps) => {
   const queryList = useQueryClient();
-  const [menuOpen, setMenuOpen] = useState<boolean | number | null>(false);
+
   const [modalCheck, setModalCheck] = useState(false);
   const [deleteCheck, setDeleteCheck] = useState(true);
   const {mutate: deleteMutate} = useDeleteDetailReview();
   const {refetch} = useMyRecipeReviews();
   const {mutate} = useLikeRecipeReview();
   const {setReviewTitle} = useRecipeReviewTitle();
+  const {refetch: detailReviewList} = useGetRecipeDetailReviewList(
+    review.boardId,
+  );
   const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
   const handleReviewDetail = () => {
     setReviewTitle(review.title);
@@ -46,6 +52,7 @@ const ReviewItem = ({review}: ReviewItemProps) => {
   const handleClose = () => {
     setMenuOpen(null!);
     setModalCheck(false);
+    detailReviewList();
     refetch();
   };
   return (

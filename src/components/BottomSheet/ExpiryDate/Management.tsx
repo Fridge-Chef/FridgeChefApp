@@ -82,6 +82,11 @@ const Management = () => {
     (item: ListData) => item.ingredientName === ingredientTitle,
   );
 
+  const currentIngredient = ingredientData[0] || {
+    expirationDate: '날짜를 선택해 주세요',
+    ingredientCategory: '',
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.contentContainer}>
@@ -97,7 +102,7 @@ const Management = () => {
           itemNumber={itemNumber}
           setItemNumber={setItemNumber}
           setCategory={setCategory}
-          ingredientData={ingredientData[0].ingredientCategory}
+          ingredientData={currentIngredient.ingredientCategory}
         />
       </View>
       <BottomButton

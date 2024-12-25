@@ -30,6 +30,7 @@ import {
   useUpdateMyRecipe,
 } from '../../api/recipeBookQuery';
 import FModal from '../../components/elements/FModal';
+import Loading from '../../components/elements/Loading';
 
 type AddRecipeProps = {
   params: {
@@ -51,6 +52,7 @@ const AddRecipe = () => {
   const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
   const {selectedCategory, setSelectedCategory} = useSelectedCategory();
   const [isLoading, setIsLoading] = useState(false);
+  const [errorCheck, setErrorCheck] = useState(false);
   const {refetch: myRecipe} = useGetRecipeBookList('MYRECIPE');
   const {mutate: updateMutate} = useUpdateMyRecipe();
   const {refetch} = useGetRecipeList();
@@ -159,6 +161,7 @@ const AddRecipe = () => {
             handleSubmit(
               addRecipeData,
               setIsLoading,
+              setErrorCheck,
               mutate,
               refetch,
               myRecipe,
@@ -179,7 +182,15 @@ const AddRecipe = () => {
           }}
         />
       )}
-      {/* {isLoading && <Loading loadingTitle="레시피 등록중" />} */}
+      {errorCheck && (
+        <FModal
+          modalVisible={errorCheck}
+          text="불가 특수문자가 들어갔습니다."
+          buttonText="확인"
+          onPress={() => setErrorCheck(false)}
+        />
+      )}
+      {isLoading && <Loading loadingTitle="레시피 등록중" />}
     </View>
   );
 };

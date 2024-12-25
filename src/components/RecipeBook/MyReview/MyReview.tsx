@@ -15,11 +15,15 @@ type ReviewType = {
   fetchNextPage: () => void;
   hasNextPage: boolean;
   isFetchingNextPage: boolean;
+  menuOpen: boolean | number | null;
+  setMenuOpen: React.Dispatch<React.SetStateAction<boolean | number | null>>;
 };
 
 const MyReview = ({
   data,
   rankName,
+  menuOpen,
+  setMenuOpen,
   fetchNextPage,
   hasNextPage,
   isFetchingNextPage,
@@ -36,6 +40,8 @@ const MyReview = ({
     <View style={styles.container}>
       <ArrowSubTitle onPress={handleRanking} name={rankName} />
       <MyReviewList
+        menuOpen={menuOpen}
+        setMenuOpen={setMenuOpen}
         list={data}
         fetchNextPage={fetchNextPage}
         hasNextPage={hasNextPage}
