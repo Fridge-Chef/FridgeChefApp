@@ -11,6 +11,7 @@ export type RecipeListType = {
   dishTime: string;
   dishLevel: string;
   mainImage: string;
+  mainImageId?: number;
   myMe: boolean;
   likes: number;
   favorites: number;
@@ -18,7 +19,7 @@ export type RecipeListType = {
   reviews: number;
   description: string;
   recipeIngredients: {name: string; details: string}[];
-  instructions: {content: string; imageLink: string}[];
+  instructions: {id?: number; content: string; imageLink: string}[];
 };
 
 type IconProps =
@@ -79,6 +80,7 @@ export type RecipeIngredientType = {
 };
 
 export type InstructionsType = {
+  id?: number;
   content: string;
   imagePreview?: string;
   imageLink: string;

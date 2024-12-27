@@ -61,6 +61,7 @@ const AddRecipe = () => {
   const {mutate} = useAddRecipe();
   const [addRecipeData, setAddRecipeData] = useState<AddIngredientType>({
     mainImage: '',
+    mainImageId: 0,
     mainImageFile: {
       name: '',
       type: '',
@@ -74,6 +75,7 @@ const AddRecipe = () => {
     recipeIngredients: [{name: '', details: ''}],
     instructions: [
       {
+        id: 0,
         content: '',
         imageLink: '',
         imageFile: {
@@ -91,7 +93,7 @@ const AddRecipe = () => {
       dishCategory: selectedCategory,
     }));
   }, [selectedCategory]);
-
+  console.log('레시피 데이터', data);
   useEffect(() => {
     if (itemId) {
       if (detailLoading) return;
@@ -99,6 +101,7 @@ const AddRecipe = () => {
       setAddRecipeData({
         id: data?.boardId,
         mainImage: data?.mainImage!,
+        mainImageId: data?.mainImageId!,
         mainImagePreview: data?.mainImage!,
         mainImageFile: {
           name: '',
@@ -115,6 +118,7 @@ const AddRecipe = () => {
           details: ingredient.details,
         })),
         instructions: data!.instructions.map(instruction => ({
+          id: instruction.id,
           content: instruction.content,
           imageLink: instruction.imageLink,
           imagePreview: instruction.imageLink,

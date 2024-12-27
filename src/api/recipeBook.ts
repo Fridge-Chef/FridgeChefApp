@@ -36,6 +36,7 @@ export const updateMyRecipe = async (updateData: AddIngredientType) => {
   if (updateData.mainImage !== updateData.mainImagePreview) {
     formData.append('mainImageChange', true);
     formData.append('mainImage', updateData.mainImageFile);
+    formData.append('mainImageId', updateData.mainImageId);
   } else {
     formData.append('mainImageChange', false);
   }
@@ -48,6 +49,7 @@ export const updateMyRecipe = async (updateData: AddIngredientType) => {
     formData.append(`recipeIngredients[${index}].details`, ingredient.details);
   });
   updateData.instructions.forEach((instruction, index) => {
+    formData.append(`instructions[${index}].id`, instruction.id);
     formData.append(`instructions[${index}].content`, instruction.content);
     if (instruction.imageLink !== instruction.imagePreview) {
       console.log('여기는 변경');
