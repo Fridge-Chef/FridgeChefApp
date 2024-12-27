@@ -20,6 +20,7 @@ import {
 } from '../../../api/commentReviewQuery';
 import AppBarMenu from '../../elements/AppBarMenu';
 import DeleteModal from '../../elements/Modals/DeleteModal';
+import {useUserBoardCount} from '../../../api/userQuery';
 
 type ReviewItemProps = {
   review: MyRecipeReviewsType;
@@ -33,6 +34,7 @@ const ReviewItem = ({review, menuOpen, setMenuOpen}: ReviewItemProps) => {
   const [modalCheck, setModalCheck] = useState(false);
   const [deleteCheck, setDeleteCheck] = useState(true);
   const {mutate: deleteMutate} = useDeleteDetailReview();
+  const {refetch: userDataCount} = useUserBoardCount();
   const {refetch} = useMyRecipeReviews();
   const {mutate} = useLikeRecipeReview();
   const {setReviewTitle} = useRecipeReviewTitle();
@@ -53,6 +55,7 @@ const ReviewItem = ({review, menuOpen, setMenuOpen}: ReviewItemProps) => {
     setMenuOpen(null!);
     setModalCheck(false);
     detailReviewList();
+    userDataCount();
     refetch();
   };
   return (

@@ -13,6 +13,7 @@ import {
   useGetRecipeBookList,
 } from '../../../api/recipeBookQuery';
 import {useGetRecipeList} from '../../../api/recipeQuery';
+import {useUserBoardCount} from '../../../api/userQuery';
 
 const RecipeBookOption = () => {
   const [deleteCheck, setDeleteCheck] = useState(true);
@@ -20,6 +21,7 @@ const RecipeBookOption = () => {
   const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
   const {bottomSheetRef} = useBottomSheetRef();
   const {refetch} = useGetRecipeBookList('MYRECIPE');
+  const {refetch: userDataCount} = useUserBoardCount();
   const {recipeId} = useRecipeId();
   const {mutate} = useDeleteMyRecipe();
   const {refetch: myRecipeList} = useGetRecipeList();
@@ -27,6 +29,7 @@ const RecipeBookOption = () => {
     setDeleteModal(false);
     myRecipeList();
     refetch();
+    userDataCount();
     bottomSheetRef.current?.close();
     navigation.goBack();
   };

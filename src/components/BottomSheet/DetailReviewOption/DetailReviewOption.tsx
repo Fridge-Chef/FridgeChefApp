@@ -14,12 +14,14 @@ import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import DeleteModal from '../../elements/Modals/DeleteModal';
 import {useBottomSheetRef} from '../../../store/bottomSheetStore';
 import {useMyRecipeReviews} from '../../../api/recipeBookQuery';
+import {useUserBoardCount} from '../../../api/userQuery';
 
 const DetailReviewOption = () => {
   const {userReview} = useUserReview();
   const {reviewTitle} = useRecipeReviewTitle();
   const {mutate} = useDeleteDetailReview();
   const {refetch: myRecipeReviews} = useMyRecipeReviews();
+  const {refetch: userDataCount} = useUserBoardCount();
   const [deleteModal, setDeleteModal] = useState(false);
   const [deleteCheck, setDeleteCheck] = useState(false);
   const {bottomSheetRef} = useBottomSheetRef();
@@ -28,6 +30,7 @@ const DetailReviewOption = () => {
   const handleClose = () => {
     setDeleteModal(false);
     myRecipeReviews();
+    userDataCount();
     refetch();
     bottomSheetRef.current?.close();
     navigation.goBack();

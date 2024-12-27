@@ -5,19 +5,20 @@ import UserStatus from '../../components/MyPage/UserStatus';
 import MenuList from '../../components/MyPage/MenuList';
 import FText from '../../components/elements/FText';
 import NotLoginUser from './NotLoginUser';
-import {useGetUser} from '../../api/userQuery';
+import {useGetUser, useUserBoardCount} from '../../api/userQuery';
 import Loading from '../../components/elements/Loading';
 import {UserData} from '../../type/types';
 
 const MyPage = () => {
   const [user, setUser] = useState<UserData>();
   const {data, isLoading, refetch} = useGetUser();
-
+  const {data: dataCount, isLoading: countLoading} = useUserBoardCount();
   useEffect(() => {
     setUser(data);
   }, [data]);
 
-  if (isLoading) return <Loading loadingTitle="로딩중" />;
+  if (isLoading || countLoading) return <Loading loadingTitle="로딩중" />;
+  console.log('카운터', dataCount);
   return (
     <View style={styles.container}>
       <View style={styles.mainTitleContainer}>
@@ -29,7 +30,7 @@ const MyPage = () => {
           style={styles.paddingContainer}
           overScrollMode="never"
           showsVerticalScrollIndicator={false}>
-          <UserStatus userData={user} refetch={refetch} />
+          <UserStatus userData={user} dataCount={dataCount} refetch={refetch} />
           <MenuList userData={user} />
         </ScrollView>
       ) : (

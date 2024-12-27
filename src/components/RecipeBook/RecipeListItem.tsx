@@ -15,6 +15,7 @@ import {
   useGetRecipeBookList,
 } from '../../api/recipeBookQuery';
 import {useGetRecipeList} from '../../api/recipeQuery';
+import {useUserBoardCount} from '../../api/userQuery';
 
 type RecipeListItemProps = {
   item: {
@@ -43,10 +44,12 @@ const RecipeListItem = ({
   const [modalCheck, setModalCheck] = useState(false);
   const [deleteCheck, setDeleteCheck] = useState(true);
   const {mutate} = useDeleteMyRecipe();
+  const {refetch: userDataCount} = useUserBoardCount();
   const {refetch: CommunityList} = useGetRecipeList();
   const handleClose = () => {
     setMenuOpen(null!);
     setModalCheck(false);
+    userDataCount();
     refetch();
     CommunityList();
   };

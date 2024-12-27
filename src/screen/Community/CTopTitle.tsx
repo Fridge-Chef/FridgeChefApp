@@ -6,7 +6,7 @@ import FText from '../../components/elements/FText';
 const CTopTitle = () => {
   return (
     <View style={styles.container}>
-      <FText fStyle="B_18" color={colors.text} text="나만의 레시피" />
+      <FText fStyle="B_18" color={colors.text} text="모든 레시피" />
     </View>
   );
 };

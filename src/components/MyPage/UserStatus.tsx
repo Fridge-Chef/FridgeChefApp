@@ -10,9 +10,13 @@ import UserChangeInput from './UserChangeInput';
 type UserStatus = {
   userData: UserData;
   refetch?: () => void;
+  dataCount: {
+    commentCount: number;
+    recipeCount: number;
+  };
 };
 
-const UserStatus = ({userData, refetch}: UserStatus) => {
+const UserStatus = ({userData, dataCount, refetch}: UserStatus) => {
   const [changeOpen, setChangeOpen] = useState(false);
   const [userNickname, setUserNickname] = useState<string>(
     userData.user.username,
@@ -48,7 +52,10 @@ const UserStatus = ({userData, refetch}: UserStatus) => {
         color={colors.btnBG}
         text={`${userData?.user.email}`}
       />
-      <RecipeActions userRecipeList={2} userCommentList={3} />
+      <RecipeActions
+        userRecipeList={dataCount.recipeCount}
+        userCommentList={dataCount.commentCount}
+      />
     </Pressable>
   );
 };

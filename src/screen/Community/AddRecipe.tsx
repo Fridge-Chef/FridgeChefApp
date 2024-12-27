@@ -31,6 +31,7 @@ import {
 } from '../../api/recipeBookQuery';
 import FModal from '../../components/elements/FModal';
 import Loading from '../../components/elements/Loading';
+import {useUserBoardCount} from '../../api/userQuery';
 
 type AddRecipeProps = {
   params: {
@@ -54,6 +55,7 @@ const AddRecipe = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [errorCheck, setErrorCheck] = useState(false);
   const {refetch: myRecipe} = useGetRecipeBookList('MYRECIPE');
+  const {refetch: userDataCount} = useUserBoardCount();
   const {mutate: updateMutate} = useUpdateMyRecipe();
   const {refetch} = useGetRecipeList();
   const {mutate} = useAddRecipe();
@@ -164,6 +166,7 @@ const AddRecipe = () => {
               setErrorCheck,
               mutate,
               refetch,
+              userDataCount,
               myRecipe,
               navigation,
             );

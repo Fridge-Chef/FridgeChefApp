@@ -17,6 +17,8 @@ import {useQueryClient} from '@tanstack/react-query';
 import Loading from '../../elements/Loading';
 import {isValidReview} from '../../../service/MyFridge/Reviews/Review';
 import {useMyRecipeReviews} from '../../../api/recipeBookQuery';
+import {showToast} from '../../../helpers/ShowToast';
+import {useUserBoardCount} from '../../../api/userQuery';
 
 const AddReviewAppBar = () => {
   const {userReview, setUserReview} = useUserReview();
@@ -26,6 +28,7 @@ const AddReviewAppBar = () => {
   const {mutate} = useAddRecipeReview();
   const queryClient = useQueryClient();
   const [dataLoading, setDataLoading] = useState(false);
+  const {refetch: userDataCount} = useUserBoardCount();
   const {mutate: updateMutate} = useUpdateDetailReview();
   const {refetch: myRecipeReviews} = useMyRecipeReviews();
   const {refetch} = useGetRecipeDetailReviewList(userReview.boardId);
@@ -36,6 +39,12 @@ const AddReviewAppBar = () => {
   );
 
   const handleSubmit = async () => {
+    if (userReview.comment.length < 10) {
+      showToast({
+        text: '10자 이상 입력해주세요.',
+        time: 2000,
+      });
+    }
     if (!isValidReview(userReview)) return;
 
     setDataLoading(true);
@@ -61,6 +70,7 @@ const AddReviewAppBar = () => {
         onSuccess: () => {
           setDataLoading(false);
           setUserReview({});
+          userDataCount();
           refetchRecipeDetails();
           myRecipeReviews();
           navigation.goBack();

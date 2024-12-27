@@ -60,7 +60,7 @@ const MenuList = ({userData}: MenuListProps) => {
           onPress: async () => {
             if (logout) {
               queryClient.removeQueries({
-                queryKey: ['user'],
+                queryKey: ['user', 'userBoardCount'],
               });
               handleLogout({navigation, setLogout});
               // await AsyncStorage.removeItem('nickname');

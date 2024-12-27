@@ -140,3 +140,20 @@ export const userDelete = async (nickname: string) => {
     console.log('유저 삭제', error);
   }
 };
+
+export const userBoardCount = async () => {
+  try {
+    const token = await AsyncStorage.getItem('token');
+    const response = await baseUrl.get('api/user/mypage', {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    if (response.status === 200) {
+      return response.data;
+    }
+  } catch (error) {
+    console.log('유저 게시물 가져오기', error);
+    throw Error('유저 게시물 가져오기 실패');
+  }
+};

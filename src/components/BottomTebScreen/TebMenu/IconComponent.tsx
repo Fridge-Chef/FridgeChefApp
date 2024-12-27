@@ -24,7 +24,7 @@ const IconComponent = ({focused, name}: IconComponentProps) => {
           <TabHeart focused={focused} />
         </View>
       );
-    case '나만의 레시피':
+    case '모든 레시피':
       return (
         <View style={styles.container}>
           <EditSquare focused={focused} />

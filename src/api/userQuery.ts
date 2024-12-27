@@ -1,5 +1,11 @@
 import {useMutation, useQuery} from '@tanstack/react-query';
-import {getUser, getUSerToken, userLogin, UserLoginProps} from './user';
+import {
+  getUser,
+  getUSerToken,
+  userBoardCount,
+  userLogin,
+  UserLoginProps,
+} from './user';
 import {UserData} from '../type/types';
 
 export const useGetUser = () => {
@@ -22,5 +28,12 @@ export const useLogin = () => {
   return useMutation({
     mutationKey: ['login'],
     mutationFn,
+  });
+};
+
+export const useUserBoardCount = () => {
+  return useQuery({
+    queryKey: ['userBoardCount'],
+    queryFn: userBoardCount,
   });
 };

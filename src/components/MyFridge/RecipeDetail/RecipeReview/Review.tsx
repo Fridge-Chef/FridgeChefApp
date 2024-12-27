@@ -21,6 +21,7 @@ import LoginModal from '../../../elements/Modals/LoginModal';
 import DeleteModal from '../../../elements/Modals/DeleteModal';
 import {useQueryClient} from '@tanstack/react-query';
 import {useMyRecipeReviews} from '../../../../api/recipeBookQuery';
+import {useUserBoardCount} from '../../../../api/userQuery';
 
 type ReviewProps = {
   review: RecipeReviewDetailType;
@@ -41,6 +42,7 @@ const Review = ({
   const [modalCheck, setModalCheck] = useState(false);
   const [deleteCheck, setDeleteCheck] = useState(true);
   // const [userCheck, setUserCheck] = useState(false);
+  const {refetch: userDataCount} = useUserBoardCount();
   const {mutate: commentDelete} = useDeleteDetailReview();
   const {setReviewTitle} = useRecipeReviewTitle();
   const {refetch: myRecipeReviews} = useMyRecipeReviews();
@@ -58,6 +60,7 @@ const Review = ({
     setMenuOpen(false);
     setModalCheck(false);
     setUserReview({});
+    userDataCount();
     detail();
     refetch();
   };
