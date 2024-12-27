@@ -58,7 +58,6 @@ export const updateMyRecipe = async (updateData: AddIngredientType) => {
         formData.append(`instructions[${index}].image`, instruction.imageFile);
       }
     } else {
-      console.log('여기냐?? 여긴 변경 안해');
       formData.append(`instructions[${index}].imageChange`, false);
     }
   });

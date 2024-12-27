@@ -73,7 +73,7 @@ const TopComponent = ({ingredients}: TopComponentProps) => {
   useEffect(() => {
     myIngredients();
   }, [myIngredientsChecked]);
-  console.log('변경되냐 :', myIngredientsChecked);
+
   return (
     <View style={styles.container}>
       <SubTitle title="보유 재료" />

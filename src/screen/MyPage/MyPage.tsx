@@ -18,7 +18,7 @@ const MyPage = () => {
   }, [data]);
 
   if (isLoading || countLoading) return <Loading loadingTitle="로딩중" />;
-  console.log('카운터', dataCount);
+
   return (
     <View style={styles.container}>
       <View style={styles.mainTitleContainer}>

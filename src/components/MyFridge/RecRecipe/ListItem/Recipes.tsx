@@ -82,7 +82,6 @@ const Recipes = ({ingredientList}: RecipesProps) => {
       fetchNextPage();
     }
   };
-  console.log('newIngredients', newIngredients);
 
   useEffect(() => {
     myIngredients();

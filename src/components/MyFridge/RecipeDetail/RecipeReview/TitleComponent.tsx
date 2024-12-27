@@ -21,10 +21,7 @@ const TitleComponent = ({title, boardId, data}: TitleComponentProps) => {
   const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
   const [isCheck, setIsCheck] = useState(false);
   const [loginCheck, setLoginCheck] = useState(false);
-  console.log(
-    '데이터 zz',
-    data?.content.map(item => item.myMe),
-  );
+
   const userCheck = async () => {
     if (!data) return;
     const userCheck = data.content.map(item => item.myMe);

@@ -21,7 +21,7 @@ const UserStatus = ({userData, dataCount, refetch}: UserStatus) => {
   const [userNickname, setUserNickname] = useState<string>(
     userData.user.username,
   );
-  console.log('sss', userData);
+
   return (
     <Pressable style={styles.container} onPress={() => setChangeOpen(false)}>
       <UserImage

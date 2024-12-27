@@ -93,7 +93,7 @@ const AddRecipe = () => {
       dishCategory: selectedCategory,
     }));
   }, [selectedCategory]);
-  console.log('레시피 데이터', data);
+
   useEffect(() => {
     if (itemId) {
       if (detailLoading) return;
