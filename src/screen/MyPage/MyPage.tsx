@@ -37,7 +37,7 @@ const MyPage = () => {
             <FText
               fStyle="M_12"
               color={colors.b400}
-              text={`v.${Config.APP_VERSION}`}
+              text={`v${Config.APP_VERSION}`}
             />
           </View>
         </ScrollView>
