@@ -6,11 +6,12 @@ import {colors, FWidth} from '../../../globalStyle';
 import FButton from '../elements/FButton';
 
 type UserImage = {
-  uri: any;
+  uri: string;
   onPress: () => void;
 };
 
 const UserImage = ({uri, onPress}: UserImage) => {
+  console.log('유저 이미지', uri);
   return (
     <View style={styles.container}>
       <FImage
