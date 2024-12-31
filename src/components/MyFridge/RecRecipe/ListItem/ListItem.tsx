@@ -18,7 +18,7 @@ type ListItemProps = {
 const ListItem = ({item, refetch}: ListItemProps) => {
   const {mutate} = useAddLikeRecipe();
   const {refetch: bookRefetch} = useGetRecipeBookList('HIT');
-
+  console.log('item', item);
   return (
     <View style={styles.container}>
       <FImage

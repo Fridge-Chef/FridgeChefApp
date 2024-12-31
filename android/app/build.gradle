@@ -92,8 +92,8 @@ android {
         applicationId "com.fridgechef"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 7
-        versionName "1.0.6"
+        versionCode project.env.get("APP_VERSION_CODE").toInteger()
+        versionName project.env.get("APP_VERSION")
         resValue "string", "kakao_manifest_app_key", project.env.get("KAKAO_MANIFEST_KEY")
         resValue "string", "kakao_key", project.env.get("KAKAO_API_KEY")
         resValue "string", "google_client_id", project.env.get("GOOGLE_WEB_CLIENT_ID")

@@ -1,5 +1,5 @@
 import {ScrollView, StyleSheet, View} from 'react-native';
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, version} from 'react';
 import {colors, FWidth} from '../../../globalStyle';
 import UserStatus from '../../components/MyPage/UserStatus';
 import MenuList from '../../components/MyPage/MenuList';
@@ -8,6 +8,7 @@ import NotLoginUser from './NotLoginUser';
 import {useGetUser, useUserBoardCount} from '../../api/userQuery';
 import Loading from '../../components/elements/Loading';
 import {UserData} from '../../type/types';
+import Config from 'react-native-config';
 
 const MyPage = () => {
   const [user, setUser] = useState<UserData>();
@@ -32,6 +33,13 @@ const MyPage = () => {
           showsVerticalScrollIndicator={false}>
           <UserStatus userData={user} dataCount={dataCount} refetch={refetch} />
           <MenuList userData={user} />
+          <View style={styles.versionContainer}>
+            <FText
+              fStyle="M_12"
+              color={colors.b400}
+              text={`v.${Config.APP_VERSION}`}
+            />
+          </View>
         </ScrollView>
       ) : (
         <View style={styles.paddingContainer}>
@@ -59,5 +67,10 @@ const styles = StyleSheet.create({
 
   paddingContainer: {
     paddingHorizontal: FWidth * 22,
+  },
+
+  versionContainer: {
+    alignItems: 'center',
+    paddingTop: FWidth * 30,
   },
 });
