@@ -90,14 +90,16 @@ const Recipes = ({ingredientList}: RecipesProps) => {
 
   if (isLoading) return <Loading loadingTitle="로딩중" />;
   const newData = data?.pages.map(page => page.content).flat();
-
+  const uniqueData = Array.from(
+    new Map(newData?.map(item => [item.id, item])).values(),
+  );
   return (
     <View style={styles.container}>
       <View style={styles.mainListContainer}>
         <RankButton onPress={handleBottomSheetOpen} />
         <FlatList
           style={{marginTop: FWidth * 12}}
-          data={newData}
+          data={uniqueData}
           showsVerticalScrollIndicator={false}
           overScrollMode="never"
           contentContainerStyle={{
