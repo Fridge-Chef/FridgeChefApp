@@ -208,7 +208,7 @@ export type RecipeReviewDetailType = {
   myHit: boolean;
   myMe: boolean;
   imageLink: string[];
-  like: number;
+  hit: number;
   star: number;
   userName: string;
 };
@@ -218,7 +218,7 @@ export type MyRecipeReviewsType = {
   id: number;
   comments: string;
   imageLink: string[];
-  like: number;
+  hit: number;
   myHit: boolean;
   myMe: boolean;
   star: number;

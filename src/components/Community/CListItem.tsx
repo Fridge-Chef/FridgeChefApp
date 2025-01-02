@@ -35,7 +35,7 @@ const CListItem = ({item, onPress}: CListItemProps) => {
           <View style={styles.bottomTextContainer}>
             <UserInfo writer={item.userName} point={item.star} />
             <View style={{marginTop: FWidth * 8}}>
-              <ViewAndLike like={item.star} favorites={item.hit} />
+              <ViewAndLike star={item.star} favorites={item.hit} />
             </View>
           </View>
         </View>

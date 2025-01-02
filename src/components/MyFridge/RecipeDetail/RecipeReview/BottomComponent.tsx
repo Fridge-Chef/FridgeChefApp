@@ -19,7 +19,7 @@ const BottomComponent = ({
 }: BottomComponentProps) => {
   return (
     <View style={styles.container}>
-      <LikeButton isClicked={isClicked} views={review.like} onPress={onPress} />
+      <LikeButton isClicked={isClicked} views={review.hit} onPress={onPress} />
       <FText
         fStyle="R_12"
         color={colors.b300}

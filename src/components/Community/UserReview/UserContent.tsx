@@ -44,7 +44,7 @@ const UserContent = ({data, refetch}: UserContentProps) => {
       </View>
       <LikeButton
         isClicked={data.myHit}
-        views={data.like}
+        views={data.hit}
         onPress={async () => {
           const token = await AsyncStorage.getItem('token');
           if (token) {

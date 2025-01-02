@@ -6,11 +6,11 @@ import Star2 from '../../../../utils/Svg/Star2';
 import FText from '../../../elements/FText';
 
 type ViewAndLikeProps = {
-  like: number;
+  star: number;
   favorites: number;
 };
 
-const ViewAndLike = ({like, favorites}: ViewAndLikeProps) => {
+const ViewAndLike = ({star, favorites}: ViewAndLikeProps) => {
   return (
     <View style={styles.container}>
       <View style={styles.textAndIconContainer}>
@@ -19,7 +19,7 @@ const ViewAndLike = ({like, favorites}: ViewAndLikeProps) => {
           mLeft={FWidth * 4}
           fStyle="R_14"
           color={colors.b500}
-          text={like}
+          text={star}
         />
       </View>
       <View style={styles.textAndIconContainer}>
