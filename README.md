@@ -74,40 +74,11 @@
 ### 이미지
 - 이미지 Object Storage 저장 기능
 
-## 아키텍처
-
-### 서버 CI/CD
-
-![arch](docs/architecture.png)
-
-### Oauth2
-
-![user](docs/user.png)
-
-### Oracle cloud Object Storage ( 이미지 저장소 )
-
-![image](docs/image.png)
-
-### Test
-
-![test](docs/test.png)
-
-
-
-
-### 전체 유스케이스
-
-![i](docs/img.png)
-
-
-## 백엔드 비용
+## 프론트엔드 비용
 
 ---
 
-도메인 구매 비용 : 1만원 (강정훈 구입)<p>
-AI 레시피 이미지 생성 비용 : 1.5만원 (강정훈 구입)<p>
-서버 운영비: 0원
-
+구글개발자계정 구매 비용 : 3만5천원 (김민영 구입)<p>
 
 
 
