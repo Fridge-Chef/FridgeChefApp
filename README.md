@@ -14,7 +14,7 @@
 - 나만의 레시피를 만들어 사람들 과 공유
 - 사용자 편의성을 위주로 개발
 
-![메인 이미지](docs/intro.png)
+![메인 이미지](https://drive.google.com/file/d/1D40YWh-dPwEbN0E_B31srwOjr-SF-MN4/view?usp=drive_link)
 
 
 ### 팀원 소개
@@ -31,9 +31,6 @@
 
 ## REST-DOC & Redocly API 문서
 [API DOCS](https://fridgebe.site/docs.html)
-
-## ERD
-![erd](docs/db_erd6.png)
 
 # 기여도
 
