@@ -14,13 +14,7 @@ const UserImage = ({uri, onPress}: UserImage) => {
   console.log('유저 이미지', uri);
   return (
     <View style={styles.container}>
-      <FImage
-        uri={uri}
-        imgStyle="myPage"
-        borderRadius={100}
-        resizeMode="cover"
-        alt="유저 이미지"
-      />
+      <FImage uri={uri} imgStyle="myPage" borderRadius={100} />
       <FButton
         buttonStyle="noneStyle"
         hitSlop={{top: 10, bottom: 10, left: 10, right: 10}}

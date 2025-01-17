@@ -38,13 +38,7 @@ const StepITem = ({
       />
       {uri && (
         <View style={styles.imgContainer}>
-          <FImage
-            uri={uri}
-            imgStyle="detailSub"
-            borderRadius={8}
-            resizeMode="cover"
-            alt="step이미지"
-          />
+          <FImage uri={uri} imgStyle="detailSub" borderRadius={8} />
           <View style={styles.iconContainer}>
             <FButton
               buttonStyle="noneStyle"

@@ -1,5 +1,5 @@
 import {StyleSheet, useWindowDimensions, View} from 'react-native';
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useState} from 'react';
 import FImage from '../../elements/FImage';
 import {colors, FWidth} from '../../../../globalStyle';
 import FText from '../../elements/FText';
@@ -77,12 +77,7 @@ const UserContent = ({data, refetch}: UserContentProps) => {
             }}
             loop={true}
             renderItem={({item}: any) => (
-              <FImage
-                uri={item}
-                imgStyle="rDetail"
-                borderRadius={8}
-                alt="리뷰 이미지"
-              />
+              <FImage uri={item} imgStyle="rDetail" borderRadius={8} />
             )}
           />
 

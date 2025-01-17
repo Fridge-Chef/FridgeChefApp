@@ -1,4 +1,4 @@
-import {Image, ScrollView, StyleSheet, View} from 'react-native';
+import {ScrollView, StyleSheet, View} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import FImage from '../../components/elements/FImage';
 import {RouteProp, useRoute} from '@react-navigation/native';
@@ -34,7 +34,7 @@ const AddRecipePreview = () => {
   return (
     <ScrollView style={styles.container}>
       <View>
-        <FImage uri={item.mainImage} imgStyle="detail" alt="미리보기 메인" />
+        <FImage uri={item.mainImage} imgStyle="detail" />
       </View>
       <PreviewTitle
         username={userName}

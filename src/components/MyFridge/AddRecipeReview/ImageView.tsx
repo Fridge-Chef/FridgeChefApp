@@ -13,13 +13,7 @@ type ImageViewProps = {
 const ImageView = ({uri, onPress}: ImageViewProps) => {
   return (
     <View style={styles.container}>
-      <FImage
-        uri={uri}
-        imgStyle="addImg"
-        borderRadius={8}
-        resizeMode="cover"
-        alt="미리보기"
-      />
+      <FImage uri={uri} imgStyle="addImg" borderRadius={8} />
       <FButton
         buttonStyle="noneStyle"
         fBStyle={styles.imgDelete}

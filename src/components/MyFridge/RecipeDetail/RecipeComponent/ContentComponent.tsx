@@ -25,13 +25,7 @@ const ContentComponent = ({id, content, image}: ContentComponentProps) => {
       />
       {image && (
         <View style={{marginTop: FWidth * 8}}>
-          <FImage
-            uri={image}
-            borderRadius={8}
-            imgStyle="detailSub"
-            resizeMode="cover"
-            alt="디테일 이미지"
-          />
+          <FImage uri={image} borderRadius={8} imgStyle="detailSub" />
         </View>
       )}
     </View>

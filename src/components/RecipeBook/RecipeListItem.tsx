@@ -10,10 +10,7 @@ import {ParamListBase} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import AppBarMenu from '../elements/AppBarMenu';
 import DeleteModal from '../elements/Modals/DeleteModal';
-import {
-  useDeleteMyRecipe,
-  useGetRecipeBookList,
-} from '../../api/recipeBookQuery';
+import {useDeleteMyRecipe} from '../../api/recipeBookQuery';
 import {useGetRecipeList} from '../../api/recipeQuery';
 import {useUserBoardCount} from '../../api/userQuery';
 
@@ -59,12 +56,7 @@ const RecipeListItem = ({
       buttonStyle="noneStyle"
       onPress={() => navigation.navigate('reviewDetail', {itemId: item.id})}>
       <View style={styles.listContainer}>
-        <FImage
-          imgStyle="sub"
-          borderRadius={8}
-          uri={item.mainImageLink}
-          alt="레시피북"
-        />
+        <FImage imgStyle="sub" borderRadius={8} uri={item.mainImageLink} />
         <View style={[styles.textContainerAlign]}>
           <View style={[styles.titleContainer]}>
             <FText
@@ -80,7 +72,7 @@ const RecipeListItem = ({
             </FButton>
           </View>
           <View style={styles.bottomTextContainer}>
-            <ViewAndLike favorites={item.hit} like={item.star} />
+            <ViewAndLike favorites={item.hit} star={item.star} />
           </View>
         </View>
         {menuOpen === item.id && (

@@ -1,5 +1,5 @@
 import {StyleSheet, View} from 'react-native';
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import {colors, FWidth} from '../../../../../globalStyle';
 import ViewAndLike from './ViewAndLike';
 import LikeButton from './LikeButton';
@@ -21,12 +21,7 @@ const ListItem = ({item, refetch}: ListItemProps) => {
 
   return (
     <View style={styles.container}>
-      <FImage
-        imgStyle="main"
-        borderRadius={8}
-        uri={item.mainImage}
-        alt="메인 리스트"
-      />
+      <FImage imgStyle="main" borderRadius={8} uri={item.mainImage} />
       <View style={styles.itemTextContainer}>
         <View style={styles.itemTitleAndLikeContainer}>
           <FText

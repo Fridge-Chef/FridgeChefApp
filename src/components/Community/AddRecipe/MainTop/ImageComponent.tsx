@@ -40,7 +40,6 @@ const ImageComponent = ({
             borderRadius={10}
             uri={addRecipeData?.mainImage}
             imgStyle="detail"
-            alt="add메인이미지"
           />
           <FButton
             buttonStyle="noneStyle"

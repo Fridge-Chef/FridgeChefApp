@@ -1,4 +1,4 @@
-import {Image, StyleSheet, View} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import UserInfo from '../MyFridge/RecipeDetail/RecipeReview/UserInfo';
 import ViewAndLike from '../MyFridge/RecRecipe/ListItem/ViewAndLike';
 import {colors, FWidth} from '../../../globalStyle';
@@ -18,12 +18,7 @@ const CListItem = ({item, onPress}: CListItemProps) => {
   return (
     <FButton buttonStyle="noneStyle" onPress={onPress}>
       <View style={styles.itemsContainer}>
-        <FImage
-          imgStyle="sub2"
-          uri={item.mainImage}
-          borderRadius={8}
-          alt="커뮤 나만의 레시피"
-        />
+        <FImage imgStyle="sub2" uri={item.mainImage} borderRadius={8} />
         <View style={styles.itemTextContainer}>
           <FText
             nLine={2}

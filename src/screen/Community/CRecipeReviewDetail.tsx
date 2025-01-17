@@ -38,7 +38,7 @@ const CRecipeReviewDetail = () => {
     return (
       <ScrollView style={styles.container} overScrollMode="never">
         <View>
-          <FImage uri={data.mainImage} imgStyle="detail" alt="디테일 메인" />
+          <FImage uri={data.mainImage} imgStyle="detail" />
         </View>
         <PreviewTitle
           title={data.title}

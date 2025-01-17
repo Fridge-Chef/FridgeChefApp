@@ -18,6 +18,7 @@ import {
   useUsernameCheck,
   useUserReview,
 } from '../../store/store';
+import FastImage from '@d11/react-native-fast-image';
 
 type DetailItem = {
   params: {
@@ -64,8 +65,7 @@ const RecipeDetail = () => {
           <FImage
             imgStyle="detail"
             uri={data!.mainImage}
-            resizeMode="cover"
-            alt="디테일"
+            resizeMode={FastImage.resizeMode.stretch}
           />
           <Badge />
         </View>

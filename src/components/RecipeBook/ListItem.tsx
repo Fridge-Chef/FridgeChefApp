@@ -27,12 +27,7 @@ const ListItem = ({item, onPress}: ListItemProps) => {
       buttonStyle="noneStyle"
       onPress={() => navigation.navigate('reviewDetail', {itemId: item.id})}>
       <View style={styles.listContainer}>
-        <FImage
-          imgStyle="sub"
-          borderRadius={8}
-          uri={item.mainImageLink}
-          alt="레시피북"
-        />
+        <FImage imgStyle="sub" borderRadius={8} uri={item.mainImageLink} />
         <View style={[styles.textContainerAlign]}>
           <View style={[styles.titleContainer]}>
             <FText
@@ -48,7 +43,7 @@ const ListItem = ({item, onPress}: ListItemProps) => {
             </FButton>
           </View>
           <View style={styles.bottomTextContainer}>
-            <ViewAndLike favorites={item.hit} like={item.star} />
+            <ViewAndLike favorites={item.hit} star={item.star} />
           </View>
         </View>
       </View>

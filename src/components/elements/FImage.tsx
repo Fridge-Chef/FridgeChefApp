@@ -1,7 +1,7 @@
-import {Image, StyleSheet} from 'react-native';
+import {StyleSheet} from 'react-native';
 import React from 'react';
-import {colors, FHeight, FWidth} from '../../../globalStyle';
-
+import {colors, FWidth} from '../../../globalStyle';
+import FastImage, {ResizeMode} from '@d11/react-native-fast-image';
 type FImageProps = {
   imgStyle:
     | 'main'
@@ -13,7 +13,7 @@ type FImageProps = {
     | 'addImg'
     | 'rDetail';
   uri: string;
-  resizeMode?: 'center' | 'contain' | 'cover' | 'repeat' | 'stretch';
+  resizeMode?: ResizeMode | undefined;
   alt?: string;
   borderRadius?: number;
 };
@@ -21,7 +21,7 @@ type FImageProps = {
 const FImage = ({
   imgStyle,
   uri,
-  resizeMode,
+  resizeMode = FastImage.resizeMode.cover,
   alt,
   borderRadius,
 }: FImageProps) => {
@@ -37,11 +37,10 @@ const FImage = ({
   };
 
   return (
-    <Image
+    <FastImage
       source={uri ? {uri} : require('../../assets/images/noImage.png')}
       style={[imgStyleList[imgStyle], {borderRadius: borderRadius}]}
       resizeMode={resizeMode}
-      alt={alt}
     />
   );
 };

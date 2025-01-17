@@ -12,7 +12,7 @@ const UserRecipeMore = () => {
 
   return (
     <View style={styles.container}>
-      <FImage uri={uri} imgStyle="myPage" alt="유저 이미지" />
+      <FImage uri={uri} imgStyle="myPage" />
       <View style={styles.textContainer}>
         <View style={styles.userContainer}>
           <FText fStyle="B_16" color={colors.text} text="김민영님" />

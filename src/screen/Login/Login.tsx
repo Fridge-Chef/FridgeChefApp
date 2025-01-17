@@ -1,4 +1,4 @@
-import {Image, StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import React, {useState} from 'react';
 import {ParamListBase, useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
@@ -7,10 +7,8 @@ import {colors, FWidth} from '../../../globalStyle';
 import KakaoLogin from '../../components/Login/KakaoLogin';
 import GoogleLogin from '../../components/Login/GoogleLogin';
 import TakeTour from '../../components/Login/TakeTour';
-import FButton from '../../components/elements/FButton';
 import Loading from '../../components/elements/Loading';
-import {handleLogout} from '../../service/Login/Google';
-
+import FastImage from '@d11/react-native-fast-image';
 const Login = () => {
   const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
   const [isLoginLoading, setIsLoginLoading] = useState(false);
@@ -19,10 +17,10 @@ const Login = () => {
       <View style={styles.container}>
         <TitleComponent />
         <View style={{alignItems: 'center', marginBottom: FWidth * 64}}>
-          <Image
+          <FastImage
             style={{width: FWidth * 127, height: FWidth * 137}}
             source={require('../../assets/images/LogoImg.png')}
-            alt="로고이미지"
+            resizeMode={FastImage.resizeMode.cover}
           />
         </View>
         {/* <FButton buttonStyle="noneStyle" onPress={() => handleLogout()}>

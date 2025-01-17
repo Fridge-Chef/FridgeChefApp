@@ -25,13 +25,7 @@ const ReviewContent = ({content}: ReviewContentProps) => {
         />
       </View>
       {content.imageLink[0] && (
-        <FImage
-          uri={content.imageLink[0]}
-          imgStyle="sub2"
-          borderRadius={8}
-          resizeMode="stretch"
-          alt="리뷰 이미지"
-        />
+        <FImage uri={content.imageLink[0]} imgStyle="sub2" borderRadius={8} />
       )}
     </View>
   );
