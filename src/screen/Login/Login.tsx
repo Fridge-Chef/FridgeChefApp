@@ -1,14 +1,14 @@
-import {StyleSheet, View} from 'react-native';
-import React, {useState} from 'react';
+import FastImage from '@d11/react-native-fast-image';
 import {ParamListBase, useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import TitleComponent from '../../components/Login/TitleComponent';
+import React, {useState} from 'react';
+import {StyleSheet, View} from 'react-native';
 import {colors, FWidth} from '../../../globalStyle';
-import KakaoLogin from '../../components/Login/KakaoLogin';
 import GoogleLogin from '../../components/Login/GoogleLogin';
+import KakaoLogin from '../../components/Login/KakaoLogin';
 import TakeTour from '../../components/Login/TakeTour';
+import TitleComponent from '../../components/Login/TitleComponent';
 import Loading from '../../components/elements/Loading';
-import FastImage from '@d11/react-native-fast-image';
 const Login = () => {
   const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
   const [isLoginLoading, setIsLoginLoading] = useState(false);

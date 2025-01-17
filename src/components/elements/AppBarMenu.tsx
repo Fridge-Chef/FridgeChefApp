@@ -1,8 +1,7 @@
+import React from 'react';
 import {StyleSheet, TouchableHighlight, View} from 'react-native';
-import React, {useState} from 'react';
-import FText from './FText';
 import {colors, FWidth} from '../../../globalStyle';
-import FModal from './FModal';
+import FText from './FText';
 
 type AppBarMenuProps = {
   id: number;

@@ -1,9 +1,9 @@
-import {GoogleSignin} from '@react-native-google-signin/google-signin';
-import {getRefreshToken, UserLoginProps} from '../../api/user';
-import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import {ParamListBase} from '@react-navigation/native';
-import {UseMutateFunction} from '@tanstack/react-query';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import {GoogleSignin} from '@react-native-google-signin/google-signin';
+import {ParamListBase} from '@react-navigation/native';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import {UseMutateFunction} from '@tanstack/react-query';
+import {getRefreshToken, UserLoginProps} from '../../api/user';
 
 type GoogleLoginProps = {
   navigation: NativeStackNavigationProp<ParamListBase>;

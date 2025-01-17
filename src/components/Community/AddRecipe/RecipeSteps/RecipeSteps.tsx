@@ -1,11 +1,11 @@
-import {StyleSheet, View} from 'react-native';
 import React from 'react';
+import {StyleSheet, View} from 'react-native';
 import {colors, FWidth} from '../../../../../globalStyle';
-import {AddIngredientPageType} from '../../../../type/types';
-import StepTitle from './StepTitle';
-import StepITem from './StepItem/StepITem';
-import AddRecipeSubButton from '../AddRecipeSubButton';
 import {handleImagePicker} from '../../../../service/SingleImagePicker';
+import {AddIngredientPageType} from '../../../../type/types';
+import AddRecipeSubButton from '../AddRecipeSubButton';
+import StepITem from './StepItem/StepITem';
+import StepTitle from './StepTitle';
 
 const RecipeSteps = ({
   addRecipeData,

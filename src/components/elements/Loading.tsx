@@ -1,7 +1,12 @@
-import {ColorValue, StatusBar, StyleSheet, View} from 'react-native';
 import React from 'react';
-import {ActivityIndicator} from 'react-native';
-import {Dimensions} from 'react-native';
+import {
+  ActivityIndicator,
+  ColorValue,
+  Dimensions,
+  StatusBar,
+  StyleSheet,
+  View,
+} from 'react-native';
 import {colors, FWidth} from '../../../globalStyle';
 import FText from './FText';
 

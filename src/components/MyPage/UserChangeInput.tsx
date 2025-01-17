@@ -1,9 +1,9 @@
-import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
+import {StyleSheet, View} from 'react-native';
 import {colors, FWidth} from '../../../globalStyle';
+import {userNickname} from '../../service/Nickname/Nickname';
 import FButton from '../elements/FButton';
 import FInput from '../elements/FInput';
-import {userNickname} from '../../service/Nickname/Nickname';
 
 type UserChangeInput = {
   value: string;

@@ -1,8 +1,8 @@
-import {StyleSheet, View} from 'react-native';
 import React from 'react';
+import {StyleSheet, View} from 'react-native';
 import {colors, fontFamilies, FWidth} from '../../../../globalStyle';
-import FInput from '../../elements/FInput';
 import {useUserReview} from '../../../store/store';
+import FInput from '../../elements/FInput';
 import FText from '../../elements/FText';
 
 const AddContent = () => {

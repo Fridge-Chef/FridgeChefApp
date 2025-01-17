@@ -1,7 +1,7 @@
-import {StyleSheet} from 'react-native';
 import React from 'react';
-import {FWidth} from '../../../globalStyle';
+import {StyleSheet} from 'react-native';
 import Svg, {ClipPath, Defs, G, Mask, Path, Rect} from 'react-native-svg';
+import {FWidth} from '../../../globalStyle';
 
 const NotLogin = () => {
   return (

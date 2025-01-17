@@ -1,7 +1,7 @@
-import {StyleSheet} from 'react-native';
-import React from 'react';
-import {colors, FWidth} from '../../../globalStyle';
 import FastImage, {ResizeMode} from '@d11/react-native-fast-image';
+import React from 'react';
+import {StyleSheet} from 'react-native';
+import {colors, FWidth} from '../../../globalStyle';
 type FImageProps = {
   imgStyle:
     | 'main'

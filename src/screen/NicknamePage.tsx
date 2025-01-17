@@ -1,10 +1,10 @@
-import {Keyboard, Pressable, StyleSheet} from 'react-native';
 import React, {useState} from 'react';
+import {Keyboard, Pressable, StyleSheet} from 'react-native';
 import {colors} from '../../globalStyle';
-import TopLine from '../components/Nickname/TopLine';
+import NextButton from '../components/Nickname/NextButton';
 import NicknameInputBox from '../components/Nickname/NicknameInputBox';
 import RandomNickname from '../components/Nickname/RandomNickname';
-import NextButton from '../components/Nickname/NextButton';
+import TopLine from '../components/Nickname/TopLine';
 
 const NicknamePage = () => {
   const [nickname, setNickname] = useState('');

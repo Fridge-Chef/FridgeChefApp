@@ -1,14 +1,14 @@
+import React, {useEffect, useState} from 'react';
 import {ScrollView, StyleSheet, View} from 'react-native';
-import React, {useEffect, useState, version} from 'react';
+import Config from 'react-native-config';
 import {colors, FWidth} from '../../../globalStyle';
-import UserStatus from '../../components/MyPage/UserStatus';
-import MenuList from '../../components/MyPage/MenuList';
-import FText from '../../components/elements/FText';
-import NotLoginUser from './NotLoginUser';
 import {useGetUser, useUserBoardCount} from '../../api/userQuery';
+import MenuList from '../../components/MyPage/MenuList';
+import UserStatus from '../../components/MyPage/UserStatus';
+import FText from '../../components/elements/FText';
 import Loading from '../../components/elements/Loading';
 import {UserData} from '../../type/types';
-import Config from 'react-native-config';
+import NotLoginUser from './NotLoginUser';
 
 const MyPage = () => {
   const [user, setUser] = useState<UserData>();

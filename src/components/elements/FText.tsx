@@ -1,3 +1,4 @@
+import React from 'react';
 import {
   ColorValue,
   DimensionValue,
@@ -6,7 +7,6 @@ import {
   Text,
   View,
 } from 'react-native';
-import React from 'react';
 import {fontFamilies, FWidth} from '../../../globalStyle';
 
 type FTextProps = {

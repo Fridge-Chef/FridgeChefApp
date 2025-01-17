@@ -1,8 +1,8 @@
-import {StyleSheet, View} from 'react-native';
 import React from 'react';
+import {StyleSheet, View} from 'react-native';
 import {FWidth} from '../../../../globalStyle';
-import SubTitleBS from '../SubTitleBS';
 import CloseItem from '../CloseItem';
+import SubTitleBS from '../SubTitleBS';
 
 type ItemsComponentProps = {
   title: string;

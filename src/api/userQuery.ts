@@ -1,4 +1,5 @@
 import {useMutation, useQuery} from '@tanstack/react-query';
+import {UserData} from '../type/types';
 import {
   getUser,
   getUSerToken,
@@ -6,7 +7,6 @@ import {
   userLogin,
   UserLoginProps,
 } from './user';
-import {UserData} from '../type/types';
 
 export const useGetUser = () => {
   return useQuery<UserData>({

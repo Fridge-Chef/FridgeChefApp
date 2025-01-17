@@ -1,11 +1,11 @@
-import {StyleSheet, View} from 'react-native';
-import React from 'react';
-import Info from '../../../utils/Svg/Info';
-import FText from '../../elements/FText';
-import {colors, FWidth} from '../../../../globalStyle';
-import FButton from '../../elements/FButton';
 import {ParamListBase, useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import React from 'react';
+import {StyleSheet, View} from 'react-native';
+import {colors, FWidth} from '../../../../globalStyle';
+import Info from '../../../utils/Svg/Info';
+import FButton from '../../elements/FButton';
+import FText from '../../elements/FText';
 
 const InfoComponent = () => {
   const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();

@@ -1,9 +1,9 @@
-import {StyleSheet, View} from 'react-native';
 import React from 'react';
-import FImage from '../elements/FImage';
-import MyOptionIcon from '../../utils/Svg/MyOptionIcon';
+import {StyleSheet, View} from 'react-native';
 import {colors, FWidth} from '../../../globalStyle';
+import MyOptionIcon from '../../utils/Svg/MyOptionIcon';
 import FButton from '../elements/FButton';
+import FImage from '../elements/FImage';
 
 type UserImage = {
   uri: string;

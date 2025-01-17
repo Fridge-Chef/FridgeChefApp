@@ -1,9 +1,9 @@
-import {StyleSheet} from 'react-native';
 import React from 'react';
+import {StyleSheet} from 'react-native';
+import {colors, FWidth} from '../../../../globalStyle';
+import ArrowTitleIcon from '../../../utils/Svg/ArrowTitleIcon';
 import FButton from '../FButton';
 import FText from '../FText';
-import ArrowTitleIcon from '../../../utils/Svg/ArrowTitleIcon';
-import {colors, FWidth} from '../../../../globalStyle';
 
 type ArrowSubTitleProps = {
   name: string;

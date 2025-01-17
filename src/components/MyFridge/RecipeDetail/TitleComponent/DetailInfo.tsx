@@ -1,10 +1,10 @@
-import {StyleSheet, View} from 'react-native';
 import React from 'react';
-import DetailScoreStar from '../../../../utils/Svg/DetailScoreStar';
-import FText from '../../../elements/FText';
+import {StyleSheet, View} from 'react-native';
 import {colors, FWidth} from '../../../../../globalStyle';
-import DetailUserBadge from '../../../../utils/Svg/DetailUserBadge';
 import DetailLikeHeart from '../../../../utils/Svg/DetailLikeHeart';
+import DetailScoreStar from '../../../../utils/Svg/DetailScoreStar';
+import DetailUserBadge from '../../../../utils/Svg/DetailUserBadge';
+import FText from '../../../elements/FText';
 
 type DetailInfoProps = {
   writer: string;

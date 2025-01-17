@@ -1,9 +1,9 @@
-import {StyleSheet, View} from 'react-native';
 import React from 'react';
+import {StyleSheet, View} from 'react-native';
 import {colors, FWidth} from '../../../../globalStyle';
-import FText from '../../elements/FText';
-import FButton from '../../elements/FButton';
 import BottomClose from '../../../utils/Svg/BottomClose';
+import FButton from '../../elements/FButton';
+import FText from '../../elements/FText';
 
 type TopMenuProps = {
   isClicked: number;

@@ -1,14 +1,13 @@
-import {StyleSheet, View} from 'react-native';
 import React from 'react';
-
+import {StyleSheet, View} from 'react-native';
 import {colors, FWidth} from '../../../../globalStyle';
-import RankingTop from './RankingTop';
-import FText from '../../elements/FText';
-import FButton from '../../elements/FButton';
+import {useBottomSheetRef} from '../../../store/bottomSheetStore';
+import {useRankName} from '../../../store/rankingStore';
 import Check from '../../../utils/Svg/Check';
 import {rankingMenuList} from '../../../utils/list';
-import {useRankName} from '../../../store/rankingStore';
-import {useBottomSheetRef} from '../../../store/bottomSheetStore';
+import FButton from '../../elements/FButton';
+import FText from '../../elements/FText';
+import RankingTop from './RankingTop';
 
 const Ranking = () => {
   const {bottomSheetRef} = useBottomSheetRef();

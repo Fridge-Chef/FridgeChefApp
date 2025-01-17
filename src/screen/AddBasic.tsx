@@ -1,10 +1,10 @@
-import {StyleSheet, View} from 'react-native';
 import React, {useState} from 'react';
-import TopLine from '../components/Nickname/TopLine';
+import {StyleSheet, View} from 'react-native';
 import {colors, FWidth} from '../../globalStyle';
 import BasicIngredients from '../components/AddBasic/BasicIngredients';
 import BasicTopTitle from '../components/AddBasic/BasicTopTitle';
 import SubmitButtons from '../components/AddBasic/SubmitButtons';
+import TopLine from '../components/Nickname/TopLine';
 
 const AddBasic = () => {
   const [basicItem, setBasicItem] = useState([

@@ -1,19 +1,19 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {getUser} from '../../api/user';
 import {ListData, UserData} from '../../type/types';
-import Vegetable24 from '../../utils/Svg/Categories/size24/Vegetable24';
-import ChickenThigh24 from '../../utils/Svg/Categories/size24/ChickenThigh24';
-import Fish24 from '../../utils/Svg/Categories/size24/Fish24';
-import Seafood24 from '../../utils/Svg/Categories/size24/Seafood24';
 import Apple24 from '../../utils/Svg/Categories/size24/Apple24';
-import Grain24 from '../../utils/Svg/Categories/size24/Grain24';
-import Soybeans24 from '../../utils/Svg/Categories/size24/Soybeans24';
-import Egg24 from '../../utils/Svg/Categories/size24/Egg24';
-import Cheese24 from '../../utils/Svg/Categories/size24/Cheese24';
+import Bowl24 from '../../utils/Svg/Categories/size24/Bowl24';
 import Bread24 from '../../utils/Svg/Categories/size24/Bread24';
+import Cheese24 from '../../utils/Svg/Categories/size24/Cheese24';
+import ChickenThigh24 from '../../utils/Svg/Categories/size24/ChickenThigh24';
+import Egg24 from '../../utils/Svg/Categories/size24/Egg24';
+import Fish24 from '../../utils/Svg/Categories/size24/Fish24';
+import Grain24 from '../../utils/Svg/Categories/size24/Grain24';
 import Instant24 from '../../utils/Svg/Categories/size24/Instant24';
 import Kimchi24 from '../../utils/Svg/Categories/size24/Kimchi24';
-import Bowl24 from '../../utils/Svg/Categories/size24/Bowl24';
+import Seafood24 from '../../utils/Svg/Categories/size24/Seafood24';
+import Soybeans24 from '../../utils/Svg/Categories/size24/Soybeans24';
+import Vegetable24 from '../../utils/Svg/Categories/size24/Vegetable24';
 
 type TokenProps = {
   setUser: (user: UserData) => void;

@@ -1,10 +1,10 @@
-import {StyleSheet, View} from 'react-native';
 import React from 'react';
+import {StyleSheet, View} from 'react-native';
 import {colors, FWidth} from '../../../../../globalStyle';
-import AddIngredientTitle from './AddIngredientTitle';
-import AddIngredientInputComponent from './AddIngredientInputComponent';
-import AddRecipeSubButton from '../AddRecipeSubButton';
 import {AddIngredientPageType} from '../../../../type/types';
+import AddRecipeSubButton from '../AddRecipeSubButton';
+import AddIngredientInputComponent from './AddIngredientInputComponent';
+import AddIngredientTitle from './AddIngredientTitle';
 
 const AddIngredient = ({
   addRecipeData,

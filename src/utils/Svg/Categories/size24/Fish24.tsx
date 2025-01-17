@@ -1,5 +1,5 @@
-import {StyleSheet} from 'react-native';
 import React from 'react';
+import {StyleSheet} from 'react-native';
 import Svg, {Circle, G, Mask, Path} from 'react-native-svg';
 import {FWidth} from '../../../../../globalStyle';
 

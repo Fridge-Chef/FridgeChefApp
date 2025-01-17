@@ -1,9 +1,9 @@
-import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
-import FText from '../../../../elements/FText';
-import AddRecipeDeleteIcon from '../../../../../utils/Svg/AddRecipeDeleteIcon';
+import {StyleSheet, View} from 'react-native';
 import {colors} from '../../../../../../globalStyle';
+import AddRecipeDeleteIcon from '../../../../../utils/Svg/AddRecipeDeleteIcon';
 import FButton from '../../../../elements/FButton';
+import FText from '../../../../elements/FText';
 
 type StepItemTitleProps = {
   index: number;

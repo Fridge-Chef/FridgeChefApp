@@ -1,11 +1,11 @@
-import {StyleSheet, View} from 'react-native';
-import React from 'react';
-import FText from '../../elements/FText';
-import FButton from '../../elements/FButton';
-import {colors, FWidth} from '../../../../globalStyle';
 import {ParamListBase, useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import React from 'react';
+import {StyleSheet, View} from 'react-native';
+import {colors, FWidth} from '../../../../globalStyle';
 import Close3 from '../../../utils/Svg/Close3';
+import FButton from '../../elements/FButton';
+import FText from '../../elements/FText';
 
 const StorageTitle = () => {
   const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();

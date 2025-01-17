@@ -1,9 +1,9 @@
-import {StyleSheet, View} from 'react-native';
 import React from 'react';
+import {StyleSheet, View} from 'react-native';
 import {FWidth} from '../../../globalStyle';
+import {ListData} from '../../type/types';
 import CloseItem from './CloseItem';
 import SubTitleBS from './SubTitleBS';
-import {ListData} from '../../type/types';
 
 type ItemListProps = {
   isClicked: number;

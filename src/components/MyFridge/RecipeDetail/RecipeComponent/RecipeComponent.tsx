@@ -1,8 +1,8 @@
-import {StyleSheet, View} from 'react-native';
 import React from 'react';
+import {StyleSheet, View} from 'react-native';
 import {colors, FWidth} from '../../../../../globalStyle';
-import ContentComponent from './ContentComponent';
 import SubTitle2 from '../../../elements/SubTitle/SubTitle2';
+import ContentComponent from './ContentComponent';
 
 type RecipeComponentProps = {
   instructions: {

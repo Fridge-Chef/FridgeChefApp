@@ -1,8 +1,8 @@
 import {ParamListBase} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import {AddIngredientType} from '../../type/types';
-import {colors} from '../../../globalStyle';
 import {UseMutateFunction} from '@tanstack/react-query';
+import {colors} from '../../../globalStyle';
+import {AddIngredientType} from '../../type/types';
 
 export const handlePreview = (
   recipeData: AddIngredientType,

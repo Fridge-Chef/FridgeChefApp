@@ -1,9 +1,9 @@
-import {StyleSheet, View} from 'react-native';
 import React from 'react';
-import FButton from './FButton';
+import {StyleSheet, View} from 'react-native';
 import {colors, FHeight, FWidth} from '../../../globalStyle';
-import DetailReviewLikeColor from '../../utils/Svg/DetailReviewLikeColor';
 import DetailReviewLike from '../../utils/Svg/DetailReviewLike';
+import DetailReviewLikeColor from '../../utils/Svg/DetailReviewLikeColor';
+import FButton from './FButton';
 import FText from './FText';
 
 type LikeButtonProps = {

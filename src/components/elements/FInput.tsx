@@ -1,7 +1,7 @@
-import {DimensionValue, StyleSheet, TextInput, View} from 'react-native';
 import React from 'react';
-import {colors, fontFamilies, FWidth} from '../../../globalStyle';
+import {DimensionValue, StyleSheet, TextInput, View} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
+import {colors, fontFamilies, FWidth} from '../../../globalStyle';
 import FButton from './FButton';
 import FText from './FText';
 

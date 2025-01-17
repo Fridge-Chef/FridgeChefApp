@@ -1,12 +1,12 @@
-import {StyleSheet, View} from 'react-native';
-import React from 'react';
-import FButton from './FButton';
-import {colors, FWidth} from '../../../globalStyle';
 import {ParamListBase, useNavigation} from '@react-navigation/native';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import React from 'react';
+import {StyleSheet, View} from 'react-native';
+import {colors, FWidth} from '../../../globalStyle';
 import {AppBarProps} from '../../type/types';
+import FButton from './FButton';
 import FText from './FText';
 import SvgList from './SvgList';
-import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 
 const FAppBar = ({
   type,

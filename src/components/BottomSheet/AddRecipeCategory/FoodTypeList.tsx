@@ -1,10 +1,10 @@
-import {StyleSheet, Text, View} from 'react-native';
 import React, {useState} from 'react';
+import {StyleSheet, View} from 'react-native';
 import {colors, FWidth} from '../../../../globalStyle';
-import SubTitleBS from '../SubTitleBS';
-import FText from '../../elements/FText';
-import FButton from '../../elements/FButton';
 import {AddRecipeFoodTypeList} from '../../../utils/list';
+import FButton from '../../elements/FButton';
+import FText from '../../elements/FText';
+import SubTitleBS from '../SubTitleBS';
 
 type FoodTypeListProps = {
   addTitle: {foodStyle: string; foodType: string};

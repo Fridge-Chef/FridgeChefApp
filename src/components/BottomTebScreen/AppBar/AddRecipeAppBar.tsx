@@ -1,7 +1,7 @@
-import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
-import FAppBar from '../../elements/FAppBar';
+import {StyleSheet} from 'react-native';
 import {useSelectedCategory} from '../../../store/store';
+import FAppBar from '../../elements/FAppBar';
 
 const AddRecipeAppBar = () => {
   const {setSelectedCategory} = useSelectedCategory();

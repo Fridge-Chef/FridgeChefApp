@@ -1,20 +1,20 @@
-import {StyleSheet, useWindowDimensions, View} from 'react-native';
-import React, {useState} from 'react';
-import FImage from '../../elements/FImage';
-import {colors, FWidth} from '../../../../globalStyle';
-import FText from '../../elements/FText';
-import LikeButton from '../../elements/LikeButton';
-import Carousel from 'react-native-reanimated-carousel';
-import FModal from '../../elements/FModal';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import {ParamListBase, useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import {RecipeReviewDetailType} from '../../../type/types';
+import React, {useState} from 'react';
+import {StyleSheet, useWindowDimensions, View} from 'react-native';
+import Carousel from 'react-native-reanimated-carousel';
+import {colors, FWidth} from '../../../../globalStyle';
 import {
   useGetRecipeDetailReviewList,
   useLikeRecipeReview,
 } from '../../../api/commentReviewQuery';
 import {useMyRecipeReviews} from '../../../api/recipeBookQuery';
+import {RecipeReviewDetailType} from '../../../type/types';
+import FImage from '../../elements/FImage';
+import FModal from '../../elements/FModal';
+import FText from '../../elements/FText';
+import LikeButton from '../../elements/LikeButton';
 
 type UserContentProps = {
   data: RecipeReviewDetailType;

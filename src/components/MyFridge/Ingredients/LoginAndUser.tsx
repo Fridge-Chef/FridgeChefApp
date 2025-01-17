@@ -1,15 +1,15 @@
-import {StyleSheet, View} from 'react-native';
-import React, {useEffect, useState} from 'react';
-import {colors, FWidth} from '../../../../globalStyle';
-import Notification from '../../../utils/Svg/Notification';
-import FText from '../../elements/FText';
-import NotLoginUser from '../../../utils/Svg/NotLoginUser';
-import FButton from '../../elements/FButton';
 import {ParamListBase, useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import {useGetRefreshUser, useGetUser} from '../../../api/userQuery';
-import Loading from '../../elements/Loading';
+import React, {useEffect, useState} from 'react';
+import {StyleSheet, View} from 'react-native';
+import {colors, FWidth} from '../../../../globalStyle';
+import {useGetUser} from '../../../api/userQuery';
 import {UserData} from '../../../type/types';
+import Notification from '../../../utils/Svg/Notification';
+import NotLoginUser from '../../../utils/Svg/NotLoginUser';
+import FButton from '../../elements/FButton';
+import FText from '../../elements/FText';
+import Loading from '../../elements/Loading';
 
 const LoginAndUser = () => {
   const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();

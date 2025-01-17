@@ -1,13 +1,13 @@
-import {StyleSheet, View} from 'react-native';
-import React from 'react';
-import KakaoLogo from '../../utils/Svg/KakaoLogo';
-import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {ParamListBase} from '@react-navigation/native';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import React from 'react';
+import {StyleSheet, View} from 'react-native';
+import {FWidth} from '../../../globalStyle';
+import {useLogin} from '../../api/userQuery';
+import {handleKakaologin} from '../../service/Login/Kakao';
+import KakaoLogo from '../../utils/Svg/KakaoLogo';
 import FButton from '../elements/FButton';
 import LoginButtonTitle from './LoginButtonTitle';
-import {FWidth} from '../../../globalStyle';
-import {handleKakaologin} from '../../service/Login/Kakao';
-import {useLogin} from '../../api/userQuery';
 
 type KakaoLoginProps = {
   navigation: NativeStackNavigationProp<ParamListBase>;

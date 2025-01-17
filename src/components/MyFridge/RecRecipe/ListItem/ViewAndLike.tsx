@@ -1,5 +1,5 @@
-import {StyleSheet, View} from 'react-native';
 import React from 'react';
+import {StyleSheet, View} from 'react-native';
 import {colors, FWidth} from '../../../../../globalStyle';
 import Heart from '../../../../utils/Svg/Heart';
 import Star2 from '../../../../utils/Svg/Star2';

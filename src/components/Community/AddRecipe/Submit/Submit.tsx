@@ -1,8 +1,8 @@
-import {ColorValue, StyleSheet, Text, View} from 'react-native';
 import React from 'react';
+import {ColorValue, StyleSheet, View} from 'react-native';
 import {colors, FWidth} from '../../../../../globalStyle';
-import FText from '../../../elements/FText';
 import FButton from '../../../elements/FButton';
+import FText from '../../../elements/FText';
 
 type SubmitProps = {
   previewOnPress: () => void;

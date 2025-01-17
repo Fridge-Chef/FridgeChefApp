@@ -1,3 +1,4 @@
+import React from 'react';
 import {
   ColorValue,
   DimensionValue,
@@ -8,7 +9,6 @@ import {
   TouchableOpacity,
   ViewStyle,
 } from 'react-native';
-import React from 'react';
 import {colors, FWidth} from '../../../globalStyle';
 
 type FButtonProps = {

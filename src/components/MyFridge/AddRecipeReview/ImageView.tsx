@@ -1,9 +1,9 @@
-import {StyleSheet, View} from 'react-native';
 import React from 'react';
-import FImage from '../../elements/FImage';
+import {StyleSheet, View} from 'react-native';
 import {colors, FWidth} from '../../../../globalStyle';
 import RecipeBookClose from '../../../utils/Svg/RecipeBookClose';
 import FButton from '../../elements/FButton';
+import FImage from '../../elements/FImage';
 
 type ImageViewProps = {
   uri: string;

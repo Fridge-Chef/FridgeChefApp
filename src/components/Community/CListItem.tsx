@@ -1,11 +1,11 @@
 import {StyleSheet, View} from 'react-native';
+import {colors, FWidth} from '../../../globalStyle';
+import {GetMyRecipeListType} from '../../type/types';
+import FButton from '../elements/FButton';
+import FImage from '../elements/FImage';
+import FText from '../elements/FText';
 import UserInfo from '../MyFridge/RecipeDetail/RecipeReview/UserInfo';
 import ViewAndLike from '../MyFridge/RecRecipe/ListItem/ViewAndLike';
-import {colors, FWidth} from '../../../globalStyle';
-import FText from '../elements/FText';
-import FImage from '../elements/FImage';
-import FButton from '../elements/FButton';
-import {GetMyRecipeListType} from '../../type/types';
 
 type CListItemProps = {
   item: GetMyRecipeListType;

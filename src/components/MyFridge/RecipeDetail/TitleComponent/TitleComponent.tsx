@@ -1,11 +1,11 @@
-import {StyleSheet, View} from 'react-native';
 import React from 'react';
+import {StyleSheet, View} from 'react-native';
 import {colors, FWidth} from '../../../../../globalStyle';
-import IngredientContainer from './IngredientContainer';
+import {RecipeListType} from '../../../../type/types';
 import FText from '../../../elements/FText';
 import DetailInfo from './DetailInfo';
+import IngredientContainer from './IngredientContainer';
 import TimeAndLevel from './TimeAndLevel';
-import {RecipeListType} from '../../../../type/types';
 
 type TitleComponentProps = {
   detailData: RecipeListType;

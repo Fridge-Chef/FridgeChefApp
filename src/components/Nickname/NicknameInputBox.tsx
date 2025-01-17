@@ -1,8 +1,8 @@
-import {StyleSheet, View} from 'react-native';
 import React from 'react';
-import FText from '../elements/FText';
-import FInput from '../elements/FInput';
+import {StyleSheet, View} from 'react-native';
 import {colors, fontFamilies, FWidth} from '../../../globalStyle';
+import FInput from '../elements/FInput';
+import FText from '../elements/FText';
 
 type NicknameInputBoxProps = {
   nickname: string;

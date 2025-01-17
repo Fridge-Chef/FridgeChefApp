@@ -1,10 +1,10 @@
-import {StyleSheet, View} from 'react-native';
 import React, {useEffect, useState} from 'react';
+import {StyleSheet, View} from 'react-native';
 import {FWidth} from '../../../../globalStyle';
-import FButton from '../../elements/FButton';
-import StarReview2 from '../../../utils/Svg/StarReview2';
-import StarReview1 from '../../../utils/Svg/StarReview1';
 import {useUserReview} from '../../../store/store';
+import StarReview1 from '../../../utils/Svg/StarReview1';
+import StarReview2 from '../../../utils/Svg/StarReview2';
+import FButton from '../../elements/FButton';
 
 type ReviewType = {
   id: number;

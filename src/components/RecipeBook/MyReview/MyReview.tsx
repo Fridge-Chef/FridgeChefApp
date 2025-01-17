@@ -1,13 +1,13 @@
-import {StyleSheet, View} from 'react-native';
 import React from 'react';
-import ArrowSubTitle from '../../elements/SubTitle/ArrowSubTitle';
-import MyReviewList from './MyReviewList';
+import {StyleSheet, View} from 'react-native';
 import {FWidth} from '../../../../globalStyle';
 import {
   useBottomSheetRef,
   useBottomSheetTitle,
 } from '../../../store/bottomSheetStore';
 import {MyRecipeReviewsType} from '../../../type/types';
+import ArrowSubTitle from '../../elements/SubTitle/ArrowSubTitle';
+import MyReviewList from './MyReviewList';
 
 type ReviewType = {
   data: MyRecipeReviewsType[];

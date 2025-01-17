@@ -1,9 +1,9 @@
-import {StyleSheet, View} from 'react-native';
 import React from 'react';
-import FText from '../../../elements/FText';
+import {StyleSheet, View} from 'react-native';
 import {colors, FWidth} from '../../../../../globalStyle';
-import DetailTime from '../../../../utils/Svg/DetailTime';
 import DetailLevel from '../../../../utils/Svg/DetailLevel';
+import DetailTime from '../../../../utils/Svg/DetailTime';
+import FText from '../../../elements/FText';
 
 type TimeAndLevelProps = {
   dishCategory: string;

@@ -1,10 +1,10 @@
-import {StyleSheet, View} from 'react-native';
 import React from 'react';
-import FText from '../../../elements/FText';
+import {StyleSheet, View} from 'react-native';
 import {colors, FHeight, FWidth} from '../../../../../globalStyle';
-import LikeButton from '../../../elements/LikeButton';
 import {getExpiryDateInfo} from '../../../../service/MyFridge/MyFridge';
 import {RecipeReviewDetailType} from '../../../../type/types';
+import FText from '../../../elements/FText';
+import LikeButton from '../../../elements/LikeButton';
 
 type BottomComponentProps = {
   review: RecipeReviewDetailType;

@@ -1,11 +1,3 @@
-import {Keyboard, Pressable, ScrollView, StyleSheet, View} from 'react-native';
-import React, {useEffect, useState} from 'react';
-import {colors} from '../../../globalStyle';
-import MainTop from '../../components/Community/AddRecipe/MainTop/MainTop';
-import AddIngredient from '../../components/Community/AddRecipe/AddIngredient/AddIngredient';
-import {AddIngredientType} from '../../type/types';
-import RecipeSteps from '../../components/Community/AddRecipe/RecipeSteps/RecipeSteps';
-import Submit from '../../components/Community/AddRecipe/Submit/Submit';
 import {
   ParamListBase,
   RouteProp,
@@ -13,25 +5,33 @@ import {
   useRoute,
 } from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import {useSelectedCategory} from '../../store/store';
+import React, {useEffect, useState} from 'react';
+import {Keyboard, Pressable, ScrollView, StyleSheet, View} from 'react-native';
+import {colors} from '../../../globalStyle';
+import {
+  useGetRecipeBookList,
+  useUpdateMyRecipe,
+} from '../../api/recipeBookQuery';
+import {
+  useAddRecipe,
+  useGetRecipeDetail,
+  useGetRecipeList,
+} from '../../api/recipeQuery';
+import {useUserBoardCount} from '../../api/userQuery';
+import AddIngredient from '../../components/Community/AddRecipe/AddIngredient/AddIngredient';
+import MainTop from '../../components/Community/AddRecipe/MainTop/MainTop';
+import RecipeSteps from '../../components/Community/AddRecipe/RecipeSteps/RecipeSteps';
+import Submit from '../../components/Community/AddRecipe/Submit/Submit';
+import FModal from '../../components/elements/FModal';
+import Loading from '../../components/elements/Loading';
 import {
   handleButtonColor,
   handlePreview,
   handlePreviewButtonColor,
   handleSubmit,
 } from '../../service/Community/AddRecipe';
-import {
-  useAddRecipe,
-  useGetRecipeDetail,
-  useGetRecipeList,
-} from '../../api/recipeQuery';
-import {
-  useGetRecipeBookList,
-  useUpdateMyRecipe,
-} from '../../api/recipeBookQuery';
-import FModal from '../../components/elements/FModal';
-import Loading from '../../components/elements/Loading';
-import {useUserBoardCount} from '../../api/userQuery';
+import {useSelectedCategory} from '../../store/store';
+import {AddIngredientType} from '../../type/types';
 
 type AddRecipeProps = {
   params: {

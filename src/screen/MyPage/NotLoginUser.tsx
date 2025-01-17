@@ -1,11 +1,11 @@
-import {StyleSheet, Text, View} from 'react-native';
-import React from 'react';
-import NotLogin from '../../utils/Svg/NotLogin';
-import {colors, FWidth} from '../../../globalStyle';
-import FText from '../../components/elements/FText';
-import FButton from '../../components/elements/FButton';
 import {ParamListBase, useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import React from 'react';
+import {StyleSheet, View} from 'react-native';
+import {colors, FWidth} from '../../../globalStyle';
+import FButton from '../../components/elements/FButton';
+import FText from '../../components/elements/FText';
+import NotLogin from '../../utils/Svg/NotLogin';
 
 const NotLoginUser = () => {
   const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();

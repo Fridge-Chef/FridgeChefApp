@@ -1,7 +1,7 @@
-import {StyleSheet, View} from 'react-native';
 import React from 'react';
-import FText from '../../elements/FText';
+import {StyleSheet, View} from 'react-native';
 import {colors, FWidth} from '../../../../globalStyle';
+import FText from '../../elements/FText';
 
 const Badge = () => {
   return (

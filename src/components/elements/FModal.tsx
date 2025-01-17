@@ -1,8 +1,8 @@
-import {Modal, StyleSheet, Text, View} from 'react-native';
 import React from 'react';
+import {Modal, StyleSheet, View} from 'react-native';
 import {colors, FWidth} from '../../../globalStyle';
-import FText from './FText';
 import FButton from './FButton';
+import FText from './FText';
 
 type FModalProps = {
   modalVisible: boolean;

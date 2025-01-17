@@ -1,11 +1,10 @@
-import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
-import {fontFamilies, FWidth} from '../../../../../globalStyle';
-import FInput from '../../../elements/FInput';
+import {StyleSheet, View} from 'react-native';
+import {FWidth} from '../../../../../globalStyle';
 import AddRecipeDeleteIcon from '../../../../utils/Svg/AddRecipeDeleteIcon';
 import FButton from '../../../elements/FButton';
-import IngredientTitleInput from './IngredientTitleInput';
 import IngredientQuantityInput from './IngredientQuantityInput';
+import IngredientTitleInput from './IngredientTitleInput';
 
 type AddIngredientInputComponentProps = {
   titleValue: string;

@@ -1,25 +1,25 @@
-import {StyleSheet, View} from 'react-native';
-import React, {useEffect, useState} from 'react';
-import {colors, FHeight, FWidth} from '../../../../../globalStyle';
-import FButton from '../../../elements/FButton';
-import {useIngredientTitle} from '../../../../store/store';
-import FText from '../../../elements/FText';
-import Option from '../../../../utils/Svg/Option';
-import IngredientClose from '../../../../utils/Svg/IngredientClose';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import {useQueryClient} from '@tanstack/react-query';
+import React, {useEffect, useState} from 'react';
+import {StyleSheet, View} from 'react-native';
+import {colors, FHeight, FWidth} from '../../../../../globalStyle';
 import {
   useDeleteIngredients,
   useGetIngredients,
 } from '../../../../api/ingredientsQuery';
-import {useQueryClient} from '@tanstack/react-query';
 import {date, ingredientCategory} from '../../../../service/MyFridge/MyFridge';
-import {ListData} from '../../../../type/types';
-import DDayText from './DDayText';
-import FModal from '../../../elements/FModal';
 import {
   useBottomSheetRef,
   useBottomSheetTitle,
 } from '../../../../store/bottomSheetStore';
+import {useIngredientTitle} from '../../../../store/store';
+import {ListData} from '../../../../type/types';
+import IngredientClose from '../../../../utils/Svg/IngredientClose';
+import Option from '../../../../utils/Svg/Option';
+import FButton from '../../../elements/FButton';
+import FModal from '../../../elements/FModal';
+import FText from '../../../elements/FText';
+import DDayText from './DDayText';
 
 type ItemComponentProps = {
   item: ListData;

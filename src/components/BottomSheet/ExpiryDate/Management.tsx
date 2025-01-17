@@ -1,23 +1,23 @@
-import {StyleSheet, Text, View} from 'react-native';
-import React, {useState} from 'react';
-import TopTitle from '../TopTitle';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import React from 'react';
+import {StyleSheet, View} from 'react-native';
+import {colors, FWidth} from '../../../../globalStyle';
+import {
+  useGetIngredients,
+  useIngredientsCategory,
+} from '../../../api/ingredientsQuery';
+import {useBottomSheetRef} from '../../../store/bottomSheetStore';
 import {
   useAddCheck,
   useCategoriesText,
   useIngredientTitle,
 } from '../../../store/store';
-import BottomButton from '../BottomButton';
-import {colors, FWidth} from '../../../../globalStyle';
-import ExpiryDate from './ExpiryDate';
-import Categories from './Categories';
-import {
-  useGetIngredients,
-  useIngredientsCategory,
-} from '../../../api/ingredientsQuery';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import {ListData} from '../../../type/types';
-import {useBottomSheetRef} from '../../../store/bottomSheetStore';
 import Loading from '../../elements/Loading';
+import BottomButton from '../BottomButton';
+import TopTitle from '../TopTitle';
+import Categories from './Categories';
+import ExpiryDate from './ExpiryDate';
 
 const Management = () => {
   const {ingredientTitle} = useIngredientTitle();

@@ -1,10 +1,10 @@
-import {StyleSheet, View} from 'react-native';
 import React from 'react';
-import Wallet from '../../../utils/Svg/Wallet';
-import TabHeart from '../../../utils/Svg/TabHeart';
-import More from '../../../utils/Svg/More';
-import EditSquare from '../../../utils/Svg/EditSquare';
+import {StyleSheet, View} from 'react-native';
 import {FWidth} from '../../../../globalStyle';
+import EditSquare from '../../../utils/Svg/EditSquare';
+import More from '../../../utils/Svg/More';
+import TabHeart from '../../../utils/Svg/TabHeart';
+import Wallet from '../../../utils/Svg/Wallet';
 type IconComponentProps = {
   focused: boolean;
   name: string;

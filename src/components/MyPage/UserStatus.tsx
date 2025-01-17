@@ -1,11 +1,11 @@
-import {Pressable, StyleSheet, View} from 'react-native';
 import React, {useState} from 'react';
+import {Pressable, StyleSheet, View} from 'react-native';
 import {colors, FWidth} from '../../../globalStyle';
+import {UserData} from '../../type/types';
 import FText from '../elements/FText';
 import RecipeActions from './RecipeActions';
-import UserImage from './UserImage';
-import {UserData} from '../../type/types';
 import UserChangeInput from './UserChangeInput';
+import UserImage from './UserImage';
 
 type UserStatus = {
   userData: UserData;

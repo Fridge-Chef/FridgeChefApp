@@ -1,3 +1,7 @@
+import {ParamListBase, useNavigation} from '@react-navigation/native';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import {useQueryClient} from '@tanstack/react-query';
+import React, {useEffect} from 'react';
 import {
   ActivityIndicator,
   FlatList,
@@ -6,21 +10,17 @@ import {
   StyleSheet,
   View,
 } from 'react-native';
-import React, {useEffect} from 'react';
 import {colors, FWidth} from '../../../globalStyle';
-import CListItem from './CListItem';
-import {ParamListBase, useNavigation} from '@react-navigation/native';
-import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import ArrowSubTitle from '../elements/SubTitle/ArrowSubTitle';
-import {useCommunityMyRecipeName} from '../../store/rankingStore';
-import {GetMyRecipeListType} from '../../type/types';
 import {useGetRecipeList} from '../../api/recipeQuery';
-import Loading from '../elements/Loading';
 import {
   useBottomSheetRef,
   useBottomSheetTitle,
 } from '../../store/bottomSheetStore';
-import {useQueryClient} from '@tanstack/react-query';
+import {useCommunityMyRecipeName} from '../../store/rankingStore';
+import {GetMyRecipeListType} from '../../type/types';
+import Loading from '../elements/Loading';
+import ArrowSubTitle from '../elements/SubTitle/ArrowSubTitle';
+import CListItem from './CListItem';
 
 type CListItemsProps = {
   onClick: number;

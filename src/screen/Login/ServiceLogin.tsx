@@ -1,10 +1,10 @@
-import {StyleSheet, Text, View} from 'react-native';
-import React, {useState} from 'react';
-import {FWidth} from '../../../globalStyle';
-import KakaoLogin from '../../components/Login/KakaoLogin';
 import {ParamListBase, useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import React, {useState} from 'react';
+import {StyleSheet, View} from 'react-native';
+import {FWidth} from '../../../globalStyle';
 import GoogleLogin from '../../components/Login/GoogleLogin';
+import KakaoLogin from '../../components/Login/KakaoLogin';
 
 const ServiceLogin = () => {
   const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();

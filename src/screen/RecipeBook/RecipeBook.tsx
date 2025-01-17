@@ -1,11 +1,11 @@
+import {useState} from 'react';
 import {Dimensions, StyleSheet} from 'react-native';
+import {SceneMap, TabBar, TabView} from 'react-native-tab-view';
+import {colors, fontStyles, FWidth} from '../../../globalStyle';
+import {useTopTabBar} from '../../store/store';
 import LikePage from './LikePage';
 import MyRecipePage from './MyRecipePage';
 import RecipeReviewPage from './RecipeReviewPage';
-import {colors, fontStyles, FWidth} from '../../../globalStyle';
-import {useTopTabBar} from '../../store/store';
-import {useState} from 'react';
-import {SceneMap, TabBar, TabView} from 'react-native-tab-view';
 
 const initialLayout = {width: Dimensions.get('window').width};
 

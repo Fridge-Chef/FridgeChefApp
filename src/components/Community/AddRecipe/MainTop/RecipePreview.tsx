@@ -1,7 +1,7 @@
-import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
-import ContentTitleInput from './ContentTitleInput';
+import {StyleSheet, View} from 'react-native';
 import {FWidth} from '../../../../../globalStyle';
+import ContentTitleInput from './ContentTitleInput';
 
 type RecipePreviewProps = {
   value: string;

@@ -1,12 +1,11 @@
-import {Alert, Keyboard, StyleSheet, View} from 'react-native';
 import React, {Dispatch, useEffect, useState} from 'react';
-import FButton from '../elements/FButton';
+import {Keyboard, StyleSheet, View} from 'react-native';
 import {colors, FWidth} from '../../../globalStyle';
-import FInput from '../elements/FInput';
 import {useAddModalInputText} from '../../store/store';
-import FText from '../elements/FText';
 import {ListData} from '../../type/types';
-import {Text} from 'react-native-svg';
+import FButton from '../elements/FButton';
+import FInput from '../elements/FInput';
+import FText from '../elements/FText';
 
 type InputAndSearchProps = {
   itemList: string[];

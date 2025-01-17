@@ -1,13 +1,13 @@
-import {StyleSheet, View} from 'react-native';
-import React, {useEffect, useState} from 'react';
-import TopTitle from '../TopTitle';
-import {colors, FWidth} from '../../../../globalStyle';
-import BottomButton from '../BottomButton';
-import IngredientItem from './IngredientItem';
-import {ListData} from '../../../type/types';
-import {useIngredientList, useMyIngredientsChecked} from '../../../store/store';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import React, {useEffect, useState} from 'react';
+import {StyleSheet, View} from 'react-native';
+import {colors, FWidth} from '../../../../globalStyle';
 import {useBottomSheetRef} from '../../../store/bottomSheetStore';
+import {useIngredientList, useMyIngredientsChecked} from '../../../store/store';
+import {ListData} from '../../../type/types';
+import BottomButton from '../BottomButton';
+import TopTitle from '../TopTitle';
+import IngredientItem from './IngredientItem';
 
 const IngredientList = () => {
   const [selectItems, setSelectItems] = useState<string[]>([]);

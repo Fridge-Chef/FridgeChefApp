@@ -1,13 +1,13 @@
-import {StyleSheet} from 'react-native';
 import React from 'react';
-import FButton from '../../../elements/FButton';
-import FText from '../../../elements/FText';
-import AddRecipeBottomArrow from '../../../../utils/Svg/AddRecipeBottomArrow';
+import {StyleSheet} from 'react-native';
 import {colors, FWidth} from '../../../../../globalStyle';
 import {
   useBottomSheetRef,
   useBottomSheetTitle,
 } from '../../../../store/bottomSheetStore';
+import AddRecipeBottomArrow from '../../../../utils/Svg/AddRecipeBottomArrow';
+import FButton from '../../../elements/FButton';
+import FText from '../../../elements/FText';
 
 type CategoryProps = {
   selectedCategory: string;

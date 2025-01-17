@@ -1,14 +1,10 @@
-import {StyleSheet, Text, View} from 'react-native';
-import React, {useEffect, useState} from 'react';
-import {
-  useRecipeReviewTitle,
-  useUserDetail,
-  useUsernameCheck,
-} from '../../../store/store';
+import React from 'react';
+import {StyleSheet} from 'react-native';
 import {
   useBottomSheetRef,
   useBottomSheetTitle,
 } from '../../../store/bottomSheetStore';
+import {useUserDetail} from '../../../store/store';
 import FAppBar from '../../elements/FAppBar';
 
 const MyRecipeDetailAppBar = () => {

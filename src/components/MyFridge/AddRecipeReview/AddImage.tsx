@@ -1,11 +1,11 @@
-import {Keyboard, StyleSheet, View} from 'react-native';
 import React from 'react';
-import {colors, FWidth} from '../../../../globalStyle';
-import FButton from '../../elements/FButton';
-import ImageIcon from '../../../utils/Svg/ImageIcon';
-import FText from '../../elements/FText';
+import {Keyboard, StyleSheet, View} from 'react-native';
 import {launchImageLibrary} from 'react-native-image-picker';
+import {colors, FWidth} from '../../../../globalStyle';
 import {useUserReview} from '../../../store/store';
+import ImageIcon from '../../../utils/Svg/ImageIcon';
+import FButton from '../../elements/FButton';
+import FText from '../../elements/FText';
 
 const AddImage = () => {
   const {userReview, setUserReview} = useUserReview();

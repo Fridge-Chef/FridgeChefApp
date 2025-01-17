@@ -1,6 +1,6 @@
-import {create} from 'zustand';
 import {BottomSheetModal} from '@gorhom/bottom-sheet';
 import {RefObject} from 'react';
+import {create} from 'zustand';
 
 type BottomSheetRefType = {
   bottomSheetRef: RefObject<BottomSheetModal>;

@@ -1,5 +1,5 @@
-import {StyleSheet} from 'react-native';
 import React from 'react';
+import {StyleSheet} from 'react-native';
 import {colors} from '../../../globalStyle';
 import FText from '../elements/FText';
 

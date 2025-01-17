@@ -1,7 +1,7 @@
-import {StyleSheet, View} from 'react-native';
 import React from 'react';
-import FButton from '../../elements/FButton';
+import {StyleSheet, View} from 'react-native';
 import BottomClose from '../../../utils/Svg/BottomClose';
+import FButton from '../../elements/FButton';
 
 type RankingTopProps = {
   onPress: () => void;

@@ -1,15 +1,15 @@
-import {ScrollView, StyleSheet, View} from 'react-native';
-import React, {useEffect, useState} from 'react';
-import FImage from '../../components/elements/FImage';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import {RouteProp, useRoute} from '@react-navigation/native';
-import {AddIngredientType} from '../../type/types';
-import PreviewTitle from '../../components/Community/AddRecipe/Preview/PreviewTitle';
+import React, {useEffect, useState} from 'react';
+import {ScrollView, StyleSheet, View} from 'react-native';
 import {colors} from '../../../globalStyle';
-import RecipeNote from '../../components/MyFridge/RecipeDetail/RecipeNote/RecipeNote';
+import PCloseButton from '../../components/Community/AddRecipe/Preview/PCloseButton';
+import PreviewTitle from '../../components/Community/AddRecipe/Preview/PreviewTitle';
+import FImage from '../../components/elements/FImage';
 import IngredientComponent from '../../components/MyFridge/RecipeDetail/IngredientComponent/IngredientComponent';
 import RecipeComponent from '../../components/MyFridge/RecipeDetail/RecipeComponent/RecipeComponent';
-import PCloseButton from '../../components/Community/AddRecipe/Preview/PCloseButton';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import RecipeNote from '../../components/MyFridge/RecipeDetail/RecipeNote/RecipeNote';
+import {AddIngredientType} from '../../type/types';
 
 type AddRecipePreviewProps = {
   params: {

@@ -1,13 +1,13 @@
-import {StyleSheet, View} from 'react-native';
-import React, {useEffect} from 'react';
 import {RouteProp, useRoute} from '@react-navigation/native';
+import React, {useEffect} from 'react';
+import {StyleSheet, View} from 'react-native';
 import {colors, FWidth} from '../../../../globalStyle';
+import {useGetRecipeReviewDetail} from '../../../api/commentReviewQuery';
+import {useUserReview} from '../../../store/store';
+import {RecipeReviewDetailType} from '../../../type/types';
+import Loading from '../../elements/Loading';
 import TopComponent from './TopComponent';
 import UserContent from './UserContent';
-import Loading from '../../elements/Loading';
-import {RecipeReviewDetailType} from '../../../type/types';
-import {useUserReview} from '../../../store/store';
-import {useGetRecipeReviewDetail} from '../../../api/commentReviewQuery';
 
 type RecipeType = {
   params: {

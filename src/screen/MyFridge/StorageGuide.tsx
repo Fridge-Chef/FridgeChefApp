@@ -1,12 +1,12 @@
-import {ScrollView, StyleSheet, View} from 'react-native';
 import React, {useState} from 'react';
+import {ScrollView, StyleSheet, View} from 'react-native';
 import {FWidth} from '../../../globalStyle';
 
-import StorageTitle from '../../components/MyFridge/StorageGuide/StorageTitle';
-import StorageMenu from '../../components/MyFridge/StorageGuide/StorageMenu';
 import StorageList from '../../components/MyFridge/StorageGuide/StorageList';
-import StorageSubTipTitle from '../../components/MyFridge/StorageGuide/StorageSubTipTitle';
+import StorageMenu from '../../components/MyFridge/StorageGuide/StorageMenu';
 import StorageSubList from '../../components/MyFridge/StorageGuide/StorageSubList';
+import StorageSubTipTitle from '../../components/MyFridge/StorageGuide/StorageSubTipTitle';
+import StorageTitle from '../../components/MyFridge/StorageGuide/StorageTitle';
 
 const StorageGuide = () => {
   const [isClicked, setIsClicked] = useState(1);

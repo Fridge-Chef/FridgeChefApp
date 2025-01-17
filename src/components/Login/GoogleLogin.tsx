@@ -1,15 +1,15 @@
-import {StyleSheet, View} from 'react-native';
-import React, {useEffect} from 'react';
-import {colors, FWidth} from '../../../globalStyle';
-import GoogleLogo from '../../utils/Svg/GoogleLogo';
+import {GoogleSignin} from '@react-native-google-signin/google-signin';
 import {ParamListBase} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import React, {useEffect} from 'react';
+import {StyleSheet, View} from 'react-native';
+import Config from 'react-native-config';
+import {colors, FWidth} from '../../../globalStyle';
+import {useLogin} from '../../api/userQuery';
+import {handleGoogleSignIn} from '../../service/Login/Google';
+import GoogleLogo from '../../utils/Svg/GoogleLogo';
 import FButton from '../elements/FButton';
 import LoginButtonTitle from './LoginButtonTitle';
-import {handleGoogleSignIn} from '../../service/Login/Google';
-import {GoogleSignin} from '@react-native-google-signin/google-signin';
-import {useLogin} from '../../api/userQuery';
-import Config from 'react-native-config';
 type GoogleLoginProps = {
   navigation: NativeStackNavigationProp<ParamListBase>;
   setIsLoginLoading: React.Dispatch<React.SetStateAction<boolean>>;

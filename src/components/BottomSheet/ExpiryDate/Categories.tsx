@@ -1,9 +1,9 @@
-import {StyleSheet, View} from 'react-native';
 import React, {useEffect} from 'react';
+import {StyleSheet, View} from 'react-native';
 import {colors, FWidth} from '../../../../globalStyle';
-import Category from './Category';
 import {categoryList} from '../../../utils/list';
 import SubTitleBS2 from '../SubTitleBS2';
+import Category from './Category';
 
 type CategoriesProps = {
   itemNumber: number;

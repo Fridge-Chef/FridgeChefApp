@@ -1,21 +1,21 @@
+import React, {useState} from 'react';
 import {Keyboard, Pressable, StyleSheet, View} from 'react-native';
-import React, {useEffect, useState} from 'react';
 import {colors, FWidth} from '../../../../globalStyle';
-import InputAndSearch from '../InputAndSearch';
-import {useAddCheck, useAddModalInputText} from '../../../store/store';
-import ItemList from '../ItemList';
-import BottomButton from '../BottomButton';
-import TopMenu from './TopMenu';
 import {useGetMyFridgeList} from '../../../api/recipeQuery';
+import {useAddCheck, useAddModalInputText} from '../../../store/store';
 import Loading from '../../elements/Loading';
+import BottomButton from '../BottomButton';
+import InputAndSearch from '../InputAndSearch';
+import ItemList from '../ItemList';
+import TopMenu from './TopMenu';
 
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import {
   useAddIngredients2,
   useGetIngredients,
 } from '../../../api/ingredientsQuery';
-import {ListData} from '../../../type/types';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import {useBottomSheetRef} from '../../../store/bottomSheetStore';
+import {ListData} from '../../../type/types';
 
 const AddIngredient = () => {
   const {bottomSheetRef} = useBottomSheetRef();

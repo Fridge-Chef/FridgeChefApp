@@ -1,15 +1,14 @@
-import {StyleSheet} from 'react-native';
-import React, {useState} from 'react';
-import {colors, FWidth} from '../../../globalStyle';
-import FText from '../elements/FText';
-import FButton from '../elements/FButton';
-import {handleLogout, handleUserDelete} from '../../service/MyPage/MyPage';
 import {ParamListBase, useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import FModal from '../elements/FModal';
-import {UserData} from '../../type/types';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import {useQueryClient} from '@tanstack/react-query';
+import React, {useState} from 'react';
+import {StyleSheet} from 'react-native';
+import {colors, FWidth} from '../../../globalStyle';
+import {handleLogout, handleUserDelete} from '../../service/MyPage/MyPage';
+import {UserData} from '../../type/types';
+import FButton from '../elements/FButton';
+import FModal from '../elements/FModal';
+import FText from '../elements/FText';
 
 type MenuListProps = {
   userData: UserData;

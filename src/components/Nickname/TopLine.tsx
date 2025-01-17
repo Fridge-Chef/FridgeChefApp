@@ -1,5 +1,5 @@
-import {DimensionValue, StyleSheet, View} from 'react-native';
 import React from 'react';
+import {DimensionValue, StyleSheet, View} from 'react-native';
 import {colors, FWidth} from '../../../globalStyle';
 
 type TopLineProps = {

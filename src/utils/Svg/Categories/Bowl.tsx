@@ -1,6 +1,6 @@
-import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
-import {G, Path, Rect, Svg} from 'react-native-svg';
+import {StyleSheet} from 'react-native';
+import {Path, Svg} from 'react-native-svg';
 import {FWidth} from '../../../../globalStyle';
 
 const Bowl = () => {

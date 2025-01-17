@@ -1,13 +1,13 @@
-import {StyleSheet, View} from 'react-native';
 import React from 'react';
+import {StyleSheet, View} from 'react-native';
 import {colors, FWidth} from '../../../../../../globalStyle';
-import FText from '../../../../elements/FText';
-import FImage from '../../../../elements/FImage';
-import FButton from '../../../../elements/FButton';
-import StepItemTitle from './StepItemTitle';
-import StepItemInput from './StepItemInput';
-import DetailReviewEdit from '../../../../../utils/Svg/DetailReviewEdit';
 import AddRecipeClose from '../../../../../utils/Svg/AddRecipeClose';
+import DetailReviewEdit from '../../../../../utils/Svg/DetailReviewEdit';
+import FButton from '../../../../elements/FButton';
+import FImage from '../../../../elements/FImage';
+import FText from '../../../../elements/FText';
+import StepItemInput from './StepItemInput';
+import StepItemTitle from './StepItemTitle';
 
 type StepITemProps = {
   index: number;

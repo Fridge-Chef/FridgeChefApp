@@ -1,15 +1,15 @@
-import {ScrollView, StyleSheet, View} from 'react-native';
-import React, {useEffect} from 'react';
 import {RouteProp, useRoute} from '@react-navigation/native';
+import React, {useEffect} from 'react';
+import {ScrollView, StyleSheet, View} from 'react-native';
 import {colors} from '../../../globalStyle';
-import FImage from '../../components/elements/FImage';
+import {useGetRecipeDetail} from '../../api/recipeQuery';
 import PreviewTitle from '../../components/Community/AddRecipe/Preview/PreviewTitle';
-import RecipeNote from '../../components/MyFridge/RecipeDetail/RecipeNote/RecipeNote';
+import FImage from '../../components/elements/FImage';
+import Loading from '../../components/elements/Loading';
 import IngredientComponent from '../../components/MyFridge/RecipeDetail/IngredientComponent/IngredientComponent';
 import RecipeComponent from '../../components/MyFridge/RecipeDetail/RecipeComponent/RecipeComponent';
-import {useGetRecipeDetail} from '../../api/recipeQuery';
-import Loading from '../../components/elements/Loading';
-import {useRecipeId, useUserDetail, useUsernameCheck} from '../../store/store';
+import RecipeNote from '../../components/MyFridge/RecipeDetail/RecipeNote/RecipeNote';
+import {useRecipeId, useUserDetail} from '../../store/store';
 
 type CRecipeReviews = {
   params: {

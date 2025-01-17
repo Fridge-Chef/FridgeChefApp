@@ -1,17 +1,17 @@
-import {StyleSheet} from 'react-native';
-import React, {useState} from 'react';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import MyFridgeScreen from './MyFridgeScreen';
-import RecipeBookScreen from './RecipeBookScreen';
-import CommunityScreen from './CommunityScreen';
-import MoreScreen from './MoreScreen';
-import NameComponent from './TebMenu/NameComponent';
-import IconComponent from './TebMenu/IconComponent';
-import {colors, FWidth} from '../../../globalStyle';
-import FModal from '../elements/FModal';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {ParamListBase, useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import React, {useState} from 'react';
+import {StyleSheet} from 'react-native';
+import {colors, FWidth} from '../../../globalStyle';
+import FModal from '../elements/FModal';
+import CommunityScreen from './CommunityScreen';
+import MoreScreen from './MoreScreen';
+import MyFridgeScreen from './MyFridgeScreen';
+import RecipeBookScreen from './RecipeBookScreen';
+import IconComponent from './TebMenu/IconComponent';
+import NameComponent from './TebMenu/NameComponent';
 const BottomTab = () => {
   const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
   const Tab = createBottomTabNavigator();

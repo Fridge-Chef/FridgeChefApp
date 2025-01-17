@@ -1,26 +1,26 @@
-import {StyleSheet, View} from 'react-native';
-import React, {useState} from 'react';
-import FButton from '../../elements/FButton';
-import UserInfo from '../../MyFridge/RecipeDetail/RecipeReview/UserInfo';
-import DetailReviewMore from '../../../utils/Svg/DetailReviewMore';
-import ReviewContent from '../../MyFridge/RecipeDetail/RecipeReview/ReviewContent';
-import BottomComponent from '../../MyFridge/RecipeDetail/RecipeReview/BottomComponent';
-import {colors, FWidth} from '../../../../globalStyle';
-import {useRecipeReviewTitle} from '../../../store/store';
 import {ParamListBase, useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import MyReviewTitle from './MyReviewTitle';
 import {useQueryClient} from '@tanstack/react-query';
-import {useMyRecipeReviews} from '../../../api/recipeBookQuery';
-import {MyRecipeReviewsType} from '../../../type/types';
+import React, {useState} from 'react';
+import {StyleSheet, View} from 'react-native';
+import {colors, FWidth} from '../../../../globalStyle';
 import {
   useDeleteDetailReview,
   useGetRecipeDetailReviewList,
   useLikeRecipeReview,
 } from '../../../api/commentReviewQuery';
-import AppBarMenu from '../../elements/AppBarMenu';
-import DeleteModal from '../../elements/Modals/DeleteModal';
+import {useMyRecipeReviews} from '../../../api/recipeBookQuery';
 import {useUserBoardCount} from '../../../api/userQuery';
+import {useRecipeReviewTitle} from '../../../store/store';
+import {MyRecipeReviewsType} from '../../../type/types';
+import DetailReviewMore from '../../../utils/Svg/DetailReviewMore';
+import AppBarMenu from '../../elements/AppBarMenu';
+import FButton from '../../elements/FButton';
+import DeleteModal from '../../elements/Modals/DeleteModal';
+import BottomComponent from '../../MyFridge/RecipeDetail/RecipeReview/BottomComponent';
+import ReviewContent from '../../MyFridge/RecipeDetail/RecipeReview/ReviewContent';
+import UserInfo from '../../MyFridge/RecipeDetail/RecipeReview/UserInfo';
+import MyReviewTitle from './MyReviewTitle';
 
 type ReviewItemProps = {
   review: MyRecipeReviewsType;

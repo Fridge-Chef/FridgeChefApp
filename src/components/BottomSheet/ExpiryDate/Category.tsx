@@ -1,8 +1,7 @@
-import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
-import {colors, FWidth} from '../../../../globalStyle';
-import FText from '../../elements/FText';
+import {StyleSheet} from 'react-native';
 import FButton from '../../elements/FButton';
+import FText from '../../elements/FText';
 
 type CategoryProps = {
   width: number;

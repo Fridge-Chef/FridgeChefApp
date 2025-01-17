@@ -1,6 +1,6 @@
-import {StyleSheet} from 'react-native';
 import React from 'react';
-import {G, Mask, Path, Svg} from 'react-native-svg';
+import {StyleSheet} from 'react-native';
+import {Path, Svg} from 'react-native-svg';
 import {colors, FWidth} from '../../../globalStyle';
 
 type TabHeartProps = {

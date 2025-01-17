@@ -1,8 +1,8 @@
-import {StyleSheet, View} from 'react-native';
 import React, {useEffect, useState} from 'react';
+import {StyleSheet, View} from 'react-native';
 import {FWidth} from '../../../../globalStyle';
-import StorageItem from './StorageItem';
 import {storageList, storageList2} from '../../../utils/list';
+import StorageItem from './StorageItem';
 
 type StorageListProps = {
   isClicked: number;

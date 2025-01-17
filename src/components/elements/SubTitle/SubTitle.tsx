@@ -1,7 +1,7 @@
-import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
-import FText from '../FText';
+import {StyleSheet} from 'react-native';
 import {colors} from '../../../../globalStyle';
+import FText from '../FText';
 
 type SubTitleProps = {
   title: string;

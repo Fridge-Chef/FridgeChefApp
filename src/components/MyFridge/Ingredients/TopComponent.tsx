@@ -1,13 +1,13 @@
-import {StyleSheet, View} from 'react-native';
 import React, {useState} from 'react';
+import {StyleSheet, View} from 'react-native';
 import {colors, FWidth} from '../../../../globalStyle';
-import FButton from '../../elements/FButton';
-import FText from '../../elements/FText';
-import Plus from '../../../utils/Svg/Plus';
 import {
   useBottomSheetRef,
   useBottomSheetTitle,
 } from '../../../store/bottomSheetStore';
+import Plus from '../../../utils/Svg/Plus';
+import FButton from '../../elements/FButton';
+import FText from '../../elements/FText';
 
 const TopComponent = () => {
   const {bottomSheetRef} = useBottomSheetRef();

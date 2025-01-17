@@ -1,8 +1,8 @@
-import {StyleSheet, View} from 'react-native';
 import React from 'react';
+import {StyleSheet, View} from 'react-native';
 import {colors, FWidth} from '../../../../../globalStyle';
-import FText from '../../../elements/FText';
 import FImage from '../../../elements/FImage';
+import FText from '../../../elements/FText';
 
 type ReviewContentProps = {
   content: {

@@ -1,15 +1,15 @@
-import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
-import BottomButton from '../BottomButton';
+import {StyleSheet, View} from 'react-native';
 import {colors, FWidth} from '../../../../globalStyle';
-import TopTitle from '../TopTitle';
-import FoodStyleList from './FoodStyleList';
-import FoodTypeList from './FoodTypeList';
+import {useBottomSheetRef} from '../../../store/bottomSheetStore';
 import {
   useAddRecipeCategories,
   useSelectedCategory,
 } from '../../../store/store';
-import {useBottomSheetRef} from '../../../store/bottomSheetStore';
+import BottomButton from '../BottomButton';
+import TopTitle from '../TopTitle';
+import FoodStyleList from './FoodStyleList';
+import FoodTypeList from './FoodTypeList';
 
 const AddRecipeCategory = () => {
   const {addTitle, setAddTitle} = useAddRecipeCategories();

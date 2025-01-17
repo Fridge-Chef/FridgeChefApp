@@ -1,10 +1,10 @@
-import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
+import {StyleSheet, View} from 'react-native';
 import Toast, {ToastConfig} from 'react-native-toast-message';
-import FText from '../components/elements/FText';
 import {colors, FWidth} from '../../globalStyle';
-import Close3 from './Svg/Close3';
 import FButton from '../components/elements/FButton';
+import FText from '../components/elements/FText';
+import Close3 from './Svg/Close3';
 
 const FToast = () => {
   const handleClose = () => {

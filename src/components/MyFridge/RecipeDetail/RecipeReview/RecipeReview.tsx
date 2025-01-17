@@ -1,10 +1,10 @@
-import {Pressable, StyleSheet, View} from 'react-native';
 import React, {useEffect} from 'react';
+import {Pressable, StyleSheet} from 'react-native';
 import {colors, FWidth} from '../../../../../globalStyle';
-import TitleComponent from './TitleComponent';
-import ReviewsComponent from './ReviewsComponent';
-import Loading from '../../../elements/Loading';
 import {useGetRecipeDetailReviewList} from '../../../../api/commentReviewQuery';
+import Loading from '../../../elements/Loading';
+import ReviewsComponent from './ReviewsComponent';
+import TitleComponent from './TitleComponent';
 
 type RecipeReviewProps = {
   boardId: number;

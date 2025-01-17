@@ -1,7 +1,7 @@
-import {StyleSheet, View} from 'react-native';
 import React from 'react';
-import Close2 from '../../utils/Svg/Close2';
+import {StyleSheet, View} from 'react-native';
 import {colors, FWidth} from '../../../globalStyle';
+import Close2 from '../../utils/Svg/Close2';
 import FButton from '../elements/FButton';
 import FText from '../elements/FText';
 

@@ -1,19 +1,12 @@
-import {Keyboard, StatusBar, StyleSheet} from 'react-native';
-import React, {useCallback, useEffect, useMemo, useRef} from 'react';
 import {
   BottomSheetBackdrop,
   BottomSheetModal,
   BottomSheetModalProvider,
   BottomSheetScrollView,
 } from '@gorhom/bottom-sheet';
-import {useAddRecipeCategories, useCategoriesText} from '../../store/store';
+import React, {useCallback, useEffect, useMemo, useRef} from 'react';
+import {Keyboard, StatusBar, StyleSheet} from 'react-native';
 import {colors, FWidth} from '../../../globalStyle';
-import {
-  useCommunityMyRecipeName,
-  useMyRecipeRankName,
-  useMyReviewRankName,
-  useRecipeLikeRankName,
-} from '../../store/rankingStore';
 import {
   bottomScreen,
   handleIndex,
@@ -22,6 +15,13 @@ import {
   useBottomSheetRef,
   useBottomSheetTitle,
 } from '../../store/bottomSheetStore';
+import {
+  useCommunityMyRecipeName,
+  useMyRecipeRankName,
+  useMyReviewRankName,
+  useRecipeLikeRankName,
+} from '../../store/rankingStore';
+import {useAddRecipeCategories, useCategoriesText} from '../../store/store';
 
 const FBottomSheet = () => {
   const {title} = useBottomSheetTitle();

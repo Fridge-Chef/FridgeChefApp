@@ -1,8 +1,8 @@
-import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
+import {StyleSheet, View} from 'react-native';
 import {colors, FWidth} from '../../../../../globalStyle';
-import NoteContent from './NoteContent';
 import SubTitle2 from '../../../elements/SubTitle/SubTitle2';
+import NoteContent from './NoteContent';
 
 type RecipeNoteProps = {
   content: string;

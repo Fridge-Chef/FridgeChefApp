@@ -1,10 +1,10 @@
-import {StyleSheet, View} from 'react-native';
 import React from 'react';
-import UserInfo from '../../MyFridge/RecipeDetail/RecipeReview/UserInfo';
+import {StyleSheet, View} from 'react-native';
 import {colors} from '../../../../globalStyle';
-import FText from '../../elements/FText';
 import {getExpiryDateInfo} from '../../../service/MyFridge/MyFridge';
 import {RecipeReviewDetailType} from '../../../type/types';
+import FText from '../../elements/FText';
+import UserInfo from '../../MyFridge/RecipeDetail/RecipeReview/UserInfo';
 
 type TopComponentProps = {
   data: RecipeReviewDetailType;

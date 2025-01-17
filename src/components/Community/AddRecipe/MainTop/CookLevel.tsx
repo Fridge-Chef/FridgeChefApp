@@ -1,9 +1,9 @@
-import {StyleSheet, Text, View} from 'react-native';
 import React, {useEffect, useState} from 'react';
+import {StyleSheet, View} from 'react-native';
 import {colors, FWidth} from '../../../../../globalStyle';
+import {AddRecipeLevelList} from '../../../../utils/list';
 import FButton from '../../../elements/FButton';
 import FText from '../../../elements/FText';
-import {AddRecipeLevelList} from '../../../../utils/list';
 
 type CookLevelProps = {
   level: string;

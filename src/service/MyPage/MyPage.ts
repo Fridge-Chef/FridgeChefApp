@@ -1,8 +1,8 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import * as Kakao from '@react-native-seoul/kakao-login';
 import {ParamListBase} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {userDelete} from '../../api/user';
-import * as Kakao from '@react-native-seoul/kakao-login';
 type LogoutProps = {
   navigation: NativeStackNavigationProp<ParamListBase>;
   setLogout: (logout: boolean) => void;

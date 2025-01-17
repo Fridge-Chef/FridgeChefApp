@@ -1,9 +1,9 @@
-import {StyleSheet, View} from 'react-native';
 import React from 'react';
+import {StyleSheet, View} from 'react-native';
 import {colors, FWidth} from '../../../../../globalStyle';
+import {AddIngredientPageType} from '../../../../type/types';
 import ImageComponent from './ImageComponent';
 import InputContent from './InputContent';
-import {AddIngredientPageType} from '../../../../type/types';
 
 type MainTopType = {
   selectedCategory: string;

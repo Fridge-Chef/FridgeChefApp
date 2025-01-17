@@ -1,5 +1,5 @@
-import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
+import {StyleSheet} from 'react-native';
 import {ClipPath, Defs, G, Mask, Path, Rect, Svg} from 'react-native-svg';
 import {FWidth} from '../../../globalStyle';
 

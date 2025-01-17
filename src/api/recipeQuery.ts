@@ -1,4 +1,5 @@
 import {useInfiniteQuery, useMutation, useQuery} from '@tanstack/react-query';
+import {AddIngredientType, RecipeListType} from '../type/types';
 import {
   addLikeRecipe,
   addMyRecipe,
@@ -8,7 +9,6 @@ import {
   getRecipeList,
   getRecommendedRecipeList,
 } from './recipe';
-import {AddIngredientType, RecipeListType} from '../type/types';
 
 export const useGetRecipeList = (size = 10, issue = 'ALL', sort = 'LATEST') => {
   return useInfiniteQuery({

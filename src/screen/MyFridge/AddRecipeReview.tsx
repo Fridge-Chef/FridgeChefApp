@@ -1,15 +1,14 @@
-import {Keyboard, Pressable, ScrollView, StyleSheet, View} from 'react-native';
+import {RouteProp, useRoute} from '@react-navigation/native';
 import React, {useEffect} from 'react';
+import {Keyboard, Pressable, ScrollView, StyleSheet, View} from 'react-native';
 import {FWidth} from '../../../globalStyle';
+import {useGetRecipeReviewDetail} from '../../api/commentReviewQuery';
+import AddContent from '../../components/MyFridge/AddRecipeReview/AddContent';
 import AddImage from '../../components/MyFridge/AddRecipeReview/AddImage';
 import AddScore from '../../components/MyFridge/AddRecipeReview/AddScore';
-import AddContent from '../../components/MyFridge/AddRecipeReview/AddContent';
 import ImageView from '../../components/MyFridge/AddRecipeReview/ImageView';
 import {useUserReview} from '../../store/store';
-import {RouteProp, useRoute} from '@react-navigation/native';
 import {RecipeReviewDetailType} from '../../type/types';
-import {useGetRecipeReviewDetail} from '../../api/commentReviewQuery';
-import Loading from '../../components/elements/Loading';
 
 type RecipeTitle = {
   params: {

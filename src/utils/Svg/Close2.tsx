@@ -1,5 +1,5 @@
-import {ColorValue, StyleSheet} from 'react-native';
 import React from 'react';
+import {ColorValue, StyleSheet} from 'react-native';
 import {Path, Svg} from 'react-native-svg';
 import {FWidth} from '../../../globalStyle';
 

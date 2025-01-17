@@ -1,24 +1,23 @@
-import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import BottomTab from './BottomTab';
+import React from 'react';
 import {colors} from '../../../globalStyle';
-
-import FAppBar from '../elements/FAppBar';
-import StorageGuide from '../../screen/MyFridge/StorageGuide';
-import SplashScreen from '../../screen/SplashScreen';
-import AddRecipeReview from '../../screen/MyFridge/AddRecipeReview';
+import AddBasic from '../../screen/AddBasic';
 import AddRecipe from '../../screen/Community/AddRecipe';
 import AddRecipePreview from '../../screen/Community/AddRecipePreview';
-import NicknamePage from '../../screen/NicknamePage';
-import AddBasic from '../../screen/AddBasic';
 import CRecipeReviewDetail from '../../screen/Community/CRecipeReviewDetail';
-import AddReviewAppBar from './AppBar/AddReviewAppBar';
-import ReviewDetailAppBar from './AppBar/ReviewDetailAppBar';
-import AddRecipeAppBar from './AppBar/AddRecipeAppBar';
 import Login from '../../screen/Login/Login';
 import ServiceLogin from '../../screen/Login/ServiceLogin';
+import AddRecipeReview from '../../screen/MyFridge/AddRecipeReview';
+import StorageGuide from '../../screen/MyFridge/StorageGuide';
+import NicknamePage from '../../screen/NicknamePage';
+import SplashScreen from '../../screen/SplashScreen';
 import UserReview from '../Community/UserReview/UserReview';
+import FAppBar from '../elements/FAppBar';
+import AddRecipeAppBar from './AppBar/AddRecipeAppBar';
+import AddReviewAppBar from './AppBar/AddReviewAppBar';
 import MyRecipeDetailAppBar from './AppBar/MyRecipeDetailAppBar';
+import ReviewDetailAppBar from './AppBar/ReviewDetailAppBar';
+import BottomTab from './BottomTab';
 
 const MainStackScreen = () => {
   const Stack = createNativeStackNavigator();

@@ -1,27 +1,26 @@
-import {StyleSheet, View} from 'react-native';
-import React, {useEffect, useState} from 'react';
-import {colors, FWidth} from '../../../../../globalStyle';
-import ReviewContent from './ReviewContent';
-import UserInfo from './UserInfo';
-import BottomComponent from './BottomComponent';
-import DetailReviewMore from '../../../../utils/Svg/DetailReviewMore';
-import FButton from '../../../elements/FButton';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import {ParamListBase, useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import {useRecipeReviewTitle, useUserReview} from '../../../../store/store';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import {useGetRecipeDetail} from '../../../../api/recipeQuery';
-import {RecipeReviewDetailType} from '../../../../type/types';
-import AppBarMenu from '../../../elements/AppBarMenu';
+import React, {useState} from 'react';
+import {StyleSheet, View} from 'react-native';
+import {colors, FWidth} from '../../../../../globalStyle';
 import {
   useDeleteDetailReview,
   useLikeRecipeReview,
 } from '../../../../api/commentReviewQuery';
-import LoginModal from '../../../elements/Modals/LoginModal';
-import DeleteModal from '../../../elements/Modals/DeleteModal';
-import {useQueryClient} from '@tanstack/react-query';
 import {useMyRecipeReviews} from '../../../../api/recipeBookQuery';
+import {useGetRecipeDetail} from '../../../../api/recipeQuery';
 import {useUserBoardCount} from '../../../../api/userQuery';
+import {useRecipeReviewTitle, useUserReview} from '../../../../store/store';
+import {RecipeReviewDetailType} from '../../../../type/types';
+import DetailReviewMore from '../../../../utils/Svg/DetailReviewMore';
+import AppBarMenu from '../../../elements/AppBarMenu';
+import FButton from '../../../elements/FButton';
+import DeleteModal from '../../../elements/Modals/DeleteModal';
+import LoginModal from '../../../elements/Modals/LoginModal';
+import BottomComponent from './BottomComponent';
+import ReviewContent from './ReviewContent';
+import UserInfo from './UserInfo';
 
 type ReviewProps = {
   review: RecipeReviewDetailType;

@@ -1,9 +1,8 @@
-import {StyleSheet, Text, View} from 'react-native';
-import React, {useState} from 'react';
-import {menuList} from '../../utils/list';
+import React from 'react';
+import {StyleSheet, View} from 'react-native';
+import {colors, FWidth} from '../../../globalStyle';
 import FButton from '../elements/FButton';
 import FText from '../elements/FText';
-import {colors, FWidth} from '../../../globalStyle';
 
 type CListMenuProps = {
   onClick: number;

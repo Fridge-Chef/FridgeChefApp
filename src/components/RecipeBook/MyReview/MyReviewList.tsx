@@ -1,8 +1,8 @@
-import {ActivityIndicator, FlatList, StyleSheet, View} from 'react-native';
 import React from 'react';
-import ReviewItem from './ReviewItem';
-import {MyRecipeReviewsType} from '../../../type/types';
+import {ActivityIndicator, FlatList, StyleSheet} from 'react-native';
 import {colors, FWidth} from '../../../../globalStyle';
+import {MyRecipeReviewsType} from '../../../type/types';
+import ReviewItem from './ReviewItem';
 
 type MyReviewListProps = {
   list: MyRecipeReviewsType[];

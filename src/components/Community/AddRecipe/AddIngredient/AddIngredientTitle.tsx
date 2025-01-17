@@ -1,8 +1,8 @@
-import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
-import RecipeSubTitle from '../RecipeSubTitle';
-import FText from '../../../elements/FText';
+import {StyleSheet} from 'react-native';
 import {colors, FWidth} from '../../../../../globalStyle';
+import FText from '../../../elements/FText';
+import RecipeSubTitle from '../RecipeSubTitle';
 
 const AddIngredientTitle = () => {
   return (

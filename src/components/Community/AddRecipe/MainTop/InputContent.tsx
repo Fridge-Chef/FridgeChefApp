@@ -1,13 +1,13 @@
-import {StyleSheet, View} from 'react-native';
 import React from 'react';
-import RecipeSubTitle from '../RecipeSubTitle';
+import {StyleSheet, View} from 'react-native';
 import {FWidth} from '../../../../../globalStyle';
-import {AddIngredientPageType, AddIngredientType} from '../../../../type/types';
-import FootTitle from './FootTitle';
+import {AddIngredientPageType} from '../../../../type/types';
+import RecipeSubTitle from '../RecipeSubTitle';
 import Category from './Category';
-import RecipePreview from './RecipePreview';
-import CookTime from './CookTime';
 import CookLevel from './CookLevel';
+import CookTime from './CookTime';
+import FootTitle from './FootTitle';
+import RecipePreview from './RecipePreview';
 
 type InputContentType = {
   selectedCategory: string;

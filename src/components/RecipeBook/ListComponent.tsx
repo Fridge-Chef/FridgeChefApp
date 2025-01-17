@@ -1,12 +1,11 @@
+import React from 'react';
 import {
   ActivityIndicator,
   FlatList,
   ListRenderItem,
-  ScrollView,
   StyleSheet,
   View,
 } from 'react-native';
-import React from 'react';
 import {colors, FWidth} from '../../../globalStyle';
 import ArrowSubTitle from '../elements/SubTitle/ArrowSubTitle';
 

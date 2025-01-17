@@ -1,7 +1,7 @@
-import {StyleSheet, View} from 'react-native';
 import React from 'react';
-import FButton from '../../elements/FButton';
+import {StyleSheet, View} from 'react-native';
 import {colors, FWidth} from '../../../../globalStyle';
+import FButton from '../../elements/FButton';
 import FText from '../../elements/FText';
 
 type StorageMenuProps = {

@@ -1,18 +1,18 @@
-import {Keyboard, StatusBar, StyleSheet, Text, View} from 'react-native';
-import React, {useCallback, useEffect, useMemo, useRef, useState} from 'react';
 import {
   BottomSheetBackdrop,
   BottomSheetModal,
   BottomSheetModalProvider,
   BottomSheetScrollView,
 } from '@gorhom/bottom-sheet';
+import React, {useCallback, useEffect, useMemo, useRef} from 'react';
+import {Keyboard, StatusBar, StyleSheet} from 'react-native';
 import {colors, FWidth} from '../../../../globalStyle';
-import {} from '../../../store/store';
-import SubExpiryDate from './SubExpiryDate';
 import {
   useSubBottomSheetRef,
   useSubBottomSheetTitle,
 } from '../../../store/bottomSheetStore';
+import {} from '../../../store/store';
+import SubExpiryDate from './SubExpiryDate';
 
 const FBottomSheetSub = () => {
   const {subTitle} = useSubBottomSheetTitle();

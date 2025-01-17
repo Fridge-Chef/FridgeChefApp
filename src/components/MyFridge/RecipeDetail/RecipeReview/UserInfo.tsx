@@ -1,9 +1,9 @@
-import {StyleSheet, View} from 'react-native';
 import React from 'react';
+import {StyleSheet, View} from 'react-native';
 import {colors, FWidth} from '../../../../../globalStyle';
-import TotalPoint from './TotalPoint';
-import FText from '../../../elements/FText';
 import DetailUserBadge from '../../../../utils/Svg/DetailUserBadge';
+import FText from '../../../elements/FText';
+import TotalPoint from './TotalPoint';
 
 type UserInfoProps = {
   writer: string;

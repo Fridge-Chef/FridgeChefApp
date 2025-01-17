@@ -1,13 +1,13 @@
-import {StyleSheet, View} from 'react-native';
 import React from 'react';
+import {StyleSheet, View} from 'react-native';
 import {colors, FWidth} from '../../../../../globalStyle';
-import FText from '../../../elements/FText';
-import AddRecipePlus from '../../../../utils/Svg/AddRecipePlus';
-import FButton from '../../../elements/FButton';
-import FImage from '../../../elements/FImage';
 import {handleImagePicker} from '../../../../service/SingleImagePicker';
 import {AddIngredientPageType} from '../../../../type/types';
+import AddRecipePlus from '../../../../utils/Svg/AddRecipePlus';
 import ImageIcon from '../../../../utils/Svg/ImageIcon';
+import FButton from '../../../elements/FButton';
+import FImage from '../../../elements/FImage';
+import FText from '../../../elements/FText';
 
 const ImageComponent = ({
   addRecipeData,

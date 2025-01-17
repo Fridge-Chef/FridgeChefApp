@@ -1,8 +1,8 @@
-import {ScrollView, StyleSheet, View} from 'react-native';
 import React from 'react';
-import {colors, FHeight, FWidth} from '../../../globalStyle';
-import TopComponent from '../../components/MyFridge/RecRecipe/TopComponent';
+import {StyleSheet, View} from 'react-native';
+import {colors} from '../../../globalStyle';
 import Recipes from '../../components/MyFridge/RecRecipe/ListItem/Recipes';
+import TopComponent from '../../components/MyFridge/RecRecipe/TopComponent';
 import {useIngredientList} from '../../store/store';
 
 const RecRecipe = () => {

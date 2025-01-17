@@ -1,13 +1,13 @@
-import {StyleSheet, View} from 'react-native';
-import React, {useEffect} from 'react';
-import {colors, FWidth} from '../../../../../globalStyle';
-import ItemComponent from './ItemComponent';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import React, {useEffect} from 'react';
+import {StyleSheet, View} from 'react-native';
+import {colors, FWidth} from '../../../../../globalStyle';
 import {useGetIngredients} from '../../../../api/ingredientsQuery';
-import Loading from '../../../elements/Loading';
-import {ListData} from '../../../../type/types';
-import {useAddCheck} from '../../../../store/store';
 import {useGetUser} from '../../../../api/userQuery';
+import {useAddCheck} from '../../../../store/store';
+import {ListData} from '../../../../type/types';
+import Loading from '../../../elements/Loading';
+import ItemComponent from './ItemComponent';
 
 type AddListProps = {
   dataList: ListData[] | undefined;

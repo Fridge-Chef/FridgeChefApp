@@ -1,9 +1,9 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {ParamListBase} from '@react-navigation/native';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import React from 'react';
+import {StyleSheet, Text, View} from 'react-native';
 import {colors, fontFamilies, FWidth} from '../../../globalStyle';
 import FButton from '../elements/FButton';
-import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import {ParamListBase} from '@react-navigation/native';
 
 type TakeTourProps = {
   navigation: NativeStackNavigationProp<ParamListBase>;

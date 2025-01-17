@@ -1,9 +1,9 @@
-import {Image, StyleSheet, View} from 'react-native';
-import React, {useEffect} from 'react';
-import {colors, FWidth} from '../../globalStyle';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import {ParamListBase, useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import React, {useEffect} from 'react';
+import {Image, StyleSheet, View} from 'react-native';
+import {colors, FWidth} from '../../globalStyle';
 import FText from '../components/elements/FText';
 
 const SplashScreen = () => {

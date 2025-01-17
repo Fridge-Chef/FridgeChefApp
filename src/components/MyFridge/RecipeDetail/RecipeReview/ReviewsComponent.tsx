@@ -1,14 +1,14 @@
-import {StyleSheet, View} from 'react-native';
 import React from 'react';
+import {StyleSheet, View} from 'react-native';
 import {FHeight, FWidth} from '../../../../../globalStyle';
-import Review from './Review';
-import RankButton from '../../RecRecipe/ListItem/RankButton';
-import NoData from './NoData';
-import {RecipeReviewListType} from '../../../../type/types';
 import {
   useBottomSheetRef,
   useBottomSheetTitle,
 } from '../../../../store/bottomSheetStore';
+import {RecipeReviewListType} from '../../../../type/types';
+import RankButton from '../../RecRecipe/ListItem/RankButton';
+import NoData from './NoData';
+import Review from './Review';
 
 type ReviewsComponentProps = {
   title: string;

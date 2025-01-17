@@ -1,17 +1,17 @@
-import {FlatList, LayoutChangeEvent, StyleSheet, View} from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import React, {useEffect, useState} from 'react';
+import {FlatList, LayoutChangeEvent, StyleSheet, View} from 'react-native';
 import {colors, FHeight, FWidth} from '../../../../globalStyle';
-import FButton from '../../elements/FButton';
-import {ListData} from '../../../type/types';
-import FText from '../../elements/FText';
-import SubTitle from '../../elements/SubTitle/SubTitle';
-import RecipeRightArrow from '../../../utils/Svg/Categories/RecipeRightArrow';
 import {
   useBottomSheetRef,
   useBottomSheetTitle,
 } from '../../../store/bottomSheetStore';
 import {useMyIngredientsChecked} from '../../../store/store';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import {ListData} from '../../../type/types';
+import RecipeRightArrow from '../../../utils/Svg/Categories/RecipeRightArrow';
+import FButton from '../../elements/FButton';
+import FText from '../../elements/FText';
+import SubTitle from '../../elements/SubTitle/SubTitle';
 
 type TopComponentProps = {
   ingredients: ListData[];

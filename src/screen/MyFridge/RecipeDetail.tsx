@@ -1,24 +1,20 @@
-import {Pressable, ScrollView, StyleSheet, View} from 'react-native';
-import React, {useEffect, useState} from 'react';
-import {colors} from '../../../globalStyle';
 import {RouteProp, useRoute} from '@react-navigation/native';
-import TitleComponent from '../../components/MyFridge/RecipeDetail/TitleComponent/TitleComponent';
-import IngredientComponent from '../../components/MyFridge/RecipeDetail/IngredientComponent/IngredientComponent';
-import RecipeComponent from '../../components/MyFridge/RecipeDetail/RecipeComponent/RecipeComponent';
-import RecipeReview from '../../components/MyFridge/RecipeDetail/RecipeReview/RecipeReview';
+import React, {useEffect, useState} from 'react';
+import {Pressable, ScrollView, StyleSheet, View} from 'react-native';
+import {colors} from '../../../globalStyle';
 import FImage from '../../components/elements/FImage';
 import Badge from '../../components/MyFridge/RecipeDetail/Badge';
+import IngredientComponent from '../../components/MyFridge/RecipeDetail/IngredientComponent/IngredientComponent';
+import RecipeComponent from '../../components/MyFridge/RecipeDetail/RecipeComponent/RecipeComponent';
 import RecipeNote from '../../components/MyFridge/RecipeDetail/RecipeNote/RecipeNote';
+import RecipeReview from '../../components/MyFridge/RecipeDetail/RecipeReview/RecipeReview';
+import TitleComponent from '../../components/MyFridge/RecipeDetail/TitleComponent/TitleComponent';
 
+import FastImage from '@d11/react-native-fast-image';
 import {useGetRecipeDetail} from '../../api/recipeQuery';
 import Loading from '../../components/elements/Loading';
+import {useUserDetail, useUsernameCheck} from '../../store/store';
 import {useScrollY} from '../../store/utillStore';
-import {
-  useUserDetail,
-  useUsernameCheck,
-  useUserReview,
-} from '../../store/store';
-import FastImage from '@d11/react-native-fast-image';
 
 type DetailItem = {
   params: {

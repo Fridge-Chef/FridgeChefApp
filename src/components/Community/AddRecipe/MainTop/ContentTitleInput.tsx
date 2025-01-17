@@ -1,7 +1,7 @@
-import {StyleSheet, Text, View} from 'react-native';
 import React, {useState} from 'react';
-import FInput from '../../../elements/FInput';
+import {StyleSheet, View} from 'react-native';
 import {colors, fontFamilies, FWidth} from '../../../../../globalStyle';
+import FInput from '../../../elements/FInput';
 import FText from '../../../elements/FText';
 
 type ContentTitleInputProps = {

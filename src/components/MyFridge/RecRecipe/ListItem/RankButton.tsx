@@ -1,7 +1,7 @@
-import {StyleSheet} from 'react-native';
 import React from 'react';
-import ArrowSubTitle from '../../../elements/SubTitle/ArrowSubTitle';
+import {StyleSheet} from 'react-native';
 import {useRecipeLikeRankName} from '../../../../store/rankingStore';
+import ArrowSubTitle from '../../../elements/SubTitle/ArrowSubTitle';
 
 type RankButtonProps = {
   onPress: () => void;

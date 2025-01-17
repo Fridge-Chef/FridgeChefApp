@@ -1,11 +1,11 @@
-import {StyleSheet} from 'react-native';
-import React from 'react';
-import FText from '../elements/FText';
-import {colors, FWidth} from '../../../globalStyle';
-import FButton from '../elements/FButton';
 import {ParamListBase, useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import React from 'react';
+import {StyleSheet} from 'react-native';
+import {colors, FWidth} from '../../../globalStyle';
 import {userNickname} from '../../service/Nickname/Nickname';
+import FButton from '../elements/FButton';
+import FText from '../elements/FText';
 
 type NextButtonProps = {
   nickname: string;

@@ -1,8 +1,8 @@
-import {StyleSheet, View} from 'react-native';
 import React from 'react';
+import {StyleSheet, View} from 'react-native';
 import {colors, FWidth} from '../../../../../globalStyle';
-import ItemsComponent from './ItemsComponent';
 import FText from '../../../elements/FText';
+import ItemsComponent from './ItemsComponent';
 
 type IngredientContainerProps = {
   title: string;

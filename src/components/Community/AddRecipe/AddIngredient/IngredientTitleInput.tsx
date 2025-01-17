@@ -1,7 +1,7 @@
-import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
-import FInput from '../../../elements/FInput';
+import {StyleSheet, View} from 'react-native';
 import {fontFamilies} from '../../../../../globalStyle';
+import FInput from '../../../elements/FInput';
 
 type IngredientTitleInputProps = {
   value: string;
