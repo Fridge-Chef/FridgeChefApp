@@ -33,7 +33,7 @@ const TitleComponent = ({detailData, items}: TitleComponentProps) => {
       />
       <DetailInfo
         writer={detailData.username}
-        like={detailData.rating}
+        hit={detailData.rating}
         reviews={detailData.starTotal}
         favorite={detailData.hitTotal}
       />

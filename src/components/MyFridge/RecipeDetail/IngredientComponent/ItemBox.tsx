@@ -23,7 +23,7 @@ const ItemBox = ({title, quantity}: ItemBoxProps) => {
       </View>
       <FButton
         buttonStyle="buyButton"
-        onPress={() => Linking.openURL(data.like)}>
+        onPress={() => Linking.openURL(data.hit)}>
         <FText fStyle="M_14" color={colors.black} text="구매" />
       </FButton>
     </View>

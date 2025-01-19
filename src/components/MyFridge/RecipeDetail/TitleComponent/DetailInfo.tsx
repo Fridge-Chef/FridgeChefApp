@@ -8,12 +8,12 @@ import FText from '../../../elements/FText';
 
 type DetailInfoProps = {
   writer: string;
-  like: number;
+  hit: number;
   favorite: number;
   reviews: number;
 };
 
-const DetailInfo = ({writer, like, favorite, reviews}: DetailInfoProps) => {
+const DetailInfo = ({writer, hit, favorite, reviews}: DetailInfoProps) => {
   return (
     <View style={styles.container}>
       <View style={styles.iconAlign}>
@@ -31,7 +31,7 @@ const DetailInfo = ({writer, like, favorite, reviews}: DetailInfoProps) => {
           mLeft={FWidth * 4}
           fStyle="M_14"
           color={colors.text}
-          text={like}
+          text={hit}
         />
         <FText fStyle="M_14" color={colors.b500} text={` (${reviews})`} />
       </View>

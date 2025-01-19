@@ -12,7 +12,7 @@ import FText from '../../elements/FText';
 import SubTitleBS2 from '../SubTitleBS2';
 
 type ExpiryDateProps = {
-  ingredientData: string | undefined;
+  ingredientData?: string | undefined;
 };
 
 const ExpiryDate = ({ingredientData}: ExpiryDateProps) => {
