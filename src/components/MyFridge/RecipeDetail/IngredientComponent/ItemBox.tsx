@@ -4,6 +4,7 @@ import {colors, FWidth} from '../../../../../globalStyle';
 import {useGetPurch} from '../../../../api/recipeQuery';
 import FButton from '../../../elements/FButton';
 import FText from '../../../elements/FText';
+import Loading from '../../../elements/Loading';
 
 type ItemBoxProps = {
   title: string;
@@ -12,7 +13,8 @@ type ItemBoxProps = {
 
 const ItemBox = ({title, quantity}: ItemBoxProps) => {
   const {data} = useGetPurch(title);
-
+  console.log('이거 머냐', data);
+  if (!data) return <Loading loadingTitle="로딩중" />;
   return (
     <View style={styles.container}>
       <View style={styles.titleAlign}>
@@ -23,7 +25,7 @@ const ItemBox = ({title, quantity}: ItemBoxProps) => {
       </View>
       <FButton
         buttonStyle="buyButton"
-        onPress={() => Linking.openURL(data.hit)}>
+        onPress={() => Linking.openURL(data?.like)}>
         <FText fStyle="M_14" color={colors.black} text="구매" />
       </FButton>
     </View>
