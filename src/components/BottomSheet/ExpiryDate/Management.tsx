@@ -97,7 +97,7 @@ const Management = () => {
             setItemNumber(0);
           }}
         />
-        <ExpiryDate ingredientData={ingredientData[0].expirationDate} />
+        <ExpiryDate ingredientData={ingredientData[0]?.expirationDate} />
         <Categories
           itemNumber={itemNumber}
           setItemNumber={setItemNumber}
