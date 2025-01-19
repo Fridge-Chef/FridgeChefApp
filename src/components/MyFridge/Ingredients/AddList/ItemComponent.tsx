@@ -65,15 +65,21 @@ const ItemComponent = ({item, fetchData}: ItemComponentProps) => {
   };
 
   useEffect(() => {
-    setExpiryDate(
-      item.expirationDate
-        ? Math.ceil(
-            (new Date(item.expirationDate).getTime() - today.getTime()) /
-              (1000 * 60 * 60 * 24),
-          )
-        : undefined,
-    );
-  }, [item.expirationDate]);
+    if (item && item.expirationDate) {
+      setExpiryDate(
+        Math.ceil(
+          (new Date(item?.expirationDate).getTime() - today.getTime()) /
+            (1000 * 60 * 60 * 24),
+        ),
+      );
+    } else {
+      setExpiryDate(undefined);
+    }
+  }, [item, item?.expirationDate]);
+
+  if (!item) {
+    return null;
+  }
 
   return (
     <View
@@ -91,7 +97,7 @@ const ItemComponent = ({item, fetchData}: ItemComponentProps) => {
         <View style={styles.titleContainer}>
           <FText fStyle="M_16" color={colors.text} text={item.ingredientName} />
         </View>
-        {item.expirationDate && <DDayText day={date({item, today})} />}
+        {item?.expirationDate && <DDayText day={date({item, today})} />}
       </View>
       <View style={styles.iconAndTextContainer}>
         <View style={{marginRight: FWidth * 12}}>

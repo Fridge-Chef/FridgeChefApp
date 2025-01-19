@@ -41,8 +41,8 @@ export const getToken = async () => {
 };
 
 export let date = ({item, today}: DateType) => {
-  if (!item.expirationDate) return;
-  const expiryDate = new Date(item.expirationDate);
+  if (!item?.expirationDate) return;
+  const expiryDate = new Date(item?.expirationDate);
   const timeDifference = expiryDate.getTime() - today.getTime();
   const dayDifference = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
 
