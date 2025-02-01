@@ -14,7 +14,7 @@
 - 나만의 레시피를 만들어 사람들 과 공유
 - 사용자 편의성을 위주로 개발
 
-[링크 설명](http://www.google.co.kr)
+![image](https://url/image.png)
 
 
 ### 팀원 소개
