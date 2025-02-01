@@ -14,7 +14,7 @@
 - 나만의 레시피를 만들어 사람들 과 공유
 - 사용자 편의성을 위주로 개발
 
-<img width="1000" src="https://drive.google.com/file/d/1D40YWh-dPwEbN0E_B31srwOjr-SF-MN4/view?usp=sharing" alt="register">
+![메인 이미지](docs/intro.png)
 
 
 ### 팀원 소개
