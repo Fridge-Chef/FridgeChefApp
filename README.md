@@ -14,7 +14,7 @@
 - 나만의 레시피를 만들어 사람들 과 공유
 - 사용자 편의성을 위주로 개발
 
-![image](https://postfiles.pstatic.net/MjAyNTAyMDFfMTIx/MDAxNzM4Mzk4NzQ1NDk5.ElpEln91hO9sQW8VA2hwczQEIGRiNr8V9jN-xrHZG6Ag.IQ9c3xq9XuJ4EaV40bGzeo2ftcyNxzY6ZMD9VJjnm1Ig.PNG/main.png?type=w3840))
+![image](https://postfiles.pstatic.net/MjAyNTAyMDFfMTIx/MDAxNzM4Mzk4NzQ1NDk5.ElpEln91hO9sQW8VA2hwczQEIGRiNr8V9jN-xrHZG6Ag.IQ9c3xq9XuJ4EaV40bGzeo2ftcyNxzY6ZMD9VJjnm1Ig.PNG/main.png?type=w3840)
 
 
 ### 팀원 소개
