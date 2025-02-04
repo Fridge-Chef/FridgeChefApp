@@ -96,7 +96,7 @@ const Recipes = ({ingredientList}: RecipesProps) => {
   return (
     <View style={styles.container}>
       <View style={styles.mainListContainer}>
-        <RankButton onPress={handleBottomSheetOpen} />
+        <RankButton rankName={rankName} onPress={handleBottomSheetOpen} />
         <FlatList
           style={{marginTop: FWidth * 12}}
           data={uniqueData}

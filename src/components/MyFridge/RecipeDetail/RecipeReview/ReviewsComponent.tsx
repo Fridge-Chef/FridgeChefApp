@@ -5,6 +5,7 @@ import {
   useBottomSheetRef,
   useBottomSheetTitle,
 } from '../../../../store/bottomSheetStore';
+import {useRecipeLikeRankName} from '../../../../store/rankingStore';
 import {RecipeReviewListType} from '../../../../type/types';
 import RankButton from '../../RecRecipe/ListItem/RankButton';
 import NoData from './NoData';
@@ -27,6 +28,7 @@ const ReviewsComponent = ({
 }: ReviewsComponentProps) => {
   const {bottomSheetRef} = useBottomSheetRef();
   const {setTitle} = useBottomSheetTitle();
+  const {rankName} = useRecipeLikeRankName();
   const handleBottomSheetOpen = () => {
     setTitle('좋아요 랭킹');
     bottomSheetRef.current?.present();
@@ -34,7 +36,7 @@ const ReviewsComponent = ({
 
   return (
     <View style={styles.container}>
-      <RankButton onPress={handleBottomSheetOpen} />
+      <RankButton rankName={rankName} onPress={handleBottomSheetOpen} />
       <View style={styles.listContainer}>
         {data?.content.length !== 0 ? (
           data?.content.map(item => (
