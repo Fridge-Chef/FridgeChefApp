@@ -1,5 +1,5 @@
 ## fridge chef - 나만의 냉장고 셰프
-
+  -[구글플레이](https://play.google.com/store/apps/details?id=com.fridgechef&hl=ko)
 ---
 
 ## 프로젝트 개요
